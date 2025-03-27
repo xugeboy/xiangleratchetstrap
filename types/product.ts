@@ -25,4 +25,4 @@ export interface Product {
     youtube_url?: string;
     related_blogs?: Blog[]; // 关联的博客
     related_products?: Product[]; // 关联的产品
-  }
+}

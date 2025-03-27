@@ -2,23 +2,25 @@ import { MapPinIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline
 
 const navigation = {
     company: [
-      { name: 'About us', href: '/about-us' },
+      { name: 'About Us', href: '/about-us' },
+      { name: 'Contact Us', href: '/contact-us' },
       { name: 'Blog', href: '/blog' },
-      { name: 'Meet The Team', href: '/meet-the-team' }
+      { name: 'Meet The Team', href: '/business-solutions/#meet-the-team' }
     ],
     support: [
+      { name: 'Request Quote', href: '/request-quote' },
       { name: 'Download Catalog', href: '/download-catalog' },
       { name: 'FAQ', href: '/faq' },
       { name: 'Business Solutions', href: '/business-solutions' },
       { name: 'Online Customizer', href: '/online-customizer' }
     ],
     products: [
-      { name: 'Retractable Ratchet Strap', href: '/product-categories/retractable-ratchet-strap' },
-      { name: 'Ratchet Strap', href: '/product-categories/ratchet-strap' },
-      { name: 'Cam Buckle Strap', href: '/product-categories/cam-buckle-strap' },
-      { name: 'Powersports & Utility Trailer Straps', href: '/product-categories/powersports-utility-trailer-straps' },
-      { name: 'Interior Van & Moving Supplies', href: '/product-categories/interior-van-moving-supplies' },
-      { name: 'Webbing & Hardware', href: '/product-categories/webbing-hardware' },
+      { name: 'Retractable Ratchet Strap', href: '/categories/retractable-ratchet-strap' },
+      { name: 'Ratchet Strap', href: '/categories/ratchet-strap' },
+      { name: 'Cam Buckle Strap', href: '/categories/cam-buckle-strap' },
+      { name: 'Powersports & Utility Trailer Straps', href: '/categories/powersports-utility-trailer-straps' },
+      { name: 'Interior Van & Moving Supplies', href: '/categories/interior-van-moving-supplies' },
+      { name: 'Webbing & Hardware', href: '/categories/webbing-hardware' },
     ],
     contactUs: [
       { 
@@ -98,27 +100,9 @@ const navigation = {
   
   export default function Footer() {
     return (
-      <footer className="bg-gray-900">
-        <div className="mx-auto max-w-7xl px-6 py-8 sm:py-16 lg:px-8 lg:py-24">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-base/7 font-semibold text-indigo-400">Get started</h2>
-            <p className="mt-2 text-4xl font-semibold tracking-tight text-balance text-white sm:text-5xl">
-              Boost your productivity. Start using our app today.
-            </p>
-            <p className="mx-auto mt-6 max-w-xl text-lg/8 text-pretty text-gray-400">
-              Incididunt sint fugiat pariatur cupidatat consectetur sit cillum anim id veniam aliqua proident excepteur
-              commodo do ea.
-            </p>
-            <div className="mt-8 flex justify-center">
-              <a
-                href="#"
-                className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
-              >
-                Get started
-              </a>
-            </div>
-          </div>
-          <div className="mt-24 border-t border-white/10 pt-12 xl:grid xl:grid-cols-3 xl:gap-8">
+      <footer className="bg-gray-900 mt-32">
+        <div className="mx-auto max-w-7xl px-6 py-2">
+          <div className="border-t border-white/10 pt-12 xl:grid xl:grid-cols-3 xl:gap-8">
             <img
               alt="Company name"
               src="/plus-assets/img/logos/mark.svg?color=indigo&shade=500"

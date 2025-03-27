@@ -34,4 +34,32 @@ export async function getAllProductCategories(): Promise<ProductCategory[]> {
     console.error('Error fetching product categories:', error);
     return [];
   }
+}
+
+export async function getCategoryBySlug(slug: string | string[]): Promise<ProductCategory | null> {
+  try {
+    const path = `/product-categories`
+    const urlParamsObject = {
+      filters: {
+        slug: {
+          $eq: Array.isArray(slug) ? slug[slug.length - 1] : slug,
+        },
+      },
+      populate: ['parent', 'products'],
+    }
+    const response = await fetchAPI(path, urlParamsObject)
+    return response.data[0] || null
+  } catch (error) {
+    console.error('Error fetching category:', error)
+    return null
+  }
+}
+
+export async function getAllCategories(): Promise<ProductCategory[]> {
+  const path = `/product-categories`
+  const urlParamsObject = {
+    populate: ['parent', 'products'],
+  }
+  const response = await fetchAPI(path, urlParamsObject)
+  return response.data
 } 

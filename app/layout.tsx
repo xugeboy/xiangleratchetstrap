@@ -4,7 +4,6 @@ import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import BackToTop from '@/components/common/BackToTop'
-
 const poppins = Poppins({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
@@ -23,13 +22,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.className} antialiased`}
-      >
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <BackToTop />
+      <body className={`${poppins.className} antialiased`}>
+        <div className="flex min-h-screen flex-col">
+          <Header />
+          <main className="flex-grow">
+              {children}
+          </main>
+          <Footer />
+          <BackToTop />
+        </div>
       </body>
     </html>
   );

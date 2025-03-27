@@ -10,9 +10,6 @@ export interface ProductCategory {
     };
     parent?: ProductCategory | null;
     children?: ProductCategory[];
-    categories?: {
-      data: ProductCategory[];
-    };
     products?: {
       data: Product[];
     };
