@@ -24,7 +24,7 @@ export async function getAllProducts(): Promise<Product[]> {
   return response.data;
 }
 
-export async function getProductsByCategory(categorySlug: string): Promise<Product[]> {
+export async function getProductsByCategorySlug(categorySlug: string): Promise<Product[]> {
   const path = `/products`;
   const urlParamsObject = {
     filters: {

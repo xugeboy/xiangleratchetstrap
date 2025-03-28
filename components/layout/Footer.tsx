@@ -37,9 +37,9 @@ const navigation = {
       },
       { 
         name: 'Mail', 
-        value: 'info@xianglecargocontrol.com', 
+        value: 'info@xiangleratchetstrap.com', 
         icon: EnvelopeIcon,
-        href: "mailto:info@xianglecargocontrol.com"
+        href: "mailto:info@xiangleratchetstrap.com"
       },
     ],
     social: [
