@@ -30,6 +30,16 @@ export default function QuoteForm() {
   }
 
   return (
+    <div className="mb-16">
+        <div className="lg:text-center mb-12">
+        <h2 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
+        Bulk Pricing
+        Quote Request
+        </h2>
+        <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+        Contact our experts to discuss a custom pricing program that fits your particular business needs. Just fill out the form below and we'll be in touch!
+        </p>
+        </div>
     <form onSubmit={handleSubmit} className="max-w-7xl mx-auto bg-white p-10 rounded-[30px] shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {/* First Name */}
@@ -180,5 +190,6 @@ export default function QuoteForm() {
         </button>
       </div>
     </form>
+    </div>
   )
 }

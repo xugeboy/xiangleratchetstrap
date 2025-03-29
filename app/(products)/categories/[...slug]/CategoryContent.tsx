@@ -270,7 +270,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map((product) => (
-              <Link key={product.id} href={`/product/${product.slug}`} className="group">
+              <Link key={product.id} href={`/products/${product.slug}`} className="group">
                 <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
                   {product.gallery && product.gallery[0] && (
                     <Image

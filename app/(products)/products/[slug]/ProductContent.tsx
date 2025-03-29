@@ -7,6 +7,12 @@ import { redirect } from 'next/navigation'
 import { BreadcrumbItem } from '@/types/breadcrumbItem'
 import { Product } from '@/types/product'
 import Breadcrumb from '@/components/common/Breadcrumb'
+import StatsSection from '@/components/common/StatsSection'
+import QuoteForm from '@/components/forms/QuoteForm'
+import Cav from '@/components/product/Cav'
+import ImageGallery from '@/components/product/ImageGallery'
+import ProductInfo from '@/components/product/ProductInfo'
+import RelatedArticles from '@/components/product/RelatedArticles'
 
 interface ProductContentProps {
   slug: string
@@ -37,18 +43,26 @@ export default function ProductContent({ slug }: ProductContentProps) {
   }
 
   return (
-    <div className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="py-8">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb items={breadcrumbs} />
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            {product.name}
-          </h1>
-          {product.about && (
-            <p className="mt-4 text-lg text-gray-500">{product.about}</p>
-          )}
+        {/* Product content */}
+        <div className="lg:grid lg:grid-cols-[40%_auto] lg:items-start lg:gap-x-8 py-8">
+            {/* Image gallery */}
+            <div>
+                <ImageGallery images={product.gallery} />
+                <RelatedArticles blogs={product.related_blogs} />
+            </div>
+
+            {/* Product info */}
+            <ProductInfo product={product} />
+            </div>
+        {/* Product details */}
+        <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900">Product details</h2>
+            <StatsSection/>
+            <QuoteForm/>
+            <Cav products={product.related_products}/>
         </div>
-      </div>
     </div>
   )
 } 
