@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Breadcrumb from '@/components/common/Breadcrumb'
-import { getAllCategories } from '@/services/api/productCategory'
+import { getAllProductCategories } from '@/services/api/productCategory'
 
 
 export default async function ProductsPage() {
-  const categoriesData = await getAllCategories()
+  const categoriesData = await getAllProductCategories()
     .catch((err: Error) => {
       console.error('Failed to fetch categories:', err)
       return null
@@ -33,12 +33,12 @@ export default async function ProductsPage() {
 
       {/* Categories Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {categoriesData.map((category) => (
+        {categoriesData?.map((category) => (
           <Link key={category.id} href={`/categories/${category.slug}`} className="group">
             <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
-              {category.image && (
+              {category.featured_image && (
                 <Image
-                  src={category.image.url}
+                  src={category.featured_image.url}
                   alt={category.name}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
