@@ -59,9 +59,9 @@ export default function ProductContent({ slug }: ProductContentProps) {
         {/* Product details */}
         <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
             <h2 className="text-2xl font-bold tracking-tight text-gray-900">Product details</h2>
+            <Cav products={product.related_products}/>
             <StatsSection/>
             <QuoteForm/>
-            <Cav products={product.related_products}/>
         </div>
     </div>
   )

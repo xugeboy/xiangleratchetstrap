@@ -142,3 +142,22 @@ export async function getFeaturedProducts(
     return [];
   }
 }
+
+export async function searchProducts(query: string): Promise<Product[]> {
+    try {
+      const path = `/products`;
+      const urlParamsObject = {
+        filters: {
+          name: {
+            $containsi: query,
+          },
+        },
+        populate: ['gallery', 'category'],
+      };
+      const response = await fetchAPI(path, urlParamsObject);
+      return response.data || [];
+    } catch (error) {
+      console.error('Error searching products:', error);
+      return [];
+    }
+  }

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getCategoryBySlug, getAllCategories } from '@/services/api/productCategory'
+import { getCategoryBySlug, getAllProductCategories } from '@/services/api/productCategory'
 import { getProductsByCategorySlug } from '@/services/api/product'
 import { generateCategoryBreadcrumbs } from '@/utils/breadcrumbs'
 import { redirect } from 'next/navigation'
@@ -29,7 +29,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
     const fetchData = async () => {
       try {
         // Get all categories
-        const allCategories = await getAllCategories()
+        const allCategories = await getAllProductCategories()
         setCategories(allCategories)
 
         // Get current category
@@ -45,7 +45,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
 
         // Get products list
         const productsData = await getProductsByCategorySlug(categoryData.slug.toString())
-        setProducts(productsData)
+        setProducts(productsData.data)
 
         // Expand parent category if current category has a parent
         if (categoryData.parent) {
@@ -132,10 +132,10 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Breadcrumb items={breadcrumbs} />
 
-      <div className="flex gap-8">
+      <div className="flex gap-8 py-8">
         {/* Categories Sidebar */}
         <div className="w-64 flex-shrink-0">
           <div className="sticky top-4 space-y-6">

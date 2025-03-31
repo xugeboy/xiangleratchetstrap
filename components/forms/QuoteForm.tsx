@@ -30,7 +30,7 @@ export default function QuoteForm() {
   }
 
   return (
-    <div className="mb-16">
+    <div>
         <div className="lg:text-center mb-12">
         <h2 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
         Bulk Pricing
