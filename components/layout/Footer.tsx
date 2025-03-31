@@ -122,9 +122,9 @@ export default function Footer() {
   const [isOpenContact, setIsOpenContact] = useState(false);
 
   return (
-    <footer className="bg-gray-900 mt-32">
+    <footer className="bg-gray-900 mt-10">
       <div className="mx-auto max-w-7xl px-6 py-2">
-        <div className="hidden md:block border-t border-white/10 pt-12 xl:grid xl:grid-cols-3 xl:gap-8">
+        <div className="hidden md:block pt-12 xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="flex flex-col gap-2">
           <Image
             alt="Company name"

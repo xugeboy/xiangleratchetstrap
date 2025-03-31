@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={`${poppins.className} antialiased`}>
         <div className="flex min-h-screen flex-col">
           <Header />
-          <main className="flex-grow py-12">
+          <main className="flex-grow">
               {children}
           </main>
           <Footer />

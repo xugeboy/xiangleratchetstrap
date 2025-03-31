@@ -1,0 +1,160 @@
+"use client"
+
+import { useState, useRef } from "react"
+import Link from "next/link"
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react"
+import { Bars3Icon } from "@heroicons/react/24/outline"
+import type { ProductCategory } from "@/types/productCategory"
+
+interface CategoryNavigationProps {
+  topLevelCategories: ProductCategory[]
+  onMobileMenuOpen: () => void
+}
+
+export function CategoryNavigation({ topLevelCategories, onMobileMenuOpen }: CategoryNavigationProps) {
+  const [activeTabIndex, setActiveTabIndex] = useState(-1)
+  const menuContainerRef = useRef<HTMLDivElement>(null)
+
+  // 处理鼠标进入标签
+  const handleTabMouseEnter = (index: number) => {
+    setActiveTabIndex(index)
+  }
+
+  // 处理鼠标离开标签
+  const handleTabMouseLeave = () => {
+    // Don't immediately hide the panel when leaving the tab
+    // We'll let the panel's mouse leave event handle this
+  }
+
+  // 处理鼠标离开面板
+  const handlePanelMouseLeave = () => {
+    setActiveTabIndex(-1)
+  }
+
+  // Handle mouse events for the entire menu container
+  const handleMenuContainerMouseLeave = () => {
+    setActiveTabIndex(-1)
+  }
+
+  return (
+    <nav aria-label="Global" className="hidden md:flex mx-auto max-w-7xl items-center justify-center p-6 lg:px-8">
+      <div className="hidden md:block w-full" ref={menuContainerRef} onMouseLeave={handleMenuContainerMouseLeave}>
+        <TabGroup
+          selectedIndex={activeTabIndex !== -1 ? activeTabIndex : undefined}
+          onChange={(index) => setActiveTabIndex(index)}
+        >
+          <div className="border-b border-transparent relative">
+            <TabList className="flex space-x-4 items-center justify-center">
+              {/* 始终显示的标签 (最大3个) */}
+              {topLevelCategories.slice(0, 3).map((category, index) => (
+                <Tab
+                  key={category.id}
+                  className={({ selected }) => `
+                    relative px-2 py-2 text-sm font-medium text-gray-800
+                    outline-none transition-colors duration-200 cursor-pointer
+                    ${selected ? "text-indigo-600" : "hover:text-indigo-500"}
+                  `}
+                  onMouseEnter={() => handleTabMouseEnter(index)}
+                  onMouseLeave={() => handleTabMouseLeave()}
+                >
+                  <Link
+                    href={`/categories/${category.slug}`}
+                    className="group flex items-center text-gray-600 hover:text-indigo-600 transition-colors duration-200"
+                  >
+                    <span className="whitespace-nowrap">{category.name}</span>
+                  </Link>
+
+                  {activeTabIndex === index && (
+                    <span className="absolute inset-x-0 bottom-0 h-0.5 bg-indigo-600 transform transition-transform duration-200"></span>
+                  )}
+                </Tab>
+              ))}
+
+              {/* 中等屏幕显示的额外标签 (2个) */}
+              {topLevelCategories.length > 3 &&
+                topLevelCategories.slice(3, 5).map((category, idx) => (
+                  <Tab
+                    key={category.id}
+                    className={({ selected }) => `
+                    relative px-2 py-2 text-sm font-medium text-gray-800
+                    outline-none transition-colors duration-200 cursor-pointer
+                    hidden lg:block
+                    ${selected ? "text-indigo-600" : "hover:text-indigo-500"}
+                  `}
+                    onMouseEnter={() => handleTabMouseEnter(idx + 3)}
+                  >
+                    <Link
+                      href={`/categories/${category.slug}`}
+                      className="group flex items-center text-gray-600 hover:text-indigo-600 transition-colors duration-200"
+                    >
+                      <span className="whitespace-nowrap">{category.name}</span>
+                    </Link>
+
+                    {activeTabIndex === idx + 3 && (
+                      <span className="absolute inset-x-0 bottom-0 h-0.5 bg-indigo-600 transform transition-transform duration-200"></span>
+                    )}
+                  </Tab>
+                ))}
+
+              {/* 大屏幕显示的额外标签 */}
+              {topLevelCategories.length > 5 &&
+                topLevelCategories.slice(5).map((category, idx) => (
+                  <Tab
+                    key={category.id}
+                    className={({ selected }) => `
+                    relative px-2 py-2 text-sm font-medium text-gray-800
+                    outline-none transition-colors duration-200 cursor-pointer
+                    hidden xl:block
+                    ${selected ? "text-indigo-600" : "hover:text-indigo-500"}
+                  `}
+                    onMouseEnter={() => handleTabMouseEnter(idx + 5)}
+                  >
+                    <Link
+                      href={`/categories/${category.slug}`}
+                      className="group flex items-center text-gray-600 hover:text-indigo-600 transition-colors duration-200"
+                    >
+                      <span className="whitespace-nowrap">{category.name}</span>
+                    </Link>
+
+                    {activeTabIndex === idx + 5 && (
+                      <span className="absolute inset-x-0 bottom-0 h-0.5 bg-indigo-600 transform transition-transform duration-200"></span>
+                    )}
+                  </Tab>
+                ))}
+            </TabList>
+          </div>
+
+          <div
+            className={`absolute left-0 w-full z-50 transform transition-all duration-200 ease-in-out ${
+              activeTabIndex === -1 ? "opacity-0 pointer-events-none" : "opacity-100"
+            }`}
+            onMouseLeave={handlePanelMouseLeave}
+          >
+            <TabPanels className="bg-white shadow-lg rounded-b-lg border-t border-gray-100">
+              {topLevelCategories.map((category) => (
+                <TabPanel key={category.id} className="py-6 px-8">
+                  {category.children && category.children.length > 0 && (
+                    <div className="max-w-7xl mx-auto">
+                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-4">
+                        {category.children.map((item) => (
+                          <Link
+                            key={item.id}
+                            href={`/categories/${category.slug}/${item.slug || ""}`}
+                            className="group flex items-center text-gray-600 hover:text-indigo-600 transition-colors duration-200"
+                          >
+                            <span className="text-sm font-medium">{item.name}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </TabPanel>
+              ))}
+            </TabPanels>
+          </div>
+        </TabGroup>
+      </div>
+    </nav>
+  )
+}
+
