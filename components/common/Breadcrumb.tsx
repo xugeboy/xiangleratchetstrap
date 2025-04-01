@@ -9,7 +9,7 @@ interface BreadcrumbProps {
 
 export default function Breadcrumb({ items, showHome = true }: BreadcrumbProps) {
   return (
-    <nav aria-label="Breadcrumb" className="flex">
+    <nav aria-label="Breadcrumb" className="flex py-4">
       <ol role="list" className="flex items-center space-x-4">
         {showHome && (
           <li>

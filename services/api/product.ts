@@ -144,20 +144,40 @@ export async function getFeaturedProducts(
 }
 
 export async function searchProducts(query: string): Promise<Product[]> {
-    try {
-      const path = `/products`;
-      const urlParamsObject = {
-        filters: {
-          name: {
-            $containsi: query,
-          },
+  try {
+    const path = `/products`;
+    const urlParamsObject = {
+      filters: {
+        name: {
+          $containsi: query,
         },
-        populate: ['gallery', 'category'],
-      };
-      const response = await fetchAPI(path, urlParamsObject);
-      return response.data || [];
-    } catch (error) {
-      console.error('Error searching products:', error);
-      return [];
-    }
+      },
+      populate: ["gallery", "category"],
+    };
+    const response = await fetchAPI(path, urlParamsObject);
+    return response.data || [];
+  } catch (error) {
+    console.error("Error searching products:", error);
+    return [];
   }
+}
+
+/**
+ * 获取产品筛选条件数据
+ * @returns 返回产品筛选条件数据，包含各种属性及其选项
+ */
+export async function getProductFilters(
+  slug: string
+): Promise<Record<string, Record<string, number>>> {
+  try {
+    const path = `/products/attribute-filters`;
+    const urlParamsObject = {
+      categorySlug: slug
+    };
+    const response = await fetchAPI(path, urlParamsObject);
+    return response || {};
+  } catch (error) {
+    console.error("Error fetching product filters:", error);
+    return {};
+  }
+}
