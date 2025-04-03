@@ -6,49 +6,9 @@ import { Product } from "@/types/product";
  */
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   try {
-    const path = `/products`;
-    const urlParamsObject = {
-      filters: {
-        slug: {
-          $eq: slug,
-        },
-      },
-      fields: [
-        "id",
-        "name",
-        "slug",
-        "code",
-        "about",
-        "see_more",
-        "youtube_url",
-        "assembly_break_strength",
-        "length",
-        "fixed_end_length",
-        "end_fitting",
-        "width",
-        "working_load_limit",
-        "material",
-        "webbing_break_strength",
-        "grade",
-        "ratchet_handle",
-        "finish",
-        "product_weight",
-      ],
-      populate: {
-        featured_image: { fields: ["url"] },
-        gallery: { fields: ["url"] },
-        category: { fields: ["id", "name", "slug"] },
-        related_products: {
-          fields: ["id", "name", "slug", "code"],
-          populate: {
-            featured_image: { fields: ["url"] },
-          },
-        },
-        related_blogs: { fields: ["id", "title", "slug"] },
-      },
-    };
-    const response = await fetchAPI(path, urlParamsObject);
-    return response.data[0] || null;
+    const path = `/products/${slug}`;
+    const response = await fetchAPI(path);
+    return response.data || null;
   } catch (error) {
     console.error("Error fetching product:", error);
     return null;
@@ -78,19 +38,8 @@ export async function getProductsByCategorySlug(
   };
 }> {
   try {
-    const path = `/products`;
+    const path = `/products/${categorySlug}`;
     const urlParamsObject = {
-      filters: {
-        category: {
-          slug: {
-            $eq: categorySlug,
-          },
-        },
-      },
-      fields: ["id", "name", "slug", "code"],
-      populate: {
-        featured_image: { fields: ["url"] },
-      },
       pagination: {
         page,
         pageSize,
@@ -118,41 +67,13 @@ export async function getProductsByCategorySlug(
 }
 
 /**
- * 获取首页或特色产品列表（简化信息）
+ * 搜索产品
  */
-export async function getFeaturedProducts(
-  limit: number = 8
-): Promise<Product[]> {
-  try {
-    const path = `/products`;
-    const urlParamsObject = {
-      sort: ["id:desc"], // 可根据需要修改排序方式
-      pagination: {
-        limit,
-      },
-      fields: ["id", "name", "slug", "code"],
-      populate: {
-        featured_image: { fields: ["url"] },
-      },
-    };
-    const response = await fetchAPI(path, urlParamsObject);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching featured products:", error);
-    return [];
-  }
-}
-
 export async function searchProducts(query: string): Promise<Product[]> {
   try {
-    const path = `/products`;
+    const path = `/products/search`;
     const urlParamsObject = {
-      filters: {
-        name: {
-          $containsi: query,
-        },
-      },
-      populate: ["gallery", "category"],
+      query,
     };
     const response = await fetchAPI(path, urlParamsObject);
     return response.data || [];

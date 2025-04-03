@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import {
   MapPinIcon,
   PhoneIcon,
   EnvelopeIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import { useState } from 'react';
+import { useState } from "react";
 
 const navigation = {
   company: [
@@ -26,15 +26,10 @@ const navigation = {
       name: "Retractable Ratchet Strap",
       href: "/categories/retractable-ratchet-strap",
     },
-    { name: "Ratchet Strap", href: "/categories/ratchet-strap" },
-    { name: "Cam Buckle Strap", href: "/categories/cam-buckle-strap" },
+    { name: "Ratchet Strap & Tie Downs", href: "/categories/ratchet-straps-and-tie-downs" },
     {
-      name: "Powersports & Utility Trailer Straps",
-      href: "/categories/powersports-utility-trailer-straps",
-    },
-    {
-      name: "Interior Van & Moving Supplies",
-      href: "/categories/interior-van-moving-supplies",
+      name: "Powersports Straps",
+      href: "/categories/powersports-straps",
     },
     { name: "Webbing & Hardware", href: "/categories/webbing-hardware" },
   ],
@@ -126,21 +121,23 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-2">
         <div className="hidden md:block pt-12 xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="flex flex-col gap-2">
-          <Image
-            alt="Company name"
-            src="/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-            className="h-9"
-            width={100}
-            height={100}
-          />
-          <h3 className="text-base font-semibold text-[#00e41b]">
-          Custom Made Straps
-          </h3>
-          <span className="text-gray-400">
-          All straps on XiangleRatchetStrap.com are made to order. This give you the ability to choose the length, color, and other options that fit your needs
-          </span>
+            <Image
+              alt="Company name"
+              src="/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+              className="h-9"
+              width={100}
+              height={100}
+            />
+            <h3 className="text-base font-semibold text-[#00e41b]">
+              Custom Made Straps
+            </h3>
+            <span className="text-gray-400">
+              All straps on XiangleRatchetStrap.com are made to order. This give
+              you the ability to choose the length, color, and other options
+              that fit your needs
+            </span>
           </div>
-          
+
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div>
               <h3 className="text-base font-semibold text-[#00e41b]">
@@ -219,18 +216,37 @@ export default function Footer() {
         </div>
         <div className="mt-6 md:hidden">
           <div>
-            <button onClick={() => setIsOpenProducts(!isOpenProducts)} className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white">
-            <h3 className="text-base font-semibold text-[#00e41b]">
+            <button
+              onClick={() => setIsOpenProducts(!isOpenProducts)}
+              className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white"
+            >
+              <h3 className="text-base font-semibold text-[#00e41b]">
                 Products
               </h3>
-              <svg className={`h-5 w-5 transition-transform ${isOpenProducts ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+              <svg
+                className={`h-5 w-5 transition-transform ${
+                  isOpenProducts ? "rotate-180" : ""
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
               </svg>
             </button>
             {isOpenProducts && (
               <div className="mt-2 space-y-2">
                 {navigation.products.map((item) => (
-                  <a key={item.name} href={item.href} className="block text-sm/6 text-gray-400 hover:text-white px-2">
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="block text-sm/6 text-gray-400 hover:text-white px-2"
+                  >
                     {item.name}
                   </a>
                 ))}
@@ -239,18 +255,37 @@ export default function Footer() {
           </div>
 
           <div>
-            <button onClick={() => setIsOpenSupport(!isOpenSupport)} className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white">
+            <button
+              onClick={() => setIsOpenSupport(!isOpenSupport)}
+              className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white"
+            >
               <h3 className="text-base font-semibold text-[#00e41b]">
                 Support
               </h3>
-              <svg className={`h-5 w-5 transition-transform ${isOpenSupport ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+              <svg
+                className={`h-5 w-5 transition-transform ${
+                  isOpenSupport ? "rotate-180" : ""
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
               </svg>
             </button>
             {isOpenSupport && (
               <div className="mt-2 space-y-2">
                 {navigation.support.map((item) => (
-                  <a key={item.name} href={item.href} className="block text-sm/6 text-gray-400 hover:text-white px-2">
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="block text-sm/6 text-gray-400 hover:text-white px-2"
+                  >
                     {item.name}
                   </a>
                 ))}
@@ -259,18 +294,37 @@ export default function Footer() {
           </div>
 
           <div>
-            <button onClick={() => setIsOpenCompany(!isOpenCompany)} className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white">
+            <button
+              onClick={() => setIsOpenCompany(!isOpenCompany)}
+              className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white"
+            >
               <h3 className="text-base font-semibold text-[#00e41b]">
                 Company
               </h3>
-              <svg className={`h-5 w-5 transition-transform ${isOpenCompany ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+              <svg
+                className={`h-5 w-5 transition-transform ${
+                  isOpenCompany ? "rotate-180" : ""
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
               </svg>
             </button>
             {isOpenCompany && (
               <div className="mt-2 space-y-2">
                 {navigation.company.map((item) => (
-                  <a key={item.name} href={item.href} className="block text-sm/6 text-gray-400 hover:text-white px-2">
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="block text-sm/6 text-gray-400 hover:text-white px-2"
+                  >
                     {item.name}
                   </a>
                 ))}
@@ -279,18 +333,37 @@ export default function Footer() {
           </div>
 
           <div>
-            <button onClick={() => setIsOpenContact(!isOpenContact)} className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white">
+            <button
+              onClick={() => setIsOpenContact(!isOpenContact)}
+              className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white"
+            >
               <h3 className="text-base font-semibold text-[#00e41b]">
                 Contact Us
               </h3>
-              <svg className={`h-5 w-5 transition-transform ${isOpenContact ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+              <svg
+                className={`h-5 w-5 transition-transform ${
+                  isOpenContact ? "rotate-180" : ""
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
               </svg>
             </button>
             {isOpenContact && (
               <div className="mt-2 space-y-2">
                 {navigation.contactUs.map((item) => (
-                  <a key={item.name} href={item.href} className="block text-sm/6 text-gray-400 hover:text-white px-2">
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="block text-sm/6 text-gray-400 hover:text-white px-2"
+                  >
                     {item.value}
                   </a>
                 ))}

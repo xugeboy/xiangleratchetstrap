@@ -196,7 +196,8 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
       <div className="md:py-4 md:block hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 flex justify-between items-center">
           <Link href="/" className="flex-shrink-0">
-            <Image src="/logo.png" alt="Company Logo" width={200} height={60} className="h-12 w-auto" />
+            <Image src="https://res.cloudinary.com/duimeqqch/image/upload/xiangle_ratchet_strap_mxts89.png" 
+            alt="xiangle ratchet strap" width={200} height={60} className="h-12 w-auto" />
           </Link>
           <div className="w-full max-w-md ml-auto">{renderSearchCombobox()}</div>
         </div>
@@ -212,7 +213,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
 
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <Image src="/logo.png" alt="Company Logo" width={120} height={40} className="h-8 w-auto" />
+            <Image src="https://res.cloudinary.com/duimeqqch/image/upload/xiangle_ratchet_strap_mxts89.png" alt="xiangle ratchet strap" width={120} height={40} className="h-8 w-auto" />
           </Link>
 
           {/* Right icons */}

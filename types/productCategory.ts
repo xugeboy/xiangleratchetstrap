@@ -6,6 +6,7 @@ export interface ProductCategory {
     name: string;
     description?: string;
     slug: string;
+    sort: number;
     featured_image?: Gallery;
     parent?: ProductCategory | null;
     children?: ProductCategory[];

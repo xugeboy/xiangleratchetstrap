@@ -115,7 +115,7 @@ export function ProductGrid({ products, viewMode, itemsPerPage }: ProductGridPro
 
       {/* No Results Message */}
       {products.length === 0 && (
-        <div className="text-center py-12 border rounded-lg">
+        <div className="text-center py-12 rounded-lg">
           <h3 className="text-lg font-medium text-gray-900">No products found</h3>
           <p className="mt-2 text-sm text-gray-500">Please try adjusting the filters</p>
         </div>
