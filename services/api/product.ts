@@ -2,6 +2,20 @@ import { fetchAPI } from "@/utils/fetch-api";
 import { Product } from "@/types/product";
 
 /**
+ * 获取所有产品的slug
+ */
+export async function getAllProductSlug(): Promise<Product[] | null> {
+    try {
+      const path = `/getAllProductSlug`;
+      const response = await fetchAPI(path);
+      return response.data || null;
+    } catch (error) {
+      console.error("Error fetching product:", error);
+      return null;
+    }
+  }
+
+/**
  * 获取产品详情页面所需的完整产品信息
  */
 export async function getProductBySlug(slug: string): Promise<Product | null> {

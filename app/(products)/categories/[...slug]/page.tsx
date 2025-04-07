@@ -10,11 +10,7 @@ interface CategoryPageProps {
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-    const path = `/getCategoryMetaDataBySlug`;
-    const urlParamsObject = {
-        slug: params.slug
-    };
-    const response = await fetchAPI(path, urlParamsObject);
+    const response = await fetchAPI(`/getCategoryMetaDataBySlug/${params.slug}`);
     const category = response.data as ProductCategory;
   if (!category) {
     redirect("/404");
@@ -24,6 +20,30 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     description: category.seo_description,
   }
 }
+
+export async function generateStaticParams() {
+    const categories = await fetchAPI(`/getAllCategorySlugAndChildren}`);
+    const paths = getAllSlugPaths(categories);
+
+    return paths.map((slugArray) => ({ slug: slugArray }));
+}
+
+
+// 递归生成所有可能的 slug 路径组合
+function getAllSlugPaths(categories: ProductCategory[], parentSlugs: string[] = []): string[][] {
+    const paths: string[][] = [];
+  
+    for (const category of categories) {
+      const currentPath = [...parentSlugs, category.slug];
+      paths.push(currentPath); // 当前分类路径
+      if (category.children && category.children.length > 0) {
+        const childPaths = getAllSlugPaths(category.children, currentPath);
+        paths.push(...childPaths);
+      }
+    }
+  
+    return paths;
+  }
 
 export default function CategoryPage({ params }: CategoryPageProps) {
   return <CategoryContent slug={params.slug} />

@@ -22,12 +22,7 @@ export const metadata: Metadata = {
 async function fetchCategories(): Promise<ProductCategory[]> {
     try {
       const res = await fetchAPI('/getAllCategories');
-  
-      if (!res.ok) {
-        throw new Error('Failed to fetch categories');
-      }
-      const data = await res.json();
-      return data.categories || data || [];
+      return res.data || null;
     } catch (error) {
       console.error("Error fetching categories:", error);
       return [];
