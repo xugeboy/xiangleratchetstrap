@@ -1,5 +1,5 @@
-import { getAllProductCategories } from '@/services/api/productCategory';
 import HeaderClient from './header-client';
+import { useCategories } from '@/contexts/CategoryContext';
 
 const company = [
   { name: 'About us', href: '#' },
@@ -9,12 +9,11 @@ const company = [
   { name: 'Blog', href: '#' },
 ]
 
-export default async function Header() {
-  // 服务端数据获取
-  const productCategories = await getAllProductCategories();
-  
+export default function Header() {
+  // 从 Context 获取分类数据
+  const { categories } = useCategories();
   // 过滤出顶级分类（没有父分类的分类）
-  const topLevelCategories = productCategories.filter(category => !category.parent);
+  const topLevelCategories = categories.filter(category => !category.parent);
 
   return (
     <HeaderClient

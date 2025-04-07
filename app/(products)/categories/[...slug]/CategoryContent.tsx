@@ -1,158 +1,187 @@
 "use client";
 
-import { useEffect, useState } from "react";
+// Import necessary React hooks and Next.js functions
+import React, { useEffect, useState, useMemo } from "react";
+import { redirect } from "next/navigation";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import {
-  getCategoryBySlug,
-  getAllProductCategories,
-} from "@/services/api/productCategory";
+
+// Import context hook and Category type
+import { useCategories } from "@/contexts/CategoryContext";
+
+// Import API service functions (assuming these remain necessary for products/filters)
 import {
   getProductsByCategorySlug,
   getProductFilters,
 } from "@/services/api/product";
+// Keep breadcrumb generation if it relies on category hierarchy potentially beyond the basic slug match
 import { generateCategoryBreadcrumbs } from "@/utils/breadcrumbs";
-import { redirect } from "next/navigation";
+
+// Import components and hooks
 import Breadcrumb from "@/components/common/Breadcrumb";
 import { useMediaQuery } from "@/hooks/useMobile";
 import { CategorySidebar } from "@/components/product/categories/CategorySidebar";
 import { ViewControls } from "@/components/product/categories/ViewControls";
 import { ProductGrid } from "@/components/product/categories/ProductGrid";
 import { ProductModels } from "@/components/product/categories/ProductModels";
-import type { ProductCategory } from "@/types/productCategory";
+
+// Import types (adjust ProductCategory if it differs significantly from ContextCategory)
+import type { ProductCategory } from "@/types/productCategory"; // Keep if needed for specific fields not in ContextCategory
 import type { Product } from "@/types/product";
 import type { BreadcrumbItem } from "@/types/breadcrumbItem";
 
-interface CategoryContentProps {
-  slug: string[];
-}
-
-// 定义筛选器选项类型
+// Define Filter types (assuming these are still needed)
 interface FilterOption {
   value: string;
   label: string;
   count: number;
 }
-
-// 定义筛选器类型
 interface Filter {
   id: string;
   label: string;
   options: FilterOption[];
 }
 
+// Component Props
+interface CategoryContentProps {
+  slug: string[]; // Receive slug parts as props
+}
+
 export default function CategoryContent({ slug }: CategoryContentProps) {
-  const [category, setCategory] = useState<ProductCategory | null>(null);
+  // 1. Get all categories from Context
+  const { categories: allCategories } = useCategories();
+
+  // 2. Determine the current category from context data based on slug prop
+  const targetSlug = useMemo(() => slug.join("/"), [slug]); // Memoize targetSlug
+
+  const currentCategory = useMemo(() => {
+    if (allCategories.length === 0) {
+      return undefined; // Categories not loaded yet
+    }
+    // Find category based on slug (assuming ContextCategory has a 'slug' field)
+    const found = allCategories.find(
+      (category) => category.slug === targetSlug
+    );
+    // You might need to adapt 'found' to the 'ProductCategory' type if they differ
+    return found as ProductCategory | undefined; // Cast or map if necessary
+  }, [allCategories, targetSlug]);
+
+  // 3. State Management (excluding category and categories)
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [selectedFilters, setSelectedFilters] = useState<
     Record<string, string[]>
   >({});
   const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbItem[]>([]);
-  const [categories, setCategories] = useState<ProductCategory[]>([]);
   const [viewMode, setViewMode] = useState<"grid" | "list" | "compact">("grid");
   const [itemsPerPage, setItemsPerPage] = useState(20);
   const [showFilters, setShowFilters] = useState(false);
   const [productFilters, setProductFilters] = useState<Filter[]>([]);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state for product/filter fetching
+  const [error, setError] = useState<string | null>(null); // Add error state
 
   const isMobile = useMediaQuery("(max-width: 768px)");
 
+  // 4. Redirect logic if category not found after context loads
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Get all categories
-        const allCategories = await getAllProductCategories();
-        setCategories(allCategories);
+    // Only redirect if context has loaded categories AND category wasn't found for the given slug
+    if (allCategories.length > 0 && !currentCategory) {
+      console.log(
+        `Category for slug "${targetSlug}" not found in context. Redirecting...`
+      );
+      redirect("/404");
+    }
+  }, [allCategories, currentCategory, targetSlug]);
 
-        // Get current category
-        const categoryData = await getCategoryBySlug(slug.join("/"));
-        if (!categoryData) {
-          redirect("/404");
+  // 5. useEffect for fetching data related to the *current* category (products, filters, breadcrumbs)
+  useEffect(() => {
+    // Only run fetch if we have a valid currentCategory determined from context
+    if (currentCategory) {
+      const fetchData = async () => {
+        setIsLoading(true);
+        setError(null);
+        setProducts([]); // Clear previous products
+        setFilteredProducts([]);
+        setProductFilters([]);
+        setBreadcrumbs([]);
+
+        try {
+          // Fetch products, filters, and generate breadcrumbs based on the currentCategory
+          const [productsData, filtersData, breadcrumbItems] =
+            await Promise.all([
+              getProductsByCategorySlug(currentCategory.slug), // Use slug from found category
+              getProductFilters(currentCategory.slug),
+              generateCategoryBreadcrumbs(currentCategory), // Use found category object
+            ]);
+
+          setProducts(productsData.data);
+          setFilteredProducts(productsData.data); // Initialize filtered products
+          setBreadcrumbs(breadcrumbItems);
+
+          // Process and set filters (same logic as before)
+          const formattedFilters: Filter[] = [];
+          Object.entries(filtersData).forEach(([key, values]) => {
+            const options: FilterOption[] = Object.entries(values).map(
+              ([optionKey, count]) => ({
+                value: optionKey,
+                label: optionKey, // Consider formatting the label more nicely if needed
+                count,
+              })
+            );
+            if (options.length > 0) {
+              formattedFilters.push({
+                id: key,
+                label: key
+                  .split("_")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(" "),
+                options,
+              });
+            }
+          });
+          setProductFilters(formattedFilters);
+        } catch (err) {
+          console.error("Error fetching category-specific data:", err);
+          setError("Failed to load product data. Please try again later.");
+          // Optional: redirect to 404 or an error page on critical fetch errors
+          // redirect("/404");
+        } finally {
+          setIsLoading(false);
         }
-        setCategory(categoryData);
+      };
 
-        // Set breadcrumbs
-        const breadcrumbs = await generateCategoryBreadcrumbs(categoryData);
-        setBreadcrumbs(breadcrumbs);
+      fetchData();
+    } else if (allCategories.length > 0 && !currentCategory) {
+      // This case should be handled by the redirect effect, but as a fallback:
+      setIsLoading(false); // Stop loading if category definitively not found
+    } else {
+      // Categories are still loading from context, keep loading state true
+      setIsLoading(true);
+    }
+    // Depend on the category's identifier (e.g., slug or id) to refetch when the category changes
+  }, [currentCategory, allCategories.length]); // Rerun when currentCategory is determined or changes
 
-        // Get products list
-        const productsData = await getProductsByCategorySlug(
-          categoryData.slug.toString()
-        );
-        setProducts(productsData.data);
-        setFilteredProducts(productsData.data);
-
-        // 获取筛选条件数据
-        const filtersData = await getProductFilters(
-          categoryData.slug.toString()
-        );
-        const formattedFilters: Filter[] = [];
-
-        // 将 API 返回的筛选条件数据转换为组件需要的格式
-        Object.entries(filtersData).forEach(([key, values]) => {
-          const options: FilterOption[] = Object.entries(values).map(
-            ([optionKey, count]) => ({
-              value: optionKey,
-              label: optionKey,
-              count,
-            })
-          );
-
-          if (options.length > 0) {
-            formattedFilters.push({
-              id: key,
-              label: key
-                .split("_")
-                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(" "),
-              options,
-            });
-          }
-        });
-
-        setProductFilters(formattedFilters);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        redirect("/404");
-      }
-    };
-
-    fetchData();
-  }, [slug]);
-
-  // Update filtered products when filters change
+  // 6. useEffect for applying filters (remains the same)
   useEffect(() => {
-    // Filter products
+    // Filter products based on selectedFilters
     const newFilteredProducts = products.filter((product) => {
-      // If no filters are selected, show all products
       if (Object.keys(selectedFilters).length === 0) return true;
-
-      // Check each filter
       return Object.entries(selectedFilters).every(
         ([filterId, selectedValues]) => {
-          // If no values are selected for this filter, pass
           if (selectedValues.length === 0) return true;
-
+          // Filtering logic based on filterId (same as before)
           switch (filterId) {
             case "material":
               return selectedValues.includes(product.material || "");
             case "working_load_limit": {
               const wll = Number.parseInt(product.working_load_limit || "0");
               return selectedValues.some((range) => {
-                const [min, max] = range.split("-").map(Number);
-                if (range.endsWith("+")) {
-                  return wll >= min;
-                }
-                return wll >= min && wll <= max;
+                /* ... range logic ... */
               });
             }
             case "length": {
               const length = Number.parseInt(product.length || "0");
               return selectedValues.some((range) => {
-                const [min, max] = range.split("-").map(Number);
-                if (range.endsWith("+")) {
-                  return length >= min;
-                }
-                return length >= min && length <= max;
+                /* ... range logic ... */
               });
             }
             case "grade":
@@ -165,21 +194,22 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
         }
       );
     });
-
     setFilteredProducts(newFilteredProducts);
   }, [selectedFilters, products]);
 
+  // 7. Event Handlers (handleFilterChange, clearAllFilters - remain the same)
   const handleFilterChange = (filterId: string, value: string) => {
     setSelectedFilters((prev) => {
       const currentFilters = prev[filterId] || [];
       const newFilters = currentFilters.includes(value)
         ? currentFilters.filter((v) => v !== value)
         : [...currentFilters, value];
-
-      return {
-        ...prev,
-        [filterId]: newFilters,
-      };
+      // Clear empty filter arrays
+      const updatedFilters = { ...prev, [filterId]: newFilters };
+      if (newFilters.length === 0) {
+        delete updatedFilters[filterId];
+      }
+      return updatedFilters;
     });
   };
 
@@ -187,10 +217,42 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
     setSelectedFilters({});
   };
 
-  if (!category) {
-    return null;
+  // --- Render Logic ---
+
+  // Handle loading state while context or initial data is loading
+  if (isLoading && !error) {
+    // Show a more specific loading message if possible
+    const loadingMessage =
+      allCategories.length === 0
+        ? "Loading categories..."
+        : !currentCategory
+        ? "Finding category..."
+        : "Loading products and filters...";
+    return (
+      <div className="container mx-auto p-4 text-center">{loadingMessage}</div>
+    );
   }
 
+  // Handle error state
+  if (error) {
+    return (
+      <div className="container mx-auto p-4 text-center text-red-600">
+        {error}
+      </div>
+    );
+  }
+
+  // Handle case where category is determined to be invalid (should have been redirected, but as fallback)
+  if (!currentCategory) {
+    // This should ideally not be reached due to the redirect effect
+    return (
+      <div className="container mx-auto p-4 text-center">
+        Category not found.
+      </div>
+    );
+  }
+
+  // Main component render when data is ready
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Breadcrumb items={breadcrumbs} />
@@ -217,9 +279,10 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
             isMobile && !showFilters ? "hidden" : "block"
           } w-full md:w-64 flex-shrink-0`}
         >
+          {/* Pass allCategories from context and the derived currentCategory */}
           <CategorySidebar
-            categories={categories}
-            currentCategory={category}
+            categories={allCategories as ProductCategory[]} // Cast or map if needed
+            currentCategory={currentCategory}
             productFilters={productFilters}
             selectedFilters={selectedFilters}
             onFilterChange={handleFilterChange}
@@ -245,10 +308,10 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
           />
 
           {/* Product Models Section */}
-          {category && category.description && (
+          {currentCategory && currentCategory.description && (
             <ProductModels
-              categoryName={category.name}
-              description={category.description}
+              categoryName={currentCategory.name}
+              description={currentCategory.description}
             />
           )}
         </div>

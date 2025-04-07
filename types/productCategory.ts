@@ -11,4 +11,6 @@ export interface ProductCategory {
     parent?: ProductCategory | null;
     children?: ProductCategory[];
     products?: Product[];
+    seo_title?: string;
+    seo_description?: string;
   }

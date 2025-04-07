@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
-import { getCategoryBySlug } from '@/services/api/productCategory'
+import { fetchAPI } from '@/utils/fetch-api'
 import CategoryContent from './CategoryContent'
-
+import { redirect } from 'next/navigation'
+import { ProductCategory } from '@/types/productCategory'
 interface CategoryPageProps {
   params: {
     slug: string[]
@@ -9,16 +10,18 @@ interface CategoryPageProps {
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-  const category = await getCategoryBySlug(params.slug)
+    const path = `/getCategoryMetaDataBySlug`;
+    const urlParamsObject = {
+        slug: params.slug
+    };
+    const response = await fetchAPI(path, urlParamsObject);
+    const category = response.data as ProductCategory;
   if (!category) {
-    return {
-      title: '分类未找到 - Xiangle Ratchet Strap',
-      description: '抱歉，您请求的分类不存在。',
-    }
+    redirect("/404");
   }
   return {
-    title: `${category.name} - Xiangle Ratchet Strap`,
-    description: category.description || `浏览我们的${category.name}产品系列`,
+    title: category.seo_title,
+    description: category.seo_description,
   }
 }
 

@@ -5,6 +5,7 @@ import {
   EnvelopeIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const navigation = {
@@ -121,13 +122,10 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-2">
         <div className="hidden md:block pt-12 xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="flex flex-col gap-2">
-            <Image
-              alt="Company name"
-              src="/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-              className="h-9"
-              width={100}
-              height={100}
-            />
+          <Link href="/" className="flex-shrink-0">
+            <Image src="https://res.cloudinary.com/duimeqqch/image/upload/v1744006735/xiangle_ratchet_strap_w_m7aeic.png" 
+            alt="xiangle ratchet strap" width={200} height={60} className="h-12 w-auto" />
+          </Link>
             <h3 className="text-base font-semibold text-[#00e41b]">
               Custom Made Straps
             </h3>

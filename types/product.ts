@@ -27,4 +27,6 @@ export interface Product {
     ratchet_handle?: string;
     finish?: string;
     product_weight?: string;
+    seo_title?: string;
+    seo_description?: string;
 }

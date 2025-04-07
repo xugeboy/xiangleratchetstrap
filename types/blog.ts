@@ -8,4 +8,6 @@ export interface Blog {
     excerpt?: string; // 摘要
     cover_image?: string; // 文章封面图片
     products?: Product[]; // 关联的产品
+    seo_title?: string;
+    seo_description?: string;
 }

@@ -6,7 +6,7 @@ import { Product } from "@/types/product";
  */
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   try {
-    const path = `/products/${slug}`;
+    const path = `/getProductBySlug/${slug}`;
     const response = await fetchAPI(path);
     return response.data || null;
   } catch (error) {
@@ -71,11 +71,8 @@ export async function getProductsByCategorySlug(
  */
 export async function searchProducts(query: string): Promise<Product[]> {
   try {
-    const path = `/products/search`;
-    const urlParamsObject = {
-      query,
-    };
-    const response = await fetchAPI(path, urlParamsObject);
+    const path = `/searchProducts/${query}`;
+    const response = await fetchAPI(path);
     return response.data || [];
   } catch (error) {
     console.error("Error searching products:", error);
@@ -91,11 +88,8 @@ export async function getProductFilters(
   slug: string
 ): Promise<Record<string, Record<string, number>>> {
   try {
-    const path = `/products/attribute-filters`;
-    const urlParamsObject = {
-      categorySlug: slug
-    };
-    const response = await fetchAPI(path, urlParamsObject);
+    const path = `/getAttributeFiltersByCategorySlug/${slug}`;
+    const response = await fetchAPI(path);
     return response || {};
   } catch (error) {
     console.error("Error fetching product filters:", error);
