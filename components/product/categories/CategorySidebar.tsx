@@ -1,28 +1,94 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ChevronDownIcon } from "@heroicons/react/24/outline"
 import { CategoryFilter } from "./CategoryFilter"
 import type { ProductCategory } from "@/types/productCategory"
-
-interface Filter {
-  id: string
-  label: string
-  options: {
-    value: string
-    label: string
-    count: number
-  }[]
-}
+import { ProductFilter } from "@/types/productFilter";
 
 interface CategorySidebarProps {
   categories: ProductCategory[]
   currentCategory: ProductCategory | null
-  productFilters: Filter[]
+  productFilters: ProductFilter[]
   selectedFilters: Record<string, string[]>
   onFilterChange: (filterId: string, value: string) => void
   onClearAllFilters: () => void
+}
+
+interface CategoryItemProps {
+  category: ProductCategory
+  currentCategory: ProductCategory | null
+  depth: number
+  expandedCategories: Record<number, boolean>
+  onToggle: (categoryId: number) => void
+}
+
+function CategoryItem({ category, currentCategory, depth, expandedCategories, onToggle }: CategoryItemProps) {
+  const isActive = currentCategory?.id === category.id
+  const isExpanded = expandedCategories[category.id]
+  const hasChildren = category.children.length > 0
+  const showExpandButton = depth < 2 && hasChildren
+  const indentClass = `ml-${depth * 4}`
+
+  const getCategoryPath = (category: ProductCategory): string => {
+    const path: string[] = []
+    let current: ProductCategory | null = category
+    
+    while (current) {
+      path.unshift(current.slug)
+      current = current.parent || null
+    }
+    
+    return `/categories/${path.join('/')}`
+  }
+
+  return (
+    <div className={`${indentClass} ${depth === 0 ? 'mb-2' : ''}`}>
+      <div className="flex items-center justify-between py-2 text-sm">
+        <Link
+          href={getCategoryPath(category)}
+          className={`flex-grow text-left ${
+            isActive 
+              ? "font-bold text-blue-600" 
+              : "font-medium text-gray-700 hover:text-blue-600"
+          }`}
+        >
+          {category.name}
+        </Link>
+        {showExpandButton && (
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              onToggle(category.id)
+            }}
+            className="p-1"
+          >
+            <ChevronDownIcon
+              className={`h-4 w-4 transition-transform ${
+                isExpanded ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+        )}
+      </div>
+      {hasChildren && isExpanded && (
+        <div className="pl-4">
+          {category.children?.map(child => (
+            <CategoryItem
+              key={child.id}
+              category={child}
+              currentCategory={currentCategory}
+              depth={depth + 1}
+              expandedCategories={expandedCategories}
+              onToggle={onToggle}
+            />
+          ))}
+        </div>
+      )}
+      {depth === 0 && <hr className="border-dashed border-gray-200 my-2" />}
+    </div>
+  )
 }
 
 export function CategorySidebar({
@@ -34,6 +100,25 @@ export function CategorySidebar({
   onClearAllFilters,
 }: CategorySidebarProps) {
   const [expandedCategories, setExpandedCategories] = useState<Record<number, boolean>>({})
+
+  useEffect(() => {
+    if (currentCategory) {
+      const newExpandedCategories = { ...expandedCategories }
+      
+      const expandParents = (category: ProductCategory | null) => {
+        if (!category) return
+        newExpandedCategories[category.id] = true
+        if (category.parent) {
+          expandParents(category.parent)
+        }
+      }
+      
+      if (currentCategory.parent) {
+        expandParents(currentCategory.parent)
+      }
+      setExpandedCategories(newExpandedCategories)
+    }
+  }, [currentCategory])
 
   const toggleCategory = (categoryId: number) => {
     setExpandedCategories((prev) => ({
@@ -49,51 +134,16 @@ export function CategorySidebar({
         <h2 className="text-lg font-bold text-gray-900 py-4 uppercase">Categories</h2>
         <nav className="space-y-1">
           {categories
-            .filter((cat) => !cat.parent)
-            .map((parentCategory) => (
-              <div key={parentCategory.id}>
-                <div className="flex items-center justify-between py-2 text-sm">
-                  <Link
-                    href={`/categories/${parentCategory.slug}`}
-                    className={`flex-grow text-left ${
-                      currentCategory?.id === parentCategory.id ? "font-bold" : "font-medium"
-                    }`}
-                  >
-                    {parentCategory.name}
-                  </Link>
-                  {parentCategory.children && parentCategory.children.length > 0 && (
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault()
-                        toggleCategory(parentCategory.id)
-                      }}
-                      className="p-1"
-                    >
-                      <ChevronDownIcon
-                        className={`h-4 w-4 transition-transform ${
-                          expandedCategories[parentCategory.id] ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                  )}
-                </div>
-                {expandedCategories[parentCategory.id] && parentCategory.children && (
-                  <div className="ml-4 mt-1 border-gray-200">
-                    {parentCategory.children.map((childCategory) => (
-                      <Link
-                        key={childCategory.id}
-                        href={`/categories/${parentCategory.slug}/${childCategory.slug}`}
-                        className={`block px-3 py-2 text-sm ${
-                          currentCategory?.id === childCategory.id ? "font-bold" : "font-medium text-gray-600"
-                        }`}
-                      >
-                        {childCategory.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-                <hr className="border-dashed border-gray-200 my-2" />
-              </div>
+            .filter(cat => cat.parent == null)
+            .map(category => (
+              <CategoryItem
+                key={category.id}
+                category={category}
+                currentCategory={currentCategory}
+                depth={0}
+                expandedCategories={expandedCategories}
+                onToggle={toggleCategory}
+              />
             ))}
         </nav>
       </div>

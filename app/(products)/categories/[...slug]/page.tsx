@@ -10,20 +10,28 @@ interface CategoryPageProps {
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-    const response = await fetchAPI(`/getCategoryMetaDataBySlug/${params.slug}`);
+  // Get the last slug part
+  const lastSlug = params.slug[params.slug.length - 1];
+  
+  try {
+    const response = await fetchAPI(`/getCategoryMetaDataBySlug/${lastSlug}`);
     const category = response.data as ProductCategory;
-  if (!category) {
+    if (!category) {
+      redirect("/404");
+    }
+    return {
+      title: category.seo_title,
+      description: category.seo_description,
+    }
+  } catch (error) {
+    console.error("Error generating metadata:", error);
     redirect("/404");
-  }
-  return {
-    title: category.seo_title,
-    description: category.seo_description,
   }
 }
 
 export async function generateStaticParams() {
-    const categories = await fetchAPI(`/getAllCategorySlugAndChildren}`);
-    const paths = getAllSlugPaths(categories);
+    const categories = await fetchAPI(`/getAllCategorySlugAndChildren`);
+    const paths = getAllSlugPaths(categories.data);
 
     return paths.map((slugArray) => ({ slug: slugArray }));
 }

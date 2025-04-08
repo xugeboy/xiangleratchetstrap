@@ -1,4 +1,4 @@
-import { fetchAPI } from "@/utils/fetch-api";
+import { fetchAPI, postAPI } from "@/utils/fetch-api";
 import { Product } from "@/types/product";
 
 /**
@@ -39,7 +39,8 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
 export async function getProductsByCategorySlug(
   categorySlug: string,
   page: number = 1,
-  pageSize: number = 12
+  pageSize: number = 12,
+  filters: Record<string, string[]>
 ): Promise<{
   data: Product[];
   meta: {
@@ -54,6 +55,7 @@ export async function getProductsByCategorySlug(
   try {
     const path = `/products/${categorySlug}`;
     const urlParamsObject = {
+      filters: filters,
       pagination: {
         page,
         pageSize,
@@ -108,5 +110,56 @@ export async function getProductFilters(
   } catch (error) {
     console.error("Error fetching product filters:", error);
     return {};
+  }
+}
+
+/**
+ * 根据筛选条件获取产品列表
+ * @param categorySlug 类别slug
+ * @param page 页码，默认为1
+ * @param pageSize 每页数量，默认为12
+ * @param attributeFilters 属性筛选条件
+ * @returns 包含产品列表和分页信息的对象
+ */
+export async function filterProducts(
+  categorySlug: string,
+  page: number = 1,
+  pageSize: number = 12,
+  attributeFilters: Record<string, string[]> = {}
+): Promise<{
+  data: Product[];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}> {
+  try {
+    const response = await postAPI('/filterProducts', {
+      categorySlug,
+      page,
+      pageSize,
+      attributeFilters
+    });
+    return {
+      data: response.data,
+      meta: response.meta,
+    };
+  } catch (error) {
+    console.error("Error filtering products:", error);
+    return {
+      data: [],
+      meta: {
+        pagination: {
+          page,
+          pageSize,
+          pageCount: 0,
+          total: 0,
+        },
+      },
+    };
   }
 }
