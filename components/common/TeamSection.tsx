@@ -4,44 +4,51 @@ const people = [
     {
         name: 'Steven Chen',
         role: 'General Manager',
+        year: '- Cofounder of Xianlge -',
         imageUrl:
-      'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+      'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/steven_rmkwmp.png',
     bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
     },{
         name: 'Sophia Liu',
         role: 'Sales Manager',
+        year: '- Cofounder of Xianlge -',
         imageUrl:
-        'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+        'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/sophia_mab7jt.png',
       bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
     },{
         name: 'Dustin Xu',
         role: 'Sales Assistant Manager',
+        year: '- 2 years at Xianlge -',
         imageUrl:
-          'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+          'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/dustin_io6avf.png',
         bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
       },{
         name: 'Warren Wu',
         role: 'Foreign Trade Sales',
+        year: '- 5 years at Xianlge -',
         imageUrl:
-          'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+          'https://res.cloudinary.com/duimeqqch/image/upload/v1744176225/warren_a8mhba.png',
         bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
       },{
         name: 'Alex Zuo',
         role: 'Foreign Trade Sales',
+        year: '- 6 years at Xianlge -',
         imageUrl:
-          'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+          'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/alex_bsu0jc.png',
         bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
       },{
         name: 'Chloe He',
         role: 'Foreign Trade Sales',
+        year: '- 2 years at Xianlge -',
         imageUrl:
-          'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+          'https://res.cloudinary.com/duimeqqch/image/upload/v1744176355/chloe_tv3t9c.png',
         bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
       },{
         name: 'Emma Qian',
         role: 'Foreign Trade Sales',
+        year: '- 1 years at Xianlge -',
         imageUrl:
-          'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+          'https://res.cloudinary.com/duimeqqch/image/upload/v1744176355/chloe_tv3t9c.png',
         bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
       }
   ]
@@ -66,10 +73,13 @@ const people = [
               <li key={person.name} className="flex flex-col gap-6 xl:flex-row">
                 <Image alt="" src={person.imageUrl} 
                 className="aspect-4/5 w-52 flex-none rounded-2xl object-cover"
+                width={300}
+                height={300}
                 />
                 <div className="flex-auto">
                   <h3 className="text-lg/8 font-semibold tracking-tight text-gray-900">{person.name}</h3>
                   <p className="text-base/7 text-gray-600">{person.role}</p>
+                  <p className="text-base/7 text-gray-600">{person.year}</p>
                   <p className="mt-6 text-base/7 text-gray-600">{person.bio}</p>
                 </div>
               </li>

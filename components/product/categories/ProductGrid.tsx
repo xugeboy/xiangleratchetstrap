@@ -83,7 +83,10 @@ export function ProductGrid({
                 `}
               >
                 {viewMode === "grid" && (
-                  <Link href={`/products/${product.slug}`} className="group block">
+                  <Link
+                    href={`/products/${product.slug}`}
+                    className="group block"
+                  >
                     <div className="relative aspect-square overflow-hidden bg-gray-100 mb-4">
                       {product.gallery && product.gallery[0] && (
                         <Image
@@ -99,12 +102,9 @@ export function ProductGrid({
                       {product.name}
                     </h3>
                     <div className="mt-4 text-center">
-                      <Link
-                        href={`/products/${product.slug}`}
-                        className="inline-block bg-blue-700 text-white px-4 py-2 text-sm font-medium uppercase"
-                      >
+                      <span className="inline-block bg-blue-700 text-white px-4 py-2 text-sm font-medium uppercase">
                         LEARN MORE
-                      </Link>
+                      </span>
                     </div>
                   </Link>
                 )}
@@ -157,7 +157,9 @@ export function ProductGrid({
                         />
                       )}
                     </div>
-                    <h3 className="text-sm font-medium flex-1">{product.name}</h3>
+                    <h3 className="text-sm font-medium flex-1">
+                      {product.name}
+                    </h3>
                     <ChevronRightIcon className="h-5 w-5 text-gray-400" />
                   </Link>
                 )}
@@ -176,17 +178,19 @@ export function ProductGrid({
                 >
                   Previous
                 </button>
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <button
-                    key={page}
-                    onClick={() => handlePageChange(page)}
-                    className={`px-3 py-1 rounded border ${
-                      currentPage === page ? "bg-blue-700 text-white" : ""
-                    }`}
-                  >
-                    {page}
-                  </button>
-                ))}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (page) => (
+                    <button
+                      key={page}
+                      onClick={() => handlePageChange(page)}
+                      className={`px-3 py-1 rounded border ${
+                        currentPage === page ? "bg-blue-700 text-white" : ""
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  )
+                )}
                 <button
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === totalPages}

@@ -1,14 +1,14 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import Link from "next/link"
 import { ChevronDownIcon } from "@heroicons/react/24/outline"
 import { CategoryFilter } from "./CategoryFilter"
 import type { ProductCategory } from "@/types/productCategory"
-import { ProductFilter } from "@/types/productFilter";
+import { ProductFilter } from "@/types/productFilter"
+import { useCategories } from "@/contexts/CategoryContext"
 
 interface CategorySidebarProps {
-  categories: ProductCategory[]
   currentCategory: ProductCategory | null
   productFilters: ProductFilter[]
   selectedFilters: Record<string, string[]>
@@ -16,83 +16,7 @@ interface CategorySidebarProps {
   onClearAllFilters: () => void
 }
 
-interface CategoryItemProps {
-  category: ProductCategory
-  currentCategory: ProductCategory | null
-  depth: number
-  expandedCategories: Record<number, boolean>
-  onToggle: (categoryId: number) => void
-}
-
-function CategoryItem({ category, currentCategory, depth, expandedCategories, onToggle }: CategoryItemProps) {
-  const isActive = currentCategory?.id === category.id
-  const isExpanded = expandedCategories[category.id]
-  const hasChildren = category.children.length > 0
-  const showExpandButton = depth < 2 && hasChildren
-  const indentClass = `ml-${depth * 4}`
-
-  const getCategoryPath = (category: ProductCategory): string => {
-    const path: string[] = []
-    let current: ProductCategory | null = category
-    
-    while (current) {
-      path.unshift(current.slug)
-      current = current.parent || null
-    }
-    
-    return `/categories/${path.join('/')}`
-  }
-
-  return (
-    <div className={`${indentClass} ${depth === 0 ? 'mb-2' : ''}`}>
-      <div className="flex items-center justify-between py-2 text-sm">
-        <Link
-          href={getCategoryPath(category)}
-          className={`flex-grow text-left ${
-            isActive 
-              ? "font-bold text-blue-600" 
-              : "font-medium text-gray-700 hover:text-blue-600"
-          }`}
-        >
-          {category.name}
-        </Link>
-        {showExpandButton && (
-          <button
-            onClick={(e) => {
-              e.preventDefault()
-              onToggle(category.id)
-            }}
-            className="p-1"
-          >
-            <ChevronDownIcon
-              className={`h-4 w-4 transition-transform ${
-                isExpanded ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-        )}
-      </div>
-      {hasChildren && isExpanded && (
-        <div className="pl-4">
-          {category.children?.map(child => (
-            <CategoryItem
-              key={child.id}
-              category={child}
-              currentCategory={currentCategory}
-              depth={depth + 1}
-              expandedCategories={expandedCategories}
-              onToggle={onToggle}
-            />
-          ))}
-        </div>
-      )}
-      {depth === 0 && <hr className="border-dashed border-gray-200 my-2" />}
-    </div>
-  )
-}
-
 export function CategorySidebar({
-  categories,
   currentCategory,
   productFilters,
   selectedFilters,
@@ -100,25 +24,23 @@ export function CategorySidebar({
   onClearAllFilters,
 }: CategorySidebarProps) {
   const [expandedCategories, setExpandedCategories] = useState<Record<number, boolean>>({})
+  const { categories, categoryMap, rootCategories } = useCategories()
 
+  // Auto-expand categories based on current selection
   useEffect(() => {
     if (currentCategory) {
       const newExpandedCategories = { ...expandedCategories }
-      
-      const expandParents = (category: ProductCategory | null) => {
-        if (!category) return
-        newExpandedCategories[category.id] = true
-        if (category.parent) {
-          expandParents(category.parent)
+
+      // Find all parent categories that contain the current category as a child
+      categories.forEach((category) => {
+        if (category.children?.some((child) => child.id === currentCategory.id)) {
+          newExpandedCategories[category.id] = true
         }
-      }
-      
-      if (currentCategory.parent) {
-        expandParents(currentCategory.parent)
-      }
+      })
+
       setExpandedCategories(newExpandedCategories)
     }
-  }, [currentCategory])
+  }, [currentCategory, categories])
 
   const toggleCategory = (categoryId: number) => {
     setExpandedCategories((prev) => ({
@@ -127,76 +49,123 @@ export function CategorySidebar({
     }))
   }
 
-  return (
-    <div className="space-y-1">
-      {/* Categories Navigation */}
-      <div className="bg-white">
-        <h2 className="text-lg font-bold text-gray-900 py-4 uppercase">Categories</h2>
-        <nav className="space-y-1">
-          {categories
-            .filter(cat => cat.parent == null)
-            .map(category => (
-              <CategoryItem
-                key={category.id}
-                category={category}
-                currentCategory={currentCategory}
-                depth={0}
-                expandedCategories={expandedCategories}
-                onToggle={toggleCategory}
-              />
-            ))}
-        </nav>
-      </div>
+  // Recursive function to render a category and its children
+  const renderCategory = (category: ProductCategory, depth = 0) => {
+    const isActive = currentCategory?.id === category.id
+    const isExpanded = expandedCategories[category.id]
+    const hasChildren = category.children && category.children.length > 0
 
-      {/* Refine By Section */}
-      <div className="bg-white mt-6">
-        <h2 className="text-lg font-bold text-gray-900 py-4 uppercase">Refine By</h2>
+    return (
+      <div key={category.id} className={`${depth > 0 ? "ml-4" : ""}`}>
+        <div className="flex items-center justify-between py-2">
+          <Link
+            href={`/categories/${category.slug}`}
+            className={`flex-grow text-left text-sm ${
+              isActive ? "font-bold text-blue-600" : "text-gray-700 hover:text-blue-600"
+            }`}
+          >
+            {category.name}
+          </Link>
+          {hasChildren && (
+            <button
+              onClick={() => toggleCategory(category.id)}
+              className="p-1"
+              aria-label={isExpanded ? "Collapse category" : "Expand category"}
+            >
+              <ChevronDownIcon className={`h-4 w-4 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
+            </button>
+          )}
+        </div>
 
-        {/* Selected Filters */}
-        {Object.keys(selectedFilters).length > 0 && (
-          <div className="p-4">
-            <div className="flex items-center justify-between mb-2">
-              <button type="button" className="text-sm text-blue-600 hover:underline" onClick={onClearAllFilters}>
-                Clear All
-              </button>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {Object.entries(selectedFilters).map(([filterId, values]) =>
-                values.map((value) => {
-                  const filter = productFilters.find((f) => f.id === filterId)
-                  const option = filter?.options.find((o) => o.value === value)
-                  if (!option) return null
-                  return (
-                    <button
-                      key={`${filterId}-${value}`}
-                      type="button"
-                      className="inline-flex items-center px-2 py-1 rounded text-xs bg-gray-100 text-gray-800"
-                      onClick={() => onFilterChange(filterId, value)}
-                    >
-                      {option.label}
-                      <span className="ml-1">×</span>
-                    </button>
-                  )
-                }),
-              )}
-            </div>
-            <hr className="border-dashed border-gray-200 my-4" />
+        {hasChildren && isExpanded && (
+          <div className="pl-2 border-l border-gray-200">
+            {category.children.map((childRef) => {
+              // Look up the full child category from the map
+              const childCategory = categoryMap.get(childRef.id)
+              if (!childCategory) {
+                // If we can't find the full category, render a simple link with the slug
+                return (
+                  <div key={childRef.id} className="py-2 ml-2">
+                    <Link href={`/categories/${childRef.slug}`} className="text-sm text-gray-700 hover:text-blue-600">
+                      {childRef.name || childRef.slug.replace(/-/g, " ")}
+                    </Link>
+                  </div>
+                )
+              }
+
+              // Otherwise, recursively render the full child category
+              return renderCategory(childCategory, depth + 1)
+            })}
           </div>
         )}
 
-        {/* Filters with dividers */}
-        {productFilters.map((filter, index) => (
-          <div key={filter.id}>
-            <CategoryFilter
-              filter={filter}
-              selectedValues={selectedFilters[filter.id] || []}
-              onChange={onFilterChange}
-            />
-            {index < productFilters.length - 1 && <hr className="border-dashed border-gray-200" />}
-          </div>
-        ))}
+        {depth === 0 && <hr className="my-2 border-gray-200" />}
       </div>
+    )
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Categories Navigation */}
+      <div>
+        <h2 className="text-lg font-bold text-gray-900 mb-4">Categories</h2>
+        <nav className="space-y-1">{rootCategories.map((category) => renderCategory(category))}</nav>
+      </div>
+
+      {/* Filters Section */}
+      {productFilters.length > 0 && (
+        <div className="mt-8">
+          <h2 className="text-lg font-bold text-gray-900 mb-4">Refine By</h2>
+
+          {/* Selected Filters */}
+          {Object.keys(selectedFilters).length > 0 && (
+            <div className="mb-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm font-medium">Selected Filters</span>
+                <button type="button" className="text-sm text-blue-600 hover:underline" onClick={onClearAllFilters}>
+                  Clear All
+                </button>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {Object.entries(selectedFilters).map(([filterId, values]) =>
+                  values.map((value) => {
+                    const filter = productFilters.find((f) => f.id === filterId)
+                    const option = filter?.options.find((o) => o.value === value)
+                    if (!option) return null
+
+                    return (
+                      <button
+                        key={`${filterId}-${value}`}
+                        type="button"
+                        className="inline-flex items-center px-2 py-1 rounded text-xs bg-gray-100 text-gray-800"
+                        onClick={() => onFilterChange(filterId, value)}
+                      >
+                        {option.label}
+                        <span className="ml-1">×</span>
+                      </button>
+                    )
+                  }),
+                )}
+              </div>
+
+              <hr className="my-4 border-gray-200" />
+            </div>
+          )}
+
+          {/* Filter Groups */}
+          {productFilters.map((filter, index) => (
+            <div key={filter.id}>
+              <CategoryFilter
+                filter={filter}
+                selectedValues={selectedFilters[filter.id] || []}
+                onChange={onFilterChange}
+              />
+              {index < productFilters.length - 1 && <hr className="my-4 border-gray-200" />}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
-

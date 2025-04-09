@@ -61,12 +61,10 @@ export default function LogoClouds() {
       {/* Testimonial */}
       <div className="text-center max-w-4xl mx-auto">
         <blockquote className="text-xl text-gray-700 mb-4">
-          &quot;US CARGO CONTROL HAS BEEN AN AMAZING VENDOR WITH FAST RESPONSE
-          TIME, AMAZING CUSTOMER SERVICE, AND GREAT FOLLOW-UP. BY FAR ONE OF OUR
-          EASIEST AND BEST VENDORS TO DEAL WITH.&quot;
+          &quot;As a store owner in Australia,I was introduced to this factory supplier through a friend&apos;s recommendation. The majority of similar products in our local market are sourced from this supplier. Upon receiving the first batch of products,I was delighted to find that the quality and pricing exceeded expectations. This supplier has proven to be a reliable source,and I am confident in continuing our business relationship for its consistent delivery of high-quality products at competitive prices.&quot;
         </blockquote>
         <cite className="text-gray-600 italic">
-          - General Manager, Fastenal
+          - General Manager, James
         </cite>
       </div>
     </div>

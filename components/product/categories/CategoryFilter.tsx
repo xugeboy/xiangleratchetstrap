@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { ChevronDownIcon } from "@heroicons/react/24/outline"
-import { ProductFilter, FilterOption } from "@/types/productFilter"
+import { ProductFilter } from "@/types/productFilter"
 
 interface CategoryFilterProps {
   filter: ProductFilter

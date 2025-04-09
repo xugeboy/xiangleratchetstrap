@@ -5,19 +5,20 @@ import Link from "next/link"
 import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react"
 import { XMarkIcon } from "@heroicons/react/24/outline"
 import { ChevronDownIcon as ChevronDownIconSolid } from "@heroicons/react/20/solid"
-import type { ProductCategory } from "@/types/productCategory"
+import { useCategories } from "@/contexts/CategoryContext" 
 
 interface MobileMenuProps {
   isOpen: boolean
   onClose: () => void
-  topLevelCategories: ProductCategory[]
   company: Array<{
     name: string
     href: string
   }>
 }
 
-export function MobileMenu({ isOpen, onClose, topLevelCategories, company }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose, company }: MobileMenuProps) {
+  // 从 Context 获取分类数据
+  const { rootCategories } = useCategories();
   return (
     <Dialog as="div" className="relative z-50" open={isOpen} onClose={onClose}>
       {/* Background overlay */}
@@ -49,7 +50,7 @@ export function MobileMenu({ isOpen, onClose, topLevelCategories, company }: Mob
                     />
                   </DisclosureButton>
                   <DisclosurePanel className="mt-2 space-y-2">
-                    {topLevelCategories.map((category) => (
+                    {rootCategories.map((category) => (
                       <div key={category.id} className="py-1">
                         <DisclosureButton
                           as="a"

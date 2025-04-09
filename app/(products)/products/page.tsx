@@ -1,15 +1,13 @@
+"use client"
+
 import Image from 'next/image'
 import Link from 'next/link'
 import Breadcrumb from '@/components/common/Breadcrumb'
-import { getAllProductCategories } from '@/services/api/productCategory'
 
+import { useCategories } from "@/contexts/CategoryContext"
 
-export default async function ProductsPage() {
-  const categoriesData = await getAllProductCategories()
-    .catch((err: Error) => {
-      console.error('Failed to fetch categories:', err)
-      return null
-    })
+export default function ProductsPage() {
+  const { rootCategories } = useCategories()
 
   const breadcrumbItems = [
     { name: 'Home', href: '/' },
@@ -33,7 +31,7 @@ export default async function ProductsPage() {
 
       {/* Categories Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {categoriesData?.map((category) => (
+        {rootCategories?.map((category) => (
           <Link key={category.id} href={`/categories/${category.slug}`} className="group">
             <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
               {category.featured_image && (

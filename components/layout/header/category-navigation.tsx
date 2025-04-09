@@ -1,44 +1,53 @@
-"use client"
+"use client";
 
-import { useState, useRef } from "react"
-import Link from "next/link"
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react"
-import { Bars3Icon } from "@heroicons/react/24/outline"
-import type { ProductCategory } from "@/types/productCategory"
+import { useState, useRef } from "react";
+import Link from "next/link";
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
+import { useCategories } from "@/contexts/CategoryContext";
 
 interface CategoryNavigationProps {
-  topLevelCategories: ProductCategory[]
-  onMobileMenuOpen: () => void
+  onMobileMenuOpen: () => void;
 }
 
-export function CategoryNavigation({ topLevelCategories, onMobileMenuOpen }: CategoryNavigationProps) {
-  const [activeTabIndex, setActiveTabIndex] = useState(-1)
-  const menuContainerRef = useRef<HTMLDivElement>(null)
+export function CategoryNavigation({
+  onMobileMenuOpen,
+}: CategoryNavigationProps) {
+  const [activeTabIndex, setActiveTabIndex] = useState(-1);
+  const menuContainerRef = useRef<HTMLDivElement>(null);
+  // 从 Context 获取分类数据
+  const { rootCategories, categoryMap } = useCategories();
 
   // 处理鼠标进入标签
   const handleTabMouseEnter = (index: number) => {
-    setActiveTabIndex(index)
-  }
+    setActiveTabIndex(index);
+  };
 
   // 处理鼠标离开标签
   const handleTabMouseLeave = () => {
     // Don't immediately hide the panel when leaving the tab
     // We'll let the panel's mouse leave event handle this
-  }
+  };
 
   // 处理鼠标离开面板
   const handlePanelMouseLeave = () => {
-    setActiveTabIndex(-1)
-  }
+    setActiveTabIndex(-1);
+  };
 
   // Handle mouse events for the entire menu container
   const handleMenuContainerMouseLeave = () => {
-    setActiveTabIndex(-1)
-  }
+    setActiveTabIndex(-1);
+  };
 
   return (
-    <nav aria-label="Global" className="hidden md:flex mx-auto max-w-7xl items-center justify-center p-6 lg:px-8">
-      <div className="hidden md:block w-full" ref={menuContainerRef} onMouseLeave={handleMenuContainerMouseLeave}>
+    <nav
+      aria-label="Global"
+      className="hidden md:flex mx-auto max-w-7xl items-center justify-center p-6 lg:px-8"
+    >
+      <div
+        className="hidden md:block w-full"
+        ref={menuContainerRef}
+        onMouseLeave={handleMenuContainerMouseLeave}
+      >
         <TabGroup
           selectedIndex={activeTabIndex !== -1 ? activeTabIndex : undefined}
           onChange={(index) => setActiveTabIndex(index)}
@@ -46,7 +55,7 @@ export function CategoryNavigation({ topLevelCategories, onMobileMenuOpen }: Cat
           <div className="border-b border-transparent relative">
             <TabList className="flex space-x-4 items-center justify-center">
               {/* 始终显示的标签 (最大3个) */}
-              {topLevelCategories.slice(0, 3).map((category, index) => (
+              {rootCategories.slice(0, 3).map((category, index) => (
                 <Tab
                   key={category.id}
                   className={({ selected }) => `
@@ -71,8 +80,8 @@ export function CategoryNavigation({ topLevelCategories, onMobileMenuOpen }: Cat
               ))}
 
               {/* 中等屏幕显示的额外标签 (2个) */}
-              {topLevelCategories.length > 3 &&
-                topLevelCategories.slice(3, 5).map((category, idx) => (
+              {rootCategories.length > 3 &&
+                rootCategories.slice(3, 5).map((category, idx) => (
                   <Tab
                     key={category.id}
                     className={({ selected }) => `
@@ -97,8 +106,8 @@ export function CategoryNavigation({ topLevelCategories, onMobileMenuOpen }: Cat
                 ))}
 
               {/* 大屏幕显示的额外标签 */}
-              {topLevelCategories.length > 5 &&
-                topLevelCategories.slice(5).map((category, idx) => (
+              {rootCategories.length > 5 &&
+                rootCategories.slice(5).map((category, idx) => (
                   <Tab
                     key={category.id}
                     className={({ selected }) => `
@@ -126,25 +135,59 @@ export function CategoryNavigation({ topLevelCategories, onMobileMenuOpen }: Cat
 
           <div
             className={`absolute left-0 w-full z-50 transform transition-all duration-200 ease-in-out ${
-              activeTabIndex === -1 ? "opacity-0 pointer-events-none" : "opacity-100"
+              activeTabIndex === -1
+                ? "opacity-0 pointer-events-none"
+                : "opacity-100"
             }`}
             onMouseLeave={handlePanelMouseLeave}
           >
             <TabPanels className="bg-white shadow-lg rounded-b-lg border-t border-gray-100">
-              {topLevelCategories.map((category) => (
+              {rootCategories.map((category) => (
                 <TabPanel key={category.id} className="py-6 px-8">
                   {category.children && category.children.length > 0 && (
                     <div className="max-w-7xl mx-auto">
                       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-4">
-                        {category.children.map((item) => (
-                          <Link
-                            key={item.id}
-                            href={`/categories/${category.slug}/${item.slug || ""}`}
-                            className="group flex items-center text-gray-600 hover:text-indigo-600 transition-colors duration-200"
-                          >
-                            <span className="text-sm font-medium">{item.name}</span>
-                          </Link>
-                        ))}
+                        {category.children?.map((subCategoryRef) => {
+                          const subCategory = categoryMap.get(
+                            subCategoryRef.id
+                          );
+                          if (!subCategory) return null;
+
+                          return (
+                            <div key={subCategory.id} className="mb-4">
+                              {/* 二级分类标题 */}
+                              <Link
+                                href={`/categories/${category.slug}/${subCategory.slug}`}
+                                className="block text-gray-800 hover:text-indigo-600 font-semibold text-sm mb-1"
+                              >
+                                {subCategory.name}
+                              </Link>
+
+                              {/* 三级分类列表 */}
+                              {subCategory.children &&
+                                subCategory.children.length > 0 && (
+                                  <div className="space-y-1">
+                                    {subCategory.children.map((thirdRef) => {
+                                      const thirdCategory = categoryMap.get(
+                                        thirdRef.id
+                                      );
+                                      if (!thirdCategory) return null;
+
+                                      return (
+                                        <Link
+                                          key={thirdCategory.id}
+                                          href={`/categories/${category.slug}/${subCategory.slug}/${thirdCategory.slug}`}
+                                          className="block text-gray-600 hover:text-indigo-600 text-sm"
+                                        >
+                                          {thirdCategory.name}
+                                        </Link>
+                                      );
+                                    })}
+                                  </div>
+                                )}
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
@@ -155,6 +198,5 @@ export function CategoryNavigation({ topLevelCategories, onMobileMenuOpen }: Cat
         </TabGroup>
       </div>
     </nav>
-  )
+  );
 }
-
