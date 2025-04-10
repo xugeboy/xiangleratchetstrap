@@ -4,8 +4,11 @@ import { Product } from "@/types/product";
 import Link from 'next/link'
 import Specifications from './Specifications'
 import Description from "./Description";
-import VideoPlayer from '@/components/common/VideoPlayer'
+import dynamic from 'next/dynamic';
 
+const VideoPlayer = dynamic(() => import('@/components/common/VideoPlayer'), {
+  ssr: false,
+});
 interface ProductInfoProps {
   product: Product;
 }

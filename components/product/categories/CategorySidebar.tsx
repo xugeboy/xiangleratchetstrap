@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import Link from "next/link"
 import { ChevronDownIcon } from "@heroicons/react/24/outline"
 import { CategoryFilter } from "./CategoryFilter"
@@ -40,7 +40,7 @@ export function CategorySidebar({
 
       setExpandedCategories(newExpandedCategories)
     }
-  }, [currentCategory, categories,expandedCategories])
+  }, [currentCategory, categories])
 
   const toggleCategory = (categoryId: number) => {
     setExpandedCategories((prev) => ({

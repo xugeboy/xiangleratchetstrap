@@ -1,2 +1,9 @@
+# *
 User-agent: *
+Allow: /
+
+# Host
+Host: https://xiangleratchetstrap.com
+
+# Sitemaps
 Sitemap: https://xiangleratchetstrap.com/sitemap.xml

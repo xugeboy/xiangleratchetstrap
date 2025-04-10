@@ -2,7 +2,6 @@
 
 // Import necessary React hooks and Next.js functions
 import React, { useEffect, useState, useMemo } from "react";
-import { redirect } from "next/navigation";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 // Import context hook and Category type
@@ -66,7 +65,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
       console.log(
         `Category for slug "${targetSlug}" not found in context. Redirecting...`
       );
-      redirect("/404");
+      // redirect("/404");
     }
   }, [allCategories, currentCategory, targetSlug]);
 
@@ -116,7 +115,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
     };
   
     fetchData();
-  }, [currentCategory, selectedFilters, breadcrumbs]); // 依赖 filters
+  }, [currentCategory, selectedFilters]); // 依赖 filters
 
   // 7. Event Handlers (handleFilterChange, clearAllFilters - remain the same)
   const handleFilterChange = (filterId: string, value: string) => {

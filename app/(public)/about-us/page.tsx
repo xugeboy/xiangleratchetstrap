@@ -1,5 +1,4 @@
 import Image from "next/image";
-import ClientsWorldMap from "@/components/common/ClientsWorldMap";
 
 const timeline = [
   {
@@ -226,23 +225,36 @@ export default function Example() {
         </div>
       </div>
 
-      {/* Stats */}
-      <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
-            Global Reach
-          </h2>
-          <p className="mt-6 text-base/7 text-gray-600">
-            Since entering the international market in 2016, Xiangle’s products
-            have been shipped to customers across North America, Europe,
-            Southeast Asia, and Australia. Backed by a robust inventory system
-            and responsive logistics team, we ensure timely delivery and
-            reliable supply for partners worldwide—whether you&apos;re a
-            distributor, e-commerce brand, or industrial end user.
-          </p>
-        </div>
-        <div className="mx-auto mt-16 flex max-w-2xl flex-col gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:items-end">
-          <ClientsWorldMap />
+      {/* Content section - Global Reach */}
+      <div className="mt-32 overflow-hidden sm:mt-40">
+        <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:min-w-full lg:flex-none lg:gap-y-8">
+            {/* 文字区域 - 放右边 */}
+            <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
+              <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                Global Reach
+              </h2>
+              <p className="mt-6 text-xl/8 text-gray-600">
+                Since entering the international market in 2016, Xiangle&apos;s
+                products have been shipped to customers across North America,
+                Europe, Southeast Asia, and Australia. Backed by a robust
+                inventory system and responsive logistics team, we ensure timely
+                delivery and reliable supply for partners worldwide—whether
+                you&apos;re a distributor, e-commerce brand, or industrial end
+                user.
+              </p>
+            </div>
+            {/* 图片区域 - 放左边 */}
+            <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
+              <Image
+                alt=""
+                src="https://res.cloudinary.com/duimeqqch/image/upload/v1744277874/global_reach_iic60m.png"
+                className="max-w-none rounded-2xl bg-gray-50"
+                width={718}
+                height={387}
+              />
+            </div>
+          </div>
         </div>
       </div>
 
