@@ -3,7 +3,6 @@ import CapabilitiesSection from "@/components/home/capabilities-section"
 import IndustriesSection from "@/components/home/industries-section"
 import CategoriesSection from "@/components/home/categories-section"
 import ProductsSection from "@/components/home/products-section"
-import SolutionsSection from "@/components/home/solutions-section"
 import ArticlesSection from "@/components/home/articles-section"
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
       <IndustriesSection />
       <CategoriesSection />
       <ProductsSection />
-      <SolutionsSection />
       <ArticlesSection />
     </main>
   )

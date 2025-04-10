@@ -126,7 +126,7 @@ export default function Footer() {
             <Image src="https://res.cloudinary.com/duimeqqch/image/upload/v1744006735/xiangle_ratchet_strap_w_m7aeic.png" 
             alt="xiangle ratchet strap" width={200} height={60} className="h-12 w-auto" />
           </Link>
-            <h3 className="text-base font-semibold text-[#00e41b]">
+            <h3 className="text-base font-semibold text-amber-700">
               Custom Made Straps
             </h3>
             <span className="text-gray-400">
@@ -138,7 +138,7 @@ export default function Footer() {
 
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div>
-              <h3 className="text-base font-semibold text-[#00e41b]">
+              <h3 className="text-base font-semibold text-amber-700">
                 Products
               </h3>
               <ul role="list" className="mt-6 space-y-4">
@@ -155,7 +155,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="text-base font-semibold text-[#00e41b]">
+              <h3 className="text-base font-semibold text-amber-700">
                 Support
               </h3>
               <ul role="list" className="mt-6 space-y-4">
@@ -172,7 +172,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="text-base font-semibold text-[#00e41b]">
+              <h3 className="text-base font-semibold text-amber-700">
                 Company
               </h3>
               <ul role="list" className="mt-6 space-y-4">
@@ -189,7 +189,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="text-base font-semibold text-[#00e41b]">
+              <h3 className="text-base font-semibold text-amber-700">
                 Contact Us
               </h3>
               <div className="mt-6 space-y-4">
@@ -218,7 +218,7 @@ export default function Footer() {
               onClick={() => setIsOpenProducts(!isOpenProducts)}
               className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white"
             >
-              <h3 className="text-base font-semibold text-[#00e41b]">
+              <h3 className="text-base font-semibold text-amber-700">
                 Products
               </h3>
               <svg
@@ -257,7 +257,7 @@ export default function Footer() {
               onClick={() => setIsOpenSupport(!isOpenSupport)}
               className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white"
             >
-              <h3 className="text-base font-semibold text-[#00e41b]">
+              <h3 className="text-base font-semibold text-amber-700">
                 Support
               </h3>
               <svg
@@ -296,7 +296,7 @@ export default function Footer() {
               onClick={() => setIsOpenCompany(!isOpenCompany)}
               className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white"
             >
-              <h3 className="text-base font-semibold text-[#00e41b]">
+              <h3 className="text-base font-semibold text-amber-700">
                 Company
               </h3>
               <svg
@@ -335,7 +335,7 @@ export default function Footer() {
               onClick={() => setIsOpenContact(!isOpenContact)}
               className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white"
             >
-              <h3 className="text-base font-semibold text-[#00e41b]">
+              <h3 className="text-base font-semibold text-amber-700">
                 Contact Us
               </h3>
               <svg

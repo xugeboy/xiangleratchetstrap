@@ -188,36 +188,36 @@ export default function Example() {
                   alt=""
                   src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
                   className="aspect-7/5 w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover"
-              width={300}
-              height={300}
+                  width={300}
+                  height={300}
                 />
               </div>
               <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
                 <div className="order-first flex w-64 flex-none justify-end self-end lg:w-auto">
                   <Image
                     alt=""
-                  src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
+                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
                     className="aspect-4/3 w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
-              width={300}
-              height={300}
+                    width={300}
+                    height={300}
                   />
                 </div>
                 <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
                   <Image
                     alt=""
-                  src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
+                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
                     className="aspect-7/5 w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
-              width={300}
-              height={300}
+                    width={300}
+                    height={300}
                   />
                 </div>
                 <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">
                   <Image
                     alt=""
-                  src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
+                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
                     className="aspect-4/3 w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover"
-              width={300}
-              height={300}
+                    width={300}
+                    height={300}
                   />
                 </div>
               </div>
@@ -242,7 +242,7 @@ export default function Example() {
           </p>
         </div>
         <div className="mx-auto mt-16 flex max-w-2xl flex-col gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:items-end">
-        <ClientsWorldMap />
+          <ClientsWorldMap />
         </div>
       </div>
 
@@ -261,24 +261,14 @@ export default function Example() {
               designs, and cost-effective improvements—bringing your product
               ideas to life, with factory-level control and quality assurance.
             </p>
+          </div>
+          <div className="w-full lg:max-w-xl lg:flex-auto">
             <Image
               alt=""
               src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
               width={300}
               height={300}
             />
-          </div>
-          <div className="w-full lg:max-w-xl lg:flex-auto">
-            <h3 className="sr-only">Job openings</h3>
-            
-            <div className="mt-8 flex border-t border-gray-100 pt-8">
-              <a
-                href="#"
-                className="text-sm/6 font-semibold text-indigo-600 hover:text-indigo-500"
-              >
-                View all openings <span aria-hidden="true">&rarr;</span>
-              </a>
-            </div>
           </div>
         </div>
       </div>

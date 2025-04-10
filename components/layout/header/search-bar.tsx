@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Bars3Icon, PhoneIcon, UserIcon, ShoppingCartIcon } from "@heroicons/react/24/outline"
+import { Bars3Icon, PhoneIcon } from "@heroicons/react/24/outline"
 import { Combobox, ComboboxInput, ComboboxOptions, ComboboxOption } from "@headlessui/react"
 import type { Product } from "@/types/product"
 import { searchProducts } from "@/services/api/product"
@@ -24,7 +24,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [isSearching, setIsSearching] = useState(false)
   const [searchResults, setSearchResults] = useState<SearchResultItem[]>([])
-  const [recentSearches, setRecentSearches] = useState<string[]>([])
+  const [setRecentSearches] = useState<string[]>([])
 
   // 获取搜索结果
   useEffect(() => {
@@ -133,7 +133,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
                 Searching products...
               </div>
             ) : searchResults.length === 0 ? (
-              <div className="px-4 py-6 text-center text-sm text-gray-500">No products found for "{searchQuery}"</div>
+              <div className="px-4 py-6 text-center text-sm text-gray-500">No products found for &quot;{searchQuery}&quot;</div>
             ) : (
               <>
                 <div className="sticky top-0 z-10 bg-white px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider border-b">

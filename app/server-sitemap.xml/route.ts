@@ -13,11 +13,12 @@ export async function GET() {
 
   const staticUrls = [`${BASE_URL}`, `${BASE_URL}/about`, `${BASE_URL}/contact`]
 
-  const dynamicCategoryUrls = categorySlugs.map(slug => `${BASE_URL}/products/${slug}`)
-  const dynamicProductUrls = productSlugs.map(slug => `${BASE_URL}/products/${slug}`)
-  const dynamicBlogUrls = blogSlugs.map(slug => `${BASE_URL}/blog/${slug}`)
-
-  const allUrls = [...staticUrls, ...dynamicCategoryUrls, ...dynamicProductUrls, ...dynamicBlogUrls]
+  const dynamicCategoryUrls = categorySlugs?.map(slug => `${BASE_URL}/products/${slug}`) || [];
+  const dynamicProductUrls = productSlugs?.map(slug => `${BASE_URL}/products/${slug}`) || [];
+  const dynamicBlogUrls = blogSlugs?.map(slug => `${BASE_URL}/blog/${slug}`) || [];
+  
+  const allUrls = [...staticUrls, ...dynamicCategoryUrls, ...dynamicProductUrls, ...dynamicBlogUrls];
+  
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

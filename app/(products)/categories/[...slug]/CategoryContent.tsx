@@ -66,7 +66,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
       console.log(
         `Category for slug "${targetSlug}" not found in context. Redirecting...`
       );
-      // redirect("/404");
+      redirect("/404");
     }
   }, [allCategories, currentCategory, targetSlug]);
 
@@ -116,7 +116,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
     };
   
     fetchData();
-  }, [currentCategory, selectedFilters]); // 依赖 filters
+  }, [currentCategory, selectedFilters, breadcrumbs]); // 依赖 filters
 
   // 7. Event Handlers (handleFilterChange, clearAllFilters - remain the same)
   const handleFilterChange = (filterId: string, value: string) => {
@@ -182,7 +182,6 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
         >
           {/* Pass allCategories from context and the derived currentCategory */}
           <CategorySidebar
-            categories={allCategories as ProductCategory[]} // Cast or map if needed
             currentCategory={currentCategory}
             productFilters={productFilters}
             selectedFilters={selectedFilters}

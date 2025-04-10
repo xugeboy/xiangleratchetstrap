@@ -44,8 +44,9 @@ export default function ArticlesSection() {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-2 text-gray-900">ARTICLES</h2>
-        <div className="w-24 h-1 bg-yellow-400 mx-auto mb-12"></div>
+        <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
+          NEWEST <span className="text-amber-700">BLOGS</span>
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {articles.map((article, index) => (

@@ -1,47 +1,50 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
-import Link from "next/link"
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline"
 
 const industries = [
   {
-    title: "MANUFACTURING",
-    image: "/placeholder.svg?height=300&width=400",
+    title: "Oil & Gas",
+    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251354/gas_oil_gzdhvv.jpg",
     link: "/industries/manufacturing",
   },
   {
     title: "CONSTRUCTION",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251245/construction_wbl5fs.jpg",
     link: "/industries/construction",
   },
   {
     title: "TRANSPORTATION",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251356/transportation_u6wtya.jpg",
     link: "/industries/transportation",
   },
   {
     title: "AGRICULTURE",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251354/agriculture_ztkx7q.jpg",
     link: "/industries/agriculture",
   },
   {
     title: "MARINE",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251245/marine_u25sc0.jpg",
     link: "/industries/marine",
   },
   {
-    title: "ROOFING",
-    image: "/placeholder.svg?height=300&width=400",
+    title: "OUTDOOR",
+    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251355/outdoor_xshdnu.jpg",
     link: "/industries/roofing",
   },
+  {
+    title: "POWERSPORT",
+    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251356/powersport_wjxbcg.jpg",
+    link: "/industries/roofing",
+  }
 ]
 
 export default function IndustriesSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
-  const carouselRef = useRef<HTMLDivElement>(null)
 
   // 计算在不同屏幕尺寸下显示的项目数量
   const [itemsToShow, setItemsToShow] = useState(4)
@@ -95,7 +98,7 @@ export default function IndustriesSection() {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
-          OUR <span className="text-cyan-600">INDUSTRIES</span>
+          TOP <span className="text-amber-700">INDUSTRIES</span>
         </h2>
 
         <div className="relative">
@@ -115,7 +118,7 @@ export default function IndustriesSection() {
                 >
                   <div className="aspect-[4/3] relative">
                     <Image
-                      src={industry.image || "/placeholder.svg"}
+                      src={industry.image}
                       alt={industry.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110 rounded-t-lg"
@@ -125,11 +128,6 @@ export default function IndustriesSection() {
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <h3 className="text-xl font-bold text-white">{industry.title}</h3>
                   </div>
-                  <Link
-                    href={industry.link}
-                    className="absolute inset-0"
-                    aria-label={`Learn more about ${industry.title}`}
-                  ></Link>
                 </div>
               ))}
             </div>

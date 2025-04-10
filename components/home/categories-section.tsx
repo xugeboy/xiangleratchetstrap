@@ -38,7 +38,9 @@ export default function CategoriesSection() {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-[#1a3b5d]">SHOP OUR CATEGORIES</h2>
+        <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
+          OUR <span className="text-amber-700">CATEGORIES</span>
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category, index) => (
@@ -50,7 +52,7 @@ export default function CategoriesSection() {
                 <h3 className="text-xl font-bold text-white mb-4">{category.title}</h3>
                 <Link
                   href={category.link}
-                  className="inline-block bg-[#f47321] hover:bg-[#e05e0c] text-white px-8 py-2 font-medium transition-colors"
+                  className="inline-block bg-amber-600 hover:bg-amber-700 text-white px-8 py-2 font-medium transition-colors"
                 >
                   VIEW MORE
                 </Link>

@@ -8,7 +8,7 @@ export async function getAllCategorySlug(): Promise<ProductCategory[] | null> {
     try {
       const path = `/getAllCategorySlug`;
       const response = await fetchAPI(path);
-      return response.data || null;
+      return response.data;
     } catch (error) {
       console.error("Error fetching product:", error);
       return null;
@@ -22,7 +22,7 @@ export async function getProductBySlug(slug: string): Promise<ProductCategory | 
   try {
     const path = `/getProductBySlug/${slug}`;
     const response = await fetchAPI(path);
-    return response.data || null;
+    return response.data;
   } catch (error) {
     console.error("Error fetching product:", error);
     return null;

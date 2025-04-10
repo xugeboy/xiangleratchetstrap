@@ -20,7 +20,7 @@ export default function CapabilitiesSection() {
               <h2 className="text-3xl font-bold text-gray-800 mb-2">
                 What Sets Xiangle Ratchet Strap Apart?
               </h2>
-              <h3 className="text-4xl font-bold text-cyan-600 mb-6">
+              <h3 className="text-4xl font-bold text-amber-700 mb-6">
                 Our Strengths
               </h3>
             </div>

@@ -5,13 +5,7 @@ import Link from "next/link";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { useCategories } from "@/contexts/CategoryContext";
 
-interface CategoryNavigationProps {
-  onMobileMenuOpen: () => void;
-}
-
-export function CategoryNavigation({
-  onMobileMenuOpen,
-}: CategoryNavigationProps) {
+export function CategoryNavigation() {
   const [activeTabIndex, setActiveTabIndex] = useState(-1);
   const menuContainerRef = useRef<HTMLDivElement>(null);
   // 从 Context 获取分类数据

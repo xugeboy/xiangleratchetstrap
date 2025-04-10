@@ -28,7 +28,7 @@ export default function Header() {
   
         {/* Category navigation - hide on mobile */}
         <div className="hidden md:block">
-          <CategoryNavigation onMobileMenuOpen={() => setMobileMenuOpen(true)} />
+          <CategoryNavigation />
           <div className="w-full border-b border-gray-200 mt-1"></div>
         </div>
   

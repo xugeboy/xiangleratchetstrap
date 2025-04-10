@@ -100,7 +100,7 @@ export default function HeroSection() {
           >
             <div className="absolute inset-0 bg-black opacity-60 z-10"></div>
             <Image
-              src={slide.image || "/placeholder.svg"}
+              src={slide.image}
               alt={slide.title}
               fill
               className="object-cover"
@@ -125,18 +125,18 @@ export default function HeroSection() {
             >
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
                 {slide.title} <br />
-                <span className="text-cyan-500">{slide.subtitle}</span>
+                <span className="text-amber-700">{slide.subtitle}</span>
               </h1>
               <p className="text-xl text-white/90 mb-8">{slide.description}</p>
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="/about"
-                  className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 font-medium transition-colors"
+                  href="/about-us"
+                  className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 font-medium transition-colors"
                 >
                   ABOUT US
                 </Link>
                 <Link
-                  href="/solutions"
+                  href="/business-solutions"
                   className="bg-gray-700 hover:bg-gray-800 text-white px-8 py-3 font-medium transition-colors"
                 >
                   SOLUTIONS

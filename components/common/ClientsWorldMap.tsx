@@ -41,6 +41,7 @@ const ClientsHeatMap: React.FC = () => {
       chartInstance.setOption({
         tooltip: {
           trigger: "item",
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           formatter: (params: any) => `${params.name}: ${params.value ?? 0}`,
         },
         series: [

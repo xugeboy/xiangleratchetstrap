@@ -108,7 +108,7 @@ export function PDFViewer({ pdfUrl, fileName }: PDFViewerProps) {
       container.removeEventListener("touchstart", handleTouchStart)
       container.removeEventListener("touchend", handleTouchEnd)
     }
-  }, [isMobile, numPages, pageNumber])
+  }, [isMobile, numPages, pageNumber,nextPage,previousPage])
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages)
