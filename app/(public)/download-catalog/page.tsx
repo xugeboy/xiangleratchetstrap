@@ -1,7 +1,11 @@
 "use client"
 
 import { useMediaQuery } from "@/hooks/useMobile"
-import { PDFViewer } from "@/components/common/PdfViewer"
+import dynamic from 'next/dynamic';
+
+const PDFViewer = dynamic(() => import('@/components/common/PdfViewer'), {
+  ssr: false,
+});
 
 // Path to your PDF file
 const PDF_FILE = "/asset/xiangle_catalogue.pdf"

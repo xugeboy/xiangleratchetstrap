@@ -92,8 +92,8 @@ export default function BusinessSolutions() {
         </div>
       </div>
 
-      <BentoGrids />
       <StatsSection />
+      <BentoGrids />
       <LogoClouds />
       <QuoteForm />
       <TeamSection />

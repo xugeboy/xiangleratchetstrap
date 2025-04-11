@@ -1,72 +1,44 @@
-"use client";
-import Image from "next/image";
+"use client"
+import ImageTrail from "@/reactbits/Animations/ImageTrail/ImageTrail"
 
 const partners = [
-  {
-    name: "CRST",
-    logo: "/images/partners/crst-logo.png",
-  },
-  {
-    name: "Extreme Steel",
-    logo: "/images/partners/extreme-steel-logo.png",
-  },
-  {
-    name: "Trailer Marketing Inc",
-    logo: "/images/partners/trailer-marketing-logo.png",
-  },
-  {
-    name: "ATS",
-    logo: "/images/partners/ats-logo.png",
-  },
-  {
-    name: "AFFLINK",
-    logo: "/images/partners/afflink-logo.png",
-  },
-  {
-    name: "MSC Industrial Supply Co.",
-    logo: "/images/partners/msc-logo.png",
-  },
-  {
-    name: "Mainfreight",
-    logo: "/images/partners/mainfreight-logo.png",
-  },
-];
+  "https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg",
+  "https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg",
+  "https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg",
+]
 
 export default function LogoClouds() {
   return (
-    <div className="mb-10">
-      {/* Title with underline */}
-      <div className="text-center">
-        <h2 className="text-3xl font-bold text-gray-900 inline-block relative">
-          OUR PARTNERSHIPS SPEAK FOR THEMSELVES
-          <div className="absolute bottom-[-8px] left-0 right-0 h-1 bg-yellow-500 mx-auto w-3/4"></div>
-        </h2>
-      </div>
+    <div className="mx-auto max-w-7xl mb-10">
+      <div className="relative isolate h-full overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
+        {/* 内容区域 */}
+        <div className="relative z-10">
+          <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Our customers love us
+          </h2>
+          <p className="mx-auto mt-6 max-w-xl text-lg/8 text-gray-300">
+            From the very first use, they notice the difference — the reliable quality, thoughtful design, and
+            unwavering service. Every purchase is a vote of confidence, and we're committed to honoring that trust by
+            perfecting every detail. Thank you for being part of our journey. Because of you, we keep getting better.
+          </p>
+        </div>
 
-      {/* Logo Grid */}
-      <div className="mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center mb-10">
-        {partners.map((partner, index) => (
-          <div key={index} className="flex items-center justify-center">
-            <Image
-              src={partner.logo}
-              alt={partner.name}
-              width={150}
-              height={60}
-              className="w-auto h-12 object-contain"
-            />
-          </div>
-        ))}
-      </div>
+        {/* ImageTrail 绝对定位，填充整个容器 */}
+        <div className="absolute inset-0 z-20">
+          <ImageTrail key="ImageTrail" items={partners} variant={2} />
+        </div>
 
-      {/* Testimonial */}
-      <div className="text-center max-w-4xl mx-auto">
-        <blockquote className="text-xl text-gray-700 mb-4">
-          &quot;As a store owner in Australia,I was introduced to this factory supplier through a friend&apos;s recommendation. The majority of similar products in our local market are sourced from this supplier. Upon receiving the first batch of products,I was delighted to find that the quality and pricing exceeded expectations. This supplier has proven to be a reliable source,and I am confident in continuing our business relationship for its consistent delivery of high-quality products at competitive prices.&quot;
-        </blockquote>
-        <cite className="text-gray-600 italic">
-          - General Manager, James
-        </cite>
+        {/* 背景装饰 */}
+        <div aria-hidden="true" className="absolute -top-24 right-0 -z-10 transform-gpu blur-3xl">
+          <div
+            style={{
+              clipPath:
+                "polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)",
+            }}
+            className="aspect-1404/767 w-[87.75rem] bg-linear-to-r from-[#80caff] to-[#4f46e5] opacity-25"
+          />
+        </div>
       </div>
     </div>
-  );
+  )
 }

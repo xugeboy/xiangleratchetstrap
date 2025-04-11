@@ -1,29 +1,33 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import ImageComparisonSlider from "../common/ImageComparisonSlider";
 
 const products = [
   {
     title: '1" Retractable Ratchet Strap',
     description:
       "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
-    image: "/placeholder.svg?height=300&width=400",
+    beforeImage:
+      "https://res.cloudinary.com/duimeqqch/image/upload/v1744354646/mess_uonisw.jpg",
+    afterImage:
+      "https://res.cloudinary.com/duimeqqch/image/upload/v1744354626/clean_ruzf8i.jpg",
+    beforeAlt: "before",
+    afterAlt: "after",
     link: '/products/1"-retractable-ratchet-strap',
   },
   {
     title: '1.5" Motorcycle Cam Buckle Tie Down Strap with Swivel Carabiner',
     description:
       "Heavy-duty tie-down with swivel carabiner—built for secure, scratch-free motorcycle and powersport transport.",
-    image: "/placeholder.svg?height=300&width=400",
+    beforeImage:
+      "https://res.cloudinary.com/duimeqqch/image/upload/v1744272807/auto_retractable_ratchet_strap_lg7pxh.jpg",
+    afterImage:
+      "https://res.cloudinary.com/duimeqqch/image/upload/v1744273892/spare_tire_y_strap_jemgzg.jpg",
+    beforeAlt: "before",
+    afterAlt: "after",
     link: '/products/1.5"-motorcycle-tie-down-strap-with-swivel-carabiner',
-  },
-  {
-    title: '1" Zero Friction Ratchet Straps',
-    description:
-      "Experience smooth, resistance-free tensioning—ideal for professionals needing speed, control, and reliability.",
-    image: "/placeholder.svg?height=300&width=400",
-    link: '/products/1"-zero-friction-ratchet-straps',
-  },
+  }
 ];
 
 export default function ProductsSection() {
@@ -44,18 +48,16 @@ export default function ProductsSection() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {products.map((product, index) => (
             <div
               key={index}
               className="bg-white shadow-md hover:shadow-lg transition-shadow"
             >
               <div className="aspect-[4/3] relative">
-                <Image
-                  src={product.image || "/placeholder.svg"}
-                  alt={product.title}
-                  fill
-                  className="object-contain p-4"
+                <ImageComparisonSlider
+                  beforeImage={product.afterImage}
+                  afterImage={product.beforeImage}
                 />
               </div>
               <div className="p-6">

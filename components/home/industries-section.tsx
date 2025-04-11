@@ -121,7 +121,7 @@ export default function IndustriesSection() {
                       src={industry.image}
                       alt={industry.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110 rounded-t-lg"
+                      className="object-cover transition-transform duration-500 rounded-t-lg"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                   </div>

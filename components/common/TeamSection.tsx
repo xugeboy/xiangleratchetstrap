@@ -43,13 +43,6 @@ const people = [
         imageUrl:
           'https://res.cloudinary.com/duimeqqch/image/upload/v1744176355/chloe_tv3t9c.png',
         bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
-      },{
-        name: 'Emma Qian',
-        role: 'Foreign Trade Sales',
-        year: '- 1 years at Xianlge -',
-        imageUrl:
-          'https://res.cloudinary.com/duimeqqch/image/upload/v1744176355/chloe_tv3t9c.png',
-        bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
       }
   ]
   

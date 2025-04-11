@@ -14,7 +14,7 @@ interface PDFViewerProps {
   fileName?: string
 }
 
-export function PDFViewer({ pdfUrl, fileName }: PDFViewerProps) {
+export default function PDFViewer({ pdfUrl, fileName }: PDFViewerProps) {
   const [numPages, setNumPages] = useState<number | null>(null)
   const [pageNumber, setPageNumber] = useState<number>(1)
   const [isLoading, setIsLoading] = useState<boolean>(true)
