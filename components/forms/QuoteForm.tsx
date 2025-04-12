@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { formAPI } from "@/utils/fetch-api";
+import Notification from "../common/Notification";
 
 export default function QuoteForm() {
   const [formData, setFormData] = useState({
@@ -11,36 +13,47 @@ export default function QuoteForm() {
     companyName: "",
     position: "",
     message: "",
-    attachment: null as File | null,
+    attachment: [] as File[],
   });
-
+  const [showSuccessNotification, setShowSuccessNotification] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: 实现表单提交逻辑
-    console.log("Form submitted:", formData);
+
+    const data = new FormData();
+    data.append("name", formData.firstName + " " + formData.lastName);
+    data.append("email", formData.email);
+    data.append("phone", formData.phone);
+    data.append("company", formData.companyName);
+    data.append("position", formData.position);
+    data.append("message", formData.message);
+
+    formData.attachment.forEach((file) => {
+      data.append("files.attachment", file);
+    });
+
+
+    const resData = await formAPI("/submitInquiry", data);
+
+    setSuccessMessage(resData.message);
+    setShowSuccessNotification(true);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFormData((prev) => ({
-        ...prev,
-        attachment: e.target.files![0],
-      }));
+    const files = Array.from(e.target.files || []);
+    if (files.length > 3) {
+      alert("You can upload up to 3 files only.");
+      return;
     }
+    setFormData((prev) => ({ ...prev, attachment: files }));
   };
 
   return (
     <div className="mb-10">
-      {/* <div className="lg:text-center mb-12">
-        <h2 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
-          Bulk Pricing Quote Request
-        </h2>
-        <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-          Contact our experts to discuss a custom pricing program that fits your
-          particular business needs. Just fill out the form below and we'll be
-          in touch!
-        </p>
-      </div> */}
+       <Notification
+        message={successMessage}
+        trigger={showSuccessNotification}
+      />
       <form
         onSubmit={handleSubmit}
         className="max-w-7xl mx-auto bg-white px-6 py-12 rounded-[30px] shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
@@ -194,6 +207,7 @@ export default function QuoteForm() {
               type="file"
               id="attachment"
               className="hidden"
+              multiple
               onChange={handleFileChange}
             />
             <div className="flex items-center justify-between">
@@ -206,8 +220,8 @@ export default function QuoteForm() {
                 Choose File
               </label>
               <p className="text-sm text-gray-400">
-                {formData.attachment
-                  ? formData.attachment.name
+                {formData.attachment.length > 0
+                  ? formData.attachment.map((f) => f.name).join(", ")
                   : "No file selected"}
               </p>
             </div>

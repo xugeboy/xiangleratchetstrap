@@ -11,7 +11,7 @@ export async function GET() {
   const productSlugs = await getAllProductSlug()
   const blogSlugs = await getAllBlogSlug()
 
-  const staticUrls = [`${BASE_URL}`, `${BASE_URL}/about`, `${BASE_URL}/contact`]
+  const staticUrls = [`${BASE_URL}`, `${BASE_URL}/about-us`, `${BASE_URL}/contact-us`]
 
   const dynamicCategoryUrls = categorySlugs?.map(slug => `${BASE_URL}/products/${slug}`) || [];
   const dynamicProductUrls = productSlugs?.map(slug => `${BASE_URL}/products/${slug}`) || [];

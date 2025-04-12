@@ -1,6 +1,6 @@
 export default function BentoGrids() {
     return (
-        <div className="mx-auto mb-10 lg:max-w-7xl">
+        <div className="mx-auto mt-10 mb-10 lg:max-w-7xl">
           <p className=" max-w-lg text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">
           Tailored Bulk Pricing Solutions
           </p>

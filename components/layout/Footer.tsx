@@ -7,6 +7,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import NewsLetter from "../forms/NewsLetter";
 
 const navigation = {
   company: [
@@ -27,7 +28,10 @@ const navigation = {
       name: "Retractable Ratchet Strap",
       href: "/categories/retractable-ratchet-strap",
     },
-    { name: "Ratchet Strap & Tie Downs", href: "/categories/ratchet-straps-and-tie-downs" },
+    {
+      name: "Ratchet Strap & Tie Downs",
+      href: "/categories/ratchet-straps-and-tie-downs",
+    },
     {
       name: "Powersports Straps",
       href: "/categories/powersports-straps",
@@ -58,7 +62,7 @@ const navigation = {
   social: [
     {
       name: "Facebook",
-      href: "#",
+      href: "https://www.facebook.com/xiangleratchetstrap",
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -71,7 +75,7 @@ const navigation = {
     },
     {
       name: "Instagram",
-      href: "#",
+      href: "https://www.instagram.com/xiangleratchetstrap",
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -97,7 +101,7 @@ const navigation = {
     },
     {
       name: "YouTube",
-      href: "#",
+      href: "https://www.youtube.com/@XiangleRatchetStrap",
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -122,18 +126,24 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-2">
         <div className="hidden md:block pt-12 xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="flex flex-col gap-2">
-          <Link href="/" className="flex-shrink-0">
-            <Image src="https://res.cloudinary.com/duimeqqch/image/upload/v1744006735/xiangle_ratchet_strap_w_m7aeic.png" 
-            alt="xiangle ratchet strap" width={200} height={60} className="h-12 w-auto" />
-          </Link>
+            <Link href="/" className="flex-shrink-0">
+              <Image
+                src="https://res.cloudinary.com/duimeqqch/image/upload/v1744006735/xiangle_ratchet_strap_w_m7aeic.png"
+                alt="xiangle ratchet strap"
+                width={200}
+                height={60}
+                className="h-12 w-auto"
+              />
+            </Link>
             <h3 className="text-base font-semibold text-amber-700">
               Custom Made Straps
             </h3>
-            <span className="text-gray-400">
+            <span className="text-sm/6 text-gray-400">
               All straps on XiangleRatchetStrap.com are made to order. This give
               you the ability to choose the length, color, and other options
               that fit your needs
             </span>
+            <NewsLetter></NewsLetter>
           </div>
 
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
