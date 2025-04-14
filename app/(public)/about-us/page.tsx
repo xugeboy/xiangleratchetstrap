@@ -48,11 +48,15 @@ export default function Example() {
             </h1>
             <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
               <p className="text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-                At Xiangle Ratchet Strap, our mission is simple: to provide
-                dependable, high-performance tie-down solutions that ensure
-                safety, efficiency, and peace of mind. We envision a world where
-                every shipment, structure, and project is secured with
-                confidence—powered by the strength of our straps.
+                At Xiangle Ratchet Strap, our mission and vision are
+                intertwined: to empower small and medium-sized enterprises
+                (SMBs) worldwide by providing dependable, high-performance, and
+                safe tie-down solutions that ensure efficiency and peace of
+                mind. We are committed to offering high-quality, competitively
+                priced, and highly customized one-stop cargo control solutions, fostering a
+                strong partnership that enables us to grow together with our
+                customers and contribute to their success in confidently
+                securing their shipments, structures, and projects.
               </p>
             </div>
             <Image
@@ -105,7 +109,7 @@ export default function Example() {
 
       {/* Content section */}
       <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
-        <div className="mx-auto flex max-w-2xl flex-col items-end justify-between gap-16 lg:mx-0 lg:max-w-none lg:flex-row">
+        <div className="mx-auto flex max-w-2xl flex-col items-center justify-between gap-16 lg:mx-0 lg:max-w-none lg:flex-row">
           <div className="w-full lg:max-w-lg lg:flex-auto">
             <h2 className="text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl">
               Engineering & OEM Capabilities
@@ -121,10 +125,10 @@ export default function Example() {
           </div>
           <div className="w-full lg:max-w-xl lg:flex-auto">
             <Image
-              alt=""
-              src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
-              width={300}
-              height={300}
+              alt="custom_product__capabilities"
+              src="https://res.cloudinary.com/duimeqqch/image/upload/v1744613195/custom_product__capabilities_np35yw.jpg"
+              width={576}
+              height={576}
             />
           </div>
         </div>

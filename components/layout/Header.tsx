@@ -8,11 +8,10 @@ import { MobileMenu } from "@/components/layout/header/mobile-menu"
 
 export default function Header() {
     const company = [
-      { name: 'About us', href: '#' },
-      { name: 'Careers', href: '#' },
-      { name: 'Support', href: '#' },
-      { name: 'Press', href: '#' },
-      { name: 'Blog', href: '#' },
+      { name: 'About Us', href: '/about-us' },
+      { name: 'Contact Us', href: '/contact-us' },
+      { name: 'Blogs', href: '/blogs' },
+      { name: 'Meet The Team', href: '/business-solutions/#meet-the-team' }
     ]
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   

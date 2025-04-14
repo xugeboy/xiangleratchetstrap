@@ -8,6 +8,7 @@ import { fetchAPI } from "@/utils/fetch-api";
 import { CategoryProvider } from "@/contexts/CategoryContext";
 import { ProductCategory } from "@/types/productCategory";
 import ClarityProvider from "@/components/common/ClarityProvider";
+import TawkToWidget from "@/components/common/TawkToWidget";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -51,6 +52,7 @@ export default async function RootLayout({
             <main className="flex-grow">
               <ClarityProvider />
               {children}
+              <TawkToWidget />
             </main>
             <Footer />
             <BackToTop />

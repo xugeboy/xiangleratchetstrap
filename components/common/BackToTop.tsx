@@ -37,10 +37,10 @@ export default function BackToTop() {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-black/10 backdrop-blur-sm text-white shadow-lg transition-all hover:bg-black/20 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2"
+          className="fixed bottom-32 right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-black/10 backdrop-blur-sm text-white shadow-lg transition-all hover:bg-black/20 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2"
           aria-label="Back to top"
         >
-          <ChevronUpIcon className="h-6 w-6 text-white" />
+          <ChevronUpIcon className="h-6 w-6 text-white cursor-grab" />
         </button>
       )}
     </>
