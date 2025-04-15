@@ -1,46 +1,59 @@
-import { fetchAPI } from '@/utils/fetch-api';
-import { Blog } from '@/types/blog';
+import { fetchAPI } from "@/utils/fetch-api";
+import { Blog } from "@/types/blog";
 
-export async function getBlog(slug: string): Promise<Blog | null> {
-  const path = `/blogs`;
+export async function getBlogDetail(slug: string): Promise<Blog | null> {
+  const path = `/getBlogDetail`;
   const urlParamsObject = {
     filters: {
       slug: {
         $eq: slug,
       },
     },
-    populate: ['products', 'cover_image'],
   };
-  const response = await fetchAPI(path, urlParamsObject);
-  return response.data[0];
+  return await fetchAPI(path, urlParamsObject);
 }
 
-/**
- * 获取所有产品分类的slug
- */
 export async function getAllBlogSlug(): Promise<Blog[] | null> {
-    try {
-      const path = `/getAllBlogSlug`;
-      const response = await fetchAPI(path);
-      return response.data || null;
-    } catch (error) {
-      console.error("Error fetching blog:", error);
-      return null;
-    }
+  try {
+    const response = await fetchAPI("/getAllBlogSlug");
+    return response.data || null;
+  } catch (error) {
+    console.error("Error fetching blog slug:", error);
+    return null;
+  }
 }
 
-export async function getBlogsByProduct(productSlug: string): Promise<Blog[]> {
-  const path = `/blogs`;
-  const urlParamsObject = {
-    filters: {
-      products: {
-        slug: {
-          $eq: productSlug,
+export async function getBlogList(
+  page: number = 1
+): Promise<{
+  data: Blog[];
+  meta: {
+    pagination: {
+      page: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}> {
+  try {
+    const response = await fetchAPI("/getBlogList", {
+      page
+    });
+    return {
+      data: response.data,
+      meta: response.meta,
+    };
+  } catch (error) {
+    console.error("Error filtering products:", error);
+    return {
+      data: [],
+      meta: {
+        pagination: {
+          page,
+          pageCount: 0,
+          total: 0,
         },
       },
-    },
-    populate: ['products', 'cover_image'],
-  };
-  const response = await fetchAPI(path, urlParamsObject);
-  return response.data;
-} 
+    };
+  }
+}

@@ -6,11 +6,10 @@ import { Product } from "@/types/product";
  */
 export async function getAllProductSlug(): Promise<Product[] | null> {
     try {
-      const path = `/getAllProductSlug`;
-      const response = await fetchAPI(path);
+      const response = await fetchAPI("/getAllProductSlug");
       return response.data || null;
     } catch (error) {
-      console.error("Error fetching product:", error);
+      console.error("Error fetching product slug:", error);
       return null;
     }
   }

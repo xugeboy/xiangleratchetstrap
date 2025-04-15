@@ -10,4 +10,5 @@ export interface Blog {
     products?: Product[]; // 关联的产品
     seo_title?: string;
     seo_description?: string;
+    createdAt: Date
 }

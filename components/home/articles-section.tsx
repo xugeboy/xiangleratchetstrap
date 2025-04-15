@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -68,7 +69,7 @@ export default function ArticlesSection() {
 
         <div className="text-center mt-12">
           <Link
-            href="/articles"
+            href="/blogs"
             className="inline-block border-2 border-black bg-white hover:bg-gray-100 text-black px-8 py-3 font-medium transition-colors"
           >
             VIEW ALL
