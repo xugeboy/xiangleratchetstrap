@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Blog } from "@/types/blog";
 import { Product } from "@/types/product";
 import { ProductCategory } from "@/types/productCategory";
+import { BreadcrumbItem } from "@/types/breadcrumbItem";
 
 // --- Configuration (Consider moving to environment variables) ---
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
@@ -32,22 +33,15 @@ function getWebSiteSchema() {
     url: SITE_URL,
     name: SITE_NAME,
     publisher: getOrganizationSchema(), // Nest Organization
-    potentialAction: {
-      // Optional: For Sitelinks Search Box
-      "@type": "SearchAction",
-      target: `${SITE_URL}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 
 /**
  * Generates Article Schema from Strapi Blog Data
  */
-function generateArticleSchema(article: StrapiBlogAttributes, slug: string) {
+function generateArticleSchema(article: Blog, slug: string) {
   const url = `${SITE_URL}/blogs/${slug}`; // Adjust path as needed
-  const author = article.author?.data?.attributes;
-  const coverImage = article.cover_image?.data?.attributes;
+  const coverImage = article.cover_image;
 
   const schema = {
     "@context": "https://schema.org",
@@ -56,32 +50,19 @@ function generateArticleSchema(article: StrapiBlogAttributes, slug: string) {
       "@type": "WebPage",
       "@id": url,
     },
-    headline: article.title,
-    description: article.excerpt || undefined, // Use excerpt if available
-    image: coverImage
-      ? {
-          // Can be string URL or ImageObject
-          "@type": "ImageObject",
-          url: coverImage.url.startsWith("http")
-            ? coverImage.url
-            : `${process.env.NEXT_PUBLIC_STRAPI_URL}${coverImage.url}`, // Ensure absolute URL
-          width: coverImage.width,
-          height: coverImage.height,
-          caption: coverImage.alternativeText || article.title,
-        }
-      : undefined,
-    author: author
-      ? {
-          "@type": "Person", // Or Organization if applicable
-          name: author.name || ORGANIZATION_NAME, // Fallback to org name if needed
-          // url: author.url // If author has a profile URL
-        }
-      : getOrganizationSchema(), // Fallback to main Organization
+    headline: article.seo_title,
+    description: article.seo_description, // Use excerpt if available
+    image: {
+      "@type": "ImageObject",
+      url: coverImage.url,
+      width: 1200,
+      height: 1200,
+      caption: article.seo_title,
+    },
+    author: getOrganizationSchema(),
     publisher: getOrganizationSchema(),
     datePublished: article.publishedAt, // Should be ISO 8601 format
     dateModified: article.updatedAt || article.publishedAt, // Use updatedAt if available
-    // You might need a function to extract plain text from 'content' for 'articleBody'
-    // articleBody: extractPlainText(article.content),
   };
 
   // Remove undefined properties
@@ -107,50 +88,24 @@ function generateArticleSchema(article: StrapiBlogAttributes, slug: string) {
 /**
  * Generates Product Schema from Strapi Product Data
  */
-function generateProductSchema(product: StrapiProductAttributes, slug: string) {
+function generateProductSchema(product: Product, slug: string) {
   const url = `${SITE_URL}/products/${slug}`; // Adjust path as needed
-  const primaryImage = product.images?.data?.[0]?.attributes;
-  const brand = product.brand?.data?.attributes;
+  const featuredImage = product.featured_image;
 
   const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
-    description: product.description || undefined,
-    sku: product.sku || undefined,
+    description: product.seo_description,
+    sku: product.code,
     url: url,
-    image: primaryImage
-      ? {
-          "@type": "ImageObject",
-          url: primaryImage.url.startsWith("http")
-            ? primaryImage.url
-            : `${process.env.NEXT_PUBLIC_STRAPI_URL}${primaryImage.url}`,
-          width: primaryImage.width,
-          height: primaryImage.height,
-          caption: primaryImage.alternativeText || product.name,
-        }
-      : undefined,
-    brand: brand
-      ? {
-          "@type": "Brand", // Or Organization
-          name: brand.name,
-        }
-      : { "@type": "Brand", name: ORGANIZATION_NAME }, // Fallback brand
-    offers:
-      product.price && product.currency
-        ? {
-            // Basic Offer
-            "@type": "Offer",
-            priceCurrency: product.currency,
-            price: product.price,
-            url: url, // URL to the specific product page/offer
-            availability: product.availability
-              ? `https://schema.org/${product.availability}`
-              : "https://schema.org/InStock", // Default to InStock if not specified
-            seller: getOrganizationSchema(), // Your Organization
-          }
-        : undefined,
-    // Add reviews, aggregateRating, etc. if available in Strapi data
+    image: {
+      "@type": "ImageObject",
+      url: featuredImage.url,
+      width: 1200,
+      height: 1200,
+      caption: product.name,
+    },
   };
 
   // Cleanup undefined properties
@@ -163,19 +118,6 @@ function generateProductSchema(product: StrapiProductAttributes, slug: string) {
     schema.image["@type"]
   )
     delete schema.image;
-  if (
-    schema.brand &&
-    Object.keys(schema.brand).length === 1 &&
-    schema.brand["@type"]
-  )
-    delete schema.brand;
-  if (
-    schema.offers &&
-    Object.keys(schema.offers).length === 1 &&
-    schema.offers["@type"]
-  )
-    delete schema.offers;
-
   return schema;
 }
 
@@ -183,7 +125,7 @@ function generateProductSchema(product: StrapiProductAttributes, slug: string) {
  * Generates BreadcrumbList Schema
  * items: Array of { name: string, path: string } // path should be absolute URL
  */
-function generateBreadcrumbSchema(items: { name: string; path: string }[]) {
+function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
   if (!items || items.length === 0) {
     return null;
   }
@@ -214,9 +156,9 @@ export type SchemaType =
 
 interface GenerateSchemaProps {
   type: SchemaType;
-  data: any; // The specific Strapi data (article, product, breadcrumb items etc.)
+  data?: Blog | Product | ProductCategory; // The specific Strapi data (Blog, product.)
   slug?: string; // Needed for constructing URLs for Article/Product
-  breadcrumbItems?: { name: string; path: string }[]; // Specific for BreadcrumbList
+  breadcrumbItems?: BreadcrumbItem[]; // Specific for BreadcrumbList
 }
 
 /**
@@ -229,10 +171,10 @@ export function generateSchema(props: GenerateSchemaProps): object | null {
     switch (type) {
       case "Article":
         if (!slug || !data) return null;
-        return generateArticleSchema(data as StrapiBlogAttributes, slug);
+        return generateArticleSchema(data as Blog, slug);
       case "Product":
         if (!slug || !data) return null;
-        return generateProductSchema(data as StrapiProductAttributes, slug);
+        return generateProductSchema(data as Product, slug);
       case "BreadcrumbList":
         if (!breadcrumbItems) return null;
         return generateBreadcrumbSchema(breadcrumbItems);
@@ -256,7 +198,7 @@ export function generateSchema(props: GenerateSchemaProps): object | null {
  */
 export function embedSchema(
   schema: object | (object | null)[] | null
-): Metadata["other"] {
+): string | null {
   if (!schema) {
     return undefined;
   }
@@ -278,14 +220,5 @@ export function embedSchema(
         }
       : schemas[0];
 
-  return {
-    // Use a key that allows Next.js to handle the script tag
-    'script[type="application/ld+json"]': (
-      <script
-        key="structured-data" // Add a key for React reconciliation
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson, null, 2) }} // Pretty print optional
-      />
-    ),
-  };
+  return JSON.stringify(ldJson, null, 2);
 }

@@ -1,3 +1,4 @@
+import { Gallery } from "./gallery";
 import { Product } from "./product";
 
 export interface Blog {
@@ -6,9 +7,11 @@ export interface Blog {
     slug: string;
     content: string; // Markdown 格式内容
     excerpt?: string; // 摘要
-    cover_image?: string; // 文章封面图片
+    cover_image?: Gallery; // 文章封面图片
     products?: Product[]; // 关联的产品
     seo_title?: string;
     seo_description?: string;
-    createdAt: Date
+    createdAt: Date;
+    updatedAt: Date;
+    publishedAt: Date;
 }
