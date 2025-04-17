@@ -11,7 +11,8 @@ interface CategoryPageProps {
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   // Get the last slug part
-  const lastSlug = params.slug[params.slug.length - 1];
+  const innerParams = await params;
+  const lastSlug = innerParams.slug[innerParams.slug.length - 1];
   
   try {
     const response = await fetchAPI(`/getCategoryMetaDataBySlug/${lastSlug}`);
@@ -53,6 +54,9 @@ function getAllSlugPaths(categories: ProductCategory[], parentSlugs: string[] = 
     return paths;
   }
 
-export default function CategoryPage({ params }: CategoryPageProps) {
-  return <CategoryContent slug={params.slug} />
+export default async function CategoryPage({ params }: CategoryPageProps) {
+
+  
+  const innerParams = await params;
+  return <CategoryContent slug={innerParams.slug} />
 }

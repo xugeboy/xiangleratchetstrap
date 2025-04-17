@@ -2,15 +2,7 @@ import { fetchAPI } from "@/utils/fetch-api";
 import { Blog } from "@/types/blog";
 
 export async function getBlogDetail(slug: string): Promise<Blog | null> {
-  const path = `/getBlogDetail`;
-  const urlParamsObject = {
-    filters: {
-      slug: {
-        $eq: slug,
-      },
-    },
-  };
-  return await fetchAPI(path, urlParamsObject);
+  return await fetchAPI(`/getBlogDetail/${slug}`);
 }
 
 export async function getAllBlogSlug(): Promise<Blog[] | null> {

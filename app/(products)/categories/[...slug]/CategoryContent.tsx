@@ -25,6 +25,8 @@ import type { ProductCategory } from "@/types/productCategory"; // Keep if neede
 import type { BreadcrumbItem } from "@/types/breadcrumbItem";
 import { FilterOption, ProductFilter } from "@/types/productFilter";
 
+import { generateSchema, embedSchema } from "@/utils/schema";
+
 // Component Props
 interface CategoryContentProps {
   slug: string[]; // Receive slug parts as props
@@ -49,7 +51,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
 
   // 3. State Management (excluding category and categories)
   const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({});
-  const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbItem[]>([]);
+  const [breadcrumbItems, setbreadcrumbItems] = useState<BreadcrumbItem[]>([]);
   const [viewMode, setViewMode] = useState<"grid" | "list" | "compact">("grid");
   const [itemsPerPage, setItemsPerPage] = useState(20);
   const [showFilters, setShowFilters] = useState(false);
@@ -69,13 +71,13 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
     }
   }, [allCategories, currentCategory, targetSlug]);
 
-  // 5. useEffect for fetching data related to the *current* category (products, filters, breadcrumbs)
+  // 5. useEffect for fetching data related to the *current* category (products, filters, breadcrumbItems)
   useEffect(() => {
     const fetchData = async () => {
       if (!currentCategory) return;
   
       setError(null);
-      setBreadcrumbs([]);
+      setbreadcrumbItems([]);
       setProductFilters([]);
   
       try {
@@ -84,7 +86,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
           getProductFilters(currentCategory.slug),
           generateCategoryBreadcrumbs(currentCategory),
         ]);
-        setBreadcrumbs(breadcrumbItems);
+        setbreadcrumbItems(breadcrumbItems);
   
         // 构造过滤器选项
         const formattedFilters: ProductFilter[] = [];
@@ -152,10 +154,29 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
     return null;
   }
 
+
+    // --- 生成 Schema ---
+    const articleSchema = generateSchema({ type: "CollectionPage", data: currentCategory, slug: targetSlug });
+    const breadcrumbItemschema = generateSchema({
+      type: "BreadcrumbList",
+      breadcrumbItems,
+    });
+    const schemaMetadataJson = embedSchema(
+      [articleSchema, breadcrumbItemschema].filter(Boolean)
+    );
+
   // Main component render when data is ready
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <Breadcrumb items={breadcrumbs} />
+      <section>
+        {/* Add JSON-LD to your page */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
+        />
+        {/* ... */}
+      </section>
+      <Breadcrumb items={breadcrumbItems} />
 
       {/* Mobile Filter Toggle */}
       {isMobile && (

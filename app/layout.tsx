@@ -20,102 +20,89 @@ const poppins = Poppins({
   display: "swap",
 });
 
-// export const metadata: Metadata = {
-//   title: "",
-//   description:
-//     "",
-// };
 // --- 静态 Metadata 对象 ---
 
 // --- 基本站点信息 (从环境变量获取) ---
-// const siteUrl = process.env.NEXT_PUBLIC_SITE_URL; // Fallback for local dev
-// const siteName = process.env.SITE_NAME;
-// const defaultDescription = "Ratchet, E-Track, and Cargo Tie Down Straps - Xiangle Ratchet Strap"
-// const siteLogo = process.env.NEXT_PUBLIC_LOGO_URL;
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL; // Fallback for local dev
+const siteName = process.env.SITE_NAME;
+const defaultDescription =
+  "Ratchet, E-Track, and Cargo Tie Down Straps - Xiangle Ratchet Strap";
+const siteLogo = process.env.NEXT_PUBLIC_LOGO_URL;
 
-// // --- 站点范围的 Schema ---
-// // 这些通常在所有页面都一样, 可以在根布局生成
-// const websiteSchema = generateSchema({ type: 'WebSite', data: null });
-// const organizationSchema = generateSchema({ type: 'Organization', data: null });
-// const baseSchemaMetadata = embedSchema([websiteSchema, organizationSchema]); // Combine base schemas
+// --- 站点范围的 Schema ---
+// 这些通常在所有页面都一样, 可以在根布局生成
+const websiteSchema = generateSchema({ type: "WebSite", data: null });
+const organizationSchema = generateSchema({ type: "Organization", data: null });
+const baseSchemaMetadata = embedSchema([websiteSchema, organizationSchema]); // Combine base schemas
 
-// export const metadata: Metadata = {
-//   // **核心元数据**
-//   metadataBase: new URL(siteUrl), // !! 重要: 设置元数据 URL 基准
-//   title: {
-//     default: 'Ratchet, E-Track, and Cargo Tie Down Straps - Xiangle Ratchet Strap', // 默认标题 (用于首页或未指定标题的页面)
-//     template: `%s | ${siteName}`, // 标题模板 (子页面标题会替换 %s)
-//   },
-//   description: defaultDescription, // 默认描述
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default:
+      "Ratchet, E-Track, and Cargo Tie Down Straps - Xiangle Ratchet Strap",
+    template: `%s | ${siteName}`,
+  },
+  description: defaultDescription,
 
-//   // **应用和图标**
-//   applicationName: siteName,
-//   appleWebApp: { // iOS PWA 相关设置
-//     capable: true,
-//     title: siteName,
-//     statusBarStyle: 'default',
-//   },
-//   icons: { // Favicons 等
-//     icon: '/favicon.ico', // 指向 public 目录
-//     shortcut: '/favicon-16x16.png',
-//     apple: '/apple-touch-icon.png',
-//   },
+  applicationName: siteName,
+  appleWebApp: {
+    capable: true,
+    title: siteName,
+    statusBarStyle: "default",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
 
-//   // **Open Graph (社交分享) 默认值**
-//   openGraph: {
-//     title: siteName,
-//     description: defaultDescription,
-//     url: siteUrl, // 网站基础 URL
-//     siteName: siteName,
-//     // 提供一个默认的 OG 图片 (绝对路径)
-//     images: [
-//       {
-//         url: siteLogo, // 指向 public 目录下的默认 OG 图片
-//         width: 1200,
-//         height: 630,
-//       },
-//     ],
-//     locale: 'en_US', // 根据你的主要语言设置
-//     type: 'website', // 网站类型
-//   },
+  openGraph: {
+    title: siteName,
+    description: defaultDescription,
+    url: siteUrl,
+    siteName: siteName,
+    images: [
+      {
+        url: siteLogo,
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 
-//   // **Twitter 卡片默认值**
-//   twitter: {
-//     card: 'summary_large_image', // 卡片类型
-//     title: siteName,
-//     description: defaultDescription,
-//     // images: [`${siteUrl}/twitter-default.png`], // 可以设置不同的默认 Twitter 图片
-//     // siteId: '关联的 Twitter 应用 ID (可选)',
-//   },
+  // **Twitter 卡片默认值**
+  twitter: {
+    card: "summary_large_image", // 卡片类型
+    title: siteName,
+    description: defaultDescription,
+  },
 
-//   // **其他技术性元数据**
-//   robots: { // 默认允许爬虫索引和跟随链接
-//     index: true,
-//     follow: true,
-//     googleBot: {
-//       index: true,
-//       follow: true,
-//       'max-video-preview': -1,
-//       'max-image-preview': 'large',
-//       'max-snippet': -1,
-//     },
-//   },
-//   alternates: { // 可以在这里设置首页的 canonical URL
-//     canonical: '/', // 或 siteUrl
-//   },
-//   other: { // 嵌入基础 JSON-LD (WebSite, Organization)
-//     ...baseSchemaMetadata, // 展开之前生成的 Schema 对象
-//     // 你也可以在这里添加其他自定义 <meta> 标签
-//     // 'custom-tag': 'some-value',
-//   },
-// };
+  // **其他技术性元数据**
+  robots: {
+    // 默认允许爬虫索引和跟随链接
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    // 可以在这里设置首页的 canonical URL
+    canonical: siteUrl, // 或 siteUrl
+  },
+};
 
 // --- Viewport 设置 (通常在根布局定义) ---
-// export const viewport: Viewport = {
-//   width: 'device-width',
-//   initialScale: 1,
-// };
-
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 async function fetchCategories(): Promise<ProductCategory[]> {
   try {
@@ -136,41 +123,16 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-        <NextSeo
-      title="Using More of Config"
-      description="This example uses more of the available config options."
-      canonical="https://www.canonical.ie/"
-      openGraph={{
-        url: 'https://www.url.ie/a',
-        title: 'Open Graph Title',
-        description: 'Open Graph Description',
-        images: [
-          {
-            url: 'https://www.example.ie/og-image-01.jpg',
-            width: 800,
-            height: 600,
-            alt: 'Og Image Alt',
-            type: 'image/jpeg',
-          },
-          {
-            url: 'https://www.example.ie/og-image-02.jpg',
-            width: 900,
-            height: 800,
-            alt: 'Og Image Alt Second',
-            type: 'image/jpeg',
-          },
-          { url: 'https://www.example.ie/og-image-03.jpg' },
-          { url: 'https://www.example.ie/og-image-04.jpg' },
-        ],
-        siteName: 'SiteName',
-      }}
-      twitter={{
-        handle: '@handle',
-        site: '@site',
-        cardType: 'summary_large_image',
-      }}
-    />
+        <link
+          rel="sitemap"
+          type="application/xml"
+          title="Sitemap"
+          href="/sitemap.xml"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: baseSchemaMetadata }}
+        />
       </head>
       <body className={`${poppins.className} antialiased`}>
         {/* 使用 Provider 包裹需要共享数据的部分 */}

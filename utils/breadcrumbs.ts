@@ -1,6 +1,7 @@
 import { Product } from '@/types/product'
 import { ProductCategory } from '@/types/productCategory'
 import { BreadcrumbItem } from '@/types/breadcrumbItem'
+import { Blog } from '@/types/blog'
 
 export function generateCategoryBreadcrumbs(category: ProductCategory | null): BreadcrumbItem[] {
   const items: BreadcrumbItem[] = []
@@ -53,6 +54,24 @@ export function generateProductBreadcrumbs(product: Product | null): BreadcrumbI
   items.push({
     name: product.name,
     href: `/products/${product.slug}`
+  })
+  
+  return items
+} 
+
+export function generateBlogBreadcrumbs(blog: Blog | null): BreadcrumbItem[] {
+  const items: BreadcrumbItem[] = []
+  items.push({
+    name: 'blog',
+    href: '/blogs'
+  })
+  if (!blog) {
+    return items
+  }
+
+  items.push({
+    name: blog.title,
+    href: `/blogs/${blog.slug}`
   })
   
   return items

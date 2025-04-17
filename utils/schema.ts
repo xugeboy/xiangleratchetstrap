@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Blog } from "@/types/blog";
 import { Product } from "@/types/product";
 import { ProductCategory } from "@/types/productCategory";
@@ -6,7 +5,7 @@ import { BreadcrumbItem } from "@/types/breadcrumbItem";
 
 // --- Configuration (Consider moving to environment variables) ---
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
-const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
+const SITE_NAME = process.env.NEXT_PUBLIC_ORGANIZATION_NAME;
 const ORGANIZATION_NAME = process.env.NEXT_PUBLIC_ORGANIZATION_NAME;
 const ORGANIZATION_LOGO_URL = process.env.NEXT_PUBLIC_LOGO_URL;
 
@@ -32,7 +31,7 @@ function getWebSiteSchema() {
     "@type": "WebSite",
     url: SITE_URL,
     name: SITE_NAME,
-    publisher: getOrganizationSchema(), // Nest Organization
+    inLanguage: "en",
   };
 }
 
@@ -151,6 +150,7 @@ export type SchemaType =
   | "Article"
   | "Product"
   | "BreadcrumbList"
+  | "CollectionPage" 
   | "WebSite"
   | "Organization";
 
@@ -178,6 +178,11 @@ export function generateSchema(props: GenerateSchemaProps): object | null {
       case "BreadcrumbList":
         if (!breadcrumbItems) return null;
         return generateBreadcrumbSchema(breadcrumbItems);
+      case "CollectionPage":
+        if (!data) {
+            return null;
+        }
+        return generateCollectionPageSchema(data as ProductCategory, slug);
       case "WebSite":
         return getWebSiteSchema();
       case "Organization":
@@ -193,32 +198,94 @@ export function generateSchema(props: GenerateSchemaProps): object | null {
 }
 
 /**
+ * Generates CollectionPage Schema from Strapi ProductCategory Data
+ */
+function generateCollectionPageSchema(category: ProductCategory, slug: string) {
+  if (!category) return null;
+
+  const url = `${SITE_URL}/categories/${slug}`;
+
+  const categoryImage = category.featured_image
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage", // Could also be ItemList if primarily listing products
+    name: category.name,
+    description: category.seo_description,
+    url: url,
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website` // Reference the WebSite @id
+    },
+    image: categoryImage ? {
+      "@type": "ImageObject",
+      url: categoryImage.url,
+      width: 1200,
+      height: 1200,
+      caption: category.name,
+    } : undefined,
+  };
+
+  // Cleanup undefined properties
+  Object.keys(schema).forEach(
+    (key) => schema[key] === undefined && delete schema[key]
+  );
+  if (schema.image && !schema.image.url) delete schema.image;
+  // if (schema.mainEntity && schema.mainEntity.itemListElement.length === 0) delete schema.mainEntity;
+
+
+  return schema;
+}
+
+/**
  * Helper to embed schema JSON-LD into Next.js Metadata object
+ * Can accept a single schema object or an array
+ */
+/**
+ * Helper to embed schema JSON-LD into Next.js Metadata object's script tag content
  * Can accept a single schema object or an array
  */
 export function embedSchema(
   schema: object | (object | null)[] | null
-): string | null {
+): string | undefined { // Return undefined if nothing to embed
   if (!schema) {
     return undefined;
   }
 
+  // Filter out any null or undefined schemas if an array is passed
   const schemas = Array.isArray(schema)
-    ? schema.filter((s) => s !== null)
+    ? schema.filter((s): s is object => s !== null && s !== undefined)
     : [schema];
 
   if (schemas.length === 0) {
-    return undefined;
+    return undefined; // Nothing valid to embed
   }
 
-  // If multiple schemas, wrap them in a graph
-  const ldJson =
-    schemas.length > 1
-      ? {
-          "@context": "https://schema.org",
-          "@graph": schemas,
-        }
-      : schemas[0];
+  // Determine the final JSON-LD structure
+  let ldJson: object;
+  if (schemas.length === 1) {
+    // If only one schema, use it directly (ensure it has @context)
+    ldJson = schemas[0].hasOwnProperty('@context')
+      ? schemas[0]
+      : { "@context": "https://schema.org", ...schemas[0] };
+  } else {
+    // If multiple schemas, wrap them in a @graph array
+    // Ensure each item in the graph does *not* have its own @context
+    const graphItems = schemas.map(s => {
+        const { ['@context']: _, ...rest } = s; // Remove @context from individual items
+        return rest;
+    });
+    ldJson = {
+      "@context": "https://schema.org",
+      "@graph": graphItems,
+    };
+  }
 
-  return JSON.stringify(ldJson, null, 2);
+  try {
+    // Stringify the final JSON-LD object
+    return JSON.stringify(ldJson, null, 2); // Pretty print for readability in source
+  } catch (error) {
+      console.error("Error stringifying JSON-LD schema:", error);
+      return undefined; // Return undefined on error
+  }
 }
