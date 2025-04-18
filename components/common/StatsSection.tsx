@@ -6,9 +6,9 @@ import GradientText from "@/reactbits/TextAnimations/GradientText/GradientText";
 
 const stats = [
   { id: 1, name: "Years of business", value: 16, suffix: "+" },
-  { id: 2, name: "Business partners", value: 10000, suffix: "+" },
-  { id: 3, name: "Bulk orders fulfilled", value: 200000, suffix: "+" },
-  { id: 4, name: "On-time delivery rate", value: 99, suffix: "%" },
+  { id: 2, name: "Business partners", value: 1000, suffix: "+" },
+  { id: 3, name: "Bulk orders fulfilled", value: 20000, suffix: "+" },
+  { id: 4, name: "On-time delivery rate", value: 100, suffix: "%" },
   { id: 5, name: "Available products", value: "1000", suffix: "+" },
 ];
 

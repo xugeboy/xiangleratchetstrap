@@ -9,7 +9,7 @@ export default function CapabilitiesSection() {
           <div className="relative w-full h-[700px]">
             <Image
               alt="why-xiangle-apart"
-              src="https://res.cloudinary.com/duimeqqch/image/upload/v1744186569/why-us-apart_j1wowp.jpg"
+              src="https://res.cloudinary.com/duimeqqch/image/upload/v1744958133/why-us-apart_jqszvd.jpg"
               fill
               className="object-cover rounded-lg"
             />

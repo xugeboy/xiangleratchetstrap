@@ -9,9 +9,9 @@ import Cav from "@/components/product/Cav";
 import ImageGallery from "@/components/product/ImageGallery";
 import ProductInfo from "@/components/product/ProductInfo";
 import RelatedArticles from "@/components/product/RelatedArticles";
-import { fetchAPI } from "@/utils/fetch-api";
 import { generateSchema } from "@/utils/schema";
 import { embedSchema } from "@/utils/schema";
+import AlternatingContent from "@/components/product/AlternatingContent";
 
 interface ProductPageProps {
   params: {
@@ -141,9 +141,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       {/* Product details */}
       <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-          Product details
-        </h2>
+        {/* <AlternatingContent itmes=></AlternatingContent> */}
         <Cav products={product.related_products} />
         <StatsSection />
         <QuoteForm />

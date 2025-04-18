@@ -29,4 +29,6 @@ export interface Product {
     product_weight?: string;
     seo_title?: string;
     seo_description?: string;
+    publishedAt: string;
+    updatedAt: string;
 }

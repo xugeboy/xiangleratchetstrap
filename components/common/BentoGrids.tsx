@@ -18,6 +18,13 @@ export default function BentoGrids() {
               <p className="mt-2 text-lg font-medium tracking-tight text-gray-950">
                 Factory-Direct Production
               </p>
+              <Image
+                alt="custom_product__capabilities"
+                src="https://res.cloudinary.com/duimeqqch/image/upload/v1744959681/factory_production_mgldoj.jpg"
+                width={600}
+                height={600}
+                className="object-fill"
+              />
               <p className="mt-2 max-w-lg text-sm/6 text-gray-600">
                 As a manufacturer, we oversee the entire production process,
                 ensuring strict quality control and cost efficiency. Our
@@ -37,6 +44,13 @@ export default function BentoGrids() {
               <p className="mt-2 text-lg font-medium tracking-tight text-gray-950">
                 Fast & Reliable Delivery
               </p>
+              <Image
+                alt="custom_product__capabilities"
+                src="https://res.cloudinary.com/duimeqqch/image/upload/v1744959235/fast_delivery_emjngs.jpg"
+                width={600}
+                height={600}
+                className="object-fill"
+              />
               <p className="mt-2 max-w-lg text-sm/6 text-gray-600">
                 With an optimized production line and a robust logistics
                 network, we ensure quick order fulfillment. Bulk orders are

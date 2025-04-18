@@ -18,28 +18,28 @@ const people = [
     },{
         name: 'Dustin Xu',
         role: 'Sales Assistant Manager',
-        year: '- 2 years at Xianlge -',
+        year: '- 5 years at Xianlge -',
         imageUrl:
           'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/dustin_io6avf.png',
         bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
       },{
         name: 'Warren Wu',
         role: 'Foreign Trade Sales',
-        year: '- 5 years at Xianlge -',
+        year: '- 9 years at Xianlge -',
         imageUrl:
           'https://res.cloudinary.com/duimeqqch/image/upload/v1744176225/warren_a8mhba.png',
         bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
       },{
         name: 'Alex Zuo',
         role: 'Foreign Trade Sales',
-        year: '- 6 years at Xianlge -',
+        year: '- 10 years at Xianlge -',
         imageUrl:
           'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/alex_bsu0jc.png',
         bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
       },{
         name: 'Chloe He',
         role: 'Foreign Trade Sales',
-        year: '- 2 years at Xianlge -',
+        year: '- 5 years at Xianlge -',
         imageUrl:
           'https://res.cloudinary.com/duimeqqch/image/upload/v1744176355/chloe_tv3t9c.png',
         bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',

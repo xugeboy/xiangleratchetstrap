@@ -35,41 +35,27 @@ const timeline = [
 export default function Example() {
   return (
     <div>
-      <div className="relative isolate -z-10 overflow-hidden bg-linear-to-b from-indigo-100/20 pt-14">
-        <div
-          aria-hidden="true"
-          className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white ring-1 shadow-xl shadow-indigo-600/10 ring-indigo-50 sm:-mr-80 lg:-mr-96"
-        />
-        <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
-            {/* <h1 class="max-w-2xl text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">We’re changing the way people connect</h1> */}
-            <h1 className="max-w-2xl text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">
-              Our Mission & Vision
-            </h1>
-            <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
-              <p className="text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-                At Xiangle Ratchet Strap, our mission and vision are
-                intertwined: to empower small and medium-sized enterprises
-                (SMBs) worldwide by providing dependable, high-performance, and
-                safe tie-down solutions that ensure efficiency and peace of
-                mind. We are committed to offering high-quality, competitively
-                priced, and highly customized one-stop cargo control solutions, fostering a
-                strong partnership that enables us to grow together with our
-                customers and contribute to their success in confidently
-                securing their shipments, structures, and projects.
-              </p>
-            </div>
-            <Image
-              alt=""
-              src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
-              className="mt-10 aspect-6/5 w-full max-w-lg rounded-2xl object-cover sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 xl:mt-36"
-              width={300}
-              height={300}
-            />
+      <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
+          <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">
+            About Xianlge
+          </h1>
+          <div className="mt-6 lg:mt-0">
+            <p className="text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
+              At Xiangle Ratchet Strap, our mission and vision are intertwined:
+              to empower small and medium-sized enterprises (SMBs) worldwide by
+              providing dependable, high-performance, and safe tie-down
+              solutions that ensure efficiency and peace of mind. We are
+              committed to offering high-quality, competitively priced, and
+              highly customized one-stop cargo control solutions, fostering a
+              strong partnership that enables us to grow together with our
+              customers and contribute to their success in confidently securing
+              their shipments, structures, and projects.
+            </p>
           </div>
         </div>
-        <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-linear-to-t from-white sm:h-32" />
       </div>
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-linear-to-t from-white sm:h-32" />
 
       {/* Timeline section */}
       <div className="mx-auto -mt-8 max-w-7xl px-6 lg:px-8 mb-40">
@@ -126,7 +112,7 @@ export default function Example() {
           <div className="w-full lg:max-w-xl lg:flex-auto">
             <Image
               alt="custom_product__capabilities"
-              src="https://res.cloudinary.com/duimeqqch/image/upload/v1744613195/custom_product__capabilities_np35yw.jpg"
+              src="https://res.cloudinary.com/duimeqqch/image/upload/v1744955344/custom_options_raqkxy.jpg"
               width={576}
               height={576}
             />
@@ -157,38 +143,38 @@ export default function Example() {
               <div className="w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
                 <Image
                   alt=""
-                  src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
-                  className="aspect-7/5 w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover"
+                  src="https://res.cloudinary.com/duimeqqch/image/upload/v1744955344/custom_options_raqkxy.jpg"
+                  className="aspect-7/5 w-[37rem] max-w-none rounded-2xl bg-gray-50"
                   width={300}
-                  height={300}
+                  height={600}
                 />
               </div>
               <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
                 <div className="order-first flex w-64 flex-none justify-end self-end lg:w-auto">
                   <Image
-                    alt=""
-                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
-                    className="aspect-4/3 w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
-                    width={300}
+                    alt="tested_quality"
+                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744955344/tested_quality_uoophk.jpg"
+                    className="aspect-4/3 w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50"
+                    width={600}
                     height={300}
                   />
                 </div>
                 <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
                   <Image
                     alt=""
-                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
-                    className="aspect-7/5 w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
+                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744955344/tested_quality_uoophk.jpg"
+                    className="aspect-7/5 w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50"
                     width={300}
-                    height={300}
+                    height={600}
                   />
                 </div>
                 <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">
                   <Image
-                    alt=""
-                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
-                    className="aspect-4/3 w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover"
+                    alt="gs_certificated"
+                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744962148/GS_CERTIFICATED_h2ri7d.jpg"
+                    className="aspect-4/3 w-[24rem] max-w-none rounded-2xl bg-gray-50"
                     width={300}
-                    height={300}
+                    height={600}
                   />
                 </div>
               </div>
@@ -219,8 +205,8 @@ export default function Example() {
             {/* 图片区域 - 放左边 */}
             <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
               <Image
-                alt=""
-                src="https://res.cloudinary.com/duimeqqch/image/upload/v1744277874/global_reach_iic60m.png"
+                alt="global reach"
+                src="https://res.cloudinary.com/duimeqqch/image/upload/v1744961092/global_reach_h6hh9h.png"
                 className="max-w-none rounded-2xl bg-gray-50"
                 width={718}
                 height={387}

@@ -13,4 +13,6 @@ export interface ProductCategory {
     products?: Product[];
     seo_title?: string;
     seo_description?: string;
+    publishedAt: Date;
+    updatedAt: Date;
   }

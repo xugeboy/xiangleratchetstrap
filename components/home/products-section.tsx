@@ -13,19 +13,19 @@ const products = [
       "https://res.cloudinary.com/duimeqqch/image/upload/v1744354626/clean_ruzf8i.jpg",
     beforeAlt: "before",
     afterAlt: "after",
-    link: '/products/1"-retractable-ratchet-strap',
+    link: '/products/1inch-retractable-ratchet-strap',
   },
   {
-    title: '1.5" Motorcycle Cam Buckle Tie Down Strap with Swivel Carabiner',
+    title: '1" 316 Garde Stainless Steel Ratchet Strap with Double J Hook',
     description:
-      "Heavy-duty tie-down with swivel carabiner—built for secure, scratch-free motorcycle and powersport transport.",
+      "Designed for marine and heavy-duty outdoor use, this corrosion-resistant tie-down strap offers long-lasting performance in harsh environments. Ideal for boats, trailers, and industrial applications.",
     beforeImage:
-      "https://res.cloudinary.com/duimeqqch/image/upload/v1744272807/auto_retractable_ratchet_strap_lg7pxh.jpg",
+      "https://res.cloudinary.com/duimeqqch/image/upload/v1744957762/rusty_ratchet_buckle_dule2b.jpg",
     afterImage:
-      "https://res.cloudinary.com/duimeqqch/image/upload/v1744273892/spare_tire_y_strap_jemgzg.jpg",
+      "https://res.cloudinary.com/duimeqqch/image/upload/v1744957763/316ss_ratchet_buckle_yspy0c.jpg",
     beforeAlt: "before",
     afterAlt: "after",
-    link: '/products/1.5"-motorcycle-tie-down-strap-with-swivel-carabiner',
+    link: '/products/1inch-316-garde-stainless-steel-ratchet-strap-with-double-j-hook',
   }
 ];
 

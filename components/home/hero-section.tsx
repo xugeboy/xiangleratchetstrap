@@ -12,21 +12,21 @@ const heroSlides = [
     image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg",
     title: "ENGINEERING EXCELLENCE",
     subtitle: "SINCE 2006",
-    description: "Engineering a better tomorrow by manufacturing solutions for today.",
+    description: "Engineering a better tomorrow by OEM&ODM manufacturing solutions for today.",
   },
   {
     id: 2,
-    image: "/placeholder.svg?height=600&width=1920",
-    title: "INNOVATIVE SOLUTIONS",
+    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744965567/cargo_control_xaiwx5.webp",
+    title: "ONE STOP SOLUTION",
     subtitle: "FOR YOUR BUSINESS",
-    description: "Cutting-edge technology and precision engineering for optimal performance.",
+    description: "All-in-one supply chain support — fast, flexible, and built for your industry.",
   },
   {
     id: 3,
-    image: "/placeholder.svg?height=600&width=1920",
+    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744966920/quality_guaranteed_my88ns.jpg",
     title: "QUALITY GUARANTEED",
     subtitle: "EVERY TIME",
-    description: "Rigorous testing and premium materials ensure reliability and durability.",
+    description: "From raw materials to finished goods, every step is backed by trusted certifications you can rely on.",
   },
 ]
 
@@ -85,7 +85,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative w-full h-[600px] bg-black overflow-hidden"
+      className="relative w-full h-[600px] overflow-hidden"
       onMouseEnter={pauseAutoplay}
       onMouseLeave={resumeAutoplay}
     >
