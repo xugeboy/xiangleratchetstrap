@@ -18,12 +18,12 @@ import { useMediaQuery } from "@/hooks/useMobile";
 import { CategorySidebar } from "@/components/product/categories/CategorySidebar";
 import { ViewControls } from "@/components/product/categories/ViewControls";
 import { ProductGrid } from "@/components/product/categories/ProductGrid";
-import { ProductModels } from "@/components/product/categories/ProductModels";
 
 // Import types (adjust ProductCategory if it differs significantly from ContextCategory)
 import type { ProductCategory } from "@/types/productCategory"; // Keep if needed for specific fields not in ContextCategory
 import type { BreadcrumbItem } from "@/types/breadcrumbItem";
 import { FilterOption, ProductFilter } from "@/types/productFilter";
+import BlocksClient from "@/components/common/BlocksClient";
 
 import { generateSchema, embedSchema } from "@/utils/schema";
 
@@ -230,10 +230,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
 
           {/* Product Models Section */}
           {currentCategory && currentCategory.description && (
-            <ProductModels
-              categoryName={currentCategory.name}
-              description={currentCategory.description}
-            />
+            <BlocksClient content={currentCategory.description} />
           )}
         </div>
       </div>

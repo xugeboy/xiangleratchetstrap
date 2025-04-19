@@ -23,7 +23,7 @@ export async function generateStaticParams() {
   const allProducts = await getAllProductSlug();
   return allProducts.map((product) => ({
     slug: product.slug,
-  }))
+  }));
 }
 
 // --- 环境变量 ---
@@ -41,8 +41,8 @@ export async function generateMetadata(
   if (!productData) {
     // 可以返回一个简单的 404 元数据
     return {
-      title: 'product not found',
-      description: 'Sorry, the product you requested could not be found.',
+      title: "product not found",
+      description: "Sorry, the product you requested could not be found.",
       robots: { index: false },
     };
   }
@@ -52,7 +52,7 @@ export async function generateMetadata(
   const pageDescription = productData.seo_description; // 优先 SEO 描述，然后是摘要
   const canonicalUrl = `${siteUrl}/products/${slug}`;
   const featured_image = productData.featured_image;
-  const ogImageUrl = featured_image.url
+  const ogImageUrl = featured_image.url;
   const ogImageAlt = pageTitle;
 
   // --- 返回页面特定的 Metadata ---
@@ -73,7 +73,8 @@ export async function generateMetadata(
       url: canonicalUrl, // 使用页面的规范链接
       publishedTime: productData.publishedAt, // ISO 8601 格式
       modifiedTime: productData.updatedAt, // 更新时间或发布时间
-      images: [ // 提供具体图片
+      images: [
+        // 提供具体图片
         {
           url: ogImageUrl,
           width: 1200,
@@ -95,7 +96,7 @@ export async function generateMetadata(
     // **覆盖或添加其他元数据**
     // robots: { index: true, follow: true }, // 通常继承 layout 的设置
     other: {
-      ['og:type']: 'product'
+      ["og:type"]: "product",
     },
   };
 }
@@ -110,22 +111,30 @@ export default async function ProductPage({ params }: ProductPageProps) {
     redirect("/404");
   }
 
-    // --- 生成 Schema ---
-    const articleSchema = generateSchema({ type: 'Product', data: product, slug });
-    const breadcrumbSchema = generateSchema({ type: 'BreadcrumbList', breadcrumbItems });
-    const schemaMetadataJson = embedSchema([articleSchema, breadcrumbSchema].filter(Boolean));
-  
+  // --- 生成 Schema ---
+  const articleSchema = generateSchema({
+    type: "Product",
+    data: product,
+    slug,
+  });
+  const breadcrumbSchema = generateSchema({
+    type: "BreadcrumbList",
+    breadcrumbItems,
+  });
+  const schemaMetadataJson = embedSchema(
+    [articleSchema, breadcrumbSchema].filter(Boolean)
+  );
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <section>
-      {/* Add JSON-LD to your page */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
-      />
-      {/* ... */}
-    </section>
+        {/* Add JSON-LD to your page */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
+        />
+        {/* ... */}
+      </section>
       <Breadcrumb items={breadcrumbItems} />
       {/* Product content */}
       <div className="lg:grid lg:grid-cols-[40%_auto] lg:items-start lg:gap-x-8 py-8">
@@ -141,8 +150,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       {/* Product details */}
       <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-        {/* <AlternatingContent itmes=></AlternatingContent> */}
-        <Cav products={product.related_products} />
+        {product.alternating_content.length > 0 && (
+          <AlternatingContent
+            items={product.alternating_content}
+          ></AlternatingContent>
+        )}
+
+        {product.related_products.length > 0 && (
+          <Cav products={product.related_products} />
+        )}
         <StatsSection />
         <QuoteForm />
       </div>

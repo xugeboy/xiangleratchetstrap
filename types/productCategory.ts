@@ -4,7 +4,7 @@ import { Gallery } from "./gallery";
 export interface ProductCategory {
     id: number;
     name: string;
-    description?: string;
+    description: [];
     slug: string;
     sort: number;
     featured_image?: Gallery;

@@ -13,7 +13,7 @@ const navigation = {
   company: [
     { name: "About Us", href: "/about-us" },
     { name: "Contact Us", href: "/contact-us" },
-    { name: "Blog", href: "/blog" },
+    { name: "Blog", href: "/blogs" },
     { name: "Meet The Team", href: "/business-solutions/#meet-the-team" },
   ],
   support: [

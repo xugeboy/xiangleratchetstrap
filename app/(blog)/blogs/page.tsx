@@ -10,13 +10,14 @@ interface BlogsPageProps {
   };
 }
 
-function formatDateYYYYMMDD(date) {
-  const year = date.getFullYear();
-  // getMonth is 0-indexed, so add 1. Pad with '0' if needed.
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  // Pad day with '0' if needed.
-  const day = date.getDate().toString().padStart(2, "0");
-  return `${year}-${month}-${day}`;
+function formatDateToLongEnglish(input) {
+  const date = typeof input === "string" ? new Date(input) : input;
+
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 }
 
 export default async function BlogsPage({ searchParams }: BlogsPageProps) {
@@ -93,12 +94,12 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-8">News</h1>
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold text-center mb-8">Blogs</h1>
 
       {/* Blog Grid */}
       {data.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {data.map((blog) => (
             <div key={blog.id} className="flex flex-col">
               <Link
@@ -107,34 +108,32 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
               >
                 <div className="relative h-48 mb-2 overflow-hidden rounded-lg group">
                   <Image
-                    // Use cover_image from interface, provide fallback
-                    src={blog.cover_image || "/placeholder.svg"}
-                    alt={blog.title} // Alt text is good
+                    src={blog.cover_image.url}
+                    alt={blog.title}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105" // Added hover effect
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition-opacity duration-300"></div>{" "}
                   {/* Optional overlay */}
                 </div>
               </Link>
               {/* Use optional chaining for date if it might be missing */}
               {blog.createdAt && (
-                <div className="text-sm text-gray-500 mb-1">
-                  {formatDateYYYYMMDD(blog.createdAt)}
+                <div className="text-sm text-center text-gray-500 mb-1">
+                  {formatDateToLongEnglish(blog.createdAt)}
                 </div>
               )}
               <Link href={`/blogs/${blog.slug}`} className="mb-2">
-                <h2 className="text-lg font-semibold hover:text-gray-700 transition-colors line-clamp-2">
+                <h2 className="text-md font-semibold text-center hover:text-gray-700 transition-colors line-clamp-2">
                   {blog.title}
                 </h2>
+                {/* Use optional chaining for excerpt */}
+                {blog.excerpt && (
+                  <p className="text-sm text-gray-600 text-center line-clamp-3">
+                    {blog.excerpt}
+                  </p>
+                )}
               </Link>
-              {/* Use optional chaining for excerpt */}
-              {blog.excerpt && (
-                <p className="text-sm text-gray-600 line-clamp-3">
-                  {blog.excerpt}
-                </p>
-              )}
             </div>
           ))}
         </div>

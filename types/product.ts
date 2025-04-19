@@ -1,6 +1,7 @@
 import { Blog } from "./blog";
 import { ProductCategory } from "./productCategory";
 import { Galleries, Gallery } from "./gallery";
+import { ContentItem } from "@/components/product/AlternatingContent";
 
 export interface Product {
     id: number;
@@ -27,6 +28,7 @@ export interface Product {
     ratchet_handle?: string;
     finish?: string;
     product_weight?: string;
+    alternating_content?: ContentItem[]
     seo_title?: string;
     seo_description?: string;
     publishedAt: string;

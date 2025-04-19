@@ -88,13 +88,13 @@ export function ProductGrid({
                     className="group block"
                   >
                     <div className="relative aspect-square overflow-hidden bg-gray-100 mb-4">
-                      {product.gallery && product.gallery[0] && (
+                      {product.featured_image && (
                         <Image
-                          src={product.gallery[0].url || "/placeholder.svg"}
+                          src={product.featured_image.url}
                           alt={product.name}
                           fill
                           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                          className="object-contain p-4"
+                          className="object-scale-down"
                         />
                       )}
                     </div>

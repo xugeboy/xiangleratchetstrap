@@ -2,7 +2,23 @@ import { fetchAPI } from "@/utils/fetch-api";
 import { Blog } from "@/types/blog";
 
 export async function getBlogDetail(slug: string): Promise<Blog | null> {
-  return await fetchAPI(`/getBlogDetail/${slug}`);
+  try {
+    const response = await fetchAPI(`/getBlogDetail/${slug}`);
+    return response.data || null;
+  } catch (error) {
+    console.error("Error fetching blog slug:", error);
+    return null;
+  }
+}
+
+export async function getBlogMetaDataBySlug(slug: string): Promise<Blog | null> {
+  try {
+    const response = await fetchAPI(`/getBlogMetaDataBySlug/${slug}`);
+    return response.data || null;
+  } catch (error) {
+    console.error("Error fetching blog slug:", error);
+    return null;
+  }
 }
 
 export async function getAllBlogSlug(): Promise<Blog[] | null> {
