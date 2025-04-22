@@ -1,23 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
-import { getBlogList } from "@/services/api/blog"; // Assuming this path is correct
+import { getBlogList } from "@/services/api/blog";
+import formatDateToLongEnglish from "@/utils/formatUtils";
 
 // --- Component ---
 interface BlogsPageProps {
   searchParams?: {
     page?: string;
   };
-}
-
-function formatDateToLongEnglish(input) {
-  const date = typeof input === "string" ? new Date(input) : input;
-
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
 }
 
 export default async function BlogsPage({ searchParams }: BlogsPageProps) {

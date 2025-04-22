@@ -106,7 +106,7 @@ export const viewport: Viewport = {
 
 async function fetchCategories(): Promise<ProductCategory[]> {
   try {
-    const res = await fetchAPI("/getAllCategorySlugAndChildren");
+    const res = await fetchAPI("/getAllCategories");
     return res.data || null;
   } catch (error) {
     console.error("Error fetching categories:", error);

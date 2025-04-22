@@ -10,7 +10,6 @@ export default function ProductsPage() {
   const { rootCategories } = useCategories()
 
   const breadcrumbItems = [
-    { name: 'Home', href: '/' },
     { name: 'Products', href: '/products' }
   ]
 
@@ -30,7 +29,7 @@ export default function ProductsPage() {
       </div>
 
       {/* Categories Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {rootCategories?.map((category) => (
           <Link key={category.id} href={`/categories/${category.slug}`} className="group">
             <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
@@ -45,14 +44,9 @@ export default function ProductsPage() {
               )}
             </div>
             <div className="mt-4">
-              <h3 className="text-lg font-medium text-gray-900 group-hover:text-yellow-600">
+              <h3 className="text-lg font-medium text-gray-900 text-center group-hover:text-yellow-600">
                 {category.name}
               </h3>
-              {category.description && (
-                <p className="mt-2 text-sm text-gray-600 line-clamp-2">
-                  {category.description}
-                </p>
-              )}
             </div>
           </Link>
         ))}

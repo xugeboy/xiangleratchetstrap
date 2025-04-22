@@ -113,8 +113,9 @@ export default function Example() {
             <Image
               alt="custom_product__capabilities"
               src="https://res.cloudinary.com/duimeqqch/image/upload/v1744955344/custom_options_raqkxy.jpg"
-              width={576}
-              height={576}
+              width={600}
+              height={600}
+              className="object-scale-down"
             />
           </div>
         </div>
@@ -143,28 +144,19 @@ export default function Example() {
               <div className="w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
                 <Image
                   alt=""
-                  src="https://res.cloudinary.com/duimeqqch/image/upload/v1744955344/custom_options_raqkxy.jpg"
-                  className="aspect-7/5 w-[37rem] max-w-none rounded-2xl bg-gray-50"
-                  width={300}
+                  src="https://res.cloudinary.com/duimeqqch/image/upload/v1745291515/SCALE_CAPACITY_kjmie6.jpg"
+                  className="aspect-7/5 w-[37rem] max-w-none rounded-2xl bg-gray-50 object-scale-down"
+                  width={592}
                   height={600}
                 />
               </div>
               <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
-                <div className="order-first flex w-64 flex-none justify-end self-end lg:w-auto">
-                  <Image
-                    alt="tested_quality"
-                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744955344/tested_quality_uoophk.jpg"
-                    className="aspect-4/3 w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50"
-                    width={600}
-                    height={300}
-                  />
-                </div>
                 <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
                   <Image
                     alt=""
-                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744955344/tested_quality_uoophk.jpg"
-                    className="aspect-7/5 w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50"
-                    width={300}
+                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1745291515/PRECISION_SKILL_u0bfdk.jpg"
+                    className="aspect-7/5 w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-scale-down"
+                    width={592}
                     height={600}
                   />
                 </div>
@@ -175,6 +167,15 @@ export default function Example() {
                     className="aspect-4/3 w-[24rem] max-w-none rounded-2xl bg-gray-50"
                     width={300}
                     height={600}
+                  />
+                </div>
+                <div className="order-first flex w-64 flex-none justify-end self-end lg:w-auto">
+                  <Image
+                    alt="tested_quality"
+                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744955344/tested_quality_uoophk.jpg"
+                    className="aspect-4/3 w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50"
+                    width={600}
+                    height={300}
                   />
                 </div>
               </div>

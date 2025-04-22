@@ -31,6 +31,16 @@ export async function getAllBlogSlug(): Promise<Blog[] | null> {
   }
 }
 
+export async function getLatestBlogs(): Promise<Blog[] | null> {
+  try {
+    const response = await fetchAPI("/getLatestArticles");
+    return response.data || null;
+  } catch (error) {
+    console.error("Error fetching latest articles:", error);
+    return null;
+  }
+}
+
 export async function getBlogList(
   page: number = 1
 ): Promise<{

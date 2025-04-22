@@ -7,11 +7,11 @@ import {
 } from "@/services/api/blog";
 import { redirect } from "next/navigation";
 import { generateBlogBreadcrumbs } from "@/utils/breadcrumbs";
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import BlocksClient from "@/components/common/BlocksClient";
+import formatDateToLongEnglish from "@/utils/formatUtils";
 
 interface BlogPageProps {
   params: {
@@ -19,15 +19,6 @@ interface BlogPageProps {
   };
 }
 
-function formatDateToLongEnglish(input) {
-  const date = typeof input === "string" ? new Date(input) : input;
-
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
 
 export async function generateStaticParams() {
   const allBlogs = await getAllBlogSlug();

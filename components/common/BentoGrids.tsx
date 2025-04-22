@@ -74,10 +74,10 @@ export default function BentoGrids() {
               </p>
               <Image
                 alt="custom_product__capabilities"
-                src="https://res.cloudinary.com/duimeqqch/image/upload/v1744613195/custom_product__capabilities_np35yw.jpg"
+                src="https://res.cloudinary.com/duimeqqch/image/upload/v1745298278/Custom_Branding_Options_pcebaz.png"
                 width={300}
                 height={300}
-                className="object-fill"
+                className="object-scale-down"
               />
               <p className="mt-2 max-w-lg text-sm/6 text-gray-600">
                 Every business is unique, and so are its requirements. We offer
@@ -91,7 +91,6 @@ export default function BentoGrids() {
         <div className="relative lg:col-span-2">
           <div className="absolute inset-px rounded-lg bg-white" />
           <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
-            {/* <CloudinaryImage publicId="bento-01-performance" alt="Performance" className="h-80 object-cover"></CloudinaryImage> */}
             <div className="p-10 pt-4">
               <h3 className="text-sm/4 font-semibold text-indigo-600">
                 Expertise{" "}
@@ -99,6 +98,13 @@ export default function BentoGrids() {
               <p className="mt-2 text-lg font-medium tracking-tight text-gray-950">
                 Industry-Leading Team
               </p>
+              <Image
+                alt="custom_product__capabilities"
+                src="https://res.cloudinary.com/duimeqqch/image/upload/v1745304647/Industry-Leading_Team_eilpxj.jpg"
+                width={300}
+                height={300}
+                className="object-scale-down"
+              />
               <p className="mt-2 max-w-lg text-sm/6 text-gray-600">
                 Our experienced professionals are dedicated to providing
                 top-notch solutions. From product recommendations to technical
@@ -119,6 +125,14 @@ export default function BentoGrids() {
               <p className="mt-2 text-lg font-medium tracking-tight text-gray-950">
                 Long-Term Business Support
               </p>
+              <Image
+                alt="custom_product__capabilities"
+                src="https://res.cloudinary.com/duimeqqch/image/upload/v1745304055/large-storage-center_zcahvz.jpg"
+                width={300}
+                height={300}
+                className="object-scale-down"
+              />
+              
               <p className="mt-2 max-w-lg text-sm/6 text-gray-600">
                 We are more than just a supplier—we are your manufacturing
                 partner. With competitive pricing, bulk order flexibility, and
