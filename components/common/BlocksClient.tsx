@@ -33,7 +33,7 @@ export default function BlocksClient({ content }: { content: BlocksContent }) {
           return <ul className="list-disc pl-6 my-4">{children}</ul>;
         },
         link: ({ children, url }) => (
-            <Link href={url} className="text-blue-600 underline hover:text-blue-800">
+            <Link href={url} className="text-amber-700 underline hover:text-blue-800">
               {children}
             </Link>
           ),

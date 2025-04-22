@@ -167,7 +167,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
 
   // Main component render when data is ready
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-neutral-100">
       <section>
         {/* Add JSON-LD to your page */}
         <script
@@ -230,7 +230,9 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
 
           {/* Product Models Section */}
           {currentCategory && currentCategory.description && (
-            <BlocksClient content={currentCategory.description} />
+            <div className="mt-40 bg-white rounded-2xl p-2">
+              <BlocksClient content={currentCategory.description} />
+            </div>
           )}
         </div>
       </div>

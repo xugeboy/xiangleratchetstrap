@@ -49,7 +49,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             </h3>
             <Link
               href={service.link}
-              className="text-blue-600 hover:text-blue-700"
+              className="text-amber-700 hover:text-blue-700"
             >
               {service.linkText}
             </Link>

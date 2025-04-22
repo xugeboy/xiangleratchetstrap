@@ -165,7 +165,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 <li key={index}>
                   <Link
                     href={`/blog/${blog.slug}`}
-                    className="text-blue-600 hover:underline"
+                    className="text-amber-700 hover:underline"
                   >
                     {blog.title}
                   </Link>
@@ -185,7 +185,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               <span className="font-medium">Email:</span>{" "}
               <a
                 href={`mailto:info@xiangleratchetstrap.com`}
-                className="text-blue-600"
+                className="text-amber-700"
               >
                 info@xiangleratchetstrap.com
               </a>

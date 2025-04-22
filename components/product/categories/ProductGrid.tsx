@@ -58,7 +58,7 @@ export function ProductGrid({
     <div className="space-y-6">
       {isLoading ? (
         <div className="text-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-700 mx-auto"></div>
           <p className="mt-4 text-sm text-gray-600">Loading products...</p>
         </div>
       ) : (
@@ -102,7 +102,7 @@ export function ProductGrid({
                       {product.name}
                     </h3>
                     <div className="mt-4 text-center">
-                      <span className="inline-block bg-blue-700 text-white px-4 py-2 text-sm font-medium uppercase">
+                      <span className="inline-block bg-amber-700 text-white px-4 py-2 text-sm font-medium uppercase">
                         LEARN MORE
                       </span>
                     </div>
@@ -112,9 +112,9 @@ export function ProductGrid({
                 {viewMode === "list" && (
                   <div className="flex gap-6">
                     <div className="w-40 h-40 flex-shrink-0 bg-gray-100">
-                      {product.gallery && product.gallery[0] && (
+                      {product.featured_image && (
                         <Image
-                          src={product.gallery[0].url || "/placeholder.svg"}
+                          src={product.featured_image.url}
                           alt={product.name}
                           width={160}
                           height={160}
@@ -132,7 +132,7 @@ export function ProductGrid({
                       <div className="mt-4">
                         <Link
                           href={`/products/${product.slug}`}
-                          className="inline-block bg-blue-700 text-white px-4 py-2 text-sm font-medium uppercase"
+                          className="inline-block bg-amber-700 text-white px-4 py-2 text-sm font-medium uppercase"
                         >
                           LEARN MORE
                         </Link>
@@ -147,9 +147,9 @@ export function ProductGrid({
                     className="flex items-center gap-4"
                   >
                     <div className="w-16 h-16 flex-shrink-0 bg-gray-100">
-                      {product.gallery && product.gallery[0] && (
+                      {product.featured_image && (
                         <Image
-                          src={product.gallery[0].url || "/placeholder.svg"}
+                          src={product.featured_image.url}
                           alt={product.name}
                           width={64}
                           height={64}

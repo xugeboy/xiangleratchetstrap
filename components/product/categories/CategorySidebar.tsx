@@ -61,7 +61,7 @@ export function CategorySidebar({
           <Link
             href={`/categories/${category.slug}`}
             className={`flex-grow text-left text-sm ${
-              isActive ? "font-bold text-blue-600" : "text-gray-700 hover:text-blue-600"
+              isActive ? "font-bold text-amber-700" : "text-gray-700 hover:text-amber-700"
             }`}
           >
             {category.name}
@@ -86,7 +86,7 @@ export function CategorySidebar({
                 // If we can't find the full category, render a simple link with the slug
                 return (
                   <div key={childRef.id} className="py-2 ml-2">
-                    <Link href={`/categories/${childRef.slug}`} className="text-sm text-gray-700 hover:text-blue-600">
+                    <Link href={`/categories/${childRef.slug}`} className="text-sm text-gray-700 hover:text-amber-700">
                       {childRef.name || childRef.slug.replace(/-/g, " ")}
                     </Link>
                   </div>
@@ -122,7 +122,7 @@ export function CategorySidebar({
             <div className="mb-4">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium">Selected Filters</span>
-                <button type="button" className="text-sm text-blue-600 hover:underline" onClick={onClearAllFilters}>
+                <button type="button" className="text-sm text-amber-700 hover:underline" onClick={onClearAllFilters}>
                   Clear All
                 </button>
               </div>
