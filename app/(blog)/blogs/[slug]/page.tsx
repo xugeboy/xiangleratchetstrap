@@ -5,7 +5,7 @@ import {
   getAllBlogSlug,
   getBlogMetaDataBySlug,
 } from "@/services/api/blog";
-import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { generateBlogBreadcrumbs } from "@/utils/breadcrumbs";
 import Image from "next/image";
 import Link from "next/link";
@@ -106,7 +106,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const breadcrumbItems = generateBlogBreadcrumbs(blog);
 
   if (!blog) {
-    redirect("/404");
+    notFound()
   }
 
   // --- 生成 Schema ---

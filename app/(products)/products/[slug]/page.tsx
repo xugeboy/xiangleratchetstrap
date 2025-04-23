@@ -1,7 +1,7 @@
 import { Metadata, ResolvingMetadata } from "next";
 import { getProductBySlug, getAllProductSlug } from "@/services/api/product";
 import { generateProductBreadcrumbs } from "@/utils/breadcrumbs";
-import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import StatsSection from "@/components/common/StatsSection";
 import QuoteForm from "@/components/forms/QuoteForm";
@@ -108,7 +108,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const breadcrumbItems = generateProductBreadcrumbs(product);
 
   if (!product) {
-    redirect("/404");
+    notFound()
   }
 
   // --- 生成 Schema ---

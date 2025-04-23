@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { fetchAPI } from '@/utils/fetch-api'
 import CategoryContent from './CategoryContent'
-import { redirect } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import { ProductCategory } from '@/types/productCategory'
 interface CategoryPageProps {
   params: {
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     const response = await fetchAPI(`/getCategoryMetaDataBySlug/${lastSlug}`);
     const category = response.data as ProductCategory;
     if (!category) {
-      redirect("/404");
+      notFound()
     }
     return {
       title: category.seo_title,
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     }
   } catch (error) {
     console.error("Error generating metadata:", error);
-    redirect("/404");
+    notFound()
   }
 }
 

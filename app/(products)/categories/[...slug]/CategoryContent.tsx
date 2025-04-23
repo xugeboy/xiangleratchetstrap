@@ -67,7 +67,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
       console.log(
         `Category for slug "${targetSlug}" not found in context. Redirecting...`
       );
-      // redirect("/404");
+      // notFound()
     }
   }, [allCategories, currentCategory, targetSlug]);
 
