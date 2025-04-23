@@ -12,14 +12,14 @@ export default function BlocksClient({ content }: { content: BlocksContent }) {
       content={content}
       blocks={{
         paragraph: ({ children }) => (
-          <p className="mb-4 text-gray-700">{children}</p>
+          <p className="mb-4 text-[15px] text-gray-700">{children}</p>
         ),
         heading: ({ children, level }) => {
           const Tag = `h${level}` as keyof JSX.IntrinsicElements;
           const headingStyles = {
-            1: "text-3xl font-bold mt-6 mb-4",
-            2: "text-2xl font-semibold mt-5 mb-3",
-            3: "text-xl font-semibold mt-4 mb-2",
+            1: "text-[28px] font-bold mt-6 mb-4",
+            2: "text-[22px] font-semibold mt-5 mb-3",
+            3: "text-[18px] font-semibold mt-4 mb-2",
           };
           return (
             <Tag className={headingStyles[level] || "text-lg"}>{children}</Tag>

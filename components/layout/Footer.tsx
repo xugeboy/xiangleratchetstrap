@@ -21,7 +21,7 @@ const navigation = {
     { name: "Download Catalog", href: "/download-catalog" },
     { name: "FAQ", href: "/faq" },
     { name: "Business Solutions", href: "/business-solutions" },
-    { name: "Online Customizer", href: "/online-customizer" },
+    // { name: "Online Customizer", href: "/online-customizer" },
   ],
   products: [
     {
@@ -88,7 +88,7 @@ const navigation = {
     },
     {
       name: "LinkedIn",
-      href: "#",
+      href: "https://www.linkedin.com/company/xiangle-tools",
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path

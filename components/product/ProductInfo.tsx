@@ -35,7 +35,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         <div className="space-y-2">
           <p className="text-gray-600">ITEM #{product.code}</p>
           <div className="flex items-center space-x-2 text-gray-600">
-            <span>In Stock, Made to Order</span>
+            <span>In Stock,</span><strong className="text-amber-700">Made to Order</strong>
           </div>
         </div>
       </div>
@@ -58,8 +58,8 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         <div className="p-6 rounded-lg flex items-center justify-center">
           <a
             href="/request-quote"
-            className="inline-flex items-center justify-center px-8 py-3 text-sm font-medium text-white bg-blue-500 
-          rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-200 shadow-sm"
+            className="inline-flex items-center justify-center px-8 py-3 text-sm font-medium text-white bg-amber-700 
+          rounded-full focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all duration-200 shadow-sm"
           >
             Request Quote
           </a>

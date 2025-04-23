@@ -232,8 +232,8 @@ export default function QuoteForm() {
         <div className="mt-8">
           <button
             type="submit"
-            className="inline-flex px-6 py-3 text-sm font-medium text-white bg-blue-500 
-            rounded-xl hover:bg-blue-600 transition-colors"
+            className="inline-flex px-6 py-3 text-sm font-medium text-white bg-amber-700 
+            rounded-xl hover:bg-amber-800 transition-colors"
           >
             Submit
           </button>

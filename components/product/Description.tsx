@@ -22,7 +22,7 @@ interface DescriptionProps {
             }`}
           >
             <p className="leading-[1.8em] m-0">
-             {description}
+              {description}
             </p>
             {!isExpanded && (
               <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent" />
@@ -30,7 +30,7 @@ interface DescriptionProps {
           </div>
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="mt-2 text-yellow-600 hover:text-yellow-700 text-sm font-medium flex items-center"
+            className="mt-2 text-amber-700 text-sm font-medium flex items-center"
           >
             {isExpanded ? (
               <>

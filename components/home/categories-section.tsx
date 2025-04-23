@@ -75,7 +75,7 @@ export default function CategoriesSection() {
                 </h3>
                 <Link
                   href={category.link}
-                  className="inline-block bg-amber-600 hover:bg-amber-600/70 text-white px-6 md:px-8 py-2 font-medium transition-all duration-300 text-sm md:text-base"
+                  className="inline-block bg-amber-700 hover:bg-amber-800 text-white px-6 md:px-8 py-2 font-medium transition-all duration-300 text-sm md:text-base"
                 >
                   VIEW MORE
                 </Link>
