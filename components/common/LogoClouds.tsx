@@ -2,9 +2,14 @@
 import ImageTrail from "@/reactbits/Animations/ImageTrail/ImageTrail"
 
 const partners = [
-  "https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg",
-  "https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg",
-  "https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg",
+  "https://res.cloudinary.com/duimeqqch/image/upload/v1745480008/logo8_dboi4s.jpg",
+  "https://res.cloudinary.com/duimeqqch/image/upload/v1745480008/logo2_yiwvub.jpg",
+  "https://res.cloudinary.com/duimeqqch/image/upload/v1745480008/logo1_zkji8a.jpg",
+  "https://res.cloudinary.com/duimeqqch/image/upload/v1745480008/logo6_bdnt7v.jpg",
+  "https://res.cloudinary.com/duimeqqch/image/upload/v1745480008/logo3_e2spcz.jpg",
+  "https://res.cloudinary.com/duimeqqch/image/upload/v1745480009/logo4_dlor4i.jpg",
+  "https://res.cloudinary.com/duimeqqch/image/upload/v1745480008/logo7_oszse9.jpg",
+  "https://res.cloudinary.com/duimeqqch/image/upload/v1745480009/logo5_inzejn.jpg",
 ]
 
 export default function LogoClouds() {
