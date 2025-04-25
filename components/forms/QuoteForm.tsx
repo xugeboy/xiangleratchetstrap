@@ -49,8 +49,8 @@ export default function QuoteForm() {
   };
 
   return (
-    <div className="mb-10">
-       <Notification
+    <div className="mb-10" id="quote_form">
+      <Notification
         message={successMessage}
         trigger={showSuccessNotification}
       />

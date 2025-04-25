@@ -32,7 +32,7 @@ export default function BusinessSolutions() {
             AND MOVING EQUIPMENT.
           </p>
           <a
-            href="#contact"
+            href="#quote_form"
             className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium px-8 py-3 rounded-lg 
                   transition-colors duration-200 uppercase tracking-wide"
           >
@@ -95,7 +95,7 @@ export default function BusinessSolutions() {
       <StatsSection />
       <BentoGrids />
       <LogoClouds />
-      <QuoteForm />
+      <QuoteForm/>
       <TeamSection />
     </div>
   );

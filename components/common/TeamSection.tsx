@@ -7,42 +7,42 @@ const people = [
         year: '- Cofounder of Xianlge -',
         imageUrl:
       'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/steven_rmkwmp.png',
-    bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
+    bio: 'Responsible for product development, Steven is a visionary leader and co-founder of Xianlge. Outside of work, he cherishes his role as the father of two daughters and two playful cats.',
     },{
         name: 'Sophia Liu',
         role: 'Sales Manager',
         year: '- Cofounder of Xianlge -',
         imageUrl:
         'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/sophia_mab7jt.png',
-      bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
+      bio: 'As Sales Manager and co-founder of Xianlge, Sophia brings extensive experience in building strong customer relationships and leading the sales team to success. At home, she is the loving mother of two daughters and two adorable cats.',
     },{
         name: 'Dustin Xu',
         role: 'Sales Assistant Manager',
         year: '- 5 years at Xianlge -',
         imageUrl:
           'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/dustin_io6avf.png',
-        bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
+        bio: 'Leading the foreign trade team, Dustin is also responsible for foreign trade business operations and market development at Xianlge. He has been a valuable member for 5 years, consistently supporting sales initiatives and fostering team collaboration.',
       },{
         name: 'Warren Wu',
         role: 'Foreign Trade Sales',
         year: '- 9 years at Xianlge -',
         imageUrl:
           'https://res.cloudinary.com/duimeqqch/image/upload/v1744176225/warren_a8mhba.png',
-        bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
+        bio: 'With 9 years of dedicated service in foreign trade sales at Xianlge, Warren possesses a deep understanding of international markets and excels at building lasting partnerships. In his free time, he enjoys playing basketball.',
       },{
         name: 'Alex Zuo',
         role: 'Foreign Trade Sales',
         year: '- 10 years at Xianlge -',
         imageUrl:
           'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/alex_bsu0jc.png',
-        bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
+        bio: 'Alex has been a key player in foreign trade sales for a decade, leveraging his extensive experience to navigate global markets and achieve remarkable results.',
       },{
         name: 'Chloe He',
         role: 'Foreign Trade Sales',
         year: '- 5 years at Xianlge -',
         imageUrl:
           'https://res.cloudinary.com/duimeqqch/image/upload/v1744176355/chloe_tv3t9c.png',
-        bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
+        bio: 'Chloe brings 5 years of experience in foreign trade sales to the Xianlge team, demonstrating a strong commitment to client satisfaction and driving international business growth.',
       }
   ]
   
