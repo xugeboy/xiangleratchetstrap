@@ -10,7 +10,7 @@ export interface Product {
     code?: string;
     featured_image?: Gallery; // 图片
     gallery?: Galleries; // 图片数组
-    see_more?: [];
+    see_more: [];
     about?: string; // Markdown 内容
     category?: ProductCategory; // 关联的分类
     youtube_url?: string;
