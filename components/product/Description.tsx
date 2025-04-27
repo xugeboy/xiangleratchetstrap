@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import BlocksClient from "@/components/common/BlocksClient";
 
 interface DescriptionProps {
-    description?: string;
+    description?: [];
   }
   
   
@@ -18,12 +19,10 @@ interface DescriptionProps {
         <div className="p-4">
           <div 
             className={`prose max-w-none relative ${
-              !isExpanded ? 'max-h-[3.6em] overflow-hidden' : ''
+              !isExpanded ? 'max-h-[10em] overflow-hidden' : ''
             }`}
           >
-            <p className="leading-[1.8em] m-0">
-              {description}
-            </p>
+            <BlocksClient content={description} />
             {!isExpanded && (
               <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent" />
             )}

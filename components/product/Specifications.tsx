@@ -21,6 +21,8 @@ export default function Specifications({ product }: SpecificationsProps) {
     { label: 'End fitting', value: product.end_fitting },
     { label: 'Fixed End Length', value: product.fixed_end_length },
     { label: 'Ratchet handle', value: product.ratchet_handle },
+    { label: 'Material', value: product.material },
+    { label: 'Finish', value: product.finish },
     { label: 'Product weight', value: product.product_weight },
   ]
 

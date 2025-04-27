@@ -70,7 +70,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       <Specifications product={product} />
 
       {/* Description */}
-      <Description description={product.about} />
+      <Description description={product.see_more} />
 
       {/* Video Section */}
       {product.youtube_url && (
