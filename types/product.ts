@@ -2,6 +2,7 @@ import { Blog } from "./blog";
 import { ProductCategory } from "./productCategory";
 import { Galleries, Gallery } from "./gallery";
 import { ContentItem } from "@/components/product/AlternatingContent";
+import { BlocksContent } from "@strapi/blocks-react-renderer";
 
 export interface Product {
     id: number;
@@ -10,7 +11,7 @@ export interface Product {
     code?: string;
     featured_image?: Gallery; // 图片
     gallery?: Galleries; // 图片数组
-    see_more: [];
+    see_more: BlocksContent;
     about?: string; // Markdown 内容
     category?: ProductCategory; // 关联的分类
     youtube_url?: string;

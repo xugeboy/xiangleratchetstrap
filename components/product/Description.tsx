@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import BlocksClient from "@/components/common/BlocksClient";
+import { BlocksContent } from "@strapi/blocks-react-renderer";
 
 interface DescriptionProps {
-    description?: [];
+    description: BlocksContent;
   }
   
   
@@ -22,7 +23,7 @@ interface DescriptionProps {
               !isExpanded ? 'max-h-[10em] overflow-hidden' : ''
             }`}
           >
-            {/* <BlocksClient content={description} /> */}
+            <BlocksClient content={description} />
             {!isExpanded && (
               <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent" />
             )}
