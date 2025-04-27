@@ -26,7 +26,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
             <span className="absolute inset-0 overflow-hidden rounded-md">
               <Image alt={image.name} 
               src={image.url} 
-              className="size-full object-cover" 
+              className="size-full object-scale-down" 
               width={image.width}
               height={image.height}
               />
