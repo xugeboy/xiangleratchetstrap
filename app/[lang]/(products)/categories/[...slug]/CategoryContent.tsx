@@ -30,9 +30,10 @@ import { generateSchema, embedSchema } from "@/utils/schema";
 // Component Props
 interface CategoryContentProps {
   slug: string[]; // Receive slug parts as props
+  lang: string;
 }
 
-export default function CategoryContent({ slug }: CategoryContentProps) {
+export default function CategoryContent({ slug,lang }: CategoryContentProps) {
   // 1. Get all categories from Context
   const { categories: allCategories } = useCategories();
 
@@ -83,7 +84,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
       try {
         // 将 filters 作为参数传入
         const [filtersData, breadcrumbItems] = await Promise.all([
-          getProductFilters(currentCategory.slug),
+          getProductFilters(currentCategory.slug,lang),
           generateCategoryBreadcrumbs(currentCategory),
         ]);
         setbreadcrumbItems(breadcrumbItems);
@@ -226,6 +227,7 @@ export default function CategoryContent({ slug }: CategoryContentProps) {
             currentCategorySlug={currentCategory.slug}
             viewMode={viewMode}
             itemsPerPage={itemsPerPage}
+            lang={lang}
           />
 
           {/* Product Models Section */}

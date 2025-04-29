@@ -16,6 +16,7 @@ import AlternatingContent from "@/components/product/AlternatingContent";
 interface ProductPageProps {
   params: {
     slug: string;
+    lang: string;
   };
 }
 
@@ -35,7 +36,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata // 可以访问父级解析后的元数据
 ): Promise<Metadata> {
   const slug = params.slug;
-  const productData = await getProductBySlug(slug);
+  const currentLocale = params.lang;
+  const productData = await getProductBySlug(slug,currentLocale);
 
   // --- 处理未找到的情况 ---
   if (!productData) {
@@ -62,7 +64,15 @@ export async function generateMetadata(
     description: pageDescription,
     alternates: {
       canonical: canonicalUrl, // 设置当前页面的规范链接
-      // languages: { 'en-US': `${siteUrl}/en/blogs/${slug}` }, // 如果有英文版
+      languages: {
+        'en-US': `${siteUrl}/products/${slug}`,
+        'en-AU': `${siteUrl}/au/products/${slug}`,
+        'en-CA': `${siteUrl}/ca/products/${slug}`,
+        'en-GB': `${siteUrl}/uk/products/${slug}`,
+        'de-DE': `${siteUrl}/de/products/${slug}`,
+        'fr-FR': `${siteUrl}/fr/products/${slug}`,
+        'es-ES': `${siteUrl}/es/products/${slug}`,
+      }
     },
 
     // **覆盖 Open Graph 元数据**
@@ -104,7 +114,8 @@ export async function generateMetadata(
 // ✅ SSR Product Page
 export default async function ProductPage({ params }: ProductPageProps) {
   const slug = params.slug;
-  const product = await getProductBySlug(slug);
+  const currentLocale = params.lang;
+  const product = await getProductBySlug(slug,currentLocale);
   const breadcrumbItems = generateProductBreadcrumbs(product);
 
   if (!product) {

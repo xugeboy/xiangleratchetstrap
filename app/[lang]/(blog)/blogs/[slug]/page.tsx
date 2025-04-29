@@ -16,6 +16,7 @@ import formatDateToLongEnglish from "@/utils/formatUtils";
 interface BlogPageProps {
   params: {
     slug: string;
+    lang: string;
   };
 }
 
@@ -36,7 +37,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata // 可以访问父级解析后的元数据
 ): Promise<Metadata> {
   const slug = params.slug;
-  const blogData = await getBlogMetaDataBySlug(slug);
+  const currentLocale = params.lang;
+  const blogData = await getBlogMetaDataBySlug(slug,currentLocale);
 
   // --- 处理未找到的情况 ---
   if (!blogData) {
@@ -63,7 +65,15 @@ export async function generateMetadata(
     description: pageDescription,
     alternates: {
       canonical: canonicalUrl, // 设置当前页面的规范链接
-      // languages: { 'en-US': `${siteUrl}/en/blogs/${slug}` }, // 如果有英文版
+      languages: {
+        'en-US': `${siteUrl}/blogs/${slug}`,
+        'en-AU': `${siteUrl}/au/blogs/${slug}`,
+        'en-CA': `${siteUrl}/ca/blogs/${slug}`,
+        'en-GB': `${siteUrl}/uk/blogs/${slug}`,
+        'de-DE': `${siteUrl}/de/blogs/${slug}`,
+        'fr-FR': `${siteUrl}/fr/blogs/${slug}`,
+        'es-ES': `${siteUrl}/es/blogs/${slug}`,
+      }
     },
 
     // **覆盖 Open Graph 元数据**
@@ -102,7 +112,8 @@ export async function generateMetadata(
 // ✅ SSR Blog Page
 export default async function BlogPage({ params }: BlogPageProps) {
   const slug = params.slug;
-  const blog = await getBlogDetail(slug);
+  const currentLocale = params.lang;
+  const blog = await getBlogDetail(slug,currentLocale);
   const breadcrumbItems = generateBlogBreadcrumbs(blog);
 
   if (!blog) {

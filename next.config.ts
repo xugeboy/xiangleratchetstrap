@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  i18n: {
+    locales: ['en-US', 'en-GB', 'en-CA', 'en-AU', 'de-DE', 'fr-FR', 'es-ES'],
+    defaultLocale: 'en-US',
+    localeDetection: false, 
+  },
 };
 
 export default nextConfig;

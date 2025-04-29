@@ -17,10 +17,10 @@ export async function getAllProductSlug(): Promise<Product[] | null> {
 /**
  * 获取产品详情页面所需的完整产品信息
  */
-export async function getProductBySlug(slug: string): Promise<Product | null> {
+export async function getProductBySlug(slug: string,locale:string): Promise<Product | null> {
   try {
     const path = `/getProductBySlug/${slug}`;
-    const response = await fetchAPI(path);
+    const response = await fetchAPI(path,locale);
     return response.data || null;
   } catch (error) {
     console.error("Error fetching product:", error);
@@ -39,7 +39,8 @@ export async function getProductsByCategorySlug(
   categorySlug: string,
   page: number = 1,
   pageSize: number = 12,
-  filters: Record<string, string[]>
+  filters: Record<string, string[]>,
+  locale:string
 ): Promise<{
   data: Product[];
   meta: {
@@ -59,6 +60,7 @@ export async function getProductsByCategorySlug(
         page,
         pageSize,
       },
+      locale: locale
     };
     const response = await fetchAPI(path, urlParamsObject);
     return {
@@ -84,10 +86,10 @@ export async function getProductsByCategorySlug(
 /**
  * 搜索产品
  */
-export async function searchProducts(query: string): Promise<Product[]> {
+export async function searchProducts(query: string,locale:string): Promise<Product[]> {
   try {
     const path = `/searchProducts/${query}`;
-    const response = await fetchAPI(path);
+    const response = await fetchAPI(path,locale);
     return response.data || [];
   } catch (error) {
     console.error("Error searching products:", error);
@@ -100,11 +102,12 @@ export async function searchProducts(query: string): Promise<Product[]> {
  * @returns 返回产品筛选条件数据，包含各种属性及其选项
  */
 export async function getProductFilters(
-  slug: string
+  slug: string,
+  locale:string
 ): Promise<Record<string, Record<string, number>>> {
   try {
     const path = `/getAttributeFiltersByCategorySlug/${slug}`;
-    const response = await fetchAPI(path);
+    const response = await fetchAPI(path,locale);
     return response || {};
   } catch (error) {
     console.error("Error fetching product filters:", error);
@@ -124,7 +127,8 @@ export async function filterProducts(
   categorySlug: string,
   page: number = 1,
   pageSize: number = 12,
-  attributeFilters: Record<string, string[]> = {}
+  attributeFilters: Record<string, string[]> = {},
+  locale:string
 ): Promise<{
   data: Product[];
   meta: {
@@ -141,7 +145,8 @@ export async function filterProducts(
       categorySlug,
       page,
       pageSize,
-      attributeFilters
+      attributeFilters,
+      locale
     });
     return {
       data: response.data,

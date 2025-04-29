@@ -3,19 +3,21 @@ import { fetchAPI } from '@/utils/fetch-api'
 import CategoryContent from './CategoryContent'
 import { notFound } from 'next/navigation'
 import { ProductCategory } from '@/types/productCategory'
+import { getFullLocale } from '@/utils/formatUtils'
 interface CategoryPageProps {
   params: {
-    slug: string[]
+    slug: string[];
+    lang: string;
   }
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   // Get the last slug part
-  const innerParams = await params;
+  const innerParams = await params;  
   const lastSlug = innerParams.slug[innerParams.slug.length - 1];
   
   try {
-    const response = await fetchAPI(`/getCategoryMetaDataBySlug/${lastSlug}`);
+    const response = await fetchAPI(`/getCategoryMetaDataBySlug/${lastSlug}`,getFullLocale(innerParams.lang));
     const category = response.data as ProductCategory;
     if (!category) {
       notFound()
@@ -55,8 +57,6 @@ function getAllSlugPaths(categories: ProductCategory[], parentSlugs: string[] = 
   }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-
-  
   const innerParams = await params;
-  return <CategoryContent slug={innerParams.slug} />
+  return <CategoryContent slug={innerParams.slug} lang={innerParams.lang}/>
 }

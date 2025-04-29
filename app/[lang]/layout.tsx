@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
+import "@/app/[lang]/globals.css";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import BackToTop from "@/components/common/BackToTop";
@@ -12,13 +12,20 @@ import TawkToWidget from "@/components/common/TawkToWidget";
 import { Viewport } from "next";
 import { generateSchema } from "@/utils/schema";
 import { embedSchema } from "@/utils/schema";
-import { NextSeo } from "next-seo";
+import { localePrefixMap, defaultLocaleKey } from "@/middleware";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   display: "swap",
 });
+
+interface LocaleLayoutProps {
+  params: {
+    lang: string;
+  };
+  children: React.ReactNode;
+}
 
 // --- 静态 Metadata 对象 ---
 
@@ -34,7 +41,26 @@ const siteLogo = process.env.NEXT_PUBLIC_LOGO_URL;
 const websiteSchema = generateSchema({ type: "WebSite", data: null });
 const organizationSchema = generateSchema({ type: "Organization", data: null });
 const baseSchemaMetadata = embedSchema([websiteSchema, organizationSchema]); // Combine base schemas
+const currentPath =
+  typeof window !== "undefined" ? window.location.pathname : "";
 
+const alternates: Record<string, string> = {};
+
+// 遍历所有支持的标准语言 key (也就是 localePrefixMap 的键)
+Object.keys(localePrefixMap).forEach((localeKey) => {
+  const prefix = localePrefixMap[localeKey]; // 获取该语言对应的 URL 前缀
+
+  let url;
+  if (localeKey === defaultLocaleKey) {
+    url = `${siteUrl}${currentPath === "/" ? "" : currentPath}`;
+  } else {
+    // 非默认语言，URL 带上对应的语言前缀
+    url = `${siteUrl}/${prefix}${currentPath === "/" ? "" : currentPath}`;
+  }
+
+  // 使用标准的语言 key 作为 alternates 对象的键
+  alternates[localeKey] = url;
+});
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -95,6 +121,7 @@ export const metadata: Metadata = {
   alternates: {
     // 可以在这里设置首页的 canonical URL
     canonical: siteUrl, // 或 siteUrl
+    languages: alternates,
   },
 };
 
@@ -115,13 +142,15 @@ async function fetchCategories(): Promise<ProductCategory[]> {
 }
 
 export default async function RootLayout({
+  params,
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}:LocaleLayoutProps) {
   const categories = await fetchCategories();
+
+  const lang = Object.keys(localePrefixMap).find(key => localePrefixMap[key] === params.lang) || defaultLocaleKey;
+
   return (
-    <html lang="en">
+    <html lang={lang}>
       <head>
         <link
           rel="sitemap"

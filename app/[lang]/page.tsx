@@ -5,7 +5,14 @@ import CategoriesSection from "@/components/home/categories-section"
 import ProductsSection from "@/components/home/products-section"
 import ArticlesSection from "@/components/home/articles-section"
 
-export default function Home() {
+interface HomePageProps {
+  params: {
+    lang: string;
+  };
+}
+
+export default function Home({ params }: HomePageProps) {
+  console.log('Params received:', params);
   return (
     <main className="flex min-h-screen flex-col">
       <HeroSection />

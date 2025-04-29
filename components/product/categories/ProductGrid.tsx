@@ -12,6 +12,7 @@ interface ProductGridProps {
   currentCategorySlug: string;
   viewMode: "grid" | "list" | "compact";
   itemsPerPage: number;
+  lang: string
 }
 
 export function ProductGrid({
@@ -19,6 +20,7 @@ export function ProductGrid({
   currentCategorySlug,
   viewMode,
   itemsPerPage,
+  lang
 }: ProductGridProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,7 +38,8 @@ export function ProductGrid({
           currentCategorySlug,
           currentPage,
           itemsPerPage,
-          selectedFilters
+          selectedFilters,
+          lang
         );
         setProducts(response.data);
         setTotalPages(response.meta.pagination.pageCount);

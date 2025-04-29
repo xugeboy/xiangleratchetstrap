@@ -1,3 +1,4 @@
+import LocaleSwitcher from "@/components/common/LocaleSwitcher"
 import Link from "next/link"
 
 export function TopNavigation() {
@@ -11,6 +12,7 @@ export function TopNavigation() {
           <Link href="/contact-us" className="text-sm font-medium hover:text-gray-300">
             Contact Us
           </Link>
+          <LocaleSwitcher></LocaleSwitcher>
         </div>
       </div>
     </div>
