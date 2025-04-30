@@ -4,11 +4,18 @@ import { getFaqs } from '@/services/api/faq'
 
 export const metadata: Metadata = {
   title: 'FAQ - Xiangle Ratchet Strap',
-  description: '关于我们产品和服务的常见问题解答',
+  description: 'Frequently Asked Questions about our products and services',
 }
 
-export default async function FaqPage() {
-  const faqs = await getFaqs()
+interface FaqPageProps {
+  params: {
+    lang: string;
+  };
+}
+
+export default async function FaqPage({ params }: FaqPageProps) {
+  const currentLocale = params.lang;
+  const faqs = await getFaqs(currentLocale)
 
   return (
     <div className="bg-white py-24 sm:py-32">

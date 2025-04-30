@@ -4,38 +4,36 @@ import { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline"
-
+import { useTranslations } from 'next-intl';
 // 轮播图数据
 const heroSlides = [
   {
     id: 1,
     image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg",
-    title: "ENGINEERING EXCELLENCE",
-    subtitle: "SINCE 2006",
-    description: "Engineering a better tomorrow by OEM&ODM manufacturing solutions for today.",
   },
   {
     id: 2,
     image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744965567/cargo_control_xaiwx5.webp",
-    title: "ONE STOP SOLUTION",
-    subtitle: "FOR YOUR BUSINESS",
-    description: "All-in-one supply chain support — fast, flexible, and built for your industry.",
   },
   {
     id: 3,
     image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744966920/quality_guaranteed_my88ns.jpg",
-    title: "QUALITY GUARANTEED",
-    subtitle: "EVERY TIME",
-    description: "From raw materials to finished goods, every step is backed by trusted certifications you can rely on.",
   },
 ]
 
 export default function HeroSection() {
+  const t = useTranslations('HeroSection');
+  const slides = heroSlides.map((slide, index) => ({
+    ...slide,
+    title: t(`slides.${index}.title`),
+    subtitle: t(`slides.${index}.subtitle`),
+    description: t(`slides.${index}.description`),
+  }));
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const [autoplay, setAutoplay] = useState(true)
 
-  const totalSlides = heroSlides.length
+  const totalSlides = slides.length
 
   // 切换到下一张幻灯片
   const nextSlide = useCallback(() => {
@@ -91,7 +89,7 @@ export default function HeroSection() {
     >
       {/* 轮播图片 */}
       <div className="absolute inset-0">
-        {heroSlides.map((slide, index) => (
+        {slides.map((slide, index) => (
           <div
             key={slide.id}
             className={`absolute inset-0 transition-opacity duration-700 ${
@@ -113,7 +111,7 @@ export default function HeroSection() {
       {/* 内容 */}
       <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center">
         <div className="max-w-3xl">
-          {heroSlides.map((slide, index) => (
+          {slides.map((slide, index) => (
             <div
               key={slide.id}
               className={`transition-all duration-700 ${
@@ -165,7 +163,7 @@ export default function HeroSection() {
 
       {/* 指示器 */}
       <div className="absolute bottom-6 left-0 right-0 z-30 flex justify-center space-x-3">
-        {heroSlides.map((_, index) => (
+        {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}

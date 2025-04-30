@@ -1,5 +1,6 @@
 import { fetchAPI, postAPI } from "@/utils/fetch-api";
 import { Product } from "@/types/product";
+import { getFullLocale } from "@/utils/formatUtils";
 
 /**
  * 获取所有产品的slug
@@ -20,7 +21,7 @@ export async function getAllProductSlug(): Promise<Product[] | null> {
 export async function getProductBySlug(slug: string,locale:string): Promise<Product | null> {
   try {
     const path = `/getProductBySlug/${slug}`;
-    const response = await fetchAPI(path,locale);
+    const response = await fetchAPI(path,getFullLocale(locale));
     return response.data || null;
   } catch (error) {
     console.error("Error fetching product:", error);
@@ -89,7 +90,7 @@ export async function getProductsByCategorySlug(
 export async function searchProducts(query: string,locale:string): Promise<Product[]> {
   try {
     const path = `/searchProducts/${query}`;
-    const response = await fetchAPI(path,locale);
+    const response = await fetchAPI(path,getFullLocale(locale));
     return response.data || [];
   } catch (error) {
     console.error("Error searching products:", error);
@@ -107,7 +108,7 @@ export async function getProductFilters(
 ): Promise<Record<string, Record<string, number>>> {
   try {
     const path = `/getAttributeFiltersByCategorySlug/${slug}`;
-    const response = await fetchAPI(path,locale);
+    const response = await fetchAPI(path,getFullLocale(locale));
     return response || {};
   } catch (error) {
     console.error("Error fetching product filters:", error);
@@ -141,12 +142,13 @@ export async function filterProducts(
   };
 }> {
   try {
+    const urlParamsObject = getFullLocale(locale)
     const response = await postAPI('/filterProducts', {
       categorySlug,
       page,
       pageSize,
       attributeFilters,
-      locale
+      ...urlParamsObject
     });
     return {
       data: response.data,

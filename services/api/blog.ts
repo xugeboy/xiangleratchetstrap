@@ -1,9 +1,10 @@
 import { fetchAPI } from "@/utils/fetch-api";
 import { Blog } from "@/types/blog";
+import { getFullLocale } from "@/utils/formatUtils";
 
 export async function getBlogDetail(slug: string,locale:string): Promise<Blog | null> {
   try {
-    const response = await fetchAPI(`/getBlogDetail/${slug}`,locale);
+    const response = await fetchAPI(`/getBlogDetail/${slug}`,getFullLocale(locale));
     return response.data || null;
   } catch (error) {
     console.error("Error fetching blog slug:", error);
@@ -13,7 +14,7 @@ export async function getBlogDetail(slug: string,locale:string): Promise<Blog | 
 
 export async function getBlogMetaDataBySlug(slug: string,locale:string): Promise<Blog | null> {
   try {
-    const response = await fetchAPI(`/getBlogMetaDataBySlug/${slug}`,locale);
+    const response = await fetchAPI(`/getBlogMetaDataBySlug/${slug}`,getFullLocale(locale));
     return response.data || null;
   } catch (error) {
     console.error("Error fetching blog slug:", error);
@@ -33,7 +34,7 @@ export async function getAllBlogSlug(): Promise<Blog[] | null> {
 
 export async function getLatestBlogs(locale:string): Promise<Blog[] | null> {
   try {
-    const response = await fetchAPI("/getLatestArticles",locale);
+    const response = await fetchAPI("/getLatestArticles",getFullLocale(locale));
     return response.data || null;
   } catch (error) {
     console.error("Error fetching latest articles:", error);
@@ -55,9 +56,10 @@ export async function getBlogList(
   };
 }> {
   try {
+    const urlParamsObject = getFullLocale(locale)
     const response = await fetchAPI("/getBlogList", {
       page,
-      locale
+      ...urlParamsObject
     });
     return {
       data: response.data,

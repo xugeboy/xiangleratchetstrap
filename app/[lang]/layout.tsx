@@ -13,6 +13,10 @@ import { Viewport } from "next";
 import { generateSchema } from "@/utils/schema";
 import { embedSchema } from "@/utils/schema";
 import { localePrefixMap, defaultLocaleKey } from "@/middleware";
+import { isValidLocale } from "@/i18n";
+import { notFound } from "next/navigation";
+import { NextIntlClientProvider } from "next-intl";
+import { log } from "console";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -144,11 +148,25 @@ async function fetchCategories(): Promise<ProductCategory[]> {
 export default async function RootLayout({
   params,
   children,
-}:LocaleLayoutProps) {
+}: LocaleLayoutProps) {
   const categories = await fetchCategories();
+  const locale = params.lang;
+  const lang =
+    Object.keys(localePrefixMap).find(
+      (key) => localePrefixMap[key] === params.lang
+    ) || defaultLocaleKey;
 
-  const lang = Object.keys(localePrefixMap).find(key => localePrefixMap[key] === params.lang) || defaultLocaleKey;
+  if (!isValidLocale(locale)) {
+    notFound();
+  }
 
+  let messages;
+  try {
+    messages = (await import(`@/locales/${locale}.json`)).default;
+  } catch (error) {
+    console.log(error)
+    notFound();
+  }
   return (
     <html lang={lang}>
       <head>
@@ -165,19 +183,21 @@ export default async function RootLayout({
       </head>
       <body className={`${poppins.className} antialiased`}>
         {/* 使用 Provider 包裹需要共享数据的部分 */}
-        <CategoryProvider categories={categories}>
-          <div className="flex min-h-screen flex-col">
-            {/* Header 现在可以从 Context 获取 categories */}
-            <Header />
-            <main className="flex-grow">
-              <ClarityProvider />
-              {children}
-              <TawkToWidget />
-            </main>
-            <Footer />
-            <BackToTop />
-          </div>
-        </CategoryProvider>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <CategoryProvider categories={categories}>
+            <div className="flex min-h-screen flex-col">
+              {/* Header 现在可以从 Context 获取 categories */}
+              <Header />
+              <main className="flex-grow">
+                <ClarityProvider />
+                {children}
+                <TawkToWidget />
+              </main>
+              <Footer />
+              <BackToTop />
+            </div>
+          </CategoryProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

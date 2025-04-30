@@ -7,9 +7,9 @@ import { getAllBlogSlug } from '@/services/api/blog'
 const BASE_URL = 'https://xiangleratchetstrap.com'
 
 export async function GET() {
-  const categorySlugs = await getAllCategorySlug("en-US")
-  const productSlugs = await getAllProductSlug("en-US")
-  const blogSlugs = await getAllBlogSlug("en-US")
+  const categorySlugs = await getAllCategorySlug()
+  const productSlugs = await getAllProductSlug()
+  const blogSlugs = await getAllBlogSlug()
 
   const staticUrls = [`${BASE_URL}`, `${BASE_URL}/about-us`, `${BASE_URL}/contact-us`]
 
