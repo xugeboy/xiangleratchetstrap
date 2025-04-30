@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import FaqList from './FaqList'
 import { getFaqs } from '@/services/api/faq'
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'FAQ - Xiangle Ratchet Strap',
@@ -33,7 +34,7 @@ export default async function FaqPage({ params }: FaqPageProps) {
         </div>
         <div className="mx-auto max-w-4xl mt-16 text-center">
           <p className="mt-4 text-lg leading-8 text-gray-600">
-          Didn&apos;t find the answer you&apos;re looking for? We&apos;d be glad to clear things up! Check out our <u><a href="/contact-us">Contact Us Page</a></u> Page to send us a message. Thank you!
+          Didn&apos;t find the answer you&apos;re looking for? We&apos;d be glad to clear things up! Check out our <u><Link href="/contact-us">Contact Us Page</Link></u> Page to send us a message. Thank you!
           </p>
         </div>
       </div>

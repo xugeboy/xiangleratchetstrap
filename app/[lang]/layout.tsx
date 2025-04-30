@@ -16,7 +16,6 @@ import { localePrefixMap, defaultLocaleKey } from "@/middleware";
 import { isValidLocale } from "@/i18n";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
-import { log } from "console";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
