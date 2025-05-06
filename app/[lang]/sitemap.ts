@@ -1,3 +1,6 @@
+// This file is deprecated. Please use the root sitemap.ts file instead.
+// Keeping this file for reference purposes only.
+
 import { MetadataRoute } from "next";
 import localePrefixMap from "@/middleware"
 // 1. 配置基础信息
@@ -105,21 +108,26 @@ async function getProductDataForLocale(locale: string): Promise<ProductData[]> {
   // --- 模拟数据结束 ---
 }
 
-// 3. `generateSitemaps` 函数
+// 3. `generateSitemaps` 函数 - DEPRECATED
+// This function is no longer used. See root sitemap.ts instead.
 // Next.js 会为这个函数返回的每个对象的 id 调用下面的默认 sitemap 函数
 export async function generateSitemaps() {
-  return locales.map((locale) => ({
-    id: locale, // id 将作为参数传递给 sitemap 函数，代表当前的语言
-  }));
+  // Return empty array to prevent execution
+  return [];
 }
 
-// 4. 默认 `sitemap` 函数
+// 4. 默认 `sitemap` 函数 - DEPRECATED
+// This function is no longer used. See root sitemap.ts instead.
 // 这个函数会为 generateSitemaps 返回的每个 id (即每个语言) 执行一次
 export default async function sitemap({
   id: currentLocale,
 }: {
   id: string;
 }): Promise<MetadataRoute.Sitemap> {
+  // Return empty array to prevent execution
+  return [];
+
+  /* Original implementation:
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
   // 添加根路径 ("/")
@@ -132,6 +140,7 @@ export default async function sitemap({
       ) as { [key: string]: string } & { "x-default"?: string }, // 类型断言确保兼容性
     },
   });
+  */
 
   // 添加静态页面
   const staticPaths = await getStaticPathsForLocale(currentLocale);
