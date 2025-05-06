@@ -21,6 +21,7 @@ const navigation = {
     { name: "Download Catalog", href: "/download-catalog" },
     { name: "FAQ", href: "/faq" },
     { name: "Business Solutions", href: "/business-solutions" },
+    { name: "Sitemap", href: "/sitemap.xml" },
     // { name: "Online Customizer", href: "/online-customizer" },
   ],
   products: [

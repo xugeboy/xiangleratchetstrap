@@ -16,6 +16,17 @@ export async function getAllCategorySlug(): Promise<ProductCategory[] | null> {
     }
 }
 
+export async function getAllCategorySlugByLocale(locale:string): Promise<ProductCategory[] | null> {
+  try {
+    const path = `/getAllCategorySlug`;
+    const response = await fetchAPI(path,getFullLocale(locale));
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return null;
+  }
+}
+
 /**
  * 获取产品详情页面所需的完整产品信息
  */

@@ -7,6 +7,7 @@ import { Bars3Icon, PhoneIcon } from "@heroicons/react/24/outline"
 import { Combobox, ComboboxInput, ComboboxOptions, ComboboxOption } from "@headlessui/react"
 import type { Product } from "@/types/product"
 import { searchProducts } from "@/services/api/product"
+import LocaleSwitcher from "@/components/common/LocaleSwitcher"
 
 // 定义搜索结果项的类型
 interface SearchResultItem {
@@ -71,7 +72,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
   // Search component that's shared between desktop and mobile
   const renderSearchCombobox = () => (
     <Combobox as="div" onChange={handleSearchSubmit}>
-      <div className="relative">
+      <div className="relative z-40">
         <div
           className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left border border-gray-300 focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500 transition-all duration-200"
         >
@@ -216,9 +217,11 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
             <Image src="https://res.cloudinary.com/duimeqqch/image/upload/xiangle_ratchet_strap_mxts89.png" alt="xiangle ratchet strap" width={120} height={40} className="h-8 w-auto" />
           </Link>
 
-          {/* Right icons */}
+          
+          {/* Right */}
           <div className="flex items-center space-x-4">
-            <Link href="/contact" className="text-white">
+          <LocaleSwitcher></LocaleSwitcher>
+            <Link href="/contact-us" className="text-white">
               <PhoneIcon className="h-6 w-6" />
             </Link>
           </div>

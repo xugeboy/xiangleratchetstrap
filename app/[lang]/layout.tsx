@@ -13,9 +13,10 @@ import { Viewport } from "next";
 import { generateSchema } from "@/utils/schema";
 import { embedSchema } from "@/utils/schema";
 import { localePrefixMap, defaultLocaleKey } from "@/middleware";
-import { isValidLocale } from "@/i18n";
+import { isValidLocale, routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
-import { NextIntlClientProvider } from "next-intl";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -155,17 +156,11 @@ export default async function RootLayout({
       (key) => localePrefixMap[key] === params.lang
     ) || defaultLocaleKey;
 
-  if (!isValidLocale(locale)) {
+  if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+  setRequestLocale(locale);
 
-  let messages;
-  try {
-    messages = (await import(`@/locales/${locale}.json`)).default;
-  } catch (error) {
-    console.log(error)
-    notFound();
-  }
   return (
     <html lang={lang}>
       <head>
@@ -182,7 +177,7 @@ export default async function RootLayout({
       </head>
       <body className={`${poppins.className} antialiased`}>
         {/* 使用 Provider 包裹需要共享数据的部分 */}
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider>
           <CategoryProvider categories={categories}>
             <div className="flex min-h-screen flex-col">
               {/* Header 现在可以从 Context 获取 categories */}

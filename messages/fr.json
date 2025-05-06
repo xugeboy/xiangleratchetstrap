@@ -1,0 +1,21 @@
+{
+  "HeroSection": {
+    "slides": [
+      {
+        "title": "EXCELLENCE EN INGÉNIERIE",
+        "subtitle": "DEPUIS 2006",
+        "description": "Construire un avenir meilleur grâce à des solutions de fabrication OEM et ODM dès aujourd'hui."
+      },
+      {
+        "title": "SOLUTION TOUT-EN-UN",
+        "subtitle": "POUR VOTRE ENTREPRISE",
+        "description": "Un soutien de chaîne d'approvisionnement complet — rapide, flexible et adapté à votre secteur."
+      },
+      {
+        "title": "QUALITÉ GARANTIE",
+        "subtitle": "À CHAQUE FOIS",
+        "description": "Des matières premières aux produits finis, chaque étape est certifiée et digne de confiance."
+      }
+    ]
+  }
+}

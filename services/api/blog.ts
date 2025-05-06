@@ -32,6 +32,16 @@ export async function getAllBlogSlug(): Promise<Blog[] | null> {
   }
 }
 
+export async function getAllBlogSlugByLocale(locale:string): Promise<Blog[] | null> {
+  try {
+    const response = await fetchAPI("/getAllBlogSlug",getFullLocale(locale));
+    return response.data || null;
+  } catch (error) {
+    console.error("Error fetching blog slug:", error);
+    return null;
+  }
+}
+
 export async function getLatestBlogs(locale:string): Promise<Blog[] | null> {
   try {
     const response = await fetchAPI("/getLatestArticles",getFullLocale(locale));

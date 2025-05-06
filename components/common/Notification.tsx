@@ -11,7 +11,7 @@ interface NotificationProps {
 }
 
 export default function Notification({ message, trigger }: NotificationProps) {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(trigger);
   useEffect(() => {
     if (trigger) {
       setShow(true);

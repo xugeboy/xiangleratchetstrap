@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
     remotePatterns: [
       {
@@ -15,12 +15,11 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
   typescript: {
     ignoreBuildErrors: true,
-  },
-  i18n: {
-    locales: ['en-US', 'en-GB', 'en-CA', 'en-AU', 'de-DE', 'fr-FR', 'es-ES'],
-    defaultLocale: 'en-US',
-    localeDetection: false, 
-  },
+  }
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin(
+  './i18n/request.ts'
+);
+
+export default withNextIntl(nextConfig);

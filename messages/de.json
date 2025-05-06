@@ -1,0 +1,21 @@
+{
+  "HeroSection": {
+    "slides": [
+      {
+        "title": "ENGINEERING EXCELLENCE",
+        "subtitle": "SINCE 2006",
+        "description": "Engineering a better tomorrow by OEM&ODM manufacturing solutions for today."
+      },
+      {
+        "title": "ONE STOP SOLUTION",
+        "subtitle": "FOR YOUR BUSINESS",
+        "description": "All-in-one supply chain support — fast, flexible, and built for your industry."
+      },
+      {
+        "title": "QUALITY GUARANTEED",
+        "subtitle": "EVERY TIME",
+        "description": "From raw materials to finished goods, every step is backed by trusted certifications you can rely on."
+      }
+    ]
+  }
+}
