@@ -175,9 +175,9 @@ async function generateLocaleSitemap(locale: string): Promise<MetadataRoute.Site
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { locale: string } }
+  { params }: { params: { lang: string } }
 ): Promise<NextResponse> {
-  const locale = params.locale;
+  const locale = params.lang;
   
   // Validate locale
   if (!Object.values(localePrefixMap).includes(locale)) {

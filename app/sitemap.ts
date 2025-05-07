@@ -15,8 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Assuming localePrefixMap's values are the locale codes like 'en', 'zh'
   for (const locale of Object.values(localePrefixMap)) {
     sitemapEntries.push({
-      // The path should match your dynamic route in app/sitemaps/[locale]/route.ts
-      url: `${BASE_URL}/sitemaps/${locale}`,
+      // The path should now point to /[lang]/sitemap.xml
+      url: `${BASE_URL}/${locale}/sitemap.xml`,
       lastModified: new Date(),
     });
   }
