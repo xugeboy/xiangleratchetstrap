@@ -127,6 +127,9 @@ export const metadata: Metadata = {
     canonical: siteUrl, // 或 siteUrl
     languages: alternates,
   },
+  other:{
+    "google-site-verification":"6skGRSGQlvwgvTJDE_HF2ao3SoHhdtFeUe2-wMKpLeg"
+  }
 };
 
 // --- Viewport 设置 (通常在根布局定义) ---
