@@ -23,11 +23,12 @@ const supportedPrefixes = Object.values(localePrefixMap);
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // 跳过静态资源
+  // 跳过静态资源、API 路由以及 sitemap 特定路径
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/static") ||
+    pathname.startsWith("/sitemaps") ||
     PUBLIC_FILE.test(pathname)
   ) {
     return NextResponse.next();
