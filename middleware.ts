@@ -4,7 +4,6 @@ import type { NextRequest } from "next/server";
 
 const PUBLIC_FILE = /\.(.*)$/;
 
-// 标准语言 key => URL 前缀映射
 export const localePrefixMap: { [key: string]: string } = {
   "en-US": "en", // 默认语言
   "en-GB": "uk",
@@ -17,13 +16,13 @@ export const localePrefixMap: { [key: string]: string } = {
 
 export const defaultLocaleKey = "en-US";
 const defaultPrefix = localePrefixMap[defaultLocaleKey]; // 'en'
-// const supportedLocaleKeys = Object.keys(localePrefixMap); // 不再需要用于浏览器语言检测
 const supportedPrefixes = Object.values(localePrefixMap);
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const url = request.nextUrl.clone();
 
-  // 跳过静态资源、API 路由以及 sitemap 特定路径
+  // 1. 跳过特定路径
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
@@ -33,49 +32,57 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // 检查当前路径是否以支持的语言前缀开头
-  const currentPathStartsWithSupportedPrefix = supportedPrefixes.find(
+  // 2. 检查当前路径是否已经带有语言前缀
+  const currentPathPrefix = supportedPrefixes.find(
     (prefix) => pathname === `/${prefix}` || pathname.startsWith(`/${prefix}/`)
   );
 
-  // ✅ 情况 1：如果路径以默认语言前缀开头，则重定向到去掉此前缀的路径
-  // 例如: /en/products -> /products; /en -> /
-  if (currentPathStartsWithSupportedPrefix === defaultPrefix) {
-    // 更严谨的替换逻辑
+  // 2a. 如果路径以默认语言前缀开头 (例如 /en/products 或 /en)
+  //    则重定向到去掉此前缀的路径 (例如 /products 或 /)
+  //    这样可以确保默认语言的规范 URL 是不带 /en 前缀的
+  if (currentPathPrefix === defaultPrefix) {
     let newPathname = "/";
-    if (pathname !== `/${defaultPrefix}`) { // 如果不是仅仅 /en
-        newPathname = pathname.substring(defaultPrefix.length + 1); //去掉 /en
+    // 如果路径是 "/en/some/path", 移除 "/en" 得到 "/some/path"
+    // 如果路径仅仅是 "/en", 移除 "/en" 得到 "/"
+    if (pathname.length > `/${defaultPrefix}`.length) { // 检查是否是 /en/something 而不仅仅是 /en
+      newPathname = pathname.substring(`/${defaultPrefix}`.length);
     }
-
-
-    const url = request.nextUrl.clone();
     url.pathname = newPathname;
-    return NextResponse.redirect(url);
+    return NextResponse.rewrite(url);
   }
 
-  // ✅ 情况 2：如果路径以非默认语言的前缀开头，则直接放行
-  // 例如: /de/products -> /de/products (正常访问)
-  if (currentPathStartsWithSupportedPrefix && currentPathStartsWithSupportedPrefix !== defaultPrefix) {
+  // 2b. 如果路径以非默认语言的前缀开头 (例如 /de/products)
+  //    则直接放行，这是正确的访问方式
+  if (currentPathPrefix && currentPathPrefix !== defaultPrefix) {
     return NextResponse.next();
   }
 
-  // ✅ 情况 3：路径没有已知的语言前缀 (也不是默认语言前缀，因为那已被情况1处理)
-  // 这意味着它本身就应该是默认语言的路径，不需要进行基于浏览器语言的重定向或重写。
-  // 例如: /products -> /products (视为英文内容)
-  // 例如: / -> / (视为英文内容)
-  // 在这种情况下，我们什么都不做，直接让 Next.js 处理请求，它会渲染对应的页面。
-  // Next.js 应该配置为将无前缀的路径映射到默认语言 (en) 的内容。
-  if (!currentPathStartsWithSupportedPrefix) {
-    return NextResponse.next();
+  // 3. 处理不带语言前缀的路径 (例如 /products 或 /)
+  //    这些路径应该被视为默认语言（英文）的内容
+  //    我们使用 rewrite 将其内部路由到带有默认语言前缀的路径
+  //    这样 RootLayout 中的 params.lang 就能获取到 'en'
+  if (!currentPathPrefix) {
+    // 对于根路径 / , 重写到 /en
+    // 对于 /products , 重写到 /en/products
+    url.pathname = `/${defaultPrefix}${pathname === "/" ? "" : pathname}`;
+    // 如果 pathname 是 "/" 那么 `/${defaultPrefix}${pathname}` 会变成 `/en/`
+    // 我们希望根路径 / rewrite 成 /en (而不是 /en/) 以匹配 Next.js 路由 app/[lang]/page.tsx
+    // 所以对于根路径，我们直接 rewrite 到 /en
+    if (pathname === "/") {
+        url.pathname = `/${defaultPrefix}`;
+    } else {
+        url.pathname = `/${defaultPrefix}${pathname}`;
+    }
+    return NextResponse.rewrite(url);
   }
 
-  // 作为备用，如果以上逻辑有遗漏，默认放行
+  // 默认放行 (理论上不应执行到这里，因为所有情况都应被覆盖)
   return NextResponse.next();
 }
 
 export const config = {
   matcher: [
     "/",
-    "/((?!api|_next|static|.*\\..*).*)" // 匹配所有非特定排除的路径
-  ]
+    "/((?!api|_next/static|_next/image|static|favicon.ico|sitemap.xml|robots.txt|.*\\..*).*)",
+  ],
 };
