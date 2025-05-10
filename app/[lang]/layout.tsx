@@ -17,6 +17,7 @@ import { isValidLocale, routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+import { getFullLocale } from "@/utils/formatUtils";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -138,26 +139,14 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-async function fetchCategories(): Promise<ProductCategory[]> {
-  try {
-    const res = await fetchAPI("/getAllCategories");
-    return res.data || null;
-  } catch (error) {
-    console.error("Error fetching categories:", error);
-    return [];
-  }
-}
-
 export default async function RootLayout({
   params,
   children,
 }: LocaleLayoutProps) {
-  const categories = await fetchCategories();
   const locale = params.lang;
-  const lang =
-    Object.keys(localePrefixMap).find(
-      (key) => localePrefixMap[key] === params.lang
-    ) || defaultLocaleKey;
+  const lang = getFullLocale(locale)
+  const res = await fetchAPI("/getAllCategories",lang);
+  const categories = res.data
 
   if (!hasLocale(routing.locales, locale)) {
     notFound();
