@@ -116,7 +116,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const slug = params.slug;
   const currentLocale = params.lang;
   const product = await getProductBySlug(slug,currentLocale);
-  const breadcrumbItems = generateProductBreadcrumbs(product);
+  const breadcrumbItems = generateProductBreadcrumbs(product,currentLocale);
 
   if (!product) {
     notFound()

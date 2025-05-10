@@ -114,7 +114,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const slug = params.slug;
   const currentLocale = params.lang;
   const blog = await getBlogDetail(slug,currentLocale);
-  const breadcrumbItems = generateBlogBreadcrumbs(blog);
+  const breadcrumbItems = generateBlogBreadcrumbs(blog,currentLocale);
 
   if (!blog) {
     notFound()

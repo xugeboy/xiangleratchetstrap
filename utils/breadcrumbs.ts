@@ -2,12 +2,15 @@ import { Product } from '@/types/product'
 import { ProductCategory } from '@/types/productCategory'
 import { BreadcrumbItem } from '@/types/breadcrumbItem'
 import { Blog } from '@/types/blog'
+import { getBreadcrumbPathPrefix } from './formatUtils'
 
-export function generateCategoryBreadcrumbs(category: ProductCategory | null): BreadcrumbItem[] {
+
+export function generateCategoryBreadcrumbs(category: ProductCategory | null,lang:string): BreadcrumbItem[] {
   const items: BreadcrumbItem[] = []
+  const pathPrefix = getBreadcrumbPathPrefix(lang);
   items.push({
     name: 'categories',
-    href: '/categories'
+    href: `${pathPrefix}/categories`
   })
   if (!category) {
     return items
@@ -18,24 +21,25 @@ export function generateCategoryBreadcrumbs(category: ProductCategory | null): B
     const parent = category.parent
     items.push({
       name: parent.name,
-      href: `/categories/${parent.slug}`
+      href: `${pathPrefix}/categories/${parent.slug}`
     })
   }
   
   // 添加当前分类
   items.push({
     name: category.name,
-    href: `/categories/${category.slug}`
+    href: `${pathPrefix}/categories/${category.slug}`
   })
   
   return items
 }
 
-export function generateProductBreadcrumbs(product: Product | null): BreadcrumbItem[] {
+export function generateProductBreadcrumbs(product: Product | null,lang:string): BreadcrumbItem[] {
   const items: BreadcrumbItem[] = []
+  const pathPrefix = getBreadcrumbPathPrefix(lang);
   items.push({
     name: 'products',
-    href: '/products'
+    href: `${pathPrefix}/products`
   })
   if (!product) {
     return items
@@ -46,24 +50,25 @@ export function generateProductBreadcrumbs(product: Product | null): BreadcrumbI
     const category = product.category
     items.push({
       name: category.name,
-      href: `/categories/${category.slug}`
+      href: `${pathPrefix}/categories/${category.slug}`
     })
   }
   
   // 添加产品名称
   items.push({
     name: product.name,
-    href: `/products/${product.slug}`
+    href: `${pathPrefix}/products/${product.slug}`
   })
   
   return items
 } 
 
-export function generateBlogBreadcrumbs(blog: Blog | null): BreadcrumbItem[] {
+export function generateBlogBreadcrumbs(blog: Blog | null,lang:string): BreadcrumbItem[] {
   const items: BreadcrumbItem[] = []
+  const pathPrefix = getBreadcrumbPathPrefix(lang);
   items.push({
     name: 'blog',
-    href: '/blogs'
+    href: `${pathPrefix}/blogs`
   })
   if (!blog) {
     return items
@@ -71,7 +76,7 @@ export function generateBlogBreadcrumbs(blog: Blog | null): BreadcrumbItem[] {
 
   items.push({
     name: blog.title,
-    href: `/blogs/${blog.slug}`
+    href: `${pathPrefix}/blogs/${blog.slug}`
   })
   
   return items

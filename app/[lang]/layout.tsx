@@ -6,14 +6,13 @@ import Header from "@/components/layout/Header";
 import BackToTop from "@/components/common/BackToTop";
 import { fetchAPI } from "@/utils/fetch-api";
 import { CategoryProvider } from "@/contexts/CategoryContext";
-import { ProductCategory } from "@/types/productCategory";
 import ClarityProvider from "@/components/common/ClarityProvider";
 import TawkToWidget from "@/components/common/TawkToWidget";
 import { Viewport } from "next";
 import { generateSchema } from "@/utils/schema";
 import { embedSchema } from "@/utils/schema";
 import { localePrefixMap, defaultLocaleKey } from "@/middleware";
-import { isValidLocale, routing } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -143,18 +142,18 @@ export default async function RootLayout({
   params,
   children,
 }: LocaleLayoutProps) {
-  const locale = params.lang;
-  const lang = getFullLocale(locale)
-  const res = await fetchAPI("/getAllCategories",lang);
+  const lang = params.lang;
+  const locale = getFullLocale(lang)
+  const res = await fetchAPI("/getAllCategories",locale);
   const categories = res.data
 
-  if (!hasLocale(routing.locales, locale)) {
+  if (!hasLocale(routing.locales, lang)) {
     notFound();
   }
-  setRequestLocale(locale);
+  setRequestLocale(lang);
 
   return (
-    <html lang={lang}>
+    <html lang={locale.locale}>
       <head>
         <link
           rel="sitemap"
@@ -173,13 +172,13 @@ export default async function RootLayout({
           <CategoryProvider categories={categories}>
             <div className="flex min-h-screen flex-col">
               {/* Header 现在可以从 Context 获取 categories */}
-              <Header />
+              <Header lang={lang}/>
               <main className="flex-grow">
                 <ClarityProvider />
                 {children}
                 <TawkToWidget />
               </main>
-              <Footer />
+              <Footer lang={lang}/>
               <BackToTop />
             </div>
           </CategoryProvider>

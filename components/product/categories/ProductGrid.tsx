@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import type { Product } from "@/types/product";
 import { filterProducts } from "@/services/api/product";
+import { getBreadcrumbPathPrefix } from "@/utils/formatUtils";
 
 interface ProductGridProps {
   selectedFilters: Record<string, string[]>;
@@ -56,7 +57,7 @@ export function ProductGrid({
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
-
+  const pathPrefix = getBreadcrumbPathPrefix(lang);
   return (
     <div className="space-y-6">
       {isLoading ? (
@@ -87,7 +88,7 @@ export function ProductGrid({
               >
                 {viewMode === "grid" && (
                   <Link
-                    href={`/products/${product.slug}`}
+                    href={`${pathPrefix}/products/${product.slug}`}
                     className="group block"
                   >
                     <div className="relative aspect-square overflow-hidden bg-gray-100 mb-4">
@@ -126,7 +127,7 @@ export function ProductGrid({
                       )}
                     </div>
                     <div className="flex-1">
-                      <Link href={`/products/${product.slug}`}>
+                      <Link href={`${pathPrefix}/products/${product.slug}`}>
                         <h3 className="text-lg font-medium">{product.name}</h3>
                       </Link>
                       <p className="mt-2 text-sm text-gray-600 line-clamp-3">
@@ -134,7 +135,7 @@ export function ProductGrid({
                       </p>
                       <div className="mt-4">
                         <Link
-                          href={`/products/${product.slug}`}
+                          href={`${pathPrefix}/products/${product.slug}`}
                           className="inline-block bg-amber-700 text-white px-4 py-2 text-sm font-medium uppercase"
                         >
                           LEARN MORE
@@ -146,7 +147,7 @@ export function ProductGrid({
 
                 {viewMode === "compact" && (
                   <Link
-                    href={`/products/${product.slug}`}
+                    href={`${pathPrefix}/products/${product.slug}`}
                     className="flex items-center gap-4"
                   >
                     <div className="w-16 h-16 flex-shrink-0 bg-gray-100">

@@ -8,6 +8,7 @@ import { Combobox, ComboboxInput, ComboboxOptions, ComboboxOption } from "@headl
 import type { Product } from "@/types/product"
 import { searchProducts } from "@/services/api/product"
 import LocaleSwitcher from "@/components/common/LocaleSwitcher"
+import { getBreadcrumbPathPrefix } from "@/utils/formatUtils"
 
 // 定义搜索结果项的类型
 interface SearchResultItem {
@@ -19,26 +20,28 @@ interface SearchResultItem {
 
 interface SearchBarProps {
   onMobileMenuOpen: () => void
+  lang: string
 }
 
-export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
+export function SearchBar({ onMobileMenuOpen,lang }: SearchBarProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [isSearching, setIsSearching] = useState(false)
   const [searchResults, setSearchResults] = useState<SearchResultItem[]>([])
   const [setRecentSearches] = useState<string[]>([])
 
+  const pathPrefix = getBreadcrumbPathPrefix(lang);
   // 获取搜索结果
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       if (searchQuery.length > 1) {
         setIsSearching(true)
         try {
-          const products: Product[] = await searchProducts(searchQuery)
+          const products: Product[] = await searchProducts(searchQuery,lang)
           // 转换产品数据为搜索结果项格式
           const formattedResults: SearchResultItem[] = products.map((product) => ({
             id: product.id,
             name: product.name,
-            url: `/products/${product.slug}`,
+            url: `${pathPrefix}/products/${product.slug}`,
             imageUrl: product.gallery?.[0]?.url || product.featured_image?.url || "/placeholder.jpg",
           }))
           setSearchResults(formattedResults)

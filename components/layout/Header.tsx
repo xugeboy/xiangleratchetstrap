@@ -5,8 +5,10 @@ import { SearchBar } from "@/components/layout/header/search-bar"
 import { CategoryNavigation } from "@/components/layout/header/category-navigation"
 import { MobileMenu } from "@/components/layout/header/mobile-menu"
 
-
-export default function Header() {
+interface HeaderProps {
+  lang: string
+}
+export default function Header({ lang }: HeaderProps) {
     const company = [
       { name: 'About Us', href: '/about-us' },
       { name: 'Contact Us', href: '/contact-us' },
@@ -23,7 +25,7 @@ export default function Header() {
         </div>
   
         {/* Search bar with logo */}
-        <SearchBar onMobileMenuOpen={() => setMobileMenuOpen(true)} />
+        <SearchBar onMobileMenuOpen={() => setMobileMenuOpen(true)} lang={lang} />
   
         {/* Category navigation - hide on mobile */}
         <div className="hidden md:block">

@@ -85,7 +85,7 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
         // 将 filters 作为参数传入
         const [filtersData, breadcrumbItems] = await Promise.all([
           getProductFilters(currentCategory.slug,lang),
-          generateCategoryBreadcrumbs(currentCategory),
+          generateCategoryBreadcrumbs(currentCategory,lang),
         ]);
         setbreadcrumbItems(breadcrumbItems);
   

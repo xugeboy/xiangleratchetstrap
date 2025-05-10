@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import NewsLetter from "../forms/NewsLetter";
+import { getBreadcrumbPathPrefix } from "@/utils/formatUtils";
 
 const navigation = {
   company: [
@@ -115,19 +116,22 @@ const navigation = {
     },
   ],
 };
-
-export default function Footer() {
+interface FooterProps {
+  lang: string
+}
+export default function Footer({ lang }: FooterProps) {
   const [isOpenProducts, setIsOpenProducts] = useState(false);
   const [isOpenSupport, setIsOpenSupport] = useState(false);
   const [isOpenCompany, setIsOpenCompany] = useState(false);
   const [isOpenContact, setIsOpenContact] = useState(false);
 
+  const pathPrefix = getBreadcrumbPathPrefix(lang);
   return (
     <footer className="bg-gray-900 mt-10">
       <div className="mx-auto max-w-7xl px-6 py-2">
         <div className="hidden md:block pt-12 xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="flex flex-col gap-2">
-            <Link href="/" className="flex-shrink-0">
+            <Link href={`${pathPrefix}/`} className="flex-shrink-0">
               <Image
                 src="https://res.cloudinary.com/duimeqqch/image/upload/v1744006735/xiangle_ratchet_strap_w_m7aeic.png"
                 alt="xiangle ratchet strap"
@@ -156,7 +160,7 @@ export default function Footer() {
                 {navigation.products.map((item) => (
                   <li key={item.name}>
                     <a
-                      href={item.href}
+                      href={`${pathPrefix}${item.href}`}
                       className="text-sm/6 text-gray-400 hover:text-white"
                     >
                       {item.name}
@@ -173,7 +177,7 @@ export default function Footer() {
                 {navigation.support.map((item) => (
                   <li key={item.name}>
                     <a
-                      href={item.href}
+                      href={`${pathPrefix}${item.href}`}
                       className="text-sm/6 text-gray-400 hover:text-white"
                     >
                       {item.name}
@@ -190,7 +194,7 @@ export default function Footer() {
                 {navigation.company.map((item) => (
                   <li key={item.name}>
                     <a
-                      href={item.href}
+                      href={`${pathPrefix}${item.href}`}
                       className="text-sm/6 text-gray-400 hover:text-white"
                     >
                       {item.name}
