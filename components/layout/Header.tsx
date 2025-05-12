@@ -1,44 +1,62 @@
-"use client"
-import { useState } from "react"
-import { TopNavigation } from "@/components/layout/header/top-navigation"
-import { SearchBar } from "@/components/layout/header/search-bar"
-import { CategoryNavigation } from "@/components/layout/header/category-navigation"
-import { MobileMenu } from "@/components/layout/header/mobile-menu"
+"use client";
+import { useState } from "react";
+import { SearchBar } from "@/components/layout/header/search-bar";
+import { CategoryNavigation } from "@/components/layout/header/category-navigation";
+import { MobileMenu } from "@/components/layout/header/mobile-menu";
+import Link from "next/link";
+import LocaleSwitcher from "../common/LocaleSwitcher";
+import { useLocale, useTranslations } from "next-intl";
+import { getCombainedLocalePath } from "@/utils/formatUtils";
 
-interface HeaderProps {
-  lang: string
+export default function Header() {
+  const locale = useLocale();
+  const tNav = useTranslations("Navigation");
+  const company = [
+    { name: tNav("company.aboutUs"), href: getCombainedLocalePath(locale,"about-us") },
+    { name: tNav("company.contactUs"), href: getCombainedLocalePath(locale,"contact-us") },
+    { name: tNav("company.blogs"), href: getCombainedLocalePath(locale,"blogs") },
+    { name: tNav("company.meetTheTeam"), href: getCombainedLocalePath(locale,"/business-solutions/#meet-the-team") },
+  ];
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  return (
+    <header className="bg-white">
+      {/* Top navigation bar - hide on mobile */}
+      <div className="hidden md:block bg-gray-900 text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-10 items-center justify-end space-x-8">
+            <Link
+              href={getCombainedLocalePath(locale,"business-solutions")}
+              className="text-sm font-medium hover:text-gray-300"
+            >
+              {tNav("support.businessSolutions")}
+            </Link>
+            <Link
+              href={getCombainedLocalePath(locale,"contact-us")}
+              className="text-sm font-medium hover:text-gray-300"
+            >
+              {tNav("company.contactUs")}
+            </Link>
+            <LocaleSwitcher></LocaleSwitcher>
+          </div>
+        </div>
+      </div>
+
+      {/* Search bar with logo */}
+      <SearchBar onMobileMenuOpen={() => setMobileMenuOpen(true)}/>
+
+      {/* Category navigation - hide on mobile */}
+      <div className="hidden md:block">
+        <CategoryNavigation />
+        <div className="w-full border-b border-gray-200 mt-1"></div>
+      </div>
+
+      {/* Mobile menu */}
+      <MobileMenu
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        company={company}
+      />
+    </header>
+  );
 }
-export default function Header({ lang }: HeaderProps) {
-    const company = [
-      { name: 'About Us', href: '/about-us' },
-      { name: 'Contact Us', href: '/contact-us' },
-      { name: 'Blogs', href: '/blogs' },
-      { name: 'Meet The Team', href: '/business-solutions/#meet-the-team' }
-    ]
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  
-    return (
-      <header className="bg-white">
-        {/* Top navigation bar - hide on mobile */}
-        <div className="hidden md:block">
-          <TopNavigation />
-        </div>
-  
-        {/* Search bar with logo */}
-        <SearchBar onMobileMenuOpen={() => setMobileMenuOpen(true)} lang={lang} />
-  
-        {/* Category navigation - hide on mobile */}
-        <div className="hidden md:block">
-          <CategoryNavigation />
-          <div className="w-full border-b border-gray-200 mt-1"></div>
-        </div>
-  
-        {/* Mobile menu */}
-        <MobileMenu
-          isOpen={mobileMenuOpen}
-          onClose={() => setMobileMenuOpen(false)}
-          company={company}
-        />
-      </header>
-    )
-  }

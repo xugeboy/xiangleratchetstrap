@@ -8,7 +8,8 @@ import { Combobox, ComboboxInput, ComboboxOptions, ComboboxOption } from "@headl
 import type { Product } from "@/types/product"
 import { searchProducts } from "@/services/api/product"
 import LocaleSwitcher from "@/components/common/LocaleSwitcher"
-import { getBreadcrumbPathPrefix } from "@/utils/formatUtils"
+import { getBreadcrumbPathPrefix, getCombainedLocalePath } from "@/utils/formatUtils"
+import { useLocale, useTranslations } from "next-intl"
 
 // 定义搜索结果项的类型
 interface SearchResultItem {
@@ -20,28 +21,26 @@ interface SearchResultItem {
 
 interface SearchBarProps {
   onMobileMenuOpen: () => void
-  lang: string
 }
 
-export function SearchBar({ onMobileMenuOpen,lang }: SearchBarProps) {
+export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [isSearching, setIsSearching] = useState(false)
   const [searchResults, setSearchResults] = useState<SearchResultItem[]>([])
-  const [setRecentSearches] = useState<string[]>([])
-
-  const pathPrefix = getBreadcrumbPathPrefix(lang);
+  const t = useTranslations("SearchBar");
+  const locale = useLocale();
   // 获取搜索结果
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       if (searchQuery.length > 1) {
         setIsSearching(true)
         try {
-          const products: Product[] = await searchProducts(searchQuery,lang)
+          const products: Product[] = await searchProducts(searchQuery,locale)
           // 转换产品数据为搜索结果项格式
           const formattedResults: SearchResultItem[] = products.map((product) => ({
             id: product.id,
             name: product.name,
-            url: `${pathPrefix}/products/${product.slug}`,
+            url: getCombainedLocalePath(locale,"products/"+product.slug),
             imageUrl: product.gallery?.[0]?.url || product.featured_image?.url || "/placeholder.jpg",
           }))
           setSearchResults(formattedResults)
@@ -60,14 +59,6 @@ export function SearchBar({ onMobileMenuOpen,lang }: SearchBarProps) {
 
   // Handle search submission
   const handleSearchSubmit = (item: SearchResultItem) => {
-    // Save search query to recent searches
-    if (searchQuery && searchQuery.trim() !== "") {
-      setRecentSearches((prev) => {
-        const newSearches = [searchQuery, ...prev.filter((s) => s !== searchQuery)].slice(0, 5)
-        return newSearches
-      })
-    }
-
     // Navigate to product page
     window.location.href = item.url
   }
@@ -81,7 +72,7 @@ export function SearchBar({ onMobileMenuOpen,lang }: SearchBarProps) {
         >
           <ComboboxInput
             className="w-full border-none py-3 pl-4 pr-10 text-sm leading-5 text-gray-900 focus:ring-0 outline-none"
-            placeholder="What are you looking for?"
+            placeholder={t("placeholder")}
             onChange={(event) => setSearchQuery(event.target.value)}
             displayValue={(item: SearchResultItem | null) => item?.name || ""}
           />
@@ -134,14 +125,14 @@ export function SearchBar({ onMobileMenuOpen,lang }: SearchBarProps) {
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   ></path>
                 </svg>
-                Searching products...
+                {t("searchingStatus")}
               </div>
             ) : searchResults.length === 0 ? (
-              <div className="px-4 py-6 text-center text-sm text-gray-500">No products found for &quot;{searchQuery}&quot;</div>
+              <div className="px-4 py-6 text-center text-sm text-gray-500">{t("noProductsFound", { searchQuery: searchQuery })}</div>
             ) : (
               <>
                 <div className="sticky top-0 z-10 bg-white px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider border-b">
-                  Search Results ({searchResults.length})
+                {t("searchResultsTitle", { count: searchResults.length })}
                 </div>
                 {searchResults.map((item) => (
                   <ComboboxOption
@@ -164,7 +155,7 @@ export function SearchBar({ onMobileMenuOpen,lang }: SearchBarProps) {
                           <p className={`text-sm font-medium ${focus ? "text-indigo-700" : "text-gray-900"} truncate`}>
                             {item.name}
                           </p>
-                          <p className="mt-1 text-xs text-gray-500 truncate">Click to view details</p>
+                          <p className="mt-1 text-xs text-gray-500 truncate">{t("clickToViewDetails")}</p>
                         </div>
                         {focus && (
                           <div className="flex-shrink-0 text-indigo-600">

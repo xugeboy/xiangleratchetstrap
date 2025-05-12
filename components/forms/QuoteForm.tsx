@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { formAPI } from "@/utils/fetch-api";
 import Notification from "../common/Notification";
+import { useTranslations } from "next-intl";
 
 export default function QuoteForm() {
+  const t = useTranslations("QuoteForm");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -32,7 +34,6 @@ export default function QuoteForm() {
       data.append("files.attachment", file);
     });
 
-
     const resData = await formAPI("/submitInquiry", data);
 
     setSuccessMessage(resData.message);
@@ -51,7 +52,7 @@ export default function QuoteForm() {
   return (
     <div className="mb-10" id="quote_form">
       <Notification
-        message={successMessage}
+        message={successMessage} // successMessage 现在可能来自 t() 或 API
         trigger={showSuccessNotification}
       />
       <form
@@ -65,14 +66,15 @@ export default function QuoteForm() {
               htmlFor="firstName"
               className="block text-sm mb-1 text-gray-600"
             >
-              First Name <span className="text-red-400">*</span>
+              {t("labels.firstName")} <span className="text-red-400">*</span>
             </label>
             <input
               type="text"
               id="firstName"
+              name="firstName" // 添加 name 属性
               required
               className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-              focus:bg-white focus:border-blue-500 focus:outline-none"
+                       focus:bg-white focus:border-blue-500 focus:outline-none"
               value={formData.firstName}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, firstName: e.target.value }))
@@ -86,13 +88,14 @@ export default function QuoteForm() {
               htmlFor="lastName"
               className="block text-sm mb-1 text-gray-600"
             >
-              Last Name
+              {t("labels.lastName")}
             </label>
             <input
               type="text"
               id="lastName"
+              name="lastName" // 添加 name 属性
               className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-              focus:bg-white focus:border-blue-500 focus:outline-none"
+                       focus:bg-white focus:border-blue-500 focus:outline-none"
               value={formData.lastName}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, lastName: e.target.value }))
@@ -103,14 +106,15 @@ export default function QuoteForm() {
           {/* Email */}
           <div>
             <label htmlFor="email" className="block text-sm mb-1 text-gray-600">
-              Email <span className="text-red-400">*</span>
+              {t("labels.email")} <span className="text-red-400">*</span>
             </label>
             <input
               type="email"
               id="email"
+              name="email" // 添加 name 属性
               required
               className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-              focus:bg-white focus:border-blue-500 focus:outline-none"
+                       focus:bg-white focus:border-blue-500 focus:outline-none"
               value={formData.email}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, email: e.target.value }))
@@ -121,13 +125,14 @@ export default function QuoteForm() {
           {/* Phone */}
           <div>
             <label htmlFor="phone" className="block text-sm mb-1 text-gray-600">
-              Phone
+              {t("labels.phone")}
             </label>
             <input
               type="tel"
               id="phone"
+              name="phone" // 添加 name 属性
               className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-              focus:bg-white focus:border-blue-500 focus:outline-none"
+                       focus:bg-white focus:border-blue-500 focus:outline-none"
               value={formData.phone}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, phone: e.target.value }))
@@ -142,13 +147,14 @@ export default function QuoteForm() {
             htmlFor="companyName"
             className="block text-sm mb-1 text-gray-600"
           >
-            Company Name
+            {t("labels.companyName")}
           </label>
           <input
             type="text"
             id="companyName"
+            name="companyName" // 添加 name 属性
             className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-            focus:bg-white focus:border-blue-500 focus:outline-none"
+                     focus:bg-white focus:border-blue-500 focus:outline-none"
             value={formData.companyName}
             onChange={(e) =>
               setFormData((prev) => ({ ...prev, companyName: e.target.value }))
@@ -162,13 +168,14 @@ export default function QuoteForm() {
             htmlFor="position"
             className="block text-sm mb-1 text-gray-600"
           >
-            Position/Title
+            {t("labels.position")}
           </label>
           <input
             type="text"
             id="position"
+            name="position" // 添加 name 属性
             className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-            focus:bg-white focus:border-blue-500 focus:outline-none"
+                     focus:bg-white focus:border-blue-500 focus:outline-none"
             value={formData.position}
             onChange={(e) =>
               setFormData((prev) => ({ ...prev, position: e.target.value }))
@@ -179,14 +186,15 @@ export default function QuoteForm() {
         {/* Message */}
         <div className="mt-6">
           <label htmlFor="message" className="block text-sm mb-1 text-gray-600">
-            Message <span className="text-red-400">*</span>
+            {t("labels.message")} <span className="text-red-400">*</span>
           </label>
           <textarea
             id="message"
+            name="message" // 添加 name 属性
             rows={4}
             required
             className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-            focus:bg-white focus:border-blue-500 focus:outline-none"
+                     focus:bg-white focus:border-blue-500 focus:outline-none"
             value={formData.message}
             onChange={(e) =>
               setFormData((prev) => ({ ...prev, message: e.target.value }))
@@ -200,31 +208,37 @@ export default function QuoteForm() {
             htmlFor="attachment"
             className="block text-sm mb-1 text-gray-600"
           >
-            Attachment
+            {t("labels.attachment")}
           </label>
           <div className="mt-1 bg-gray-50/50 rounded-xl border border-gray-100 p-4">
             <input
               type="file"
               id="attachment"
+              name="attachment_files" // 确保 name 属性对 FormData 有意义
               className="hidden"
               multiple
               onChange={handleFileChange}
+              accept="image/*,application/pdf,.doc,.docx,.xls,.xlsx,.txt" // 示例：限制文件类型
             />
             <div className="flex items-center justify-between">
               <label
                 htmlFor="attachment"
                 className="cursor-pointer inline-flex items-center px-4 py-2 rounded-lg bg-white border border-gray-100 
-                text-sm text-gray-600 hover:border-blue-500 hover:text-blue-500
-                transition-colors"
+                             text-sm text-gray-600 hover:border-blue-500 hover:text-blue-500
+                             transition-colors"
               >
-                Choose File
+                {t("buttons.chooseFile")}
               </label>
               <p className="text-sm text-gray-400">
                 {formData.attachment.length > 0
                   ? formData.attachment.map((f) => f.name).join(", ")
-                  : "No file selected"}
+                  : t("fileUpload.noFileSelected")}
               </p>
             </div>
+            <p className="text-xs text-gray-400 mt-1">
+              {t("fileUpload.maxFilesHint", { count: 3 })}
+            </p>{" "}
+            {/* 添加提示 */}
           </div>
         </div>
 
@@ -232,10 +246,12 @@ export default function QuoteForm() {
         <div className="mt-8">
           <button
             type="submit"
+            // disabled={isLoading} // 禁用按钮当正在加载时
             className="inline-flex px-6 py-3 text-sm font-medium text-white bg-amber-700 
-            rounded-xl hover:bg-amber-800 transition-colors"
+                     rounded-xl hover:bg-amber-800 transition-colors disabled:opacity-50"
           >
-            Submit
+            {/* {isLoading ? t("buttons.submitting") : t("buttons.submit")} */}
+            {t("buttons.submit")}
           </button>
         </div>
       </form>

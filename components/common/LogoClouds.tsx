@@ -1,5 +1,6 @@
 "use client"
 import ImageTrail from "@/reactbits/Animations/ImageTrail/ImageTrail"
+import { useTranslations } from "next-intl";
 
 const partners = [
   "https://res.cloudinary.com/duimeqqch/image/upload/v1745480008/logo8_dboi4s.jpg",
@@ -13,22 +14,20 @@ const partners = [
 ]
 
 export default function LogoClouds() {
+  const t = useTranslations("LogoClouds");
+
   return (
     <div className="mx-auto max-w-7xl mb-10">
       <div className="relative isolate h-full overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
-        {/* 内容区域 */}
         <div className="relative z-10">
           <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Our customers love us
+          {t("title")}
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg/8 text-gray-300">
-            From the very first use, they notice the difference — the reliable quality, thoughtful design, and
-            unwavering service. Every purchase is a vote of confidence, and we're committed to honoring that trust by
-            perfecting every detail. Thank you for being part of our journey. Because of you, we keep getting better.
+          {t("description")}
           </p>
         </div>
 
-        {/* ImageTrail 绝对定位，填充整个容器 */}
         <div className="absolute inset-0 z-20">
           <ImageTrail key="ImageTrail" items={partners} variant={2} />
         </div>

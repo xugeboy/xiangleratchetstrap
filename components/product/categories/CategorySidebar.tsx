@@ -1,12 +1,13 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ChevronDownIcon } from "@heroicons/react/24/outline"
 import { CategoryFilter } from "./CategoryFilter"
 import type { ProductCategory } from "@/types/productCategory"
 import { ProductFilter } from "@/types/productFilter"
 import { useCategories } from "@/contexts/CategoryContext"
+import { useTranslations } from "next-intl"
 
 interface CategorySidebarProps {
   currentCategory: ProductCategory | null
@@ -70,7 +71,7 @@ export function CategorySidebar({
             <button
               onClick={() => toggleCategory(category.id)}
               className="p-1"
-              aria-label={isExpanded ? "Collapse category" : "Expand category"}
+              aria-label={isExpanded ? t("collapseCategory") : t("expandCategory")}
             >
               <ChevronDownIcon className={`h-4 w-4 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
             </button>
@@ -104,26 +105,27 @@ export function CategorySidebar({
     )
   }
 
+  const t = useTranslations("CategorySidebar");
   return (
     <div className="space-y-6">
       {/* Categories Navigation */}
       <div>
-        <h2 className="text-lg font-bold text-gray-900 mb-4">Categories</h2>
+        <h2 className="text-lg font-bold text-gray-900 mb-4">{t("categories")}</h2>
         <nav className="space-y-1">{rootCategories.map((category) => renderCategory(category))}</nav>
       </div>
 
       {/* Filters Section */}
       {productFilters.length > 0 && (
         <div className="mt-8">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">Refine By</h2>
+          <h2 className="text-lg font-bold text-gray-900 mb-4">{t("refineBy")}</h2>
 
           {/* Selected Filters */}
           {Object.keys(selectedFilters).length > 0 && (
             <div className="mb-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium">Selected Filters</span>
+                <span className="text-sm font-medium">{t("selectedFilters")}</span>
                 <button type="button" className="text-sm text-amber-700 hover:underline" onClick={onClearAllFilters}>
-                  Clear All
+                {t("clearAll")}
                 </button>
               </div>
 

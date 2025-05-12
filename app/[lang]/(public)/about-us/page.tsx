@@ -1,56 +1,57 @@
+"use client";
+
 import Image from "next/image";
 import LogoClouds from "@/components/common/LogoClouds";
+import { useTranslations } from "next-intl"; // Import useTranslations
 
-const timeline = [
+// Define a type for your timeline items if you haven't already
+interface TimelineItem {
+  nameKey: string; // Key for the name/title
+  descriptionKey: string; // Key for the description
+  date: string;
+  dateTime: string;
+}
+
+const timelineData: TimelineItem[] = [
   {
-    name: "Factory Established",
-    description:
-      "Our journey began in 2006 with the founding of our manufacturing facility, laying the foundation for years of growth and innovation in tie-down strap production.",
+    nameKey: "timeline.factoryEstablished.name",
+    descriptionKey: "timeline.factoryEstablished.description",
     date: "2006",
     dateTime: "2006-01",
   },
   {
-    name: "Entered International Trade",
-    description:
-      "In 2016, we expanded into global markets, launching our export business and building long-term partnerships with clients around the world.",
+    nameKey: "timeline.enteredInternationalTrade.name",
+    descriptionKey: "timeline.enteredInternationalTrade.description",
     date: "2016",
     dateTime: "2016-01",
   },
   {
-    name: "Scaled to 100 Workers, $5M Output",
-    description:
-      "By 2023, our workforce reached 100 employees and our annual production value surpassed $5 million, marking a major milestone in our capacity and capabilities.",
+    nameKey: "timeline.scaledTo100Workers.name",
+    descriptionKey: "timeline.scaledTo100Workers.description",
     date: "2023",
     dateTime: "2023-01",
   },
   {
-    name: "New Product Innovation",
-    description:
-      "In 2024, we launched our newly developed automatic retractable ratchet strap and increased our annual production value to $7 million.",
+    nameKey: "timeline.newProductInnovation.name",
+    descriptionKey: "timeline.newProductInnovation.description",
     date: "2024",
     dateTime: "2024-01",
   },
 ];
 
-export default function Example() {
+export default function AboutUsPage() { // Renamed for clarity
+  const t = useTranslations("AboutUsPage"); // Initialize translations for 'AboutUsPage' namespace
+
   return (
     <div>
       <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
           <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">
-            About Xianlge
+            {t("mainHeading")}
           </h1>
           <div className="mt-6 lg:mt-0">
             <p className="text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-              At Xiangle Ratchet Strap, our mission and vision are intertwined:
-              to empower small and medium-sized enterprises (SMBs) worldwide by
-              providing dependable, high-performance, and safe tie-down
-              solutions that ensure efficiency and peace of mind. We are
-              committed to offering high-quality, competitively priced, and
-              highly customized one-stop cargo control solutions, fostering a
-              strong partnership that enables us to grow together with our
-              customers and contribute to their success in confidently securing
-              their shipments, structures, and projects.
+              {t("missionVision")}
             </p>
           </div>
         </div>
@@ -60,8 +61,8 @@ export default function Example() {
       {/* Timeline section */}
       <div className="mx-auto -mt-8 max-w-7xl px-6 lg:px-8 mb-40">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-8 overflow-hidden lg:mx-0 lg:max-w-none lg:grid-cols-4">
-          {timeline.map((item) => (
-            <div key={item.name}>
+          {timelineData.map((item) => (
+            <div key={item.nameKey}>
               <time
                 dateTime={item.dateTime}
                 className="flex items-center text-sm/6 font-semibold text-indigo-600"
@@ -80,10 +81,10 @@ export default function Example() {
                 />
               </time>
               <p className="mt-6 text-lg/8 font-semibold tracking-tight text-gray-900">
-                {item.name}
+                {t(item.nameKey)}
               </p>
               <p className="mt-1 text-base/7 text-gray-600">
-                {item.description}
+                {t(item.descriptionKey)}
               </p>
             </div>
           ))}
@@ -98,20 +99,15 @@ export default function Example() {
         <div className="mx-auto flex max-w-2xl flex-col items-center justify-between gap-16 lg:mx-0 lg:max-w-none lg:flex-row">
           <div className="w-full lg:max-w-lg lg:flex-auto">
             <h2 className="text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl">
-              Engineering & OEM Capabilities
+              {t("engineeringCapabilities.heading")}
             </h2>
             <p className="mt-6 text-xl/8 text-gray-600">
-              Innovation lies at the core of what we do. From custom length
-              straps to fully branded solutions, Xiangle provides full OEM/ODM
-              services tailored to your market needs. Our in-house development
-              team is continuously exploring new materials, user-friendly
-              designs, and cost-effective improvements—bringing your product
-              ideas to life, with factory-level control and quality assurance.
+              {t("engineeringCapabilities.description")}
             </p>
           </div>
           <div className="w-full lg:max-w-xl lg:flex-auto">
             <Image
-              alt="custom_product__capabilities"
+              alt={t("imageAlts.customProductCapabilities")}
               src="https://res.cloudinary.com/duimeqqch/image/upload/v1744955344/custom_options_raqkxy.jpg"
               width={600}
               height={600}
@@ -127,23 +123,16 @@ export default function Example() {
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:min-w-full lg:flex-none lg:gap-y-8">
             <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
               <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-                Our Strength
+                {t("ourStrength.heading")}
               </h2>
               <p className="mt-6 text-xl/8 text-gray-600">
-                Xiangle Ratchet Strap operates with a strong manufacturing
-                backbone, powered by a skilled workforce, automated production
-                lines, and a commitment to continuous improvement. Our factory
-                integrates advanced equipment, rigorous quality control systems,
-                and a scalable production capacity to meet both high-volume
-                orders and custom requirements. Whether it’s precision-welded
-                buckles or next-generation retractable systems, we focus on
-                delivering consistent performance with every strap produced.
+                {t("ourStrength.description")}
               </p>
             </div>
             <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
               <div className="w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
                 <Image
-                  alt=""
+                  alt={t("imageAlts.scaleCapacity")} // Example: Provide meaningful alt text keys
                   src="https://res.cloudinary.com/duimeqqch/image/upload/v1745291515/SCALE_CAPACITY_kjmie6.jpg"
                   className="aspect-7/5 w-[37rem] max-w-none rounded-2xl bg-gray-50 object-scale-down"
                   width={592}
@@ -153,7 +142,7 @@ export default function Example() {
               <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
                 <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
                   <Image
-                    alt=""
+                    alt={t("imageAlts.precisionSkill")}
                     src="https://res.cloudinary.com/duimeqqch/image/upload/v1745291515/PRECISION_SKILL_u0bfdk.jpg"
                     className="aspect-7/5 w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-scale-down"
                     width={592}
@@ -162,7 +151,7 @@ export default function Example() {
                 </div>
                 <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">
                   <Image
-                    alt="gs_certificated"
+                    alt={t("imageAlts.gsCertificated")}
                     src="https://res.cloudinary.com/duimeqqch/image/upload/v1744962148/GS_CERTIFICATED_h2ri7d.jpg"
                     className="aspect-4/3 w-[24rem] max-w-none rounded-2xl bg-gray-50"
                     width={300}
@@ -171,7 +160,7 @@ export default function Example() {
                 </div>
                 <div className="order-first flex w-64 flex-none justify-end self-end lg:w-auto">
                   <Image
-                    alt="tested_quality"
+                    alt={t("imageAlts.testedQuality")}
                     src="https://res.cloudinary.com/duimeqqch/image/upload/v1744955344/tested_quality_uoophk.jpg"
                     className="aspect-4/3 w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50"
                     width={600}
@@ -188,28 +177,22 @@ export default function Example() {
       <div className="mt-32 overflow-hidden sm:mt-40">
         <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:min-w-full lg:flex-none lg:gap-y-8">
-            {/* 文字区域 - 放右边 */}
-            <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
+            {/* Text Area - Right Aligned on Large Screens */}
+            <div className="lg:col-start-2 lg:row-start-1 lg:w-full lg:max-w-lg lg:pb-8"> {/* Adjusted for right alignment */}
               <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-                Global Reach
+                {t("globalReach.heading")}
               </h2>
               <p className="mt-6 text-xl/8 text-gray-600">
-                Since entering the international market in 2016, Xiangle&apos;s
-                products have been shipped to customers across North America,
-                Europe, Southeast Asia, and Australia. Backed by a robust
-                inventory system and responsive logistics team, we ensure timely
-                delivery and reliable supply for partners worldwide—whether
-                you&apos;re a distributor, e-commerce brand, or industrial end
-                user.
+                {t("globalReach.description")}
               </p>
             </div>
-            {/* 图片区域 - 放左边 */}
-            <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
+            {/* Image Area - Left Aligned on Large Screens */}
+            <div className="flex flex-wrap items-start justify-start gap-6 sm:gap-8 lg:contents lg:col-start-1 lg:row-start-1"> {/* Adjusted for left alignment */}
               <Image
-                alt="global reach"
+                alt={t("imageAlts.globalReachMap")}
                 src="https://res.cloudinary.com/duimeqqch/image/upload/v1744961092/global_reach_h6hh9h.png"
                 className="max-w-none rounded-2xl bg-gray-50"
-                width={718}
+                width={718} // Adjust width/height as per your design
                 height={387}
               />
             </div>

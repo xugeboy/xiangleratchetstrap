@@ -3,6 +3,7 @@
 import { useState } from "react";
 import BlocksClient from "@/components/common/BlocksClient";
 import { BlocksContent } from "@strapi/blocks-react-renderer";
+import { useTranslations } from "next-intl";
 
 interface DescriptionProps {
     description: BlocksContent;
@@ -10,12 +11,13 @@ interface DescriptionProps {
   
   
   export default function Description({ description }: DescriptionProps) {
+    const t = useTranslations("Common")
     const [isExpanded, setIsExpanded] = useState(false)
     return (
       <div className="bg-white">
       <div className="mb-8 border border-gray-200 rounded-lg overflow-hidden">
         <h2 className="text-lg font-semibold bg-gray-100 px-4 py-2 border-b border-gray-200">
-          Description
+        {t("description")}
         </h2>
         <div className="p-4">
           <div 
@@ -34,14 +36,14 @@ interface DescriptionProps {
           >
             {isExpanded ? (
               <>
-                See Less
+                {t("seeLess")} 
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
                 </svg>
               </>
             ) : (
               <>
-                See More
+                {t("seeMore")} 
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>

@@ -1,20 +1,22 @@
 import { ChevronRightIcon, HomeIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import { BreadcrumbItem } from '@/types/breadcrumbItem'
+import { getCombainedLocalePath } from '@/utils/formatUtils'
 
 interface BreadcrumbProps {
   items: BreadcrumbItem[]
   showHome?: boolean
+  lang: string
 }
-
-export default function Breadcrumb({ items, showHome = true }: BreadcrumbProps) {
+export default function Breadcrumb({ lang, items, showHome = true }: BreadcrumbProps) {
+  const pathPrefix = getCombainedLocalePath(lang, "")
   return (
     <nav aria-label="Breadcrumb" className="flex py-4">
       <ol role="list" className="flex items-center space-x-4">
         {showHome && (
           <li>
             <div>
-              <Link href="/" className="text-gray-400 hover:text-gray-500">
+              <Link href={pathPrefix} className="text-gray-400 hover:text-gray-500">
                 <HomeIcon className="size-5 shrink-0" aria-hidden="true" />
                 <span className="sr-only">Home</span>
               </Link>

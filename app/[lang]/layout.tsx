@@ -15,8 +15,8 @@ import { localePrefixMap, defaultLocaleKey } from "@/middleware";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 import { getFullLocale } from "@/utils/formatUtils";
+import { setRequestLocale } from "next-intl/server";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -30,27 +30,20 @@ interface LocaleLayoutProps {
   };
   children: React.ReactNode;
 }
-
-// --- 静态 Metadata 对象 ---
-
-// --- 基本站点信息 (从环境变量获取) ---
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL; // Fallback for local dev
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 const siteName = process.env.SITE_NAME;
 const defaultDescription =
   "Ratchet, E-Track, and Cargo Tie Down Straps - Xiangle Ratchet Strap";
 const siteLogo = process.env.NEXT_PUBLIC_LOGO_URL;
 
-// --- 站点范围的 Schema ---
-// 这些通常在所有页面都一样, 可以在根布局生成
 const websiteSchema = generateSchema({ type: "WebSite", data: null });
 const organizationSchema = generateSchema({ type: "Organization", data: null });
-const baseSchemaMetadata = embedSchema([websiteSchema, organizationSchema]); // Combine base schemas
+const baseSchemaMetadata = embedSchema([websiteSchema, organizationSchema]); 
 const currentPath =
   typeof window !== "undefined" ? window.location.pathname : "";
 
 const alternates: Record<string, string> = {};
 
-// 遍历所有支持的标准语言 key (也就是 localePrefixMap 的键)
 Object.keys(localePrefixMap).forEach((localeKey) => {
   const prefix = localePrefixMap[localeKey]; // 获取该语言对应的 URL 前缀
 
@@ -127,9 +120,9 @@ export const metadata: Metadata = {
     canonical: siteUrl, // 或 siteUrl
     languages: alternates,
   },
-  other:{
-    "google-site-verification":"6skGRSGQlvwgvTJDE_HF2ao3SoHhdtFeUe2-wMKpLeg"
-  }
+  other: {
+    "google-site-verification": "6skGRSGQlvwgvTJDE_HF2ao3SoHhdtFeUe2-wMKpLeg",
+  },
 };
 
 // --- Viewport 设置 (通常在根布局定义) ---
@@ -143,15 +136,21 @@ export default async function RootLayout({
   children,
 }: LocaleLayoutProps) {
   const lang = params.lang;
-  const locale = getFullLocale(lang)
-  const res = await fetchAPI("/getAllCategories",locale);
-  const categories = res.data
+  const locale = getFullLocale(lang);
+  const res = await fetchAPI("/getAllCategories", locale);
+  const categories = res.data;
 
   if (!hasLocale(routing.locales, lang)) {
     notFound();
   }
-  setRequestLocale(lang);
-
+  let messages;
+  try {
+    messages = (await import(`../../messages/${lang}.json`)).default;
+  } catch (error) {
+    console.error(`Could not load messages for locale: ${locale}`, error);
+    notFound();
+  }
+  setRequestLocale(lang)
   return (
     <html lang={locale.locale}>
       <head>
@@ -167,22 +166,20 @@ export default async function RootLayout({
         />
       </head>
       <body className={`${poppins.className} antialiased`}>
-        {/* 使用 Provider 包裹需要共享数据的部分 */}
-        <NextIntlClientProvider>
-          <CategoryProvider categories={categories}>
-            <div className="flex min-h-screen flex-col">
-              {/* Header 现在可以从 Context 获取 categories */}
-              <Header lang={lang}/>
+        <CategoryProvider categories={categories}>
+          <div className="flex min-h-screen flex-col">
+            <NextIntlClientProvider locale={lang} messages={messages}>
+              <Header />
               <main className="flex-grow">
                 <ClarityProvider />
                 {children}
                 <TawkToWidget />
               </main>
-              <Footer lang={lang}/>
-              <BackToTop />
-            </div>
-          </CategoryProvider>
-        </NextIntlClientProvider>
+              <Footer />
+            </NextIntlClientProvider>
+            <BackToTop />
+          </div>
+        </CategoryProvider>
       </body>
     </html>
   );

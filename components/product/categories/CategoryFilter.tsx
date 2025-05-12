@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { ChevronDownIcon } from "@heroicons/react/24/outline"
 import { ProductFilter } from "@/types/productFilter"
+import { useTranslations } from "next-intl"
 
 interface CategoryFilterProps {
   filter: ProductFilter
@@ -10,6 +11,22 @@ interface CategoryFilterProps {
   onChange: (filterId: string, value: string) => void
 }
 
+export function toCamelCase(inputString: string): string {
+  if (!inputString) {
+    return "";
+  }
+  const words = inputString.split(' ').filter(word => word.length > 0);
+
+  if (words.length === 0) {
+    return "";
+  }
+  let result = words[0].toLowerCase();
+  for (let i = 1; i < words.length; i++) {
+    result += words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+  }
+
+  return result;
+}
 export function CategoryFilter({ filter, selectedValues, onChange }: CategoryFilterProps) {
   const [isExpanded, setIsExpanded] = useState(true)
 
@@ -17,6 +34,7 @@ export function CategoryFilter({ filter, selectedValues, onChange }: CategoryFil
     onChange(filter.id, value)
   }
 
+  const t = useTranslations("ProductSpecifications");
   return (
     <div className="p-4">
       <button
@@ -24,7 +42,7 @@ export function CategoryFilter({ filter, selectedValues, onChange }: CategoryFil
         className="flex items-center justify-between w-full text-left"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <span className="font-medium text-gray-900">{filter.label}</span>
+        <span className="font-medium text-gray-900">{t(toCamelCase(filter.label))}</span>
         <ChevronDownIcon
           className={`h-5 w-5 text-gray-400 transition-transform ${
             isExpanded ? "rotate-180" : ""

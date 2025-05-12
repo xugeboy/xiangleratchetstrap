@@ -7,7 +7,6 @@ const PDFViewer = dynamic(() => import('@/components/common/PdfViewer'), {
   ssr: false,
 });
 
-// Path to your PDF file
 const PDF_FILE = "/asset/xiangle_catalogue.pdf"
 const PDF_NAME = "xiangle_catalogue"
 

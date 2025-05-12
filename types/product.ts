@@ -15,6 +15,7 @@ export interface Product {
     about?: string; // Markdown 内容
     category?: ProductCategory; // 关联的分类
     youtube_url?: string;
+    youtube_title?: string;
     related_blogs?: Blog[]; // 关联的博客
     related_products?: Product[]; // 关联的产品
     assembly_break_strength?: string;

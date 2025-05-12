@@ -1,32 +1,37 @@
-import { Metadata } from 'next'
-import FaqList from './FaqList'
-import { getFaqs } from '@/services/api/faq'
+import { Metadata } from 'next';
+import FaqList from './FaqList';
+import { getFaqs } from '@/services/api/faq';
 import Link from 'next/link';
+import { getLocale, getTranslations} from 'next-intl/server'; 
 
-export const metadata: Metadata = {
-  title: 'FAQ - Xiangle Ratchet Strap',
-  description: 'Frequently Asked Questions about our products and services',
-}
+export async function generateMetadata(): Promise<Metadata> {
+  
+  const locale = await getLocale();
+  const t = await getTranslations({locale, namespace: "FaqPage.metadata"});
 
-interface FaqPageProps {
-  params: {
-    lang: string;
+  return {
+    title: t('title'),
+    description: t('description'),
   };
 }
 
-export default async function FaqPage({ params }: FaqPageProps) {
-  const currentLocale = params.lang;
-  const faqs = await getFaqs(currentLocale)
+export default async function FaqPage() {
+  const locale = await getLocale();
+  const t = await getTranslations({locale, namespace: "FaqPage.content"});
+  const faqs = await getFaqs(locale);
+
+  const contactUsPath = `/${locale}/contact-us`;
+
 
   return (
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Frequently Asked Questions
+            {t('mainTitle')}
           </h1>
           <p className="mt-4 text-lg leading-8 text-gray-600">
-          There&apos;s a lot to know about webbing and straps! Here&apos;s some of the most common questions:
+            {t('introText')}
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-4xl">
@@ -34,10 +39,16 @@ export default async function FaqPage({ params }: FaqPageProps) {
         </div>
         <div className="mx-auto max-w-4xl mt-16 text-center">
           <p className="mt-4 text-lg leading-8 text-gray-600">
-          Didn&apos;t find the answer you&apos;re looking for? We&apos;d be glad to clear things up! Check out our <u><Link href="/contact-us">Contact Us Page</Link></u> Page to send us a message. Thank you!
+            {t.rich('notFoundText', {
+              contactLink: (chunks) => (
+                <Link href={contactUsPath} className="underline hover:text-indigo-600">
+                  {chunks}
+                </Link>
+              ),
+            })}
           </p>
         </div>
       </div>
     </div>
-  )
-} 
+  );
+}

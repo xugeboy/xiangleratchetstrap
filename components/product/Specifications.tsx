@@ -1,72 +1,95 @@
-'use client'
+"use client";
 
-import { Product } from '@/types/product'
+import { Product } from '@/types/product';
+import { useTranslations } from 'next-intl';
 
 interface SpecificationsProps {
-  product: Product
+  product: Product;
 }
 
-interface SpecItem {
-  label: string
-  value?: string
+interface SpecItemDefinition {
+  labelKey: string; 
+  value?: string | number | null;
+  accessor: (product: Product) => string | number | null | undefined; 
 }
 
 export default function Specifications({ product }: SpecificationsProps) {
-  const specifications: SpecItem[] = [
-    { label: 'Assembly break strength', value: product.assembly_break_strength },
-    { label: 'Working load limit', value: product.working_load_limit },
-    { label: 'Webbing break strength', value: product.webbing_break_strength },
-    { label: 'Width', value: product.width },
-    { label: 'Length', value: product.length },
-    { label: 'End fitting', value: product.end_fitting },
-    { label: 'Fixed End Length', value: product.fixed_end_length },
-    { label: 'Ratchet handle', value: product.ratchet_handle },
-    { label: 'Material', value: product.material },
-    { label: 'Finish', value: product.finish },
-    { label: 'Product weight', value: product.product_weight },
-  ]
+  const t = useTranslations("ProductSpecifications");
 
-  // Filter out specs without values
-  const validSpecs = specifications.filter(spec => spec.value)
+  const specDefinitions: SpecItemDefinition[] = [
+    { labelKey: "assemblyBreakStrength", accessor: (p) => p.assembly_break_strength },
+    { labelKey: "workingLoadLimit", accessor: (p) => p.working_load_limit },
+    { labelKey: "webbingBreakStrength", accessor: (p) => p.webbing_break_strength },
+    { labelKey: "width", accessor: (p) => p.width },
+    { labelKey: "length", accessor: (p) => p.length },
+    { labelKey: "endFitting", accessor: (p) => p.end_fitting },
+    { labelKey: "fixedEndLength", accessor: (p) => p.fixed_end_length },
+    { labelKey: "ratchetHandle", accessor: (p) => p.ratchet_handle },
+    { labelKey: "material", accessor: (p) => p.material },
+    { labelKey: "finish", accessor: (p) => p.finish },
+    { labelKey: "productWeight", accessor: (p) => p.product_weight },
+  ];
+
+  const validSpecs = specDefinitions
+    .map(specDef => ({
+      label: t(specDef.labelKey),
+      value: specDef.accessor(product),
+    }))
+    .filter(spec => spec.value !== null && spec.value !== undefined && spec.value !== '');
+
+
+  if (validSpecs.length === 0) {
+    return null;
+  }
 
   return (
-    <div className="mb-8 border border-gray-200 rounded-lg overflow-hidden">
-      <h2 className="text-lg font-semibold bg-gray-100 px-4 py-2 border-b border-gray-200">
-        Specifications
+    <div className="mb-8 border border-gray-200 rounded-lg overflow-hidden shadow-sm"> {/* Added shadow */}
+      <h2 className="text-lg font-semibold bg-gray-100 px-4 py-3 border-b border-gray-200 text-gray-800"> {/* Adjusted padding and text color */}
+        {t("Specifications")}
       </h2>
       <div>
         <table className="w-full border-collapse">
           <tbody>
-            {Array.from({ length: Math.ceil(validSpecs.length / 2) }).map((_, rowIndex) => (
-              <tr 
-                key={rowIndex}
-                className={rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'}
-              >
-                <td className="py-3 px-4 w-1/2">
-                  <span className="text-gray-600 font-medium">
-                    {validSpecs[rowIndex * 2]?.label}:
-                  </span>
-                  {' '}
-                  <span className="text-gray-800">
-                    {validSpecs[rowIndex * 2]?.value}
-                  </span>
-                </td>
-                {validSpecs[rowIndex * 2 + 1] && (
-                  <td className="py-3 px-4 w-1/2">
-                    <span className="text-gray-600 font-medium">
-                      {validSpecs[rowIndex * 2 + 1].label}:
-                    </span>
-                    {' '}
-                    <span className="text-gray-800">
-                      {validSpecs[rowIndex * 2 + 1].value}
-                    </span>
-                  </td>
-                )}
-              </tr>
-            ))}
+            {Array.from({ length: Math.ceil(validSpecs.length / 2) }).map((_, rowIndex) => {
+              const spec1 = validSpecs[rowIndex * 2];
+              const spec2 = validSpecs[rowIndex * 2 + 1];
+
+              return (
+                <tr
+                  key={rowIndex}
+                  className={rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}
+                >
+                  {spec1 && (
+                    <td className="py-3 px-4 w-1/2 border-r border-gray-200 last:border-r-0"> {/* Added border */}
+                      <span className="text-sm text-gray-600 font-medium">
+                        {spec1.label}:
+                      </span>
+                      {' '}
+                      <span className="text-sm text-gray-800">
+                        {spec1.value}
+                      </span>
+                    </td>
+                  )}
+
+                  {spec2 ? (
+                    <td className="py-3 px-4 w-1/2">
+                      <span className="text-sm text-gray-600 font-medium">
+                        {spec2.label}:
+                      </span>
+                      {' '}
+                      <span className="text-sm text-gray-800">
+                        {spec2.value}
+                      </span>
+                    </td>
+                  ) : (
+                    spec1 && <td className="py-3 px-4 w-1/2"></td>
+                  )}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
     </div>
-  )
-} 
+  );
+}

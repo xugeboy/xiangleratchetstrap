@@ -175,9 +175,8 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
         />
-        {/* ... */}
       </section>
-      <Breadcrumb items={breadcrumbItems} />
+      <Breadcrumb items={breadcrumbItems} lang={lang}/>
 
       {/* Mobile Filter Toggle */}
       {isMobile && (

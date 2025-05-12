@@ -1,17 +1,18 @@
 import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 import QuoteForm from '../forms/QuoteForm'
-
-export default function ContactSection() {
+import { getLocale, getTranslations } from 'next-intl/server';
+export default async function ContactSection() {
+  const locale = await getLocale();
+  const t = await getTranslations({locale, namespace: "ContactSection"})
   return (
       <div className="mx-auto grid max-w-7xl gap-12 grid-cols-1 lg:grid-cols-2">
         <div className="relative px-6 pt-24 pb-20 sm:pt-32 lg:static lg:px-8 lg:py-48">
           <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
             <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
-            We Work For you
+            {t('title')}
             </h2>
             <p className="mt-6 text-lg/8 text-gray-600">
-            We take customer service very seriously and pride ourselves on having the best customer service in the industry.
-            Our team will work tirelessly to ensure you are getting the high-quality products you need, and the exceptional service you deserve. You will always speak with a real, live person and will never have to wait for more than 1 business day to hear back. We&apos;ve got your back!
+            {t('description')}
             </p>
             <dl className="mt-10 space-y-4 text-base/7 text-gray-600">
               <div className="flex gap-x-4">

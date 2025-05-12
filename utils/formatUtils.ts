@@ -26,3 +26,10 @@ export function getBreadcrumbPathPrefix(currentLang: string): string {
   }
   return `/${currentLang}`; // 其他语言 URL 加前缀
 }
+
+export function getCombainedLocalePath(currentLang: string,path: string): string {
+  if (currentLang === defaultUrlPrefixForNoPrefixURLs) {
+    return `/${path}`; // 默认语言 (en) 的 URL 不加前缀
+  }
+  return `/${currentLang}/${path}`; // 其他语言 URL 加前缀
+}

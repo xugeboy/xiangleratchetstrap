@@ -5,78 +5,80 @@ import Link from "next/link";
 import Specifications from "./Specifications";
 import Description from "./Description";
 import dynamic from "next/dynamic";
+import { getCombainedLocalePath } from "@/utils/formatUtils";
+import { useTranslations } from "next-intl";
 
 const VideoPlayer = dynamic(() => import("@/components/common/VideoPlayer"), {
   ssr: false,
 });
 interface ProductInfoProps {
   product: Product;
+  lang: string
 }
 
-const services = [
-  {
-    title: "Tailored Business Programs",
-    link: "/business-solutions",
-    linkText: "Partner with Us",
-  },
-  {
-    title: "Questions? Need it custom?",
-    link: "/contact-us",
-    linkText: "We can help!",
-  },
-];
 
-export default function ProductInfo({ product }: ProductInfoProps) {
+export default function ProductInfo({ lang,product }: ProductInfoProps) {
+  const services = [
+    {
+      id: "tailoredPrograms",
+      titleKey: "services.tailoredPrograms.title",
+      link: getCombainedLocalePath(lang, "/business-solutions"),
+      linkTextKey: "services.tailoredPrograms.linkText",
+    },
+    {
+      id: "questionsCustom",
+      titleKey: "services.questionsCustom.title",
+      link: getCombainedLocalePath(lang, "/contact-us"),
+      linkTextKey: "services.questionsCustom.linkText",
+    },
+  ];
+  const t = useTranslations("ProductInfo");
   return (
     <div>
-      {/* Product Basic Info */}
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4 font-mono">{product.name}</h1>
         <div className="space-y-2">
-          <p className="text-gray-600">ITEM #{product.code}</p>
+          <p className="text-gray-600">{t("itemNumberLabel")}#{product.code}</p>
           <div className="flex items-center space-x-2 text-gray-600">
-            <span>In Stock,</span><strong className="text-amber-700">Made to Order</strong>
+            <span>{t("stockStatus.inStock")},</span>
+            <strong className="text-amber-700">{t("stockStatus.madeToOrder")}</strong>
           </div>
         </div>
       </div>
 
-      {/* Services Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-        {services.map((service, index) => (
-          <div key={index} className="bg-gray-50 p-4 rounded-lg">
+        {services.map((service) => (
+          <div key={service.id} className="bg-gray-50 p-4 rounded-lg">
             <h3 className="font-semibold text-gray-900 mb-2">
-              {service.title}
+              {t(service.titleKey)}
             </h3>
             <Link
               href={service.link}
               className="text-amber-700 hover:text-blue-700"
             >
-              {service.linkText}
+              {t(service.linkTextKey)}
             </Link>
           </div>
         ))}
-        <div className="p-6 rounded-lg flex items-center justify-center">
-          <a
-            href="/request-quote"
+        <div className="bg-gray-50 p-6 rounded-lg flex items-center justify-center">
+          <Link
+            href={getCombainedLocalePath(lang, "request-quote")} 
             className="inline-flex items-center justify-center px-8 py-3 text-sm font-medium text-white bg-amber-700 
-          rounded-full focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all duration-200 shadow-sm"
+              rounded-full focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all duration-200 shadow-sm hover:bg-amber-800" // Added hover state
           >
-            Request Quote
-          </a>
+            {t("buttons.requestQuote")}
+          </Link>
         </div>
       </div>
 
-      {/* Specifications */}
       <Specifications product={product} />
 
-      {/* Description */}
       <Description description={product.see_more} />
 
-      {/* Video Section */}
       {product.youtube_url && (
         <VideoPlayer
           url={product.youtube_url}
-          title={`How to Thread a ${product.name}`}
+          title={product.youtube_title}
         />
       )}
     </div>

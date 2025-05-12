@@ -1,17 +1,19 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Blog } from '@/types/blog';
+import { getTranslations } from 'next-intl/server';
 
 interface RelatedArticlesProps {
   blogs?: Blog[];
 }
 
-export default function RelatedArticles({ blogs = [] }: RelatedArticlesProps) {
+export default async function RelatedArticles({ blogs = [] }: RelatedArticlesProps) {
   if (!blogs || blogs.length === 0) return null;
+  const t = await getTranslations("Common");
 
   return (
     <div className="py-8">
-      <h2 className="text-2xl font-bold mb-6">Related Articles</h2>
+      <h2 className="text-2xl font-bold mb-6">{t('relatedBlogs')}</h2>
       <div className="space-y-4">
         {blogs.map((blog) => (
           <Link 

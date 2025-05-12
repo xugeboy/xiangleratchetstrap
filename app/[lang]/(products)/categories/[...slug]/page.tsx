@@ -12,7 +12,6 @@ interface CategoryPageProps {
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-  // Get the last slug part
   const innerParams = await params;  
   const lastSlug = innerParams.slug[innerParams.slug.length - 1];
   
@@ -46,7 +45,7 @@ function getAllSlugPaths(categories: ProductCategory[], parentSlugs: string[] = 
   
     for (const category of categories) {
       const currentPath = [...parentSlugs, category.slug];
-      paths.push(currentPath); // 当前分类路径
+      paths.push(currentPath);
       if (category.children && category.children.length > 0) {
         const childPaths = getAllSlugPaths(category.children, currentPath);
         paths.push(...childPaths);
