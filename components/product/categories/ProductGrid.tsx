@@ -7,13 +7,14 @@ import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import type { Product } from "@/types/product";
 import { filterProducts } from "@/services/api/product";
 import { getBreadcrumbPathPrefix } from "@/utils/formatUtils";
+import { useTranslations } from "next-intl";
 
 interface ProductGridProps {
   selectedFilters: Record<string, string[]>;
   currentCategorySlug: string;
   viewMode: "grid" | "list" | "compact";
   itemsPerPage: number;
-  lang: string
+  lang: string;
 }
 
 export function ProductGrid({
@@ -21,7 +22,7 @@ export function ProductGrid({
   currentCategorySlug,
   viewMode,
   itemsPerPage,
-  lang
+  lang,
 }: ProductGridProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -58,12 +59,13 @@ export function ProductGrid({
     setCurrentPage(page);
   };
   const pathPrefix = getBreadcrumbPathPrefix(lang);
+  const t = useTranslations("ProductGrid");
   return (
     <div className="space-y-6">
       {isLoading ? (
         <div className="text-center py-12">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-700 mx-auto"></div>
-          <p className="mt-4 text-sm text-gray-600">Loading products...</p>
+          <p className="mt-4 text-sm text-gray-600">{t("loading")}</p>
         </div>
       ) : (
         <>
@@ -107,7 +109,7 @@ export function ProductGrid({
                     </h3>
                     <div className="mt-4 text-center">
                       <span className="inline-block bg-amber-700 text-white px-4 py-2 text-sm font-medium uppercase">
-                        LEARN MORE
+                        {t("learnMoreButton")}
                       </span>
                     </div>
                   </Link>
@@ -138,7 +140,7 @@ export function ProductGrid({
                           href={`${pathPrefix}/products/${product.slug}`}
                           className="inline-block bg-amber-700 text-white px-4 py-2 text-sm font-medium uppercase"
                         >
-                          LEARN MORE
+                          {t("learnMoreButton")}
                         </Link>
                       </div>
                     </div>
@@ -180,7 +182,7 @@ export function ProductGrid({
                   disabled={currentPage === 1}
                   className="px-3 py-1 rounded border disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Previous
+                  {t("pagination.previous")}
                 </button>
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(
                   (page) => (
@@ -200,7 +202,7 @@ export function ProductGrid({
                   disabled={currentPage === totalPages}
                   className="px-3 py-1 rounded border disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Next
+                  {t("pagination.next")}
                 </button>
               </nav>
             </div>
@@ -210,10 +212,10 @@ export function ProductGrid({
           {products.length === 0 && !isLoading && (
             <div className="text-center py-12 rounded-lg">
               <h3 className="text-lg font-medium text-gray-900">
-                No products found
+                {t("noResults.title")}
               </h3>
               <p className="mt-2 text-sm text-gray-500">
-                Please try adjusting the filters
+                {t("noResults.suggestion")}
               </p>
             </div>
           )}

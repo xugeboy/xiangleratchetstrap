@@ -11,9 +11,31 @@ export async function getAllCategorySlug(): Promise<ProductCategory[] | null> {
       const response = await fetchAPI(path);
       return response.data;
     } catch (error) {
-      console.error("Error fetching product:", error);
+      console.error("Error fetching Category:", error);
       return null;
     }
+}
+
+export async function getCategoryMetaDataBySlug(slug: string,locale:string): Promise<ProductCategory | null> {
+  try {
+    const path = `/getCategoryMetaDataBySlug/${slug}`;
+    const response = await fetchAPI(path,getFullLocale(locale));
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching Category:", error);
+    return null;
+  }
+}
+
+export async function getCorrectCategorySlugForLocale(slug: string,locale:string): Promise<string | null> {
+  try {
+    const path = `/getCorrectCategorySlugForLocale/${slug}`;
+    const response = await fetchAPI(path,getFullLocale(locale));
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching Category:", error);
+    return null;
+  }
 }
 
 export async function getAllCategorySlugByLocale(locale:string): Promise<ProductCategory[] | null> {
@@ -22,10 +44,11 @@ export async function getAllCategorySlugByLocale(locale:string): Promise<Product
     const response = await fetchAPI(path,getFullLocale(locale));
     return response.data;
   } catch (error) {
-    console.error("Error fetching product:", error);
+    console.error("Error fetching Category:", error);
     return null;
   }
 }
+
 
 /**
  * 获取产品详情页面所需的完整产品信息
@@ -36,7 +59,7 @@ export async function getProductBySlug(slug: string,locale:string): Promise<Prod
     const response = await fetchAPI(path,getFullLocale(locale));
     return response.data;
   } catch (error) {
-    console.error("Error fetching product:", error);
+    console.error("Error fetching Category:", error);
     return null;
   }
 }

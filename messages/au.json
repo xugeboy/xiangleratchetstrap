@@ -256,5 +256,69 @@
       "title": "Professional Industrial Equipment and Solutions",
       "paragraph": "We are dedicated to providing high-quality equipment and solutions for the industrial and transportation industries. Whether you need industrial chains, protective equipment, or industrial belts, we have the right products for you. Our products are carefully selected to ensure performance and quality standards are met."
     }
+  },
+  "ProductInfo": {
+    "itemNumberLabel": "ITEM ",
+    "stockStatus": {
+      "inStock": "In Stock",
+      "madeToOrder": "Made to Order"
+    },
+    "services": {
+      "tailoredPrograms": {
+        "title": "Tailored Business Programs",
+        "linkText": "Partner with Us"
+      },
+      "questionsCustom": {
+        "title": "Questions? Need it custom?",
+        "linkText": "We can help!"
+      }
+    },
+    "buttons": {
+      "requestQuote": "Request Quote"
+    }
+  },
+  "Common": {
+    "relatedBlogs": "Related Blogs",
+    "seeMore": "See More",
+    "seeLess": "See Less",
+    "description": "Description"
+  },
+  "ProductSpecifications": {
+    "Specifications": "Specifications",
+    "assemblyBreakStrength": "Assembly Break Strength",
+    "workingLoadLimit": "Working Load Limit",
+    "webbingBreakStrength": "Webbing Break Strength",
+    "width": "Width",
+    "length": "Length",
+    "endFitting": "End Fitting",
+    "fixedEndLength": "Fixed End Length",
+    "ratchetHandle": "Ratchet Handle",
+    "material": "Material",
+    "finish": "Finish",
+    "productWeight": "Product Weight"
+  },
+  "CategorySidebar": {
+    "categories": "Categories",
+    "refineBy": "Refine By",
+    "selectedFilters": "Selected Filters",
+    "clearAll": "Clear All",
+    "expandCategory": "Expand category",
+    "collapseCategory": "Collapse category"
+  },
+  "ProductGrid": {
+    "loading": "Loading products...",
+    "learnMoreButton": "LEARN MORE",
+    "noDescription": "No description available.",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "noResults": {
+      "title": "No products found",
+      "suggestion": "Please try adjusting the filters or check back later."
+    }
+  },
+  "ViewControls":{
+    "itemsPerPageOption": "{count} items per page"
   }
 }

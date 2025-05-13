@@ -15,4 +15,5 @@ export interface Blog {
     updatedAt: string;
     publishedAt: string;
     blogs: Blog[];
+    allLanguageSlugs: string[]
 }

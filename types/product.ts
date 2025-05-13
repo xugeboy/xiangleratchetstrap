@@ -35,4 +35,5 @@ export interface Product {
     seo_description?: string;
     publishedAt: string;
     updatedAt: string;
+    allLanguageSlugs: string[]
 }

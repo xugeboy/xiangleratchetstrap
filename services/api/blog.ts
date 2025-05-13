@@ -21,7 +21,16 @@ export async function getBlogMetaDataBySlug(slug: string,locale:string): Promise
     return null;
   }
 }
-
+export async function getCorrectBlogSlugForLocale(slug: string,locale:string): Promise<string | null> {
+  try {
+    const path = `/getCorrectBlogSlugForLocale/${slug}`;
+    const response = await fetchAPI(path,getFullLocale(locale));
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching Category:", error);
+    return null;
+  }
+}
 export async function getAllBlogSlug(): Promise<Blog[] | null> {
   try {
     const response = await fetchAPI("/getAllBlogSlug");

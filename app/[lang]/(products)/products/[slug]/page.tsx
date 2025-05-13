@@ -1,7 +1,7 @@
 import { Metadata, ResolvingMetadata } from "next";
-import { getProductBySlug, getAllProductSlug } from "@/services/api/product";
+import { getProductBySlug, getAllProductSlug, getCorrectProductSlugForLocale } from "@/services/api/product";
 import { generateProductBreadcrumbs } from "@/utils/breadcrumbs";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import StatsSection from "@/components/common/StatsSection";
 import QuoteForm from "@/components/forms/QuoteForm";
@@ -12,6 +12,7 @@ import RelatedArticles from "@/components/product/RelatedArticles";
 import { generateSchema } from "@/utils/schema";
 import { embedSchema } from "@/utils/schema";
 import AlternatingContent from "@/components/product/AlternatingContent";
+import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
 
 interface ProductPageProps {
   params: {
@@ -45,27 +46,52 @@ export async function generateMetadata(
     };
   }
 
-  const pageTitle = productData.seo_title; // 优先使用 Strapi 中定义的 SEO 标题
-  const pageDescription = productData.seo_description; // 优先 SEO 描述，然后是摘要
-  const canonicalUrl = `${siteUrl}/products/${slug}`;
+  const pageTitle = productData.seo_title;
+  const pageDescription = productData.seo_description;
   const featured_image = productData.featured_image;
   const ogImageUrl = featured_image.url;
   const ogImageAlt = pageTitle;
+
+  let canonicalUrlPath;
+  if (currentLocale === "en") {
+    canonicalUrlPath = `/products/${productData.slug}`;
+  } else {
+    canonicalUrlPath = `/${currentLocale}/products/${productData.slug}`;
+  }
+  const canonicalUrl = `${siteUrl}${canonicalUrlPath}`;
+
+
+  const languagesAlternate: Record<string, string> = {};
+
+
+  for (const ietfTag in localePrefixMap) {
+    const targetUrlPrefix = localePrefixMap[ietfTag];
+
+    const slugForTargetPrefix = productData.allLanguageSlugs?.[targetUrlPrefix];
+
+    if (slugForTargetPrefix) {
+      let pathForLang = "";
+      if (targetUrlPrefix === defaultUrlPrefix) {
+        pathForLang = `${siteUrl}/products/${slugForTargetPrefix}`;
+      } else {
+        pathForLang = `${siteUrl}/${targetUrlPrefix}/products/${slugForTargetPrefix}`;
+      }
+      languagesAlternate[ietfTag] = pathForLang;
+    }
+  }
+
+  // 设置 x-default
+  const slugForXDefault = productData.allLanguageSlugs?.[defaultUrlPrefix];
+  if (slugForXDefault) {
+    languagesAlternate['x-default'] = `${siteUrl}/products/${slugForXDefault}`;
+  }
 
   return {
     title: pageTitle,
     description: pageDescription,
     alternates: {
       canonical: canonicalUrl, // 设置当前页面的规范链接
-      languages: {
-        'en-US': `${siteUrl}/products/${slug}`,
-        'en-AU': `${siteUrl}/au/products/${slug}`,
-        'en-CA': `${siteUrl}/ca/products/${slug}`,
-        'en-GB': `${siteUrl}/uk/products/${slug}`,
-        'de-DE': `${siteUrl}/de/products/${slug}`,
-        'fr-FR': `${siteUrl}/fr/products/${slug}`,
-        'es-ES': `${siteUrl}/es/products/${slug}`,
-      }
+      languages: Object.keys(languagesAlternate).length > 0 ? languagesAlternate : undefined,
     },
     openGraph: {
       title: pageTitle, // 使用页面标题
@@ -95,6 +121,21 @@ export async function generateMetadata(
 export default async function ProductPage({ params }: ProductPageProps) {
   const slug = params.slug;
   const currentLocale = params.lang;
+  const correctSlug = await getCorrectProductSlugForLocale(slug, params.lang);
+  if (correctSlug) {
+    notFound();
+  }
+  if (slug !== correctSlug) {
+    let redirectPath;
+    const entityTypePath = "products";
+
+    if (currentLocale === defaultUrlPrefix) {
+      redirectPath = `/${entityTypePath}/${correctSlug}`;
+    } else {
+      redirectPath = `/${currentLocale}/${entityTypePath}/${correctSlug}`;
+    }
+    redirect(redirectPath);
+  }
   const product = await getProductBySlug(slug,currentLocale);
   const breadcrumbItems = generateProductBreadcrumbs(product,currentLocale);
 

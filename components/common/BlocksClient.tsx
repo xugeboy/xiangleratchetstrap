@@ -25,7 +25,6 @@ export default function BlocksClient({ content }: { content: BlocksContent }) {
             <Tag className={headingStyles[level] || "text-lg"}>{children}</Tag>
           );
         },
-        // 关键！列表
         list: ({ children, format }) => {
           if (format === "ordered") {
             return <ol className="list-decimal pl-6 my-4">{children}</ol>;

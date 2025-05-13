@@ -8,7 +8,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import NewsLetter from "../forms/NewsLetter";
-import { getBreadcrumbPathPrefix, getCombainedLocalePath } from "@/utils/formatUtils";
+import {
+  getBreadcrumbPathPrefix,
+  getCombainedLocalePath,
+} from "@/utils/formatUtils";
 import { useLocale, useTranslations } from "next-intl";
 
 export default function Footer() {
@@ -23,14 +26,17 @@ export default function Footer() {
       { nameKey: "company.aboutUs", href: "about-us" },
       { nameKey: "company.contactUs", href: "contact-us" },
       { nameKey: "company.blogs", href: "blogs" },
-      { nameKey: "company.meetTheTeam", href: "business-solutions/#meet-the-team" },
+      {
+        nameKey: "company.meetTheTeam",
+        href: "business-solutions/#meet-the-team",
+      },
     ],
     support: [
       { nameKey: "support.requestQuote", href: "request-quote" },
       { nameKey: "support.downloadCatalog", href: "download-catalog" },
       { nameKey: "support.faq", href: "faq" },
       { nameKey: "support.businessSolutions", href: "business-solutions" },
-      { nameKey: "support.sitemap", href: "sitemap.xml" },
+      { nameKey: "support.sitemap", href: "/sitemap.xml" },
       // { nameKey: "support.onlineCustomizer", href: "online-customizer" },
     ],
     products: [
@@ -46,7 +52,10 @@ export default function Footer() {
         nameKey: "products.powersportsStraps",
         href: "categories/powersports-straps",
       },
-      { nameKey: "products.webbingAndHardware", href: "categories/webbing-hardware" },
+      {
+        nameKey: "products.webbingAndHardware",
+        href: "categories/webbing-hardware",
+      },
     ],
     contactUs: [
       {
@@ -158,7 +167,7 @@ export default function Footer() {
                 {navigation.products.map((item) => (
                   <li key={item.nameKey}>
                     <a
-                      href={getCombainedLocalePath(locale,item.href)}
+                      href={getCombainedLocalePath(locale, item.href)}
                       className="text-sm/6 text-gray-400 hover:text-white"
                     >
                       {tNav(item.nameKey)}
@@ -172,16 +181,22 @@ export default function Footer() {
                 {tNav("headings.support")}
               </h3>
               <ul role="list" className="mt-6 space-y-4">
-                {navigation.support.map((item) => (
-                  <li key={item.nameKey}>
-                    <a
-                      href={getCombainedLocalePath(locale,item.href)}
-                      className="text-sm/6 text-gray-400 hover:text-white"
-                    >
-                      {tNav(item.nameKey)}
-                    </a>
-                  </li>
-                ))}
+                {navigation.support.map((item) => {
+                  const isSitemapLink = item.nameKey === "support.sitemap";
+                  const href = isSitemapLink
+                    ? item.href
+                    : getCombainedLocalePath(locale, item.href);
+                  return (
+                    <li key={item.nameKey}>
+                      <a
+                        href={href}
+                        className="text-sm/6 text-gray-400 hover:text-white"
+                      >
+                        {tNav(item.nameKey)}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div>
@@ -192,7 +207,7 @@ export default function Footer() {
                 {navigation.company.map((item) => (
                   <li key={item.nameKey}>
                     <a
-                      href={getCombainedLocalePath(locale,item.href)}
+                      href={getCombainedLocalePath(locale, item.href)}
                       className="text-sm/6 text-gray-400 hover:text-white"
                     >
                       {tNav(item.nameKey)}
@@ -255,7 +270,7 @@ export default function Footer() {
                 {navigation.products.map((item) => (
                   <a
                     key={item.nameKey}
-                    href={getCombainedLocalePath(locale,item.href)}
+                    href={getCombainedLocalePath(locale, item.href)}
                     className="block text-sm/6 text-gray-400 hover:text-white px-2"
                   >
                     {tNav(item.nameKey)}
@@ -294,7 +309,7 @@ export default function Footer() {
                 {navigation.support.map((item) => (
                   <a
                     key={item.nameKey}
-                    href={getCombainedLocalePath(locale,item.href)}
+                    href={getCombainedLocalePath(locale, item.href)}
                     className="block text-sm/6 text-gray-400 hover:text-white px-2"
                   >
                     {tNav(item.nameKey)}
@@ -333,7 +348,7 @@ export default function Footer() {
                 {navigation.company.map((item) => (
                   <a
                     key={item.nameKey}
-                    href={getCombainedLocalePath(locale,item.href)}
+                    href={getCombainedLocalePath(locale, item.href)}
                     className="block text-sm/6 text-gray-400 hover:text-white px-2"
                   >
                     {tNav(item.nameKey)}

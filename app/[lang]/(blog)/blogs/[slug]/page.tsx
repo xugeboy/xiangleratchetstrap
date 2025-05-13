@@ -4,14 +4,16 @@ import {
   getBlogDetail,
   getAllBlogSlug,
   getBlogMetaDataBySlug,
+  getCorrectBlogSlugForLocale,
 } from "@/services/api/blog";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { generateBlogBreadcrumbs } from "@/utils/breadcrumbs";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import BlocksClient from "@/components/common/BlocksClient";
 import formatDateToLongEnglish from "@/utils/formatUtils";
+import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
 
 interface BlogPageProps {
   params: {
@@ -53,10 +55,43 @@ export async function generateMetadata(
   // --- 准备元数据所需信息 ---
   const pageTitle = blogData.seo_title; // 优先使用 Strapi 中定义的 SEO 标题
   const pageDescription = blogData.seo_description; // 优先 SEO 描述，然后是摘要
-  const canonicalUrl = `${siteUrl}/blogs/${slug}`;
   const coverImage = blogData.cover_image;
   const ogImageUrl = coverImage.url;
   const ogImageAlt = pageTitle;
+
+  let canonicalUrlPath;
+  if (currentLocale === "en") {
+    canonicalUrlPath = `/blogs/${blogData.slug}`;
+  } else {
+    canonicalUrlPath = `/${currentLocale}/blogs/${blogData.slug}`;
+  }
+  const canonicalUrl = `${siteUrl}${canonicalUrlPath}`;
+
+
+  const languagesAlternate: Record<string, string> = {};
+
+
+  for (const ietfTag in localePrefixMap) {
+    const targetUrlPrefix = localePrefixMap[ietfTag];
+
+    const slugForTargetPrefix = blogData.allLanguageSlugs?.[targetUrlPrefix];
+
+    if (slugForTargetPrefix) {
+      let pathForLang = "";
+      if (targetUrlPrefix === defaultUrlPrefix) {
+        pathForLang = `${siteUrl}/blogs/${slugForTargetPrefix}`;
+      } else {
+        pathForLang = `${siteUrl}/${targetUrlPrefix}/blogs/${slugForTargetPrefix}`;
+      }
+      languagesAlternate[ietfTag] = pathForLang;
+    }
+  }
+
+  // 设置 x-default
+  const slugForXDefault = blogData.allLanguageSlugs?.[defaultUrlPrefix];
+  if (slugForXDefault) {
+    languagesAlternate['x-default'] = `${siteUrl}/blogs/${slugForXDefault}`;
+  }
 
   // --- 返回页面特定的 Metadata ---
   return {
@@ -65,15 +100,7 @@ export async function generateMetadata(
     description: pageDescription,
     alternates: {
       canonical: canonicalUrl, // 设置当前页面的规范链接
-      languages: {
-        'en-US': `${siteUrl}/blogs/${slug}`,
-        'en-AU': `${siteUrl}/au/blogs/${slug}`,
-        'en-CA': `${siteUrl}/ca/blogs/${slug}`,
-        'en-GB': `${siteUrl}/uk/blogs/${slug}`,
-        'de-DE': `${siteUrl}/de/blogs/${slug}`,
-        'fr-FR': `${siteUrl}/fr/blogs/${slug}`,
-        'es-ES': `${siteUrl}/es/blogs/${slug}`,
-      }
+      languages: Object.keys(languagesAlternate).length > 0 ? languagesAlternate : undefined,
     },
 
     // **覆盖 Open Graph 元数据**
@@ -113,6 +140,22 @@ export async function generateMetadata(
 export default async function BlogPage({ params }: BlogPageProps) {
   const slug = params.slug;
   const currentLocale = params.lang;
+  const correctSlug = await getCorrectBlogSlugForLocale(slug, params.lang);
+  if (correctSlug) {
+    notFound();
+  }
+  if (slug !== correctSlug) {
+    let redirectPath;
+    const entityTypePath = "blogs";
+
+    if (currentLocale === defaultUrlPrefix) {
+      redirectPath = `/${entityTypePath}/${correctSlug}`;
+    } else {
+      redirectPath = `/${currentLocale}/${entityTypePath}/${correctSlug}`;
+    }
+    redirect(redirectPath);
+  }
+
   const blog = await getBlogDetail(slug,currentLocale);
   const breadcrumbItems = generateBlogBreadcrumbs(blog,currentLocale);
 

@@ -46,6 +46,16 @@ export async function getProductBySlug(
     return null;
   }
 }
+export async function getCorrectProductSlugForLocale(slug: string,locale:string): Promise<string | null> {
+  try {
+    const path = `/getCorrectProductSlugForLocale/${slug}`;
+    const response = await fetchAPI(path,getFullLocale(locale));
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching Category:", error);
+    return null;
+  }
+}
 
 /**
  * 根据分类获取产品列表（用于分类产品列表页面）

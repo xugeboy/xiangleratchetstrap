@@ -4,6 +4,9 @@ import { useState, useRef } from "react";
 import Link from "next/link";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { useCategories } from "@/contexts/CategoryContext";
+import { useLocale } from "next-intl";
+import { getCombainedLocalePath } from "@/utils/formatUtils";
+
 
 export function CategoryNavigation() {
   const [activeTabIndex, setActiveTabIndex] = useState(-1);
@@ -31,7 +34,7 @@ export function CategoryNavigation() {
   const handleMenuContainerMouseLeave = () => {
     setActiveTabIndex(-1);
   };
-
+  const locale = useLocale()
   return (
     <nav
       aria-label="Global"
@@ -61,7 +64,7 @@ export function CategoryNavigation() {
                   onMouseLeave={() => handleTabMouseLeave()}
                 >
                   <Link
-                    href={`/categories/${category.slug}`}
+                      href={getCombainedLocalePath(locale,`categories/${category.slug}`)}
                     className="group flex items-center text-gray-600 hover:text-indigo-600 transition-colors duration-200"
                   >
                     <span className="whitespace-nowrap">{category.name}</span>
@@ -87,7 +90,7 @@ export function CategoryNavigation() {
                     onMouseEnter={() => handleTabMouseEnter(idx + 3)}
                   >
                     <Link
-                      href={`/categories/${category.slug}`}
+                      href={getCombainedLocalePath(locale,`categories/${category.slug}`)}
                       className="group flex items-center text-gray-600 hover:text-indigo-600 transition-colors duration-200"
                     >
                       <span className="whitespace-nowrap">{category.name}</span>
@@ -113,7 +116,7 @@ export function CategoryNavigation() {
                     onMouseEnter={() => handleTabMouseEnter(idx + 5)}
                   >
                     <Link
-                      href={`/categories/${category.slug}`}
+                      href={getCombainedLocalePath(locale,`categories/${category.slug}`)}
                       className="group flex items-center text-gray-600 hover:text-indigo-600 transition-colors duration-200"
                     >
                       <span className="whitespace-nowrap">{category.name}</span>
@@ -151,7 +154,7 @@ export function CategoryNavigation() {
                             <div key={subCategory.id} className="mb-4">
                               {/* 二级分类标题 */}
                               <Link
-                                href={`/categories/${category.slug}/${subCategory.slug}`}
+                                href={getCombainedLocalePath(locale,`categories/${subCategory.slug}`)}
                                 className="block text-gray-800 hover:text-indigo-600 font-semibold text-sm mb-1"
                               >
                                 {subCategory.name}
@@ -170,7 +173,7 @@ export function CategoryNavigation() {
                                       return (
                                         <Link
                                           key={thirdCategory.id}
-                                          href={`/categories/${category.slug}/${subCategory.slug}/${thirdCategory.slug}`}
+                                          href={getCombainedLocalePath(locale,`categories/${thirdCategory.slug}`)}
                                           className="block text-gray-600 hover:text-indigo-600 text-sm"
                                         >
                                           {thirdCategory.name}

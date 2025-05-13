@@ -304,5 +304,21 @@
     "clearAll": "Clear All",
     "expandCategory": "Expand category",
     "collapseCategory": "Collapse category"
+  },
+  "ProductGrid": {
+    "loading": "Loading products...",
+    "learnMoreButton": "LEARN MORE",
+    "noDescription": "No description available.",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "noResults": {
+      "title": "No products found",
+      "suggestion": "Please try adjusting the filters or check back later."
+    }
+  },
+  "ViewControls":{
+    "itemsPerPageOption": "{count} items per page"
   }
 }

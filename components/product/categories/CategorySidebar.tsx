@@ -7,7 +7,8 @@ import { CategoryFilter } from "./CategoryFilter"
 import type { ProductCategory } from "@/types/productCategory"
 import { ProductFilter } from "@/types/productFilter"
 import { useCategories } from "@/contexts/CategoryContext"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
+import { getCombainedLocalePath } from "@/utils/formatUtils"
 
 interface CategorySidebarProps {
   currentCategory: ProductCategory | null
@@ -26,7 +27,7 @@ export function CategorySidebar({
 }: CategorySidebarProps) {
   const [expandedCategories, setExpandedCategories] = useState<Record<number, boolean>>({})
   const { categories, categoryMap, rootCategories } = useCategories()
-
+  const locale = useLocale()
   // Auto-expand categories based on current selection
   useEffect(() => {
     if (currentCategory) {
@@ -60,7 +61,7 @@ export function CategorySidebar({
       <div key={category.id} className={`${depth > 0 ? "ml-4" : ""}`}>
         <div className="flex items-center justify-between py-2">
           <Link
-            href={`/categories/${category.slug}`}
+            href={getCombainedLocalePath(locale,`categories/${category.slug}`)}
             className={`flex-grow text-left text-sm ${
               isActive ? "font-bold text-amber-700" : "text-gray-700 hover:text-amber-700"
             }`}
@@ -81,20 +82,17 @@ export function CategorySidebar({
         {hasChildren && isExpanded && (
           <div className="pl-2 border-l border-gray-200">
             {category.children.map((childRef) => {
-              // Look up the full child category from the map
               const childCategory = categoryMap.get(childRef.id)
               if (!childCategory) {
-                // If we can't find the full category, render a simple link with the slug
                 return (
                   <div key={childRef.id} className="py-2 ml-2">
-                    <Link href={`/categories/${childRef.slug}`} className="text-sm text-gray-700 hover:text-amber-700">
+                    <Link href={getCombainedLocalePath(locale,`categories/${childRef.slug}`)} className="text-sm text-gray-700 hover:text-amber-700">
                       {childRef.name || childRef.slug.replace(/-/g, " ")}
                     </Link>
                   </div>
                 )
               }
 
-              // Otherwise, recursively render the full child category
               return renderCategory(childCategory, depth + 1)
             })}
           </div>
