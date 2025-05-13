@@ -127,23 +127,6 @@ function getAllSlugPaths(categories: ProductCategory[], parentSlugs: string[] = 
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const slug = params.slug;
-  const targetSlug = slug[slug.length - 1];
   const lang = params.lang;
-  const correctSlug = await getCorrectCategorySlugForLocale(targetSlug, params.lang);
-  if (correctSlug) {
-    notFound();
-  }
-  if (targetSlug !== correctSlug) {
-    let redirectPath;
-    const entityTypePath = "categories";
-
-    if (lang === defaultUrlPrefix) {
-      redirectPath = `/${entityTypePath}/${correctSlug}`;
-    } else {
-      redirectPath = `/${lang}/${entityTypePath}/${correctSlug}`;
-    }
-    redirect(redirectPath);
-  }
-
   return <CategoryContent slug={slug} lang={lang}/>
 }

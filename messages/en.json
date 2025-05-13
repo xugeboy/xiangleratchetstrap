@@ -318,7 +318,114 @@
       "suggestion": "Please try adjusting the filters or check back later."
     }
   },
-  "ViewControls":{
+  "ViewControls": {
     "itemsPerPageOption": "{count} items per page"
+  },
+  "ArticlesSection": {
+    "title": "NEWEST <span>BLOGS</span>",
+    "readMoreLink": "Read More",
+    "viewAllButton": "VIEW ALL BLOGS",
+    "noExcerpt": "No excerpt available."
+  },
+  "CapabilitiesSection": {
+    "imageAlt": "Illustration showcasing Xiangle Ratchet Strap's unique capabilities and strengths",
+    "mainTitle": "What Sets Xiangle Ratchet Strap Apart?",
+    "subTitle": "Our Strengths",
+    "items": {
+      "innovation": {
+        "title": "Continuous Innovation",
+        "description": "At Xiangle Ratchet Strap, product innovation never stops. Our dedicated R&D team consistently develops new ratchet strap and tie-down solutions to meet the evolving needs of industries worldwide. From enhanced safety designs to multi-purpose buckle systems, we are always pushing boundaries to deliver better performance, greater versatility, and smarter utility."
+      },
+      "inventorySupply": {
+        "title": "Global Inventory & Rapid Supply",
+        "description": "Backed by massive ready-to-ship inventory and a global logistics network, Xiangle Ratchet Strap ensures fast and efficient product delivery wherever you are. Whether you need a standard ratchet strap or a complex tie-down configuration, our supply chain is optimized to keep your operations moving—on time, every time."
+      },
+      "moqCustomization": {
+        "title": "Low MOQ & Fully Custom Solutions",
+        "description": "We understand the importance of flexibility. That’s why Xiangle Ratchet Strap offers low minimum order quantities and tailored manufacturing to meet your specific project needs. From custom colors and lengths to private labeling and packaging, we help small businesses and large enterprises alike create exclusive solutions without the high volume barrier."
+      }
+    },
+    "aboutUsButton": "ABOUT US"
+  },
+  "CategoriesSection": {
+    "title": "OUR <span>CATEGORIES</span>",
+    "viewMoreButton": "VIEW MORE",
+    "retractableRatchetStrap": {
+      "title": "Retractable Ratchet Strap",
+      "alt": "High quality retractable ratchet strap",
+      "link": "categories/retractable-ratchet-strap"
+    },
+    "ratchetStrapsAndTieDowns": {
+      "title": "Ratchet Straps & Tie Downs",
+      "alt": "Various ratchet straps and tie downs",
+      "link": "categories/ratchet-straps-and-tie-downs"
+    },
+    "kayakAndCanoeStrap": {
+      "title": "Kayak & Canoe Strap",
+      "alt": "Durable kayak and canoe tie down strap",
+      "link": "categories/kayak-and-canoe-strap"
+    },
+    "atvAndMotorcycleStrap": {
+      "title": "ATV & Motorcycle Strap",
+      "alt": "Secure ATV and motorcycle transport straps",
+      "link": "categories/atv-and-motorcycle-strap"
+    },
+    "spareTireYStrap": {
+      "title": "Spare Tire Y-Strap",
+      "alt": "Heavy-duty spare tire Y-strap",
+      "link": "categories/spare-tire-y-strap"
+    },
+    "webbingAndHardware": {
+      "title": "Webbing & Hardware",
+      "alt": "Industrial webbing and hardware components",
+      "link": "categories/webbing-and-hardware"
+    }
+  },
+  "IndustriesSection": {
+    "title": "TOP <span>INDUSTRIES</span>",
+    "industries": {
+      "oilAndGas": {
+        "title": "Oil & Gas"
+      },
+      "construction": {
+        "title": "CONSTRUCTION"
+      },
+      "transportation": {
+        "title": "TRANSPORTATION"
+      },
+      "agriculture": {
+        "title": "AGRICULTURE"
+      },
+      "marine": {
+        "title": "MARINE"
+      },
+      "outdoor": {
+        "title": "OUTDOOR"
+      },
+      "powersport": {
+        "title": "POWERSPORT"
+      }
+    }
+  },
+  "ProductsSection": {
+      "title": "FEATURED <span>PRODUCTS</span>",
+      "viewAllButton": "View All Products",
+      "learnMoreLink": "Learn More",
+      "products": {
+      "retractable1Inch": {
+        "title": "1\" Retractable Ratchet Strap",
+        "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+        "beforeAlt": "Cleanly organized retractable ratchet strap in use",
+        "afterAlt": "Messy, tangled traditional ratchet strap",      
+        "slug": "1inch-retractable-ratchet-strap"
+      },
+      "stainlessSteel1Inch": {
+        "title": "1\" 316 Grade Stainless Steel Ratchet Strap with Double J Hook",
+        "description": "Designed for marine and heavy-duty outdoor use, this corrosion-resistant tie-down strap offers long-lasting performance in harsh environments. Ideal for boats, trailers, and industrial applications.",
+        "beforeAlt": "Shiny new 316 stainless steel ratchet strap",
+        "afterAlt": "Old rusty non-stainless ratchet buckle",
+        "slug": "1inch-316-garde-stainless-steel-ratchet-strap-with-double-j-hook"
+      }
+    }
   }
 }

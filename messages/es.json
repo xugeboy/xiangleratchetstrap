@@ -2,20 +2,430 @@
   "HeroSection": {
     "slides": [
       {
-        "title": "ENGINEERING EXCELLENCE",
-        "subtitle": "SINCE 2006",
-        "description": "Engineering a better tomorrow by OEM&ODM manufacturing solutions for today."
+        "title": "EXCELENCIA EN INGENIERÍA",
+        "subtitle": "DESDE 2006",
+        "description": "Diseñando un mañana mejor con soluciones de fabricación OEM y ODM para hoy."
       },
       {
-        "title": "ONE STOP SOLUTION",
-        "subtitle": "FOR YOUR BUSINESS",
-        "description": "All-in-one supply chain support — fast, flexible, and built for your industry."
+        "title": "SOLUCIÓN INTEGRAL",
+        "subtitle": "PARA SU NEGOCIO",
+        "description": "Soporte integral de la cadena de suministro: rápido, flexible y diseñado para su industria."
       },
       {
-        "title": "QUALITY GUARANTEED",
-        "subtitle": "EVERY TIME",
-        "description": "From raw materials to finished goods, every step is backed by trusted certifications you can rely on."
+        "title": "CALIDAD GARANTIZADA",
+        "subtitle": "SIEMPRE",
+        "description": "Desde las materias primas hasta los productos terminados, cada paso está respaldado por certificaciones confiables en las que puede confiar."
       }
     ]
+  },
+  "Footer": {
+    "customMadeStrapsTitle": "Correas a medida",
+    "customMadeStrapsDescription": "Todas las correas en XiangleRatchetStrap.com se fabrican bajo pedido. Esto le da la posibilidad de elegir la longitud, el color y otras opciones que se adapten a sus necesidades.",
+    "copyright": "© 2025 Xiangle Ratchet Strap. Todos los derechos reservados.",
+    "contactUs": {
+      "addressValue": "No. 18 Zhenxing Road, Yangshe Town, Zhangjiagang City, Suzhou, China, 215600"
+    }
+  },
+  "Navigation": {
+    "headings": {
+      "products": "Productos",
+      "support": "Soporte",
+      "company": "Empresa",
+      "contactUs": "Contacto"
+    },
+    "company": {
+      "aboutUs": "Sobre nosotros",
+      "contactUs": "Contacto",
+      "blogs": "Blogs",
+      "meetTheTeam": "Conozca al equipo"
+    },
+    "support": {
+      "requestQuote": "Solicitar presupuesto",
+      "downloadCatalog": "Descargar catálogo",
+      "faq": "Preguntas frecuentes",
+      "businessSolutions": "Soluciones empresariales",
+      "sitemap": "Mapa del sitio"
+    },
+    "products": {
+      "retractableRatchetStrap": "Correas de trinquete retráctiles",
+      "ratchetStrapAndTieDowns": "Correas de trinquete y sujeción",
+      "powersportsStraps": "Correas para deportes motorizados",
+      "webbingAndHardware": "Cintas y herrajes"
+    }
+  },
+  "AboutUsPage": {
+    "mainHeading": "Sobre Xiangle",
+    "missionVision": "En Xiangle Ratchet Strap, nuestra misión y visión están entrelazadas: empoderar a las pequeñas y medianas empresas (PYMES) de todo el mundo proporcionando soluciones de amarre fiables, de alto rendimiento y seguras que garanticen la eficiencia y la tranquilidad. Nos comprometemos a ofrecer soluciones de control de carga integrales, de alta calidad, a precios competitivos y altamente personalizadas, fomentando una sólida asociación que nos permita crecer junto con nuestros clientes y contribuir a su éxito en la sujeción segura de sus envíos, estructuras y proyectos.",
+    "timeline": {
+      "factoryEstablished": {
+        "name": "Fábrica establecida",
+        "description": "Nuestro viaje comenzó en 2006 con la fundación de nuestra planta de fabricación, sentando las bases para años de crecimiento e innovación en la producción de correas de sujeción."
+      },
+      "enteredInternationalTrade": {
+        "name": "Entrada en el comercio internacional",
+        "description": "En 2016, nos expandimos a los mercados globales, lanzando nuestro negocio de exportación y construyendo asociaciones a largo plazo con clientes de todo el mundo."
+      },
+      "scaledTo100Workers": {
+        "name": "Ampliación a 100 trabajadores, producción de 5 M$",
+        "description": "Para 2023, nuestra plantilla alcanzó los 100 empleados y nuestro valor de producción anual superó los 5 millones de dólares, marcando un hito importante en nuestra capacidad y capacidades."
+      },
+      "newProductInnovation": {
+        "name": "Innovación de nuevos productos",
+        "description": "En 2024, lanzamos nuestra correa de trinquete retráctil automática de nuevo desarrollo y aumentamos nuestro valor de producción anual a 7 millones de dólares."
+      }
+    },
+    "engineeringCapabilities": {
+      "heading": "Capacidades de ingeniería y OEM",
+      "description": "La innovación es la base de lo que hacemos. Desde correas de longitud personalizada hasta soluciones totalmente personalizadas con su marca, Xiangle ofrece servicios completos de OEM/ODM adaptados a las necesidades de su mercado. Nuestro equipo de desarrollo interno explora continuamente nuevos materiales, diseños fáciles de usar y mejoras rentables, dando vida a sus ideas de productos, con control y garantía de calidad a nivel de fábrica."
+    },
+    "ourStrength": {
+      "heading": "Nuestra fortaleza",
+      "description": "Xiangle Ratchet Strap opera con una sólida estructura de fabricación, impulsada por una mano de obra cualificada, líneas de producción automatizadas y un compromiso con la mejora continua. Nuestra fábrica integra equipos avanzados, rigurosos sistemas de control de calidad (p. ej., cumplimiento de la norma EN 12195-2 cuando sea aplicable) y una capacidad de producción escalable para satisfacer tanto pedidos de gran volumen como requisitos personalizados. Ya se trate de hebillas soldadas con precisión o de sistemas retráctiles de última generación, nos centramos en ofrecer un rendimiento constante en cada correa producida."
+    },
+    "globalReach": {
+      "heading": "Alcance global",
+      "description": "Desde su entrada en el mercado internacional en 2016, los productos de Xiangle se han enviado a clientes de América del Norte, Europa, el Sudeste Asiático y Australia. Respaldados por un sólido sistema de inventario y un equipo de logística receptivo, garantizamos la entrega puntual y un suministro fiable para socios de todo el mundo, ya sea usted un distribuidor, una marca de comercio electrónico o un usuario final industrial."
+    },
+    "imageAlts": {
+      "customProductCapabilities": "Ilustración de capacidades de productos personalizados",
+      "scaleCapacity": "Imagen que muestra la escala y capacidad de la fábrica",
+      "precisionSkill": "Imagen que muestra la precisión y habilidad en la fabricación",
+      "gsCertificated": "Logotipo o imagen de certificación GS (relevante para algunos mercados, conforme a EN 12195-2)",
+      "testedQuality": "Imagen que representa la calidad probada de los productos, cumpliendo con las normas pertinentes como EN 12195-2",
+      "globalReachMap": "Mapa que ilustra el alcance global de los productos Xiangle"
+    }
+  },
+  "SearchBar": {
+    "placeholder": "¿Qué estás buscando?",
+    "searchingStatus": "Buscando productos...",
+    "noProductsFound": "No se encontraron productos para \"{searchQuery}\"",
+    "searchResultsTitle": "Resultados de búsqueda ({count})",
+    "clickToViewDetails": "Haga clic para ver detalles",
+    "openMenuAriaLabel": "Abrir menú"
+  },
+  "ContactSection": {
+    "title": "Trabajamos para usted",
+    "description": "Nos tomamos el servicio al cliente muy en serio y nos enorgullecemos de tener el mejor servicio al cliente de la industria. Nuestro equipo trabajará incansablemente para garantizar que obtenga los productos de alta calidad que necesita y el servicio excepcional que merece. Siempre hablará con una persona real y nunca tendrá que esperar más de 1 día hábil para recibir una respuesta. ¡Lo respaldamos!"
+  },
+  "LogoClouds": {
+    "title": "Nuestros clientes nos aman",
+    "description": "Desde el primer uso, notan la diferencia: la calidad confiable, el diseño cuidado y el servicio inquebrantable. Cada compra es un voto de confianza, y estamos comprometidos a honrar esa confianza perfeccionando cada detalle. Gracias por ser parte de nuestro viaje. Gracias a usted, seguimos mejorando."
+  },
+  "BusinessSolutions": {
+    "hero": {
+      "alt": "Banner de Soluciones Empresariales",
+      "title": "EL EQUIPO QUE NECESITA. EL SERVICIO QUE MERECE.",
+      "subtitle": "SU PROVEEDOR PREFERIDO DE EQUIPOS DE TRANSPORTE, APAREJO Y ELEVACIÓN, Y MUDANZA DE ALTA CALIDAD.",
+      "ctaButton": "ASÓCIESE CON NOSOTROS"
+    },
+    "section": {
+      "imageAlt": "Nuestro equipo dedicado",
+      "title": "SENSACIÓN DE PEQUEÑA EMPRESA CON SERVICIO DE ALTO CONTACTO, RESPALDADO POR UNA OPERACIÓN DE GRAN EMPRESA.",
+      "description": "Xiangle Ratchet Strap no es su proveedor de equipos promedio. No solo queremos trabajar para usted, queremos trabajar con usted. Nuestro dedicado equipo de expertos es lo que nos distingue, asegurando que obtenga el equipo de alta calidad que necesita y el servicio excepcional que merece. Con capacidades de productos personalizados, entrega rápida y financiación disponible, esperamos mantenerlo en movimiento.",
+      "linkText": "Conozca al equipo"
+    }
+  },
+  "StatsSection": {
+    "title": "Fabricación confiable, excelencia probada",
+    "description": "Estamos comprometidos a proporcionar productos de alta calidad, servicio confiable y cumplimiento impecable. Con años de experiencia y una sólida red global, garantizamos eficiencia, precisión y satisfacción del cliente en cada pedido.",
+    "stats": {
+      "years": "Años en el negocio",
+      "partners": "Socios comerciales",
+      "orders": "Pedidos al por mayor completados",
+      "deliveryRate": "Tasa de entrega puntual",
+      "productsAvailable": "Productos disponibles"
+    }
+  },
+  "BentoGrids": {
+    "mainTitle": "Soluciones de precios por volumen a medida",
+    "items": {
+      "manufacturing": {
+        "subtitle": "Fabricación",
+        "title": "Producción directa de fábrica",
+        "imageAlt": "Línea de producción en fábrica para correas de sujeción",
+        "description": "Como fabricante, supervisamos todo el proceso de producción, garantizando un estricto control de calidad y eficiencia de costes. Nuestras avanzadas instalaciones en China producen correas de sujeción, redes de carga y eslingas de elevación de alta calidad adaptadas a sus necesidades."
+      },
+      "speed": {
+        "subtitle": "Velocidad",
+        "title": "Entrega rápida y confiable",
+        "imageAlt": "Camión de entrega rápida acelerando en una autopista",
+        "description": "Con una línea de producción optimizada y una robusta red logística, garantizamos el rápido cumplimiento de los pedidos. Los pedidos al por mayor se procesan de manera eficiente y ofrecemos soluciones de envío flexibles para satisfacer la demanda global."
+      },
+      "customization": {
+        "subtitle": "Personalización",
+        "title": "Adaptado a sus necesidades",
+        "imageAlt": "Opciones de correas de trinquete personalizadas con marca",
+        "description": "Cada negocio es único, y también lo son sus requisitos. Ofrecemos productos totalmente personalizables, incluyendo opciones de tamaño, material y marca, para que coincidan exactamente con sus especificaciones."
+      },
+      "expertise": {
+        "subtitle": "Experiencia",
+        "title": "Equipo líder en la industria",
+        "imageAlt": "Equipo de expertos discutiendo el diseño del producto",
+        "description": "Nuestros profesionales experimentados se dedican a proporcionar soluciones de primer nivel. Desde recomendaciones de productos hasta soporte técnico, nos aseguramos de que obtenga los mejores productos para su negocio."
+      },
+      "partnership": {
+        "subtitle": "Asociación",
+        "title": "Soporte comercial a largo plazo",
+        "imageAlt": "Gran centro de almacenamiento de almacén que indica soporte de asociación",
+        "description": "Somos más que un simple proveedor, somos su socio de fabricación. Con precios competitivos, flexibilidad en pedidos al por mayor y orientación experta, lo ayudamos a escalar su negocio de manera eficiente."
+      }
+    }
+  },
+  "QuoteForm": {
+    "labels": {
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "companyName": "Nombre de la empresa",
+      "position": "Cargo",
+      "message": "Mensaje",
+      "attachment": "Adjunto"
+    },
+    "buttons": {
+      "chooseFile": "Elegir archivo(s)",
+      "submit": "Enviar consulta",
+      "submitting": "Enviando..."
+    },
+    "fileUpload": {
+      "noFileSelected": "Ningún archivo seleccionado",
+      "maxFilesError": "Solo puede cargar hasta {count} archivos.",
+      "maxFilesHint": "Máx. {count} archivos. Se permiten imágenes, PDF, DOC, XLS, TXT."
+    },
+    "notifications": {
+      "submitSuccessFallback": "¡Su consulta ha sido enviada con éxito! Nos pondremos en contacto con usted pronto.",
+      "submitErrorFallback": "Hubo un problema al enviar su consulta. Por favor, inténtelo de nuevo.",
+      "submitErrorNetwork": "Error de red. Por favor, compruebe su conexión e inténtelo de nuevo."
+    }
+  },
+  "TeamSection": {
+    "title": "Conozca a nuestro liderazgo",
+    "description": "Somos un equipo de profesionales experimentados, comprometidos a impulsar la excelencia en la fabricación y proporcionar soluciones de alta calidad para nuestros socios comerciales.",
+    "peopleImageAlt": "Retrato de {name}",
+    "people": {
+      "steven": {
+        "role": "Director General",
+        "year": "- Cofundador de Xiangle -",
+        "bio": "Responsable del desarrollo de productos, Steven es un líder visionario y cofundador de Xiangle. Fuera del trabajo, valora su papel como padre de dos hijas y dos gatos juguetones."
+      },
+      "sophia": {
+        "role": "Gerente de Ventas",
+        "year": "- Cofundadora de Xiangle -",
+        "bio": "Como Gerente de Ventas y cofundadora de Xiangle, Sophia aporta una amplia experiencia en la construcción de relaciones sólidas con los clientes y en liderar al equipo de ventas hacia el éxito. En casa, es la amorosa madre de dos hijas y dos adorables gatos."
+      },
+      "dustin": {
+        "role": "Asistente del Gerente de Ventas",
+        "year": "- 5 años en Xiangle -",
+        "bio": "Liderando el equipo de comercio exterior, Dustin también es responsable de las operaciones comerciales de comercio exterior y el desarrollo de mercados en Xiangle. Ha sido un miembro valioso durante 5 años, apoyando constantemente las iniciativas de ventas y fomentando la colaboración del equipo."
+      },
+      "warren": {
+        "role": "Ventas de Comercio Exterior",
+        "year": "- 9 años en Xiangle -",
+        "bio": "Con 9 años de servicio dedicado en ventas de comercio exterior en Xiangle, Warren posee un profundo conocimiento de los mercados internacionales y se destaca en la construcción de asociaciones duraderas. En su tiempo libre, le gusta jugar al baloncesto."
+      },
+      "alex": {
+        "role": "Ventas de Comercio Exterior",
+        "year": "- 10 años en Xiangle -",
+        "bio": "Alex ha sido un actor clave en las ventas de comercio exterior durante una década, aprovechando su amplia experiencia para navegar por los mercados globales y lograr resultados notables."
+      },
+      "chloe": {
+        "role": "Ventas de Comercio Exterior",
+        "year": "- 5 años en Xiangle -",
+        "bio": "Chloe aporta 5 años de experiencia en ventas de comercio exterior al equipo de Xiangle, demostrando un fuerte compromiso con la satisfacción del cliente e impulsando el crecimiento del negocio internacional."
+      }
+    }
+  },
+  "FaqPage": {
+    "metadata": {
+      "title": "Preguntas frecuentes - Xiangle Ratchet Strap",
+      "description": "Preguntas frecuentes sobre nuestros productos y servicios. Encuentre respuestas a consultas comunes sobre correas de trinquete, correas de sujeción y más."
+    },
+    "content": {
+      "mainTitle": "Preguntas Frecuentes",
+      "introText": "¡Hay mucho que saber sobre cintas y correas! Aquí están algunas de las preguntas más comunes:",
+      "notFoundText": "¿No encontró la respuesta que buscaba? ¡Estaremos encantados de aclarar las cosas! Consulte nuestra <contactLink>Página de Contacto</contactLink> para enviarnos un mensaje. ¡Gracias!"
+    }
+  },
+  "ProductsPage": {
+    "breadcrumb": {
+      "products": "Productos"
+    },
+    "mainTitle": "TODAS las categorías",
+    "mainSubtitle": "Explore nuestras categorías de productos para encontrar el equipo y las soluciones profesionales adecuadas para sus necesidades.",
+    "introduction": {
+      "title": "Equipos y Soluciones Industriales Profesionales",
+      "paragraph": "Nos dedicamos a proporcionar equipos y soluciones de alta calidad para las industrias industrial y de transporte. Ya sea que necesite cadenas industriales, equipos de protección o correas industriales, tenemos los productos adecuados para usted. Nuestros productos se seleccionan cuidadosamente para garantizar que se cumplan los estándares de rendimiento y calidad (p. ej., EN 12195-2 cuando sea aplicable)."
+    }
+  },
+  "ProductInfo": {
+    "itemNumberLabel": "ARTÍCULO ",
+    "stockStatus": {
+      "inStock": "En stock",
+      "madeToOrder": "Hecho por encargo"
+    },
+    "services": {
+      "tailoredPrograms": {
+        "title": "Programas empresariales a medida",
+        "linkText": "Asóciese con nosotros"
+      },
+      "questionsCustom": {
+        "title": "¿Preguntas? ¿Lo necesita personalizado?",
+        "linkText": "¡Podemos ayudar!"
+      }
+    },
+    "buttons": {
+      "requestQuote": "Solicitar presupuesto"
+    }
+  },
+  "Common": {
+    "relatedBlogs": "Blogs relacionados",
+    "seeMore": "Ver más",
+    "seeLess": "Ver menos",
+    "description": "Descripción"
+  },
+  "ProductSpecifications": {
+    "Specifications": "Especificaciones",
+    "assemblyBreakStrength": "Resistencia a la rotura del conjunto",
+    "workingLoadLimit": "Límite de Carga de Trabajo (LC)",
+    "webbingBreakStrength": "Resistencia a la rotura de la cinta",
+    "width": "Ancho",
+    "length": "Longitud",
+    "endFitting": "Terminal",
+    "fixedEndLength": "Longitud del extremo fijo",
+    "ratchetHandle": "Mango del trinquete",
+    "material": "Material",
+    "finish": "Acabado",
+    "productWeight": "Peso del producto"
+  },
+  "CategorySidebar": {
+    "categories": "Categorías",
+    "refineBy": "Refinar por",
+    "selectedFilters": "Filtros seleccionados",
+    "clearAll": "Limpiar todo",
+    "expandCategory": "Expandir categoría",
+    "collapseCategory": "Contraer categoría"
+  },
+  "ProductGrid": {
+    "loading": "Cargando productos...",
+    "learnMoreButton": "SABER MÁS",
+    "noDescription": "No hay descripción disponible.",
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "noResults": {
+      "title": "No se encontraron productos",
+      "suggestion": "Intente ajustar los filtros o vuelva a intentarlo más tarde."
+    }
+  },
+  "ViewControls": {
+    "itemsPerPageOption": "{count} artículos por página"
+  },
+  "ArticlesSection": {
+    "title": "NOS DERNIERS <span>BLOGS</span>",
+    "readMoreLink": "Lire la suite",
+    "viewAllButton": "VOIR TOUS LES BLOGS",
+    "noExcerpt": "Aucun extrait disponible."
+  },
+  "CapabilitiesSection": {
+    "imageAlt": "Illustration présentant les capacités et les atouts uniques de Xiangle Ratchet Strap",
+    "mainTitle": "Qu'est-ce qui distingue Xiangle Ratchet Strap ?",
+    "subTitle": "Nos atouts",
+    "items": {
+      "innovation": {
+        "title": "Innovation continue",
+        "description": "Chez Xiangle Ratchet Strap, l'innovation produit ne s'arrête jamais. Notre équipe R&D dédiée développe constamment de nouvelles sangles à cliquet et solutions d'arrimage pour répondre aux besoins changeants des industries du monde entier. Des conceptions de sécurité améliorées aux systèmes de boucles polyvalents, nous repoussons sans cesse les limites pour offrir de meilleures performances, une plus grande polyvalence et une utilité plus intelligente."
+      },
+      "inventorySupply": {
+        "title": "Inventaire mondial et approvisionnement rapide",
+        "description": "Soutenue par un inventaire massif prêt à être expédié et un réseau logistique mondial, Xiangle Ratchet Strap assure une livraison rapide et efficace des produits où que vous soyez. Que vous ayez besoin d'une sangle à cliquet standard ou d'une configuration d'arrimage complexe, notre chaîne d'approvisionnement est optimisée pour maintenir vos opérations en mouvement — à temps, à chaque fois."
+      },
+      "moqCustomization": {
+        "title": "Faible MOQ et solutions entièrement personnalisées",
+        "description": "Nous comprenons l'importance de la flexibilité. C'est pourquoi Xiangle Ratchet Strap propose de faibles quantités minimales de commande et une fabrication sur mesure pour répondre aux besoins spécifiques de vos projets. Des couleurs et longueurs personnalisées à l'étiquetage privé et à l'emballage, nous aidons les petites entreprises comme les grandes à créer des solutions exclusives sans la barrière des volumes élevés."
+      }
+    },
+    "aboutUsButton": "À PROPOS DE NOUS"
+  },
+  "CategoriesSection": {
+    "title": "NOS <span>CATÉGORIES</span>",
+    "viewMoreButton": "VOIR PLUS",
+    "retractableRatchetStrap": {
+      "title": "Sangles d'arrimage à cliquet rétractables",
+      "alt": "Sangle d'arrimage à cliquet rétractable de haute qualité",
+      "link": "categories/retractable-ratchet-strap"
+    },
+    "ratchetStrapsAndTieDowns": {
+      "title": "Sangles d'arrimage à cliquet",
+      "alt": "Diverses sangles d'arrimage à cliquet",
+      "link": "categories/ratchet-straps-and-tie-downs"
+    },
+    "kayakAndCanoeStrap": {
+      "title": "Sangles pour kayak et canoë",
+      "alt": "Sangle d'arrimage durable pour kayak et canoë",
+      "link": "categories/kayak-and-canoe-strap"
+    },
+    "atvAndMotorcycleStrap": {
+      "title": "Sangles pour VTT et moto",
+      "alt": "Sangles de transport sécurisées pour VTT et moto",
+      "link": "categories/atv-and-motorcycle-strap"
+    },
+    "spareTireYStrap": {
+      "title": "Sangle en Y pour roue de secours",
+      "alt": "Sangle en Y robuste pour roue de secours",
+      "link": "categories/spare-tire-y-strap"
+    },
+    "webbingAndHardware": {
+      "title": "Sangles et accessoires",
+      "alt": "Sangles industrielles et composants d'accessoires",
+      "link": "categories/webbing-and-hardware"
+    }
+  },
+  "IndustriesSection": {
+    "title": "PRINCIPALES <span>INDUSTRIES</span>",
+    "industries": {
+      "oilAndGas": {
+        "title": "Pétrole et Gaz"
+      },
+      "construction": {
+        "title": "CONSTRUCTION"
+      },
+      "transportation": {
+        "title": "TRANSPORT"
+      },
+      "agriculture": {
+        "title": "AGRICULTURE"
+      },
+      "marine": {
+        "title": "MARINE"
+      },
+      "outdoor": {
+        "title": "PLEIN AIR"
+      },
+      "powersport": {
+        "title": "MOTORSPORT"
+      }
+    }
+  },
+  "ProductsSection": {
+    "title": "PRODUITS <span>PHARES</span>",
+    "viewAllButton": "Voir tous les produits",
+    "learnMoreLink": "En savoir plus",
+    "products": {
+      "retractable1Inch": {
+        "title": "Sangle à cliquet rétractable de 1 pouce",
+        "description": "Rétraction sans effort et maintien sécurisé — conçue pour un contrôle rapide et sans enchevêtrement du chargement dans les environnements industriels.",
+        "beforeAlt": "Sangle à cliquet rétractable proprement organisée en cours d'utilisation",
+        "afterAlt": "Sangle à cliquet traditionnelle en désordre et emmêlée",
+        "slug": "1inch-retractable-ratchet-strap"
+      },
+      "stainlessSteel1Inch": {
+        "title": "Sangle à cliquet de 1 pouce en acier inoxydable 316 avec double crochet J",
+        "description": "Conçue pour une utilisation marine et extérieure intensive, cette sangle d'arrimage résistante à la corrosion offre des performances durables dans des environnements difficiles. Idéale pour les bateaux, les remorques et les applications industrielles.",
+        "beforeAlt": "Nouvelle sangle à cliquet brillante en acier inoxydable 316",
+        "afterAlt": "Vieille boucle de cliquet rouillée non inoxydable",
+        "slug": "1inch-316-garde-stainless-steel-ratchet-strap-with-double-j-hook"
+      }
+    }
   }
 }

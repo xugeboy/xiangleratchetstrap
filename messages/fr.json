@@ -4,18 +4,428 @@
       {
         "title": "EXCELLENCE EN INGÉNIERIE",
         "subtitle": "DEPUIS 2006",
-        "description": "Construire un avenir meilleur grâce à des solutions de fabrication OEM et ODM dès aujourd'hui."
+        "description": "Concevoir un avenir meilleur grâce à des solutions de fabrication OEM et ODM pour aujourd'hui."
       },
       {
-        "title": "SOLUTION TOUT-EN-UN",
+        "title": "SOLUTION UNIQUE",
         "subtitle": "POUR VOTRE ENTREPRISE",
-        "description": "Un soutien de chaîne d'approvisionnement complet — rapide, flexible et adapté à votre secteur."
+        "description": "Un soutien complet de la chaîne d'approvisionnement — rapide, flexible et conçu pour votre industrie."
       },
       {
         "title": "QUALITÉ GARANTIE",
         "subtitle": "À CHAQUE FOIS",
-        "description": "Des matières premières aux produits finis, chaque étape est certifiée et digne de confiance."
+        "description": "Des matières premières aux produits finis, chaque étape est soutenue par des certifications fiables sur lesquelles vous pouvez compter."
       }
     ]
+  },
+  "Footer": {
+    "customMadeStrapsTitle": "Sangles sur mesure",
+    "customMadeStrapsDescription": "Toutes les sangles sur XiangleRatchetStrap.com sont fabriquées sur commande. Cela vous donne la possibilité de choisir la longueur, la couleur et d'autres options qui correspondent à vos besoins.",
+    "copyright": "© 2025 Xiangle Ratchet Strap. Tous droits réservés.",
+    "contactUs": {
+      "addressValue": "No. 18 Zhenxing Road, Yangshe Town, Zhangjiagang City, Suzhou, China, 215600"
+    }
+  },
+  "Navigation": {
+    "headings": {
+      "products": "Produits",
+      "support": "Support",
+      "company": "Société",
+      "contactUs": "Nous contacter"
+    },
+    "company": {
+      "aboutUs": "À propos de nous",
+      "contactUs": "Nous contacter",
+      "blogs": "Blogs",
+      "meetTheTeam": "Rencontrer l'équipe"
+    },
+    "support": {
+      "requestQuote": "Demander un devis",
+      "downloadCatalog": "Télécharger le catalogue",
+      "faq": "FAQ",
+      "businessSolutions": "Solutions d'entreprise",
+      "sitemap": "Plan du site"
+    },
+    "products": {
+      "retractableRatchetStrap": "Sangles d'arrimage à cliquet rétractables",
+      "ratchetStrapAndTieDowns": "Sangles d'arrimage à cliquet",
+      "powersportsStraps": "Sangles pour sports motorisés",
+      "webbingAndHardware": "Sangles et accessoires"
+    }
+  },
+  "AboutUsPage": {
+    "mainHeading": "À propos de Xiangle",
+    "missionVision": "Chez Xiangle Ratchet Strap, notre mission et notre vision sont étroitement liées : autonomiser les petites et moyennes entreprises (PME) du monde entier en fournissant des solutions d'arrimage fiables, performantes et sûres qui garantissent efficacité et tranquillité d'esprit. Nous nous engageons à offrir des solutions de contrôle de cargaison complètes, de haute qualité, à des prix compétitifs et hautement personnalisées, favorisant un partenariat solide qui nous permet de croître avec nos clients et de contribuer à leur succès en sécurisant en toute confiance leurs expéditions, structures et projets.",
+    "timeline": {
+      "factoryEstablished": {
+        "name": "Usine établie",
+        "description": "Notre parcours a commencé en 2006 avec la création de notre usine de fabrication, jetant les bases d'années de croissance et d'innovation dans la production de sangles d'arrimage."
+      },
+      "enteredInternationalTrade": {
+        "name": "Entrée dans le commerce international",
+        "description": "En 2016, nous nous sommes étendus aux marchés mondiaux, lançant nos activités d'exportation et établissant des partenariats à long terme avec des clients du monde entier."
+      },
+      "scaledTo100Workers": {
+        "name": "Effectif de 100 travailleurs, production de 5 M$",
+        "description": "En 2023, notre effectif a atteint 100 employés et notre valeur de production annuelle a dépassé les 5 millions de dollars, marquant une étape majeure dans notre capacité et nos compétences."
+      },
+      "newProductInnovation": {
+        "name": "Innovation de nouveaux produits",
+        "description": "En 2024, nous avons lancé notre nouvelle sangle d'arrimage à cliquet rétractable automatique et augmenté notre valeur de production annuelle à 7 millions de dollars."
+      }
+    },
+    "engineeringCapabilities": {
+      "heading": "Capacités d'ingénierie et OEM",
+      "description": "L'innovation est au cœur de ce que nous faisons. Des sangles de longueur personnalisée aux solutions entièrement marquées à votre nom, Xiangle fournit des services OEM/ODM complets adaptés aux besoins de votre marché. Notre équipe de développement interne explore continuellement de nouveaux matériaux, des conceptions conviviales et des améliorations rentables, donnant vie à vos idées de produits, avec un contrôle et une assurance qualité au niveau de l'usine."
+    },
+    "ourStrength": {
+      "heading": "Notre force",
+      "description": "Xiangle Ratchet Strap opère avec une solide structure de fabrication, alimentée par une main-d'œuvre qualifiée, des lignes de production automatisées et un engagement envers l'amélioration continue. Notre usine intègre des équipements de pointe, des systèmes de contrôle qualité rigoureux (par exemple, conformes à la norme EN 12195-2, le cas échéant) et une capacité de production évolutive pour répondre à la fois aux commandes de gros volumes et aux exigences personnalisées. Qu'il s'agisse de boucles soudées avec précision ou de systèmes rétractables de nouvelle génération, nous nous concentrons sur la fourniture de performances constantes avec chaque sangle produite."
+    },
+    "globalReach": {
+      "heading": "Portée mondiale",
+      "description": "Depuis son entrée sur le marché international en 2016, les produits de Xiangle ont été expédiés à des clients en Amérique du Nord, en Europe, en Asie du Sud-Est et en Australie. Soutenus par un système d'inventaire robuste et une équipe logistique réactive, nous assurons une livraison rapide et un approvisionnement fiable pour nos partenaires du monde entier, que vous soyez un distributeur, une marque de commerce électronique ou un utilisateur final industriel."
+    },
+    "imageAlts": {
+      "customProductCapabilities": "Illustration des capacités de produits personnalisés",
+      "scaleCapacity": "Image montrant l'échelle et la capacité de l'usine",
+      "precisionSkill": "Image mettant en valeur la précision et le savoir-faire dans la fabrication",
+      "gsCertificated": "Logo ou image de certification GS (conforme à la norme EN 12195-2)",
+      "testedQuality": "Image représentant la qualité testée des produits, conforme aux normes pertinentes telles que EN 12195-2",
+      "globalReachMap": "Carte illustrant la portée mondiale des produits Xiangle"
+    }
+  },
+  "SearchBar": {
+    "placeholder": "Que recherchez-vous ?",
+    "searchingStatus": "Recherche de produits...",
+    "noProductsFound": "Aucun produit trouvé pour « {searchQuery} »",
+    "searchResultsTitle": "Résultats de recherche ({count})",
+    "clickToViewDetails": "Cliquez pour voir les détails",
+    "openMenuAriaLabel": "Ouvrir le menu"
+  },
+  "ContactSection": {
+    "title": "Nous travaillons pour vous",
+    "description": "Nous prenons le service client très au sérieux et sommes fiers d'avoir le meilleur service client de l'industrie. Notre équipe travaillera sans relâche pour s'assurer que vous obtenez les produits de haute qualité dont vous avez besoin et le service exceptionnel que vous méritez. Vous parlerez toujours à une personne réelle et n'aurez jamais à attendre plus d'un jour ouvrable pour avoir de nos nouvelles. Nous sommes là pour vous !"
+  },
+  "LogoClouds": {
+    "title": "Nos clients nous adorent",
+    "description": "Dès la première utilisation, ils remarquent la différence — la qualité fiable, la conception réfléchie et le service indéfectible. Chaque achat est un vote de confiance, et nous nous engageons à honorer cette confiance en perfectionnant chaque détail. Merci de faire partie de notre aventure. Grâce à vous, nous continuons de nous améliorer."
+  },
+  "BusinessSolutions": {
+    "hero": {
+      "alt": "Bannière Solutions d'entreprise",
+      "title": "L'ÉQUIPEMENT DONT VOUS AVEZ BESOIN. LE SERVICE QUE VOUS MÉRITEZ.",
+      "subtitle": "VOTRE FOURNISSEUR PRIVILÉGIÉ D'ÉQUIPEMENTS DE CAMIONNAGE, D'ARRIMAGE ET DE LEVAGE, ET DE DÉMÉNAGEMENT DE HAUTE QUALITÉ.",
+      "ctaButton": "DEVENEZ PARTENAIRE"
+    },
+    "section": {
+      "imageAlt": "Notre équipe dévouée",
+      "title": "L'ESPRIT D'UNE PETITE ENTREPRISE AVEC UN SERVICE PERSONNALISÉ, SOUTENU PAR LES OPÉRATIONS D'UNE GRANDE ENTREPRISE.",
+      "description": "Xiangle Ratchet Strap n'est pas votre fournisseur d'équipement ordinaire. Nous ne voulons pas seulement travailler pour vous, nous voulons travailler avec vous. Notre équipe d'experts dévoués est ce qui nous distingue - vous assurant d'obtenir l'équipement de haute qualité dont vous avez besoin et le service exceptionnel que vous méritez. Avec des capacités de produits personnalisés, une livraison rapide et un financement disponible, nous sommes impatients de vous aider à aller de l'avant.",
+      "linkText": "Rencontrer l'équipe"
+    }
+  },
+  "StatsSection": {
+    "title": "Fabrication fiable, excellence prouvée",
+    "description": "Nous nous engageons à fournir des produits de haute qualité, un service fiable et une exécution sans faille. Avec des années d'expertise et un solide réseau mondial, nous assurons efficacité, précision et satisfaction client pour chaque commande.",
+    "stats": {
+      "years": "Années d'activité",
+      "partners": "Partenaires commerciaux",
+      "orders": "Commandes en gros exécutées",
+      "deliveryRate": "Taux de livraison à temps",
+      "productsAvailable": "Produits disponibles"
+    }
+  },
+  "BentoGrids": {
+    "mainTitle": "Solutions de tarification de gros sur mesure",
+    "items": {
+      "manufacturing": {
+        "subtitle": "Fabrication",
+        "title": "Production directe d'usine",
+        "imageAlt": "Chaîne de production en usine pour sangles d'arrimage",
+        "description": "En tant que fabricant, nous supervisons l'ensemble du processus de production, garantissant un contrôle qualité strict et une rentabilité optimale. Notre usine de pointe en Chine produit des sangles d'arrimage, des filets de chargement et des élingues de levage de haute qualité, adaptés à vos besoins."
+      },
+      "speed": {
+        "subtitle": "Rapidité",
+        "title": "Livraison rapide et fiable",
+        "imageAlt": "Camion de livraison rapide roulant sur une autoroute",
+        "description": "Grâce à une chaîne de production optimisée et à un réseau logistique robuste, nous assurons une exécution rapide des commandes. Les commandes en gros sont traitées efficacement et nous proposons des solutions d'expédition flexibles pour répondre à la demande mondiale."
+      },
+      "customization": {
+        "subtitle": "Personnalisation",
+        "title": "Adapté à vos besoins",
+        "imageAlt": "Options de sangles d'arrimage à cliquet personnalisées avec marque",
+        "description": "Chaque entreprise est unique, tout comme ses exigences. Nous proposons des produits entièrement personnalisables, y compris les options de taille, de matériau et de marque, pour correspondre exactement à vos spécifications."
+      },
+      "expertise": {
+        "subtitle": "Expertise",
+        "title": "Équipe de pointe",
+        "imageAlt": "Équipe d'experts discutant de la conception du produit",
+        "description": "Nos professionnels expérimentés se consacrent à fournir des solutions de premier ordre. Des recommandations de produits au soutien technique, nous veillons à ce que vous obteniez les meilleurs produits pour votre entreprise."
+      },
+      "partnership": {
+        "subtitle": "Partenariat",
+        "title": "Soutien commercial à long terme",
+        "imageAlt": "Grand entrepôt de stockage indiquant un soutien au partenariat",
+        "description": "Nous sommes plus qu'un simple fournisseur, nous sommes votre partenaire de fabrication. Avec des prix compétitifs, une flexibilité pour les commandes en gros et des conseils d'experts, nous vous aidons à développer efficacement votre entreprise."
+      }
+    }
+  },
+  "QuoteForm": {
+    "labels": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "companyName": "Nom de l'entreprise",
+      "position": "Poste",
+      "message": "Message",
+      "attachment": "Pièce jointe"
+    },
+    "buttons": {
+      "chooseFile": "Choisir un(des) fichier(s)",
+      "submit": "Soumettre la demande",
+      "submitting": "Soumission en cours..."
+    },
+    "fileUpload": {
+      "noFileSelected": "Aucun fichier sélectionné",
+      "maxFilesError": "Vous ne pouvez télécharger que {count} fichiers au maximum.",
+      "maxFilesHint": "Max {count} fichiers. Images, PDF, DOC, XLS, TXT autorisés."
+    },
+    "notifications": {
+      "submitSuccessFallback": "Votre demande a été soumise avec succès ! Nous vous répondrons bientôt.",
+      "submitErrorFallback": "Un problème est survenu lors de la soumission de votre demande. Veuillez réessayer.",
+      "submitErrorNetwork": "Erreur réseau. Veuillez vérifier votre connexion et réessayer."
+    }
+  },
+  "TeamSection": {
+    "title": "Rencontrez notre direction",
+    "description": "Nous sommes une équipe de professionnels expérimentés, déterminés à atteindre l'excellence dans la fabrication et à fournir des solutions de qualité supérieure à nos partenaires commerciaux.",
+    "peopleImageAlt": "Portrait de {name}",
+    "people": {
+      "steven": {
+        "role": "Directeur Général",
+        "year": "- Cofondateur de Xiangle -",
+        "bio": "Responsable du développement des produits, Steven est un leader visionnaire et cofondateur de Xiangle. En dehors du travail, il chérit son rôle de père de deux filles et de deux chats joueurs."
+      },
+      "sophia": {
+        "role": "Directrice des Ventes",
+        "year": "- Cofondatrice de Xiangle -",
+        "bio": "En tant que Directrice des Ventes et cofondatrice de Xiangle, Sophia apporte une vaste expérience dans l'établissement de relations clients solides et la direction de l'équipe de vente vers le succès. À la maison, elle est la mère aimante de deux filles et de deux adorables chats."
+      },
+      "dustin": {
+        "role": "Assistant de la Directrice des Ventes",
+        "year": "- 5 ans chez Xiangle -",
+        "bio": "Dirigeant l'équipe du commerce extérieur, Dustin est également responsable des opérations commerciales du commerce extérieur et du développement des marchés chez Xiangle. Il est un membre précieux depuis 5 ans, soutenant constamment les initiatives de vente et favorisant la collaboration d'équipe."
+      },
+      "warren": {
+        "role": "Ventes Commerce Extérieur",
+        "year": "- 9 ans chez Xiangle -",
+        "bio": "Avec 9 ans de service dévoué dans les ventes du commerce extérieur chez Xiangle, Warren possède une compréhension approfondie des marchés internationaux et excelle dans la création de partenariats durables. Pendant son temps libre, il aime jouer au basketball."
+      },
+      "alex": {
+        "role": "Ventes Commerce Extérieur",
+        "year": "- 10 ans chez Xiangle -",
+        "bio": "Alex est un acteur clé des ventes du commerce extérieur depuis une décennie, tirant parti de sa vaste expérience pour naviguer sur les marchés mondiaux et obtenir des résultats remarquables."
+      },
+      "chloe": {
+        "role": "Ventes Commerce Extérieur",
+        "year": "- 5 ans chez Xiangle -",
+        "bio": "Chloe apporte 5 ans d'expérience dans les ventes du commerce extérieur à l'équipe Xiangle, démontrant un fort engagement envers la satisfaction client et stimulant la croissance des affaires internationales."
+      }
+    }
+  },
+  "FaqPage": {
+    "metadata": {
+      "title": "FAQ - Xiangle Ratchet Strap",
+      "description": "Foire aux questions sur nos produits et services. Trouvez des réponses aux demandes courantes concernant les sangles d'arrimage à cliquet, les sangles d'arrimage, et plus encore."
+    },
+    "content": {
+      "mainTitle": "Foire Aux Questions",
+      "introText": "Il y a beaucoup à savoir sur les sangles et les attaches ! Voici quelques-unes des questions les plus courantes :",
+      "notFoundText": "Vous n'avez pas trouvé la réponse que vous cherchiez ? Nous serons ravis de clarifier les choses ! Consultez notre <contactLink>page Nous contacter</contactLink> pour nous envoyer un message. Merci !"
+    }
+  },
+  "ProductsPage": {
+    "breadcrumb": {
+      "products": "Produits"
+    },
+    "mainTitle": "TOUTES les catégories",
+    "mainSubtitle": "Parcourez nos catégories de produits pour trouver l'équipement et les solutions professionnels adaptés à vos besoins.",
+    "introduction": {
+      "title": "Équipements et solutions industriels professionnels",
+      "paragraph": "Nous nous consacrons à fournir des équipements et des solutions de haute qualité pour les industries du transport et de l'industrie. Que vous ayez besoin de chaînes industrielles, d'équipements de protection ou de courroies industrielles, nous avons les produits qu'il vous faut. Nos produits sont soigneusement sélectionnés pour garantir qu'ils répondent aux normes de performance et de qualité (par ex. EN 12195-2, le cas échéant)."
+    }
+  },
+  "ProductInfo": {
+    "itemNumberLabel": "ARTICLE ",
+    "stockStatus": {
+      "inStock": "En stock",
+      "madeToOrder": "Fabriqué sur commande"
+    },
+    "services": {
+      "tailoredPrograms": {
+        "title": "Programmes d'entreprise sur mesure",
+        "linkText": "Devenez partenaire"
+      },
+      "questionsCustom": {
+        "title": "Des questions ? Besoin de sur mesure ?",
+        "linkText": "Nous pouvons aider !"
+      }
+    },
+    "buttons": {
+      "requestQuote": "Demander un devis"
+    }
+  },
+  "Common": {
+    "relatedBlogs": "Blogs Connexes",
+    "seeMore": "Voir plus",
+    "seeLess": "Voir moins",
+    "description": "Description"
+  },
+  "ProductSpecifications": {
+    "Specifications": "Spécifications",
+    "assemblyBreakStrength": "Résistance à la rupture de l'ensemble (CMU)",
+    "workingLoadLimit": "Charge Maximale d'Utilisation (CMU)",
+    "webbingBreakStrength": "Résistance à la rupture de la sangle",
+    "width": "Largeur",
+    "length": "Longueur",
+    "endFitting": "Accessoire d'extrémité",
+    "fixedEndLength": "Longueur de l'extrémité fixe",
+    "ratchetHandle": "Poignée à cliquet",
+    "material": "Matériau",
+    "finish": "Finition",
+    "productWeight": "Poids du produit"
+  },
+  "CategorySidebar": {
+    "categories": "Catégories",
+    "refineBy": "Affiner par",
+    "selectedFilters": "Filtres sélectionnés",
+    "clearAll": "Tout effacer",
+    "expandCategory": "Développer la catégorie",
+    "collapseCategory": "Réduire la catégorie"
+  },
+  "ProductGrid": {
+    "loading": "Chargement des produits...",
+    "learnMoreButton": "EN SAVOIR PLUS",
+    "noDescription": "Aucune description disponible.",
+    "pagination": {
+      "previous": "Précédent",
+      "next": "Suivant"
+    },
+    "noResults": {
+      "title": "Aucun produit trouvé",
+      "suggestion": "Veuillez essayer d'ajuster les filtres ou revenez plus tard."
+    }
+  },
+  "ViewControls": {
+    "itemsPerPageOption": "{count} articles par page"
+  },
+  "ArticlesSection": {
+    "title": "NOS PLUS RÉCENTS <span>BLOGUES</span>",
+    "readMoreLink": "Lire la suite",
+    "viewAllButton": "VOIR TOUS LES BLOGUES",
+    "noExcerpt": "Aucun extrait disponible."
+  },
+  "CapabilitiesSection": {
+    "imageAlt": "Illustration présentant les capacités et les forces uniques de Xiangle Ratchet Strap",
+    "mainTitle": "Qu'est-ce qui distingue Xiangle Ratchet Strap ?",
+    "subTitle": "Nos forces",
+    "items": {
+      "innovation": {
+        "title": "Innovation continue",
+        "description": "Chez Xiangle Ratchet Strap, l'innovation produit ne s'arrête jamais. Notre équipe de R&D dédiée développe constamment de nouvelles sangles à cliquet et solutions d'arrimage pour répondre aux besoins changeants des industries du monde entier. Des conceptions de sécurité améliorées aux systèmes de boucles polyvalents, nous repoussons toujours les limites pour offrir de meilleures performances, une plus grande polyvalence et une utilité plus intelligente."
+      },
+      "inventorySupply": {
+        "title": "Inventaire mondial et approvisionnement rapide",
+        "description": "Soutenue par un inventaire massif prêt à être expédié et un réseau logistique mondial, Xiangle Ratchet Strap assure une livraison rapide et efficace des produits où que vous soyez. Que vous ayez besoin d'une sangle à cliquet standard ou d'une configuration d'arrimage complexe, notre chaîne d'approvisionnement est optimisée pour maintenir vos opérations en mouvement — à temps, à chaque fois."
+      },
+      "moqCustomization": {
+        "title": "Faible MOQ et solutions entièrement personnalisées",
+        "description": "Nous comprenons l'importance de la flexibilité. C'est pourquoi Xiangle Ratchet Strap propose de faibles quantités minimales de commande et une fabrication sur mesure pour répondre aux besoins spécifiques de vos projets. Des couleurs et longueurs personnalisées à l'étiquetage privé et à l'emballage, nous aidons les petites et grandes entreprises à créer des solutions exclusives sans la barrière des volumes élevés."
+      }
+    },
+    "aboutUsButton": "À PROPOS DE NOUS"
+  },
+  "CategoriesSection": {
+    "title": "NOS <span>CATÉGORIES</span>",
+    "viewMoreButton": "VOIR PLUS",
+    "retractableRatchetStrap": {
+      "title": "Sangles à cliquet rétractables",
+      "alt": "Sangle à cliquet rétractable de haute qualité",
+      "link": "categories/retractable-ratchet-strap"
+    },
+    "ratchetStrapsAndTieDowns": {
+      "title": "Sangles à cliquet et d'arrimage",
+      "alt": "Diverses sangles à cliquet et d'arrimage",
+      "link": "categories/ratchet-straps-and-tie-downs"
+    },
+    "kayakAndCanoeStrap": {
+      "title": "Sangles pour kayak et canoë",
+      "alt": "Sangle d'arrimage durable pour kayak et canoë",
+      "link": "categories/kayak-and-canoe-strap"
+    },
+    "atvAndMotorcycleStrap": {
+      "title": "Sangles pour VTT et moto",
+      "alt": "Sangles de transport sécurisées pour VTT et moto",
+      "link": "categories/atv-and-motorcycle-strap"
+    },
+    "spareTireYStrap": {
+      "title": "Sangle en Y pour pneu de secours",
+      "alt": "Sangle en Y robuste pour pneu de secours",
+      "link": "categories/spare-tire-y-strap"
+    },
+    "webbingAndHardware": {
+      "title": "Sangles et quincaillerie",
+      "alt": "Sangles industrielles et composants de quincaillerie",
+      "link": "categories/webbing-and-hardware"
+    }
+  },
+  "IndustriesSection": {
+    "title": "PRINCIPALES <span>INDUSTRIES</span>",
+    "industries": {
+      "oilAndGas": {
+        "title": "Pétrole et gaz"
+      },
+      "construction": {
+        "title": "CONSTRUCTION"
+      },
+      "transportation": {
+        "title": "TRANSPORT"
+      },
+      "agriculture": {
+        "title": "AGRICULTURE"
+      },
+      "marine": {
+        "title": "MARINE"
+      },
+      "outdoor": {
+        "title": "PLEIN AIR"
+      },
+      "powersport": {
+        "title": "MOTORSPORT"
+      }
+    }
+  },
+  "ProductsSection": {
+    "title": "PRODUITS <span>EN VEDETTE</span>",
+    "viewAllButton": "Voir tous les produits",
+    "learnMoreLink": "En savoir plus",
+    "products": {
+      "retractable1Inch": {
+        "title": "Sangle à cliquet rétractable de 1 po",
+        "description": "Rétraction sans effort et maintien sécurisé — conçue pour un contrôle rapide et sans enchevêtrement du chargement dans les milieux industriels.",
+        "beforeAlt": "Sangle à cliquet rétractable proprement organisée en cours d'utilisation",
+        "afterAlt": "Sangle à cliquet traditionnelle en désordre et emmêlée",
+        "slug": "1inch-retractable-ratchet-strap"
+      },
+      "stainlessSteel1Inch": {
+        "title": "Sangle à cliquet de 1 po en acier inoxydable 316 avec crochet double J",
+        "description": "Conçue pour une utilisation marine et extérieure intensive, cette sangle d'arrimage résistante à la corrosion offre des performances durables dans des environnements difficiles. Idéale pour les bateaux, les remorques et les applications industrielles.",
+        "beforeAlt": "Nouvelle sangle à cliquet brillante en acier inoxydable 316",
+        "afterAlt": "Vieille boucle de cliquet rouillée non inoxydable",
+        "slug": "1inch-316-garde-stainless-steel-ratchet-strap-with-double-j-hook"
+      }
+    }
   }
 }

@@ -1,10 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import formatDateToLongEnglish from "@/utils/formatUtils";
+import formatDateToLongEnglish, { getCombainedLocalePath } from "@/utils/formatUtils";
 import { getLatestBlogs } from "@/services/api/blog";
+import { getLocale, getTranslations } from "next-intl/server";
 
 export default async function ArticlesSection() {
-  const blogs = await getLatestBlogs();
+  const lang = await getLocale();
+  const t = await getTranslations('ArticlesSection');
+  const blogs = await getLatestBlogs(lang);
 
   if (!blogs || blogs.length === 0) {
     return null;
@@ -14,12 +17,14 @@ export default async function ArticlesSection() {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
-          NEWEST <span className="text-amber-700">BLOGS</span>
+          {t.rich("title", {
+            span: (chunks) => <span className="text-amber-700">{chunks}</span>,
+          })}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {blogs.map((blog) => {
-            const articleLink = `/blogs/${blog.slug}`;
+            const articleLink = getCombainedLocalePath(lang,`blogs/${blog.slug}`);
 
             return (
               <div key={blog.id} className="flex flex-col">
@@ -51,7 +56,7 @@ export default async function ArticlesSection() {
                   href={articleLink}
                   className="text-[#1a3b5d] font-medium hover:underline self-center"
                 >
-                  Read More
+                  {t("readMoreLink")} 
                 </Link>
               </div>
             );
@@ -60,10 +65,10 @@ export default async function ArticlesSection() {
 
         <div className="text-center mt-12">
           <Link
-            href="/blogs" // 指向博客列表页
+            href={getCombainedLocalePath(lang,"blogs")}
             className="inline-block border-2 border-black bg-white hover:bg-gray-100 text-black px-8 py-3 font-medium transition-colors"
           >
-            VIEW ALL
+            {t("viewAllButton")}
           </Link>
         </div>
       </div>

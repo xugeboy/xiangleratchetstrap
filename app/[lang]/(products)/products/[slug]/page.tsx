@@ -121,21 +121,6 @@ export async function generateMetadata(
 export default async function ProductPage({ params }: ProductPageProps) {
   const slug = params.slug;
   const currentLocale = params.lang;
-  const correctSlug = await getCorrectProductSlugForLocale(slug, params.lang);
-  if (correctSlug) {
-    notFound();
-  }
-  if (slug !== correctSlug) {
-    let redirectPath;
-    const entityTypePath = "products";
-
-    if (currentLocale === defaultUrlPrefix) {
-      redirectPath = `/${entityTypePath}/${correctSlug}`;
-    } else {
-      redirectPath = `/${currentLocale}/${entityTypePath}/${correctSlug}`;
-    }
-    redirect(redirectPath);
-  }
   const product = await getProductBySlug(slug,currentLocale);
   const breadcrumbItems = generateProductBreadcrumbs(product,currentLocale);
 

@@ -2,20 +2,430 @@
   "HeroSection": {
     "slides": [
       {
-        "title": "ENGINEERING EXCELLENCE",
-        "subtitle": "SINCE 2006",
-        "description": "Engineering a better tomorrow by OEM&ODM manufacturing solutions for today."
+        "title": "INGENIEURTECHNISCHE SPITZENLEISTUNG",
+        "subtitle": "SEIT 2006",
+        "description": "Eine bessere Zukunft gestalten durch OEM- und ODM-Fertigungslösungen für heute."
       },
       {
-        "title": "ONE STOP SOLUTION",
-        "subtitle": "FOR YOUR BUSINESS",
-        "description": "All-in-one supply chain support — fast, flexible, and built for your industry."
+        "title": "KOMPLETTLÖSUNG",
+        "subtitle": "FÜR IHR UNTERNEHMEN",
+        "description": "All-in-One-Lieferkettenunterstützung – schnell, flexibel und für Ihre Branche entwickelt."
       },
       {
-        "title": "QUALITY GUARANTEED",
-        "subtitle": "EVERY TIME",
-        "description": "From raw materials to finished goods, every step is backed by trusted certifications you can rely on."
+        "title": "QUALITÄT GARANTIERT",
+        "subtitle": "JEDES MAL",
+        "description": "Von Rohstoffen bis zu fertigen Waren wird jeder Schritt durch vertrauenswürdige Zertifizierungen abgesichert, auf die Sie sich verlassen können."
       }
     ]
+  },
+  "Footer": {
+    "customMadeStrapsTitle": "Maßgefertigte Gurte",
+    "customMadeStrapsDescription": "Alle Gurte auf XiangleRatchetStrap.com werden auf Bestellung gefertigt. Dies gibt Ihnen die Möglichkeit, die Länge, Farbe und andere Optionen zu wählen, die Ihren Bedürfnissen entsprechen.",
+    "copyright": "© 2025 Xiangle Ratchet Strap. Alle Rechte vorbehalten.",
+    "contactUs": {
+      "addressValue": "No. 18 Zhenxing Road, Yangshe Town, Zhangjiagang City, Suzhou, China, 215600"
+    }
+  },
+  "Navigation": {
+    "headings": {
+      "products": "Produkte",
+      "support": "Support",
+      "company": "Unternehmen",
+      "contactUs": "Kontakt"
+    },
+    "company": {
+      "aboutUs": "Über uns",
+      "contactUs": "Kontakt",
+      "blogs": "Blogs",
+      "meetTheTeam": "Das Team kennenlernen"
+    },
+    "support": {
+      "requestQuote": "Angebot anfordern",
+      "downloadCatalog": "Katalog herunterladen",
+      "faq": "FAQ",
+      "businessSolutions": "Geschäftslösungen",
+      "sitemap": "Sitemap"
+    },
+    "products": {
+      "retractableRatchetStrap": "Automatische Ratschen-Spanngurte",
+      "ratchetStrapAndTieDowns": "Ratschen-Spanngurte & Zurrgurte",
+      "powersportsStraps": "Powersports-Gurte",
+      "webbingAndHardware": "Gurtband & Zubehör"
+    }
+  },
+  "AboutUsPage": {
+    "mainHeading": "Über Xiangle",
+    "missionVision": "Bei Xiangle Ratchet Strap sind unsere Mission und Vision miteinander verbunden: kleine und mittlere Unternehmen (KMU) weltweit zu stärken, indem wir zuverlässige, leistungsstarke und sichere Zurrgurtlösungen anbieten, die Effizienz und Sicherheit gewährleisten. Wir verpflichten uns, qualitativ hochwertige, preisgünstige und hochgradig maßgeschneiderte Komplettlösungen für die Ladungssicherung anzubieten und eine starke Partnerschaft zu pflegen, die es uns ermöglicht, gemeinsam mit unseren Kunden zu wachsen und zu ihrem Erfolg bei der sicheren Befestigung ihrer Sendungen, Strukturen und Projekte beizutragen.",
+    "timeline": {
+      "factoryEstablished": {
+        "name": "Fabrik gegründet",
+        "description": "Unsere Reise begann 2006 mit der Gründung unserer Produktionsstätte, die den Grundstein für jahrelanges Wachstum und Innovation in der Herstellung von Zurrgurten legte."
+      },
+      "enteredInternationalTrade": {
+        "name": "Einstieg in den internationalen Handel",
+        "description": "2016 expandierten wir auf globale Märkte, starteten unser Exportgeschäft und bauten langfristige Partnerschaften mit Kunden auf der ganzen Welt auf."
+      },
+      "scaledTo100Workers": {
+        "name": "Skalierung auf 100 Mitarbeiter, 5 Mio. $ Umsatz",
+        "description": "Bis 2023 erreichte unsere Belegschaft 100 Mitarbeiter und unser jährlicher Produktionswert überstieg 5 Millionen US-Dollar, was einen wichtigen Meilenstein für unsere Kapazität und Leistungsfähigkeit darstellt."
+      },
+      "newProductInnovation": {
+        "name": "Neue Produktinnovation",
+        "description": "Im Jahr 2024 haben wir unseren neu entwickelten automatischen Ratschen-Spanngurt auf den Markt gebracht und unseren jährlichen Produktionswert auf 7 Millionen US-Dollar gesteigert."
+      }
+    },
+    "engineeringCapabilities": {
+      "heading": "Ingenieurwesen & OEM-Fähigkeiten",
+      "description": "Innovation steht im Mittelpunkt unseres Handelns. Von maßgefertigten Gurtlängen bis hin zu vollständig gebrandeten Lösungen bietet Xiangle umfassende OEM/ODM-Services, die auf Ihre Marktbedürfnisse zugeschnitten sind. Unser internes Entwicklungsteam erforscht kontinuierlich neue Materialien, benutzerfreundliche Designs und kosteneffektive Verbesserungen – und erweckt Ihre Produktideen zum Leben, mit Kontrolle und Qualitätssicherung auf Werksebene."
+    },
+    "ourStrength": {
+      "heading": "Unsere Stärke",
+      "description": "Xiangle Ratchet Strap verfügt über ein starkes Produktionsrückgrat, das von qualifizierten Arbeitskräften, automatisierten Produktionslinien und dem Engagement für kontinuierliche Verbesserung getragen wird. Unsere Fabrik integriert fortschrittliche Ausrüstung, strenge Qualitätskontrollsysteme (z. B. Einhaltung der EN 12195-2, wo zutreffend) und eine skalierbare Produktionskapazität, um sowohl Großaufträge als auch kundenspezifische Anforderungen zu erfüllen. Ob präzisionsgeschweißte Schnallen oder Ratschensysteme der nächsten Generation – wir konzentrieren uns darauf, mit jedem produzierten Gurt eine konstante Leistung zu liefern."
+    },
+    "globalReach": {
+      "heading": "Globale Reichweite",
+      "description": "Seit dem Eintritt in den internationalen Markt im Jahr 2016 wurden die Produkte von Xiangle an Kunden in Nordamerika, Europa, Südostasien und Australien geliefert. Gestützt auf ein robustes Inventarsystem und ein reaktionsschnelles Logistikteam gewährleisten wir pünktliche Lieferung und zuverlässige Versorgung für Partner weltweit – egal ob Sie Distributor, E-Commerce-Marke oder industrieller Endverbraucher sind."
+    },
+    "imageAlts": {
+      "customProductCapabilities": "Illustration kundenspezifischer Produktfähigkeiten",
+      "scaleCapacity": "Bild, das Fabrikgröße und -kapazität zeigt",
+      "precisionSkill": "Bild, das Präzision und Geschick in der Fertigung zeigt",
+      "gsCertificated": "GS-Zertifizierungslogo oder Bild (entspricht z.B. der EN 12195-2)",
+      "testedQuality": "Bild, das die geprüfte Qualität der Produkte gemäß relevanten Normen wie EN 12195-2 darstellt",
+      "globalReachMap": "Karte zur Veranschaulichung der globalen Reichweite von Xiangle-Produkten"
+    }
+  },
+  "SearchBar": {
+    "placeholder": "Wonach suchen Sie?",
+    "searchingStatus": "Suche Produkte...",
+    "noProductsFound": "Keine Produkte für \"{searchQuery}\" gefunden",
+    "searchResultsTitle": "Suchergebnisse ({count})",
+    "clickToViewDetails": "Klicken Sie für Details",
+    "openMenuAriaLabel": "Menü öffnen"
+  },
+  "ContactSection": {
+    "title": "Wir arbeiten für Sie",
+    "description": "Wir nehmen den Kundenservice sehr ernst und sind stolz darauf, den besten Kundenservice der Branche zu haben. Unser Team wird unermüdlich daran arbeiten, sicherzustellen, dass Sie die hochwertigen Produkte erhalten, die Sie benötigen, und den außergewöhnlichen Service, den Sie verdienen. Sie werden immer mit einer echten Person sprechen und nie länger als einen Werktag auf eine Antwort warten müssen. Wir halten Ihnen den Rücken frei!"
+  },
+  "LogoClouds": {
+    "title": "Unsere Kunden lieben uns",
+    "description": "Schon bei der ersten Anwendung bemerken sie den Unterschied – die zuverlässige Qualität, das durchdachte Design und der unerschütterliche Service. Jeder Kauf ist ein Vertrauensbeweis, und wir verpflichten uns, dieses Vertrauen zu ehren, indem wir jedes Detail perfektionieren. Vielen Dank, dass Sie Teil unserer Reise sind. Dank Ihnen werden wir immer besser."
+  },
+  "BusinessSolutions": {
+    "hero": {
+      "alt": "Banner Geschäftslösungen",
+      "title": "AUSRÜSTUNG, DIE SIE BRAUCHEN. SERVICE, DEN SIE VERDIENEN.",
+      "subtitle": "IHR BEVORZUGTER LIEFERANT FÜR HOCHWERTIGE AUSRÜSTUNG FÜR LKW-TRANSPORT, ANSCHLAGMITTEL & HEBETECHNIK SOWIE UMZUG.",
+      "ctaButton": "PARTNER WERDEN"
+    },
+    "section": {
+      "imageAlt": "Unser engagiertes Team",
+      "title": "KLEINUNTERNEHMEN-GEFÜHL MIT PERSÖNLICHEM SERVICE, UNTERSTÜTZT DURCH EINE GROSSUNTERNEHMEN-OPERATION.",
+      "description": "Xiangle Ratchet Strap ist kein durchschnittlicher Ausrüstungslieferant. Wir wollen nicht nur für Sie arbeiten, wir wollen mit Ihnen arbeiten. Unser engagiertes Expertenteam zeichnet uns aus – es stellt sicher, dass Sie die hochwertige Ausrüstung erhalten, die Sie benötigen, und den außergewöhnlichen Service, den Sie verdienen. Mit kundenspezifischen Produktfähigkeiten, schneller Lieferung und verfügbaren Finanzierungsmöglichkeiten freuen wir uns darauf, Sie voranzubringen.",
+      "linkText": "Das Team kennenlernen"
+    }
+  },
+  "StatsSection": {
+    "title": "Zuverlässige Herstellung, bewährte Exzellenz",
+    "description": "Wir verpflichten uns, qualitativ hochwertige Produkte, zuverlässigen Service und eine reibungslose Abwicklung zu bieten. Mit jahrelanger Erfahrung und einem starken globalen Netzwerk gewährleisten wir Effizienz, Präzision und Kundenzufriedenheit bei jeder Bestellung.",
+    "stats": {
+      "years": "Jahre im Geschäft",
+      "partners": "Geschäftspartner",
+      "orders": "Erfüllte Großaufträge",
+      "deliveryRate": "Pünktlichkeitsrate bei Lieferungen",
+      "productsAvailable": "Verfügbare Produkte"
+    }
+  },
+  "BentoGrids": {
+    "mainTitle": "Maßgeschneiderte Lösungen für Mengenpreise",
+    "items": {
+      "manufacturing": {
+        "subtitle": "Herstellung",
+        "title": "Direktproduktion ab Werk",
+        "imageAlt": "Produktionslinie für Zurrgurte in der Fabrik",
+        "description": "Als Hersteller überwachen wir den gesamten Produktionsprozess und gewährleisten strenge Qualitätskontrollen und Kosteneffizienz. Unsere moderne Anlage in China produziert hochwertige Zurrgurte, Ladungssicherungsnetze und Hebebänder, die auf Ihre Bedürfnisse zugeschnitten sind."
+      },
+      "speed": {
+        "subtitle": "Geschwindigkeit",
+        "title": "Schnelle & zuverlässige Lieferung",
+        "imageAlt": "Schneller Lieferwagen auf einer Autobahn",
+        "description": "Mit einer optimierten Produktionslinie und einem robusten Logistiknetzwerk gewährleisten wir eine schnelle Auftragsabwicklung. Großaufträge werden effizient bearbeitet, und wir bieten flexible Versandlösungen, um die globale Nachfrage zu decken."
+      },
+      "customization": {
+        "subtitle": "Anpassung",
+        "title": "Auf Ihre Bedürfnisse zugeschnitten",
+        "imageAlt": "Optionen für individuell gestaltete Ratschen-Spanngurte",
+        "description": "Jedes Unternehmen ist einzigartig, und so sind auch seine Anforderungen. Wir bieten vollständig anpassbare Produkte, einschließlich Größe, Material und Branding-Optionen, um Ihren genauen Spezifikationen zu entsprechen."
+      },
+      "expertise": {
+        "subtitle": "Expertise",
+        "title": "Branchenführendes Team",
+        "imageAlt": "Expertenteam diskutiert Produktdesign",
+        "description": "Unsere erfahrenen Fachleute widmen sich der Bereitstellung erstklassiger Lösungen. Von Produktempfehlungen bis hin zum technischen Support stellen wir sicher, dass Sie die besten Produkte für Ihr Unternehmen erhalten."
+      },
+      "partnership": {
+        "subtitle": "Partnerschaft",
+        "title": "Langfristige Geschäftsunterstützung",
+        "imageAlt": "Großes Lagerzentrum als Symbol für Partnerschaftsunterstützung",
+        "description": "Wir sind mehr als nur ein Lieferant – wir sind Ihr Fertigungspartner. Mit wettbewerbsfähigen Preisen, Flexibilität bei Großaufträgen und fachkundiger Beratung helfen wir Ihnen, Ihr Geschäft effizient zu skalieren."
+      }
+    }
+  },
+  "QuoteForm": {
+    "labels": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "companyName": "Firmenname",
+      "position": "Position",
+      "message": "Nachricht",
+      "attachment": "Anhang"
+    },
+    "buttons": {
+      "chooseFile": "Datei(en) auswählen",
+      "submit": "Anfrage senden",
+      "submitting": "Wird gesendet..."
+    },
+    "fileUpload": {
+      "noFileSelected": "Keine Datei(en) ausgewählt",
+      "maxFilesError": "Sie können nur bis zu {count} Dateien hochladen.",
+      "maxFilesHint": "Max. {count} Dateien. Bilder, PDF, DOC, XLS, TXT erlaubt."
+    },
+    "notifications": {
+      "submitSuccessFallback": "Ihre Anfrage wurde erfolgreich übermittelt! Wir werden uns bald bei Ihnen melden.",
+      "submitErrorFallback": "Bei der Übermittlung Ihrer Anfrage ist ein Problem aufgetreten. Bitte versuchen Sie es erneut.",
+      "submitErrorNetwork": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+    }
+  },
+  "TeamSection": {
+    "title": "Lernen Sie unsere Führungskräfte kennen",
+    "description": "Wir sind ein Team erfahrener Fachleute, die sich dafür einsetzen, Spitzenleistungen in der Fertigung zu erbringen und unseren Geschäftspartnern hochwertige Lösungen anzubieten.",
+    "peopleImageAlt": "Porträt von {name}",
+    "people": {
+      "steven": {
+        "role": "Geschäftsführer",
+        "year": "- Mitbegründer von Xiangle -",
+        "bio": "Verantwortlich für die Produktentwicklung, ist Steven ein visionärer Führer und Mitbegründer von Xiangle. Außerhalb der Arbeit schätzt er seine Rolle als Vater von zwei Töchtern und zwei verspielten Katzen."
+      },
+      "sophia": {
+        "role": "Verkaufsleiterin",
+        "year": "- Mitbegründerin von Xiangle -",
+        "bio": "Als Verkaufsleiterin und Mitbegründerin von Xiangle bringt Sophia umfassende Erfahrung im Aufbau starker Kundenbeziehungen und in der erfolgreichen Führung des Verkaufsteams mit. Zu Hause ist sie die liebevolle Mutter von zwei Töchtern und zwei entzückenden Katzen."
+      },
+      "dustin": {
+        "role": "Assistent der Verkaufsleitung",
+        "year": "- 5 Jahre bei Xiangle -",
+        "bio": "Dustin leitet das Außenhandelsteam und ist auch für die Außenhandelsgeschäfte und die Marktentwicklung bei Xiangle verantwortlich. Er ist seit 5 Jahren ein wertvolles Mitglied, das Vertriebsinitiativen konsequent unterstützt und die Teamzusammenarbeit fördert."
+      },
+      "warren": {
+        "role": "Außenhandelsvertrieb",
+        "year": "- 9 Jahre bei Xiangle -",
+        "bio": "Mit 9 Jahren engagierter Tätigkeit im Außenhandelsvertrieb bei Xiangle verfügt Warren über ein tiefes Verständnis der internationalen Märkte und zeichnet sich durch den Aufbau dauerhafter Partnerschaften aus. In seiner Freizeit spielt er gerne Basketball."
+      },
+      "alex": {
+        "role": "Außenhandelsvertrieb",
+        "year": "- 10 Jahre bei Xiangle -",
+        "bio": "Alex ist seit einem Jahrzehnt eine Schlüsselfigur im Außenhandelsvertrieb und nutzt seine umfassende Erfahrung, um globale Märkte zu navigieren und bemerkenswerte Ergebnisse zu erzielen."
+      },
+      "chloe": {
+        "role": "Außenhandelsvertrieb",
+        "year": "- 5 Jahre bei Xiangle -",
+        "bio": "Chloe bringt 5 Jahre Erfahrung im Außenhandelsvertrieb in das Xiangle-Team ein und zeigt ein starkes Engagement für Kundenzufriedenheit und die Förderung des internationalen Geschäftswachstums."
+      }
+    }
+  },
+  "FaqPage": {
+    "metadata": {
+      "title": "FAQ - Xiangle Ratchet Strap",
+      "description": "Häufig gestellte Fragen zu unseren Produkten und Dienstleistungen. Finden Sie Antworten auf häufige Anfragen zu Ratschen-Spanngurten, Zurrgurten und mehr."
+    },
+    "content": {
+      "mainTitle": "Häufig gestellte Fragen",
+      "introText": "Es gibt viel über Gurtbänder und Gurte zu wissen! Hier sind einige der häufigsten Fragen:",
+      "notFoundText": "Nicht die richtige Antwort gefunden? Wir klären das gerne! Besuchen Sie unsere <contactLink>Kontaktseite</contactLink>, um uns eine Nachricht zu senden. Vielen Dank!"
+    }
+  },
+  "ProductsPage": {
+    "breadcrumb": {
+      "products": "Produkte"
+    },
+    "mainTitle": "ALLE Kategorien",
+    "mainSubtitle": "Durchsuchen Sie unsere Produktkategorien, um die richtige professionelle Ausrüstung und Lösungen für Ihre Bedürfnisse zu finden.",
+    "introduction": {
+      "title": "Professionelle Industrieausrüstung und -lösungen",
+      "paragraph": "Wir widmen uns der Bereitstellung hochwertiger Ausrüstung und Lösungen für die Industrie und das Transportwesen. Ob Sie Industrieketten, Schutzausrüstung oder Industriegurte benötigen, wir haben die richtigen Produkte für Sie. Unsere Produkte werden sorgfältig ausgewählt, um sicherzustellen, dass Leistungs- und Qualitätsstandards (z.B. EN 12195-2, GS-Zeichen wo zutreffend) erfüllt werden."
+    }
+  },
+  "ProductInfo": {
+    "itemNumberLabel": "ARTIKEL ",
+    "stockStatus": {
+      "inStock": "Auf Lager",
+      "madeToOrder": "Maßanfertigung"
+    },
+    "services": {
+      "tailoredPrograms": {
+        "title": "Maßgeschneiderte Geschäftsprogramme",
+        "linkText": "Partner werden"
+      },
+      "questionsCustom": {
+        "title": "Fragen? Benötigen Sie eine Maßanfertigung?",
+        "linkText": "Wir können helfen!"
+      }
+    },
+    "buttons": {
+      "requestQuote": "Angebot anfordern"
+    }
+  },
+  "Common": {
+    "relatedBlogs": "Verwandte Blogs",
+    "seeMore": "Mehr sehen",
+    "seeLess": "Weniger sehen",
+    "description": "Beschreibung"
+  },
+  "ProductSpecifications": {
+    "Specifications": "Spezifikationen",
+    "assemblyBreakStrength": "Bruchlast des Systems (BS)",
+    "workingLoadLimit": "Zulässige Zugkraft (LC - Lashing Capacity)",
+    "webbingBreakStrength": "Bruchlast des Gurtbandes",
+    "width": "Breite",
+    "length": "Länge",
+    "endFitting": "Endbeschlag",
+    "fixedEndLength": "Länge des Festendes",
+    "ratchetHandle": "Ratschengriff",
+    "material": "Material",
+    "finish": "Oberflächenbehandlung",
+    "productWeight": "Produktgewicht"
+  },
+  "CategorySidebar": {
+    "categories": "Kategorien",
+    "refineBy": "Verfeinern nach",
+    "selectedFilters": "Ausgewählte Filter",
+    "clearAll": "Alle löschen",
+    "expandCategory": "Kategorie erweitern",
+    "collapseCategory": "Kategorie reduzieren"
+  },
+  "ProductGrid": {
+    "loading": "Lade Produkte...",
+    "learnMoreButton": "MEHR ERFAHREN",
+    "noDescription": "Keine Beschreibung verfügbar.",
+    "pagination": {
+      "previous": "Zurück",
+      "next": "Weiter"
+    },
+    "noResults": {
+      "title": "Keine Produkte gefunden",
+      "suggestion": "Bitte versuchen Sie, die Filter anzupassen oder schauen Sie später wieder vorbei."
+    }
+  },
+  "ViewControls": {
+    "itemsPerPageOption": "{count} Artikel pro Seite"
+  },
+  "ArticlesSection": {
+    "title": "NEUESTE <span>BLOGS</span>",
+    "readMoreLink": "Mehr lesen",
+    "viewAllButton": "ALLE BLOGS ANZEIGEN",
+    "noExcerpt": "Kein Auszug verfügbar."
+  },
+  "CapabilitiesSection": {
+    "imageAlt": "Illustration der einzigartigen Fähigkeiten und Stärken von Xiangle Ratchet Strap",
+    "mainTitle": "Was zeichnet Xiangle Ratchet Strap aus?",
+    "subTitle": "Unsere Stärken",
+    "items": {
+      "innovation": {
+        "title": "Kontinuierliche Innovation",
+        "description": "Bei Xiangle Ratchet Strap hört die Produktinnovation nie auf. Unser engagiertes F&E-Team entwickelt ständig neue Ratschen-Spanngurte und Zurrgurtlösungen, um den sich entwickelnden Bedürfnissen der Industrien weltweit gerecht zu werden. Von verbesserten Sicherheitsdesigns bis hin zu Mehrzweck-Schnallensystemen verschieben wir ständig Grenzen, um bessere Leistung, größere Vielseitigkeit und intelligentere Nützlichkeit zu liefern."
+      },
+      "inventorySupply": {
+        "title": "Globaler Lagerbestand & schnelle Lieferung",
+        "description": "Gestützt auf einen massiven, versandbereiten Lagerbestand und ein globales Logistiknetzwerk gewährleistet Xiangle Ratchet Strap eine schnelle und effiziente Produktlieferung, wo immer Sie sind. Ob Sie einen Standard-Ratschen-Spanngurt oder eine komplexe Zurrgurtkonfiguration benötigen, unsere Lieferkette ist optimiert, um Ihre Betriebsabläufe am Laufen zu halten – pünktlich, jedes Mal."
+      },
+      "moqCustomization": {
+        "title": "Niedrige MOQ & vollständig maßgeschneiderte Lösungen",
+        "description": "Wir verstehen die Bedeutung von Flexibilität. Deshalb bietet Xiangle Ratchet Strap niedrige Mindestbestellmengen und maßgeschneiderte Fertigung, um Ihren spezifischen Projektanforderungen gerecht zu werden. Von Sonderfarben und -längen bis hin zu Private Labeling und Verpackung helfen wir sowohl kleinen Unternehmen als auch Großunternehmen, exklusive Lösungen ohne die Hürde hoher Stückzahlen zu schaffen."
+      }
+    },
+    "aboutUsButton": "ÜBER UNS"
+  },
+  "CategoriesSection": {
+    "title": "UNSERE <span>KATEGORIEN</span>",
+    "viewMoreButton": "MEHR ANZEIGEN",
+    "retractableRatchetStrap": {
+      "title": "Automatische Ratschen-Spanngurte",
+      "alt": "Hochwertiger automatischer Ratschen-Spanngurt",
+      "link": "categories/retractable-ratchet-strap"
+    },
+    "ratchetStrapsAndTieDowns": {
+      "title": "Ratschen-Spanngurte & Zurrgurte",
+      "alt": "Verschiedene Ratschen-Spanngurte und Zurrgurte",
+      "link": "categories/ratchet-straps-and-tie-downs"
+    },
+    "kayakAndCanoeStrap": {
+      "title": "Kajak- & Kanugurte",
+      "alt": "Strapazierfähiger Kajak- und Kanu-Zurrgurt",
+      "link": "categories/kayak-and-canoe-strap"
+    },
+    "atvAndMotorcycleStrap": {
+      "title": "ATV- & Motorradgurte",
+      "alt": "Sichere ATV- und Motorrad-Transportgurte",
+      "link": "categories/atv-and-motorcycle-strap"
+    },
+    "spareTireYStrap": {
+      "title": "Ersatzrad-Y-Gurt",
+      "alt": "Hochleistungs-Ersatzrad-Y-Gurt",
+      "link": "categories/spare-tire-y-strap"
+    },
+    "webbingAndHardware": {
+      "title": "Gurtband & Zubehör",
+      "alt": "Industrielles Gurtband und Zubehörkomponenten",
+      "link": "categories/webbing-and-hardware"
+    }
+  },
+  "IndustriesSection": {
+    "title": "TOP-<span>INDUSTRIEN</span>",
+    "industries": {
+      "oilAndGas": {
+        "title": "Öl & Gas"
+      },
+      "construction": {
+        "title": "BAUWESEN"
+      },
+      "transportation": {
+        "title": "TRANSPORT"
+      },
+      "agriculture": {
+        "title": "LANDWIRTSCHAFT"
+      },
+      "marine": {
+        "title": "MARINE"
+      },
+      "outdoor": {
+        "title": "OUTDOOR"
+      },
+      "powersport": {
+        "title": "POWERSPORT"
+      }
+    }
+  },
+  "ProductsSection": {
+    "title": "AUSGEWÄHLTE <span>PRODUKTE</span>",
+    "viewAllButton": "Alle Produkte anzeigen",
+    "learnMoreLink": "Mehr erfahren",
+    "products": {
+      "retractable1Inch": {
+        "title": "1-Zoll Automatischer Ratschen-Spanngurt",
+        "description": "Müheloses Aufrollen und sicherer Halt – entwickelt für schnelle, verwicklungsfreie Ladungssicherung im industriellen Bereich.",
+        "beforeAlt": "Sauber organisierter automatischer Ratschen-Spanngurt im Einsatz",
+        "afterAlt": "Unordentlicher, verwickelter traditioneller Ratschen-Spanngurt",
+        "slug": "1inch-retractable-ratchet-strap"
+      },
+      "stainlessSteel1Inch": {
+        "title": "1-Zoll Ratschen-Spanngurt aus Edelstahl 316 mit Doppel-J-Haken",
+        "description": "Entwickelt für den Marine- und robusten Außeneinsatz, bietet dieser korrosionsbeständige Zurrgurt langanhaltende Leistung in rauen Umgebungen. Ideal für Boote, Anhänger und industrielle Anwendungen.",
+        "beforeAlt": "Glänzender neuer Ratschen-Spanngurt aus Edelstahl 316",
+        "afterAlt": "Alte rostige Ratschenschnalle aus nicht rostfreiem Stahl",
+        "slug": "1inch-316-garde-stainless-steel-ratchet-strap-with-double-j-hook"
+      }
+    }
   }
 }

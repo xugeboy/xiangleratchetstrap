@@ -3,44 +3,17 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline"
+import { useTranslations } from "next-intl"
 
 const industries = [
-  {
-    title: "Oil & Gas",
-    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251354/gas_oil_gzdhvv.jpg",
-    link: "/industries/manufacturing",
-  },
-  {
-    title: "CONSTRUCTION",
-    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251245/construction_wbl5fs.jpg",
-    link: "/industries/construction",
-  },
-  {
-    title: "TRANSPORTATION",
-    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251356/transportation_u6wtya.jpg",
-    link: "/industries/transportation",
-  },
-  {
-    title: "AGRICULTURE",
-    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251354/agriculture_ztkx7q.jpg",
-    link: "/industries/agriculture",
-  },
-  {
-    title: "MARINE",
-    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251245/marine_u25sc0.jpg",
-    link: "/industries/marine",
-  },
-  {
-    title: "OUTDOOR",
-    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251355/outdoor_xshdnu.jpg",
-    link: "/industries/roofing",
-  },
-  {
-    title: "POWERSPORT",
-    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251356/powersport_wjxbcg.jpg",
-    link: "/industries/roofing",
-  }
-]
+  { key: "oilAndGas", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251354/gas_oil_gzdhvv.jpg" },
+  { key: "construction", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251245/construction_wbl5fs.jpg" },
+  { key: "transportation", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251356/transportation_u6wtya.jpg" },
+  { key: "agriculture", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251354/agriculture_ztkx7q.jpg" },
+  { key: "marine", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251245/marine_u25sc0.jpg" },
+  { key: "outdoor", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251355/outdoor_xshdnu.jpg" },
+  { key: "powersport", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251356/powersport_wjxbcg.jpg" },
+];
 
 export default function IndustriesSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -93,12 +66,14 @@ export default function IndustriesSection() {
 
     setTimeout(() => setIsAnimating(false), 500)
   }
-
+  const t = useTranslations("IndustriesSection");
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
-          TOP <span className="text-amber-700">INDUSTRIES</span>
+        {t.rich("title", {
+            span: (chunks) => <span className="text-amber-700">{chunks}</span>,
+          })}
         </h2>
 
         <div className="relative">
@@ -119,14 +94,14 @@ export default function IndustriesSection() {
                   <div className="aspect-[4/3] relative">
                     <Image
                       src={industry.image}
-                      alt={industry.title}
+                      alt={t(`industries.${industry.key}.title`)}
                       fill
                       className="object-cover transition-transform duration-500 rounded-t-lg"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-xl font-bold text-white">{industry.title}</h3>
+                    <h3 className="text-xl font-bold text-white">{t(`industries.${industry.key}.title`)}</h3>
                   </div>
                 </div>
               ))}

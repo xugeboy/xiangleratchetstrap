@@ -1,56 +1,63 @@
+import { getCombainedLocalePath } from "@/utils/formatUtils";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 
 const categories = [
   {
-    title: "Retractable Ratchet Strap",
-    alt: "Retractable Ratchet Strap",
+    title: "retractableRatchetStrap.title",
+    alt: "retractableRatchetStrap.alt",
     image:
       "https://res.cloudinary.com/duimeqqch/image/upload/v1745311043/retractable_ratchet_strap_9147cf873f.jpg",
-    link: "/categories/retractable-ratchet-strap",
+    link: "retractableRatchetStrap.link",
   },
   {
-    title: "Ratchet Straps & Tie Downs",
-    alt: "Retractable Ratchet Strap",
+    title: "ratchetStrapsAndTieDowns.title",
+    alt: "ratchetStrapsAndTieDowns.alt",
     image:
       "https://res.cloudinary.com/duimeqqch/image/upload/v1745311043/ratchet_strap_29ce01f81a.jpg",
-    link: "/categories/ratchet-straps-and-tie-downs",
+    link: "ratchetStrapsAndTieDowns.link",
   },
   {
-    title: "Kayak & Canoe Strap",
+    title: "kayakAndCanoeStrap.title",
+    alt: "kayakAndCanoeStrap.link",
     image:
       "https://res.cloudinary.com/duimeqqch/image/upload/v1745307786/cam_buckle_strap_srytzu.jpg",
-    link: "/categories/kayak-and-canoe-strap",
+    link: "kayakAndCanoeStrap.link",
   },
   {
-    title: "ATV & Motorcycle Strap",
-    alt: "Retractable Ratchet Strap",
+    title: "atvAndMotorcycleStrap.title",
+    alt: "atvAndMotorcycleStrap.link",
     image:
       "https://res.cloudinary.com/duimeqqch/image/upload/v1745311045/38_MM_MTD_FB_020_f616857deb.jpg",
-    link: "/categories/atv-and-motorcycle-strap",
+    link: "atvAndMotorcycleStrap.link",
   },
   {
-    title: "Spare Tire Y-Strap",
-    alt: "spare_tire_y_strap",
+    title: "spareTireYStrap.title",
+    alt: "spareTireYStrap.link",
     image:
       "https://res.cloudinary.com/duimeqqch/image/upload/v1745306181/YwayStrap_010_n5xjja.jpg",
-    link: "/categories/spare-tire-y-strap",
+    link: "spareTireYStrap.link",
   },
   {
-    title: "Webbing & Hardware",
-    alt: "Retractable Ratchet Strap",
+    title: "webbingAndHardware.title",
+    alt: "webbingAndHardware.link",
     image:
       "https://res.cloudinary.com/duimeqqch/image/upload/v1745311045/webbing_hardware_fde0a59657.png",
-    link: "/categories/webbing-and-hardware",
+    link: "webbingAndHardware.link",
   },
 ];
 
-export default function CategoriesSection() {
+export default async function CategoriesSection() {
+  const lang = await getLocale()
+  const t = await getTranslations("CategoriesSection");
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
-          OUR <span className="text-amber-700">CATEGORIES</span>
+        {t.rich("title", {
+            span: (chunks) => <span className="text-amber-700">{chunks}</span>,
+          })}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -71,13 +78,13 @@ export default function CategoriesSection() {
               </div>
               <div className="relative inset-x-0 bottom-0 flex flex-col items-center justify-end p-4 md:p-6 text-center">
                 <h3 className="text-lg md:text-xl font-bold text-amber-700 mb-3 md:mb-4">
-                  {category.title}
+                  {t(category.title)}
                 </h3>
                 <Link
-                  href={category.link}
+                  href={getCombainedLocalePath(lang,t(category.link))}
                   className="inline-block bg-amber-700 hover:bg-amber-800 text-white px-6 md:px-8 py-2 font-medium transition-all duration-300 text-sm md:text-base"
                 >
-                  VIEW MORE
+                  {t("viewMoreButton")}
                 </Link>
               </div>
             </div>

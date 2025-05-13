@@ -140,22 +140,6 @@ export async function generateMetadata(
 export default async function BlogPage({ params }: BlogPageProps) {
   const slug = params.slug;
   const currentLocale = params.lang;
-  const correctSlug = await getCorrectBlogSlugForLocale(slug, params.lang);
-  if (correctSlug) {
-    notFound();
-  }
-  if (slug !== correctSlug) {
-    let redirectPath;
-    const entityTypePath = "blogs";
-
-    if (currentLocale === defaultUrlPrefix) {
-      redirectPath = `/${entityTypePath}/${correctSlug}`;
-    } else {
-      redirectPath = `/${currentLocale}/${entityTypePath}/${correctSlug}`;
-    }
-    redirect(redirectPath);
-  }
-
   const blog = await getBlogDetail(slug,currentLocale);
   const breadcrumbItems = generateBlogBreadcrumbs(blog,currentLocale);
 
