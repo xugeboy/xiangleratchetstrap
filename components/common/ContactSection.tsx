@@ -32,8 +32,8 @@ export default async function ContactSection() {
                   <PhoneIcon aria-hidden="true" className="h-7 w-6 text-gray-400" />
                 </dt>
                 <dd>
-                  <a href="tel:+8618921978916" className="hover:text-gray-900">
-                    +8618921978916
+                  <a href="tel:+8619952792557" className="hover:text-gray-900">
+                    +8619952792557
                   </a>
                 </dd>
               </div>

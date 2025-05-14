@@ -67,9 +67,9 @@ export default function Footer() {
       },
       {
         name: "Phone",
-        value: "+8618921978916",
+        value: "+8619952792557",
         icon: PhoneIcon,
-        href: "tel:+8618921978916",
+        href: "tel:+8619952792557",
       },
       {
         name: "Mail",
