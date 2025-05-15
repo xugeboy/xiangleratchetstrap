@@ -295,6 +295,7 @@
     "ratchetHandle": "Ratschengriff",
     "material": "Material",
     "finish": "Oberflächenbehandlung",
+    "grade": "Materialgüte",
     "productWeight": "Produktgewicht"
   },
   "CategorySidebar": {

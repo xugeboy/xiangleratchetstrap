@@ -295,6 +295,7 @@
     "ratchetHandle": "Poignée à cliquet",
     "material": "Matériau",
     "finish": "Finition",
+    "grade": "Qualité ",
     "productWeight": "Poids du produit"
   },
   "CategorySidebar": {

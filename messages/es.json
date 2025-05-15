@@ -295,6 +295,7 @@
     "ratchetHandle": "Mango del trinquete",
     "material": "Material",
     "finish": "Acabado",
+    "grade": "Calidad",
     "productWeight": "Peso del producto"
   },
   "CategorySidebar": {

@@ -295,6 +295,7 @@
     "ratchetHandle": "Ratchet Handle",
     "material": "Material",
     "finish": "Finish",
+    "grade": "Grade",
     "productWeight": "Product Weight"
   },
   "CategorySidebar": {
