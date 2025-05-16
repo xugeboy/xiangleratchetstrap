@@ -286,7 +286,7 @@
   "ProductSpecifications": {
     "Specifications": "Spezifikationen",
     "assemblyBreakStrength": "Bruchlast des Systems (BS)",
-    "workingLoadLimit": "Zulässige Zugkraft (LC - Lashing Capacity)",
+    "workingLoadLimit": "Zulässige Zugkraft (LC)",
     "webbingBreakStrength": "Bruchlast des Gurtbandes",
     "width": "Breite",
     "length": "Länge",

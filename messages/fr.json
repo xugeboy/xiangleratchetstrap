@@ -285,7 +285,7 @@
   },
   "ProductSpecifications": {
     "Specifications": "Spécifications",
-    "assemblyBreakStrength": "Résistance à la rupture de l'ensemble (CMU)",
+    "assemblyBreakStrength": "Résistance à la rupture de l'ensemble",
     "workingLoadLimit": "Charge Maximale d'Utilisation (CMU)",
     "webbingBreakStrength": "Résistance à la rupture de la sangle",
     "width": "Largeur",
