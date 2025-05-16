@@ -9,7 +9,10 @@ interface CategoryPageProps {
   params: {
     slug: string[];
     lang: string;
-  }
+  };
+  searchParams?: {
+    [key: string]: string | string[] | undefined;
+  };
 }
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
@@ -125,8 +128,27 @@ function getAllSlugPaths(categories: ProductCategory[], parentSlugs: string[] = 
     return paths;
   }
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
+export default async function CategoryPage({ params,searchParams }: CategoryPageProps) {
   const slug = params.slug;
   const lang = params.lang;
+  const previousLocale = searchParams?.pl;
+  const targetSlug = slug[slug.length - 1];
+  if(previousLocale){
+    const correctSlug = await getCorrectCategorySlugForLocale(targetSlug, lang, previousLocale);
+    if (!correctSlug) {
+      notFound();
+    }
+    if (targetSlug !== correctSlug) {
+      let redirectPath;
+      const entityTypePath = "categories";
+  
+      if (params.lang === defaultUrlPrefix) {
+        redirectPath = `/${entityTypePath}/${correctSlug}`;
+      } else {
+        redirectPath = `/${lang}/${entityTypePath}/${correctSlug}`;
+      }
+      redirect(redirectPath);
+    }
+  }
   return <CategoryContent slug={slug} lang={lang}/>
 }

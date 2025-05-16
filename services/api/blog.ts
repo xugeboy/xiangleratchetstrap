@@ -1,6 +1,6 @@
 import { fetchAPI } from "@/utils/fetch-api";
 import { Blog } from "@/types/blog";
-import { getFullLocale } from "@/utils/formatUtils";
+import { getFullLocale, getPreviousFullLocale } from "@/utils/formatUtils";
 
 export async function getBlogDetail(slug: string,locale:string): Promise<Blog | null> {
   try {
@@ -21,10 +21,10 @@ export async function getBlogMetaDataBySlug(slug: string,locale:string): Promise
     return null;
   }
 }
-export async function getCorrectBlogSlugForLocale(slug: string,locale:string): Promise<string | null> {
+export async function getCorrectBlogSlugForLocale(slug: string,locale:string,previousLocale:string): Promise<string | null> {
   try {
     const path = `/getCorrectBlogSlugForLocale/${slug}`;
-    const response = await fetchAPI(path,getFullLocale(locale));
+    const response = await fetchAPI(path,getPreviousFullLocale(locale,previousLocale));
     return response.data;
   } catch (error) {
     console.error("Error fetching Category:", error);

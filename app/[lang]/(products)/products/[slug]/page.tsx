@@ -19,6 +19,9 @@ interface ProductPageProps {
     slug: string;
     lang: string;
   };
+  searchParams?: {
+    [key: string]: string | string[] | undefined;
+  };
 }
 
 export async function generateStaticParams() {
@@ -118,9 +121,28 @@ export async function generateMetadata(
   };
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({ params,searchParams }: ProductPageProps) {
   const slug = params.slug;
   const currentLocale = params.lang;
+  const previousLocale = searchParams?.pl;
+  if(previousLocale){
+    const correctSlug = await getCorrectProductSlugForLocale(slug, currentLocale, previousLocale);
+    if (!correctSlug) {
+      notFound();
+    }
+    if (slug !== correctSlug) {
+      let redirectPath;
+      const entityTypePath = "products";
+  
+      if (params.lang === defaultUrlPrefix) {
+        redirectPath = `/${entityTypePath}/${correctSlug}`;
+      } else {
+        redirectPath = `/${currentLocale}/${entityTypePath}/${correctSlug}`;
+      }
+      redirect(redirectPath);
+    }
+  }
+  
   const product = await getProductBySlug(slug,currentLocale);
   const breadcrumbItems = generateProductBreadcrumbs(product,currentLocale);
 

@@ -20,6 +20,20 @@ export function getFullLocale(prefix: string): { locale: string } {
   return { locale:finalLocale };
 }
 
+export function getPreviousFullLocale(cprefix: string, pprefix: string): { locale: string,previousLocale: string } {
+  const locale = 
+    Object.keys(localePrefixMap).find(
+      (key) => localePrefixMap[key] === cprefix
+    ) || "en";
+  const finalCLocale = locale === "en-US" ? "en" : locale;
+  const previousLocale = 
+  Object.keys(localePrefixMap).find(
+    (key) => localePrefixMap[key] === pprefix
+  ) || "en";
+const finalPLocale = previousLocale === "en-US" ? "en" : previousLocale;
+  return { locale:finalCLocale,previousLocale:finalPLocale };
+}
+
 export function getBreadcrumbPathPrefix(currentLang: string): string {
   if (currentLang === defaultUrlPrefixForNoPrefixURLs) {
     return ""; // 默认语言 (en) 的 URL 不加前缀

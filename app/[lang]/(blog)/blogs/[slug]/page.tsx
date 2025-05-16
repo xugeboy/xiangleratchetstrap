@@ -20,6 +20,9 @@ interface BlogPageProps {
     slug: string;
     lang: string;
   };
+  searchParams?: {
+    [key: string]: string | string[] | undefined;
+  };
 }
 
 
@@ -137,9 +140,28 @@ export async function generateMetadata(
 }
 
 // ✅ SSR Blog Page
-export default async function BlogPage({ params }: BlogPageProps) {
+export default async function BlogPage({ params,searchParams }: BlogPageProps) {
   const slug = params.slug;
   const currentLocale = params.lang;
+  const previousLocale = searchParams?.pl;
+  if(previousLocale){
+    const correctSlug = await getCorrectBlogSlugForLocale(slug, currentLocale, previousLocale);
+    if (!correctSlug) {
+      notFound();
+    }
+    if (slug !== correctSlug) {
+      let redirectPath;
+      const entityTypePath = "blogs";
+  
+      if (params.lang === defaultUrlPrefix) {
+        redirectPath = `/${entityTypePath}/${correctSlug}`;
+      } else {
+        redirectPath = `/${currentLocale}/${entityTypePath}/${correctSlug}`;
+      }
+      redirect(redirectPath);
+    }
+  }
+
   const blog = await getBlogDetail(slug,currentLocale);
   const breadcrumbItems = generateBlogBreadcrumbs(blog,currentLocale);
 

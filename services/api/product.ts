@@ -1,6 +1,6 @@
 import { fetchAPI, postAPI } from "@/utils/fetch-api";
 import { Product } from "@/types/product";
-import { getFullLocale } from "@/utils/formatUtils";
+import { getFullLocale, getPreviousFullLocale } from "@/utils/formatUtils";
 
 /**
  * 获取所有产品的slug
@@ -46,10 +46,10 @@ export async function getProductBySlug(
     return null;
   }
 }
-export async function getCorrectProductSlugForLocale(slug: string,locale:string): Promise<string | null> {
+export async function getCorrectProductSlugForLocale(slug: string,locale:string, previousLocale:string): Promise<string | null> {
   try {
     const path = `/getCorrectProductSlugForLocale/${slug}`;
-    const response = await fetchAPI(path,getFullLocale(locale));
+    const response = await fetchAPI(path,getPreviousFullLocale(locale,previousLocale));
     return response.data;
   } catch (error) {
     console.error("Error fetching Category:", error);

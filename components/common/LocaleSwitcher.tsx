@@ -1,16 +1,15 @@
 "use client";
 
+import { defaultUrlPrefix } from "@/middleware";
 import {
   Listbox,
   ListboxButton,
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/react";
-import { useRouter, usePathname } from "next/navigation"; // next/navigation for App Router
-import { useEffect, useState, useTransition } from "react"; // Added useTransition
+import { useRouter, usePathname } from "next/navigation";
+import { useEffect, useState, useTransition } from "react";
 import Flag from "react-world-flags";
-
-const DEFAULT_LOCALE_CODE = "en"; // Renamed for clarity
 
 type Locale = {
   code: string;
@@ -18,7 +17,6 @@ type Locale = {
   flag: string;
 };
 
-// 这些应该与你的 next-intl 中间件配置的 locales 一致
 const localesData: Locale[] = [
   { code: "en", label: "US", flag: "US" },
   { code: "au", label: "Australia", flag: "AU" },
@@ -29,23 +27,22 @@ const localesData: Locale[] = [
   { code: "es", label: "Español", flag: "ES" },
 ];
 
-// Helper function to find locale object by code
 const findLocaleObjectByCode = (
   code: string | undefined
 ): Locale | undefined => {
   if (!code) return undefined;
   return localesData.find((l) => l.code === code);
 };
+export const PREVIOUS_LOCALE_STORAGE_KEY = "previousLocale";
 
 const defaultLocaleObject =
-  findLocaleObjectByCode(DEFAULT_LOCALE_CODE) || localesData[0];
+  findLocaleObjectByCode(defaultUrlPrefix);
 
 export default function LocaleSwitcher() {
   const router = useRouter();
-  const pathname = usePathname(); // Example: /en/about or /about
-  const [isPending, startTransition] = useTransition(); // For smoother navigation
+  const pathname = usePathname();
+  const [isPending, startTransition] = useTransition();
 
-  // Initialize selectedLocale based on the current URL path
   const [selectedLocale, setSelectedLocale] = useState<Locale>(() => {
     const pathSegments = pathname.split("/").filter(Boolean);
     const potentialLocaleCodeFromUrl = pathSegments[0];
@@ -54,11 +51,9 @@ export default function LocaleSwitcher() {
     if (urlLocaleObject) {
       return urlLocaleObject;
     }
-    // If no locale in URL, assume it's the default locale (for as-needed prefixing)
     return defaultLocaleObject;
   });
 
-  // Update selectedLocale when the pathname changes (e.g., browser back/forward)
   useEffect(() => {
     const pathSegments = pathname.split("/").filter(Boolean);
     const potentialLocaleCodeFromUrl = pathSegments[0];
@@ -67,8 +62,6 @@ export default function LocaleSwitcher() {
     if (urlLocaleObject) {
       setSelectedLocale(urlLocaleObject);
     } else {
-      // If the path does not start with a known locale code,
-      // it implies it's the default locale (e.g., /about for en)
       setSelectedLocale(defaultLocaleObject);
     }
   }, [pathname]);
@@ -87,10 +80,10 @@ export default function LocaleSwitcher() {
     const newPath = `/${newLocaleCode}${
       basePathSegments.length > 0 ? `/${basePathSegments.join("/")}` : ""
     }`;
-
-    if (pathname !== newPath) {
+    const newPathWithPreviousLocale = newPath + `?pl=${selectedLocale.code}`
+    if (pathname !== newPathWithPreviousLocale) {
       startTransition(() => {
-        router.push(newPath);
+        router.push(newPathWithPreviousLocale);
       });
     }
   };
