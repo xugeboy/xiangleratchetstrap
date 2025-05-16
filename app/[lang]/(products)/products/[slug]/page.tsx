@@ -14,6 +14,8 @@ import { embedSchema } from "@/utils/schema";
 import AlternatingContent from "@/components/product/AlternatingContent";
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
 
+export const dynamic = 'force-dynamic';
+
 interface ProductPageProps {
   params: {
     slug: string;

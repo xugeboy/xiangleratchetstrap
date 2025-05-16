@@ -15,6 +15,8 @@ import BlocksClient from "@/components/common/BlocksClient";
 import formatDateToLongEnglish from "@/utils/formatUtils";
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
 
+export const dynamic = 'force-dynamic';
+
 interface BlogPageProps {
   params: {
     slug: string;

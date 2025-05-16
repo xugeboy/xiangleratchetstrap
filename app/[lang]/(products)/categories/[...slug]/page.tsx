@@ -5,6 +5,9 @@ import { ProductCategory } from '@/types/productCategory'
 import { defaultUrlPrefix, localePrefixMap } from '@/middleware'
 import { getCategoryMetaDataBySlug, getCorrectCategorySlugForLocale } from '@/services/api/productCategory'
 import { notFound, redirect } from 'next/navigation'
+
+export const dynamic = 'force-dynamic';
+
 interface CategoryPageProps {
   params: {
     slug: string[];
