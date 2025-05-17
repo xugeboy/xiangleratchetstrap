@@ -27,6 +27,8 @@ export default function Specifications({ product }: SpecificationsProps) {
     { labelKey: "ratchetHandle", accessor: (p) => p.ratchet_handle },
     { labelKey: "material", accessor: (p) => p.material },
     { labelKey: "finish", accessor: (p) => p.finish },
+    { labelKey: "elongationAtLc", accessor: (p) => p.elongation_at_lc },
+    { labelKey: "compliance", accessor: (p) => p.compliance },
     { labelKey: "grade", accessor: (p) => p.grade },
     { labelKey: "productWeight", accessor: (p) => p.product_weight },
   ];

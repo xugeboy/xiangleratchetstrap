@@ -2,7 +2,6 @@ export const localePrefixMap: { [key: string]: string } = {
   "en-US": "en", // 默认语言
   "en-GB": "uk",
   "en-AU": "au",
-  "en-CA": "ca",
   "de-DE": "de",
   "fr-FR": "fr",
   "es-ES": "es",
@@ -22,7 +21,7 @@ export const supportedIetfLangTags = Object.keys(localePrefixMap);
 import createMiddleware from 'next-intl/middleware';
 
 export default createMiddleware({
-  locales: ['en', 'uk', 'au', 'ca', 'de', 'fr', 'es'],
+  locales: ['en', 'uk', 'au', 'de', 'fr', 'es'],
   defaultLocale: 'en',
   localePrefix: 'as-needed',
 });

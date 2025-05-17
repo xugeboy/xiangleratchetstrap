@@ -20,7 +20,6 @@ type Locale = {
 const localesData: Locale[] = [
   { code: "en", label: "US", flag: "US" },
   { code: "au", label: "Australia", flag: "AU" },
-  { code: "ca", label: "Canada", flag: "CA" },
   { code: "uk", label: "UK", flag: "GB" },
   { code: "de", label: "Deutsch", flag: "DE" },
   { code: "fr", label: "Français", flag: "FR" },

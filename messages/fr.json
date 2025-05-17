@@ -296,6 +296,8 @@
     "material": "Matériau",
     "finish": "Finition",
     "grade": "Qualité ",
+    "compliance": "Compliance",
+    "elongation_at_lc": "Elongation At LC",
     "productWeight": "Poids du produit"
   },
   "CategorySidebar": {

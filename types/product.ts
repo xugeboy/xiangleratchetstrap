@@ -35,5 +35,7 @@ export interface Product {
     seo_description?: string;
     publishedAt: string;
     updatedAt: string;
-    allLanguageSlugs: string[]
+    allLanguageSlugs: string[];
+    elongation_at_lc: string;
+    compliance: string;
 }

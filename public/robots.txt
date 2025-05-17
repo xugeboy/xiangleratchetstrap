@@ -11,6 +11,5 @@ Sitemap: https://xiangleratchetstrap.com/server-sitemap.xml
 Sitemap: https://xiangleratchetstrap.com/fr/server-sitemap.xml
 Sitemap: https://xiangleratchetstrap.com/de/server-sitemap.xml
 Sitemap: https://xiangleratchetstrap.com/es/server-sitemap.xml
-Sitemap: https://xiangleratchetstrap.com/ca/server-sitemap.xml
 Sitemap: https://xiangleratchetstrap.com/uk/server-sitemap.xml
 Sitemap: https://xiangleratchetstrap.com/au/server-sitemap.xml

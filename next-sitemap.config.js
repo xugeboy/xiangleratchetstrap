@@ -1,5 +1,5 @@
 // next-sitemap.config.js
-const supportedLocales = ['fr', 'de', 'es','ca','uk','au'];
+const supportedLocales = ['fr', 'de', 'es','uk','au'];
 
 module.exports = {
   siteUrl: 'https://xiangleratchetstrap.com',

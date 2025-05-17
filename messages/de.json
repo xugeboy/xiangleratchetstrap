@@ -296,6 +296,8 @@
     "material": "Material",
     "finish": "Oberflächenbehandlung",
     "grade": "Materialgüte",
+    "compliance": "Compliance",
+    "elongation_at_lc": "Elongation At LC",
     "productWeight": "Produktgewicht"
   },
   "CategorySidebar": {
