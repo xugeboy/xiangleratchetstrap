@@ -297,6 +297,7 @@
     "finish": "Finish",
     "grade": "Grade",
     "compliance": "Compliance",
+    "elongation_at_lc": "Elongation At WLL",
     "productWeight": "Product Weight"
   },
   "CategorySidebar": {
