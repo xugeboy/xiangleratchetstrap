@@ -21,14 +21,14 @@ export async function GET(
 
   // --- Static Routes ---
   const staticRoutes = [
-    "/",
-    "/about-us",
-    "/contact-us",
-    "/business-solutions",
-    "/faq",
-    "/request-quote",
-    "/download-catalog",
-    "/blogs",
+    "",
+    "about-us",
+    "contact-us",
+    "business-solutions",
+    "faq",
+    "request-quote",
+    "download-catalog",
+    "blogs",
   ];
 
   staticRoutes.forEach((route) => {
