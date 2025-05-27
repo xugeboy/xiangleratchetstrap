@@ -139,7 +139,7 @@ function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
     "@type": "ListItem",
     position: index + 1,
     name: item.name,
-    item: item.path, // URL for the breadcrumb item
+    item: item.href, // URL for the breadcrumb item
   }));
 
   return {
