@@ -157,7 +157,7 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
 
 
     // --- 生成 Schema ---
-    const articleSchema = generateSchema({ type: "CollectionPage", data: currentCategory, slug: targetSlug });
+    const articleSchema = generateSchema({ lang: lang,type: "CollectionPage", data: currentCategory, slug: targetSlug });
     const breadcrumbItemschema = generateSchema({
       type: "BreadcrumbList",
       breadcrumbItems,

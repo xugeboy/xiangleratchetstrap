@@ -38,8 +38,11 @@ function getWebSiteSchema() {
 /**
  * Generates Article Schema from Strapi Blog Data
  */
-function generateArticleSchema(article: Blog, slug: string) {
-  const url = `${SITE_URL}/blogs/${slug}`; // Adjust path as needed
+function generateArticleSchema(lang: string, article: Blog, slug: string) {
+  let url = `${SITE_URL}/blogs/${slug}`;
+  if (lang !== "en") {
+    url =  `${SITE_URL}/${lang}/blogs/${slug}`;
+  }
   const coverImage = article.cover_image;
 
   const schema = {
@@ -87,8 +90,11 @@ function generateArticleSchema(article: Blog, slug: string) {
 /**
  * Generates Product Schema from Strapi Product Data
  */
-function generateProductSchema(product: Product, slug: string) {
-  const url = `${SITE_URL}/products/${slug}`; // Adjust path as needed
+function generateProductSchema(lang: string, product: Product, slug: string) {
+  let url = `${SITE_URL}/products/${slug}`;
+  if (lang !== "en") {
+    url =  `${SITE_URL}/${lang}/products/${slug}`;
+  }
   const featuredImage = product.featured_image;
 
   const schema = {
@@ -155,6 +161,7 @@ export type SchemaType =
   | "Organization";
 
 interface GenerateSchemaProps {
+  lang?: string;
   type: SchemaType;
   data?: Blog | Product | ProductCategory; // The specific Strapi data (Blog, product.)
   slug?: string; // Needed for constructing URLs for Article/Product
@@ -165,16 +172,16 @@ interface GenerateSchemaProps {
  * Generates the JSON-LD object for the specified schema type.
  */
 export function generateSchema(props: GenerateSchemaProps): object | null {
-  const { type, data, slug, breadcrumbItems } = props;
+  const { lang, type, data, slug, breadcrumbItems } = props;
 
   try {
     switch (type) {
       case "Article":
         if (!slug || !data) return null;
-        return generateArticleSchema(data as Blog, slug);
+        return generateArticleSchema(lang, data as Blog, slug);
       case "Product":
         if (!slug || !data) return null;
-        return generateProductSchema(data as Product, slug);
+        return generateProductSchema(lang, data as Product, slug);
       case "BreadcrumbList":
         if (!breadcrumbItems) return null;
         return generateBreadcrumbSchema(breadcrumbItems);
@@ -182,7 +189,7 @@ export function generateSchema(props: GenerateSchemaProps): object | null {
         if (!data) {
             return null;
         }
-        return generateCollectionPageSchema(data as ProductCategory, slug);
+        return generateCollectionPageSchema(lang, data as ProductCategory, slug);
       case "WebSite":
         return getWebSiteSchema();
       case "Organization":
@@ -200,10 +207,13 @@ export function generateSchema(props: GenerateSchemaProps): object | null {
 /**
  * Generates CollectionPage Schema from Strapi ProductCategory Data
  */
-function generateCollectionPageSchema(category: ProductCategory, slug: string) {
+function generateCollectionPageSchema(lang: string, category: ProductCategory, slug: string) {
   if (!category) return null;
 
-  const url = `${SITE_URL}/categories/${slug}`;
+  let url = `${SITE_URL}/categories/${slug}`;
+  if (lang !== "en") {
+    url =  `${SITE_URL}/${lang}/categories/${slug}`;
+  }
 
   const categoryImage = category.featured_image
 
