@@ -42,7 +42,7 @@ export async function generateMetadata(
   const ogImageAlt = pageTitle;
 
   let canonicalUrlPath;
-  if (currentLocale === "en") {
+  if (currentLocale === defaultUrlPrefix || currentLocale === undefined) {
     canonicalUrlPath = `/categories/${categoryData.slug}`;
   } else {
     canonicalUrlPath = `/${currentLocale}/categories/${categoryData.slug}`;

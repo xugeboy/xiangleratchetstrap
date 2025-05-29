@@ -65,7 +65,7 @@ export async function generateMetadata(
   const ogImageAlt = pageTitle;
 
   let canonicalUrlPath;
-  if (currentLocale === "en") {
+  if (currentLocale === defaultUrlPrefix || currentLocale === undefined) {
     canonicalUrlPath = `/blogs/${blogData.slug}`;
   } else {
     canonicalUrlPath = `/${currentLocale}/blogs/${blogData.slug}`;

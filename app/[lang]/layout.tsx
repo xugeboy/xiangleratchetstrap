@@ -31,7 +31,7 @@ interface LocaleLayoutProps {
   children: React.ReactNode;
 }
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-const siteName = process.env.SITE_NAME;
+const siteName = process.env.NEXT_PUBLIC_ORGANIZATION_NAME;
 const defaultDescription =
   "Ratchet, E-Track, and Cargo Tie Down Straps - Xiangle Ratchet Strap";
 const siteLogo = process.env.NEXT_PUBLIC_LOGO_URL;
@@ -48,7 +48,7 @@ Object.keys(localePrefixMap).forEach((localeKey) => {
   const prefix = localePrefixMap[localeKey]; // 获取该语言对应的 URL 前缀
 
   let url;
-  if (localeKey === defaultLocaleKey) {
+  if (localeKey === defaultLocaleKey || localeKey === undefined) {
     url = `${siteUrl}${currentPath === "/" ? "" : currentPath}`;
   } else {
     // 非默认语言，URL 带上对应的语言前缀
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   title: {
     default:
       "Ratchet, E-Track, and Cargo Tie Down Straps - Xiangle Ratchet Strap",
-    template: `%s | ${siteName}`,
+    template: `%s`,
   },
   description: defaultDescription,
 
