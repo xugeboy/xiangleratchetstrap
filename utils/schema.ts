@@ -2,6 +2,7 @@ import { Blog } from "@/types/blog";
 import { Product } from "@/types/product";
 import { ProductCategory } from "@/types/productCategory";
 import { BreadcrumbItem } from "@/types/breadcrumbItem";
+import { defaultUrlPrefix } from "@/middleware";
 
 // --- Configuration (Consider moving to environment variables) ---
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
@@ -40,7 +41,8 @@ function getWebSiteSchema() {
  */
 function generateArticleSchema(lang: string, article: Blog, slug: string) {
   let url = `${SITE_URL}/blogs/${slug}`;
-  if (lang !== "en") {
+
+  if (lang !== defaultUrlPrefix && lang !== undefined) {
     url =  `${SITE_URL}/${lang}/blogs/${slug}`;
   }
   const coverImage = article.cover_image;
@@ -92,7 +94,7 @@ function generateArticleSchema(lang: string, article: Blog, slug: string) {
  */
 function generateProductSchema(lang: string, product: Product, slug: string) {
   let url = `${SITE_URL}/products/${slug}`;
-  if (lang !== "en") {
+  if (lang !== defaultUrlPrefix && lang !== undefined) {
     url =  `${SITE_URL}/${lang}/products/${slug}`;
   }
   const featuredImage = product.featured_image;
@@ -211,7 +213,8 @@ function generateCollectionPageSchema(lang: string, category: ProductCategory, s
   if (!category) return null;
 
   let url = `${SITE_URL}/categories/${slug}`;
-  if (lang !== "en") {
+  
+  if (lang !== defaultUrlPrefix && lang !== undefined) {
     url =  `${SITE_URL}/${lang}/categories/${slug}`;
   }
 
