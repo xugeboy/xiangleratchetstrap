@@ -3,10 +3,11 @@ import Image from 'next/image'
 import { Galleries } from '@/types/gallery'
 
 interface ImageGalleryProps {
-  images?: Galleries
+  images?: Galleries;
+  alt?: string
 }
 
-export default function ImageGallery({ images }: ImageGalleryProps) {
+export default function ImageGallery({ images,alt }: ImageGalleryProps) {
 
   if (!images || images.length === 0) {
     return null
@@ -24,7 +25,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
           >
             <span className="sr-only">{image.name}</span>
             <span className="absolute inset-0 overflow-hidden rounded-md">
-              <Image alt={image.name} 
+              <Image alt={alt} 
               src={image.url} 
               className="size-full object-scale-down" 
               width={image.width}
@@ -43,7 +44,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     <TabPanels>
       {images?.map((image) => (
         <TabPanel key={image.id}>
-          <Image alt={image.name} 
+          <Image alt={alt} 
           src={image.url} 
           className="aspect-square w-full object-cover sm:rounded-lg" 
           width={image.width}

@@ -177,7 +177,7 @@ export default async function ProductPage({ params,searchParams }: ProductPagePr
       <Breadcrumb items={breadcrumbItems} lang={currentLocale} />
       <div className="lg:grid lg:grid-cols-[40%_auto] lg:items-start lg:gap-x-8 py-8">
         <div>
-          <ImageGallery images={product.gallery} />
+          <ImageGallery images={product.gallery} alt={product.name} />
           <RelatedArticles blogs={product.related_blogs} />
         </div>
 
