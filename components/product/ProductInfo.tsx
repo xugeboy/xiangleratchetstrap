@@ -4,13 +4,9 @@ import { Product } from "@/types/product";
 import Link from "next/link";
 import Specifications from "./Specifications";
 import Description from "./Description";
-import dynamic from "next/dynamic";
 import { getCombainedLocalePath } from "@/utils/formatUtils";
 import { useTranslations } from "next-intl";
 
-const VideoPlayer = dynamic(() => import("@/components/common/VideoPlayer"), {
-  ssr: false,
-});
 interface ProductInfoProps {
   product: Product;
   lang: string
@@ -74,13 +70,6 @@ export default function ProductInfo({ lang,product }: ProductInfoProps) {
       <Specifications product={product} />
 
       <Description description={product.see_more} />
-
-      {product.youtube_url && (
-        <VideoPlayer
-          url={product.youtube_url}
-          title={product.youtube_title}
-        />
-      )}
     </div>
   );
 }

@@ -1,5 +1,9 @@
 import { Metadata, ResolvingMetadata } from "next";
-import { getProductBySlug, getAllProductSlug, getCorrectProductSlugForLocale } from "@/services/api/product";
+import {
+  getProductBySlug,
+  getAllProductSlug,
+  getCorrectProductSlugForLocale,
+} from "@/services/api/product";
 import { generateProductBreadcrumbs } from "@/utils/breadcrumbs";
 import { notFound, redirect } from "next/navigation";
 import Breadcrumb from "@/components/common/Breadcrumb";
@@ -13,8 +17,9 @@ import { generateSchema } from "@/utils/schema";
 import { embedSchema } from "@/utils/schema";
 import AlternatingContent from "@/components/product/AlternatingContent";
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
+import VideoPlayer from "@/components/common/VideoPlayer";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 interface ProductPageProps {
   params: {
@@ -41,7 +46,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const slug = params.slug;
   const currentLocale = params.lang;
-  const productData = await getProductBySlug(slug,currentLocale);
+  const productData = await getProductBySlug(slug, currentLocale);
 
   if (!productData) {
     return {
@@ -65,9 +70,7 @@ export async function generateMetadata(
   }
   const canonicalUrl = `${siteUrl}${canonicalUrlPath}`;
 
-
   const languagesAlternate: Record<string, string> = {};
-
 
   for (const ietfTag in localePrefixMap) {
     const targetUrlPrefix = localePrefixMap[ietfTag];
@@ -88,7 +91,7 @@ export async function generateMetadata(
   // 设置 x-default
   const slugForXDefault = productData.allLanguageSlugs?.[defaultUrlPrefix];
   if (slugForXDefault) {
-    languagesAlternate['x-default'] = `${siteUrl}/products/${slugForXDefault}`;
+    languagesAlternate["x-default"] = `${siteUrl}/products/${slugForXDefault}`;
   }
 
   return {
@@ -96,7 +99,10 @@ export async function generateMetadata(
     description: pageDescription,
     alternates: {
       canonical: canonicalUrl, // 设置当前页面的规范链接
-      languages: Object.keys(languagesAlternate).length > 0 ? languagesAlternate : undefined,
+      languages:
+        Object.keys(languagesAlternate).length > 0
+          ? languagesAlternate
+          : undefined,
     },
     openGraph: {
       title: pageTitle, // 使用页面标题
@@ -123,19 +129,26 @@ export async function generateMetadata(
   };
 }
 
-export default async function ProductPage({ params,searchParams }: ProductPageProps) {
+export default async function ProductPage({
+  params,
+  searchParams,
+}: ProductPageProps) {
   const slug = params.slug;
   const currentLocale = params.lang;
   const previousLocale = searchParams?.pl;
-  if(previousLocale){
-    const correctSlug = await getCorrectProductSlugForLocale(slug, currentLocale, previousLocale);
+  if (previousLocale) {
+    const correctSlug = await getCorrectProductSlugForLocale(
+      slug,
+      currentLocale,
+      previousLocale
+    );
     if (!correctSlug) {
       notFound();
     }
     if (slug !== correctSlug) {
       let redirectPath;
       const entityTypePath = "products";
-  
+
       if (params.lang === defaultUrlPrefix) {
         redirectPath = `/${entityTypePath}/${correctSlug}`;
       } else {
@@ -144,12 +157,12 @@ export default async function ProductPage({ params,searchParams }: ProductPagePr
       redirect(redirectPath);
     }
   }
-  
-  const product = await getProductBySlug(slug,currentLocale);
-  const breadcrumbItems = generateProductBreadcrumbs(product,currentLocale);
+
+  const product = await getProductBySlug(slug, currentLocale);
+  const breadcrumbItems = generateProductBreadcrumbs(product, currentLocale);
 
   if (!product) {
-    notFound()
+    notFound();
   }
 
   // --- 生成 Schema ---
@@ -178,10 +191,16 @@ export default async function ProductPage({ params,searchParams }: ProductPagePr
       <div className="lg:grid lg:grid-cols-[40%_auto] lg:items-start lg:gap-x-8 py-8">
         <div>
           <ImageGallery images={product.gallery} alt={product.name} />
-          <RelatedArticles blogs={product.related_blogs} />
+          <RelatedArticles blogs={product.related_blogs} lang={currentLocale} />
+          {product.youtube_url && (
+            <VideoPlayer
+              url={product.youtube_url}
+              title={product.youtube_title}
+            />
+          )}
         </div>
 
-        <ProductInfo product={product} lang={currentLocale}/>
+        <ProductInfo product={product} lang={currentLocale} />
       </div>
 
       <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">

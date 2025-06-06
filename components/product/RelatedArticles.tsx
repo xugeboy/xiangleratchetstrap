@@ -2,29 +2,30 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Blog } from '@/types/blog';
 import { getTranslations } from 'next-intl/server';
+import { getCombainedLocalePath } from '@/utils/formatUtils';
 
 interface RelatedArticlesProps {
   blogs?: Blog[];
+  lang: string;
 }
 
-export default async function RelatedArticles({ blogs = [] }: RelatedArticlesProps) {
+export default async function RelatedArticles({ blogs = [], lang }: RelatedArticlesProps) {
   if (!blogs || blogs.length === 0) return null;
   const t = await getTranslations("Common");
-
   return (
     <div className="py-8">
       <h2 className="text-2xl font-bold mb-6">{t('relatedBlogs')}</h2>
       <div className="space-y-4">
-        {blogs.map((blog) => (
+        {blogs.map((blog) => (  
           <Link 
             key={blog.id}
-            href={`/blogs/${blog.slug}`}
+            href={getCombainedLocalePath(lang, `blogs/${blog.slug}`)}
             className="flex items-center gap-4 group hover:bg-gray-50 p-2 rounded-lg transition-colors"
           >
             <div className="relative w-20 h-20 flex-shrink-0">
               {blog.cover_image && (
                 <Image
-                  src={blog.cover_image}
+                  src={blog.cover_image.url}
                   alt={blog.title}
                   fill
                   className="object-cover rounded-lg"
