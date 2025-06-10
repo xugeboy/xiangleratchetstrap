@@ -137,7 +137,7 @@ export default function Footer() {
   const pathPrefix = getBreadcrumbPathPrefix(locale);
   return (
     <footer className="bg-gray-900 mt-10">
-      <div className="mx-auto max-w-7xl px-6 py-2">
+      <div className="mx-auto container px-4 py-2">
         <div className="hidden md:block pt-12 xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="flex flex-col gap-2">
             <Link href={`${pathPrefix}/`} className="flex-shrink-0">

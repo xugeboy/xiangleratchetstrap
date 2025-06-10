@@ -189,7 +189,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
     <div className="border-b border-gray-100">
       {/* Desktop layout */}
       <div className="md:py-4 md:block hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 flex justify-between items-center">
+        <div className="mx-auto container px-6 flex justify-between items-center">
           <Link href="/" className="flex-shrink-0">
             <Image src="https://res.cloudinary.com/duimeqqch/image/upload/xiangle_ratchet_strap_mxts89.png" 
             alt="xiangle ratchet strap" width={200} height={60} className="h-12 w-auto" />

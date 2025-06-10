@@ -86,7 +86,7 @@ export default async function TeamSection() {
               />
               <div className="flex-auto text-center xl:text-left"> {/* Centered text on small screens */}
                 <h3 className="text-lg/8 font-semibold tracking-tight text-gray-900">{person.name}</h3> {/* 名字不翻译 */}
-                <p className="text-base/7 text-indigo-600">{t(person.roleKey)}</p> {/* 翻译 role */}
+                <p className="text-base/7 text-amber-700">{t(person.roleKey)}</p> {/* 翻译 role */}
                 <p className="text-sm/6 text-gray-500">{t(person.yearKey)}</p> {/* 翻译 year */}
                 <p className="mt-4 text-base/7 text-gray-600">{t(person.bioKey)}</p> {/* 翻译 bio */}
               </div>

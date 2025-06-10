@@ -38,7 +38,7 @@ export function CategoryNavigation() {
   return (
     <nav
       aria-label="Global"
-      className="hidden md:flex mx-auto max-w-7xl items-center justify-center p-6 lg:px-8"
+      className="hidden md:flex mx-auto container items-center justify-center p-6"
     >
       <div
         className="hidden md:block w-full"
@@ -51,79 +51,25 @@ export function CategoryNavigation() {
         >
           <div className="border-b border-transparent relative">
             <TabList className="flex space-x-4 items-center justify-center">
-              {/* 始终显示的标签 (最大3个) */}
-              {rootCategories.slice(0, 3).map((category, index) => (
-                <Tab
-                  key={category.id}
-                  className={({ selected }) => `
-                    relative px-2 py-2 text-sm font-medium text-gray-800
-                    outline-none transition-colors duration-200 cursor-pointer
-                    ${selected ? "text-indigo-600" : "hover:text-indigo-500"}
-                  `}
-                  onMouseEnter={() => handleTabMouseEnter(index)}
-                  onMouseLeave={() => handleTabMouseLeave()}
-                >
-                  <Link
-                      href={getCombainedLocalePath(locale,`categories/${category.slug}`)}
-                    className="group flex items-center text-gray-600 hover:text-indigo-600 transition-colors duration-200"
-                  >
-                    <span className="whitespace-nowrap">{category.name}</span>
-                  </Link>
-
-                  {activeTabIndex === index && (
-                    <span className="absolute inset-x-0 bottom-0 h-0.5 bg-indigo-600 transform transition-transform duration-200"></span>
-                  )}
-                </Tab>
-              ))}
-
-              {/* 中等屏幕显示的额外标签 (2个) */}
-              {rootCategories.length > 3 &&
-                rootCategories.slice(3, 5).map((category, idx) => (
+              {rootCategories.map((category, idx) => (
                   <Tab
                     key={category.id}
                     className={({ selected }) => `
-                    relative px-2 py-2 text-sm font-medium text-gray-800
+                    relative md:px-2 lg:px-8 py-2 text-sm font-medium text-gray-800
                     outline-none transition-colors duration-200 cursor-pointer
-                    hidden lg:block
-                    ${selected ? "text-indigo-600" : "hover:text-indigo-500"}
+                    block
+                    ${selected ? "text-amber-700" : "hover:text-amber-700"}
                   `}
-                    onMouseEnter={() => handleTabMouseEnter(idx + 3)}
+                    onMouseEnter={() => handleTabMouseEnter(idx)}
                   >
                     <Link
                       href={getCombainedLocalePath(locale,`categories/${category.slug}`)}
-                      className="group flex items-center text-gray-600 hover:text-indigo-600 transition-colors duration-200"
+                      className="group flex items-center text-gray-600 hover:text-amber-700 transition-colors duration-200"
                     >
                       <span className="whitespace-nowrap">{category.name}</span>
                     </Link>
-
-                    {activeTabIndex === idx + 3 && (
-                      <span className="absolute inset-x-0 bottom-0 h-0.5 bg-indigo-600 transform transition-transform duration-200"></span>
-                    )}
-                  </Tab>
-                ))}
-
-              {/* 大屏幕显示的额外标签 */}
-              {rootCategories.length > 5 &&
-                rootCategories.slice(5).map((category, idx) => (
-                  <Tab
-                    key={category.id}
-                    className={({ selected }) => `
-                    relative px-2 py-2 text-sm font-medium text-gray-800
-                    outline-none transition-colors duration-200 cursor-pointer
-                    hidden xl:block
-                    ${selected ? "text-indigo-600" : "hover:text-indigo-500"}
-                  `}
-                    onMouseEnter={() => handleTabMouseEnter(idx + 5)}
-                  >
-                    <Link
-                      href={getCombainedLocalePath(locale,`categories/${category.slug}`)}
-                      className="group flex items-center text-gray-600 hover:text-indigo-600 transition-colors duration-200"
-                    >
-                      <span className="whitespace-nowrap">{category.name}</span>
-                    </Link>
-
-                    {activeTabIndex === idx + 5 && (
-                      <span className="absolute inset-x-0 bottom-0 h-0.5 bg-indigo-600 transform transition-transform duration-200"></span>
+                    {activeTabIndex === idx && (
+                      <span className="absolute inset-x-0 bottom-0 h-0.5 bg-amber-700 transform transition-transform duration-200"></span>
                     )}
                   </Tab>
                 ))}
@@ -155,7 +101,7 @@ export function CategoryNavigation() {
                               {/* 二级分类标题 */}
                               <Link
                                 href={getCombainedLocalePath(locale,`categories/${subCategory.slug}`)}
-                                className="block text-gray-800 hover:text-indigo-600 font-semibold text-sm mb-1"
+                                className="block text-gray-800 hover:text-amber-700 font-semibold text-sm mb-1"
                               >
                                 {subCategory.name}
                               </Link>
@@ -174,7 +120,7 @@ export function CategoryNavigation() {
                                         <Link
                                           key={thirdCategory.id}
                                           href={getCombainedLocalePath(locale,`categories/${thirdCategory.slug}`)}
-                                          className="block text-gray-600 hover:text-indigo-600 text-sm"
+                                          className="block text-gray-600 hover:text-amber-700 text-sm"
                                         >
                                           {thirdCategory.name}
                                         </Link>

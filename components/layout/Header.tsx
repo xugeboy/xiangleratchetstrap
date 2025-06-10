@@ -23,7 +23,7 @@ export default function Header() {
     <header className="bg-white">
       {/* Top navigation bar - hide on mobile */}
       <div className="hidden md:block bg-gray-900 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto container px-4">
           <div className="flex h-10 items-center justify-end space-x-8">
             <Link
               href={getCombainedLocalePath(locale,"business-solutions")}
