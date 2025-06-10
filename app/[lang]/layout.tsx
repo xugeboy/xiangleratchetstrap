@@ -9,8 +9,6 @@ import { CategoryProvider } from "@/contexts/CategoryContext";
 import ClarityProvider from "@/components/common/ClarityProvider";
 import TawkToWidget from "@/components/common/TawkToWidget";
 import { Viewport } from "next";
-import { generateSchema } from "@/utils/schema";
-import { embedSchema } from "@/utils/schema";
 import { localePrefixMap, defaultLocaleKey } from "@/middleware";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
@@ -36,9 +34,6 @@ const defaultDescription =
   "Ratchet, E-Track, and Cargo Tie Down Straps - Xiangle Ratchet Strap";
 const siteLogo = process.env.NEXT_PUBLIC_LOGO_URL;
 
-const websiteSchema = generateSchema({ type: "WebSite", data: null });
-const organizationSchema = generateSchema({ type: "Organization", data: null });
-const baseSchemaMetadata = embedSchema([websiteSchema, organizationSchema]); 
 const currentPath =
   typeof window !== "undefined" ? window.location.pathname : "";
 
@@ -159,10 +154,6 @@ export default async function RootLayout({
           type="application/xml"
           title="Sitemap"
           href="/sitemap.xml"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: baseSchemaMetadata }}
         />
       </head>
       <body className={`${poppins.className} antialiased`}>

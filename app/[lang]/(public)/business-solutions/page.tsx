@@ -3,14 +3,42 @@ import LogoClouds from "@/components/common/LogoClouds";
 import StatsSection from "@/components/common/StatsSection";
 import TeamSection from "@/components/common/TeamSection";
 import QuoteForm from "@/components/forms/QuoteForm";
+import { generateGeneralBreadcrumbs } from "@/utils/breadcrumbs";
+import { generateSchema, embedSchema } from "@/utils/schema";
 import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 export default async function BusinessSolutions() {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "BusinessSolutions" });
+  const breadcrumbItems = generateGeneralBreadcrumbs(
+    "BusinessSolutions",
+    "business-solutions",
+    locale
+  );
+  const websiteSchema = generateSchema({
+    type: "WebSite",
+    lang: locale,
+  });
+  const organizationSchema = generateSchema({
+    type: "Organization",
+    lang: locale,
+  });
+  const breadcrumbSchema = generateSchema({
+    type: "BreadcrumbList",
+    breadcrumbItems,
+  });
+  const schemaMetadataJson = embedSchema(
+    [websiteSchema, organizationSchema, breadcrumbSchema].filter(Boolean)
+  );
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
+        />
+      </section>
       {/* Hero Banner Section */}
       <div className="relative h-[400px] w-full overflow-hidden mb-10">
         {/* Background Image */}

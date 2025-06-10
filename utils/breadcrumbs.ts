@@ -5,6 +5,7 @@ import { Blog } from '@/types/blog'
 import { getBreadcrumbPathPrefix } from './formatUtils'
 
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 export function generateCategoryBreadcrumbs(category: ProductCategory | null,lang:string): BreadcrumbItem[] {
   const items: BreadcrumbItem[] = []
   const pathPrefix = getBreadcrumbPathPrefix(lang);
@@ -21,14 +22,14 @@ export function generateCategoryBreadcrumbs(category: ProductCategory | null,lan
     const parent = category.parent
     items.push({
       name: parent.name,
-      href: `${pathPrefix}/categories/${parent.slug}`
+      href: `${siteUrl}${pathPrefix}/categories/${parent.slug}`
     })
   }
   
   // 添加当前分类
   items.push({
     name: category.name,
-    href: `${pathPrefix}/categories/${category.slug}`
+    href: `${siteUrl}${pathPrefix}/categories/${category.slug}`
   })
   
   return items
@@ -39,7 +40,7 @@ export function generateProductBreadcrumbs(product: Product | null,lang:string):
   const pathPrefix = getBreadcrumbPathPrefix(lang);
   items.push({
     name: 'products',
-    href: `${pathPrefix}/products`
+    href: `${siteUrl}${pathPrefix}/products`
   })
   if (!product) {
     return items
@@ -50,14 +51,14 @@ export function generateProductBreadcrumbs(product: Product | null,lang:string):
     const category = product.category
     items.push({
       name: category.name,
-      href: `${pathPrefix}/categories/${category.slug}`
+      href: `${siteUrl}${pathPrefix}/categories/${category.slug}`
     })
   }
   
   // 添加产品名称
   items.push({
     name: product.name,
-    href: `${pathPrefix}/products/${product.slug}`
+    href: `${siteUrl}${pathPrefix}/products/${product.slug}`
   })
   
   return items
@@ -68,7 +69,7 @@ export function generateBlogBreadcrumbs(blog: Blog | null,lang:string): Breadcru
   const pathPrefix = getBreadcrumbPathPrefix(lang);
   items.push({
     name: 'blog',
-    href: `${pathPrefix}/blogs`
+    href: `${siteUrl}${pathPrefix}/blogs`
   })
   if (!blog) {
     return items
@@ -76,7 +77,23 @@ export function generateBlogBreadcrumbs(blog: Blog | null,lang:string): Breadcru
 
   items.push({
     name: blog.title,
-    href: `${pathPrefix}/blogs/${blog.slug}`
+    href: `${siteUrl}${pathPrefix}/blogs/${blog.slug}`
+  })
+  
+  return items
+} 
+
+export function generateGeneralBreadcrumbs(pageName: string, slug: string,lang:string): BreadcrumbItem[] {
+  const items: BreadcrumbItem[] = []
+  const pathPrefix = getBreadcrumbPathPrefix(lang);
+  items.push({
+    name: 'Xiangle Ratchet Strap',
+    href: `${siteUrl}${pathPrefix}/`,
+  })
+
+  items.push({
+    name: pageName,
+    href: `${siteUrl}${pathPrefix}/${slug}`,
   })
   
   return items

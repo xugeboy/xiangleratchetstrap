@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import LogoClouds from "@/components/common/LogoClouds";
-import { useTranslations } from "next-intl"; // Import useTranslations
+import { useLocale, useTranslations } from "next-intl";
+import { embedSchema, generateSchema } from "@/utils/schema";
+import { generateGeneralBreadcrumbs } from "@/utils/breadcrumbs";
 
-// Define a type for your timeline items if you haven't already
 interface TimelineItem {
-  nameKey: string; // Key for the name/title
-  descriptionKey: string; // Key for the description
+  nameKey: string;
+  descriptionKey: string;
   date: string;
   dateTime: string;
 }
@@ -39,11 +40,34 @@ const timelineData: TimelineItem[] = [
   },
 ];
 
-export default function AboutUsPage() { // Renamed for clarity
-  const t = useTranslations("AboutUsPage"); // Initialize translations for 'AboutUsPage' namespace
-
+export default function AboutUsPage() {
+  const t = useTranslations("AboutUsPage");
+  const lang = useLocale();
+  const breadcrumbItems = generateGeneralBreadcrumbs(
+    "AboutUs",
+    "about-us",
+    lang
+  );
+  const websiteSchema = generateSchema({
+    type: "WebSite",
+    lang,
+  });
+  const organizationSchema = generateSchema({ type: "Organization", lang });
+  const breadcrumbSchema = generateSchema({
+    type: "BreadcrumbList",
+    breadcrumbItems,
+  });
+  const schemaMetadataJson = embedSchema(
+    [websiteSchema, organizationSchema, breadcrumbSchema].filter(Boolean)
+  );
   return (
     <div>
+      <section>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
+        />
+      </section>
       <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
           <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">
@@ -178,7 +202,9 @@ export default function AboutUsPage() { // Renamed for clarity
         <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:min-w-full lg:flex-none lg:gap-y-8">
             {/* Text Area - Right Aligned on Large Screens */}
-            <div className="lg:col-start-2 lg:row-start-1 lg:w-full lg:max-w-lg lg:pb-8"> {/* Adjusted for right alignment */}
+            <div className="lg:col-start-2 lg:row-start-1 lg:w-full lg:max-w-lg lg:pb-8">
+              {" "}
+              {/* Adjusted for right alignment */}
               <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
                 {t("globalReach.heading")}
               </h2>
@@ -187,7 +213,9 @@ export default function AboutUsPage() { // Renamed for clarity
               </p>
             </div>
             {/* Image Area - Left Aligned on Large Screens */}
-            <div className="flex flex-wrap items-start justify-start gap-6 sm:gap-8 lg:contents lg:col-start-1 lg:row-start-1"> {/* Adjusted for left alignment */}
+            <div className="flex flex-wrap items-start justify-start gap-6 sm:gap-8 lg:contents lg:col-start-1 lg:row-start-1">
+              {" "}
+              {/* Adjusted for left alignment */}
               <Image
                 alt={t("imageAlts.globalReachMap")}
                 src="https://res.cloudinary.com/duimeqqch/image/upload/v1744961092/global_reach_h6hh9h.png"

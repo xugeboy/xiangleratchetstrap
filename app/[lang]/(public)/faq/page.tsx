@@ -3,6 +3,8 @@ import FaqList from './FaqList';
 import { getFaqs } from '@/services/api/faq';
 import Link from 'next/link';
 import { getLocale, getTranslations} from 'next-intl/server'; 
+import { generateGeneralBreadcrumbs } from '@/utils/breadcrumbs';
+import { generateSchema, embedSchema } from '@/utils/schema';
 
 export async function generateMetadata(): Promise<Metadata> {
   
@@ -22,9 +24,34 @@ export default async function FaqPage() {
 
   const contactUsPath = `/${locale}/contact-us`;
 
-
+  const breadcrumbItems = generateGeneralBreadcrumbs(
+    "FAQs",
+    "faqs",
+    locale
+  );
+  const websiteSchema = generateSchema({
+    type: "WebSite",
+    lang: locale,
+  });
+  const organizationSchema = generateSchema({
+    type: "Organization",
+    lang: locale,
+  });
+  const breadcrumbSchema = generateSchema({
+    type: "BreadcrumbList",
+    breadcrumbItems,
+  });
+  const schemaMetadataJson = embedSchema(
+    [websiteSchema, organizationSchema, breadcrumbSchema].filter(Boolean)
+  );
   return (
     <div className="bg-white py-24 sm:py-32">
+            <section>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
+        />
+      </section>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">

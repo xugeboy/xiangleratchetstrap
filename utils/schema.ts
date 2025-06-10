@@ -15,11 +15,15 @@ const ORGANIZATION_LOGO_URL = process.env.NEXT_PUBLIC_LOGO_URL;
 /**
  * Base function to generate common Organization Schema
  */
-function getOrganizationSchema() {
+function getOrganizationSchema(lang: string) {
+  let url = SITE_URL;
+  if (lang !== defaultUrlPrefix && lang !== undefined) {
+    url =  `${SITE_URL}/${lang}`;
+  }
   return {
     "@type": "Organization",
     name: ORGANIZATION_NAME,
-    url: SITE_URL,
+    url: url,
     logo: ORGANIZATION_LOGO_URL,
   };
 }
@@ -27,12 +31,16 @@ function getOrganizationSchema() {
 /**
  * Generates WebSite Schema
  */
-function getWebSiteSchema() {
+function getWebSiteSchema(lang: string) {
+  let url = SITE_URL;
+  if (lang !== defaultUrlPrefix && lang !== undefined) {
+    url =  `${SITE_URL}/${lang}`;
+  }
   return {
     "@type": "WebSite",
-    url: SITE_URL,
+    url: url,
     name: SITE_NAME,
-    inLanguage: "en",
+    inLanguage: lang,
   };
 }
 
@@ -193,9 +201,9 @@ export function generateSchema(props: GenerateSchemaProps): object | null {
         }
         return generateCollectionPageSchema(lang, data as ProductCategory, slug);
       case "WebSite":
-        return getWebSiteSchema();
+        return getWebSiteSchema(lang);
       case "Organization":
-        return getOrganizationSchema();
+        return getOrganizationSchema(lang);
       default:
         console.warn(`Schema type "${type}" not recognized.`);
         return null;
