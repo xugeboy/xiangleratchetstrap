@@ -50,11 +50,11 @@ export default function Footer() {
       },
       {
         nameKey: "products.powersportsStraps",
-        href: "categories/powersports-straps",
+        href: "categories/powersports-strap",
       },
       {
         nameKey: "products.webbingAndHardware",
-        href: "categories/webbing-hardware",
+        href: "categories/webbing-and-hardware",
       },
     ],
     contactUs: [
