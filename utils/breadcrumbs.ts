@@ -11,7 +11,7 @@ export function generateCategoryBreadcrumbs(category: ProductCategory | null,lan
   const pathPrefix = getBreadcrumbPathPrefix(lang);
   items.push({
     name: 'categories',
-    href: `${pathPrefix}/categories`
+    href: `${siteUrl}${pathPrefix}/categories`
   })
   if (!category) {
     return items
