@@ -121,6 +121,13 @@ function generateProductSchema(lang: string, product: Product, slug: string) {
       height: 1200,
       caption: product.name,
     },
+    // "offers": {
+    //   "@type": "Offer",
+    //   "priceCurrency": "USD",
+    //   "price": product.price,     
+    //   "availability": "https://schema.org/InStock",
+    //   "url": url
+    // }
   };
 
   // Cleanup undefined properties
