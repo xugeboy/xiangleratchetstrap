@@ -15,7 +15,7 @@ export default function Header() {
     { name: tNav("company.aboutUs"), href: getCombainedLocalePath(locale,"about-us") },
     { name: tNav("company.contactUs"), href: getCombainedLocalePath(locale,"contact-us") },
     { name: tNav("company.blogs"), href: getCombainedLocalePath(locale,"blogs") },
-    { name: tNav("company.meetTheTeam"), href: getCombainedLocalePath(locale,"/business-solutions/#meet-the-team") },
+    { name: tNav("company.meetTheTeam"), href: getCombainedLocalePath(locale,"business-solutions/#meet-the-team") },
   ];
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
