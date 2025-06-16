@@ -134,8 +134,8 @@ export default function ImageComparisonSlider({
       >
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg">
           <div className="flex items-center justify-center">
-            <ChevronLeftIcon className="h-4 w-4 text-gray-600" />
-            <ChevronRightIcon className="h-4 w-4 text-gray-600" />
+            <ChevronLeftIcon className="h-4 w-4 text-black" />
+            <ChevronRightIcon className="h-4 w-4 text-black" />
           </div>
         </div>
       </div>

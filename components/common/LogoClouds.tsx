@@ -23,7 +23,7 @@ export default function LogoClouds() {
           <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
           {t("title")}
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg/8 text-gray-300">
+          <p className="mx-auto mt-6 max-w-xl text-lg/8 text-white">
           {t("description")}
           </p>
         </div>

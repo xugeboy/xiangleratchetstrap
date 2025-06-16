@@ -203,7 +203,7 @@ export default async function ProductPage({
         <ProductInfo product={product} lang={currentLocale} />
       </div>
 
-      <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+      <div className="mt-10 sm:mt-16 sm:px-0 lg:mt-0">
         {product.alternating_content.length > 0 && (
           <AlternatingContent
             items={product.alternating_content}
@@ -211,7 +211,7 @@ export default async function ProductPage({
         )}
 
         {product.related_products.length > 0 && (
-          <Cav products={product.related_products} />
+          <Cav products={product.related_products} lang={currentLocale} />
         )}
         <StatsSection />
         <QuoteForm />

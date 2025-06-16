@@ -202,7 +202,7 @@ export default function PDFViewer({ pdfUrl, fileName }: PDFViewerProps) {
                   className="w-12 text-center rounded-md border border-gray-300 py-2 text-sm"
                   aria-label="Page number"
                 />
-                <span className="text-sm text-gray-500 ml-1">/ {numPages || "-"}</span>
+                <span className="text-sm text-black ml-1">/ {numPages || "-"}</span>
               </div>
 
               <button
@@ -254,7 +254,7 @@ export default function PDFViewer({ pdfUrl, fileName }: PDFViewerProps) {
                     <line x1="8" y1="11" x2="14" y2="11" />
                   </svg>
                 </button>
-                <span className="text-sm text-gray-500 w-16 text-center">{Math.round(scale * 100)}%</span>
+                <span className="text-sm text-black w-16 text-center">{Math.round(scale * 100)}%</span>
                 <button
                   type="button"
                   onClick={zoomIn}
@@ -320,8 +320,8 @@ export default function PDFViewer({ pdfUrl, fileName }: PDFViewerProps) {
               aria-label="Previous page"
               className={`inline-flex items-center justify-center rounded-md px-2 py-2 text-sm font-medium border ${
                 pageNumber <= 1
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  ? "bg-gray-100 text-black cursor-not-allowed"
+                  : "bg-white text-black hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               }`}
             >
               <svg
@@ -349,7 +349,7 @@ export default function PDFViewer({ pdfUrl, fileName }: PDFViewerProps) {
                 className="w-16 text-center rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 aria-label="Page number"
               />
-              <span className="text-sm text-gray-500">/ {numPages || "-"}</span>
+              <span className="text-sm text-black">/ {numPages || "-"}</span>
             </div>
 
             <button
@@ -359,8 +359,8 @@ export default function PDFViewer({ pdfUrl, fileName }: PDFViewerProps) {
               aria-label="Next page"
               className={`inline-flex items-center justify-center rounded-md px-2 py-2 text-sm font-medium border ${
                 !numPages || pageNumber >= numPages
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  ? "bg-gray-100 text-black cursor-not-allowed"
+                  : "bg-white text-black hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               }`}
             >
               <svg
@@ -387,8 +387,8 @@ export default function PDFViewer({ pdfUrl, fileName }: PDFViewerProps) {
               aria-label="Zoom out"
               className={`inline-flex items-center justify-center rounded-md px-2 py-2 text-sm font-medium border ${
                 scale <= 0.6
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  ? "bg-gray-100 text-black cursor-not-allowed"
+                  : "bg-white text-black hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               }`}
             >
               <svg
@@ -407,7 +407,7 @@ export default function PDFViewer({ pdfUrl, fileName }: PDFViewerProps) {
                 <line x1="8" y1="11" x2="14" y2="11" />
               </svg>
             </button>
-            <span className="text-sm text-gray-500 w-16 text-center">{Math.round(scale * 100)}%</span>
+            <span className="text-sm text-black w-16 text-center">{Math.round(scale * 100)}%</span>
             <button
               type="button"
               onClick={zoomIn}
@@ -415,8 +415,8 @@ export default function PDFViewer({ pdfUrl, fileName }: PDFViewerProps) {
               aria-label="Zoom in"
               className={`inline-flex items-center justify-center rounded-md px-2 py-2 text-sm font-medium border ${
                 scale >= 3
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  ? "bg-gray-100 text-black cursor-not-allowed"
+                  : "bg-white text-black hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               }`}
             >
               <svg

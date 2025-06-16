@@ -24,10 +24,10 @@ export default function ProductsPage() {
       </div>
 
       <div className="mb-12 text-center md:text-left"> 
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <h1 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">
           {t('mainTitle')} 
         </h1>
-        <p className="mt-4 text-lg text-gray-500">
+        <p className="mt-4 text-lg text-black">
           {t('mainSubtitle')}
         </p>
       </div>
@@ -47,7 +47,7 @@ export default function ProductsPage() {
               )}
             </div>
             <div className="mt-4">
-              <h3 className="text-lg font-medium text-gray-900 text-center group-hover:text-yellow-600">
+              <h3 className="text-lg font-medium text-black text-center group-hover:text-yellow-600">
                 {category.name}
               </h3>
             </div>

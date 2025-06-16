@@ -65,7 +65,7 @@ export function ProductGrid({
       {isLoading ? (
         <div className="text-center py-12">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-700 mx-auto"></div>
-          <p className="mt-4 text-sm text-gray-600">{t("loading")}</p>
+          <p className="mt-4 text-sm text-black">{t("loading")}</p>
         </div>
       ) : (
         <>
@@ -73,7 +73,7 @@ export function ProductGrid({
             className={`
               ${
                 viewMode === "grid"
-                  ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                  ? "grid grid-cols-2 lg:grid-cols-3 gap-6"
                   : ""
               }
               ${viewMode === "list" ? "space-y-6" : ""}
@@ -132,7 +132,7 @@ export function ProductGrid({
                       <Link href={`${pathPrefix}/products/${product.slug}`}>
                         <h3 className="text-lg font-medium">{product.name}</h3>
                       </Link>
-                      <p className="mt-2 text-sm text-gray-600 line-clamp-3">
+                      <p className="mt-2 text-sm text-black line-clamp-3">
                         {product.about || "No description available."}
                       </p>
                       <div className="mt-4">
@@ -166,7 +166,7 @@ export function ProductGrid({
                     <h3 className="text-sm font-medium flex-1">
                       {product.name}
                     </h3>
-                    <ChevronRightIcon className="h-5 w-5 text-gray-400" />
+                    <ChevronRightIcon className="h-5 w-5 text-black" />
                   </Link>
                 )}
               </div>
@@ -211,10 +211,10 @@ export function ProductGrid({
           {/* No Results Message */}
           {products.length === 0 && !isLoading && (
             <div className="text-center py-12 rounded-lg">
-              <h3 className="text-lg font-medium text-gray-900">
+              <h3 className="text-lg font-medium text-black">
                 {t("noResults.title")}
               </h3>
-              <p className="mt-2 text-sm text-gray-500">
+              <p className="mt-2 text-sm text-black">
                 {t("noResults.suggestion")}
               </p>
             </div>

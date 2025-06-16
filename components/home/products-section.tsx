@@ -25,7 +25,7 @@ export default function ProductsSection() {
       <div className="container mx-auto px-4">
         <div className="flex items-center flex-col md:flex-row justify-between mb-12 relative">
           <div className="flex-1" />
-          <h2 className="text-4xl font-bold text-gray-800 text-center flex-1">
+          <h2 className="text-4xl font-bold text-black text-center flex-1">
           {t.rich("title", {
               span: (chunks) => <span className="text-amber-700">{chunks}</span>,
             })}
@@ -60,10 +60,10 @@ export default function ProductsSection() {
                   />
                 </div>
                 <div className="p-6 flex flex-col flex-grow"> 
-                  <h3 className="text-xl font-bold mb-2 text-gray-800 min-h-[3em] line-clamp-2"> {/* Fixed height for title */}
+                  <h3 className="text-xl font-bold mb-2 text-black min-h-[3em] line-clamp-2"> {/* Fixed height for title */}
                     {title}
                   </h3>
-                  <p className="text-gray-600 mb-4 flex-grow min-h-[4.5em] line-clamp-3"> {/* Fixed height for description */}
+                  <p className="text-black mb-4 flex-grow min-h-[4.5em] line-clamp-3"> {/* Fixed height for description */}
                     {description}
                   </p>
                   <div className="mt-auto"> {/* Pushes button to bottom */}

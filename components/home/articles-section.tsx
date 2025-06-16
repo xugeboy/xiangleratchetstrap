@@ -16,13 +16,13 @@ export default async function ArticlesSection() {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
+        <h2 className="text-4xl font-bold text-center mb-12 text-black">
           {t.rich("title", {
             span: (chunks) => <span className="text-amber-700">{chunks}</span>,
           })}
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {blogs.map((blog) => {
             const articleLink = getCombainedLocalePath(lang,`blogs/${blog.slug}`);
 
@@ -48,10 +48,10 @@ export default async function ArticlesSection() {
                     {blog.title}
                   </Link>
                 </h3>
-                <div className="text-sm text-gray-500 text-center mb-2">
+                <div className="text-sm text-black text-center mb-2">
                   {formatDateToLongEnglish(blog.createdAt)}
                 </div>
-                <p className="text-gray-600 mb-4 flex-grow">{blog.excerpt}</p>
+                <p className="text-black mb-4 flex-grow">{blog.excerpt}</p>
                 <Link
                   href={articleLink}
                   className="text-[#1a3b5d] font-medium hover:underline self-center"

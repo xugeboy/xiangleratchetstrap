@@ -260,7 +260,7 @@ export default async function BlogPage({ params,searchParams }: BlogPageProps) {
           <h2 className="text-2xl font-bold uppercase mb-4">
             ABOUT XIANGLE RATCHET STRAP
           </h2>
-          <p className="text-gray-700 text-sm">
+          <p className="text-black text-sm">
             Founded in 2006, Xiangle Ratchet Strap is a specialized manufacturer
             of cargo tie-down solutions, focusing exclusively on tie-down
             products for transportation and logistics. With nearly two decades
@@ -276,7 +276,7 @@ export default async function BlogPage({ params,searchParams }: BlogPageProps) {
         <div className="flex justify-center mb-8">
           <Link
             href="/blogs"
-            className="flex items-center text-gray-700 hover:text-black"
+            className="flex items-center text-black hover:text-black"
           >
             <ArrowLeftIcon className="h-5 w-5 mr-2" />
             Back to blog

@@ -16,7 +16,7 @@ export default function AlternatingContent({
 }: AlternatingContentProps) {
   return (
     <div className="flex flex-col w-full gap-8 mb-8">
-      <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+      <h2 className="text-2xl font-bold tracking-tight text-black">
         Product details
       </h2>
       {items.map((item, index) => {
@@ -38,7 +38,7 @@ export default function AlternatingContent({
                 alt={item.title}
                 fill
                 sizes="(min-width: 992px) calc((100vw - (100vw - 1800px)/2) * 0.5),(max-width: 991px) calc(90vw),  100vw"
-                className="object-cover"
+                className="object-fill"
               />
             </div>
             <div

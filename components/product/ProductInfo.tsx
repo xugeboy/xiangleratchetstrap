@@ -34,8 +34,8 @@ export default function ProductInfo({ lang,product }: ProductInfoProps) {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4 font-mono">{product.name}</h1>
         <div className="space-y-2">
-          <p className="text-gray-600">{t("itemNumberLabel")}#{product.code}</p>
-          <div className="flex items-center space-x-2 text-gray-600">
+          <p className="text-black">{t("itemNumberLabel")}#{product.code}</p>
+          <div className="flex items-center space-x-2 text-black">
             <span>{t("stockStatus.inStock")},</span>
             <strong className="text-amber-700">{t("stockStatus.madeToOrder")}</strong>
           </div>
@@ -45,7 +45,7 @@ export default function ProductInfo({ lang,product }: ProductInfoProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
         {services.map((service) => (
           <div key={service.id} className="bg-gray-50 p-4 rounded-lg">
-            <h3 className="font-semibold text-gray-900 mb-2">
+            <h3 className="font-semibold text-black mb-2">
               {t(service.titleKey)}
             </h3>
             <Link

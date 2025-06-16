@@ -6,62 +6,62 @@ export default async function BentoGrids() {
   const bentoCellsConfig = [
     {
       key: "manufacturing",
-      colSpan: "lg:col-span-3",
+      colSpan: "md:col-span-3",
       rowSpan: "",
       imageSrc:
         "https://res.cloudinary.com/duimeqqch/image/upload/v1744959681/factory_production_mgldoj.jpg",
       imageWidth: 600,
       imageHeight: 400,
-      imageClassName: "object-cover w-full h-48 md:h-64 lg:h-auto",
+      imageClassName: "object-scale-down w-full h-48 md:h-64 lg:h-auto",
     },
     {
       key: "speed",
-      colSpan: "lg:col-span-3",
+      colSpan: "md:col-span-3",
       rowSpan: "",
       imageSrc:
         "https://res.cloudinary.com/duimeqqch/image/upload/v1744959235/fast_delivery_emjngs.jpg",
       imageWidth: 600,
       imageHeight: 400,
-      imageClassName: "object-cover w-full h-48 md:h-64 lg:h-auto",
+      imageClassName: "object-scale-down w-full h-48 md:h-64 lg:h-auto",
     },
     {
       key: "customization",
-      colSpan: "lg:col-span-2",
-      rowSpan: "lg:row-span-1",
+      colSpan: "md:col-span-2",
+      rowSpan: "md:row-span-1",
       imageSrc:
         "https://res.cloudinary.com/duimeqqch/image/upload/v1745298278/Custom_Branding_Options_pcebaz.png",
       imageWidth: 300,
       imageHeight: 200,
-      imageClassName: "object-contain h-32 md:h-40 lg:h-auto mx-auto",
+      imageClassName: "object-scale-down h-64 md:h-40 lg:h-auto",
     },
     {
       key: "expertise",
-      colSpan: "lg:col-span-2",
-      rowSpan: "lg:row-span-1",
+      colSpan: "md:col-span-2",
+      rowSpan: "md:row-span-1",
       imageSrc:
         "https://res.cloudinary.com/duimeqqch/image/upload/v1745304647/Industry-Leading_Team_eilpxj.jpg",
       imageWidth: 300,
       imageHeight: 200,
-      imageClassName: "object-contain h-32 md:h-40 lg:h-auto mx-auto",
+      imageClassName: "object-scale-down h-64 md:h-40 lg:h-auto",
     },
     {
       key: "partnership",
-      colSpan: "lg:col-span-2",
-      rowSpan: "lg:row-span-1",
+      colSpan: "md:col-span-2",
+      rowSpan: "md:row-span-1",
       imageSrc:
         "https://res.cloudinary.com/duimeqqch/image/upload/v1745304055/large-storage-center_zcahvz.jpg",
       imageWidth: 300,
       imageHeight: 200,
-      imageClassName: "object-contain h-32 md:h-40 lg:h-auto mx-auto",
+      imageClassName: "object-scale-down h-64 md:h-40 lg:h-auto",
     },
   ];
 
   return (
     <div className="mx-auto mt-10 mb-10 lg:max-w-7xl">
-      <p className=" max-w-lg text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">
+      <p className=" max-w-lg text-4xl font-semibold tracking-tight text-pretty text-black sm:text-5xl">
         {t("mainTitle")}
       </p>
-      <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-6 lg:grid-rows-2">
+      <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-6 md:grid-rows-2">
         {bentoCellsConfig.map((cell, index) => (
           <div
             key={cell.key}
@@ -103,10 +103,10 @@ export default async function BentoGrids() {
                 <h3 className="text-sm/4 font-semibold text-amber-700">
                   {t(`items.${cell.key}.subtitle`)}
                 </h3>
-                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950">
+                <p className="mt-2 text-lg font-medium tracking-tight text-black">
                   {t(`items.${cell.key}.title`)}
                 </p>
-                <div className="my-4 flex-grow flex items-center justify-center">
+                <div className="my-2 flex items-center justify-center">
                   <Image
                     alt={t(`items.${cell.key}.imageAlt`)}
                     src={cell.imageSrc}
@@ -115,7 +115,7 @@ export default async function BentoGrids() {
                     className={cell.imageClassName} // Use defined className
                   />
                 </div>
-                <p className="mt-2 max-w-lg text-sm/6 text-gray-600">
+                <p className="mt-2 text-sm/6 text-black">
                   {t(`items.${cell.key}.description`)}
                 </p>
               </div>

@@ -70,11 +70,11 @@ export default function AboutUsPage() {
       </section>
       <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
-          <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">
+          <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-balance text-black sm:text-7xl lg:col-span-2 xl:col-auto">
             {t("mainHeading")}
           </h1>
           <div className="mt-6 lg:mt-0">
-            <p className="text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
+            <p className="text-lg font-medium text-pretty text-black sm:text-xl/8">
               {t("missionVision")}
             </p>
           </div>
@@ -104,10 +104,10 @@ export default function AboutUsPage() {
                   className="absolute -ml-2 h-px w-screen -translate-x-full bg-gray-900/10 sm:-ml-4 lg:static lg:-mr-6 lg:ml-8 lg:w-auto lg:flex-auto lg:translate-x-0"
                 />
               </time>
-              <p className="mt-6 text-lg/8 font-semibold tracking-tight text-gray-900">
+              <p className="mt-6 text-lg/8 font-semibold tracking-tight text-black">
                 {t(item.nameKey)}
               </p>
-              <p className="mt-1 text-base/7 text-gray-600">
+              <p className="mt-1 text-base/7 text-black">
                 {t(item.descriptionKey)}
               </p>
             </div>
@@ -122,10 +122,10 @@ export default function AboutUsPage() {
       <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
         <div className="mx-auto flex max-w-2xl flex-col items-center justify-between gap-16 lg:mx-0 lg:max-w-none lg:flex-row">
           <div className="w-full lg:max-w-lg lg:flex-auto">
-            <h2 className="text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-semibold tracking-tight text-pretty text-black sm:text-4xl">
               {t("engineeringCapabilities.heading")}
             </h2>
-            <p className="mt-6 text-xl/8 text-gray-600">
+            <p className="mt-6 text-xl/8 text-black">
               {t("engineeringCapabilities.description")}
             </p>
           </div>
@@ -142,14 +142,14 @@ export default function AboutUsPage() {
       </div>
 
       {/* Content section */}
-      <div className="mt-32 overflow-hidden sm:mt-40">
+      <div className="mt-32 overflow-hidden hidden md:block sm:mt-40">
         <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:min-w-full lg:flex-none lg:gap-y-8">
             <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
-              <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+              <h2 className="text-4xl font-semibold tracking-tight text-black sm:text-5xl">
                 {t("ourStrength.heading")}
               </h2>
-              <p className="mt-6 text-xl/8 text-gray-600">
+              <p className="mt-6 text-xl/8 text-black">
                 {t("ourStrength.description")}
               </p>
             </div>
@@ -199,28 +199,24 @@ export default function AboutUsPage() {
 
       {/* Content section - Global Reach */}
       <div className="mt-32 overflow-hidden sm:mt-40">
-        <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:min-w-full lg:flex-none lg:gap-y-8">
-            {/* Text Area - Right Aligned on Large Screens */}
-            <div className="lg:col-start-2 lg:row-start-1 lg:w-full lg:max-w-lg lg:pb-8">
-              {" "}
-              {/* Adjusted for right alignment */}
-              <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-x-12 gap-y-16">
+            {/* Text Area */}
+            <div className="w-full lg:w-1/2">
+              <h2 className="text-4xl font-semibold tracking-tight text-black sm:text-5xl">
                 {t("globalReach.heading")}
               </h2>
-              <p className="mt-6 text-xl/8 text-gray-600">
+              <p className="mt-6 text-xl/8 text-black">
                 {t("globalReach.description")}
               </p>
             </div>
-            {/* Image Area - Left Aligned on Large Screens */}
-            <div className="flex flex-wrap items-start justify-start gap-6 sm:gap-8 lg:contents lg:col-start-1 lg:row-start-1">
-              {" "}
-              {/* Adjusted for left alignment */}
+            {/* Image Area */}
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
               <Image
                 alt={t("imageAlts.globalReachMap")}
                 src="https://res.cloudinary.com/duimeqqch/image/upload/v1744961092/global_reach_h6hh9h.png"
-                className="max-w-none rounded-2xl bg-gray-50"
-                width={718} // Adjust width/height as per your design
+                className="w-full max-w-md rounded-2xl bg-gray-50 object-contain"
+                width={718}
                 height={387}
               />
             </div>

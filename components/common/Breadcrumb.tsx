@@ -11,12 +11,12 @@ interface BreadcrumbProps {
 export default function Breadcrumb({ lang, items, showHome = true }: BreadcrumbProps) {
   const pathPrefix = getCombainedLocalePath(lang, "")
   return (
-    <nav aria-label="Breadcrumb" className="flex py-4">
+    <nav aria-label="Breadcrumb" className="py-4 hidden md:flex">
       <ol role="list" className="flex items-center space-x-4">
         {showHome && (
           <li>
             <div>
-              <Link href={pathPrefix} className="text-gray-400 hover:text-gray-500">
+              <Link href={pathPrefix} className="text-black hover:text-black">
                 <HomeIcon className="size-5 shrink-0" aria-hidden="true" />
                 <span className="sr-only">Home</span>
               </Link>
@@ -26,13 +26,13 @@ export default function Breadcrumb({ lang, items, showHome = true }: BreadcrumbP
         {items.map((item, index) => (
           <li key={item.href}>
             <div className="flex items-center">
-              <ChevronRightIcon className="size-5 shrink-0 text-gray-400" aria-hidden="true" />
+              <ChevronRightIcon className="size-5 shrink-0 text-black" aria-hidden="true" />
               <Link
                 href={item.href}
                 className={`ml-4 text-sm font-medium ${
                   index === items.length - 1
-                    ? 'text-gray-500 cursor-default'
-                    : 'text-gray-500 hover:text-gray-700'
+                    ? 'text-black cursor-default'
+                    : 'text-black hover:text-black'
                 }`}
                 aria-current={index === items.length - 1 ? 'page' : undefined}
               >

@@ -86,10 +86,10 @@ export default async function BusinessSolutions() {
 
           {/* Right side - Text content */}
           <div className="mt-10 lg:mt-0">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-black mb-4">
               {t("section.title")}
             </h2>
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg text-black mb-6">
               {t("section.description")}
             </p>
             <a

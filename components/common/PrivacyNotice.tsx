@@ -2,7 +2,7 @@ export default function PrivacyNotice() {
     return (
       <div className="pointer-events-none fixed inset-x-0 bottom-0 px-6 pb-6">
         <div className="pointer-events-auto max-w-xl rounded-xl bg-white p-6 ring-1 shadow-lg ring-gray-900/10">
-          <p className="text-sm/6 text-gray-900">
+          <p className="text-sm/6 text-black">
             This website uses cookies to supplement a balanced diet and provide a much deserved reward to the senses after
             consuming bland but nutritious meals. Accepting our cookies is optional but recommended, as they are
             delicious. See our{' '}
@@ -18,7 +18,7 @@ export default function PrivacyNotice() {
             >
               Accept all
             </button>
-            <button type="button" className="text-sm/6 font-semibold text-gray-900">
+            <button type="button" className="text-sm/6 font-semibold text-black">
               Reject all
             </button>
           </div>

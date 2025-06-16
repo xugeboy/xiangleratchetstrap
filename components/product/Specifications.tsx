@@ -47,7 +47,7 @@ export default function Specifications({ product }: SpecificationsProps) {
 
   return (
     <div className="mb-8 border border-gray-200 rounded-lg overflow-hidden shadow-sm"> {/* Added shadow */}
-      <h2 className="text-lg font-semibold bg-gray-100 px-4 py-3 border-b border-gray-200 text-gray-800"> {/* Adjusted padding and text color */}
+      <h2 className="text-lg font-semibold bg-gray-100 px-4 py-3 border-b border-gray-200 text-black"> {/* Adjusted padding and text color */}
         {t("Specifications")}
       </h2>
       <div>
@@ -64,11 +64,11 @@ export default function Specifications({ product }: SpecificationsProps) {
                 >
                   {spec1 && (
                     <td className="py-3 px-4 w-1/2 border-r border-gray-200 last:border-r-0"> {/* Added border */}
-                      <span className="text-sm text-gray-600 font-medium">
+                      <span className="text-sm text-black font-medium">
                         {spec1.label}:
                       </span>
                       {' '}
-                      <span className="text-sm text-gray-800">
+                      <span className="text-sm text-black">
                         {spec1.value}
                       </span>
                     </td>
@@ -76,11 +76,11 @@ export default function Specifications({ product }: SpecificationsProps) {
 
                   {spec2 ? (
                     <td className="py-3 px-4 w-1/2">
-                      <span className="text-sm text-gray-600 font-medium">
+                      <span className="text-sm text-black font-medium">
                         {spec2.label}:
                       </span>
                       {' '}
-                      <span className="text-sm text-gray-800">
+                      <span className="text-sm text-black">
                         {spec2.value}
                       </span>
                     </td>

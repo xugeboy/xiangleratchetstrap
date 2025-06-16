@@ -46,7 +46,7 @@ export default function Notification({ message, trigger }: NotificationProps) {
                     />
                   </div>
                   <div className="ml-3 w-0 flex-1 pt-0.5">
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-sm font-medium text-black">
                       {message}
                     </p>
                   </div>
@@ -56,7 +56,7 @@ export default function Notification({ message, trigger }: NotificationProps) {
                       onClick={() => {
                         setShow(false);
                       }}
-                      className="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"
+                      className="inline-flex rounded-md bg-white text-black hover:text-black focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"
                     >
                       <span className="sr-only">Close</span>
                       <XMarkIcon aria-hidden="true" className="size-5" />

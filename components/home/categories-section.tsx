@@ -54,13 +54,13 @@ export default async function CategoriesSection() {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
+        <h2 className="text-4xl font-bold text-center mb-12 text-black">
         {t.rich("title", {
             span: (chunks) => <span className="text-amber-700">{chunks}</span>,
           })}
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category, index) => (
             <div
               key={index}

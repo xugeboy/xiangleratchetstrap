@@ -46,8 +46,8 @@ const timeline = [
                     className="absolute -ml-2 h-px w-screen -translate-x-full bg-gray-900/10 sm:-ml-4 lg:static lg:-mr-6 lg:ml-8 lg:w-auto lg:flex-auto lg:translate-x-0"
                   />
                 </time>
-                <p className="mt-6 text-lg/8 font-semibold tracking-tight text-gray-900">{item.name}</p>
-                <p className="mt-1 text-base/7 text-gray-600">{item.description}</p>
+                <p className="mt-6 text-lg/8 font-semibold tracking-tight text-black">{item.name}</p>
+                <p className="mt-1 text-base/7 text-black">{item.description}</p>
               </div>
             ))}
           </div>

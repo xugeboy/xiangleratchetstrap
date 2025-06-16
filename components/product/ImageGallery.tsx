@@ -16,12 +16,12 @@ export default function ImageGallery({ images,alt }: ImageGalleryProps) {
   return (
     <TabGroup className="flex flex-col-reverse">
     {/* Image selector */}
-    <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
+    <div className="mx-auto mt-6 w-full max-w-2xl sm:block lg:max-w-none">
       <TabList className="grid grid-cols-4 gap-6">
         {images?.map((image) => (
           <Tab
             key={image.id}
-            className="group relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium text-gray-900 uppercase hover:bg-gray-50 focus:ring-3 focus:ring-indigo-500/50 focus:ring-offset-4 focus:outline-hidden"
+            className="group relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium text-black uppercase hover:bg-gray-50 focus:ring-3 focus:ring-indigo-500/50 focus:ring-offset-4 focus:outline-hidden"
           >
             <span className="sr-only">{image.name}</span>
             <span className="absolute inset-0 overflow-hidden rounded-md">

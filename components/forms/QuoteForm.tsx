@@ -59,22 +59,22 @@ export default function QuoteForm() {
         onSubmit={handleSubmit}
         className="max-w-7xl mx-auto bg-white px-6 py-12 rounded-[30px] shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
       >
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
           {/* First Name */}
           <div>
             <label
               htmlFor="firstName"
-              className="block text-sm mb-1 text-gray-600"
+              className="block text-sm mb-1 text-black"
             >
               {t("labels.firstName")} <span className="text-red-400">*</span>
             </label>
             <input
               type="text"
               id="firstName"
-              name="firstName" // 添加 name 属性
+              name="firstName"
               required
               className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-                       focus:bg-white focus:border-blue-500 focus:outline-none"
+                focus:bg-white focus:border-blue-500 focus:outline-none"
               value={formData.firstName}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, firstName: e.target.value }))
@@ -84,18 +84,15 @@ export default function QuoteForm() {
 
           {/* Last Name */}
           <div>
-            <label
-              htmlFor="lastName"
-              className="block text-sm mb-1 text-gray-600"
-            >
+            <label htmlFor="lastName" className="block text-sm mb-1 text-black">
               {t("labels.lastName")}
             </label>
             <input
               type="text"
               id="lastName"
-              name="lastName" // 添加 name 属性
+              name="lastName"
               className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-                       focus:bg-white focus:border-blue-500 focus:outline-none"
+                focus:bg-white focus:border-blue-500 focus:outline-none"
               value={formData.lastName}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, lastName: e.target.value }))
@@ -103,18 +100,54 @@ export default function QuoteForm() {
             />
           </div>
 
-          {/* Email */}
+          {/* Position/Title */}
           <div>
-            <label htmlFor="email" className="block text-sm mb-1 text-gray-600">
+            <label htmlFor="position" className="block text-sm mb-1 text-black">
+              {t("labels.position")}
+            </label>
+            <input
+              type="text"
+              id="position"
+              name="position"
+              className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
+              focus:bg-white focus:border-blue-500 focus:outline-none"
+              value={formData.position}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, position: e.target.value }))
+              }
+            />
+          </div>
+
+          {/* Phone */}
+          <div>
+            <label htmlFor="phone" className="block text-sm mb-1 text-black">
+              {t("labels.phone")}
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
+                focus:bg-white focus:border-blue-500 focus:outline-none"
+              value={formData.phone}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, phone: e.target.value }))
+              }
+            />
+          </div>
+          
+          {/* Email */}
+          <div className="col-span-2 md:col-span-1">
+            <label htmlFor="email" className="block text-sm mb-1 text-black">
               {t("labels.email")} <span className="text-red-400">*</span>
             </label>
             <input
               type="email"
               id="email"
-              name="email" // 添加 name 属性
+              name="email"
               required
               className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-                       focus:bg-white focus:border-blue-500 focus:outline-none"
+                focus:bg-white focus:border-blue-500 focus:outline-none"
               value={formData.email}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, email: e.target.value }))
@@ -122,79 +155,43 @@ export default function QuoteForm() {
             />
           </div>
 
-          {/* Phone */}
-          <div>
-            <label htmlFor="phone" className="block text-sm mb-1 text-gray-600">
-              {t("labels.phone")}
+          {/* Company Name */}
+          <div className="col-span-2 md:col-span-1">
+            <label
+              htmlFor="companyName"
+              className="block text-sm mb-1 text-black"
+            >
+              {t("labels.companyName")}
             </label>
             <input
-              type="tel"
-              id="phone"
-              name="phone" // 添加 name 属性
+              type="text"
+              id="companyName"
+              name="companyName"
               className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-                       focus:bg-white focus:border-blue-500 focus:outline-none"
-              value={formData.phone}
+              focus:bg-white focus:border-blue-500 focus:outline-none"
+              value={formData.companyName}
               onChange={(e) =>
-                setFormData((prev) => ({ ...prev, phone: e.target.value }))
+                setFormData((prev) => ({
+                  ...prev,
+                  companyName: e.target.value,
+                }))
               }
             />
           </div>
         </div>
 
-        {/* Company Name */}
-        <div className="mt-6">
-          <label
-            htmlFor="companyName"
-            className="block text-sm mb-1 text-gray-600"
-          >
-            {t("labels.companyName")}
-          </label>
-          <input
-            type="text"
-            id="companyName"
-            name="companyName" // 添加 name 属性
-            className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-                     focus:bg-white focus:border-blue-500 focus:outline-none"
-            value={formData.companyName}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, companyName: e.target.value }))
-            }
-          />
-        </div>
-
-        {/* Position/Title */}
-        <div className="mt-6">
-          <label
-            htmlFor="position"
-            className="block text-sm mb-1 text-gray-600"
-          >
-            {t("labels.position")}
-          </label>
-          <input
-            type="text"
-            id="position"
-            name="position" // 添加 name 属性
-            className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-                     focus:bg-white focus:border-blue-500 focus:outline-none"
-            value={formData.position}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, position: e.target.value }))
-            }
-          />
-        </div>
-
         {/* Message */}
         <div className="mt-6">
-          <label htmlFor="message" className="block text-sm mb-1 text-gray-600">
+          <label htmlFor="message" className="block text-sm mb-1 text-black">
             {t("labels.message")} <span className="text-red-400">*</span>
           </label>
           <textarea
             id="message"
-            name="message" // 添加 name 属性
+            name="message"
             rows={4}
             required
             className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-                     focus:bg-white focus:border-blue-500 focus:outline-none"
+              focus:bg-white focus:border-blue-500 focus:outline-none"
             value={formData.message}
             onChange={(e) =>
               setFormData((prev) => ({ ...prev, message: e.target.value }))
@@ -204,10 +201,7 @@ export default function QuoteForm() {
 
         {/* Attachment */}
         <div className="mt-6">
-          <label
-            htmlFor="attachment"
-            className="block text-sm mb-1 text-gray-600"
-          >
+          <label htmlFor="attachment" className="block text-sm mb-1 text-black">
             {t("labels.attachment")}
           </label>
           <div className="mt-1 bg-gray-50/50 rounded-xl border border-gray-100 p-4">
@@ -224,18 +218,18 @@ export default function QuoteForm() {
               <label
                 htmlFor="attachment"
                 className="cursor-pointer inline-flex items-center px-4 py-2 rounded-lg bg-white border border-gray-100 
-                             text-sm text-gray-600 hover:border-blue-500 hover:text-blue-500
-                             transition-colors"
+                  text-sm text-black hover:border-blue-500 hover:text-blue-500
+                  transition-colors"
               >
                 {t("buttons.chooseFile")}
               </label>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-black">
                 {formData.attachment.length > 0
                   ? formData.attachment.map((f) => f.name).join(", ")
                   : t("fileUpload.noFileSelected")}
               </p>
             </div>
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-xs text-black mt-1">
               {t("fileUpload.maxFilesHint", { count: 3 })}
             </p>{" "}
             {/* 添加提示 */}
@@ -248,7 +242,7 @@ export default function QuoteForm() {
             type="submit"
             // disabled={isLoading} // 禁用按钮当正在加载时
             className="inline-flex px-6 py-3 text-sm font-medium text-white bg-amber-700 
-                     rounded-xl hover:bg-amber-800 transition-colors disabled:opacity-50"
+              rounded-xl hover:bg-amber-800 transition-colors disabled:opacity-50"
           >
             {/* {isLoading ? t("buttons.submitting") : t("buttons.submit")} */}
             {t("buttons.submit")}

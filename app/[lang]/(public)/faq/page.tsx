@@ -54,10 +54,10 @@ export default async function FaqPage() {
       </section>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">
             {t('mainTitle')}
           </h1>
-          <p className="mt-4 text-lg leading-8 text-gray-600">
+          <p className="mt-4 text-lg leading-8 text-black">
             {t('introText')}
           </p>
         </div>
@@ -65,7 +65,7 @@ export default async function FaqPage() {
           <FaqList faqs={faqs} />
         </div>
         <div className="mx-auto max-w-4xl mt-16 text-center">
-          <p className="mt-4 text-lg leading-8 text-gray-600">
+          <p className="mt-4 text-lg leading-8 text-black">
             {t.rich('notFoundText', {
               contactLink: (chunks) => (
                 <Link href={contactUsPath} className="underline hover:text-indigo-600">

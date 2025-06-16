@@ -28,9 +28,9 @@ export default function ProductList({ products }: ProductListProps) {
               />
             )}
           </div>
-          <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
+          <h3 className="mt-4 text-sm text-black">{product.name}</h3>
           {product.code && (
-            <p className="mt-1 text-lg font-medium text-gray-900">
+            <p className="mt-1 text-lg font-medium text-black">
               {product.code}
             </p>
           )}

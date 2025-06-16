@@ -42,9 +42,9 @@ export function CategoryFilter({ filter, selectedValues, onChange }: CategoryFil
         className="flex items-center justify-between w-full text-left"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <span className="font-medium text-gray-900">{t(toCamelCase(filter.label))}</span>
+        <span className="font-medium text-black">{t(toCamelCase(filter.label))}</span>
         <ChevronDownIcon
-          className={`h-5 w-5 text-gray-400 transition-transform ${
+          className={`h-5 w-5 text-black transition-transform ${
             isExpanded ? "rotate-180" : ""
           }`}
         />
@@ -63,7 +63,7 @@ export function CategoryFilter({ filter, selectedValues, onChange }: CategoryFil
                 onChange={() => handleOptionClick(option.value)}
                 className="h-4 w-4 rounded border-gray-300 text-amber-700 focus:ring-blue-500"
               />
-              <span className="text-gray-700">
+              <span className="text-black">
                 {option.label} ({option.count})
               </span>
             </label>

@@ -63,7 +63,7 @@ export function CategorySidebar({
           <Link
             href={getCombainedLocalePath(locale,`categories/${category.slug}`)}
             className={`flex-grow text-left text-sm ${
-              isActive ? "font-bold text-amber-700" : "text-gray-700 hover:text-amber-700"
+              isActive ? "font-bold text-amber-700" : "text-black hover:text-amber-700"
             }`}
           >
             {category.name}
@@ -86,7 +86,7 @@ export function CategorySidebar({
               if (!childCategory) {
                 return (
                   <div key={childRef.id} className="py-2 ml-2">
-                    <Link href={getCombainedLocalePath(locale,`categories/${childRef.slug}`)} className="text-sm text-gray-700 hover:text-amber-700">
+                    <Link href={getCombainedLocalePath(locale,`categories/${childRef.slug}`)} className="text-sm text-black hover:text-amber-700">
                       {childRef.name || childRef.slug.replace(/-/g, " ")}
                     </Link>
                   </div>
@@ -108,14 +108,14 @@ export function CategorySidebar({
     <div className="space-y-6">
       {/* Categories Navigation */}
       <div>
-        <h2 className="text-lg font-bold text-gray-900 mb-4">{t("categories")}</h2>
+        <h2 className="text-lg font-bold text-black mb-4">{t("categories")}</h2>
         <nav className="space-y-1">{rootCategories.map((category) => renderCategory(category))}</nav>
       </div>
 
       {/* Filters Section */}
       {productFilters.length > 0 && (
         <div className="mt-8">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">{t("refineBy")}</h2>
+          <h2 className="text-lg font-bold text-black mb-4">{t("refineBy")}</h2>
 
           {/* Selected Filters */}
           {Object.keys(selectedFilters).length > 0 && (
@@ -138,7 +138,7 @@ export function CategorySidebar({
                       <button
                         key={`${filterId}-${value}`}
                         type="button"
-                        className="inline-flex items-center px-2 py-1 rounded text-xs bg-gray-100 text-gray-800"
+                        className="inline-flex items-center px-2 py-1 rounded text-xs bg-gray-100 text-black"
                         onClick={() => onFilterChange(filterId, value)}
                       >
                         {option.label}

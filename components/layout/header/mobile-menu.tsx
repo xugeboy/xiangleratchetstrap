@@ -32,7 +32,7 @@ export function MobileMenu({ isOpen, onClose, company }: MobileMenuProps) {
               <span className="sr-only">Company Logo</span>
               <Image className="h-8 w-auto" src="https://res.cloudinary.com/duimeqqch/image/upload/xiangle_ratchet_strap_mxts89.png" alt="Company Logo" width={100} height={32} />
             </Link>
-            <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700" onClick={onClose}>
+            <button type="button" className="-m-2.5 rounded-md p-2.5 text-black" onClick={onClose}>
               <span className="sr-only">Close menu</span>
               <XMarkIcon className="h-6 w-6" aria-hidden={true} />
             </button>
@@ -42,7 +42,7 @@ export function MobileMenu({ isOpen, onClose, company }: MobileMenuProps) {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 <Disclosure as="div" className="-mx-3">
-                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base font-semibold text-gray-900 hover:bg-gray-50">
+                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base font-semibold text-black hover:bg-gray-50">
                     Categories
                     <ChevronDownIconSolid
                       className="size-5 flex-none group-data-[open]:rotate-180"
@@ -55,7 +55,7 @@ export function MobileMenu({ isOpen, onClose, company }: MobileMenuProps) {
                         <DisclosureButton
                           as="a"
                           href={`/categories/${category.slug}`}
-                          className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold text-gray-900 hover:bg-gray-50"
+                          className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold text-black hover:bg-gray-50"
                         >
                           {category.name}
                         </DisclosureButton>
@@ -65,7 +65,7 @@ export function MobileMenu({ isOpen, onClose, company }: MobileMenuProps) {
                 </Disclosure>
 
                 <Disclosure as="div" className="-mx-3">
-                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base font-semibold text-gray-900 hover:bg-gray-50">
+                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base font-semibold text-black hover:bg-gray-50">
                     Company
                     <ChevronDownIconSolid
                       className="size-5 flex-none group-data-[open]:rotate-180"
@@ -78,7 +78,7 @@ export function MobileMenu({ isOpen, onClose, company }: MobileMenuProps) {
                         key={item.name}
                         as="a"
                         href={item.href}
-                        className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold text-gray-900 hover:bg-gray-50"
+                        className="block rounded-lg py-2 pr-3 pl-6 text-sm font-semibold text-black hover:bg-gray-50"
                       >
                         {item.name}
                       </DisclosureButton>
@@ -90,13 +90,13 @@ export function MobileMenu({ isOpen, onClose, company }: MobileMenuProps) {
               <div className="py-6">
                 <Link
                   href="/business-solutions"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-black hover:bg-gray-50"
                 >
                   Business Solutions
                 </Link>
                 <Link
                   href="/contact-us"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-black hover:bg-gray-50"
                 >
                   Contact Us
                 </Link>

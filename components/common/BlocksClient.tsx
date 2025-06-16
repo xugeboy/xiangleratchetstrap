@@ -12,7 +12,7 @@ export default function BlocksClient({ content }: { content: BlocksContent }) {
       content={content}
       blocks={{
         paragraph: ({ children }) => (
-          <p className="mb-4 text-[15px] text-gray-700">{children}</p>
+          <p className="mb-4 text-[15px] text-black">{children}</p>
         ),
         heading: ({ children, level }) => {
           const Tag = `h${level}` as keyof JSX.IntrinsicElements;

@@ -110,17 +110,17 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
               </Link>
               {/* Use optional chaining for date if it might be missing */}
               {blog.createdAt && (
-                <div className="text-sm text-center text-gray-500 mb-1">
+                <div className="text-sm text-center text-black mb-1">
                   {formatDateToLongEnglish(blog.createdAt)}
                 </div>
               )}
               <Link href={`/blogs/${blog.slug}`} className="mb-2">
-                <h2 className="text-md font-semibold text-center hover:text-gray-700 transition-colors line-clamp-2">
+                <h2 className="text-md font-semibold text-center hover:text-black transition-colors line-clamp-2">
                   {blog.title}
                 </h2>
                 {/* Use optional chaining for excerpt */}
                 {blog.excerpt && (
-                  <p className="text-sm text-gray-600 text-center line-clamp-3">
+                  <p className="text-sm text-black text-center line-clamp-3">
                     {blog.excerpt}
                   </p>
                 )}
@@ -129,7 +129,7 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
           ))}
         </div>
       ) : (
-        <p className="text-center text-gray-500">No news articles found.</p> // Handle case with no blogs
+        <p className="text-center text-black">No news articles found.</p> // Handle case with no blogs
       )}
 
       {/* Pagination */}

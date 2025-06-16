@@ -71,7 +71,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
           className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left border border-gray-300 focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500 transition-all duration-200"
         >
           <ComboboxInput
-            className="w-full border-none py-3 pl-4 pr-10 text-sm leading-5 text-gray-900 focus:ring-0 outline-none"
+            className="w-full border-none py-3 pl-4 pr-10 text-sm leading-5 text-black focus:ring-0 outline-none"
             placeholder={t("placeholder")}
             onChange={(event) => setSearchQuery(event.target.value)}
             displayValue={(item: SearchResultItem | null) => item?.name || ""}
@@ -79,7 +79,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
           <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
             {isSearching ? (
               <svg
-                className="h-5 w-5 text-gray-400 animate-spin"
+                className="h-5 w-5 text-black animate-spin"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -93,7 +93,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
               </svg>
             ) : (
               <svg
-                className="h-5 w-5 text-gray-500"
+                className="h-5 w-5 text-black"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -111,7 +111,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
         {searchQuery.length > 0 && (
           <ComboboxOptions className="absolute z-10 mt-1 max-h-96 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
             {isSearching ? (
-              <div className="flex items-center justify-center px-4 py-6 text-sm text-gray-500">
+              <div className="flex items-center justify-center px-4 py-6 text-sm text-black">
                 <svg
                   className="mr-2 h-5 w-5 text-indigo-500 animate-spin"
                   xmlns="http://www.w3.org/2000/svg"
@@ -128,17 +128,17 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
                 {t("searchingStatus")}
               </div>
             ) : searchResults.length === 0 ? (
-              <div className="px-4 py-6 text-center text-sm text-gray-500">{t("noProductsFound", { searchQuery: searchQuery })}</div>
+              <div className="px-4 py-6 text-center text-sm text-black">{t("noProductsFound", { searchQuery: searchQuery })}</div>
             ) : (
               <>
-                <div className="sticky top-0 z-10 bg-white px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider border-b">
+                <div className="sticky top-0 z-10 bg-white px-4 py-2 text-xs font-semibold text-black uppercase tracking-wider border-b">
                 {t("searchResultsTitle", { count: searchResults.length })}
                 </div>
                 {searchResults.map((item) => (
                   <ComboboxOption
                     key={item.id}
                     value={item}
-                    className="cursor-pointer select-none relative py-3 px-4 text-gray-900 data-[focus]:bg-indigo-50"
+                    className="cursor-pointer select-none relative py-3 px-4 text-black data-[focus]:bg-indigo-50"
                   >
                     {({ focus }) => (
                       <div className="flex items-center space-x-4">
@@ -152,10 +152,10 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
                           />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className={`text-sm font-medium ${focus ? "text-indigo-700" : "text-gray-900"} truncate`}>
+                          <p className={`text-sm font-medium ${focus ? "text-indigo-700" : "text-black"} truncate`}>
                             {item.name}
                           </p>
-                          <p className="mt-1 text-xs text-gray-500 truncate">{t("clickToViewDetails")}</p>
+                          <p className="mt-1 text-xs text-black truncate">{t("clickToViewDetails")}</p>
                         </div>
                         {focus && (
                           <div className="flex-shrink-0 text-indigo-600">

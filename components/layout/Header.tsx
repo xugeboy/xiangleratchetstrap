@@ -27,13 +27,13 @@ export default function Header() {
           <div className="flex h-10 items-center justify-end space-x-8">
             <Link
               href={getCombainedLocalePath(locale,"business-solutions")}
-              className="text-sm font-medium hover:text-gray-300"
+              className="text-sm font-medium hover:text-amber-700"
             >
               {tNav("support.businessSolutions")}
             </Link>
             <Link
               href={getCombainedLocalePath(locale,"contact-us")}
-              className="text-sm font-medium hover:text-gray-300"
+              className="text-sm font-medium hover:text-amber-700"
             >
               {tNav("company.contactUs")}
             </Link>

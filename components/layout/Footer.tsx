@@ -36,7 +36,7 @@ export default function Footer() {
       { nameKey: "support.downloadCatalog", href: "download-catalog" },
       { nameKey: "support.faq", href: "faq" },
       { nameKey: "support.businessSolutions", href: "business-solutions" },
-      { nameKey: "support.sitemap", href: "/sitemap.xml" },
+      { nameKey: "support.sitemap", href: "sitemap.xml" },
       // { nameKey: "support.onlineCustomizer", href: "online-customizer" },
     ],
     products: [

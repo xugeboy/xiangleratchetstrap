@@ -55,7 +55,7 @@ export function CategoryNavigation() {
                   <Tab
                     key={category.id}
                     className={({ selected }) => `
-                    relative md:px-2 lg:px-8 py-2 text-sm font-medium text-gray-800
+                    relative md:px-2 lg:px-8 py-2 text-sm font-medium text-black
                     outline-none transition-colors duration-200 cursor-pointer
                     block
                     ${selected ? "text-amber-700" : "hover:text-amber-700"}
@@ -64,7 +64,7 @@ export function CategoryNavigation() {
                   >
                     <Link
                       href={getCombainedLocalePath(locale,`categories/${category.slug}`)}
-                      className="group flex items-center text-gray-600 hover:text-amber-700 transition-colors duration-200"
+                      className="group flex items-center text-black hover:text-amber-700 transition-colors duration-200"
                     >
                       <span className="whitespace-nowrap">{category.name}</span>
                     </Link>
@@ -101,7 +101,7 @@ export function CategoryNavigation() {
                               {/* 二级分类标题 */}
                               <Link
                                 href={getCombainedLocalePath(locale,`categories/${subCategory.slug}`)}
-                                className="block text-gray-800 hover:text-amber-700 font-semibold text-sm mb-1"
+                                className="block text-black hover:text-amber-700 font-semibold text-sm mb-1"
                               >
                                 {subCategory.name}
                               </Link>
@@ -120,7 +120,7 @@ export function CategoryNavigation() {
                                         <Link
                                           key={thirdCategory.id}
                                           href={getCombainedLocalePath(locale,`categories/${thirdCategory.slug}`)}
-                                          className="block text-gray-600 hover:text-amber-700 text-sm"
+                                          className="block text-black hover:text-amber-700 text-sm"
                                         >
                                           {thirdCategory.name}
                                         </Link>

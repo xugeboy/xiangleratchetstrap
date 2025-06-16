@@ -64,10 +64,10 @@ export default async function TeamSection() {
     <div id="meet-the-team" className="bg-white mb-10 py-12 sm:py-16"> {/* Added some padding */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-balance text-gray-900 sm:text-4xl lg:text-5xl"> {/* Adjusted font size classes */}
+          <h2 className="text-3xl font-semibold tracking-tight text-balance text-black sm:text-4xl lg:text-5xl"> {/* Adjusted font size classes */}
             {t("title")} {/* 4. 翻译标题 */}
           </h2>
-          <p className="mt-6 text-lg/8 text-gray-600">
+          <p className="mt-6 text-lg/8 text-black">
             {t("description")} {/* 5. 翻译描述 */}
           </p>
         </div>
@@ -85,10 +85,10 @@ export default async function TeamSection() {
                 height={260} // aspect-4/5 of 208px
               />
               <div className="flex-auto text-center xl:text-left"> {/* Centered text on small screens */}
-                <h3 className="text-lg/8 font-semibold tracking-tight text-gray-900">{person.name}</h3> {/* 名字不翻译 */}
+                <h3 className="text-lg/8 font-semibold tracking-tight text-black">{person.name}</h3> {/* 名字不翻译 */}
                 <p className="text-base/7 text-amber-700">{t(person.roleKey)}</p> {/* 翻译 role */}
-                <p className="text-sm/6 text-gray-500">{t(person.yearKey)}</p> {/* 翻译 year */}
-                <p className="mt-4 text-base/7 text-gray-600">{t(person.bioKey)}</p> {/* 翻译 bio */}
+                <p className="text-sm/6 text-black">{t(person.yearKey)}</p> {/* 翻译 year */}
+                <p className="mt-4 text-base/7 text-black">{t(person.bioKey)}</p> {/* 翻译 bio */}
               </div>
             </li>
           ))}

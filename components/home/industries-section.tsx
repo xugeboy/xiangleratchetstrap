@@ -70,7 +70,7 @@ export default function IndustriesSection() {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
+        <h2 className="text-4xl font-bold text-center mb-12 text-black">
         {t.rich("title", {
             span: (chunks) => <span className="text-amber-700">{chunks}</span>,
           })}
@@ -114,7 +114,7 @@ export default function IndustriesSection() {
             aria-label="Previous slide"
             disabled={isAnimating}
           >
-            <ChevronLeftIcon className="h-6 w-6 text-gray-800" />
+            <ChevronLeftIcon className="h-6 w-6 text-black" />
           </button>
           <button
             onClick={nextSlide}
@@ -122,7 +122,7 @@ export default function IndustriesSection() {
             aria-label="Next slide"
             disabled={isAnimating}
           >
-            <ChevronRightIcon className="h-6 w-6 text-gray-800" />
+            <ChevronRightIcon className="h-6 w-6 text-black" />
           </button>
         </div>
 

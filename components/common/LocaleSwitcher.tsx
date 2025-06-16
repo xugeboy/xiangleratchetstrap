@@ -113,7 +113,7 @@ export default function LocaleSwitcher() {
                   { active, selected } // headlessUI provides selected based on value comparison
                 ) =>
                   `cursor-pointer px-3 py-2 flex items-center gap-2 ${
-                    active ? "bg-indigo-50 text-indigo-700" : "text-gray-900"
+                    active ? "bg-indigo-50 text-indigo-700" : "text-black"
                   } ${selected ? "font-semibold" : "font-normal"}`
                 }
               >

@@ -21,11 +21,11 @@ export default function FaqList({ faqs }: FaqListProps) {
             className="flex w-full items-center justify-between py-6 text-left"
             onClick={() => setOpenId(openId === faq.id ? null : faq.id)}
           >
-            <span className="text-base font-semibold leading-7 text-gray-900">
+            <span className="text-base font-semibold leading-7 text-black">
               {faq.Question}
             </span>
             <ChevronDownIcon
-              className={`h-6 w-6 text-gray-600 transition-transform duration-200 ${
+              className={`h-6 w-6 text-black transition-transform duration-200 ${
                 openId === faq.id ? 'rotate-180 transform' : ''
               }`}
             />
@@ -35,7 +35,7 @@ export default function FaqList({ faqs }: FaqListProps) {
               openId === faq.id ? 'max-h-96' : 'max-h-0'
             }`}
           >
-            <div className="pb-6 text-base leading-7 text-gray-600">
+            <div className="pb-6 text-base leading-7 text-black">
             <ReactMarkdown rehypePlugins={[rehypeRaw]}>{faq.Answer}</ReactMarkdown>
             </div>
           </div>
