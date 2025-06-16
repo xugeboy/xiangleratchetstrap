@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import { getBlogList } from "@/services/api/blog";
-import formatDateToLongEnglish from "@/utils/formatUtils";
+import formatDateToLongEnglish, { getCombainedLocalePath } from "@/utils/formatUtils";
+import { getLocale } from "next-intl/server";
 
 // --- Component ---
 interface BlogsPageProps {
@@ -16,10 +17,11 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
   const pageQuery = await searchParams?.page;
   const parsedPage = pageQuery ? Number.parseInt(pageQuery, 10) : 1;
   const currentPage = !isNaN(parsedPage) && parsedPage > 0 ? parsedPage : 1;
+  const locale = await getLocale();
 
   // 2. Fetch blog list data
   // Add error handling for the API call if needed (try/catch)
-  const { data, meta } = await getBlogList(currentPage);
+  const { data, meta } = await getBlogList(currentPage,locale);
 
   // 3. Extract total pages from meta (ADJUST BASED ON YOUR API RESPONSE)
   const totalPages = meta?.pagination?.pageCount || 1;
@@ -72,7 +74,7 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
       return (
         <Link
           key={page}
-          href={`/blogs?page=${page}`}
+          href={getCombainedLocalePath(locale,`blogs?page=${page}`)}
           className={`px-3 py-2 border rounded ${
             currentPage === page ? "bg-black text-white" : "hover:bg-gray-100"
           }`}
@@ -94,7 +96,7 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
           {data.map((blog) => (
             <div key={blog.id} className="flex flex-col">
               <Link
-                href={`/blogs/${blog.slug}`}
+                href={getCombainedLocalePath(locale,`blogs/${blog.slug}`)}
                 aria-label={`Read more about ${blog.title}`}
               >
                 <div className="relative h-48 mb-2 overflow-hidden rounded-lg group">
@@ -114,7 +116,7 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
                   {formatDateToLongEnglish(blog.createdAt)}
                 </div>
               )}
-              <Link href={`/blogs/${blog.slug}`} className="mb-2">
+              <Link href={getCombainedLocalePath(locale,`blogs/${blog.slug}`)} className="mb-2">
                 <h2 className="text-md font-semibold text-center hover:text-black transition-colors line-clamp-2">
                   {blog.title}
                 </h2>

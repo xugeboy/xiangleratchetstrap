@@ -208,7 +208,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
 
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <Image src="https://res.cloudinary.com/duimeqqch/image/upload/xiangle_ratchet_strap_mxts89.png" alt="xiangle ratchet strap" width={120} height={40} className="h-8 w-auto" />
+            <Image src="https://res.cloudinary.com/duimeqqch/image/upload/v1750054336/xiangle_ratchet_strap_mxts89_%E6%8B%B7%E8%B4%9D_woihtv.png" alt="xiangle ratchet strap" width={120} height={40} className="h-8 w-auto" />
           </Link>
 
           

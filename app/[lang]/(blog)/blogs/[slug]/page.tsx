@@ -257,7 +257,7 @@ export default async function BlogPage({ params,searchParams }: BlogPageProps) {
 
         {/* About Section */}
         <div className="mb-12 bg-gray-100 p-6">
-          <h2 className="text-2xl font-bold uppercase mb-4">
+          <h2 className="text-2xl font-bold uppercase mb-4 text-black">
             ABOUT XIANGLE RATCHET STRAP
           </h2>
           <p className="text-black text-sm">
@@ -276,7 +276,7 @@ export default async function BlogPage({ params,searchParams }: BlogPageProps) {
         <div className="flex justify-center mb-8">
           <Link
             href="/blogs"
-            className="flex items-center text-black hover:text-black"
+            className="flex items-center text-black"
           >
             <ArrowLeftIcon className="h-5 w-5 mr-2" />
             Back to blog

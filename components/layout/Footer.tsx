@@ -152,7 +152,7 @@ export default function Footer() {
             <h3 className="text-base font-semibold text-amber-700">
               {tF("customMadeStrapsTitle")}
             </h3>
-            <span className="text-sm/6 text-gray-400">
+            <span className="text-sm/6 text-white">
               {tF("customMadeStrapsDescription")}
             </span>
             <NewsLetter></NewsLetter>
@@ -168,7 +168,7 @@ export default function Footer() {
                   <li key={item.nameKey}>
                     <a
                       href={getCombainedLocalePath(locale, item.href)}
-                      className="text-sm/6 text-gray-400 hover:text-white"
+                      className="text-sm/6 text-white hover:text-amber-700"
                     >
                       {tNav(item.nameKey)}
                     </a>
@@ -190,7 +190,7 @@ export default function Footer() {
                     <li key={item.nameKey}>
                       <a
                         href={href}
-                        className="text-sm/6 text-gray-400 hover:text-white"
+                        className="text-sm/6 text-white hover:text-amber-700"
                       >
                         {tNav(item.nameKey)}
                       </a>
@@ -208,7 +208,7 @@ export default function Footer() {
                   <li key={item.nameKey}>
                     <a
                       href={getCombainedLocalePath(locale, item.href)}
-                      className="text-sm/6 text-gray-400 hover:text-white"
+                      className="text-sm/6 text-white hover:text-amber-700"
                     >
                       {tNav(item.nameKey)}
                     </a>
@@ -225,7 +225,7 @@ export default function Footer() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="flex items-center gap-4 text-gray-400 hover:text-white"
+                    className="flex items-center gap-4 text-white hover:text-amber-700"
                   >
                     <item.icon
                       className="h-6 w-6 text-gray-600"
@@ -244,7 +244,7 @@ export default function Footer() {
           <div>
             <button
               onClick={() => setIsOpenProducts(!isOpenProducts)}
-              className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white"
+              className="flex items-center justify-between w-full p-2 text-white hover:text-amber-700"
             >
               <h3 className="text-base font-semibold text-amber-700">
                 Products
@@ -271,7 +271,7 @@ export default function Footer() {
                   <a
                     key={item.nameKey}
                     href={getCombainedLocalePath(locale, item.href)}
-                    className="block text-sm/6 text-gray-400 hover:text-white px-2"
+                    className="block text-sm/6 text-white hover:text-amber-700 px-2"
                   >
                     {tNav(item.nameKey)}
                   </a>
@@ -283,7 +283,7 @@ export default function Footer() {
           <div>
             <button
               onClick={() => setIsOpenSupport(!isOpenSupport)}
-              className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white"
+              className="flex items-center justify-between w-full p-2 text-white hover:text-amber-700"
             >
               <h3 className="text-base font-semibold text-amber-700">
                 Support
@@ -310,7 +310,7 @@ export default function Footer() {
                   <a
                     key={item.nameKey}
                     href={getCombainedLocalePath(locale, item.href)}
-                    className="block text-sm/6 text-gray-400 hover:text-white px-2"
+                    className="block text-sm/6 text-white hover:text-amber-700 px-2"
                   >
                     {tNav(item.nameKey)}
                   </a>
@@ -322,7 +322,7 @@ export default function Footer() {
           <div>
             <button
               onClick={() => setIsOpenCompany(!isOpenCompany)}
-              className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white"
+              className="flex items-center justify-between w-full p-2 text-white hover:text-amber-700"
             >
               <h3 className="text-base font-semibold text-amber-700">
                 {tNav("headings.company")}
@@ -349,7 +349,7 @@ export default function Footer() {
                   <a
                     key={item.nameKey}
                     href={getCombainedLocalePath(locale, item.href)}
-                    className="block text-sm/6 text-gray-400 hover:text-white px-2"
+                    className="block text-sm/6 text-white hover:text-amber-700 px-2"
                   >
                     {tNav(item.nameKey)}
                   </a>
@@ -361,7 +361,7 @@ export default function Footer() {
           <div>
             <button
               onClick={() => setIsOpenContact(!isOpenContact)}
-              className="flex items-center justify-between w-full p-2 text-gray-400 hover:text-white"
+              className="flex items-center justify-between w-full p-2 text-white hover:text-amber-700"
             >
               <h3 className="text-base font-semibold text-amber-700">
                 {tNav("headings.contactUs")}
@@ -388,7 +388,7 @@ export default function Footer() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block text-sm/6 text-gray-400 hover:text-white px-2"
+                    className="block text-sm/6 text-white hover:text-amber-700 px-2"
                   >
                     {item.value}
                   </a>
@@ -403,14 +403,14 @@ export default function Footer() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-400 hover:text-gray-300"
+                className="text-white hover:text-gray-300"
               >
                 <span className="sr-only">{item.name}</span>
                 <item.icon aria-hidden="true" className="size-6" />
               </a>
             ))}
           </div>
-          <p className="mt-8 text-sm/6 text-gray-400 md:order-1 md:mt-0">
+          <p className="mt-8 text-sm/6 text-white md:order-1 md:mt-0">
             &copy; 2025 Xiangle Ratchet Strap. All rights reserved.
           </p>
         </div>

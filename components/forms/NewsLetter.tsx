@@ -45,7 +45,7 @@ export default function NewsLetter() {
       <h3 className="text-base font-semibold text-amber-700">
         Stay Updated! 
       </h3>
-      <span className="text-sm/6 text-gray-400">
+      <span className="text-sm/6 text-white">
         Be the first to know about the latest products, offers and stories.
       </span>
       <form onSubmit={handleSubmit} className="mt-6 sm:flex sm:max-w-md">
@@ -61,7 +61,7 @@ export default function NewsLetter() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
           autoComplete="email"
-          className="w-full min-w-0 rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-amber-800 sm:w-64 sm:text-sm/6 xl:w-full"
+          className="w-full min-w-0 rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-white focus:outline-2 focus:-outline-offset-2 focus:outline-amber-800 sm:w-64 sm:text-sm/6 xl:w-full"
         />
         <div className="mt-4 sm:mt-0 sm:ml-4 sm:shrink-0">
           <button
