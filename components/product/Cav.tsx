@@ -12,14 +12,14 @@ interface RelatedProductsProps {
     return (
       <div className="bg-white">
         <div className="mx-auto max-w-2xl py-10 sm:py-12 lg:max-w-7xl">
-          <h2 className="text-2xl font-bold tracking-tight text-black">Customers Also Viewed</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-black">Related Products</h2>
   
           <div className="mt-8 grid grid-cols-2 gap-y-12 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
               <div key={product.id}>
                 <div className="relative">
                   <div className="relative w-full overflow-hidden rounded-lg">
-                    <Image alt={product.featured_image?.name} 
+                    <Image alt={product.name} 
                     src={product.featured_image?.url} 
                     className="size-full object-fill" 
                     width={500}

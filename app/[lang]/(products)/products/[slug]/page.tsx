@@ -194,7 +194,7 @@ export default async function ProductPage({
           <RelatedArticles blogs={product.related_blogs} lang={currentLocale} />
           {product.youtube_url && (
             <VideoPlayer
-              url={product.youtube_url}
+              videoId={product.youtube_url}
               title={product.youtube_title}
             />
           )}

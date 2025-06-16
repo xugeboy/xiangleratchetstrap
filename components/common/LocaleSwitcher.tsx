@@ -97,6 +97,7 @@ export default function LocaleSwitcher() {
                 <Flag
                   code={selectedLocale.flag}
                   style={{ width: 20, height: 15 }}
+                  alt={selectedLocale.flag}
                 />
               )}
               <span>{selectedLocale?.label || ""}</span>{" "}
@@ -121,6 +122,7 @@ export default function LocaleSwitcher() {
                   <>
                     <Flag
                       code={localeOption.flag}
+                      alt={localeOption.flag}
                       style={{ width: 20, height: 15 }}
                     />
                     <span

@@ -19,8 +19,21 @@ export const supportedUrlPrefixes = Object.values(localePrefixMap);
 // 所有支持的 IETF 语言标签 (用于 hreflang)
 export const supportedIetfLangTags = Object.keys(localePrefixMap);
 import createMiddleware from 'next-intl/middleware';
+import { NextRequest, NextResponse } from 'next/server';
 
-export default createMiddleware({
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  if (pathname.endsWith('.map')) {
+    return new NextResponse('Source maps are restricted', { status: 403 });
+  }
+
+  // 继续执行 next-intl 的多语言中间件
+  return intlMiddleware(request);
+}
+
+// ✅ 初始化 next-intl 多语言中间件
+const intlMiddleware = createMiddleware({
   locales: ['en', 'uk', 'au', 'de', 'fr', 'es'],
   defaultLocale: 'en',
   localePrefix: 'as-needed',
