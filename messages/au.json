@@ -430,5 +430,17 @@
         "slug": "25mm-316-stainless-steel-ratchet-strap-double-j-hook-800kg-mbs"
       }
     }
+  },
+  "DownloadCatalogPage": {
+    "title": "Download Our Official Tie-Down Strap Catalog",
+    "description": "Access the complete catalog from a leading manufacturer of tie-down solutions. Discover our full range of custom-produced ratchet straps, cam buckle straps, and accessories, engineered for maximum safety and durability.",
+    "features": {
+      "feature1": "Complete specifications for ratchet & cam buckle straps",
+      "feature2": "Information on custom production capabilities",
+      "feature3": "Direct-from-factory models and innovations"
+    },
+    "buttonText": "Download the Complete Catalog",
+    "buttonMeta": "PDF, {size}MB",
+    "imageAlt": "Cover of the official tie-down strap catalog"
   }
 }

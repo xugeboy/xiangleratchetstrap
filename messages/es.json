@@ -430,5 +430,17 @@
         "slug": "cinta-de-trinquete-inoxidable-316-25mm-gancho-doble-j-gris-rotura-800kg"
       }
     }
+  },
+  "DownloadCatalogPage": {
+    "title": "Descargue nuestro catálogo oficial de cinchas de amarre",
+    "description": "Acceda al catálogo completo de un fabricante líder de soluciones de amarre. Descubra nuestra gama completa de correas de trinquete, correas con hebilla de leva y accesorios de producción personalizada, diseñados para la máxima seguridad y durabilidad.",
+    "features": {
+      "feature1": "Especificaciones completas para correas de trinquete y con hebilla de leva",
+      "feature2": "Información sobre nuestras capacidades de producción a medida",
+      "feature3": "Modelos e innovaciones directamente de fábrica"
+    },
+    "buttonText": "Descargar el catálogo completo",
+    "buttonMeta": "PDF, {size}MB",
+    "imageAlt": "Portada del catálogo oficial de cinchas de amarre"
   }
 }

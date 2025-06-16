@@ -430,5 +430,17 @@
         "slug": "sangle-a-cliquet-inox-316-25mm-crochet-double-j-grise-mbs-800kg"
       }
     }
+  },
+  "DownloadCatalogPage": {
+    "title": "Téléchargez notre catalogue officiel de sangles d'arrimage",
+    "description": "Accédez au catalogue complet d'un fabricant leader de solutions d'arrimage. Découvrez notre gamme complète de sangles à cliquet, de sangles à boucle à came et d'accessoires sur mesure, conçus pour une sécurité et une durabilité maximales.",
+    "features": {
+      "feature1": "Spécifications complètes pour sangles à cliquet et à boucle à came",
+      "feature2": "Informations sur nos capacités de production sur mesure",
+      "feature3": "Modèles et innovations directement de l'usine"
+    },
+    "buttonText": "Télécharger le catalogue complet",
+    "buttonMeta": "PDF, {size}Mo",
+    "imageAlt": "Couverture du catalogue officiel des sangles d'arrimage"
   }
 }

@@ -430,5 +430,17 @@
         "slug": "25mm-edelstahl-spanngurt-316-doppel-j-haken-grau-800kg-mbs"
       }
     }
+  },
+  "DownloadCatalogPage": {
+    "title": "Laden Sie unseren offiziellen Zurrgurt-Katalog herunter",
+    "description": "Greifen Sie auf den vollständigen Katalog eines führenden Herstellers von Zurrgurtlösungen zu. Entdecken Sie unser gesamtes Sortiment an maßgefertigten Ratschengurten, Klemmschlossgurten und Zubehör – entwickelt für höchste Sicherheit und Langlebigkeit.",
+    "features": {
+      "feature1": "Vollständige Spezifikationen für Ratschen- und Klemmschlossgurte",
+      "feature2": "Informationen zu unseren kundenspezifischen Fertigungsmöglichkeiten",
+      "feature3": "Modelle und Innovationen direkt vom Hersteller"
+    },
+    "buttonText": "Vollständigen Katalog herunterladen",
+    "buttonMeta": "PDF, {size}MB",
+    "imageAlt": "Titelbild des offiziellen Zurrgurt-Katalogs"
   }
 }

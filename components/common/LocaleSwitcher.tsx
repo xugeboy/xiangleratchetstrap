@@ -9,7 +9,7 @@ import {
 } from "@headlessui/react";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
-import Flag from "react-world-flags";
+import "flag-icons/css/flag-icons.min.css";
 
 type Locale = {
   code: string;
@@ -34,8 +34,7 @@ const findLocaleObjectByCode = (
 };
 export const PREVIOUS_LOCALE_STORAGE_KEY = "previousLocale";
 
-const defaultLocaleObject =
-  findLocaleObjectByCode(defaultUrlPrefix);
+const defaultLocaleObject = findLocaleObjectByCode(defaultUrlPrefix);
 
 export default function LocaleSwitcher() {
   const router = useRouter();
@@ -79,7 +78,7 @@ export default function LocaleSwitcher() {
     const newPath = `/${newLocaleCode}${
       basePathSegments.length > 0 ? `/${basePathSegments.join("/")}` : ""
     }`;
-    const newPathWithPreviousLocale = newPath + `?pl=${selectedLocale.code}`
+    const newPathWithPreviousLocale = newPath + `?pl=${selectedLocale.code}`;
     if (pathname !== newPathWithPreviousLocale) {
       startTransition(() => {
         router.push(newPathWithPreviousLocale);
@@ -94,10 +93,10 @@ export default function LocaleSwitcher() {
           <ListboxButton className="relative w-full cursor-pointer text-sm font-medium shadow-sm">
             <div className="flex items-center gap-2">
               {selectedLocale?.flag && ( // Added optional chaining for safety
-                <Flag
-                  code={selectedLocale.flag}
-                  style={{ width: 20, height: 15 }}
-                  alt={selectedLocale.flag}
+                <span
+                  className={`fi fi-${selectedLocale.flag.toLowerCase()}`}
+                  style={{ width: 20, height: 15, display: "block" }}
+                  aria-label={selectedLocale.flag}
                 />
               )}
               <span>{selectedLocale?.label || ""}</span>{" "}
@@ -120,10 +119,10 @@ export default function LocaleSwitcher() {
               >
                 {({ selected }) => (
                   <>
-                    <Flag
-                      code={localeOption.flag}
-                      alt={localeOption.flag}
-                      style={{ width: 20, height: 15 }}
+                    <span
+                      className={`fi fi-${localeOption.flag.toLowerCase()}`}
+                      style={{ width: 20, height: 15, display: "block" }}
+                      aria-label={localeOption.label}
                     />
                     <span
                       className={`block truncate ${
