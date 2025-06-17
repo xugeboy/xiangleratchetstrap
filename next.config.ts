@@ -5,6 +5,8 @@ import withBundleAnalyzer from "@next/bundle-analyzer";
 const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   images: {
+    loader: 'custom',
+    loaderFile: './image-loader.ts',
     remotePatterns: [
       {
         protocol: "https",

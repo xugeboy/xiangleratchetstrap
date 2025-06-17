@@ -47,3 +47,17 @@ export function getCombainedLocalePath(currentLang: string,path: string): string
   }
   return `/${currentLang}/${path}`; // 其他语言 URL 加前缀
 }
+
+export function getCloudinaryPublicId(fullUrl: string): string {
+  // 我们以 '/image/upload/' 作为分隔符
+  const parts = fullUrl.split('/image/upload');
+  
+  // 如果成功分割成两部分，我们就取第二部分
+  if (parts.length === 2) {
+    // 这将返回例如 'v1750143204/catalog_u0aq7n.jpg'
+    return parts[1];
+  }
+  
+  // 如果URL格式不符，返回原始URL以防万一
+  return fullUrl;
+};

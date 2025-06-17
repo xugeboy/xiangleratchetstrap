@@ -1,6 +1,7 @@
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/react'
 import Image from 'next/image'
 import { Galleries } from '@/types/gallery'
+import { getCloudinaryPublicId } from '@/utils/formatUtils';
 
 interface ImageGalleryProps {
   images?: Galleries;
@@ -25,8 +26,8 @@ export default function ImageGallery({ images,alt }: ImageGalleryProps) {
           >
             <span className="sr-only">{image.name}</span>
             <span className="absolute inset-0 overflow-hidden rounded-md">
-              <Image alt={alt} 
-              src={image.url} 
+              <Image alt={alt}
+              src={getCloudinaryPublicId(image.url)} 
               className="size-full object-scale-down" 
               width={image.width}
               height={image.height}
