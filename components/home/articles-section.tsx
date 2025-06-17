@@ -34,7 +34,7 @@ export default async function ArticlesSection() {
                 >
                   <Image
                     src={blog.cover_image.url}
-                    alt={blog.seo_title}
+                    alt={blog.title}
                     fill
                     className="object-scale-down"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"

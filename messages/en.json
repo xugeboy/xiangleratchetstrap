@@ -310,7 +310,7 @@
   },
   "ProductGrid": {
     "loading": "Loading products...",
-    "learnMoreButton": "LEARN MORE",
+    "learnMoreButton": "See Details",
     "noDescription": "No description available.",
     "pagination": {
       "previous": "Previous",
@@ -413,7 +413,7 @@
   "ProductsSection": {
       "title": "FEATURED <span>PRODUCTS</span>",
       "viewAllButton": "View All Products",
-      "learnMoreLink": "Learn More",
+      "learnMoreLink": "See Details",
       "products": {
       "retractable1Inch": {
         "title": "1\" x 10' Retractable Ratchet Strap, S-Hook - 1500 lbs BS",

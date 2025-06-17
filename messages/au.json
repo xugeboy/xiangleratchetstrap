@@ -310,7 +310,7 @@
   },
   "ProductGrid": {
     "loading": "Loading products...",
-    "learnMoreButton": "LEARN MORE",
+    "learnMoreButton": "See Details",
     "noDescription": "No description available.",
     "pagination": {
       "previous": "Previous",
@@ -413,8 +413,8 @@
   "ProductsSection": {
     "title": "FEATURED <span>PRODUCTS</span>",
     "viewAllButton": "View All Products",
-    "learnMoreLink": "Learn More",
-    "products": {
+    "learnMoreLink": "See Details",
+    "proucts": {
       "retractable1Inch": {
         "title": "25mm x 3m Retractable Ratchet Strap, S-Hook, Black - 680kg MBS",
         "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",

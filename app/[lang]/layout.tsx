@@ -6,7 +6,7 @@ import Header from "@/components/layout/Header";
 import BackToTop from "@/components/common/BackToTop";
 import { fetchAPI } from "@/utils/fetch-api";
 import { CategoryProvider } from "@/contexts/CategoryContext";
-import ClarityProvider from "@/components/common/ClarityProvider";
+import ClarityProvider from "@/components/common/Analytics";
 import TawkToWidget from "@/components/common/TawkToWidget";
 import { Viewport } from "next";
 import { localePrefixMap, defaultLocaleKey } from "@/middleware";
@@ -15,6 +15,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getFullLocale } from "@/utils/formatUtils";
 import { setRequestLocale } from "next-intl/server";
+import Analytics from "@/components/common/Analytics";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -155,6 +156,8 @@ export default async function RootLayout({
           title="Sitemap"
           href="/sitemap.xml"
         />
+        <script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js" async></script>
+        <script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="8gW917p7RryyNW" async></script>
       </head>
       <body className={`${poppins.className} antialiased`}>
         <CategoryProvider categories={categories}>
@@ -162,7 +165,6 @@ export default async function RootLayout({
             <NextIntlClientProvider locale={lang} messages={messages}>
               <Header />
               <main className="flex-grow">
-                <ClarityProvider />
                 {children}
                 <TawkToWidget />
               </main>
@@ -171,6 +173,8 @@ export default async function RootLayout({
             <BackToTop />
           </div>
         </CategoryProvider>
+        
+        <Analytics />
       </body>
     </html>
   );
