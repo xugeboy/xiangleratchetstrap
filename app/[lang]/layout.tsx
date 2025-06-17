@@ -163,7 +163,7 @@ export default async function RootLayout({
               <Header />
               <main className="flex-grow">
                 {children}
-                {/* <TawkToWidget /> */}
+                <TawkToWidget />
               </main>
               <Footer />
             </NextIntlClientProvider>
