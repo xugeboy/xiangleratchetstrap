@@ -15,6 +15,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getFullLocale } from "@/utils/formatUtils";
 import { setRequestLocale } from "next-intl/server";
 import Analytics from "@/components/common/Analytics";
+import Script from "next/script";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -157,8 +158,10 @@ export default async function RootLayout({
           title="Sitemap"
           href="/sitemap.xml"
         />
-        <script
+        <Script
+          id="usercentrics-autoblocker"
           src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"
+          strategy="beforeInteractive"
         />
         <script
           id="usercentrics-cmp"
