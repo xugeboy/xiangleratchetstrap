@@ -155,7 +155,6 @@ export default async function RootLayout({
           title="Sitemap"
           href="/sitemap.xml"
         />
-        <script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>
         <script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="8gW917p7RryyNW" async></script>
       </head>
       <body className={`${poppins.className} antialiased`}>

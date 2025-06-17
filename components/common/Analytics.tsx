@@ -14,13 +14,13 @@ export default function Analytics() {
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
         strategy="lazyOnload" // 1. 修改策略为 lazyOnload
         type="text/plain" // 2. 将类型改为 text/plain
-        data-usercentrics="Google Analytics" // 3. 添加这个关键属性
+        data-usercentrics="Google Tag Manager" // 3. 添加这个关键属性
       />
       <Script
         id="google-analytics-inline"
         strategy="lazyOnload"
         type="text/plain" // 同样需要修改
-        data-usercentrics="Google Analytics" // 同样需要添加
+        data-usercentrics="Google Tag Manager" // 同样需要添加
       >
         {`
           window.dataLayer = window.dataLayer || [];
