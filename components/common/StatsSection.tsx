@@ -42,7 +42,7 @@ export default function Example() {
               className="flex flex-col gap-y-3 pl-6  p-4 rounded-lg"
             >
               <dt className="text md:text-2xl text-white text-center">{t(stat.nameKey)}</dt>
-              <dt className="text font-bold md:text-2xl text-white text-center">{stat.value}{stat.suffix}</p>
+              <dt className="text font-bold md:text-2xl text-white text-center">{stat.value}{stat.suffix}</dt>
             </div>
           ))}
         </dl>
