@@ -151,9 +151,6 @@ export default async function RootLayout({
   return (
     <html lang={locale.locale}>
       <head>
-        <script
-          src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"
-        />
         <link
           rel="sitemap"
           type="application/xml"
