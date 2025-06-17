@@ -27,7 +27,6 @@ export default function ImageGallery({ images,alt }: ImageGalleryProps) {
             <span className="absolute inset-0 overflow-hidden rounded-md">
               <Image alt={alt} 
               src={image.url} 
-              priority={true}
               className="size-full object-scale-down" 
               width={image.width}
               height={image.height}
@@ -46,7 +45,8 @@ export default function ImageGallery({ images,alt }: ImageGalleryProps) {
       {images?.map((image) => (
         <TabPanel key={image.id}>
           <Image alt={alt} 
-          src={image.url} 
+          src={image.url}
+          priority={true}
           className="aspect-square w-full object-cover sm:rounded-lg" 
           width={image.width}
           height={image.height}
