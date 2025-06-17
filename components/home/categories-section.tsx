@@ -81,6 +81,7 @@ export default async function CategoriesSection() {
                   {t(category.title)}
                 </h3>
                 <Link
+                  prefetch={false}
                   href={getCombainedLocalePath(lang,t(category.link))}
                   className="inline-block bg-amber-700 hover:bg-amber-800 text-white px-6 md:px-8 py-2 font-medium transition-all duration-300 text-sm md:text-base"
                 >

@@ -60,7 +60,7 @@ export function CategorySidebar({
     return (
       <div key={category.id} className={`${depth > 0 ? "ml-4" : ""}`}>
         <div className="flex items-center justify-between py-2">
-          <Link
+          <Link prefetch={false}
             href={getCombainedLocalePath(locale,`categories/${category.slug}`)}
             className={`flex-grow text-left text-sm ${
               isActive ? "font-bold text-amber-700" : "text-black hover:text-amber-700"
@@ -86,7 +86,7 @@ export function CategorySidebar({
               if (!childCategory) {
                 return (
                   <div key={childRef.id} className="py-2 ml-2">
-                    <Link href={getCombainedLocalePath(locale,`categories/${childRef.slug}`)} className="text-sm text-black hover:text-amber-700">
+                    <Link prefetch={false} href={getCombainedLocalePath(locale,`categories/${childRef.slug}`)} className="text-sm text-black hover:text-amber-700">
                       {childRef.name || childRef.slug.replace(/-/g, " ")}
                     </Link>
                   </div>
