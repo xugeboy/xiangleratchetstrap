@@ -1,58 +1,69 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
-// Tawk.to 的注入逻辑，我们把它提取出来作为一个函数
+// Tawk.to 的注入逻辑保持不变
 const injectTawkToScript = () => {
+  // 确保脚本只被注入一次
+  if (document.getElementById('tawk-to-script')) return;
+
   var Tawk_API = Tawk_API || {};
   var Tawk_LoadStart = new Date();
   (function() {
     var s1 = document.createElement("script");
-    var s0 = document.getElementsByTagName("script")[0];
+    s1.id = 'tawk-to-script'; // 给脚本一个ID以便检查
     s1.async = true;
-    s1.src = 'https://embed.tawk.to/67fc80e0e6ecad190d7cb46b/1iop5ern2'; // 请确保这是您正确的 Property ID
+    s1.src = 'https://embed.tawk.to/67fc80e0e6ecad190d7cb46b/1iop5ern2';
     s1.charset = 'UTF-8';
     s1.setAttribute('crossorigin', '*');
+    var s0 = document.getElementsByTagName("script")[0];
     s0.parentNode.insertBefore(s1, s0);
   })();
 };
 
 const TawkToWidget = () => {
-  // 使用一个 state 来追踪同意状态
-  const [hasConsent, setHasConsent] = useState(false);
+  const [consentGiven, setConsentGiven] = useState(false);
 
-  useEffect(() => {
-    // 定义一个函数来处理同意状态的变化
-    const handleConsent = () => {
-      // 检查 Usercentrics 的 API，看指定的服务是否已被同意
-      // 确保 'Tawk.to' 与您在 Usercentrics 后台设置的服务名称完全一致
-      if (window.UC_UI?.isServiceConsentGiven('Tawk.to')) {
-        setHasConsent(true);
+  // 使用 useCallback 来确保函数实例的稳定
+  const handleConsentChange = useCallback(() => {
+    // 再次进行健壮性检查
+    if (window.UC_UI && typeof window.UC_UI.isServiceConsentGiven === 'function') {
+      // 确保 'Tawk.to' 与您在 Usercentrics 后台设置的 Service ID 完全一致
+      if (window.UC_UI.isServiceConsentGiven('tawk.to')) {
+        setConsentGiven(true);
       }
-    };
-
-    // 第一次加载时立即检查，这针对的是已经给过同意的返回用户
-    handleConsent();
-
-    // 监听 Usercentrics 的同意事件
-    // 当用户在弹窗中做出选择时，这个事件会被触发
-    window.addEventListener('uc:service-consent-given', handleConsent);
-
-    // 组件卸载时，清理事件监听器，防止内存泄漏
-    return () => {
-      window.removeEventListener('uc:service-consent-given', handleConsent);
-    };
-  }, []); // 这个 effect 只在组件加载时运行一次
+    }
+  }, []);
 
   useEffect(() => {
-    // 这个 effect 依赖于 hasConsent 状态
-    // 只有当 hasConsent 变为 true 时，才注入 Tawk.to 脚本
-    if (hasConsent) {
+    // 定义我们的初始化函数
+    const initialize = () => {
+      handleConsentChange(); // 立即检查一次
+      window.addEventListener('uc:service-consent-given', handleConsentChange);
+    };
+
+    // 检查 CMP 是否已经准备就绪
+    if (window.UC_UI && typeof window.UC_UI.isServiceConsentGiven === 'function') {
+      initialize();
+    } else {
+      // 如果没有，就等待 'uc:cmp-ready' 事件
+      window.addEventListener('uc:cmp-ready', initialize, { once: true });
+    }
+
+    // 组件卸载时，清理所有事件监听器
+    return () => {
+      window.removeEventListener('uc:service-consent-given', handleConsentChange);
+      window.removeEventListener('uc:cmp-ready', initialize);
+    };
+  }, [handleConsentChange]); // 依赖于稳定版的 handleConsentChange 函数
+
+  useEffect(() => {
+    if (consentGiven) {
       injectTawkToScript();
     }
-  }, [hasConsent]); // 当 hasConsent 变化时触发
+  }, [consentGiven]);
 
-  return null; // 组件本身不渲染任何可见内容
+  return null;
 };
 
 export default TawkToWidget;
