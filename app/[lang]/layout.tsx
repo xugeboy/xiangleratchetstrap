@@ -70,8 +70,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "https://res.cloudinary.com/duimeqqch/image/upload/v1749543828/favicon_kdh2ff.ico",
-    shortcut: "https://res.cloudinary.com/duimeqqch/image/upload/v1749543828/favicon_kdh2ff.ico",
-    apple: "https://res.cloudinary.com/duimeqqch/image/upload/v1749543828/favicon_kdh2ff.ico",
+    shortcut:
+      "https://res.cloudinary.com/duimeqqch/image/upload/v1749543828/favicon_kdh2ff.ico",
+    apple:
+      "https://res.cloudinary.com/duimeqqch/image/upload/v1749543828/favicon_kdh2ff.ico",
   },
 
   openGraph: {
@@ -145,7 +147,7 @@ export default async function RootLayout({
     console.error(`Could not load messages for locale: ${locale}`, error);
     notFound();
   }
-  setRequestLocale(lang)
+  setRequestLocale(lang);
   return (
     <html lang={locale.locale}>
       <head>
@@ -155,7 +157,17 @@ export default async function RootLayout({
           title="Sitemap"
           href="/sitemap.xml"
         />
-        <script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="8gW917p7RryyNW" async></script>      </head>
+        <script
+          src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"
+          async
+        ></script>
+        <script
+          id="usercentrics-cmp"
+          src="https://web.cmp.usercentrics.eu/ui/loader.js"
+          data-settings-id="8gW917p7RryyNW"
+          async
+        ></script>{" "}
+      </head>
       <body className={`${poppins.className} antialiased`}>
         <CategoryProvider categories={categories}>
           <div className="flex min-h-screen flex-col">
@@ -170,7 +182,7 @@ export default async function RootLayout({
             <BackToTop />
           </div>
         </CategoryProvider>
-        
+
         <Analytics />
       </body>
     </html>
