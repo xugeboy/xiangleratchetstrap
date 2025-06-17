@@ -40,7 +40,7 @@ const TawkToWidget = () => {
     if (window.UC_UI && typeof window.UC_UI.isServiceConsentGiven === 'function') {
       // 检查'Tawk.to'服务的同意状态
       // 这里的'Tawk.to'必须与您在Usercentrics后台设置的Service ID完全一致
-      const hasConsent = window.UC_UI.isServiceConsentGiven('Tawk.to');
+      const hasConsent = window.UC_UI.isServiceConsentGiven('tawk.to');
       if (hasConsent) {
         setConsentGiven(true);
       }
