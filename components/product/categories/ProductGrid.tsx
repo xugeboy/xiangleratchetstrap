@@ -90,6 +90,7 @@ export function ProductGrid({
               >
                 {viewMode === "grid" && (
                   <Link
+                    prefetch={false}
                     href={`${pathPrefix}/products/${product.slug}`}
                     className="group block"
                   >

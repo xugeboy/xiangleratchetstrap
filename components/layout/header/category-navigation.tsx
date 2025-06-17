@@ -63,6 +63,7 @@ export function CategoryNavigation() {
                     onMouseEnter={() => handleTabMouseEnter(idx)}
                   >
                     <Link
+                      prefetch={false}
                       href={getCombainedLocalePath(locale,`categories/${category.slug}`)}
                       className="group flex items-center text-black hover:text-amber-700 transition-colors duration-200"
                     >
@@ -100,6 +101,7 @@ export function CategoryNavigation() {
                             <div key={subCategory.id} className="mb-4">
                               {/* 二级分类标题 */}
                               <Link
+                                prefetch={false}
                                 href={getCombainedLocalePath(locale,`categories/${subCategory.slug}`)}
                                 className="block text-black hover:text-amber-700 font-semibold text-sm mb-1"
                               >
@@ -118,6 +120,7 @@ export function CategoryNavigation() {
 
                                       return (
                                         <Link
+                                          prefetch={false}
                                           key={thirdCategory.id}
                                           href={getCombainedLocalePath(locale,`categories/${thirdCategory.slug}`)}
                                           className="block text-black hover:text-amber-700 text-sm"
