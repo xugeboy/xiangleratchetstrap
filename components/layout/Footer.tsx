@@ -13,8 +13,10 @@ import {
   getCombainedLocalePath,
 } from "@/utils/formatUtils";
 import { useLocale, useTranslations } from "next-intl";
+import { useIsMobile } from '@/hooks/useMobile';
 
 export default function Footer() {
+  const isMobile = useIsMobile();
   const tF = useTranslations("Footer");
   const tNav = useTranslations("Navigation");
   const [isOpenProducts, setIsOpenProducts] = useState(false);
@@ -240,7 +242,8 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-6 md:hidden">
+        {isMobile !== undefined && isMobile && (
+          <div className="mt-6">
           <div>
             <button
               onClick={() => setIsOpenProducts(!isOpenProducts)}
@@ -397,6 +400,7 @@ export default function Footer() {
             )}
           </div>
         </div>
+        )}
         <div className="mt-12 border-t border-white/10 pt-8 md:flex md:items-center md:justify-between">
           <div className="flex gap-x-6 md:order-2">
             {navigation.social.map((item) => (

@@ -10,6 +10,8 @@ import { searchProducts } from "@/services/api/product"
 import LocaleSwitcher from "@/components/common/LocaleSwitcher"
 import { getCloudinaryPublicId, getCombainedLocalePath } from "@/utils/formatUtils"
 import { useLocale, useTranslations } from "next-intl"
+import { useIsMobile } from '@/hooks/useMobile';
+
 
 // 定义搜索结果项的类型
 interface SearchResultItem {
@@ -24,6 +26,7 @@ interface SearchBarProps {
 }
 
 export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
+  const isMobile = useIsMobile();
   const [searchQuery, setSearchQuery] = useState("")
   const [isSearching, setIsSearching] = useState(false)
   const [searchResults, setSearchResults] = useState<SearchResultItem[]>([])
@@ -199,7 +202,8 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
       </div>
 
       {/* Mobile layout (below 768px) */}
-      <div className="md:hidden bg-black text-white">
+      {isMobile !== undefined && isMobile && (
+        <div className="bg-black text-white">
         <div className="flex items-center justify-between px-4 py-2">
           {/* Hamburger menu */}
           <button onClick={onMobileMenuOpen} className="text-white p-2" aria-label="Open menu">
@@ -226,6 +230,8 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
           <div className="flex-1">{renderSearchCombobox()}</div>
         </div>
       </div>
+      )}
+      
     </div>
   )
 }
