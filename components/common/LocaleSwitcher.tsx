@@ -1,6 +1,6 @@
 "use client";
 
-import { defaultUrlPrefix } from "@/middleware"; // Assuming this still provides a default or base locale
+import { defaultUrlPrefix } from "@/middleware";
 import {
   Listbox,
   ListboxButton,
@@ -19,12 +19,12 @@ type Locale = {
 };
 
 const localesData: Locale[] = [
-  { code: "en", label: "US", flag: "US", hreflang:"en" },
-  { code: "au", label: "Australia", flag: "AU", hreflang:"en-AU" },
-  { code: "uk", label: "UK", flag: "GB", hreflang:"en-GB" },
-  { code: "de", label: "Deutsch", flag: "DE", hreflang:"de-DE" },
-  { code: "fr", label: "Français", flag: "FR", hreflang:"fr-FR" },
-  { code: "es", label: "Español", flag: "ES", hreflang:"es-ES" },
+  { code: "en", label: "US", flag: "US", hreflang: "en-US" },
+  { code: "au", label: "Australia", flag: "AU", hreflang: "en-AU" },
+  { code: "uk", label: "UK", flag: "GB", hreflang: "en-GB" },
+  { code: "de", label: "Deutsch", flag: "DE", hreflang: "de-DE" },
+  { code: "fr", label: "Français", flag: "FR", hreflang: "fr-FR" },
+  { code: "es", label: "Español", flag: "ES", hreflang: "es-ES" },
 ];
 
 const findLocaleObjectByCode = (
@@ -38,13 +38,8 @@ const defaultLocaleObject = findLocaleObjectByCode(defaultUrlPrefix);
 
 export default function LocaleSwitcher() {
   const router = useRouter();
-  const pathname = usePathname(); // <-- 这里的 pathname 会在 URL 变化时更新
+  const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
-
-  // State to store the extracted hreflang URLs
-  const [hreflangUrls, setHreflangUrls] = useState<
-    Record<string, string | null>
-  >({});
 
   const [selectedLocale, setSelectedLocale] = useState<Locale>(() => {
     const pathSegments = pathname.split("/").filter(Boolean);
@@ -57,54 +52,6 @@ export default function LocaleSwitcher() {
     return defaultLocaleObject;
   });
 
-  // 关键修改：将 pathname 添加到 useEffect 的依赖数组中
-  useEffect(() => {
-    // 确保在客户端环境运行
-    if (typeof document === 'undefined') {
-        return;
-    }
-
-    const links: Record<string, string | null> = {};
-    const alternateLinks = document.querySelectorAll(
-      'link[rel="alternate"][hreflang]'
-    );
-    const canonicalLink = document.querySelector('link[rel="canonical"]');
-
-    alternateLinks.forEach((link) => {
-      const href = link.getAttribute("href");
-      const hreflang = link.getAttribute("hreflang");
-      if (href && hreflang) {
-        links[hreflang] = href;
-      }
-    });
-
-    if (canonicalLink) {
-      const canonicalHref = canonicalLink.getAttribute("href");
-      if (canonicalHref && !links["x-default"]) {
-        const pathSegments = new URL(canonicalHref).pathname.split("/").filter(Boolean);
-        const inferredLocaleFromCanonical = findLocaleObjectByCode(pathSegments[0]);
-        if (inferredLocaleFromCanonical) {
-            links[inferredLocaleFromCanonical.code] = canonicalHref;
-        } else {
-            links[defaultUrlPrefix] = canonicalHref;
-        }
-      }
-    }
-
-    const xDefaultLink = document.querySelector('link[rel="alternate"][hreflang="x-default"]');
-    if (xDefaultLink) {
-      const href = xDefaultLink.getAttribute("href");
-      if (href) {
-        links["x-default"] = href;
-        if (defaultLocaleObject && !links[defaultLocaleObject.code]) {
-            links[defaultLocaleObject.code] = href;
-        }
-      }
-    }
-
-    setHreflangUrls(links);
-  }, [pathname]); // <-- 这里是修改！当 pathname 变化时，重新执行此 effect
-
   useEffect(() => {
     const pathSegments = pathname.split("/").filter(Boolean);
     const potentialLocaleCodeFromUrl = pathSegments[0];
@@ -115,14 +62,38 @@ export default function LocaleSwitcher() {
     } else {
       setSelectedLocale(defaultLocaleObject);
     }
-  }, [pathname]); // 这个 useEffect 保持不变，它也是依赖 pathname 更新选中语言的
+  }, [pathname, defaultLocaleObject]); // Added defaultLocaleObject as dependency
 
   const handleLocaleChange = (newlySelectedLocaleObject: Locale) => {
-    const newLocaleCode = newlySelectedLocaleObject.hreflang;
-    const targetUrl = hreflangUrls[newLocaleCode];
+    if (typeof document === "undefined") {
+      console.warn("Document object is not available.");
+      return;
+    }
+
+    const currentHreflangUrls: Record<string, string | null> = {};
+    const alternateLinks = document.querySelectorAll(
+      'link[rel="alternate"][hreflang]'
+    );
+
+    alternateLinks.forEach((link) => {
+      let href = link.getAttribute("href");
+      const hreflang = link.getAttribute("hreflang");
+
+      if (href && hreflang) {
+        const url = new URL(href);
+        const pathSegments = url.pathname.split('/').filter(Boolean);
+        if ((hreflang === 'en' || hreflang === 'en-US') && pathSegments[0] !== 'en') {
+            url.pathname = '/en' + url.pathname;
+            href = url.toString();
+        }
+        currentHreflangUrls[hreflang] = href;
+      }
+    });
+
+    const targetHreflang = newlySelectedLocaleObject.hreflang;
+    const targetUrl = currentHreflangUrls[targetHreflang];
 
     if (targetUrl) {
-      // Use the exact URL found in the hreflang links
       startTransition(() => {
         router.push(targetUrl);
       });
