@@ -71,8 +71,8 @@ function generateArticleSchema(lang: string, article: Blog, slug: string) {
       height: 1200,
       caption: article.seo_title,
     },
-    author: getOrganizationSchema(),
-    publisher: getOrganizationSchema(),
+    author: getOrganizationSchema(lang),
+    publisher: getOrganizationSchema(lang),
     datePublished: article.publishedAt, // Should be ISO 8601 format
     dateModified: article.updatedAt || article.publishedAt, // Use updatedAt if available
   };
