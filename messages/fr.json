@@ -50,7 +50,11 @@
       "retractableRatchetStrap": "Sangles d'arrimage à cliquet rétractables",
       "ratchetStrapAndTieDowns": "Sangles d'arrimage à cliquet",
       "powersportsStraps": "Sangles pour sports motorisés",
-      "webbingAndHardware": "Sangles et accessoires"
+      "webbingAndHardware": "Sangles et accessoires",
+      "retractableRatchetStrapHref": "categories/sangle-a-cliquet-retractable",
+      "ratchetStrapAndTieDownsHref": "categories/sangles-et-attaches-a-cliquet",
+      "powersportsStrapsHref": "categories/sangle-powersports",
+      "webbingAndHardwareHref": "categories/sangles-et-materiel"
     }
   },
   "AboutUsPage": {

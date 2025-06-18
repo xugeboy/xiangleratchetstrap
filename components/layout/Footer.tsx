@@ -44,19 +44,19 @@ export default function Footer() {
     products: [
       {
         nameKey: "products.retractableRatchetStrap",
-        href: "categories/retractable-ratchet-strap",
+        href: "products.retractableRatchetStrapHref",
       },
       {
         nameKey: "products.ratchetStrapAndTieDowns",
-        href: "categories/ratchet-straps-and-tie-downs",
+        href: "products.ratchetStrapAndTieDownsHref",
       },
       {
         nameKey: "products.powersportsStraps",
-        href: "categories/powersports-strap",
+        href: "products.powersportsStrapsHref",
       },
       {
         nameKey: "products.webbingAndHardware",
-        href: "categories/webbing-and-hardware",
+        href: "products.webbingAndHardwareHref",
       },
     ],
     contactUs: [
@@ -169,7 +169,7 @@ export default function Footer() {
                 {navigation.products.map((item) => (
                   <li key={item.nameKey}>
                     <a
-                      href={getCombainedLocalePath(locale, item.href)}
+                      href={getCombainedLocalePath(locale, tNav(item.href))}
                       className="text-sm/6 text-white hover:text-amber-700"
                     >
                       {tNav(item.nameKey)}
@@ -273,7 +273,7 @@ export default function Footer() {
                 {navigation.products.map((item) => (
                   <a
                     key={item.nameKey}
-                    href={getCombainedLocalePath(locale, item.href)}
+                    href={getCombainedLocalePath(locale, tNav(item.href))}
                     className="block text-sm/6 text-white hover:text-amber-700 px-2"
                   >
                     {tNav(item.nameKey)}

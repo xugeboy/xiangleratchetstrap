@@ -50,7 +50,11 @@
       "retractableRatchetStrap": "Automatische Ratschen-Spanngurte",
       "ratchetStrapAndTieDowns": "Ratschen-Spanngurte & Zurrgurte",
       "powersportsStraps": "Powersports-Gurte",
-      "webbingAndHardware": "Gurtband & Zubehör"
+      "webbingAndHardware": "Gurtband & Zubehör",
+      "retractableRatchetStrapHref": "categories/automatik-zurrgurt",
+      "ratchetStrapAndTieDownsHref": "categories/ratschen-zurrgurt-and-zurrgurte",
+      "powersportsStrapsHref": "categories/powersports-gurt",
+      "webbingAndHardwareHref": "categories/gurtband-and-hardware"
     }
   },
   "AboutUsPage": {

@@ -48,9 +48,13 @@
     },
     "products": {
       "retractableRatchetStrap": "Retractable Ratchet Strap",
-      "ratchetStrapAndTieDowns": "Ratchet Strap & Tie Downs",
+      "ratchetStrapAndTieDowns": "Ratchet Straps & Tie Downs",
       "powersportsStraps": "Powersports Straps",
-      "webbingAndHardware": "Webbing & Hardware"
+      "webbingAndHardware": "Webbing & Hardware",
+      "retractableRatchetStrapHref": "categories/retractable-ratchet-strap",
+      "ratchetStrapAndTieDownsHref": "categories/ratchet-straps-and-tie-downs",
+      "powersportsStrapsHref": "categories/powersports-strap",
+      "webbingAndHardwareHref": "categories/webbing-and-hardware"
     }
   },
   "AboutUsPage": {

@@ -50,7 +50,11 @@
       "retractableRatchetStrap": "Correas de trinquete retráctiles",
       "ratchetStrapAndTieDowns": "Correas de trinquete y sujeción",
       "powersportsStraps": "Correas para deportes motorizados",
-      "webbingAndHardware": "Cintas y herrajes"
+      "webbingAndHardware": "Cintas y herrajes",
+      "retractableRatchetStrapHref": "categories/correa-de-trinquete-retractil",
+      "ratchetStrapAndTieDownsHref": "categories/correas-y-amarres-de-trinquete",
+      "powersportsStrapsHref": "categories/correa-para-motos-de-powersports",
+      "webbingAndHardwareHref": "categories/cinta-y-hardware"
     }
   },
   "AboutUsPage": {
