@@ -8,7 +8,7 @@
     "build": "next build --no-lint",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "cross-env ANALYZE=true next build"
+    "analyze": "cross-env ANALYZE=true next build --no-lint"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
