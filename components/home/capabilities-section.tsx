@@ -25,7 +25,7 @@ export default async function CapabilitiesSection() {
           <div className="relative w-full h-[500px] sm:h-[600px] lg:h-[700px] rounded-lg overflow-hidden shadow-xl"> {/* Added shadow and responsive height */}
             <Image
               alt={t("imageAlt")} // 4. 翻译 alt 文本
-              src="https://res.cloudinary.com/duimeqqch/image/upload/v1744958133/why-us-apart_jqszvd.jpg"
+              src="/why-us-apart_jqszvd.jpg"
               fill
               className="object-cover"
               sizes="(max-width: 1023px) 100vw, 50vw" // Basic responsive sizes

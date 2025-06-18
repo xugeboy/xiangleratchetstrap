@@ -1,4 +1,4 @@
-import { getCombainedLocalePath } from "@/utils/formatUtils";
+import { getCloudinaryPublicId, getCombainedLocalePath } from "@/utils/formatUtils";
 import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,42 +8,42 @@ const categories = [
     title: "retractableRatchetStrap.title",
     alt: "retractableRatchetStrap.alt",
     image:
-      "https://res.cloudinary.com/duimeqqch/image/upload/v1745311043/retractable_ratchet_strap_9147cf873f.jpg",
+      "/v1745311043/retractable_ratchet_strap_9147cf873f.jpg",
     link: "retractableRatchetStrap.link",
   },
   {
     title: "ratchetStrapsAndTieDowns.title",
     alt: "ratchetStrapsAndTieDowns.alt",
     image:
-      "https://res.cloudinary.com/duimeqqch/image/upload/v1745311043/ratchet_strap_29ce01f81a.jpg",
+      "/v1745311043/ratchet_strap_29ce01f81a.jpg",
     link: "ratchetStrapsAndTieDowns.link",
   },
   {
     title: "kayakAndCanoeStrap.title",
     alt: "kayakAndCanoeStrap.link",
     image:
-      "https://res.cloudinary.com/duimeqqch/image/upload/v1745307786/cam_buckle_strap_srytzu.jpg",
+      "/v1745307786/cam_buckle_strap_srytzu.jpg",
     link: "kayakAndCanoeStrap.link",
   },
   {
     title: "atvAndMotorcycleStrap.title",
     alt: "atvAndMotorcycleStrap.link",
     image:
-      "https://res.cloudinary.com/duimeqqch/image/upload/v1745311045/38_MM_MTD_FB_020_f616857deb.jpg",
+      "/v1745311045/38_MM_MTD_FB_020_f616857deb.jpg",
     link: "atvAndMotorcycleStrap.link",
   },
   {
     title: "spareTireYStrap.title",
     alt: "spareTireYStrap.link",
     image:
-      "https://res.cloudinary.com/duimeqqch/image/upload/v1745306181/YwayStrap_010_n5xjja.jpg",
+      "/v1745306181/YwayStrap_010_n5xjja.jpg",
     link: "spareTireYStrap.link",
   },
   {
     title: "webbingAndHardware.title",
     alt: "webbingAndHardware.link",
     image:
-      "https://res.cloudinary.com/duimeqqch/image/upload/v1745311045/webbing_hardware_fde0a59657.png",
+      "/v1745311045/webbing_hardware_fde0a59657.png",
     link: "webbingAndHardware.link",
   },
 ];

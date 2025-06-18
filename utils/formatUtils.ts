@@ -54,7 +54,7 @@ export function getCloudinaryPublicId(fullUrl: string): string {
   
   // 如果成功分割成两部分，我们就取第二部分
   if (parts.length === 2) {
-    // 这将返回例如 'v1750143204/catalog_u0aq7n.jpg'
+    // 这将返回例如 '/v1750143204/catalog_u0aq7n.jpg'
     return parts[1];
   }
   

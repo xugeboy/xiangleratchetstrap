@@ -7,13 +7,13 @@ import { getCombainedLocalePath } from "@/utils/formatUtils";
 const productKeysAndImages = [
   {
     key: "retractable1Inch",
-    beforeImage: "https://res.cloudinary.com/duimeqqch/image/upload/v1744354626/clean_ruzf8i.jpg", // Swapped to match original logic (beforeImage was afterImage)
-    afterImage: "https://res.cloudinary.com/duimeqqch/image/upload/v1744354646/mess_uonisw.jpg",
+    beforeImage: "/v1744354626/clean_ruzf8i.jpg", // Swapped to match original logic (beforeImage was afterImage)
+    afterImage: "/v1744354646/mess_uonisw.jpg",
   },
   {
     key: "stainlessSteel1Inch",
-    beforeImage: "https://res.cloudinary.com/duimeqqch/image/upload/v1744957763/316ss_ratchet_buckle_yspy0c.jpg", // Swapped
-    afterImage: "https://res.cloudinary.com/duimeqqch/image/upload/v1744957762/rusty_ratchet_buckle_dule2b.jpg",
+    beforeImage: "/v1744957763/316ss_ratchet_buckle_yspy0c.jpg", // Swapped
+    afterImage: "/v1744957762/rusty_ratchet_buckle_dule2b.jpg",
   }
 ];
 

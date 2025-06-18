@@ -46,7 +46,7 @@ export default function ImageGallery({ images,alt }: ImageGalleryProps) {
       {images?.map((image) => (
         <TabPanel key={image.id}>
           <Image alt={alt} 
-          src={image.url}
+          src={getCloudinaryPublicId(image.url)}
           priority={true}
           className="aspect-square w-full object-cover sm:rounded-lg" 
           width={image.width}

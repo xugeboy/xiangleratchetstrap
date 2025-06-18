@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import { getBlogList } from "@/services/api/blog";
-import formatDateToLongEnglish, { getCombainedLocalePath } from "@/utils/formatUtils";
+import formatDateToLongEnglish, { getCloudinaryPublicId, getCombainedLocalePath } from "@/utils/formatUtils";
 import { getLocale } from "next-intl/server";
 
 // --- Component ---
@@ -101,7 +101,7 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
               >
                 <div className="relative h-48 mb-2 overflow-hidden rounded-lg group">
                   <Image
-                    src={blog.cover_image.url}
+                    src={getCloudinaryPublicId(blog.cover_image.url)}
                     alt={blog.title}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"

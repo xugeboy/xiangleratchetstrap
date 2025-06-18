@@ -9,15 +9,15 @@ import { useTranslations } from 'next-intl';
 const heroSlides = [
   {
     id: 1,
-    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg",
+    image: "/v1744183210/manufacturer_jgqytx.jpg",
   },
   {
     id: 2,
-    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744965567/cargo_control_xaiwx5.webp",
+    image: "/v1744965567/cargo_control_xaiwx5.webp",
   },
   {
     id: 3,
-    image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744966920/quality_guaranteed_my88ns.jpg",
+    image: "/v1744966920/quality_guaranteed_my88ns.jpg",
   },
 ]
 

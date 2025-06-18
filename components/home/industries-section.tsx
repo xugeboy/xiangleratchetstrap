@@ -6,13 +6,13 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline"
 import { useTranslations } from "next-intl"
 
 const industries = [
-  { key: "oilAndGas", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251354/gas_oil_gzdhvv.jpg" },
-  { key: "construction", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251245/construction_wbl5fs.jpg" },
-  { key: "transportation", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251356/transportation_u6wtya.jpg" },
-  { key: "agriculture", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251354/agriculture_ztkx7q.jpg" },
-  { key: "marine", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251245/marine_u25sc0.jpg" },
-  { key: "outdoor", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251355/outdoor_xshdnu.jpg" },
-  { key: "powersport", image: "https://res.cloudinary.com/duimeqqch/image/upload/v1744251356/powersport_wjxbcg.jpg" },
+  { key: "oilAndGas", image: "/v1744251354/gas_oil_gzdhvv.jpg" },
+  { key: "construction", image: "/v1744251245/construction_wbl5fs.jpg" },
+  { key: "transportation", image: "/v1744251356/transportation_u6wtya.jpg" },
+  { key: "agriculture", image: "/v1744251354/agriculture_ztkx7q.jpg" },
+  { key: "marine", image: "/v1744251245/marine_u25sc0.jpg" },
+  { key: "outdoor", image: "/v1744251355/outdoor_xshdnu.jpg" },
+  { key: "powersport", image: "/v1744251356/powersport_wjxbcg.jpg" },
 ];
 
 export default function IndustriesSection() {

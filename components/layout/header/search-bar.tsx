@@ -8,7 +8,7 @@ import { Combobox, ComboboxInput, ComboboxOptions, ComboboxOption } from "@headl
 import type { Product } from "@/types/product"
 import { searchProducts } from "@/services/api/product"
 import LocaleSwitcher from "@/components/common/LocaleSwitcher"
-import { getBreadcrumbPathPrefix, getCombainedLocalePath } from "@/utils/formatUtils"
+import { getCloudinaryPublicId, getCombainedLocalePath } from "@/utils/formatUtils"
 import { useLocale, useTranslations } from "next-intl"
 
 // 定义搜索结果项的类型
@@ -144,7 +144,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
                       <div className="flex items-center space-x-4">
                         <div className="flex-shrink-0 w-16 h-16 bg-gray-50 border border-gray-100 rounded-md flex items-center justify-center overflow-hidden">
                           <Image
-                            src={item.imageUrl || "/placeholder.svg"}
+                            src={getCloudinaryPublicId(item.imageUrl)}
                             alt={item.name}
                             width={60}
                             height={60}
@@ -191,7 +191,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
       <div className="md:py-4 md:block hidden">
         <div className="mx-auto container px-6 flex justify-between items-center">
           <Link href="/" className="flex-shrink-0">
-            <Image src="https://res.cloudinary.com/duimeqqch/image/upload/xiangle_ratchet_strap_mxts89.png" 
+            <Image src="/xiangle_ratchet_strap_mxts89.png" 
             alt="xiangle ratchet strap" width={200} height={60} className="h-12 w-auto" />
           </Link>
           <div className="w-full max-w-md ml-auto">{renderSearchCombobox()}</div>
@@ -208,7 +208,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
 
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <Image src="https://res.cloudinary.com/duimeqqch/image/upload/v1750054336/xiangle_ratchet_strap_mxts89_%E6%8B%B7%E8%B4%9D_woihtv.png" alt="xiangle ratchet strap" width={120} height={40} className="h-8 w-auto" />
+            <Image src="/v1750054336/xiangle_ratchet_strap_mxts89_%E6%8B%B7%E8%B4%9D_woihtv.png" alt="xiangle ratchet strap" width={120} height={40} className="h-8 w-auto" />
           </Link>
 
           

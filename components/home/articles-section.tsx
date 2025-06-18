@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import formatDateToLongEnglish, { getCombainedLocalePath } from "@/utils/formatUtils";
+import formatDateToLongEnglish, { getCloudinaryPublicId, getCombainedLocalePath } from "@/utils/formatUtils";
 import { getLatestBlogs } from "@/services/api/blog";
 import { getLocale, getTranslations } from "next-intl/server";
 
@@ -33,7 +33,7 @@ export default async function ArticlesSection() {
                   className="aspect-[4/3] relative mb-4 block hover:opacity-90 transition-opacity"
                 >
                   <Image
-                    src={blog.cover_image.url}
+                    src={getCloudinaryPublicId(blog.cover_image.url)}
                     alt={blog.title}
                     fill
                     className="object-scale-down"

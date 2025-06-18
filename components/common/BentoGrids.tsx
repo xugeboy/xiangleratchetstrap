@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { getCloudinaryPublicId } from "@/utils/formatUtils";
 export default async function BentoGrids() {
   const t = await getTranslations("BentoGrids");
 
@@ -9,7 +10,7 @@ export default async function BentoGrids() {
       colSpan: "md:col-span-3",
       rowSpan: "",
       imageSrc:
-        "https://res.cloudinary.com/duimeqqch/image/upload/v1744959681/factory_production_mgldoj.jpg",
+        "/v1744959681/factory_production_mgldoj.jpg",
       imageWidth: 600,
       imageHeight: 400,
       imageClassName: "object-scale-down w-full h-48 md:h-64 lg:h-auto",
@@ -19,7 +20,7 @@ export default async function BentoGrids() {
       colSpan: "md:col-span-3",
       rowSpan: "",
       imageSrc:
-        "https://res.cloudinary.com/duimeqqch/image/upload/v1744959235/fast_delivery_emjngs.jpg",
+        "/v1744959235/fast_delivery_emjngs.jpg",
       imageWidth: 600,
       imageHeight: 400,
       imageClassName: "object-scale-down w-full h-48 md:h-64 lg:h-auto",
@@ -29,7 +30,7 @@ export default async function BentoGrids() {
       colSpan: "md:col-span-2",
       rowSpan: "md:row-span-1",
       imageSrc:
-        "https://res.cloudinary.com/duimeqqch/image/upload/v1745298278/Custom_Branding_Options_pcebaz.png",
+        "/v1745298278/Custom_Branding_Options_pcebaz.png",
       imageWidth: 300,
       imageHeight: 200,
       imageClassName: "object-scale-down h-64 md:h-40 lg:h-auto",
@@ -39,7 +40,7 @@ export default async function BentoGrids() {
       colSpan: "md:col-span-2",
       rowSpan: "md:row-span-1",
       imageSrc:
-        "https://res.cloudinary.com/duimeqqch/image/upload/v1745304647/Industry-Leading_Team_eilpxj.jpg",
+        "/v1745304647/Industry-Leading_Team_eilpxj.jpg",
       imageWidth: 300,
       imageHeight: 200,
       imageClassName: "object-scale-down h-64 md:h-40 lg:h-auto",
@@ -49,7 +50,7 @@ export default async function BentoGrids() {
       colSpan: "md:col-span-2",
       rowSpan: "md:row-span-1",
       imageSrc:
-        "https://res.cloudinary.com/duimeqqch/image/upload/v1745304055/large-storage-center_zcahvz.jpg",
+        "/v1745304055/large-storage-center_zcahvz.jpg",
       imageWidth: 300,
       imageHeight: 200,
       imageClassName: "object-scale-down h-64 md:h-40 lg:h-auto",

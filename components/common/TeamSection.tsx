@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server"; // 1. 导入
+import { getCloudinaryPublicId } from "@/utils/formatUtils";
 
 
 
@@ -9,7 +10,7 @@ const peopleData = [
   {
     id: 'steven_chen', // 使用一个唯一的标识符
     name: 'Steven Chen', // 名字通常保持不变
-    imageUrl: 'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/steven_rmkwmp.png',
+    imageUrl: '/v1744176226/steven_rmkwmp.png',
     roleKey: 'people.steven.role',
     yearKey: 'people.steven.year',
     bioKey: 'people.steven.bio',
@@ -17,7 +18,7 @@ const peopleData = [
   {
     id: 'sophia_liu',
     name: 'Sophia Liu',
-    imageUrl: 'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/sophia_mab7jt.png',
+    imageUrl: '/v1744176226/sophia_mab7jt.png',
     roleKey: 'people.sophia.role',
     yearKey: 'people.sophia.year',
     bioKey: 'people.sophia.bio',
@@ -25,7 +26,7 @@ const peopleData = [
   {
     id: 'dustin_xu',
     name: 'Dustin Xu',
-    imageUrl: 'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/dustin_io6avf.png',
+    imageUrl: '/v1744176226/dustin_io6avf.png',
     roleKey: 'people.dustin.role',
     yearKey: 'people.dustin.year',
     bioKey: 'people.dustin.bio',
@@ -33,7 +34,7 @@ const peopleData = [
   {
     id: 'warren_wu',
     name: 'Warren Wu',
-    imageUrl: 'https://res.cloudinary.com/duimeqqch/image/upload/v1744176225/warren_a8mhba.png',
+    imageUrl: '/v1744176225/warren_a8mhba.png',
     roleKey: 'people.warren.role',
     yearKey: 'people.warren.year',
     bioKey: 'people.warren.bio',
@@ -41,7 +42,7 @@ const peopleData = [
   {
     id: 'alex_zuo',
     name: 'Alex Zuo',
-    imageUrl: 'https://res.cloudinary.com/duimeqqch/image/upload/v1744176226/alex_bsu0jc.png',
+    imageUrl: '/v1744176226/alex_bsu0jc.png',
     roleKey: 'people.alex.role',
     yearKey: 'people.alex.year',
     bioKey: 'people.alex.bio',
@@ -49,7 +50,7 @@ const peopleData = [
   {
     id: 'chloe_he',
     name: 'Chloe He',
-    imageUrl: 'https://res.cloudinary.com/duimeqqch/image/upload/v1744176355/chloe_tv3t9c.png',
+    imageUrl: '/v1744176355/chloe_tv3t9c.png',
     roleKey: 'people.chloe.role',
     yearKey: 'people.chloe.year',
     bioKey: 'people.chloe.bio',

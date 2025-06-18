@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Blog } from '@/types/blog';
 import { getTranslations } from 'next-intl/server';
-import { getCombainedLocalePath } from '@/utils/formatUtils';
+import { getCloudinaryPublicId, getCombainedLocalePath } from '@/utils/formatUtils';
 
 interface RelatedArticlesProps {
   blogs?: Blog[];
@@ -25,7 +25,7 @@ export default async function RelatedArticles({ blogs = [], lang }: RelatedArtic
             <div className="relative w-20 h-20 flex-shrink-0">
               {blog.cover_image && (
                 <Image
-                  src={blog.cover_image.url}
+                  src={getCloudinaryPublicId(blog.cover_image.url)}
                   alt={blog.title}
                   fill
                   className="object-cover rounded-lg"

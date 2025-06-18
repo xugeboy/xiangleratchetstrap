@@ -30,7 +30,7 @@ export function MobileMenu({ isOpen, onClose, company }: MobileMenuProps) {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Company Logo</span>
-              <Image className="h-8 w-auto" src="https://res.cloudinary.com/duimeqqch/image/upload/xiangle_ratchet_strap_mxts89.png" alt="Company Logo" width={100} height={32} />
+              <Image className="h-8 w-auto" src="/xiangle_ratchet_strap_mxts89.png" alt="Company Logo" width={100} height={32} />
             </Link>
             <button type="button" className="-m-2.5 rounded-md p-2.5 text-black" onClick={onClose}>
               <span className="sr-only">Close menu</span>

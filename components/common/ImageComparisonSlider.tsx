@@ -9,6 +9,7 @@ import {
 } from "react";
 import Image from "next/image";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { getCloudinaryPublicId } from "@/utils/formatUtils";
 
 interface ImageComparisonSliderProps {
   beforeImage: string

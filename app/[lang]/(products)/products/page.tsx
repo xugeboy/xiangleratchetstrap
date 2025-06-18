@@ -6,7 +6,7 @@ import Breadcrumb from '@/components/common/Breadcrumb';
 
 import { useCategories } from "@/contexts/CategoryContext";
 import { useLocale, useTranslations } from 'next-intl';
-import { getCombainedLocalePath } from '@/utils/formatUtils'; 
+import { getCloudinaryPublicId, getCombainedLocalePath } from '@/utils/formatUtils'; 
 
 export default function ProductsPage() {
   const lang = useLocale(); 
@@ -38,7 +38,7 @@ export default function ProductsPage() {
             <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
               {category.featured_image && (
                 <Image
-                  src={category.featured_image.url}
+                  src={getCloudinaryPublicId(category.featured_image.url)}
                   alt={category.name} 
                   fill
                   sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw" // Adjusted sizes

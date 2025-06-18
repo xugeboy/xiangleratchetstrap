@@ -1,5 +1,5 @@
 import { Product } from '@/types/product'
-import { getCombainedLocalePath } from '@/utils/formatUtils';
+import { getCloudinaryPublicId, getCombainedLocalePath } from '@/utils/formatUtils';
 import Image from 'next/image'
 import Link from 'next/link';
 interface RelatedProductsProps {
@@ -20,7 +20,7 @@ interface RelatedProductsProps {
                 <div className="relative">
                   <div className="relative w-full overflow-hidden rounded-lg">
                     <Image alt={product.name} 
-                    src={product.featured_image?.url} 
+                    src={getCloudinaryPublicId(product.featured_image?.url)} 
                     className="size-full object-fill" 
                     width={500}
                     height={500}

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import type { Product } from "@/types/product";
 import { filterProducts } from "@/services/api/product";
-import { getBreadcrumbPathPrefix } from "@/utils/formatUtils";
+import { getBreadcrumbPathPrefix, getCloudinaryPublicId } from "@/utils/formatUtils";
 import { useTranslations } from "next-intl";
 
 interface ProductGridProps {
@@ -97,7 +97,7 @@ export function ProductGrid({
                     <div className="relative aspect-square overflow-hidden bg-gray-100 mb-4">
                       {product.featured_image && (
                         <Image
-                          src={product.featured_image.url}
+                          src={getCloudinaryPublicId(product.featured_image.url)}
                           alt={product.name}
                           fill
                           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
@@ -121,7 +121,7 @@ export function ProductGrid({
                     <div className="w-40 h-40 flex-shrink-0 bg-gray-100">
                       {product.featured_image && (
                         <Image
-                          src={product.featured_image.url}
+                          src={getCloudinaryPublicId(product.featured_image.url)}
                           alt={product.name}
                           width={160}
                           height={160}
@@ -156,7 +156,7 @@ export function ProductGrid({
                     <div className="w-16 h-16 flex-shrink-0 bg-gray-100">
                       {product.featured_image && (
                         <Image
-                          src={product.featured_image.url}
+                          src={getCloudinaryPublicId(product.featured_image.url)}
                           alt={product.name}
                           width={64}
                           height={64}

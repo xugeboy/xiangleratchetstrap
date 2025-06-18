@@ -12,7 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import BlocksClient from "@/components/common/BlocksClient";
-import formatDateToLongEnglish from "@/utils/formatUtils";
+import formatDateToLongEnglish, { getCloudinaryPublicId } from "@/utils/formatUtils";
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
 
 export const dynamic = 'force-dynamic';
@@ -194,7 +194,7 @@ export default async function BlogPage({ params,searchParams }: BlogPageProps) {
       <div className="relative w-full h-[400px] mb-8">
         <div className="absolute inset-0">
           <Image
-            src={blog.cover_image.url}
+            src={getCloudinaryPublicId(blog.cover_image.url)}
             alt={blog.title}
             fill
             className="object-scale-down"

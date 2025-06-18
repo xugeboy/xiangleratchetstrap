@@ -43,7 +43,7 @@ export default async function BusinessSolutions() {
       <div className="relative h-[400px] w-full overflow-hidden mb-10">
         {/* Background Image */}
         <Image
-          src="/image/banner.png"
+          src="/v1750216891/banner_jhkn0h.png"
           alt="Business Solutions"
           fill
           className="object-cover"
@@ -76,7 +76,7 @@ export default async function BusinessSolutions() {
           {/* Left side - Image and EO Logo */}
           <div className="relative">
             <Image
-              src="/image/team.png"
+              src="/v1750216943/team_qrsob1.jpg"
               alt="Our Team"
               width={800}
               height={600}

@@ -69,7 +69,7 @@ export default function PDFViewerPage() {
           <div className="w-full md:w-1/2 mt-8 md:mt-0">
             <div className="bg-gray-100 rounded-lg shadow-md p-4">
               <Image
-                src="https://res.cloudinary.com/duimeqqch/image/upload/v1750143204/catalog_u0aq7n.jpg"
+                src="/v1750143204/catalog_u0aq7n.jpg"
                 alt={t("imageAlt")}
                 width={800}
                 height={600}

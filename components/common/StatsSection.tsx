@@ -17,7 +17,7 @@ export default function Example() {
       {/* Background image */}
       <Image
         alt="Manufacturing machinery"
-        src="https://res.cloudinary.com/duimeqqch/image/upload/v1744183210/manufacturer_jgqytx.jpg"
+        src="/v1744183210/manufacturer_jgqytx.jpg"
         className="absolute inset-0 -z-10 size-full object-cover brightness-75"
         width={1000}
         height={1080}

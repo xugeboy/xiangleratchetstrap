@@ -1,4 +1,5 @@
 import { Gallery } from "@/types/gallery";
+import { getCloudinaryPublicId } from "@/utils/formatUtils";
 import Image from "next/image";
 
 export interface ContentItem {
@@ -34,7 +35,7 @@ export default function AlternatingContent({
               }`}
             >
               <Image
-                src={item.Image.url}
+                src={getCloudinaryPublicId(item.Image.url)}
                 alt={item.title}
                 fill
                 sizes="(min-width: 992px) calc((100vw - (100vw - 1800px)/2) * 0.5),(max-width: 991px) calc(90vw),  100vw"

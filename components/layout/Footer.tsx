@@ -142,7 +142,7 @@ export default function Footer() {
           <div className="flex flex-col gap-2">
             <Link href={`${pathPrefix}/`} className="flex-shrink-0">
               <Image
-                src="https://res.cloudinary.com/duimeqqch/image/upload/v1744006735/xiangle_ratchet_strap_w_m7aeic.png"
+                src="/v1744006735/xiangle_ratchet_strap_w_m7aeic.png"
                 alt="xiangle ratchet strap"
                 width={200}
                 height={60}

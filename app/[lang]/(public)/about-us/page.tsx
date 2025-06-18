@@ -132,7 +132,7 @@ export default function AboutUsPage() {
           <div className="w-full lg:max-w-xl lg:flex-auto">
             <Image
               alt={t("imageAlts.customProductCapabilities")}
-              src="https://res.cloudinary.com/duimeqqch/image/upload/v1744955344/custom_options_raqkxy.jpg"
+              src="/v1744955344/custom_options_raqkxy.jpg"
               width={600}
               height={600}
               className="object-scale-down"
@@ -157,7 +157,7 @@ export default function AboutUsPage() {
               <div className="w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
                 <Image
                   alt={t("imageAlts.scaleCapacity")} // Example: Provide meaningful alt text keys
-                  src="https://res.cloudinary.com/duimeqqch/image/upload/v1745291515/SCALE_CAPACITY_kjmie6.jpg"
+                  src="/v1745291515/SCALE_CAPACITY_kjmie6.jpg"
                   className="aspect-7/5 w-[37rem] max-w-none rounded-2xl bg-gray-50 object-scale-down"
                   width={592}
                   height={600}
@@ -167,7 +167,7 @@ export default function AboutUsPage() {
                 <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
                   <Image
                     alt={t("imageAlts.precisionSkill")}
-                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1745291515/PRECISION_SKILL_u0bfdk.jpg"
+                    src="/v1745291515/PRECISION_SKILL_u0bfdk.jpg"
                     className="aspect-7/5 w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-scale-down"
                     width={592}
                     height={600}
@@ -176,7 +176,7 @@ export default function AboutUsPage() {
                 <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">
                   <Image
                     alt={t("imageAlts.gsCertificated")}
-                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744962148/GS_CERTIFICATED_h2ri7d.jpg"
+                    src="/v1744962148/GS_CERTIFICATED_h2ri7d.jpg"
                     className="aspect-4/3 w-[24rem] max-w-none rounded-2xl bg-gray-50"
                     width={300}
                     height={600}
@@ -185,7 +185,7 @@ export default function AboutUsPage() {
                 <div className="order-first flex w-64 flex-none justify-end self-end lg:w-auto">
                   <Image
                     alt={t("imageAlts.testedQuality")}
-                    src="https://res.cloudinary.com/duimeqqch/image/upload/v1744955344/tested_quality_uoophk.jpg"
+                    src="/v1744955344/tested_quality_uoophk.jpg"
                     className="aspect-4/3 w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50"
                     width={600}
                     height={300}
@@ -214,7 +214,7 @@ export default function AboutUsPage() {
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
               <Image
                 alt={t("imageAlts.globalReachMap")}
-                src="https://res.cloudinary.com/duimeqqch/image/upload/v1744961092/global_reach_h6hh9h.png"
+                src="/v1744961092/global_reach_h6hh9h.png"
                 className="w-full max-w-md rounded-2xl bg-gray-50 object-contain"
                 width={718}
                 height={387}
