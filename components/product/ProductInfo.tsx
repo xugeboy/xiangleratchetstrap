@@ -18,13 +18,13 @@ export default function ProductInfo({ lang,product }: ProductInfoProps) {
     {
       id: "tailoredPrograms",
       titleKey: "services.tailoredPrograms.title",
-      link: getCombainedLocalePath(lang, "/business-solutions"),
+      link: getCombainedLocalePath(lang, "business-solutions"),
       linkTextKey: "services.tailoredPrograms.linkText",
     },
     {
       id: "questionsCustom",
       titleKey: "services.questionsCustom.title",
-      link: getCombainedLocalePath(lang, "/contact-us"),
+      link: getCombainedLocalePath(lang, "contact-us"),
       linkTextKey: "services.questionsCustom.linkText",
     },
   ];
