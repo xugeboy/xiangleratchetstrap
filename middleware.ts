@@ -37,6 +37,7 @@ const intlMiddleware = createMiddleware({
   locales: ['en', 'uk', 'au', 'de', 'fr', 'es'],
   defaultLocale: 'en',
   localePrefix: 'as-needed',
+  alternateLinks: false
 });
 
 export const config = {

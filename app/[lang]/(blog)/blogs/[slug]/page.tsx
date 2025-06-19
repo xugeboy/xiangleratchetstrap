@@ -4,9 +4,8 @@ import {
   getBlogDetail,
   getAllBlogSlug,
   getBlogMetaDataBySlug,
-  getCorrectBlogSlugForLocale,
 } from "@/services/api/blog";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { generateBlogBreadcrumbs } from "@/utils/breadcrumbs";
 import Image from "next/image";
 import Link from "next/link";
@@ -142,27 +141,9 @@ export async function generateMetadata(
 }
 
 // ✅ SSR Blog Page
-export default async function BlogPage({ params,searchParams }: BlogPageProps) {
+export default async function BlogPage({ params }: BlogPageProps) {
   const slug = params.slug;
   const currentLocale = params.lang;
-  const previousLocale = searchParams?.pl;
-  if(previousLocale){
-    const correctSlug = await getCorrectBlogSlugForLocale(slug, currentLocale, previousLocale);
-    if (!correctSlug) {
-      notFound();
-    }
-    if (slug !== correctSlug) {
-      let redirectPath;
-      const entityTypePath = "blogs";
-  
-      if (params.lang === defaultUrlPrefix) {
-        redirectPath = `/${entityTypePath}/${correctSlug}`;
-      } else {
-        redirectPath = `/${currentLocale}/${entityTypePath}/${correctSlug}`;
-      }
-      redirect(redirectPath);
-    }
-  }
 
   const blog = await getBlogDetail(slug,currentLocale);
   const breadcrumbItems = generateBlogBreadcrumbs(blog,currentLocale);

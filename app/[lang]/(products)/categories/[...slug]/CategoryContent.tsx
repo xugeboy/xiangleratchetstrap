@@ -1,43 +1,34 @@
 "use client";
 
-// Import necessary React hooks and Next.js functions
 import React, { useEffect, useState, useMemo } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
-// Import context hook and Category type
 import { useCategories } from "@/contexts/CategoryContext";
 
-// Import API service functions (assuming these remain necessary for products/filters)
 import { getProductFilters } from "@/services/api/product";
-// Keep breadcrumb generation if it relies on category hierarchy potentially beyond the basic slug match
 import { generateCategoryBreadcrumbs } from "@/utils/breadcrumbs";
 
-// Import components and hooks
 import Breadcrumb from "@/components/common/Breadcrumb";
 import { useMediaQuery } from "@/hooks/useMobile";
 import { CategorySidebar } from "@/components/product/categories/CategorySidebar";
 import { ViewControls } from "@/components/product/categories/ViewControls";
 import { ProductGrid } from "@/components/product/categories/ProductGrid";
 
-// Import types (adjust ProductCategory if it differs significantly from ContextCategory)
-import type { ProductCategory } from "@/types/productCategory"; // Keep if needed for specific fields not in ContextCategory
+import type { ProductCategory } from "@/types/productCategory";
 import type { BreadcrumbItem } from "@/types/breadcrumbItem";
 import { FilterOption, ProductFilter } from "@/types/productFilter";
 import BlocksClient from "@/components/common/BlocksClient";
 
 import { generateSchema, embedSchema } from "@/utils/schema";
 
-// Component Props
 interface CategoryContentProps {
-  slug: string[]; // Receive slug parts as props
+  slug: string[];
   lang: string;
 }
 
 export default function CategoryContent({ slug,lang }: CategoryContentProps) {
-  // 1. Get all categories from Context
   const { categories: allCategories } = useCategories();
 
-  // 2. Determine the current category from context data based on slug prop
   const targetSlug = useMemo(() => slug[slug.length - 1], [slug]);
 
   const currentCategory = useMemo(() => {
@@ -50,7 +41,6 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
     return found as ProductCategory | undefined;
   }, [allCategories, targetSlug]);
 
-  // 3. State Management (excluding category and categories)
   const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({});
   const [breadcrumbItems, setbreadcrumbItems] = useState<BreadcrumbItem[]>([]);
   const [viewMode, setViewMode] = useState<"grid" | "list" | "compact">("grid");
@@ -61,9 +51,7 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
 
   const isMobile = useMediaQuery("(max-width: 768px)");
 
-  // 4. Redirect logic if category not found after context loads
   useEffect(() => {
-    // Only redirect if context has loaded categories AND category wasn't found for the given slug
     if (allCategories.length > 0 && !currentCategory) {
       console.log(
         `Category for slug "${targetSlug}" not found in context. Redirecting...`
@@ -72,7 +60,6 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
     }
   }, [allCategories, currentCategory, targetSlug]);
 
-  // 5. useEffect for fetching data related to the *current* category (products, filters, breadcrumbItems)
   useEffect(() => {
     const fetchData = async () => {
       if (!currentCategory) return;
@@ -82,14 +69,12 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
       setProductFilters([]);
   
       try {
-        // 将 filters 作为参数传入
         const [filtersData, breadcrumbItems] = await Promise.all([
           getProductFilters(currentCategory.slug,lang),
           generateCategoryBreadcrumbs(currentCategory,lang),
         ]);
         setbreadcrumbItems(breadcrumbItems);
   
-        // 构造过滤器选项
         const formattedFilters: ProductFilter[] = [];
         Object.entries(filtersData).forEach(([key, values]) => {
           const options: FilterOption[] = Object.entries(values).map(
@@ -120,7 +105,6 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
     fetchData();
   }, [currentCategory, selectedFilters]); // 依赖 filters
 
-  // 7. Event Handlers (handleFilterChange, clearAllFilters - remain the same)
   const handleFilterChange = (filterId: string, value: string) => {
     setSelectedFilters((prev) => {
       const currentFilters = prev[filterId] || [];
@@ -138,9 +122,7 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
   const clearAllFilters = () => {
     setSelectedFilters({});
   };
-  // --- Render Logic ---
 
-  // Handle error state
   if (error) {
     return (
       <div className="container mx-auto p-4 text-center text-red-600">
@@ -149,9 +131,7 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
     );
   }
 
-  // Handle case where category is determined to be invalid (should have been redirected, but as fallback)
   if (!currentCategory) {
-    // This should ideally not be reached due to the redirect effect
     return null;
   }
 

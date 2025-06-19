@@ -1,11 +1,10 @@
 import { Metadata, ResolvingMetadata } from "next";
 import {
   getProductBySlug,
-  getAllProductSlug,
-  getCorrectProductSlugForLocale,
+  getAllProductSlug
 } from "@/services/api/product";
 import { generateProductBreadcrumbs } from "@/utils/breadcrumbs";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import StatsSection from "@/components/common/StatsSection";
 import QuoteForm from "@/components/forms/QuoteForm";
@@ -130,33 +129,10 @@ export async function generateMetadata(
 }
 
 export default async function ProductPage({
-  params,
-  searchParams,
+  params
 }: ProductPageProps) {
   const slug = params.slug;
   const currentLocale = params.lang;
-  const previousLocale = searchParams?.pl;
-  if (previousLocale) {
-    const correctSlug = await getCorrectProductSlugForLocale(
-      slug,
-      currentLocale,
-      previousLocale
-    );
-    if (!correctSlug) {
-      notFound();
-    }
-    if (slug !== correctSlug) {
-      let redirectPath;
-      const entityTypePath = "products";
-
-      if (params.lang === defaultUrlPrefix) {
-        redirectPath = `/${entityTypePath}/${correctSlug}`;
-      } else {
-        redirectPath = `/${currentLocale}/${entityTypePath}/${correctSlug}`;
-      }
-      redirect(redirectPath);
-    }
-  }
 
   const product = await getProductBySlug(slug, currentLocale);
   const breadcrumbItems = generateProductBreadcrumbs(product, currentLocale);

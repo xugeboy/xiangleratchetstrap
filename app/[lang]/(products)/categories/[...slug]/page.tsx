@@ -3,8 +3,8 @@ import { fetchAPI } from '@/utils/fetch-api'
 import CategoryContent from './CategoryContent'
 import { ProductCategory } from '@/types/productCategory'
 import { defaultUrlPrefix, localePrefixMap } from '@/middleware'
-import { getCategoryMetaDataBySlug, getCorrectCategorySlugForLocale } from '@/services/api/productCategory'
-import { notFound, redirect } from 'next/navigation'
+import { getCategoryMetaDataBySlug } from '@/services/api/productCategory'
+import { notFound } from 'next/navigation'
 
 export const dynamic = 'force-dynamic';
 
@@ -131,27 +131,14 @@ function getAllSlugPaths(categories: ProductCategory[], parentSlugs: string[] = 
     return paths;
   }
 
-export default async function CategoryPage({ params,searchParams }: CategoryPageProps) {
+export default async function CategoryPage({ params }: CategoryPageProps) {
   const slug = params.slug;
   const lang = params.lang;
-  const previousLocale = searchParams?.pl;
-  const targetSlug = slug[slug.length - 1];
-  if(previousLocale){
-    const correctSlug = await getCorrectCategorySlugForLocale(targetSlug, lang, previousLocale);
-    if (!correctSlug) {
-      notFound();
-    }
-    if (targetSlug !== correctSlug) {
-      let redirectPath;
-      const entityTypePath = "categories";
-  
-      if (params.lang === defaultUrlPrefix) {
-        redirectPath = `/${entityTypePath}/${correctSlug}`;
-      } else {
-        redirectPath = `/${lang}/${entityTypePath}/${correctSlug}`;
-      }
-      redirect(redirectPath);
-    }
+  const lastSlug = params.slug[params.slug.length - 1];
+  const categoryData = await getCategoryMetaDataBySlug(lastSlug,lang);
+
+  if (!categoryData) {
+    notFound()
   }
   return <CategoryContent slug={slug} lang={lang}/>
 }
