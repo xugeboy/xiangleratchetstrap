@@ -6,7 +6,7 @@ export default async function ContactSection() {
   const t = await getTranslations({locale, namespace: "ContactSection"})
   return (
       <div className="mx-auto grid max-w-7xl gap-12 grid-cols-1 lg:grid-cols-2">
-        <div className="relative px-6 pt-24 pb-20 sm:pt-32 lg:static lg:px-8 lg:py-48">
+        <div className="relative px-6 sm:pt-32 lg:static lg:px-8 lg:py-48">
           <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
             <h2 className="text-4xl font-semibold tracking-tight text-pretty text-black sm:text-5xl">
             {t('title')}
@@ -51,7 +51,9 @@ export default async function ContactSection() {
             </dl>
           </div>
         </div>
-        <QuoteForm></QuoteForm>
+        <div className='relative px-6 sm:pt-32 lg:static lg:px-8 lg:py-48'>
+          <QuoteForm></QuoteForm>
+        </div>
       </div>
   )
 }

@@ -230,7 +230,7 @@ export default function Footer() {
                     className="flex items-center gap-4 text-white hover:text-amber-700"
                   >
                     <item.icon
-                      className="h-6 w-6 text-gray-600"
+                      className="h-6 w-6"
                       aria-hidden="true"
                     />
                     <span className="whitespace-normal break-words w-full">
