@@ -14,6 +14,7 @@ import {
 } from "@/utils/formatUtils";
 import { useLocale, useTranslations } from "next-intl";
 import { useIsMobile } from '@/hooks/useMobile';
+import { FaWhatsapp } from "react-icons/fa6";
 
 export default function Footer() {
   const isMobile = useIsMobile();
@@ -72,6 +73,12 @@ export default function Footer() {
         value: "+8619952792557",
         icon: PhoneIcon,
         href: "tel:+8619952792557",
+      },
+      {
+        name: "WhatsApp",
+        value: "+8619952792557",
+        icon: FaWhatsapp,
+        href: "https://wa.me/8619952792557",
       },
       {
         name: "Mail",

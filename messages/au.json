@@ -418,7 +418,7 @@
     "title": "FEATURED <span>PRODUCTS</span>",
     "viewAllButton": "View All Products",
     "learnMoreLink": "See Details",
-    "proucts": {
+    "products": {
       "retractable1Inch": {
         "title": "25mm x 3m Retractable Ratchet Strap, S-Hook, Black - 680kg MBS",
         "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
@@ -427,7 +427,7 @@
         "slug": "25mm-x-3m-retractable-ratchet-strap-s-hook-black-680kg-mbs"
       },
       "stainlessSteel1Inch": {
-        "title": "1\" 316 Grade Stainless Steel Ratchet Strap with Double J Hook",
+        "title": "25mm 316 Grade Stainless Steel Ratchet Strap with Double J Hook",
         "description": "Designed for marine and heavy-duty outdoor use, this corrosion-resistant tie-down strap offers long-lasting performance in harsh environments. Ideal for boats, trailers, and industrial applications.",
         "beforeAlt": "Shiny new 316 stainless steel ratchet strap",
         "afterAlt": "Old rusty non-stainless ratchet buckle",

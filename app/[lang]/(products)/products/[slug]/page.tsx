@@ -186,11 +186,11 @@ export default async function ProductPage({
           ></AlternatingContent>
         )}
 
+        <StatsSection />
+        <QuoteForm />
         {product.related_products.length > 0 && (
           <Cav products={product.related_products} lang={currentLocale} />
         )}
-        <StatsSection />
-        <QuoteForm />
       </div>
     </div>
   );

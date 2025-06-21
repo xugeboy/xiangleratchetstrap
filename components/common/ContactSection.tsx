@@ -1,4 +1,6 @@
 import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import { FaWhatsapp, FaWeixin} from "react-icons/fa6";
+import Image from 'next/image';
 import QuoteForm from '../forms/QuoteForm'
 import { getLocale, getTranslations } from 'next-intl/server';
 export default async function ContactSection() {
@@ -6,8 +8,8 @@ export default async function ContactSection() {
   const t = await getTranslations({locale, namespace: "ContactSection"})
   return (
       <div className="mx-auto grid container gap-12 grid-cols-1 lg:grid-cols-2">
-        <div className="relative px-6 sm:pt-32 lg:static lg:px-8 lg:py-48">
-          <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+        <div className="relative px-6">
+          <div className="mx-auto lg:mx-0">
             <h2 className="text-4xl font-semibold tracking-tight text-pretty text-black sm:text-5xl">
             {t('title')}
             </h2>
@@ -48,10 +50,34 @@ export default async function ContactSection() {
                   </a>
                 </dd>
               </div>
+              <div className="flex gap-x-4">
+                <dt className="flex-none">
+                  <span className="sr-only">WhatsApp QR Code</span>
+                  <FaWhatsapp className="h-7 w-6 text-black" />
+                </dt>
+                <dd>
+                <a href="https://wa.me/8619952792557" target="_blank" rel="noopener noreferrer">
+                <Image src="/v1745291515/PRECISION_SKILL_u0bfdk.jpg" alt="WhatsApp QR Code"
+                    width={300}
+                    height={300} />
+                </a>
+                </dd>
+              </div>
+              <div className="flex gap-x-4">
+                <dt className="flex-none">
+                  <span className="sr-only">WeChat QR Code</span>
+                  <FaWeixin className="h-7 w-6 text-black"/>
+                </dt>
+                <dd>
+                <Image src="/v1745291515/PRECISION_SKILL_u0bfdk.jpg" alt="WeChat QR Code" 
+                    width={300}
+                    height={300} />
+                </dd>
+              </div>
             </dl>
           </div>
         </div>
-        <div className='relative px-6 sm:pt-32 lg:static lg:px-8 lg:py-48'>
+        <div className='relative px-6'>
           <QuoteForm></QuoteForm>
         </div>
       </div>
