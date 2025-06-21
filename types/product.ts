@@ -38,4 +38,5 @@ export interface Product {
     allLanguageSlugs: string[];
     elongation_at_lc: string;
     compliance: string;
+    strap_colors: JSON
 }

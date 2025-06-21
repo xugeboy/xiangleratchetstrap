@@ -6,6 +6,7 @@ import Specifications from "./Specifications";
 import Description from "./Description";
 import { getCombainedLocalePath } from "@/utils/formatUtils";
 import { useTranslations } from "next-intl";
+import StrapColorOptions from "./StrapColorOptions";
 
 interface ProductInfoProps {
   product: Product;
@@ -66,6 +67,8 @@ export default function ProductInfo({ lang,product }: ProductInfoProps) {
           </Link>
         </div>
       </div>
+
+      <StrapColorOptions options={product.strap_colors} />
 
       <Specifications product={product} />
 
