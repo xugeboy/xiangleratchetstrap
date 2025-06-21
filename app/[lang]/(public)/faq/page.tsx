@@ -1,19 +1,70 @@
-import { Metadata } from 'next';
+import { Metadata, ResolvingMetadata } from 'next';
 import FaqList from './FaqList';
 import { getFaqs } from '@/services/api/faq';
 import Link from 'next/link';
 import { getLocale, getTranslations} from 'next-intl/server'; 
 import { generateGeneralBreadcrumbs } from '@/utils/breadcrumbs';
 import { generateSchema, embedSchema } from '@/utils/schema';
+import { defaultUrlPrefix, localePrefixMap } from '@/middleware';
 
-export async function generateMetadata(): Promise<Metadata> {
-  
-  const locale = await getLocale();
-  const t = await getTranslations({locale, namespace: "FaqPage.metadata"});
+export async function generateMetadata(
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const currentLocale = await getLocale();
+
+  const pageTitle = "faq";
+  const pageSlug = "faq";
+  const ogImageUrl = process.env.NEXT_PUBLIC_LOGO_URL;
+  const ogImageAlt = pageTitle;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
+  let canonicalUrlPath;
+  if (currentLocale === defaultUrlPrefix || currentLocale === undefined) {
+    canonicalUrlPath = `/${pageSlug}`;
+  } else {
+    canonicalUrlPath = `/${currentLocale}/${pageSlug}`;
+  }
+  const canonicalUrl = `${siteUrl}${canonicalUrlPath}`;
+
+  const languagesAlternate: Record<string, string> = {};
+
+  for (const ietfTag in localePrefixMap) {
+    const targetUrlPrefix = localePrefixMap[ietfTag];
+      let pathForLang = "";
+      if (targetUrlPrefix === defaultUrlPrefix) {
+        pathForLang = `${siteUrl}/${pageSlug}`;
+      } else {
+        pathForLang = `${siteUrl}/${targetUrlPrefix}/${pageSlug}`;
+      }
+      languagesAlternate[ietfTag] = pathForLang;
+  }
+  languagesAlternate["x-default"] = `${siteUrl}/${pageSlug}`;
+
 
   return {
-    title: t('title'),
-    description: t('description'),
+    title: pageTitle,
+    alternates: {
+      canonical: canonicalUrl,
+      languages:
+        Object.keys(languagesAlternate).length > 0
+          ? languagesAlternate
+          : undefined,
+    },
+    openGraph: {
+      title: pageTitle,
+      url: canonicalUrl,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: ogImageAlt,
+        },
+      ],
+    },
+    twitter: {
+      title: pageTitle,
+    }
   };
 }
 

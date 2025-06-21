@@ -31,7 +31,7 @@ interface LocaleLayoutProps {
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 const siteName = process.env.NEXT_PUBLIC_ORGANIZATION_NAME;
 const defaultDescription =
-  "Ratchet, E-Track, and Cargo Tie Down Straps - Xiangle Ratchet Strap";
+  "Leading manufacturer for custom ratchet straps, cam buckle straps and powersport tie down straps. Quality guaranteed from our production facility - Xiangle Ratchet Strap";
 const siteLogo = process.env.NEXT_PUBLIC_LOGO_URL;
 
 const currentPath =
@@ -56,8 +56,7 @@ Object.keys(localePrefixMap).forEach((localeKey) => {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default:
-      "Ratchet, E-Track, and Cargo Tie Down Straps - Xiangle Ratchet Strap",
+    default: defaultDescription,
     template: `%s`,
   },
   description: defaultDescription,
@@ -113,12 +112,12 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    // 可以在这里设置首页的 canonical URL
-    canonical: siteUrl, // 或 siteUrl
+    canonical: siteUrl,
     languages: alternates,
   },
   other: {
     "google-site-verification": "6skGRSGQlvwgvTJDE_HF2ao3SoHhdtFeUe2-wMKpLeg",
+    ["og:type"]: "website"
   },
 };
 
