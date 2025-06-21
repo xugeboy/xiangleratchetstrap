@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import LogoClouds from "@/components/common/LogoClouds";
 import { useLocale, useTranslations } from "next-intl";
