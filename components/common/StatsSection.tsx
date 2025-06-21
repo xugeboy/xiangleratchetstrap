@@ -26,7 +26,7 @@ export default function Example() {
       {/* Dark overlay for better text contrast */}
       <div className="absolute inset-0 -z-10 bg-black/50" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative mx-auto container px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
           <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-white sm:text-5xl drop-shadow-md">
           {t("title")}

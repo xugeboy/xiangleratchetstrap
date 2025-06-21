@@ -46,7 +46,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const currentLocale = await getLocale();
 
-  const pageTitle = "about us";
+  const pageTitle = "About us - Xiangle Ratchet Strap";
   const pageSlug = "about-us";
   const ogImageUrl = process.env.NEXT_PUBLIC_LOGO_URL;
   const ogImageAlt = pageTitle;
@@ -130,7 +130,7 @@ export default function AboutUsPage() {
           dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
         />
       </section>
-      <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
+      <div className="mx-auto container px-6 py-32 sm:py-40 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
           <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-balance text-black sm:text-7xl lg:col-span-2 xl:col-auto">
             {t("mainHeading")}
@@ -145,7 +145,7 @@ export default function AboutUsPage() {
       <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-linear-to-t from-white sm:h-32" />
 
       {/* Timeline section */}
-      <div className="mx-auto -mt-8 max-w-7xl px-6 lg:px-8 mb-40">
+      <div className="mx-auto -mt-8 container px-6 lg:px-8 mb-40">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-8 overflow-hidden lg:mx-0 lg:max-w-none lg:grid-cols-4">
           {timelineData.map((item) => (
             <div key={item.nameKey}>
@@ -181,7 +181,7 @@ export default function AboutUsPage() {
       <LogoClouds />
 
       {/* Content section */}
-      <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+      <div className="mx-auto mt-32 container px-6 sm:mt-40 lg:px-8">
         <div className="mx-auto flex max-w-2xl flex-col items-center justify-between gap-16 lg:mx-0 lg:max-w-none lg:flex-row">
           <div className="w-full lg:max-w-lg lg:flex-auto">
             <h2 className="text-3xl font-semibold tracking-tight text-pretty text-black sm:text-4xl">
@@ -205,7 +205,7 @@ export default function AboutUsPage() {
 
       {/* Content section */}
       <div className="mt-32 overflow-hidden hidden md:block sm:mt-40">
-        <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
+        <div className="mx-auto container px-6 lg:flex lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:min-w-full lg:flex-none lg:gap-y-8">
             <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
               <h2 className="text-4xl font-semibold tracking-tight text-black sm:text-5xl">
@@ -261,7 +261,7 @@ export default function AboutUsPage() {
 
       {/* Content section - Global Reach */}
       <div className="mt-32 overflow-hidden sm:mt-40">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto container px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-x-12 gap-y-16">
             {/* Text Area */}
             <div className="w-full lg:w-1/2">

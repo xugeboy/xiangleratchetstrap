@@ -11,7 +11,7 @@ interface RelatedProductsProps {
   export default function Cav({ products = [],lang }: RelatedProductsProps) {
     return (
       <div className="bg-white">
-        <div className="mx-auto max-w-2xl py-10 sm:py-12 lg:max-w-7xl">
+        <div className="mx-auto py-10 sm:py-12">
           <h2 className="text-2xl font-bold tracking-tight text-black">Related Products</h2>
   
           <div className="mt-8 grid grid-cols-2 gap-y-12 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">

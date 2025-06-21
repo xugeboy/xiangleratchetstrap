@@ -48,7 +48,7 @@ export default function ImageGallery({ images,alt }: ImageGalleryProps) {
           <Image alt={alt} 
           src={getCloudinaryPublicId(image.url)}
           priority={true}
-          className="aspect-square w-full object-cover sm:rounded-lg" 
+          className="aspect-square w-full object-cover rounded-lg" 
           width={image.width}
           height={image.height}
           />

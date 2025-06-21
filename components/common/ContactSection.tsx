@@ -5,7 +5,7 @@ export default async function ContactSection() {
   const locale = await getLocale();
   const t = await getTranslations({locale, namespace: "ContactSection"})
   return (
-      <div className="mx-auto grid max-w-7xl gap-12 grid-cols-1 lg:grid-cols-2">
+      <div className="mx-auto grid container gap-12 grid-cols-1 lg:grid-cols-2">
         <div className="relative px-6 sm:pt-32 lg:static lg:px-8 lg:py-48">
           <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
             <h2 className="text-4xl font-semibold tracking-tight text-pretty text-black sm:text-5xl">

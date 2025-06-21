@@ -148,7 +148,7 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
 
   // Main component render when data is ready
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-neutral-100">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-neutral-100">
       <section>
         {/* Add JSON-LD to your page */}
         <script

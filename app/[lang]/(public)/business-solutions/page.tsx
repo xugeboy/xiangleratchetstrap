@@ -15,7 +15,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const currentLocale = await getLocale();
 
-  const pageTitle = "business solutions";
+  const pageTitle = "Business Solutions - Xiangle Ratchet Strap";
   const pageSlug = "business-solutions";
   const ogImageUrl = process.env.NEXT_PUBLIC_LOGO_URL;
   const ogImageAlt = pageTitle;
@@ -95,7 +95,7 @@ export default async function BusinessSolutions() {
     [websiteSchema, organizationSchema, breadcrumbSchema].filter(Boolean)
   );
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <section>
         <script
           type="application/ld+json"

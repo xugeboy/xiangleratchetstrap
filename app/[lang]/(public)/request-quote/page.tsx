@@ -11,8 +11,8 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const currentLocale = await getLocale();
 
-  const pageTitle = "faq";
-  const pageSlug = "faq";
+  const pageTitle = "Request Quote - Xiangle Ratchet Strap";
+  const pageSlug = "request-quote";
   const ogImageUrl = process.env.NEXT_PUBLIC_LOGO_URL;
   const ogImageAlt = pageTitle;
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
@@ -90,7 +90,7 @@ export default async function RequestQuote() {
     [websiteSchema, organizationSchema, breadcrumbSchema].filter(Boolean)
   );
   return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               <section>
         <script
           type="application/ld+json"

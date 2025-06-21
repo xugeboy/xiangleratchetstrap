@@ -56,7 +56,7 @@ Object.keys(localePrefixMap).forEach((localeKey) => {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: defaultDescription,
+    default: "Xiangle Ratchet Strap",
     template: `%s`,
   },
   description: defaultDescription,

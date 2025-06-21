@@ -63,7 +63,7 @@ export default async function TeamSection() {
 
   return (
     <div id="meet-the-team" className="bg-white mb-10 py-12 sm:py-16"> {/* Added some padding */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto container px-6 lg:px-8">
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-balance text-black sm:text-4xl lg:text-5xl"> {/* Adjusted font size classes */}
             {t("title")} {/* 4. 翻译标题 */}

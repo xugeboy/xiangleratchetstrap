@@ -12,7 +12,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const currentLocale = await getLocale();
 
-  const pageTitle = "faq";
+  const pageTitle = "Faq - Xiangle Ratchet Strap";
   const pageSlug = "faq";
   const ogImageUrl = process.env.NEXT_PUBLIC_LOGO_URL;
   const ogImageAlt = pageTitle;
@@ -103,7 +103,7 @@ export default async function FaqPage() {
           dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
         />
       </section>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto container px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">
             {t('mainTitle')}

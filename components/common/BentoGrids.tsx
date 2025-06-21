@@ -58,7 +58,7 @@ export default async function BentoGrids() {
   ];
 
   return (
-    <div className="mx-auto mt-10 mb-10 lg:max-w-7xl">
+    <div className="mx-auto mt-10 mb-10 lg:container">
       <p className=" max-w-lg text-4xl font-semibold tracking-tight text-pretty text-black sm:text-5xl">
         {t("mainTitle")}
       </p>

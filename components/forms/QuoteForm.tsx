@@ -57,7 +57,7 @@ export default function QuoteForm() {
       />
       <form
         onSubmit={handleSubmit}
-        className="max-w-7xl mx-auto bg-white px-6 py-12 rounded-[30px] shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
+        className="mx-auto bg-white px-6 py-12 rounded-[30px] shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
       >
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
           {/* First Name */}

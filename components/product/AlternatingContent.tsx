@@ -30,7 +30,7 @@ export default function AlternatingContent({
             className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-lg"
           >
             <div
-              className={`relative h-[380px] w-full order-1 ${
+              className={`relative h-[350px] lg:h-[465px] w-full order-1 ${
                 isEven ? "md:order-1" : "md:order-2"
               }`}
             >

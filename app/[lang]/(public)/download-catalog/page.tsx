@@ -15,7 +15,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const currentLocale = await getLocale();
 
-  const pageTitle = "download catalog";
+  const pageTitle = "Download Catalog - Xiangle Ratchet Strap";
   const pageSlug = "download-catalog";
   const ogImageUrl = process.env.NEXT_PUBLIC_LOGO_URL;
   const ogImageAlt = pageTitle;

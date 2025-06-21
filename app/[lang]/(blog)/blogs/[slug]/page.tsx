@@ -163,7 +163,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
   );
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto container px-4 sm:px-6 lg:px-8">
       <section>
         {/* Add JSON-LD to your page */}
         <script

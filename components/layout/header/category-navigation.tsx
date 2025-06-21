@@ -89,7 +89,7 @@ export function CategoryNavigation() {
               {rootCategories.map((category) => (
                 <TabPanel key={category.id} className="py-6 px-8">
                   {category.children && category.children.length > 0 && (
-                    <div className="max-w-7xl mx-auto">
+                    <div className="container mx-auto">
                       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-4">
                         {category.children?.map((subCategoryRef) => {
                           const subCategory = categoryMap.get(
