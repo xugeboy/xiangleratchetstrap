@@ -3,6 +3,7 @@ import { ProductCategory } from "./productCategory";
 import { Galleries, Gallery } from "./gallery";
 import { ContentItem } from "@/components/product/AlternatingContent";
 import { BlocksContent } from "@strapi/blocks-react-renderer";
+import { StrapColorOption } from "./strapColorOption";
 
 export interface Product {
     id: number;
@@ -38,5 +39,5 @@ export interface Product {
     allLanguageSlugs: string[];
     elongation_at_lc: string;
     compliance: string;
-    strap_colors: JSON
+    strap_colors: StrapColorOption[];
 }

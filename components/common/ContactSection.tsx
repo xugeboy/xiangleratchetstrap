@@ -57,9 +57,9 @@ export default async function ContactSection() {
                 </dt>
                 <dd>
                 <a href="https://wa.me/8619952792557" target="_blank" rel="noopener noreferrer">
-                <Image src="/v1745291515/PRECISION_SKILL_u0bfdk.jpg" alt="WhatsApp QR Code"
-                    width={300}
-                    height={300} />
+                <Image src="/v1750638707/whatsAppQrCode_ixhjow.jpg" alt="WhatsApp QR Code"
+                    width={200}
+                    height={200} />
                 </a>
                 </dd>
               </div>
@@ -69,15 +69,15 @@ export default async function ContactSection() {
                   <FaWeixin className="h-7 w-6 text-black"/>
                 </dt>
                 <dd>
-                <Image src="/v1745291515/PRECISION_SKILL_u0bfdk.jpg" alt="WeChat QR Code" 
-                    width={300}
-                    height={300} />
+                <Image src="/v1750638707/WechatQRCode_otb3n3.jpg" alt="WeChat QR Code" 
+                    width={200}
+                    height={200} />
                 </dd>
               </div>
             </dl>
           </div>
         </div>
-        <div className='relative px-6'>
+        <div className='relative px-6 m-auto'>
           <QuoteForm></QuoteForm>
         </div>
       </div>
