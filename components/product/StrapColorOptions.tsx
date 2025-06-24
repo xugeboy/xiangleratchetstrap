@@ -24,7 +24,12 @@ export default function StrapColorOptions({
     y: number;
   } | null>(null);
 
-  if (!customizations) {
+  if (
+    customizations &&
+    typeof customizations === 'object' &&
+    !Array.isArray(customizations) &&
+    Object.keys(customizations).length === 0
+  ){
     return null;
   }
 
