@@ -279,6 +279,13 @@
     },
     "buttons": {
       "requestQuote": "Demander un devis"
+    },
+    "customization": {
+      "customizations": "Personnalisation",
+      "colorSelection": "Sélection de couleur",
+      "customLogo": "Logo personnalisé",
+      "tailoredPackaging": "Emballage sur mesure",
+      "possibilities": "Envie d'explorer plus de possibilités de personnalisation ? Cliquez ici !"
     }
   },
   "Common": {

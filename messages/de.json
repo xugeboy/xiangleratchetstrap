@@ -279,6 +279,13 @@
     },
     "buttons": {
       "requestQuote": "Angebot anfordern"
+    },
+    "customization": {
+      "customizations": "Anpassung",
+      "colorSelection": "Farbauswahl",
+      "customLogo": "Benutzerdefiniertes Logo",
+      "tailoredPackaging": "Maßgeschneiderte Verpackung",
+      "possibilities": "Möchten Sie weitere Anpassungsmöglichkeiten entdecken? Klicken Sie hier!"
     }
   },
   "Common": {

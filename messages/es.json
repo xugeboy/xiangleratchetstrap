@@ -279,6 +279,13 @@
     },
     "buttons": {
       "requestQuote": "Solicitar presupuesto"
+    },
+    "customization": {
+    "customizations": "Personalización",
+    "colorSelection": "Selección de color",
+    "customLogo": "Logotipo personalizado",
+    "tailoredPackaging": "Embalaje a medida",
+    "possibilities": "¿Quiere explorar más posibilidades de personalización? ¡Haga clic aquí!"
     }
   },
   "Common": {

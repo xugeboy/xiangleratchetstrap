@@ -279,6 +279,13 @@
     },
     "buttons": {
       "requestQuote": "Request Quote"
+    },
+    "customization": {
+      "customizations":"Customizations",
+      "colorSelection":"Color Section",
+      "customLogo":"Custom Logo",
+      "tailoredPackaging":"Tailored Packaging",
+      "possibilities" :"Want to explore more custom possibilities? Click here!"
     }
   },
   "Common": {
