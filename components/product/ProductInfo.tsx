@@ -60,15 +60,15 @@ export default function ProductInfo({ lang,product }: ProductInfoProps) {
         <div className="bg-gray-50 p-6 rounded-lg flex items-center justify-center">
           <Link
             href={getCombainedLocalePath(lang, "request-quote")} 
-            className="inline-flex items-center justify-center px-8 py-3 text-sm font-medium text-white bg-amber-700 
-              rounded-full focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all duration-200 shadow-sm hover:bg-amber-800" // Added hover state
+            className="inline-flex items-center justify-center px-8 py-3 text-lg font-medium text-white bg-gradient-to-l from-black  to-amber-700
+              rounded-full"
           >
             {t("buttons.requestQuote")}
           </Link>
         </div>
       </div>
 
-      <StrapColorOptions options={product.strap_colors} />
+      <StrapColorOptions customizations={product.strap_colors} />
 
       <Specifications product={product} />
 

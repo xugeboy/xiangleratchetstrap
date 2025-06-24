@@ -1,49 +1,35 @@
 "use client";
 
-import type { StrapColorOption } from "@/types/strapColorOption";
 import type React from "react";
 import { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { colorSelection, Customizations, LogoOptions, PackagingOptions } from "@/types/Customizations";
 
-// Define types for logo and packaging options
-interface LogoOption {
-  id: string;
-  name: string;
-  imageUrl: string;
-  description: string;
-}
-
-interface PackagingOption {
-  id: string;
-  name: string;
-  imageUrl: string;
-  description: string;
-}
 
 export default function StrapColorOptions({
-  options,
+  customizations,
 }: {
-  options: StrapColorOption[];
+  customizations: Customizations;
 }) {
   const t = useTranslations("ProductInfo.customization");
-  const [hoveredOption, setHoveredOption] = useState<StrapColorOption | null>(
+  const [hoveredOption, setHoveredOption] = useState<colorSelection | null>(
     null
   );
-  const [hoveredLogo, setHoveredLogo] = useState<LogoOption | null>(null);
+  const [hoveredLogo, setHoveredLogo] = useState<LogoOptions | null>(null);
   const [hoveredPackaging, setHoveredPackaging] =
-    useState<PackagingOption | null>(null);
+    useState<PackagingOptions | null>(null);
   const [hoverPosition, setHoverPosition] = useState<{
     x: number;
     y: number;
   } | null>(null);
 
-  if (!Array.isArray(options) || options.length === 0) {
+  if (!customizations) {
     return null;
   }
 
   const handleMouseEnter = (
-    option: StrapColorOption,
+    option: colorSelection,
     event: React.MouseEvent
   ) => {
     setHoveredOption(option);
@@ -56,7 +42,7 @@ export default function StrapColorOptions({
     });
   };
 
-  const handleLogoMouseEnter = (logo: LogoOption) => {
+  const handleLogoMouseEnter = (logo: LogoOptions) => {
     setHoveredLogo(logo);
     setHoveredOption(null);
     setHoveredPackaging(null);
@@ -66,7 +52,7 @@ export default function StrapColorOptions({
     });
   };
 
-  const handlePackagingMouseEnter = (packaging: PackagingOption) => {
+  const handlePackagingMouseEnter = (packaging: PackagingOptions) => {
     setHoveredPackaging(packaging);
     setHoveredOption(null);
     setHoveredLogo(null);
@@ -82,96 +68,6 @@ export default function StrapColorOptions({
     setHoveredPackaging(null);
     setHoverPosition(null);
   };
-
-  const LogoOptions: LogoOption[] = [
-    {
-      id: "1",
-      name: "Heat Transfer",
-      imageUrl: "/v1750659168/Heat_Transfer_nqpkpa.jpg",
-      description: "MOQ: 10000m",
-    },
-    {
-      id: "2",
-      name: "Screen Printing",
-      imageUrl: "/v1750659168/Screen_Printing_ohichz.jpg",
-      description: "MOQ: 1500m",
-    },
-    {
-      id: "3",
-      name: "Embroidery",
-      imageUrl: "/v1750659167/Embroidery_btiaj1.jpg",
-      description: "MOQ: 10000m",
-    },
-    {
-      id: "4",
-      name: "PU Label",
-      imageUrl: "/v1750659169/PU_Label_co9ht5.jpg",
-      description: "MOQ: 500units",
-    },
-    {
-      id: "5",
-      name: "Woven Label",
-      imageUrl: "/v1750659167/Woven_Label_oo45sv.jpg",
-      description: "MOQ: 500units",
-    },
-    {
-      id: "6",
-      name: "Laser Carving",
-      imageUrl: "/v1750659168/Laser_Carving_ptrvrx.jpg",
-      description: "MOQ: 500units",
-    },
-  ];
-
-  const PackagingOptions: PackagingOption[] = [
-    {
-      id: "1",
-      name: "Hang Tag",
-      imageUrl: "/v1750658555/Hang_Tag_erihsa.jpg",
-      description: "MOQ: 500units",
-    },
-    {
-      id: "2",
-      name: "Color Box",
-      imageUrl: "/v1750658555/Color_Box_bdqi9e.jpg",
-      description: "MOQ: 500units",
-    },
-    {
-      id: "3",
-      name: "PE Bag & Card",
-      imageUrl: "/v1750660087/PE_Bag_npxzj8.jpg",
-      description: "MOQ: 200units",
-    },
-    {
-      id: "4",
-      name: "Blister",
-      imageUrl: "/v1750658557/Blister_zaw4tb.jpg",
-      description: "MOQ: 1000units",
-    },
-    {
-      id: "5",
-      name: "Double Blister",
-      imageUrl: "/v1750658555/Double_Blister_zbxqrd.jpg",
-      description: "MOQ: 1000units",
-    },
-    {
-      id: "6",
-      name: "Plastic Hang Tag",
-      imageUrl: "/Plastic_Hang_Tag_ydqbki.jpg",
-      description: "MOQ: 1000units",
-    },
-    {
-      id: "7",
-      name: "PVC Zipper Bag",
-      imageUrl: "/v1750658555/PVC_Zipper_Bag_iilc0f.jpg",
-      description: "MOQ: 500units",
-    },
-    {
-      id: "8",
-      name: "Polyester Storage Bag",
-      imageUrl: "/v1750658807/Polyester_Storage_Bag_1_befdt7.jpg",
-      description: "MOQ: 500units",
-    },
-  ];
 
   return (
     <>
@@ -189,7 +85,7 @@ export default function StrapColorOptions({
               </td>
               <td className="py-3 px-4 w-3/4">
                 <div className="flex flex-wrap gap-2 relative">
-                  {options.map((option) => (
+                  {customizations.colorSelection.map((option) => (
                     <div
                       key={option.id}
                       onMouseEnter={(e) => handleMouseEnter(option, e)}
@@ -218,15 +114,15 @@ export default function StrapColorOptions({
               </td>
               <td className="py-3 px-4 w-3/4">
                 <div className="flex flex-wrap gap-3 relative">
-                  {LogoOptions.map((logo) => (
+                  {customizations.LogoOptions.map((logo) => (
                     <div
                       key={logo.id}
-                      onMouseEnter={(e) => handleLogoMouseEnter(logo, e)}
+                      onMouseEnter={() => handleLogoMouseEnter(logo)}
                       onMouseLeave={handleMouseLeave}
                       className="cursor-pointer text-center flex flex-col items-center justify-center transition-transform duration-200 hover:scale-110"
                     >
-                      <div className="w-16 h-16 rounded-full border border-gray-300 overflow-hidden transition-all duration-200 hover:border-gray-500 hover:shadow-md">
-                        <Image
+                      <div className="w-16 h-16 overflow-hidden transition-all duration-200 hover:border-gray-500 hover:shadow-md">
+                      <Image
                           src={logo.imageUrl}
                           alt={logo.name}
                           width={64}
@@ -247,16 +143,16 @@ export default function StrapColorOptions({
               </td>
               <td className="py-3 px-4 w-3/4">
                 <div className="flex flex-wrap gap-3 relative">
-                  {PackagingOptions.map((packaging) => (
+                  {customizations.PackagingOptions.map((packaging) => (
                     <div
                       key={packaging.id}
-                      onMouseEnter={(e) =>
-                        handlePackagingMouseEnter(packaging, e)
+                      onMouseEnter={() =>
+                        handlePackagingMouseEnter(packaging)
                       }
                       onMouseLeave={handleMouseLeave}
                       className="cursor-pointer text-center flex flex-col items-center justify-center transition-transform duration-200 hover:scale-110"
                     >
-                      <div className="w-16 h-16 rounded-full border border-gray-300 overflow-hidden transition-all duration-200 hover:border-gray-500 hover:shadow-md">
+                      <div className="w-16 h-16 overflow-hidden transition-all duration-200 hover:border-gray-500 hover:shadow-md">
                       <Image
                           src={packaging.imageUrl}
                           alt={packaging.name}
@@ -274,7 +170,7 @@ export default function StrapColorOptions({
         </table>
 
         <div className="px-4 pt-4 pb-4">
-          <button className="w-full bg-gradient-to-r from-black to-amber-700 text-white font-bold py-4 px-6 rounded-full shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3 group">
+          <button className="w-full bg-gradient-to-r from-black via-amber-700 to-amber-700 text-white font-bold py-4 px-6 rounded-full shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3 group">
             <div className="flex items-center gap-2">
               <a href="#quote_form">
                 <span className="text-lg tracking-wide">
