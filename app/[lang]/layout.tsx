@@ -187,7 +187,7 @@ export default async function RootLayout({
       <body className={`${poppins.className} antialiased`}>
         <noscript>
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K925B3FL"
-              height="0" width="0" style="display:none;visibility:hidden">
+              height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}>
           </iframe>
         </noscript>
         {/* noscript fallback for users without JS */}
