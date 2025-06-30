@@ -57,7 +57,7 @@ export default async function CapabilitiesSection() {
 
             <Link
               href={getCombainedLocalePath(lang,"about-us")} // 9. 使用本地化的链接
-              className="inline-block bg-gray-800 hover:bg-gray-900 text-white px-8 py-3 font-semibold transition-colors rounded-md text-lg" // Adjusted styling
+              className="inline-block bg-black text-white px-8 py-3 font-semibold transition-colors rounded-md text-lg" // Adjusted styling
             >
               {t("aboutUsButton")} {/* 10. 翻译按钮文本 */}
             </Link>
