@@ -6,7 +6,10 @@ import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import type { Product } from "@/types/product";
 import { filterProducts } from "@/services/api/product";
-import { getBreadcrumbPathPrefix, getCloudinaryPublicId } from "@/utils/formatUtils";
+import {
+  getBreadcrumbPathPrefix,
+  getCloudinaryPublicId,
+} from "@/utils/formatUtils";
 import { useTranslations } from "next-intl";
 
 interface ProductGridProps {
@@ -92,12 +95,15 @@ export function ProductGrid({
                   <Link
                     prefetch={false}
                     href={`${pathPrefix}/products/${product.slug}`}
-                    className="group block"
+                    className="group flex flex-col h-full text-center hover:underline"
                   >
+                    {/* 图片部分 */}
                     <div className="relative aspect-square overflow-hidden bg-gray-100 mb-4">
                       {product.featured_image && (
                         <Image
-                          src={getCloudinaryPublicId(product.featured_image.url)}
+                          src={getCloudinaryPublicId(
+                            product.featured_image.url
+                          )}
                           alt={product.name}
                           fill
                           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
@@ -105,11 +111,16 @@ export function ProductGrid({
                         />
                       )}
                     </div>
-                    <h3 className="text-base font-medium text-center">
+
+                    {/* 标题部分 */}
+                    <h3 className="text-base font-medium">
                       {product.name}
                     </h3>
-                    <div className="mt-4 text-center">
-                      <span className="inline-block bg-amber-700 text-white px-4 py-2 text-sm font-medium uppercase">
+
+                    {/* 按钮容器 */}
+                    {/* 2. 使用 mt-auto 将按钮推到底部 */}
+                    <div className="mt-auto pt-4">
+                      <span className="inline-block w-full bg-black text-white px-4 py-3 rounded-md text-md font-bold uppercase">
                         {t("learnMoreButton")}
                       </span>
                     </div>
@@ -121,11 +132,13 @@ export function ProductGrid({
                     <div className="w-40 h-40 flex-shrink-0 bg-gray-100">
                       {product.featured_image && (
                         <Image
-                          src={getCloudinaryPublicId(product.featured_image.url)}
+                          src={getCloudinaryPublicId(
+                            product.featured_image.url
+                          )}
                           alt={product.name}
                           width={160}
                           height={160}
-                          className="object-contain w-full h-full p-2"
+                          className="object-contain w-full h-full"
                         />
                       )}
                     </div>
@@ -134,12 +147,12 @@ export function ProductGrid({
                         <h3 className="text-lg font-medium">{product.name}</h3>
                       </Link>
                       <p className="mt-2 text-sm text-black line-clamp-3">
-                        {product.about || "No description available."}
+                        {product.about}
                       </p>
                       <div className="mt-4">
                         <Link
                           href={`${pathPrefix}/products/${product.slug}`}
-                          className="inline-block bg-amber-700 text-white px-4 py-2 text-sm font-medium uppercase"
+                          className="inline-block  bg-black text-white px-4 py-2 rounded-md text-md font-bold uppercase"
                         >
                           {t("learnMoreButton")}
                         </Link>
@@ -156,7 +169,9 @@ export function ProductGrid({
                     <div className="w-16 h-16 flex-shrink-0 bg-gray-100">
                       {product.featured_image && (
                         <Image
-                          src={getCloudinaryPublicId(product.featured_image.url)}
+                          src={getCloudinaryPublicId(
+                            product.featured_image.url
+                          )}
                           alt={product.name}
                           width={64}
                           height={64}
