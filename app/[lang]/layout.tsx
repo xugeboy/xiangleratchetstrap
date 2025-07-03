@@ -14,7 +14,6 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getFullLocale } from "@/utils/formatUtils";
 import { setRequestLocale } from "next-intl/server";
-import Analytics from "@/components/common/Analytics";
 import Script from "next/script";
 
 const poppins = Poppins({
@@ -213,7 +212,6 @@ export default async function RootLayout({
           </div>
         </CategoryProvider>
 
-        {/* <Analytics /> */}
       </body>
     </html>
   );
