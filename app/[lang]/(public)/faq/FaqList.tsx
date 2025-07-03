@@ -1,17 +1,16 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { ChevronDownIcon } from '@heroicons/react/24/outline'
-import { Faq } from '@/types/faq'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from "rehype-raw";
+import { useState } from "react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { Faq } from "@/types/faq";
+import BlocksClient from "@/components/common/BlocksClient";
 
 interface FaqListProps {
-  faqs: Faq[]
+  faqs: Faq[];
 }
 
 export default function FaqList({ faqs }: FaqListProps) {
-  const [openId, setOpenId] = useState<number | null>(null)
+  const [openId, setOpenId] = useState<number | null>(null);
 
   return (
     <dl className="space-y-4">
@@ -26,21 +25,21 @@ export default function FaqList({ faqs }: FaqListProps) {
             </span>
             <ChevronDownIcon
               className={`h-6 w-6 text-black transition-transform duration-200 ${
-                openId === faq.id ? 'rotate-180 transform' : ''
+                openId === faq.id ? "rotate-180 transform" : ""
               }`}
             />
           </button>
           <div
             className={`overflow-hidden transition-all duration-200 ease-in-out ${
-              openId === faq.id ? 'max-h-96' : 'max-h-0'
+              openId === faq.id ? "max-h-96" : "max-h-0"
             }`}
           >
             <div className="pb-6 text-base leading-7 text-black">
-            <ReactMarkdown rehypePlugins={[rehypeRaw]}>{faq.Answer}</ReactMarkdown>
+              <BlocksClient content={faq.BlockAnswer} />
             </div>
           </div>
         </div>
       ))}
     </dl>
-  )
-} 
+  );
+}
