@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { formAPI } from "@/utils/fetch-api";
-import Notification from "../common/Notification";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 export default function QuoteForm() {
+  const router = useRouter();
   const t = useTranslations("QuoteForm");
   const [formData, setFormData] = useState({
     firstName: "",
@@ -17,8 +18,6 @@ export default function QuoteForm() {
     message: "",
     attachment: [] as File[],
   });
-  const [showSuccessNotification, setShowSuccessNotification] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -35,9 +34,9 @@ export default function QuoteForm() {
     });
 
     const resData = await formAPI("/submitInquiry", data);
-
-    setSuccessMessage(resData.message);
-    setShowSuccessNotification(true);
+    if(resData){
+      router.push("/request-quote/success");
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,10 +50,6 @@ export default function QuoteForm() {
 
   return (
     <div className="mb-10" id="quote_form">
-      <Notification
-        message={successMessage} // successMessage 现在可能来自 t() 或 API
-        trigger={showSuccessNotification}
-      />
       <form
         onSubmit={handleSubmit}
         className="mx-auto bg-white px-6 py-12 rounded-[30px] shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
