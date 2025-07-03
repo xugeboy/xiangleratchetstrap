@@ -453,5 +453,11 @@
     "buttonText": "Vollständigen Katalog herunterladen",
     "buttonMeta": "PDF, {size}MB",
     "imageAlt": "Titelbild des offiziellen Zurrgurt-Katalogs"
+  },
+  "SuccessPage": {
+    "metaTitle": "Success - Xiangle Ratchet Strap",
+    "title": "Vielen Dank für Ihre Anfrage!",
+    "message": "Wir haben Ihre Anfrage erhalten und unser Team wird sich innerhalb von 8 Stunden bei Ihnen melden.",
+    "cta_return_home": "Zurück zur Startseite"
   }
 }

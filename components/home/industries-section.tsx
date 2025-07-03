@@ -97,6 +97,7 @@ export default function IndustriesSection() {
                       alt={t(`industries.${industry.key}.title`)}
                       fill
                       className="object-cover transition-transform duration-500 rounded-t-lg"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                   </div>

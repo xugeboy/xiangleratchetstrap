@@ -28,7 +28,7 @@ export default async function CapabilitiesSection() {
               src="/why-us-apart_jqszvd.jpg"
               fill
               className="object-cover"
-              sizes="(max-width: 1023px) 100vw, 50vw" // Basic responsive sizes
+              sizes="(max-width: 1023px) 100vw, 50vw"
             />
           </div>
 

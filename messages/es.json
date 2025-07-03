@@ -453,5 +453,11 @@
     "buttonText": "Descargar el catálogo completo",
     "buttonMeta": "PDF, {size}MB",
     "imageAlt": "Portada del catálogo oficial de cinchas de amarre"
+  },
+  "SuccessPage": {
+    "metaTitle": "Success - Xiangle Ratchet Strap",
+    "title": "¡Gracias por su consulta!",
+    "message": "Hemos recibido su solicitud y nuestro equipo se pondrá en contacto con usted en un plazo de 8 horas.",
+    "cta_return_home": "Volver a la página principal"
   }
 }

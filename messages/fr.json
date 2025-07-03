@@ -453,5 +453,11 @@
     "buttonText": "Télécharger le catalogue complet",
     "buttonMeta": "PDF, {size}Mo",
     "imageAlt": "Couverture du catalogue officiel des sangles d'arrimage"
+  },
+  "SuccessPage": {
+    "metaTitle": "Success - Xiangle Ratchet Strap",
+    "title": "Merci pour votre demande !",
+    "message": "Nous avons bien reçu votre demande et notre équipe vous répondra dans les 8 heures.",
+    "cta_return_home": "Retour à la page d'accueil"
   }
 }

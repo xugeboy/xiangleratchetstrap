@@ -43,8 +43,8 @@ export async function generateMetadata(
   { params }: ProductPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const slug = params.slug;
-  const currentLocale = params.lang;
+  const { slug, lang } = await params;
+  const currentLocale = lang;
   const productData = await getProductBySlug(slug, currentLocale);
 
   if (!productData) {
@@ -131,8 +131,8 @@ export async function generateMetadata(
 export default async function ProductPage({
   params
 }: ProductPageProps) {
-  const slug = params.slug;
-  const currentLocale = params.lang;
+  const { slug, lang } = await params;
+  const currentLocale = lang;
 
   const product = await getProductBySlug(slug, currentLocale);
   const breadcrumbItems = generateProductBreadcrumbs(product, currentLocale);

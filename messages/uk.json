@@ -453,5 +453,11 @@
     "buttonText": "Download the Complete Catalog",
     "buttonMeta": "PDF, {size}MB",
     "imageAlt": "Cover of the official tie-down strap catalog"
+  },
+  "SuccessPage": {
+    "metaTitle": "Success - Xiangle Ratchet Strap",
+    "title": "Thank You For Your Inquiry!",
+    "message": "We have received your request and our team will get back to you within 8 hours.",
+    "cta_return_home": "Return to Homepage"
   }
 }

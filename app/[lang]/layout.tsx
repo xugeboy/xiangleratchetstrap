@@ -132,7 +132,7 @@ export default async function RootLayout({
   params,
   children,
 }: LocaleLayoutProps) {
-  const lang = params.lang;
+  const { lang } = await params;
   const locale = getFullLocale(lang);
   const res = await fetchAPI("/getAllCategories", locale);
   const categories = res.data;

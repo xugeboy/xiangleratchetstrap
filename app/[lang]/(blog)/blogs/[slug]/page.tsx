@@ -42,8 +42,8 @@ export async function generateMetadata(
   { params }: BlogPageProps,
   parent: ResolvingMetadata // 可以访问父级解析后的元数据
 ): Promise<Metadata> {
-  const slug = params.slug;
-  const currentLocale = params.lang;
+  const { slug, lang } = await params;
+  const currentLocale = lang;
   const blogData = await getBlogMetaDataBySlug(slug,currentLocale);
 
   // --- 处理未找到的情况 ---
@@ -142,8 +142,8 @@ export async function generateMetadata(
 
 // ✅ SSR Blog Page
 export default async function BlogPage({ params }: BlogPageProps) {
-  const slug = params.slug;
-  const currentLocale = params.lang;
+  const { slug, lang } = await params;
+  const currentLocale = lang;
 
   const blog = await getBlogDetail(slug,currentLocale);
   const breadcrumbItems = generateBlogBreadcrumbs(blog,currentLocale);
@@ -180,6 +180,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             fill
             className="object-scale-down"
             priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           />
           <div className="absolute inset-0 bg-black/30" />
         </div>

@@ -23,8 +23,9 @@ export async function generateMetadata(
   { params }: CategoryPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const lastSlug = params.slug[params.slug.length - 1];
-  const currentLocale = params.lang;
+  const { slug, lang } = await params;
+  const lastSlug =slug[slug.length - 1];
+  const currentLocale = lang;
   const categoryData = await getCategoryMetaDataBySlug(lastSlug,currentLocale);
 
   if (!categoryData) {
@@ -132,9 +133,8 @@ function getAllSlugPaths(categories: ProductCategory[], parentSlugs: string[] = 
   }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const slug = params.slug;
-  const lang = params.lang;
-  const lastSlug = params.slug[params.slug.length - 1];
+  const { slug, lang } = await params;
+  const lastSlug = slug[slug.length - 1];
   const categoryData = await getCategoryMetaDataBySlug(lastSlug,lang);
 
   if (!categoryData) {
