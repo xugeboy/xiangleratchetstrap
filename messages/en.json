@@ -278,7 +278,8 @@
       }
     },
     "buttons": {
-      "requestQuote": "Request Quote"
+      "requestQuote": "Request Quote",
+      "customPrinting": "Printing Preview"
     },
     "customization": {
       "customizations":"Customizations",

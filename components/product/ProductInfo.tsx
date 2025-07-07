@@ -4,17 +4,18 @@ import { Product } from "@/types/product";
 import Link from "next/link";
 import Specifications from "./Specifications";
 import Description from "./Description";
-import { getCombainedLocalePath } from "@/utils/formatUtils";
+import {
+  getCombainedLocalePath,
+} from "@/utils/formatUtils";
 import { useTranslations } from "next-intl";
 import StrapColorOptions from "./StrapColorOptions";
 
 interface ProductInfoProps {
   product: Product;
-  lang: string
+  lang: string;
 }
 
-
-export default function ProductInfo({ lang,product }: ProductInfoProps) {
+export default function ProductInfo({ lang, product }: ProductInfoProps) {
   const services = [
     {
       id: "tailoredPrograms",
@@ -30,20 +31,27 @@ export default function ProductInfo({ lang,product }: ProductInfoProps) {
     },
   ];
   const t = useTranslations("ProductInfo");
+  const productJson = JSON.stringify(product);
+  const encodedProduct = Buffer.from(productJson).toString("base64");
+
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4 font-mono">{product.name}</h1>
         <div className="space-y-2">
-          <p className="text-black">{t("itemNumberLabel")}#{product.code}</p>
+          <p className="text-black">
+            {t("itemNumberLabel")}#{product.code}
+          </p>
           <div className="flex items-center space-x-2 text-black">
             <span>{t("stockStatus.inStock")},</span>
-            <strong className="text-amber-700">{t("stockStatus.madeToOrder")}</strong>
+            <strong className="text-amber-700">
+              {t("stockStatus.madeToOrder")}
+            </strong>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-2 mb-8">
         {services.map((service) => (
           <div key={service.id} className="bg-gray-50 p-4 rounded-lg">
             <h3 className="font-semibold text-black mb-2">
@@ -57,13 +65,26 @@ export default function ProductInfo({ lang,product }: ProductInfoProps) {
             </Link>
           </div>
         ))}
-        <div className="bg-gray-50 p-6 rounded-lg flex items-center justify-center">
+        <div className="bg-gray-50 p-3 rounded-lg flex items-center justify-center">
           <Link
-            href={getCombainedLocalePath(lang, "request-quote")} 
-            className="inline-flex items-center justify-center px-8 py-3 text-lg font-medium text-white bg-gradient-to-l from-black  to-amber-700
+            href={getCombainedLocalePath(lang, "request-quote")}
+            className="inline-flex items-center justify-center px-8 sm:px-4 py-3 text-lg font-medium text-white bg-gradient-to-l from-black  to-amber-700
               rounded-full"
           >
             {t("buttons.requestQuote")}
+          </Link>
+        </div>
+
+        <div className="bg-gray-50 p-3 rounded-lg flex items-center justify-center">
+          <Link
+            href={{
+              pathname: getCombainedLocalePath(lang, 'custom-printing'),
+              query: { data: encodedProduct }
+            }}
+            className="inline-flex items-center justify-center px-8 sm:px-4 py-3 text-lg font-medium text-white bg-gradient-to-l from-black  to-amber-700
+              rounded-full"
+          >
+            {t("buttons.customPrinting")}
           </Link>
         </div>
       </div>
