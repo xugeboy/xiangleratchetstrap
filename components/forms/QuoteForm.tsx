@@ -1,11 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { formAPI } from "@/utils/fetch-api";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
-export default function QuoteForm() {
+// 1. 定义组件接收的 props 类型
+interface QuoteFormProps {
+  messageFromCustomizer?: string | null;
+}
+
+export default function QuoteForm({ messageFromCustomizer }: QuoteFormProps) {
   const router = useRouter();
   const t = useTranslations("QuoteForm");
   const [formData, setFormData] = useState({
@@ -18,6 +23,13 @@ export default function QuoteForm() {
     message: "",
     attachment: [] as File[],
   });
+    // 2. 添加 useEffect 钩子来监听 messageFromCustomizer 的变化
+    useEffect(() => {
+      // 当从定制页面传来消息时，更新表单的 message 状态
+      if (messageFromCustomizer) {
+        setFormData((prev) => ({ ...prev, message: messageFromCustomizer }));
+      }
+    }, [messageFromCustomizer]); // 依赖数组中包含该 prop
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -183,7 +195,7 @@ export default function QuoteForm() {
           <textarea
             id="message"
             name="message"
-            rows={4}
+            rows={10}
             required
             className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
               focus:bg-white focus:border-blue-500 focus:outline-none"

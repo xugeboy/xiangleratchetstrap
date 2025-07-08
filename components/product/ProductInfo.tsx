@@ -4,9 +4,7 @@ import { Product } from "@/types/product";
 import Link from "next/link";
 import Specifications from "./Specifications";
 import Description from "./Description";
-import {
-  getCombainedLocalePath,
-} from "@/utils/formatUtils";
+import { getCombainedLocalePath } from "@/utils/formatUtils";
 import { useTranslations } from "next-intl";
 import StrapColorOptions from "./StrapColorOptions";
 
@@ -31,9 +29,13 @@ export default function ProductInfo({ lang, product }: ProductInfoProps) {
     },
   ];
   const t = useTranslations("ProductInfo");
-  const productJson = JSON.stringify(product);
-  const encodedProduct = Buffer.from(productJson).toString("base64");
-
+  const handleCustomPrintingClick = () => {
+    try {
+      sessionStorage.setItem("customPrintingProduct", JSON.stringify(product));
+    } catch (error) {
+      console.error("Could not save product to sessionStorage", error);
+    }
+  };
   return (
     <div>
       <div className="mb-8">
@@ -77,10 +79,8 @@ export default function ProductInfo({ lang, product }: ProductInfoProps) {
 
         <div className="bg-gray-50 p-3 rounded-lg flex items-center justify-center">
           <Link
-            href={{
-              pathname: getCombainedLocalePath(lang, 'custom-printing'),
-              query: { data: encodedProduct }
-            }}
+            href={getCombainedLocalePath(lang, "custom-print/custom-screen-print/online-builder")}
+            onClick={handleCustomPrintingClick}
             className="inline-flex items-center justify-center px-8 sm:px-4 py-3 text-lg font-medium text-white bg-gradient-to-l from-black  to-amber-700
               rounded-full"
           >
