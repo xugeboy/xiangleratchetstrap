@@ -14,15 +14,6 @@ import type { colorSelection } from "@/types/Customizations";
 import { getCloudinaryPublicId } from "@/utils/formatUtils";
 import Specifications from "@/components/product/Specifications";
 
-interface QuoteDetails {
-  product: Product;
-  webbing: colorSelection;
-  textColor: TextColor;
-  printedText: string;
-  printInterval: number;
-  finishedLength: number;
-}
-
 // The page now receives props but manages state internally
 export default function CustomPrintingPage() {
   const [product, setProduct] = useState<Product>();
@@ -145,7 +136,6 @@ Best regards
       formElement.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
-  
 
   const ProductInfoPanel = () => (
     <div className="sticky top-8 w-full">

@@ -492,7 +492,11 @@
         "item1": "Online Platform Offers “Arial Bold” Font Only",
         "item2": "Printable colors limited to the online color options"
       },
-      "cta": "Customize Your Text"
+      "cta": {
+        "title": "Customize Your Text",
+        "description": "Design Your Pattern",
+        "button": "Design Your Pattern"
+      }
     },
     "fullDesign": {
       "title": "Full Design Printing",

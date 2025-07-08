@@ -1,144 +1,193 @@
-// file: app/[locale]/custom-print/page.tsx
-
 import Image from "next/image";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { FaArrowRight, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaCheckCircle,
+  FaTimesCircle,
+  FaIndustry,
+  FaCog,
+} from "react-icons/fa";
 
 export default async function CustomPrintOverviewPage() {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "CustomPrint" });
 
   const textPrintingImages = [
-    "https://placehold.co/400x150/fde047/000000?text=IMPRINT",
-    "https://placehold.co/400x150/dc2626/ffffff?text=IMPRINT",
-    "https://placehold.co/400x150/000000/ffffff?text=IMPRINT",
-    "https://placehold.co/400x150/3b82f6/ffffff?text=IMPRINT",
+    "/v1751985848/pattern2_q8k4uf.jpg",
+    "/v1751985848/pattern1_etapzc.jpg",
   ];
-
   const fullDesignImages = [
-    "https://placehold.co/400x150/ef4444/ffffff?text=STARS",
-    "https://placehold.co/400x150/4ade80/ffffff?text=CAMO",
-    "https://placehold.co/400x150/facc15/000000?text=CAUTION!",
-    "https://placehold.co/400x150/dc2626/ffffff?text=HO!+HO!+HO!",
+    "/v1751985848/pattern2_q8k4uf.jpg",
+    "/v1751985848/pattern1_etapzc.jpg",
   ];
 
   return (
-    <div className="bg-gray-50">
-      <div className="container mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24 lg:px-8">
+    <div>
+      <div className="container mx-auto pt-8">
         {/* 页面头部 */}
-        <header className="text-center mb-16">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            {t("header.title")}
-          </h1>
-          <p className="mt-4 max-w-4xl mx-auto text-lg text-gray-600">
-            {t("header.description")}
-          </p>
-          <p className="mt-2 max-w-4xl mx-auto text-lg text-gray-600 font-semibold">
-            {t("header.subDescription")}
-          </p>
+        <header className="mb-16">
+          <div className="border-l-4 border-blue-600 pl-6 mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              {t("header.title")}
+            </h1>
+            <p className="text-lg text-gray-600 max-w-4xl leading-relaxed">
+              {t("header.description")}
+            </p>
+            <p className="text-base text-gray-800 font-medium mt-2 max-w-4xl">
+              {t("header.subDescription")}
+            </p>
+          </div>
         </header>
 
         {/* 对比区域 */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Custom Text Printing 卡片 */}
-          <div className="flex flex-col bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
-            <div className="p-8">
-              <h2 className="text-3xl font-bold text-black mb-4 text-center">
+          <div className="bg-white  rounded-3xl shadow-xl border border-gray-100">
+            <div className="flex items-center gap-3 pl-6 pt-6">
+              <FaCog className="w-5 h-5 text-gray-600" />
+              <h2 className="text-2xl font-bold text-gray-900">
                 {t("textPrinting.title")}
               </h2>
-              <div className="grid grid-cols-2 gap-4 mb-8">
+            </div>
+
+            <div className="p-6">
+              <div className="grid grid-cols-1 gap-4 mb-8">
                 {textPrintingImages.map((src, index) => (
-                  <Image key={index} src={src} alt={`${t("textPrinting.title")} Example ${index + 1}`} width={400} height={150} className="rounded-lg object-cover" />
+                  <div key={index} className="border border-gray-200">
+                    <Image
+                      src={src || "/placeholder.svg"}
+                      alt={`${t("textPrinting.title")} Example ${index + 1}`}
+                      width={800}
+                      height={200}
+                      className="w-full h-40 object-cover"
+                    />
+                  </div>
                 ))}
               </div>
 
               {/* Benefits */}
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">{t("common.benefits")}</h3>
-              <ul className="space-y-2 mb-6">
-                {[...Array(9)].map((_, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <FaCheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-600">{t(`textPrinting.benefits.item${i + 1}`)}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+                  {t("common.benefits")}
+                </h3>
+                <ul className="space-y-3">
+                  {[...Array(9)].map((_, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <FaCheckCircle className="h-4 w-4 text-green-600 flex-shrink-0 mt-1" />
+                      <span className="text-sm text-gray-700 leading-relaxed">
+                        {t(`textPrinting.benefits.item${i + 1}`)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
               {/* Limitations */}
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">{t("common.limitations")}</h3>
-              <ul className="space-y-2">
-                 {[...Array(2)].map((_, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <FaTimesCircle className="h-5 w-5 text-red-500 flex-shrink-0" />
-                    <span className="text-gray-600">{t(`textPrinting.limitations.item${i + 1}`)}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mt-auto bg-gray-50 p-8">
-                <p className="text-gray-600 mb-6">{t("textPrinting.description")}</p>
-                <Link href="/custom-text-imprinting" className="w-full inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4 text-lg font-semibold text-white shadow-lg hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-200">
-                    {t("textPrinting.cta")}
-                    <FaArrowRight className="ml-2 h-5 w-5" />
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+                  {t("common.limitations")}
+                </h3>
+                <ul className="space-y-3">
+                  {[...Array(2)].map((_, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <FaTimesCircle className="h-4 w-4 text-red-600 flex-shrink-0 mt-1" />
+                      <span className="text-sm text-gray-700 leading-relaxed">
+                        {t(`textPrinting.limitations.item${i + 1}`)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="border-t border-gray-200 pt-6">
+                <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                  {t("textPrinting.description")}
+                </p>
+                <Link
+                  href="/custom-print/screen-print"
+                  className="inline-flex items-center justify-center w-full rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-4 text-lg font-semibold text-white shadow-lg hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all duration-200"
+                >
+                  {t("textPrinting.cta.title")}
+                  <FaArrowRight className="ml-2 h-4 w-4" />
                 </Link>
+              </div>
             </div>
           </div>
 
           {/* Full Design Printing 卡片 */}
-          <div className="flex flex-col bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
-            <div className="p-8">
-              <h2 className="text-3xl font-bold text-black mb-4 text-center">
+          <div className="bg-white rounded-3xl shadow-xl border border-gray-100">
+            <div className="flex items-center gap-3 pl-6 pt-6">
+              <FaIndustry className="w-5 h-5 text-gray-600" />
+              <h2 className="text-2xl font-bold text-gray-900">
                 {t("fullDesign.title")}
               </h2>
-              <div className="grid grid-cols-2 gap-4 mb-8">
+            </div>
+
+            <div className="p-6">
+              <div className="grid grid-cols-1 gap-4 mb-8">
                 {fullDesignImages.map((src, index) => (
-                  <Image key={index} src={src} alt={`${t("fullDesign.title")} Example ${index + 1}`} width={400} height={150} className="rounded-lg object-cover" />
+                  <div key={index} className="border border-gray-200">
+                    <Image
+                      src={src || "/placeholder.svg"}
+                      alt={`${t("fullDesign.title")} Example ${index + 1}`}
+                      width={800}
+                      height={200}
+                      className="w-full h-40 object-cover"
+                    />
+                  </div>
                 ))}
               </div>
 
               {/* Benefits */}
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">{t("common.benefits")}</h3>
-              <ul className="space-y-2 mb-6">
-                {[...Array(8)].map((_, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <FaCheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-600">{t(`fullDesign.benefits.item${i + 1}`)}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+                  {t("common.benefits")}
+                </h3>
+                <ul className="space-y-3">
+                  {[...Array(8)].map((_, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <FaCheckCircle className="h-4 w-4 text-green-600 flex-shrink-0 mt-1" />
+                      <span className="text-sm text-gray-700 leading-relaxed">
+                        {t(`fullDesign.benefits.item${i + 1}`)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
               {/* Limitations */}
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">{t("common.limitations")}</h3>
-              <ul className="space-y-2">
-                 {[...Array(3)].map((_, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <FaTimesCircle className="h-5 w-5 text-red-500 flex-shrink-0" />
-                    <span className="text-gray-600">{t(`fullDesign.limitations.item${i + 1}`)}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mt-auto bg-gray-50 p-8">
-                <p className="text-gray-600 mb-6">{t("fullDesign.description")}</p>
-                <Link href="/custom-pattern-design" className="w-full inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 px-6 py-4 text-lg font-semibold text-white shadow-lg hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-300 transition-all duration-200">
-                    {t("fullDesign.cta")}
-                    <FaArrowRight className="ml-2 h-5 w-5" />
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+                  {t("common.limitations")}
+                </h3>
+                <ul className="space-y-3">
+                  {[...Array(3)].map((_, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <FaTimesCircle className="h-4 w-4 text-red-600 flex-shrink-0 mt-1" />
+                      <span className="text-sm text-gray-700 leading-relaxed">
+                        {t(`fullDesign.limitations.item${i + 1}`)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="border-t border-gray-200 pt-6">
+                <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                  {t("fullDesign.description")}
+                </p>
+                <Link
+                  href="/custom-print/full-design"
+                  className="inline-flex items-center justify-center w-full rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-4 text-lg font-semibold text-white shadow-lg hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all duration-200"
+                >
+                  {t("fullDesign.cta.title")}
+                  <FaArrowRight className="ml-2 h-4 w-4" />
                 </Link>
+              </div>
             </div>
           </div>
-
         </div>
-
-        {/* 页脚联系信息 */}
-        <footer className="mt-24 text-center bg-white p-10 rounded-3xl shadow-xl border border-gray-100">
-            <h2 className="text-3xl font-bold text-black mb-4">
-                {t("footer.title")}
-            </h2>
-            <p className="max-w-2xl mx-auto text-lg text-gray-600">
-                {t("footer.description")}
-            </p>
-        </footer>
       </div>
     </div>
   );

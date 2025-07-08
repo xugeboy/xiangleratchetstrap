@@ -10,58 +10,38 @@ export default async function CustomPatternDesignPage() {
   const t = await getTranslations({ locale, namespace: "CustomPrint" });
 
   const exampleImages = [
-    {
-      src: "https://placehold.co/600x200/1e3a8a/ffffff?text=Stars+%26+Stripes",
-      alt: "Stars and Stripes Pattern",
-    },
-    {
-      src: "https://placehold.co/600x200/facc15/000000?text=CAUTION!",
-      alt: "Caution Pattern",
-    },
-    {
-      src: "https://placehold.co/600x200/166534/ffffff?text=HO!+HO!+HO!",
-      alt: "Christmas Pattern",
-    },
-    {
-      src: "https://placehold.co/600x200/4d7c0f/ffffff?text=CAMOUFLAGE",
-      alt: "Camouflage Pattern",
-    },
+    "/v1751985848/pattern2_q8k4uf.jpg", "/v1751985848/pattern1_etapzc.jpg"
   ];
 
   return (
-    <div className="bg-gray-50">
-      <div className="container mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24 lg:px-8">
+    <div>
+      <div className="container mx-auto pt-8">
         {/* 页面头部 */}
-        <header className="text-center mb-16">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            {t("header.title")}
-          </h1>
-          <p className="mt-4 max-w-4xl mx-auto text-lg text-gray-600">
-            {t("header.description")}
-          </p>
-          <p className="mt-4 max-w-4xl mx-auto text-lg text-gray-600">
-            {t("header.subDescription")}
+        <header className="mb-16">
+          <div className="border-l-4 border-blue-600 pl-6 mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{t("header.title")}</h1>
+            <p className="text-lg text-gray-600 max-w-4xl leading-relaxed">{t("header.description")}</p>
+            <p className="text-base text-gray-800 font-medium mt-2 max-w-4xl">{t("header.subDescription")}</p>
             <Link
-              href="/custom-text-imprinting"
+              href="/custom-print/screen-print"
               className="font-semibold text-blue-600 hover:text-blue-700"
             >
               {t("header.linkToScreenPrint")}
             </Link>
-            .
-          </p>
+          </div>
         </header>
 
         {/* 示例图片 */}
         <div className="mb-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {exampleImages.map((image, index) => (
+            {exampleImages.map((src, index) => (
               <div
                 key={index}
                 className="overflow-hidden rounded-2xl shadow-lg"
               >
                 <Image
-                  src={image.src}
-                  alt={image.alt}
+                  src={src}
+                  alt={`Example ${index + 1}`}
                   width={600}
                   height={200}
                   className="w-full object-cover"
@@ -69,7 +49,7 @@ export default async function CustomPatternDesignPage() {
               </div>
             ))}
           </div>
-          <p className="text-center text-lg text-gray-700 mt-8">
+          <p className="border-l-4 border-blue-600 pl-6 text-left text-lg text-gray-700 mt-8">
             {t("fullDesign.imageDesc")}
           </p>
         </div>
@@ -110,32 +90,30 @@ export default async function CustomPatternDesignPage() {
           </div>
         </div>
 
-        {/* 行动号召 (Call to Action) */}
-        <div className="text-center bg-white p-10 rounded-3xl shadow-2xl border border-gray-100">
-          <h2 className="text-3xl font-bold text-black mb-4">
-            {t("fullDesign.cta.title")}
+        {/* 如何定制 */}
+        <div className="bg-white mb-8 p-10 rounded-3xl shadow-2xl border border-gray-100">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
+            {t("howTo.title")}
           </h2>
-          <p className="max-w-3xl mx-auto text-lg text-gray-600 mb-8">
-            {t("fullDesign.cta.description")}
+          <p className="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-12">
+            {t("howTo.description")}
           </p>
-          <Link
-            href="/request-quote"
-            className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 px-8 py-4 text-lg font-semibold text-white shadow-lg hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-300 transition-all duration-200"
-          >
-            {t("fullDesign.cta.button")}
-            <FaArrowRight className="ml-3 h-5 w-5" />
-          </Link>
+          <ol className="relative border-l-2 border-blue-200 ml-4">
+            {[...Array(6)].map((_, i) => (
+              <li key={i} className="mb-10 ml-8">
+                <span className="absolute -left-4 flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full ring-8 ring-white">
+                  <span className="font-bold text-blue-800">{i + 1}</span>
+                </span>
+                <h3 className="flex items-center mb-1 text-xl font-semibold text-gray-900">
+                  {t(`howTo.steps.step${i + 1}.title`)}
+                </h3>
+                <p className="text-base font-normal text-gray-500">
+                  {t(`howTo.steps.step${i + 1}.description`)}
+                </p>
+              </li>
+            ))}
+          </ol>
         </div>
-
-        {/* 页脚联系信息 */}
-        <footer className="mt-24 text-center">
-          <h2 className="text-3xl font-bold text-black mb-4">
-            {t("footer.title")}
-          </h2>
-          <p className="max-w-2xl mx-auto text-lg text-gray-600">
-            {t("footer.description")}
-          </p>
-        </footer>
       </div>
     </div>
   );

@@ -16,12 +16,7 @@ export default async function CustomTextImprintingPage() {
     namespace: "CustomPrint",
   });
 
-  const exampleImages = [
-    "https://placehold.co/600x200/6b21a8/ffffff?text=IMPRINT",
-    "https://placehold.co/600x200/be123c/ffffff?text=IMPRINT",
-    "https://placehold.co/600x200/facc15/000000?text=IMPRINT",
-    "https://placehold.co/600x200/f97316/000000?text=IMPRINT",
-  ];
+  const exampleImages = ["/v1751985848/pattern2_q8k4uf.jpg", "/v1751985848/pattern1_etapzc.jpg"];
 
   const colorOptions = [
     { hex: "#000000" },
@@ -35,26 +30,21 @@ export default async function CustomTextImprintingPage() {
   ];
 
   return (
-    <div className="bg-gray-50">
-      <div className="container mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24 lg:px-8">
+    <div>
+      <div className="container mx-auto pt-8">
         {/* 页面头部 */}
-        <header className="text-center mb-16">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            {t("header.title")}
-          </h1>
-          <p className="mt-4 max-w-4xl mx-auto text-lg text-gray-600">
-            {t("header.description")}
-          </p>
-          <p className="mt-4 max-w-4xl mx-auto text-lg text-gray-600">
-            {t("header.subDescription")}{" "}
+        <header className="mb-16">
+          <div className="border-l-4 border-blue-600 pl-6 mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{t("header.title")}</h1>
+            <p className="text-lg text-gray-600 max-w-4xl leading-relaxed">{t("header.description")}</p>
+            <p className="text-base text-gray-800 font-medium mt-2 max-w-4xl">{t("header.subDescription")}</p>
             <Link
-              href="/custom-pattern-design"
+              href="/custom-print/full-design"
               className="font-semibold text-blue-600 hover:text-blue-700"
             >
               {t("header.linkToFullDesign")}
             </Link>
-            .
-          </p>
+          </div>
         </header>
 
         {/* 示例图片和颜色选项 */}
@@ -75,11 +65,11 @@ export default async function CustomTextImprintingPage() {
               </div>
             ))}
           </div>
-          <div className="text-center">
+          <div className="border-l-4 border-blue-600 pl-6 text-left">
             <p className="text-lg text-gray-700 mb-4">
               {t("textPrinting.colorOptionsText")}
             </p>
-            <div className="flex justify-center items-center gap-3">
+            <div className="flex gap-3">
               {colorOptions.map((color, index) => (
                 <div
                   key={index}
@@ -92,7 +82,7 @@ export default async function CustomTextImprintingPage() {
         </div>
 
         {/* 优点和局限性 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           {/* Benefits */}
           <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
@@ -128,7 +118,7 @@ export default async function CustomTextImprintingPage() {
         </div>
 
         {/* 如何定制 */}
-        <div className="bg-white p-10 rounded-3xl shadow-2xl border border-gray-100">
+        <div className="bg-white mb-8 p-10 rounded-3xl shadow-2xl border border-gray-100">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
             {t("howTo.title")}
           </h2>
@@ -151,16 +141,6 @@ export default async function CustomTextImprintingPage() {
             ))}
           </ol>
         </div>
-
-        {/* 页脚联系信息 */}
-        <footer className="mt-24 text-center">
-          <h2 className="text-3xl font-bold text-black mb-4">
-            {t("footer.title")}
-          </h2>
-          <p className="max-w-2xl mx-auto text-lg text-gray-600">
-            {t("footer.description")}
-          </p>
-        </footer>
       </div>
     </div>
   );
