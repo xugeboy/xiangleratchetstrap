@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { FaCheckCircle, FaTimesCircle, FaArrowRight } from "react-icons/fa";
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 
 export default async function CustomPatternDesignPage() {
   const locale = await getLocale();
