@@ -460,5 +460,98 @@
     "title": "Thank You For Your Inquiry!",
     "message": "We have received your request and our team will get back to you within 8 hours.",
     "cta_return_home": "Return to Homepage"
+  },
+  "CustomPrint": {
+    "header": {
+      "title": "Custom Imprinting",
+      "description": "Custom Imprinting and Webbing is one of CustomTiedowns.com's specialties. We can use your name, favorite design, or company logo. Whether you are looking for private labeling, advertising materials or simply a birthday gift, Custom Tiedowns has a custom printed webbing that will work.",
+      "subDescription": "We offer two great dye-sublimation printing solutions, Custom Text Imprinting and Full Design Imprinting.",
+      "linkToFullDesign": "Pattern Printing",
+      "linkToScreenPrint": "Screen Printing"
+    },
+    "common": {
+      "benefits": "Benefits",
+      "limitations": "Limitations"
+    },
+    "textPrinting": {
+      "title": "Custom Text Printing",
+      "description": "Custom Text Printing is selected online when purchasing a product such as webbing, straps or tie-downs. If Custom Text Printing is available, a button that reads “Imprinting” will be shown under the product’s CUSTOMIZE menu. Most products are available for Custom Text Printing.",
+      "colorOptionsText": "Custom Text Impriting offers 100's of combinations of background color and text color. We also add new combinations frequently. If you don't see your favorite combination, let us know.",
+      "benefits": {
+        "item1": "Custom Printed Text",
+        "item2": "Choose Text Color",
+        "item3": "Choose Background Color",
+        "item4": "Many color options to choose from",
+        "item5": "Text is Printed Repeatedly",
+        "item6": "Available Online",
+        "item7": "Low Minimums",
+        "item8": "Quick Production",
+        "item9": "Low Cost"
+      },
+      "limitations": {
+        "item1": "Online Platform Offers “Arial Bold” Font Only",
+        "item2": "Printable colors limited to the online color options"
+      },
+      "cta": "Customize Your Text"
+    },
+    "fullDesign": {
+      "title": "Full Design Printing",
+      "description": "Full Design Printing is fully customizable. From colors and designs, all the way to the webbing weave, you are not limited to our preset looks. There is a list of options to choose from, or we are provided a design specialist during the process to ensure the final product meets your expectations.",
+      "imageDesc": "Full Design Printing is fully customizable. From colors and designs, all the way to the webbing weave, you are not limited to our preset looks. There is a list of options to choose from, or we are provided a design specialist during the process to ensure the final product meets your expectations.",
+      "benefits": {
+        "item1": "Full Customization: Availability, Color, Patterns, etc.",
+        "item2": "Higher Imprint Quality",
+        "item3": "Pantone Color Matching",
+        "item4": "Single or Double Sided Printing",
+        "item5": "Different Weaves and Substrates Available",
+        "item6": "Continuous/Repeating Printing",
+        "item7": "Specific Length Printing Available",
+        "item8": "Work with a CTD Design Specialist"
+      },
+      "limitations": {
+        "item1": "Higher Minimum Order Size",
+        "item2": "Longer Production Time",
+        "item3": "Artwork Setup Process"
+      },
+      "cta": {
+        "title": "Design Your Pattern",
+        "description": "Design Your Pattern",
+        "button": "Design Your Pattern"
+      }
+    },
+    "footer": {
+      "title": "Have a Question?",
+      "description": "If you are interested in custom made webbing and have questions, please contact us at sales@customtiedowns.com or by phone at 1-877-360-5528."
+    },
+    "howTo": {
+      "title": "How to Create a Custom Text Imprint",
+      "description": "Custom Text Imprinting is selected online when purchasing a product such as webbing, straps or tie-downs. If Custom Text Printing is available, a button that reads “Imprinting” will be shown under the product’s CUSTOMIZE menu.",
+      "steps": {
+        "step1": {
+          "title": "Select the product",
+          "description": "Find the product you wish to customize on our website."
+        },
+        "step2": {
+          "title": "Select the length",
+          "description": "Choose the appropriate length for your application."
+        },
+        "step3": {
+          "title": "Click the 'Imprinting' button",
+          "description": "Locate and click the imprinting button to open the customization options."
+        },
+        "step4": {
+          "title": "Select an Imprint Background Color",
+          "description": "Choose from a wide variety of available webbing colors."
+        },
+        "step5": {
+          "title": "Select an Imprint Text Color",
+          "description": "Pick a text color that contrasts well with your chosen background."
+        },
+        "step6": {
+          "title": "Provide the Text to Imprint",
+          "description": "Enter the exact text you want to be printed on the webbing."
+        }
+      }
+    }
   }
 }
