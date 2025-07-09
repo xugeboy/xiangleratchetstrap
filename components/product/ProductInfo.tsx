@@ -36,6 +36,7 @@ export default function ProductInfo({ lang, product }: ProductInfoProps) {
       console.error("Could not save product to sessionStorage", error);
     }
   };
+  const customizable = product.strap_colors && product.strap_colors.colorSelection;
   return (
     <div>
       <div className="mb-8">
@@ -53,8 +54,8 @@ export default function ProductInfo({ lang, product }: ProductInfoProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-2 mb-8">
-        {services.map((service) => (
+      <div className={`grid grid-cols-1 sm:grid-cols-2 ${ customizable ? '2xl:grid-cols-4' : '2xl:grid-cols-3'} gap-2 mb-8`}>
+      {services.map((service) => (
           <div key={service.id} className="bg-gray-50 p-4 rounded-lg">
             <h3 className="font-semibold text-black mb-2">
               {t(service.titleKey)}
@@ -77,16 +78,21 @@ export default function ProductInfo({ lang, product }: ProductInfoProps) {
           </Link>
         </div>
 
-        <div className="bg-gray-50 p-3 rounded-lg flex items-center justify-center">
-          <Link
-            href={getCombainedLocalePath(lang, "custom-print/custom-screen-print/online-builder")}
-            onClick={handleCustomPrintingClick}
-            className="inline-flex items-center justify-center px-8 sm:px-4 py-3 text-lg font-medium text-white bg-gradient-to-l from-black  to-amber-700
+        {customizable && (
+          <div className="bg-gray-50 p-3 rounded-lg flex items-center justify-center">
+            <Link
+              href={getCombainedLocalePath(
+                lang,
+                "custom-print/screen-print/online-builder"
+              )}
+              onClick={handleCustomPrintingClick}
+              className="inline-flex items-center justify-center px-8 sm:px-4 py-3 text-lg font-medium text-white bg-gradient-to-l from-black  to-amber-700
               rounded-full"
-          >
-            {t("buttons.customPrinting")}
-          </Link>
-        </div>
+            >
+              {t("buttons.customPrinting")}
+            </Link>
+          </div>
+        )}
       </div>
 
       <StrapColorOptions customizations={product.strap_colors} />

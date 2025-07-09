@@ -19,15 +19,24 @@ export default async function CustomPatternDesignPage() {
         {/* 页面头部 */}
         <header className="mb-16">
           <div className="border-l-4 border-blue-600 pl-6 mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{t("header.title")}</h1>
-            <p className="text-lg text-gray-600 max-w-4xl leading-relaxed">{t("header.description")}</p>
-            <p className="text-base text-gray-800 font-medium mt-2 max-w-4xl">{t("header.subDescription")}</p>
-            <Link
-              href="/custom-print/screen-print"
-              className="font-semibold text-blue-600 hover:text-blue-700"
-            >
-              {t("header.linkToScreenPrint")}
-            </Link>
+            <h1 className="text-4xl font-bold mb-4">
+              {t("fullDesign.title")}
+            </h1>
+            <p className="text-lg leading-relaxed">
+              {t("fullDesign.description")}
+            </p>
+            <p className="text-base font-medium mt-2">
+              {t.rich("fullDesign.subDescription", {
+                link: (chunks) => (
+                  <Link
+                    href="/custom-print/screen-print"
+                    className="text-blue-600 underline hover:text-blue-800"
+                  >
+                    {chunks}
+                  </Link>
+                ),
+              })}
+            </p>
           </div>
         </header>
 
@@ -49,7 +58,7 @@ export default async function CustomPatternDesignPage() {
               </div>
             ))}
           </div>
-          <p className="border-l-4 border-blue-600 pl-6 text-left text-lg text-gray-700 mt-8">
+          <p className="border-l-4 border-blue-600 pl-6 text-left text-lg mt-8">
             {t("fullDesign.imageDesc")}
           </p>
         </div>
@@ -92,23 +101,23 @@ export default async function CustomPatternDesignPage() {
 
         {/* 如何定制 */}
         <div className="bg-white mb-8 p-10 rounded-3xl shadow-2xl border border-gray-100">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
-            {t("howTo.title")}
+          <h2 className="text-3xl font-bold text-center mb-4">
+            {t("fullDesign.howTo.title")}
           </h2>
-          <p className="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-12">
-            {t("howTo.description")}
+          <p className="text-center text-lg max-w-5xl mx-auto mb-12">
+            {t("fullDesign.howTo.description")}
           </p>
           <ol className="relative border-l-2 border-blue-200 ml-4">
-            {[...Array(6)].map((_, i) => (
+            {[...Array(4)].map((_, i) => (
               <li key={i} className="mb-10 ml-8">
                 <span className="absolute -left-4 flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full ring-8 ring-white">
                   <span className="font-bold text-blue-800">{i + 1}</span>
                 </span>
-                <h3 className="flex items-center mb-1 text-xl font-semibold text-gray-900">
-                  {t(`howTo.steps.step${i + 1}.title`)}
+                <h3 className="flex items-center mb-1 text-xl font-semibold">
+                  {t(`fullDesign.howTo.steps.step${i + 1}.title`)}
                 </h3>
-                <p className="text-base font-normal text-gray-500">
-                  {t(`howTo.steps.step${i + 1}.description`)}
+                <p className="text-base font-normal max-w-7xl">
+                  {t(`fullDesign.howTo.steps.step${i + 1}.description`)}
                 </p>
               </li>
             ))}

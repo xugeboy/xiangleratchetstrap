@@ -12,6 +12,7 @@ import {
 export default async function CustomPrintOverviewPage() {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "CustomPrint" });
+  const tw = await getTranslations({ locale, namespace: "CategoriesSection" });
 
   const textPrintingImages = [
     "/v1751985848/pattern2_q8k4uf.jpg",
@@ -28,14 +29,16 @@ export default async function CustomPrintOverviewPage() {
         {/* 页面头部 */}
         <header className="mb-16">
           <div className="border-l-4 border-blue-600 pl-6 mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              {t("header.title")}
-            </h1>
-            <p className="text-lg text-gray-600 max-w-4xl leading-relaxed">
-              {t("header.description")}
-            </p>
-            <p className="text-base text-gray-800 font-medium mt-2 max-w-4xl">
-              {t("header.subDescription")}
+            <h1 className="text-4xl font-bold mb-4">{t("header.title")}</h1>
+            <p className="text-lg leading-relaxed">{t("header.description")}</p>
+            <p className="text-base font-medium mt-2">
+              {t.rich("header.subDescription", {
+                link: (chunks) => (
+                  <Link href={tw("webbingAndHardware.link")} className="text-blue-600 underline hover:text-blue-800">
+                    {chunks}
+                  </Link>
+                ),
+              })}
             </p>
           </div>
         </header>
@@ -72,7 +75,7 @@ export default async function CustomPrintOverviewPage() {
                   {t("common.benefits")}
                 </h3>
                 <ul className="space-y-3">
-                  {[...Array(9)].map((_, i) => (
+                  {[...Array(6)].map((_, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <FaCheckCircle className="h-4 w-4 text-green-600 flex-shrink-0 mt-1" />
                       <span className="text-sm text-gray-700 leading-relaxed">
@@ -108,7 +111,7 @@ export default async function CustomPrintOverviewPage() {
                   href="/custom-print/screen-print"
                   className="inline-flex items-center justify-center w-full rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-4 text-lg font-semibold text-white shadow-lg hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all duration-200"
                 >
-                  {t("textPrinting.cta.title")}
+                  {t("textPrinting.cta")}
                   <FaArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </div>
@@ -181,7 +184,7 @@ export default async function CustomPrintOverviewPage() {
                   href="/custom-print/full-design"
                   className="inline-flex items-center justify-center w-full rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-4 text-lg font-semibold text-white shadow-lg hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all duration-200"
                 >
-                  {t("fullDesign.cta.title")}
+                  {t("fullDesign.cta")}
                   <FaArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </div>

@@ -88,6 +88,12 @@ export function MobileMenu({ isOpen, onClose, company }: MobileMenuProps) {
               </div>
 
               <div className="py-6">
+              <Link
+                  href="/custom-print"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-black hover:bg-gray-50"
+                >
+                  Custom Print
+                </Link>
                 <Link
                   href="/business-solutions"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-black hover:bg-gray-50"

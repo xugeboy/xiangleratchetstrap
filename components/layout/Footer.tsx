@@ -40,7 +40,6 @@ export default function Footer() {
       { nameKey: "support.faq", href: "faq" },
       { nameKey: "support.businessSolutions", href: "business-solutions" },
       { nameKey: "support.sitemap", href: "sitemap.xml" },
-      // { nameKey: "support.onlineCustomizer", href: "online-customizer" },
     ],
     products: [
       {
@@ -58,6 +57,10 @@ export default function Footer() {
       {
         nameKey: "products.webbingAndHardware",
         href: "products.webbingAndHardwareHref",
+      },
+      {
+        nameKey: "products.customPrint",
+        href: "products.customPrintHref",
       },
     ],
     contactUs: [
