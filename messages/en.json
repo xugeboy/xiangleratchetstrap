@@ -566,5 +566,66 @@
         }
       }
     }
+  },
+  "OnlineBuilder": {
+    "loading": "Loading Product Details...",
+    "notFound": {
+      "title": "Product Information Not Found",
+      "description": "Please select a product to customize first."
+    },
+    "setup": "Setting up colors...",
+    "header": {
+      "title": "Custom Imprinting",
+      "description": "Create a custom printed strap for your product below. The background and text will be imprinted repeatedly."
+    },
+    "productPanel": {
+      "title": "Build From Here",
+      "itemNumberLabel": "Item #",
+      "selectedWebbingLabel": "Selected Webbing"
+    },
+    "mobileSidebar": {
+      "ariaLabel": "Open product details"
+    },
+    "preview": {
+      "title": "Live Imprint Preview"
+    },
+    "buttons": {
+      "applyAndQuote": "Apply Imprint & Get Quote",
+      "complexDesign": "I Need Complex Design!"
+    },
+    "details": {
+      "title": "Important Details",
+      "minOrder": "There is a minimum order quantity of 4 for imprinting this exact product.",
+      "contentPolicy": "Imprints cannot contain Trademarked, Copyrighted or Profanity Content.",
+      "sublimationInfo": "Sublimation imprinting is UV resistant and colorfast (will not bleed).",
+      "colorRepresentation": "The online system offers preset colors. These colors are close representations of the finished printed color."
+    },
+    "examples": {
+      "title": "Custom Designs Examples"
+    },
+    "formMessages": {
+      "simpleImprint": {
+        "greeting": "Dear XiangleRatchetStrap Service Team,",
+        "intro": "I would like to inquire about the customized printing service for the following product:",
+        "productName": "• Product Name: {productName}",
+        "productCode": "• Product Code: {productCode}",
+        "webbingColor": "• Webbing Color: {webbingColor}",
+        "textColor": "• Text Color: {textColor}",
+        "printedText": "• Printed Text: \"{printedText}\"",
+        "finishedLength": "• Finished Webbing Length: {finishedLength}{unit}",
+        "printInterval": "• Print Interval: {printInterval}{unit}",
+        "request": "Please let me know the available pricing and estimated production timeline. I look forward to your reply.",
+        "closing": "Best regards"
+      },
+      "complexDesign": {
+        "greeting": "Dear XiangleRatchetStrap Service Team,",
+        "intro": "I would like to inquire about the customized printing service for the following product:",
+        "productName": "• Product Name: {productName}",
+        "productCode": "• Product Code: {productCode}",
+        "body": "We are looking to apply a more complex logo design that includes intricate patterns and potentially multiple colors.",
+        "request": "Please advise on the feasibility, available printing methods, pricing details, and estimated production timeline for such customization.",
+        "closing": "Best regards"
+      }
+    }
   }
 }

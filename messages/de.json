@@ -54,7 +54,9 @@
       "retractableRatchetStrapHref": "categories/automatik-zurrgurt",
       "ratchetStrapAndTieDownsHref": "categories/ratschen-zurrgurt-and-zurrgurte",
       "powersportsStrapsHref": "categories/powersports-gurt",
-      "webbingAndHardwareHref": "categories/gurtband-and-hardware"
+      "webbingAndHardwareHref": "categories/gurtband-and-hardware",
+      "customPrint": "Individueller Druck",
+      "customPrintHref": "custom-print"
     }
   },
   "AboutUsPage": {
@@ -278,7 +280,8 @@
       }
     },
     "buttons": {
-      "requestQuote": "Angebot anfordern"
+      "requestQuote": "Angebot anfordern",
+      "customPrinting": "Druckvorschau"
     },
     "customization": {
       "customizations": "Anpassung",

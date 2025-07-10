@@ -54,7 +54,9 @@
       "retractableRatchetStrapHref": "categories/correa-de-trinquete-retractil",
       "ratchetStrapAndTieDownsHref": "categories/correas-y-amarres-de-trinquete",
       "powersportsStrapsHref": "categories/correa-para-motos-de-powersports",
-      "webbingAndHardwareHref": "categories/cinta-y-hardware"
+      "webbingAndHardwareHref": "categories/cinta-y-hardware",
+      "customPrint": "Impresión personalizada",
+      "customPrintHref": "custom-print"
     }
   },
   "AboutUsPage": {
@@ -278,7 +280,8 @@
       }
     },
     "buttons": {
-      "requestQuote": "Solicitar presupuesto"
+      "requestQuote": "Solicitar presupuesto",
+      "customPrinting": "Impresión previa"
     },
     "customization": {
     "customizations": "Personalización",

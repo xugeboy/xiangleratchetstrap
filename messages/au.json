@@ -54,7 +54,9 @@
       "retractableRatchetStrapHref": "categories/retractable-ratchet-strap",
       "ratchetStrapAndTieDownsHref": "categories/ratchet-straps-and-tie-downs",
       "powersportsStrapsHref": "categories/powersports-strap",
-      "webbingAndHardwareHref": "categories/webbing-and-hardware"
+      "webbingAndHardwareHref": "categories/webbing-and-hardware",
+      "customPrint": "Custom Print",
+      "customPrintHref": "custom-print"
     }
   },
   "AboutUsPage": {
@@ -278,7 +280,8 @@
       }
     },
     "buttons": {
-      "requestQuote": "Request Quote"
+      "requestQuote": "Request Quote",
+      "customPrinting": "Printing Preview"
     },
     "customization": {
       "customizations":"Customizations",
@@ -459,5 +462,109 @@
     "title": "Thank You For Your Inquiry!",
     "message": "We have received your request and our team will get back to you within 8 hours.",
     "cta_return_home": "Return to Homepage"
+  },
+  "CustomPrint": {
+    "header": {
+      "title": "Custom Printing",
+      "description": "As a direct factory and manufacturer, XiangleRatchetStrap specializes in OEM custom webbing printing. We print your company name, logo, or unique design directly onto the straps. This service is ideal for businesses needing private labeling, brand promotion, or fully customized tie-down solutions.",
+      "subDescription": "All printed webbing products are made with <link>Polyester Webbing</link> for the best strength, durability and quality of print."
+    },
+    "common": {
+      "benefits": "Benefits",
+      "limitations": "Limitations"
+    },
+    "textPrinting": {
+      "title": "Screen Printing",
+      "description": "Custom Text Printing is one of XiangleRatchetStrap's most popular OEM customization solutions. This service can be used on almost all products we manufacture. The process is as simple as choosing a background webbing color, a text color, and the text to be printed. We then print your custom text repeating along the entire length of the strap.",
+      "subDescription": "If you are looking for a more customizable solution, we also offer <link>Full Design Service.</link>",
+      "colorOptionsText": "Custom Text Printing offers lots of combinations of background color and text color. We also add new combinations frequently. If you don't see your favorite combination, let us know.",
+      "benefits": {
+        "item1": "Custom Text Printing",
+        "item2": "Many color options to choose from",
+        "item3": "Printed Repeatedly",
+        "item4": "Online Preview Available",
+        "item5": "Quick Production",
+        "item6": "Low MOQ & Cost-Effective"
+      },
+      "limitations": {
+        "item1": "Higher Cost For More Colors",
+        "item2": "Less Suitable for Highly Complex Designs"
+      },
+      "cta":"Cutom Your Brand",
+      "howTo": {
+        "title": "Your Guide to Branded Straps",
+        "description": "Elevate your brand and add a professional touch to your products with our direct-from-factory screen printing service. Custom printing is perfect for adding your company name, website, phone number, or safety warnings directly onto your webbing, straps, and tie-down assemblies.",
+        "steps": {
+          "step1": {
+            "title": "Select Your Foundation",
+            "description": "Begin by navigating to the product you wish to customize. Choose the webbing or strap assembly that meets your technical requirements."
+          },
+          "step2": {
+            "title": "Configure and Begin Customization",
+            "description": "Once on the product page,  locate and click the “Printing Preview” button to open the branding interface."
+          },
+          "step3": {
+            "title": "Choose Your Webbing Color",
+            "description": "Select from our extensive palette of standard webbing colors. This will serve as the primary background and canvas for your custom design."
+          },
+          "step4": {
+            "title": "Define Your Print Color",
+            "description": "Pick a color for your text or logo. For maximum readability and impact, we recommend choosing a color that contrasts strongly with your chosen webbing color (e.g., white text on black webbing)."
+          },
+          "step5": {
+            "title": "Provide Your Text Or Artwork",
+            "description": "Enter the text exactly as you'd like it to appear. If you require a complex logo or custom graphics, upload your artwork file in the form and submit your inquiry (formats like .AI, .PDF, .SVG are preferred)."
+          },
+          "step6": {
+            "title": "Review & Approve Your Digital Proof",
+            "description": "This is the most important step. After you submit your design, our team will create a digital proof and send it to you via email. We will never proceed with production until you have reviewed and approved the final design. This ensures you are 100% satisfied with the result."
+          }
+        }
+      }
+    },
+    "fullDesign": {
+      "title": "Full Design",
+      "description": "As a direct manufacturer, we bring your logos, artwork, or complex designs to life using two professional methods: Heat Transfer for vibrant, photo-quality printing, and Jacquard weaving to integrate the pattern directly into the webbing for a premium, durable finish. This service is the ultimate way to make your uniquely branded products a reality.",
+      "subDescription": "If you don't need full customization, check out our <link>Screen Printing.</link>",
+      "imageDesc": "Full Design Impriting can be printed on one side, both sides, or different artwork on each side of the webbing. Designs are fully flexible.",
+      "benefits": {
+        "item1": "Full Customization Available, Color, Patterns, etc.",
+        "item2": "Precision Custom Printing",
+        "item3": "Pantone Color Matching",
+        "item4": "Single or Double Sided Printing",
+        "item5": "Different Weaves and Substrates Available",
+        "item6": "Continuous Repeating Pattern",
+        "item7": "Specific Length Printing Available",
+        "item8": "Work with our Design Specialist"
+      },
+      "limitations": {
+        "item1": "Higher MOQ",
+        "item2": "Longer Production Time",
+        "item3": "Artwork Setup Process"
+      },
+      "cta":"Set Up Design Process",
+      "howTo": {
+        "title": "From Your Design to Final Product",
+        "description": "Transform our high-performance webbing and straps into a fully branded product for your business. Our factory-direct Full Design customization service is perfect for complex logos, repeating patterns, and specific branding requirements. This collaborative process ensures you get the exact result you need. Here's how it works:",
+        "steps": {
+          "step1": {
+            "title": "Select Your Foundation",
+            "description": "Begin by navigating to the product you wish to customize. Choose the webbing or strap assembly that meets your technical requirements."
+          },
+          "step2": {
+            "title": "Submit Your Design via Inquiry Form",
+            "description": "On the product page, locate and use the Request a Quote form. Fill in your contact details and quantity, then upload your design file. For the highest quality result, vector files such as .AI, .EPS, .PDF, or .SVG are strongly recommended."
+          },
+          "step3": {
+            "title": "We Create Your Digital Proof & Quote",
+            "description": "Our design team will review your artwork and requirements. Within 8 hours, we will email you a comprehensive quote and a digital mock-up (proof) that shows exactly how your design will look on the selected product."
+          },
+          "step4": {
+            "title": "Review, Approve, and Order",
+            "description": "Carefully review the digital proof and quote we send you. If it perfectly matches your vision, simply reply to the email to give your approval. We will then process your custom order and begin production. If any adjustments are needed, we'll work with you until it's exactly right."
+          }
+        }
+      }
+    }
   }
 }

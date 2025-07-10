@@ -1,8 +1,8 @@
-"use client";
+"use client"; // This directive marks the component as a Client Component.
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl"; // 导入 useTranslations
+import { useTranslations } from "next-intl";
 import {
   getDefaultTextColorForWebbing,
   type TextColor,
@@ -16,7 +16,7 @@ import { getCloudinaryPublicId } from "@/utils/formatUtils";
 import Specifications from "@/components/product/Specifications";
 
 export default function OnlineBuilder() {
-  const t = useTranslations("OnlineBuilder"); // 初始化翻译函数
+  const t = useTranslations("OnlineBuilder");
 
   const [product, setProduct] = useState<Product>();
   const [isLoading, setIsLoading] = useState(true);
@@ -24,22 +24,21 @@ export default function OnlineBuilder() {
 
   const [webbingColor, setWebbingColor] = useState<colorSelection>();
   const [textColor, setTextColor] = useState<TextColor>();
-  // 使用翻译函数初始化默认状态
   const [printedText, setPrintedText] = useState<string>(
-    "Custom"
+    t("formMessages.defaultPrintedText")
   );
   const [printInterval, setPrintInterval] = useState<number>(6);
   const [finishedLength, setFinishedLength] = useState<number>(40);
   const [unit, setUnit] = useState<string>("mm");
   const [generatedMessage, setGeneratedMessage] = useState<string | null>(null);
 
+  // This effect MUST run on the client, as it accesses sessionStorage.
   useEffect(() => {
     try {
       const productJson = sessionStorage.getItem("customPrintingProduct");
       if (productJson) {
         const parsedProduct = JSON.parse(productJson);
 
-        // 过滤掉 name 为 25mm Camouflage 的项
         const filteredColorSelection =
           parsedProduct.strap_colors.colorSelection.filter(
             (item: colorSelection) => item.name !== "25mm Camouflage"
@@ -55,6 +54,7 @@ export default function OnlineBuilder() {
     setIsLoading(false);
   }, []);
 
+  // These effects manage state based on product data and user selections.
   useEffect(() => {
     if (
       product &&
@@ -72,6 +72,63 @@ export default function OnlineBuilder() {
     }
   }, [webbingColor]);
 
+  // Event handlers for user interaction.
+  const handleApplyImprint = () => {
+    const messageLines = [
+      t("formMessages.simpleImprint.greeting"),
+      t("formMessages.simpleImprint.intro"),
+      t("formMessages.simpleImprint.productName", {
+        productName: product!.name,
+      }),
+      t("formMessages.simpleImprint.productCode", {
+        productCode: product!.code,
+      }),
+      t("formMessages.simpleImprint.webbingColor", {
+        webbingColor: webbingColor!.name,
+      }),
+      t("formMessages.simpleImprint.textColor", { textColor: textColor!.name }),
+      t("formMessages.simpleImprint.printedText", { printedText }),
+      t("formMessages.simpleImprint.finishedLength", {
+        finishedLength,
+        unit,
+      }),
+      t("formMessages.simpleImprint.printInterval", { printInterval, unit }),
+      t("formMessages.simpleImprint.request"),
+      t("formMessages.simpleImprint.closing"),
+    ];
+    const message = messageLines.join("\n");
+
+    setGeneratedMessage(message);
+    const formElement = document.getElementById("quote_form");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const handleComplexDesign = () => {
+    const messageLines = [
+      t("formMessages.complexDesign.greeting"),
+      t("formMessages.complexDesign.intro"),
+      t("formMessages.complexDesign.productName", {
+        productName: product!.name,
+      }),
+      t("formMessages.complexDesign.productCode", {
+        productCode: product!.code,
+      }),
+      t("formMessages.complexDesign.body"),
+      t("formMessages.complexDesign.request"),
+      t("formMessages.complexDesign.closing"),
+    ];
+    const message = messageLines.join("\n");
+
+    setGeneratedMessage(message);
+    const formElement = document.getElementById("quote_form");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  // Loading and initial state handling...
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -95,66 +152,9 @@ export default function OnlineBuilder() {
       </div>
     );
   }
-  if (!webbingColor) return <div>{t("setup")}</div>;
-  if (!textColor) return <div>{t("setup")}</div>;
+  if (!webbingColor || !textColor) return <div>{t("setup")}</div>;
 
-  const handleApplyImprint = () => {
-    // 使用 t() 函数和占位符构建消息
-    const messageLines = [
-      t("formMessages.simpleImprint.greeting"),
-      t("formMessages.simpleImprint.intro"),
-      t("formMessages.simpleImprint.productName", {
-        productName: product.name,
-      }),
-      t("formMessages.simpleImprint.productCode", {
-        productCode: product.code,
-      }),
-      t("formMessages.simpleImprint.webbingColor", {
-        webbingColor: webbingColor.name,
-      }),
-      t("formMessages.simpleImprint.textColor", { textColor: textColor.name }),
-      t("formMessages.simpleImprint.printedText", { printedText }),
-      t("formMessages.simpleImprint.finishedLength", {
-        finishedLength,
-        unit,
-      }),
-      t("formMessages.simpleImprint.printInterval", { printInterval, unit }),
-      t("formMessages.simpleImprint.request"),
-      t("formMessages.simpleImprint.closing"),
-    ];
-    const message = messageLines.join("\n");
-
-    setGeneratedMessage(message);
-    const formElement = document.getElementById("quote_form");
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
-  const handleComplexDesign = () => {
-    // 使用 t() 函数和占位符构建消息
-    const messageLines = [
-      t("formMessages.complexDesign.greeting"),
-      t("formMessages.complexDesign.intro"),
-      t("formMessages.complexDesign.productName", {
-        productName: product.name,
-      }),
-      t("formMessages.complexDesign.productCode", {
-        productCode: product.code,
-      }),
-      t("formMessages.complexDesign.body"),
-      t("formMessages.complexDesign.request"),
-      t("formMessages.complexDesign.closing"),
-    ];
-    const message = messageLines.join("\n");
-
-    setGeneratedMessage(message);
-    const formElement = document.getElementById("quote_form");
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
+  // The rest of the JSX is identical to your original file.
   const ProductInfoPanel = () => (
     <div className="sticky top-8 w-full">
       <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">

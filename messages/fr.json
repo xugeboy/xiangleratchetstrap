@@ -54,7 +54,9 @@
       "retractableRatchetStrapHref": "categories/sangle-a-cliquet-retractable",
       "ratchetStrapAndTieDownsHref": "categories/sangles-et-attaches-a-cliquet",
       "powersportsStrapsHref": "categories/sangle-powersports",
-      "webbingAndHardwareHref": "categories/sangles-et-materiel"
+      "webbingAndHardwareHref": "categories/sangles-et-materiel",
+      "customPrint": "Impression personnalisée",
+      "customPrintHref": "custom-print"
     }
   },
   "AboutUsPage": {
@@ -278,7 +280,8 @@
       }
     },
     "buttons": {
-      "requestQuote": "Demander un devis"
+      "requestQuote": "Demander un devis",
+      "customPrinting": "Aperçu de l'impression"
     },
     "customization": {
       "customizations": "Personnalisation",
