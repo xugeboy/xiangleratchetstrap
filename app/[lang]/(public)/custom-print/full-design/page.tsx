@@ -68,7 +68,7 @@ export async function generateMetadata(
   };
 }
 
-export default async function CustomPatternDesignPage() {
+export default async function FullDesign() {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "CustomPrint" });
 

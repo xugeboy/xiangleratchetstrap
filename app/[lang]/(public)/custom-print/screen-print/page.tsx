@@ -1,5 +1,3 @@
-// file: app/[locale]/custom-text-imprinting/page.tsx
-
 import Image from "next/image";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -68,7 +66,7 @@ export async function generateMetadata(
   };
 }
 
-export default async function CustomTextImprintingPage() {
+export default async function ScreenPrint() {
   const locale = await getLocale();
   const t = await getTranslations({
     locale,

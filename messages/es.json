@@ -462,5 +462,194 @@
     "title": "¡Gracias por su consulta!",
     "message": "Hemos recibido su solicitud y nuestro equipo se pondrá en contacto con usted en un plazo de 8 horas.",
     "cta_return_home": "Volver a la página principal"
+  },
+  "CustomPrint": {
+    "header": {
+      "title": "Impresión Personalizada",
+      "description": "Como fábrica y fabricante directo, XiangleRatchetStrap se especializa en la impresión OEM personalizada de cinchas. Imprimimos el nombre de su empresa, logotipo o diseño único directamente en las correas. Este servicio es ideal para empresas que necesitan etiquetado privado, promoción de marca o soluciones de amarre totalmente personalizadas.",
+      "subDescription": "Todos los productos de cincha impresa se fabrican con <link>Cincha de Poliéster</link> para obtener la mejor resistencia, durabilidad y calidad de impresión."
+    },
+    "common": {
+      "benefits": "Beneficios",
+      "limitations": "Limitaciones"
+    },
+    "textPrinting": {
+      "title": "Serigrafía",
+      "description": "La Impresión de Texto Personalizado es una de las soluciones de personalización OEM más populares de XiangleRatchetStrap. Este servicio se puede utilizar en casi todos los productos que fabricamos. El proceso es tan simple como elegir un color de cincha de fondo, un color de texto y el texto a imprimir. Luego imprimimos su texto personalizado repetidamente a lo largo de toda la correa.",
+      "subDescription": "Si busca una solución más personalizable, también ofrecemos un <link>Servicio de Diseño Completo.</link>",
+      "colorOptionsText": "La Impresión de Texto Personalizado ofrece muchas combinaciones de color de fondo y color de texto. También añadimos nuevas combinaciones con frecuencia. Si no ve su combinación favorita, háganoslo saber.",
+      "benefits": {
+        "item1": "Impresión de Texto Personalizado",
+        "item2": "Muchas opciones de color para elegir",
+        "item3": "Impreso Repetidamente",
+        "item4": "Vista Previa en Línea Disponible",
+        "item5": "Producción Rápida",
+        "item6": "Bajo MOQ y Rentable"
+      },
+      "limitations": {
+        "item1": "Mayor Costo por Más Colores",
+        "item2": "Menos Adecuado para Diseños Muy Complejos"
+      },
+      "cta": "Personalice Su Marca",
+      "howTo": {
+        "title": "Su Guía para Correas de Marca",
+        "description": "Eleve su marca y añada un toque profesional a sus productos con nuestro servicio de serigrafía directo de fábrica. La impresión personalizada es perfecta para añadir el nombre de su empresa, sitio web, número de teléfono o advertencias de seguridad directamente en sus cinchas, correas y conjuntos de amarre.",
+        "steps": {
+          "step1": {
+            "title": "Seleccione su Base",
+            "description": "Comience navegando hasta el producto que desea personalizar. Elija la cincha o el conjunto de correa que cumpla con sus requisitos técnicos."
+          },
+          "step2": {
+            "title": "Configure y Comience la Personalización",
+            "description": "Una vez en la página del producto, localice y haga clic en el botón “Vista Previa de Impresión” para abrir la interfaz de personalización de marca."
+          },
+          "step3": {
+            "title": "Elija el Color de su Cincha",
+            "description": "Seleccione de nuestra extensa paleta de colores de cincha estándar. Esto servirá como el fondo principal y el lienzo para su diseño personalizado."
+          },
+          "step4": {
+            "title": "Defina el Color de su Impresión",
+            "description": "Elija un color para su texto o logotipo. Para una máxima legibilidad e impacto, recomendamos elegir un color que contraste fuertemente con el color de cincha elegido (por ejemplo, texto blanco sobre cincha negra)."
+          },
+          "step5": {
+            "title": "Proporcione su Texto o Diseño",
+            "description": "Ingrese el texto exactamente como le gustaría que apareciera. Si necesita un logotipo complejo o gráficos personalizados, cargue su archivo de diseño en el formulario y envíe su consulta (se prefieren formatos como .AI, .PDF, .SVG)."
+          },
+          "step6": {
+            "title": "Revise y Apruebe su Prueba Digital",
+            "description": "Este es el paso más importante. Después de enviar su diseño, nuestro equipo creará una prueba digital y se la enviará por correo electrónico. Nunca procederemos con la producción hasta que haya revisado y aprobado el diseño final. Esto asegura que esté 100% satisfecho con el resultado."
+          }
+        }
+      }
+    },
+    "fullDesign": {
+      "title": "Diseño Completo",
+      "description": "Como fabricante directo, damos vida a sus logotipos, diseños o patrones complejos utilizando dos métodos profesionales: Transferencia de Calor para una impresión vibrante con calidad fotográfica, y tejido Jacquard para integrar el patrón directamente en la cincha para un acabado premium y duradero. Este servicio es la forma definitiva de hacer realidad sus productos de marca única.",
+      "subDescription": "Si no necesita una personalización completa, eche un vistazo a nuestra <link>Serigrafía.</link>",
+      "imageDesc": "La Impresión de Diseño Completo se puede imprimir en un lado, en ambos lados, o con un diseño diferente en cada lado de la cincha. Los diseños son totalmente flexibles.",
+      "benefits": {
+        "item1": "Personalización Completa Disponible, Color, Patrones, etc.",
+        "item2": "Impresión Personalizada de Precisión",
+        "item3": "Coincidencia de Colores Pantone",
+        "item4": "Impresión a Una o Dos Caras",
+        "item5": "Diferentes Tejidos y Sustratos Disponibles",
+        "item6": "Patrón Repetitivo Continuo",
+        "item7": "Impresión de Longitud Específica Disponible",
+        "item8": "Trabaje con nuestro Especialista en Diseño"
+      },
+      "limitations": {
+        "item1": "MOQ más Alto",
+        "item2": "Tiempo de Producción más Largo",
+        "item3": "Proceso de Configuración del Diseño"
+      },
+      "cta": "Iniciar Proceso de Diseño",
+      "howTo": {
+        "title": "De su Diseño al Producto Final",
+        "description": "Transforme nuestras cinchas y correas de alto rendimiento en un producto totalmente de marca para su negocio. Nuestro servicio de personalización de Diseño Completo directo de fábrica es perfecto para logotipos complejos, patrones repetitivos y requisitos de marca específicos. Este proceso colaborativo asegura que obtenga el resultado exacto que necesita. Así es como funciona:",
+        "steps": {
+          "step1": {
+            "title": "Seleccione su Base",
+            "description": "Comience navegando hasta el producto que desea personalizar. Elija la cincha o el conjunto de correa que cumpla con sus requisitos técnicos."
+          },
+          "step2": {
+            "title": "Envíe su Diseño a través del Formulario de Consulta",
+            "description": "En la página del producto, localice y use el formulario de Solicitar Cotización. Complete sus datos de contacto y cantidad, luego cargue su archivo de diseño. Para obtener la más alta calidad, se recomienda encarecidamente el uso de archivos vectoriales como .AI, .EPS, .PDF o .SVG."
+          },
+          "step3": {
+            "title": "Creamos su Prueba Digital y Cotización",
+            "description": "Nuestro equipo de diseño revisará su obra de arte y sus requisitos. En 8 horas, le enviaremos por correo electrónico una cotización completa y una maqueta digital (prueba) que muestra exactamente cómo se verá su diseño en el producto seleccionado."
+          },
+          "step4": {
+            "title": "Revise, Apruebe y Ordene",
+            "description": "Revise cuidadosamente la prueba digital y la cotización que le enviamos. Si coincide perfectamente con su visión, simplemente responda al correo electrónico para dar su aprobación. Luego procesaremos su pedido personalizado y comenzaremos la producción. Si se necesitan ajustes, trabajaremos con usted hasta que quede exactamente bien."
+          }
+        }
+      }
+    }
+  },
+  "OnlineBuilder": {
+    "loading": "Cargando Detalles del Producto...",
+    "notFound": {
+      "title": "Información del Producto no Encontrada",
+      "description": "Por favor, seleccione primero un producto para personalizar."
+    },
+    "setup": "Configurando colores...",
+    "header": {
+      "title": "Impresión de Texto Personalizado",
+      "description": "Cree una correa impresa personalizada para su producto a continuación. El fondo y el texto se imprimirán repetidamente."
+    },
+    "productPanel": {
+      "title": "Construir desde Aquí",
+      "itemNumberLabel": "Artículo #",
+      "selectedWebbingLabel": "Cincha Seleccionada"
+    },
+    "mobileSidebar": {
+      "ariaLabel": "Abrir detalles del producto"
+    },
+    "preview": {
+      "title": "Vista Previa de Impresión en Vivo"
+    },
+    "buttons": {
+      "applyAndQuote": "Aplicar Impresión y Obtener Cotización",
+      "complexDesign": "¡Necesito un Diseño Complejo!"
+    },
+    "details": {
+      "title": "Detalles Importantes",
+      "minOrder": "El monto mínimo del pedido es de $500.",
+      "productionTime": "El tiempo de producción personalizado es de 10 días.",
+      "previewLimitation": "La vista previa en línea solo puede manejar texto simple. Si necesita que se imprima un arte más detallado, por favor contacte al servicio al cliente.",
+      "customColors": "Podemos personalizar los colores de las cinchas. Si las combinaciones de colores actuales no satisfacen sus necesidades, por favor contáctenos."
+    },
+    "examples": {
+      "title": "Ejemplos de Diseños Personalizados"
+    },
+    "formMessages": {
+      "simplePrint": {
+        "greeting": "Estimado Equipo de Servicio de XiangleRatchetStrap,",
+        "intro": "Me gustaría consultar sobre el servicio de impresión personalizada para el siguiente producto:",
+        "productName": "• Nombre del Producto: {productName}",
+        "productCode": "• Código del Producto: {productCode}",
+        "webbingColor": "• Color de la Cincha: {webbingColor}",
+        "textColor": "• Color del Texto: {textColor}",
+        "printedText": "• Texto Impreso: \"{printedText}\"",
+        "finishedLength": "• Longitud de la Cincha Acabada: {finishedLength}{unit}",
+        "printInterval": "• Intervalo de Impresión: {printInterval}{unit}",
+        "request": "Por favor, infórmeme sobre los precios disponibles y el cronograma de producción estimado. Espero su respuesta.",
+        "closing": "Saludos cordiales"
+      },
+      "complexDesign": {
+        "greeting": "Estimado Equipo de Servicio de XiangleRatchetStrap,",
+        "intro": "Me gustaría consultar sobre el servicio de impresión personalizada para el siguiente producto:",
+        "productName": "• Nombre del Producto: {productName}",
+        "productCode": "• Código del Producto: {productCode}",
+        "body": "Estamos buscando aplicar un diseño de logotipo más complejo que incluye patrones intrincados y potencialmente múltiples colores.",
+        "request": "Por favor, asesórenme sobre la viabilidad, los métodos de impresión disponibles, los detalles de precios y el cronograma de producción estimado para dicha personalización.",
+        "closing": "Saludos cordiales"
+      }
+    },
+    "customizer": {
+      "title": "Opciones de Diseño",
+      "webbingColor": {
+        "title": "Color de la Cincha",
+        "description": "Elija el color base para su cincha"
+      },
+      "textColor": {
+        "title": "Color del Texto",
+        "description": "Seleccione el color para su texto impreso"
+      },
+      "printedText": {
+        "title": "Texto Impreso",
+        "description": "Ingrese el texto que se imprimirá en su cincha",
+        "placeholder": "Ingrese su texto personalizado aquí...",
+        "helperText": "Este texto aparecerá repetidamente en su cincha"
+      },
+      "dimensions": {
+        "title": "Longitud e Intervalo",
+        "description": "Establezca la longitud y la distancia de repetición del texto",
+        "finishedLength": "Longitud Acabada",
+        "printInterval": "Intervalo de Impresión",
+        "helperText": "Intervalo recomendado: 100-200mm para una apariencia óptima"
+      }
+    }
   }
 }

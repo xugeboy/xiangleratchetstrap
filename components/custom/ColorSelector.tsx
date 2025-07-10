@@ -1,14 +1,18 @@
-import type { colorSelection } from "@/types/Customizations"
-import type { TextColor } from "./constants"
+"use client";
+
+import { memo } from 'react';
+import type { colorSelection } from "@/types/Customizations";
+import { TextColor } from './constants';
 
 interface ColorSelectorProps {
-  label: string
-  colors: colorSelection[] | TextColor[]
-  selectedColor: colorSelection | TextColor
-  onColorSelect: (color: colorSelection | TextColor) => void
+  label: string;
+  colors: (colorSelection | TextColor)[];
+  selectedColor: colorSelection | TextColor;
+  onColorSelect: (color: colorSelection | TextColor) => void;
 }
 
-export default function ColorSelector({ label, colors, selectedColor, onColorSelect }: ColorSelectorProps) {
+
+function ColorSelector({ label, colors, selectedColor, onColorSelect }: ColorSelectorProps) {
   return (
     <div className="space-y-4">
       {label && (
@@ -42,5 +46,8 @@ export default function ColorSelector({ label, colors, selectedColor, onColorSel
         ))}
       </div>
     </div>
-  )
+  );
 }
+
+
+export default memo(ColorSelector);

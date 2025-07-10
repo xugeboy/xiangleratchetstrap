@@ -1,5 +1,3 @@
-import { colorSelection } from "@/types/Customizations";
-
 export interface TextColor {
   name: string;
   hexCode: string;
@@ -68,38 +66,11 @@ export const webbingToTextColorMapping: Record<string, TextColor[]> = {
   ],
 };
 
-// 获取指定织带颜色对应的文字颜色选项
-export function getTextColorsForWebbing(
-  webbingColor: colorSelection
-): TextColor[] {
-  const textColors = webbingToTextColorMapping[webbingColor.hexCode];
-
-  // 如果没有找到映射，返回默认的文字颜色选项
-  if (!textColors) {
-    return [
+export const defaultTextColors = [
       { name: "Pure White", hexCode: "#ffffff" },
       { name: "Deep Black", hexCode: "#000000" },
       { name: "Golden Yellow", hexCode: "#fbbf24" },
       { name: "Silver Gray", hexCode: "#d1d5db" },
     ];
-  }
 
-  return textColors;
-}
-
-// 检查指定的文字颜色是否适用于当前织带颜色
-export function isTextColorValidForWebbing(
-  webbingColor: colorSelection,
-  textColor: TextColor
-): boolean {
-  const validTextColors = getTextColorsForWebbing(webbingColor);
-  return validTextColors.some((color) => color.hexCode === textColor.hexCode);
-}
-
-// 获取默认文字颜色（每个织带颜色的第一个选项）
-export function getDefaultTextColorForWebbing(
-  webbingColor: colorSelection
-): TextColor {
-  const textColors = getTextColorsForWebbing(webbingColor);
-  return textColors[0];
-}
+export const MM_PER_INCH = 25.4;

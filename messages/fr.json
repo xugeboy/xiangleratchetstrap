@@ -462,5 +462,194 @@
     "title": "Merci pour votre demande !",
     "message": "Nous avons bien reçu votre demande et notre équipe vous répondra dans les 8 heures.",
     "cta_return_home": "Retour à la page d'accueil"
+  },
+  "CustomPrint": {
+    "header": {
+      "title": "Impression Personnalisée",
+      "description": "En tant qu'usine et fabricant direct, XiangleRatchetStrap est spécialisé dans l'impression OEM personnalisée de sangles. Nous imprimons le nom de votre entreprise, votre logo ou votre design unique directement sur les sangles. Ce service est idéal pour les entreprises nécessitant un étiquetage privé, la promotion de la marque ou des solutions d'arrimage entièrement personnalisées.",
+      "subDescription": "Tous les produits de sangle imprimée sont fabriqués avec une <link>Sangle en Polyester</link> pour la meilleure résistance, durabilité et qualité d'impression."
+    },
+    "common": {
+      "benefits": "Avantages",
+      "limitations": "Limitations"
+    },
+    "textPrinting": {
+      "title": "Sérigraphie",
+      "description": "L'impression de texte personnalisé est l'une des solutions de personnalisation OEM les plus populaires de XiangleRatchetStrap. Ce service peut être utilisé sur presque tous les produits que nous fabriquons. Le processus est aussi simple que de choisir une couleur de sangle de fond, une couleur de texte et le texte à imprimer. Nous imprimons ensuite votre texte personnalisé de manière répétée sur toute la longueur de la sangle.",
+      "subDescription": "Si vous recherchez une solution plus personnalisable, nous proposons également un <link>Service de Conception Complet.</link>",
+      "colorOptionsText": "L'impression de texte personnalisé offre de nombreuses combinaisons de couleurs de fond et de texte. Nous ajoutons aussi fréquemment de nouvelles combinaisons. Si vous ne voyez pas votre combinaison préférée, faites-le nous savoir.",
+      "benefits": {
+        "item1": "Impression de Texte Personnalisé",
+        "item2": "Nombreuses options de couleurs au choix",
+        "item3": "Imprimé de Manière Répétée",
+        "item4": "Aperçu en Ligne Disponible",
+        "item5": "Production Rapide",
+        "item6": "Faible MOQ et Rentable"
+      },
+      "limitations": {
+        "item1": "Coût Plus Élevé pour Plus de Couleurs",
+        "item2": "Moins Adapté aux Conceptions Très Complexes"
+      },
+      "cta": "Personnalisez Votre Marque",
+      "howTo": {
+        "title": "Votre Guide pour des Sangles de Marque",
+        "description": "Mettez en valeur votre marque et ajoutez une touche professionnelle à vos produits avec notre service de sérigraphie direct d'usine. L'impression personnalisée est parfaite pour ajouter le nom de votre entreprise, votre site web, votre numéro de téléphone ou des avertissements de sécurité directement sur vos sangles, et ensembles d'arrimage.",
+        "steps": {
+          "step1": {
+            "title": "Sélectionnez Votre Base",
+            "description": "Commencez par naviguer vers le produit que vous souhaitez personnaliser. Choisissez la sangle ou l'ensemble de sangle qui répond à vos exigences techniques."
+          },
+          "step2": {
+            "title": "Configurez et Commencez la Personnalisation",
+            "description": "Une fois sur la page du produit, localisez et cliquez sur le bouton « Aperçu de l'Impression » pour ouvrir l'interface de personnalisation de la marque."
+          },
+          "step3": {
+            "title": "Choisissez la Couleur de Votre Sangle",
+            "description": "Sélectionnez parmi notre vaste palette de couleurs de sangles standard. Cela servira de fond principal et de toile pour votre design personnalisé."
+          },
+          "step4": {
+            "title": "Définissez la Couleur de Votre Impression",
+            "description": "Choisissez une couleur pour votre texte ou logo. Pour une lisibilité et un impact maximum, nous vous recommandons de choisir une couleur qui contraste fortement avec la couleur de sangle que vous avez choisie (par exemple, du texte blanc sur une sangle noire)."
+          },
+          "step5": {
+            "title": "Fournissez Votre Texte ou Votre Illustration",
+            "description": "Saisissez le texte exactement comme vous souhaitez qu'il apparaisse. Si vous avez besoin d'un logo complexe ou de graphiques personnalisés, téléchargez votre fichier d'illustration dans le formulaire et soumettez votre demande (les formats comme .AI, .PDF, .SVG sont préférés)."
+          },
+          "step6": {
+            "title": "Examinez et Approuvez Votre Bon à Tirer Numérique",
+            "description": "C'est l'étape la plus importante. Après avoir soumis votre design, notre équipe créera un bon à tirer numérique et vous l'enverra par e-mail. Nous ne procéderons jamais à la production avant que vous n'ayez examiné et approuvé le design final. Cela garantit que vous êtes 100% satisfait du résultat."
+          }
+        }
+      }
+    },
+    "fullDesign": {
+      "title": "Conception Complète",
+      "description": "En tant que fabricant direct, nous donnons vie à vos logos, illustrations ou designs complexes en utilisant deux méthodes professionnelles : le Transfert à Chaud pour une impression vibrante de qualité photo, et le tissage Jacquard pour intégrer le motif directement dans la sangle pour une finition premium et durable. Ce service est le moyen ultime de concrétiser vos produits de marque unique.",
+      "subDescription": "Si vous n'avez pas besoin d'une personnalisation complète, consultez notre <link>Sérigraphie.</link>",
+      "imageDesc": "L'impression de conception complète peut être imprimée sur un côté, sur les deux côtés, ou avec une illustration différente de chaque côté de la sangle. Les designs sont entièrement flexibles.",
+      "benefits": {
+        "item1": "Personnalisation Complète Disponible, Couleur, Motifs, etc.",
+        "item2": "Impression Personnalisée de Précision",
+        "item3": "Correspondance des Couleurs Pantone",
+        "item4": "Impression Simple ou Double Face",
+        "item5": "Différents Tissages et Substrats Disponibles",
+        "item6": "Motif Répétitif Continu",
+        "item7": "Impression de Longueur Spécifique Disponible",
+        "item8": "Travaillez avec notre Spécialiste du Design"
+      },
+      "limitations": {
+        "item1": "MOQ Plus Élevé",
+        "item2": "Temps de Production Plus Long",
+        "item3": "Processus de Configuration de l'Illustration"
+      },
+      "cta": "Mettre en Place le Processus de Conception",
+      "howTo": {
+        "title": "De Votre Conception au Produit Final",
+        "description": "Transformez nos sangles et nos courroies haute performance en un produit entièrement personnalisé pour votre entreprise. Notre service de personnalisation de Conception Complète direct d'usine est parfait pour les logos complexes, les motifs répétitifs et les exigences de marque spécifiques. Ce processus collaboratif garantit que vous obtenez exactement le résultat dont vous avez besoin. Voici comment cela fonctionne :",
+        "steps": {
+          "step1": {
+            "title": "Sélectionnez Votre Base",
+            "description": "Commencez par naviguer vers le produit que vous souhaitez personnaliser. Choisissez la sangle ou l'ensemble de sangle qui répond à vos exigences techniques."
+          },
+          "step2": {
+            "title": "Soumettez Votre Conception via le Formulaire de Demande",
+            "description": "Sur la page du produit, localisez et utilisez le formulaire de Demande de Devis. Remplissez vos coordonnées et la quantité, puis téléchargez votre fichier de conception. Pour un résultat de la plus haute qualité, les fichiers vectoriels tels que .AI, .EPS, .PDF ou .SVG sont fortement recommandés."
+          },
+          "step3": {
+            "title": "Nous Créons Votre Bon à Tirer Numérique et Votre Devis",
+            "description": "Notre équipe de conception examinera votre illustration et vos exigences. Dans les 8 heures, nous vous enverrons un e-mail avec un devis complet et une maquette numérique (bon à tirer) qui montre exactement à quoi ressemblera votre design sur le produit sélectionné."
+          },
+          "step4": {
+            "title": "Examinez, Approuvez et Commandez",
+            "description": "Examinez attentivement le bon à tirer numérique et le devis que nous vous envoyons. S'ils correspondent parfaitement à votre vision, répondez simplement à l'e-mail pour donner votre approbation. Nous traiterons alors votre commande personnalisée et commencerons la production. Si des ajustements sont nécessaires, nous travaillerons avec vous jusqu'à ce que tout soit parfait."
+          }
+        }
+      }
+    }
+  },
+  "OnlineBuilder": {
+    "loading": "Chargement des Détails du Produit...",
+    "notFound": {
+      "title": "Informations sur le Produit non Trouvées",
+      "description": "Veuillez d'abord sélectionner un produit à personnaliser."
+    },
+    "setup": "Configuration des couleurs...",
+    "header": {
+      "title": "Impression de Texte Personnalisé",
+      "description": "Créez une sangle imprimée personnalisée pour votre produit ci-dessous. Le fond et le texte seront imprimés de manière répétée."
+    },
+    "productPanel": {
+      "title": "Construire à Partir d'Ici",
+      "itemNumberLabel": "Article #",
+      "selectedWebbingLabel": "Sangle Sélectionnée"
+    },
+    "mobileSidebar": {
+      "ariaLabel": "Ouvrir les détails du produit"
+    },
+    "preview": {
+      "title": "Aperçu de l'Impression en Direct"
+    },
+    "buttons": {
+      "applyAndQuote": "Appliquer l'Impression et Obtenir un Devis",
+      "complexDesign": "J'ai Besoin d'un Design Complexe !"
+    },
+    "details": {
+      "title": "Détails Importants",
+      "minOrder": "Le montant minimum de la commande est de 500 $.",
+      "productionTime": "Le temps de production personnalisé est de 10 jours.",
+      "previewLimitation": "L'aperçu en ligne ne peut traiter que du texte simple. Si vous avez besoin d'une illustration plus détaillée à imprimer, veuillez contacter le service client.",
+      "customColors": "Nous pouvons personnaliser les couleurs des sangles. Si les combinaisons de couleurs actuelles ne répondent pas à vos besoins, veuillez nous contacter."
+    },
+    "examples": {
+      "title": "Exemples de Designs Personnalisés"
+    },
+    "formMessages": {
+      "simplePrint": {
+        "greeting": "Chère Équipe du Service XiangleRatchetStrap,",
+        "intro": "Je souhaite me renseigner sur le service d'impression personnalisée pour le produit suivant :",
+        "productName": "• Nom du Produit : {productName}",
+        "productCode": "• Code du Produit : {productCode}",
+        "webbingColor": "• Couleur de la Sangle : {webbingColor}",
+        "textColor": "• Couleur du Texte : {textColor}",
+        "printedText": "• Texte Imprimé : \"{printedText}\"",
+        "finishedLength": "• Longueur de la Sangle Finie : {finishedLength}{unit}",
+        "printInterval": "• Intervalle d'Impression : {printInterval}{unit}",
+        "request": "Veuillez m'informer des prix disponibles et du calendrier de production estimé. J'attends votre réponse avec impatience.",
+        "closing": "Cordialement"
+      },
+      "complexDesign": {
+        "greeting": "Chère Équipe du Service XiangleRatchetStrap,",
+        "intro": "Je souhaite me renseigner sur le service d'impression personnalisée pour le produit suivant :",
+        "productName": "• Nom du Produit : {productName}",
+        "productCode": "• Code du Produit : {productCode}",
+        "body": "Nous cherchons à appliquer un design de logo plus complexe qui inclut des motifs complexes et potentiellement plusieurs couleurs.",
+        "request": "Veuillez nous conseiller sur la faisabilité, les méthodes d'impression disponibles, les détails de tarification et le calendrier de production estimé pour une telle personnalisation.",
+        "closing": "Cordialement"
+      }
+    },
+    "customizer": {
+      "title": "Options de Conception",
+      "webbingColor": {
+        "title": "Couleur de la Sangle",
+        "description": "Choisissez la couleur de base pour votre sangle"
+      },
+      "textColor": {
+        "title": "Couleur du Texte",
+        "description": "Sélectionnez la couleur pour votre texte imprimé"
+      },
+      "printedText": {
+        "title": "Texte Imprimé",
+        "description": "Saisissez le texte à imprimer sur votre sangle",
+        "placeholder": "Saisissez votre texte personnalisé ici...",
+        "helperText": "Ce texte apparaîtra de manière répétée sur votre sangle"
+      },
+      "dimensions": {
+        "title": "Longueur et Intervalle",
+        "description": "Définissez la longueur et la distance de répétition du texte",
+        "finishedLength": "Longueur Finie",
+        "printInterval": "Intervalle d'Impression",
+        "helperText": "Intervalle recommandé : 100-200mm pour un aspect optimal"
+      }
+    }
   }
 }

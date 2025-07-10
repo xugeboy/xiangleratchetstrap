@@ -1,570 +1,655 @@
 {
-  "HeroSection": {
-    "slides": [
-      {
-        "title": "ENGINEERING EXCELLENCE",
-        "subtitle": "SINCE 2006",
-        "description": "Engineering a better tomorrow with OEM & ODM manufacturing solutions for today."
-      },
-      {
-        "title": "ONE-STOP SOLUTION",
-        "subtitle": "FOR YOUR BUSINESS",
-        "description": "All-in-one supply chain support — fast, flexible, and built for your industry."
-      },
-      {
-        "title": "QUALITY GUARANTEED",
-        "subtitle": "EVERY TIME",
-        "description": "From raw materials to finished goods, every step is backed by trusted certifications you can rely on."
-      }
-    ]
-  },
-  "Footer": {
-    "customMadeStrapsTitle": "Custom-Made Straps",
-    "customMadeStrapsDescription": "All straps on XiangleRatchetStrap.com are made to order. This gives you the ability to choose the length, colour, and other options that fit your needs.",
-    "copyright": "© 2025 Xiangle Ratchet Strap. All rights reserved.",
-    "contactUs": {
-      "addressValue": "No. 18 Zhenxing Road, Yangshe Town, Zhangjiagang City, Suzhou, China, 215600"
-    }
-  },
-  "Navigation": {
-    "headings": {
-      "products": "Products",
-      "support": "Support",
-      "company": "Company",
-      "contactUs": "Contact Us"
+    "HeroSection": {
+        "slides": [
+            {
+                "title": "ENGINEERING EXCELLENCE",
+                "subtitle": "SINCE 2006",
+                "description": "Engineering a better tomorrow with OEM & ODM manufacturing solutions for today."
+            },
+            {
+                "title": "ONE-STOP SOLUTION",
+                "subtitle": "FOR YOUR BUSINESS",
+                "description": "All-in-one supply chain support — fast, flexible, and built for your industry."
+            },
+            {
+                "title": "QUALITY GUARANTEED",
+                "subtitle": "EVERY TIME",
+                "description": "From raw materials to finished goods, every step is backed by trusted certifications you can rely on."
+            }
+        ]
     },
-    "company": {
-      "aboutUs": "About Us",
-      "contactUs": "Contact Us",
-      "blogs": "Blogs",
-      "meetTheTeam": "Meet The Team"
-    },
-    "support": {
-      "requestQuote": "Request Quote",
-      "downloadCatalog": "Download Catalogue",
-      "faq": "FAQ",
-      "businessSolutions": "Business Solutions",
-      "sitemap": "Sitemap"
-    },
-    "products": {
-      "retractableRatchetStrap": "Retractable Ratchet Straps",
-      "ratchetStrapAndTieDowns": "Ratchet Straps & Tie Downs",
-      "powersportsStraps": "Powersports Straps",
-      "webbingAndHardware": "Webbing & Hardware",
-      "retractableRatchetStrapHref": "categories/retractable-ratchet-strap",
-      "ratchetStrapAndTieDownsHref": "categories/ratchet-straps-and-tie-downs",
-      "powersportsStrapsHref": "categories/powersports-strap",
-      "webbingAndHardwareHref": "categories/webbing-and-hardware",
-      "customPrint": "Custom Print",
-      "customPrintHref": "custom-print"
-    }
-  },
-  "AboutUsPage": {
-    "mainHeading": "About Xiangle",
-    "missionVision": "At Xiangle Ratchet Strap, our mission and vision are intertwined: to empower small and medium-sized enterprises (SMEs) worldwide by providing dependable, high-performance, and safe tie-down solutions that ensure efficiency and peace of mind. We are committed to offering high-quality, competitively priced, and highly customised one-stop cargo control solutions, fostering a strong partnership that enables us to grow together with our customers and contribute to their success in confidently securing their shipments, structures, and projects.",
-    "timeline": {
-      "factoryEstablished": {
-        "name": "Factory Established",
-        "description": "Our journey began in 2006 with the founding of our manufacturing facility, laying the foundation for years of growth and innovation in tie-down strap production."
-      },
-      "enteredInternationalTrade": {
-        "name": "Entered International Trade",
-        "description": "In 2016, we expanded into global markets, launching our export business and building long-term partnerships with clients around the world."
-      },
-      "scaledTo100Workers": {
-        "name": "Scaled to 100 Workers, $5M Output",
-        "description": "By 2023, our workforce reached 100 employees and our annual production value surpassed $5 million, marking a major milestone in our capacity and capabilities."
-      },
-      "newProductInnovation": {
-        "name": "New Product Innovation",
-        "description": "In 2024, we launched our newly developed automatic retractable ratchet strap and increased our annual production value to $7 million."
-      }
-    },
-    "engineeringCapabilities": {
-      "heading": "Engineering & OEM Capabilities",
-      "description": "Innovation lies at the core of what we do. From custom length straps to fully branded solutions, Xiangle provides full OEM/ODM services tailored to your market needs. Our in-house development team is continuously exploring new materials, user-friendly designs, and cost-effective improvements—bringing your product ideas to life, with factory-level control and quality assurance."
-    },
-    "ourStrength": {
-      "heading": "Our Strength",
-      "description": "Xiangle Ratchet Strap operates with a strong manufacturing backbone, powered by a skilled workforce, automated production lines, and a commitment to continuous improvement. Our factory integrates advanced equipment, rigorous quality control systems (e.g., adhering to AS/NZS 4380 where applicable), and a scalable production capacity to meet both high-volume orders and custom requirements. Whether it’s precision-welded buckles or next-generation retractable systems, we focus on delivering consistent performance with every strap produced."
-    },
-    "globalReach": {
-      "heading": "Global Reach",
-      "description": "Since entering the international market in 2016, Xiangle's products have been shipped to customers across North America, Europe, Southeast Asia, and Australia. Backed by a robust inventory system and responsive logistics team, we ensure timely delivery and reliable supply for partners worldwide—whether you're a distributor, e-commerce brand, or industrial end user."
-    },
-    "imageAlts": {
-      "customProductCapabilities": "Custom product capabilities illustration",
-      "scaleCapacity": "Image showing factory scale and capacity",
-      "precisionSkill": "Image showcasing precision and skill in manufacturing",
-      "gsCertificated": "GS certification logo or image (relevant for some markets)",
-      "testedQuality": "Image representing tested quality of products, meeting relevant standards like AS/NZS 4380",
-      "globalReachMap": "Map illustrating global reach of Xiangle products"
-    }
-  },
-  "SearchBar": {
-    "placeholder": "What are you looking for?",
-    "searchingStatus": "Searching products...",
-    "noProductsFound": "No products found for \"{searchQuery}\"",
-    "searchResultsTitle": "Search Results ({count})",
-    "clickToViewDetails": "Click to view details",
-    "openMenuAriaLabel": "Open menu"
-  },
-  "ContactSection": {
-    "title": "We Work For You",
-    "description": "We take customer service very seriously and pride ourselves on having the best customer service in the industry. Our team will work tirelessly to ensure you are getting the high-quality products you need, and the exceptional service you deserve. You will always speak with a real, live person and will never have to wait for more than 1 business day to hear back. We've got your back!"
-  },
-  "LogoClouds": {
-    "title": "Our Customers Love Us",
-    "description": "From the very first use, they notice the difference — the reliable quality, thoughtful design, and unwavering service. Every purchase is a vote of confidence, and we're committed to honouring that trust by perfecting every detail. Thank you for being part of our journey. Because of you, we keep getting better."
-  },
-  "BusinessSolutions": {
-    "hero": {
-      "alt": "Business Solutions Banner",
-      "title": "EQUIPMENT YOU NEED. SERVICE YOU DESERVE.",
-      "subtitle": "YOUR PREFERRED VENDOR OF HIGH-QUALITY TRUCKING, RIGGING & LIFTING, AND MOVING EQUIPMENT.",
-      "ctaButton": "PARTNER WITH US"
-    },
-    "section": {
-      "imageAlt": "Our Dedicated Team",
-      "title": "SMALL COMPANY FEEL WITH HIGH-TOUCH SERVICE, BACKED BY A LARGE COMPANY OPERATION.",
-      "description": "Xiangle Ratchet Strap is not your average equipment supplier. We don't just want to work for you, we want to work with you. Our dedicated team of experts is what sets us apart - ensuring you get the high-quality equipment you need and the exceptional service you deserve. With custom product capabilities, fast delivery, and financing available, we look forward to keeping you moving forward.",
-      "linkText": "Meet the Team"
-    }
-  },
-  "StatsSection": {
-    "title": "Reliable Manufacturing, Proven Excellence",
-    "description": "We are committed to providing high-quality products, reliable service, and seamless fulfilment. With years of expertise and a strong global network, we ensure efficiency, precision, and customer satisfaction in every order.",
-    "stats": {
-      "years": "Years in business",
-      "partners": "Business partners",
-      "orders": "Bulk orders fulfilled",
-      "deliveryRate": "On-time delivery rate",
-      "productsAvailable": "Available products"
-    }
-  },
-  "BentoGrids": {
-    "mainTitle": "Tailored Bulk Pricing Solutions",
-    "items": {
-      "manufacturing": {
-        "subtitle": "Manufacturing",
-        "title": "Factory-Direct Production",
-        "imageAlt": "Factory production line for tie-down straps",
-        "description": "As a manufacturer, we oversee the entire production process, ensuring strict quality control and cost efficiency. Our advanced facility in China produces high-quality tie-down straps, cargo nets, and lifting slings tailored to your needs."
-      },
-      "speed": {
-        "subtitle": "Speed",
-        "title": "Fast & Reliable Delivery",
-        "imageAlt": "Fast delivery truck speeding on a highway",
-        "description": "With an optimised production line and a robust logistics network, we ensure quick order fulfilment. Bulk orders are processed efficiently, and we offer flexible shipping solutions to meet global demand."
-      },
-      "customization": {
-        "subtitle": "Customisation",
-        "title": "Tailored to Your Needs",
-        "imageAlt": "Custom branded ratchet strap options",
-        "description": "Every business is unique, and so are its requirements. We offer fully customisable products, including size, material, and branding options, to match your exact specifications."
-      },
-      "expertise": {
-        "subtitle": "Expertise",
-        "title": "Industry-Leading Team",
-        "imageAlt": "Team of experts discussing product design",
-        "description": "Our experienced professionals are dedicated to providing top-notch solutions. From product recommendations to technical support, we ensure you get the best products for your business."
-      },
-      "partnership": {
-        "subtitle": "Partnership",
-        "title": "Long-Term Business Support",
-        "imageAlt": "Large warehouse storage centre indicating partnership support",
-        "description": "We are more than just a supplier—we are your manufacturing partner. With competitive pricing, bulk order flexibility, and expert guidance, we help you scale your business efficiently."
-      }
-    }
-  },
-  "QuoteForm": {
-    "labels": {
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "email": "Email",
-      "phone": "Phone",
-      "companyName": "Company Name",
-      "position": "Position",
-      "message": "Message",
-      "attachment": "Attachment"
-    },
-    "buttons": {
-      "chooseFile": "Choose File(s)",
-      "submit": "Submit Enquiry",
-      "submitting": "Submitting..."
-    },
-    "fileUpload": {
-      "noFileSelected": "No file(s) selected",
-      "maxFilesError": "You can upload up to {count} files only.",
-      "maxFilesHint": "Max {count} files. Images, PDF, DOC, XLS, TXT allowed."
-    },
-    "notifications": {
-      "submitSuccessFallback": "Your enquiry has been submitted successfully! We will get back to you soon.",
-      "submitErrorFallback": "There was an issue submitting your enquiry. Please try again.",
-      "submitErrorNetwork": "Network error. Please check your connection and try again."
-    }
-  },
-  "TeamSection": {
-    "title": "Meet Our Leadership",
-    "description": "We are a team of experienced professionals, committed to driving excellence in manufacturing and providing top-quality solutions for our business partners.",
-    "peopleImageAlt": "Portrait of {name}",
-    "people": {
-      "steven": {
-        "role": "General Manager",
-        "year": "- Co-founder of Xiangle -",
-        "bio": "Responsible for product development, Steven is a visionary leader and co-founder of Xiangle. Outside of work, he cherishes his role as the father of two daughters and two playful cats."
-      },
-      "sophia": {
-        "role": "Sales Manager",
-        "year": "- Co-founder of Xiangle -",
-        "bio": "As Sales Manager and co-founder of Xiangle, Sophia brings extensive experience in building strong customer relationships and leading the sales team to success. At home, she is the loving mother of two daughters and two adorable cats."
-      },
-      "dustin": {
-        "role": "Sales Manager Assistant",
-        "year": "- 5 years at Xiangle -",
-        "bio": "Leading the foreign trade team, Dustin is also responsible for foreign trade business operations and market development at Xiangle. He has been a valuable member for 5 years, consistently supporting sales initiatives and fostering team collaboration."
-      },
-      "warren": {
-        "role": "Foreign Trade Sales",
-        "year": "- 9 years at Xiangle -",
-        "bio": "With 9 years of dedicated service in foreign trade sales at Xiangle, Warren possesses a deep understanding of international markets and excels at building lasting partnerships. In his free time, he enjoys playing basketball."
-      },
-      "alex": {
-        "role": "Foreign Trade Sales",
-        "year": "- 10 years at Xiangle -",
-        "bio": "Alex has been a key player in foreign trade sales for a decade, leveraging his extensive experience to navigate global markets and achieve remarkable results."
-      },
-      "chloe": {
-        "role": "Foreign Trade Sales",
-        "year": "- 5 years at Xiangle -",
-        "bio": "Chloe brings 5 years of experience in foreign trade sales to the Xiangle team, demonstrating a strong commitment to client satisfaction and driving international business growth."
-      }
-    }
-  },
-  "FaqPage": {
-    "metadata": {
-      "title": "FAQ - Xiangle Ratchet Strap",
-      "description": "Frequently Asked Questions about our products and services. Find answers to common enquiries regarding ratchet straps, tie-downs, and more."
-    },
-    "content": {
-      "mainTitle": "Frequently Asked Questions",
-      "introText": "There's a lot to know about webbing and straps! Here are some of the most common questions:",
-      "notFoundText": "Didn't find the answer you're looking for? We'd be glad to clear things up! Check out our <contactLink>Contact Us Page</contactLink> to send us a message. Thank you!"
-    }
-  },
-  "ProductsPage": {
-    "breadcrumb": {
-      "products": "Products"
-    },
-    "mainTitle": "ALL Categories",
-    "mainSubtitle": "Browse our product categories to find the right professional equipment and solutions for your needs.",
-    "introduction": {
-      "title": "Professional Industrial Equipment and Solutions",
-      "paragraph": "We are dedicated to providing high-quality equipment and solutions for the industrial and transportation industries. Whether you need industrial chains, protective equipment, or industrial belts, we have the right products for you. Our products are carefully selected to ensure performance and quality standards (e.g., AS/NZS 4380 where applicable) are met."
-    }
-  },
-  "ProductInfo": {
-    "itemNumberLabel": "ITEM ",
-    "stockStatus": {
-      "inStock": "In Stock",
-      "madeToOrder": "Made to Order"
-    },
-    "services": {
-      "tailoredPrograms": {
-        "title": "Tailored Business Programmes",
-        "linkText": "Partner with Us"
-      },
-      "questionsCustom": {
-        "title": "Questions? Need it custom?",
-        "linkText": "We can help!"
-      }
-    },
-    "buttons": {
-      "requestQuote": "Request Quote",
-      "customPrinting": "Printing Preview"
-    },
-    "customization": {
-      "customizations":"Customizations",
-      "colorSelection":"Color Section",
-      "customLogo":"Custom Logo",
-      "tailoredPackaging":"Tailored Packaging",
-      "possibilities" :"Want to explore more custom possibilities? Click here!"
-    }
-  },
-  "Common": {
-    "relatedBlogs": "Related Blogs",
-    "seeMore": "See More",
-    "seeLess": "See Less",
-    "description": "Description"
-  },
-  "ProductSpecifications": {
-    "Specifications": "Specifications",
-    "assemblyBreakStrength": "Minimum Breaking Strength (MBS)",
-    "workingLoadLimit": "Lashing Capacity (LC)",
-    "webbingBreakStrength": "Webbing Break Strength",
-    "width": "Width",
-    "length": "Length",
-    "endFitting": "End Fitting",
-    "fixedEndLength": "Fixed End Length",
-    "ratchetHandle": "Ratchet Handle",
-    "material": "Material",
-    "finish": "Finish",
-    "grade": "Grade",
-    "compliance": "Compliance",
-    "elongation_at_lc": "Elongation At LC",
-    "productWeight": "Product Weight"
-  },
-  "CategorySidebar": {
-    "categories": "Categories",
-    "refineBy": "Refine By",
-    "selectedFilters": "Selected Filters",
-    "clearAll": "Clear All",
-    "expandCategory": "Expand category",
-    "collapseCategory": "Collapse category"
-  },
-  "ProductGrid": {
-    "loading": "Loading products...",
-    "learnMoreButton": "See Details",
-    "noDescription": "No description available.",
-    "pagination": {
-      "previous": "Previous",
-      "next": "Next"
-    },
-    "noResults": {
-      "title": "No products found",
-      "suggestion": "Please try adjusting the filters or check back later."
-    }
-  },
-  "ViewControls": {
-    "itemsPerPageOption": "{count} items per page"
-  },
-  "ArticlesSection": {
-    "title": "NEWEST <span>BLOGS</span>",
-    "readMoreLink": "Read More",
-    "viewAllButton": "VIEW ALL BLOGS",
-    "noExcerpt": "No excerpt available."
-  },
-  "CapabilitiesSection": {
-    "imageAlt": "Illustration showcasing Xiangle Ratchet Strap's unique capabilities and strengths",
-    "mainTitle": "What Sets Xiangle Ratchet Strap Apart?",
-    "subTitle": "Our Strengths",
-    "items": {
-      "innovation": {
-        "title": "Continuous Innovation",
-        "description": "At Xiangle Ratchet Strap, product innovation never stops. Our dedicated R&D team consistently develops new ratchet strap and tie-down solutions to meet the evolving needs of industries worldwide. From enhanced safety designs to multi-purpose buckle systems, we are always pushing boundaries to deliver better performance, greater versatility, and smarter utility."
-      },
-      "inventorySupply": {
-        "title": "Rapid Factory-Direct Delivery",
-        "description": "Why wait? Our powerful in-house manufacturing means your order moves from the production line to dispatch in record time. By shipping factory-direct to your doorstep through our trusted global logistics partners, we cut out delays and ensure your supply chain stays on schedule."
-      },
-      "moqCustomization": {
-        "title": "Low MOQ & Fully Custom Solutions",
-        "description": "We understand the importance of flexibility. That’s why Xiangle Ratchet Strap offers low minimum order quantities and tailored manufacturing to meet your specific project needs. From custom colours and lengths to private labelling and packaging, we help small businesses and large enterprises alike create exclusive solutions without the high volume barrier."
-      }
-    },
-    "aboutUsButton": "ABOUT US"
-  },
-  "CategoriesSection": {
-    "title": "OUR <span>CATEGORIES</span>",
-    "viewMoreButton": "VIEW MORE",
-    "retractableRatchetStrap": {
-      "title": "Retractable Ratchet Straps",
-      "alt": "High-quality retractable ratchet strap",
-      "link": "categories/retractable-ratchet-strap"
-    },
-    "ratchetStrapsAndTieDowns": {
-      "title": "Ratchet Straps & Tie Downs",
-      "alt": "Various ratchet straps and tie downs",
-      "link": "categories/ratchet-straps-and-tie-downs"
-    },
-    "kayakAndCanoeStrap": {
-      "title": "Kayak & Canoe Straps",
-      "alt": "Durable kayak and canoe tie down strap",
-      "link": "categories/kayak-and-canoe-strap"
-    },
-    "atvAndMotorcycleStrap": {
-      "title": "ATV & Motorcycle Straps",
-      "alt": "Secure ATV and motorcycle transport straps",
-      "link": "categories/atv-and-motorcycle-strap"
-    },
-    "spareTireYStrap": {
-      "title": "Spare Tyre Y-Strap",
-      "alt": "Heavy-duty spare tyre Y-strap",
-      "link": "categories/spare-tire-y-strap"
-    },
-    "webbingAndHardware": {
-      "title": "Webbing & Hardware",
-      "alt": "Industrial webbing and hardware components",
-      "link": "categories/webbing-and-hardware"
-    }
-  },
-  "IndustriesSection": {
-    "title": "TOP <span>INDUSTRIES</span>",
-    "industries": {
-      "oilAndGas": {
-        "title": "Oil & Gas"
-      },
-      "construction": {
-        "title": "CONSTRUCTION"
-      },
-      "transportation": {
-        "title": "TRANSPORTATION"
-      },
-      "agriculture": {
-        "title": "AGRICULTURE"
-      },
-      "marine": {
-        "title": "MARINE"
-      },
-      "outdoor": {
-        "title": "OUTDOOR"
-      },
-      "powersport": {
-        "title": "POWERSPORT"
-      }
-    }
-  },
-  "ProductsSection": {
-    "title": "FEATURED <span>PRODUCTS</span>",
-    "viewAllButton": "View All Products",
-    "learnMoreLink": "See Details",
-    "products": {
-      "retractable1Inch": {
-        "title": "25mm x 3m Retractable Ratchet Strap, S-Hook, Black - 680kg MBS",
-        "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
-        "beforeAlt": "Cleanly organised retractable ratchet strap in use",
-        "afterAlt": "Messy, tangled traditional ratchet strap",
-        "slug": "25mm-x-3m-retractable-ratchet-strap-s-hook-black-680kg-mbs"
-      },
-      "stainlessSteel1Inch": {
-        "title": "25mm 316 Grade Stainless Steel Ratchet Strap with Double J Hook",
-        "description": "Designed for marine and heavy-duty outdoor use, this corrosion-resistant tie-down strap offers long-lasting performance in harsh environments. Ideal for boats, trailers, and industrial applications.",
-        "beforeAlt": "Shiny new 316 stainless steel ratchet strap",
-        "afterAlt": "Old rusty non-stainless ratchet buckle",
-        "slug": "25mm-316-stainless-steel-ratchet-strap-double-j-hook-800kg-mbs"
-      }
-    }
-  },
-  "DownloadCatalogPage": {
-    "title": "Download Our Official Tie-Down Strap Catalog",
-    "description": "Access the complete catalog from a leading manufacturer of tie-down solutions. Discover our full range of custom-produced ratchet straps, cam buckle straps, and accessories, engineered for maximum safety and durability.",
-    "features": {
-      "feature1": "Complete specifications for ratchet & cam buckle straps",
-      "feature2": "Information on custom production capabilities",
-      "feature3": "Direct-from-factory models and innovations"
-    },
-    "buttonText": "Download the Complete Catalog",
-    "buttonMeta": "PDF, {size}MB",
-    "imageAlt": "Cover of the official tie-down strap catalog"
-  },
-  "SuccessPage": {
-    "metaTitle": "Success - Xiangle Ratchet Strap",
-    "title": "Thank You For Your Inquiry!",
-    "message": "We have received your request and our team will get back to you within 8 hours.",
-    "cta_return_home": "Return to Homepage"
-  },
-  "CustomPrint": {
-    "header": {
-      "title": "Custom Printing",
-      "description": "As a direct factory and manufacturer, XiangleRatchetStrap specializes in OEM custom webbing printing. We print your company name, logo, or unique design directly onto the straps. This service is ideal for businesses needing private labeling, brand promotion, or fully customized tie-down solutions.",
-      "subDescription": "All printed webbing products are made with <link>Polyester Webbing</link> for the best strength, durability and quality of print."
-    },
-    "common": {
-      "benefits": "Benefits",
-      "limitations": "Limitations"
-    },
-    "textPrinting": {
-      "title": "Screen Printing",
-      "description": "Custom Text Printing is one of XiangleRatchetStrap's most popular OEM customization solutions. This service can be used on almost all products we manufacture. The process is as simple as choosing a background webbing color, a text color, and the text to be printed. We then print your custom text repeating along the entire length of the strap.",
-      "subDescription": "If you are looking for a more customizable solution, we also offer <link>Full Design Service.</link>",
-      "colorOptionsText": "Custom Text Printing offers lots of combinations of background color and text color. We also add new combinations frequently. If you don't see your favorite combination, let us know.",
-      "benefits": {
-        "item1": "Custom Text Printing",
-        "item2": "Many color options to choose from",
-        "item3": "Printed Repeatedly",
-        "item4": "Online Preview Available",
-        "item5": "Quick Production",
-        "item6": "Low MOQ & Cost-Effective"
-      },
-      "limitations": {
-        "item1": "Higher Cost For More Colors",
-        "item2": "Less Suitable for Highly Complex Designs"
-      },
-      "cta":"Cutom Your Brand",
-      "howTo": {
-        "title": "Your Guide to Branded Straps",
-        "description": "Elevate your brand and add a professional touch to your products with our direct-from-factory screen printing service. Custom printing is perfect for adding your company name, website, phone number, or safety warnings directly onto your webbing, straps, and tie-down assemblies.",
-        "steps": {
-          "step1": {
-            "title": "Select Your Foundation",
-            "description": "Begin by navigating to the product you wish to customize. Choose the webbing or strap assembly that meets your technical requirements."
-          },
-          "step2": {
-            "title": "Configure and Begin Customization",
-            "description": "Once on the product page,  locate and click the “Printing Preview” button to open the branding interface."
-          },
-          "step3": {
-            "title": "Choose Your Webbing Color",
-            "description": "Select from our extensive palette of standard webbing colors. This will serve as the primary background and canvas for your custom design."
-          },
-          "step4": {
-            "title": "Define Your Print Color",
-            "description": "Pick a color for your text or logo. For maximum readability and impact, we recommend choosing a color that contrasts strongly with your chosen webbing color (e.g., white text on black webbing)."
-          },
-          "step5": {
-            "title": "Provide Your Text Or Artwork",
-            "description": "Enter the text exactly as you'd like it to appear. If you require a complex logo or custom graphics, upload your artwork file in the form and submit your inquiry (formats like .AI, .PDF, .SVG are preferred)."
-          },
-          "step6": {
-            "title": "Review & Approve Your Digital Proof",
-            "description": "This is the most important step. After you submit your design, our team will create a digital proof and send it to you via email. We will never proceed with production until you have reviewed and approved the final design. This ensures you are 100% satisfied with the result."
-          }
+    "Footer": {
+        "customMadeStrapsTitle": "Custom-Made Straps",
+        "customMadeStrapsDescription": "All straps on XiangleRatchetStrap.com are made to order. This gives you the ability to choose the length, colour, and other options that fit your needs.",
+        "copyright": "© 2025 Xiangle Ratchet Strap. All rights reserved.",
+        "contactUs": {
+            "addressValue": "No. 18 Zhenxing Road, Yangshe Town, Zhangjiagang City, Suzhou, China, 215600"
         }
-      }
     },
-    "fullDesign": {
-      "title": "Full Design",
-      "description": "As a direct manufacturer, we bring your logos, artwork, or complex designs to life using two professional methods: Heat Transfer for vibrant, photo-quality printing, and Jacquard weaving to integrate the pattern directly into the webbing for a premium, durable finish. This service is the ultimate way to make your uniquely branded products a reality.",
-      "subDescription": "If you don't need full customization, check out our <link>Screen Printing.</link>",
-      "imageDesc": "Full Design Impriting can be printed on one side, both sides, or different artwork on each side of the webbing. Designs are fully flexible.",
-      "benefits": {
-        "item1": "Full Customization Available, Color, Patterns, etc.",
-        "item2": "Precision Custom Printing",
-        "item3": "Pantone Color Matching",
-        "item4": "Single or Double Sided Printing",
-        "item5": "Different Weaves and Substrates Available",
-        "item6": "Continuous Repeating Pattern",
-        "item7": "Specific Length Printing Available",
-        "item8": "Work with our Design Specialist"
-      },
-      "limitations": {
-        "item1": "Higher MOQ",
-        "item2": "Longer Production Time",
-        "item3": "Artwork Setup Process"
-      },
-      "cta":"Set Up Design Process",
-      "howTo": {
-        "title": "From Your Design to Final Product",
-        "description": "Transform our high-performance webbing and straps into a fully branded product for your business. Our factory-direct Full Design customization service is perfect for complex logos, repeating patterns, and specific branding requirements. This collaborative process ensures you get the exact result you need. Here's how it works:",
-        "steps": {
-          "step1": {
-            "title": "Select Your Foundation",
-            "description": "Begin by navigating to the product you wish to customize. Choose the webbing or strap assembly that meets your technical requirements."
-          },
-          "step2": {
-            "title": "Submit Your Design via Inquiry Form",
-            "description": "On the product page, locate and use the Request a Quote form. Fill in your contact details and quantity, then upload your design file. For the highest quality result, vector files such as .AI, .EPS, .PDF, or .SVG are strongly recommended."
-          },
-          "step3": {
-            "title": "We Create Your Digital Proof & Quote",
-            "description": "Our design team will review your artwork and requirements. Within 8 hours, we will email you a comprehensive quote and a digital mock-up (proof) that shows exactly how your design will look on the selected product."
-          },
-          "step4": {
-            "title": "Review, Approve, and Order",
-            "description": "Carefully review the digital proof and quote we send you. If it perfectly matches your vision, simply reply to the email to give your approval. We will then process your custom order and begin production. If any adjustments are needed, we'll work with you until it's exactly right."
-          }
+    "Navigation": {
+        "headings": {
+            "products": "Products",
+            "support": "Support",
+            "company": "Company",
+            "contactUs": "Contact Us"
+        },
+        "company": {
+            "aboutUs": "About Us",
+            "contactUs": "Contact Us",
+            "blogs": "Blogs",
+            "meetTheTeam": "Meet The Team"
+        },
+        "support": {
+            "requestQuote": "Request Quote",
+            "downloadCatalog": "Download Catalogue",
+            "faq": "FAQ",
+            "businessSolutions": "Business Solutions",
+            "sitemap": "Sitemap"
+        },
+        "products": {
+            "retractableRatchetStrap": "Retractable Ratchet Straps",
+            "ratchetStrapAndTieDowns": "Ratchet Straps & Tie Downs",
+            "powersportsStraps": "Powersports Straps",
+            "webbingAndHardware": "Webbing & Hardware",
+            "retractableRatchetStrapHref": "categories/retractable-ratchet-strap",
+            "ratchetStrapAndTieDownsHref": "categories/ratchet-straps-and-tie-downs",
+            "powersportsStrapsHref": "categories/powersports-strap",
+            "webbingAndHardwareHref": "categories/webbing-and-hardware",
+            "customPrint": "Custom Print",
+            "customPrintHref": "custom-print"
         }
-      }
+    },
+    "AboutUsPage": {
+        "mainHeading": "About Xiangle",
+        "missionVision": "At Xiangle Ratchet Strap, our mission and vision are intertwined: to empower small and medium-sized enterprises (SMEs) worldwide by providing dependable, high-performance, and safe tie-down solutions that ensure efficiency and peace of mind. We are committed to offering high-quality, competitively priced, and highly customised one-stop cargo control solutions, fostering a strong partnership that enables us to grow together with our customers and contribute to their success in confidently securing their shipments, structures, and projects.",
+        "timeline": {
+            "factoryEstablished": {
+                "name": "Factory Established",
+                "description": "Our journey began in 2006 with the founding of our manufacturing facility, laying the foundation for years of growth and innovation in tie-down strap production."
+            },
+            "enteredInternationalTrade": {
+                "name": "Entered International Trade",
+                "description": "In 2016, we expanded into global markets, launching our export business and building long-term partnerships with clients around the world."
+            },
+            "scaledTo100Workers": {
+                "name": "Scaled to 100 Workers, $5M Output",
+                "description": "By 2023, our workforce reached 100 employees and our annual production value surpassed $5 million, marking a major milestone in our capacity and capabilities."
+            },
+            "newProductInnovation": {
+                "name": "New Product Innovation",
+                "description": "In 2024, we launched our newly developed automatic retractable ratchet strap and increased our annual production value to $7 million."
+            }
+        },
+        "engineeringCapabilities": {
+            "heading": "Engineering & OEM Capabilities",
+            "description": "Innovation lies at the core of what we do. From custom length straps to fully branded solutions, Xiangle provides full OEM/ODM services tailored to your market needs. Our in-house development team is continuously exploring new materials, user-friendly designs, and cost-effective improvements—bringing your product ideas to life, with factory-level control and quality assurance."
+        },
+        "ourStrength": {
+            "heading": "Our Strength",
+            "description": "Xiangle Ratchet Strap operates with a strong manufacturing backbone, powered by a skilled workforce, automated production lines, and a commitment to continuous improvement. Our factory integrates advanced equipment, rigorous quality control systems (e.g., adhering to AS/NZS 4380 where applicable), and a scalable production capacity to meet both high-volume orders and custom requirements. Whether it’s precision-welded buckles or next-generation retractable systems, we focus on delivering consistent performance with every strap produced."
+        },
+        "globalReach": {
+            "heading": "Global Reach",
+            "description": "Since entering the international market in 2016, Xiangle's products have been shipped to customers across North America, Europe, Southeast Asia, and Australia. Backed by a robust inventory system and responsive logistics team, we ensure timely delivery and reliable supply for partners worldwide—whether you're a distributor, e-commerce brand, or industrial end user."
+        },
+        "imageAlts": {
+            "customProductCapabilities": "Custom product capabilities illustration",
+            "scaleCapacity": "Image showing factory scale and capacity",
+            "precisionSkill": "Image showcasing precision and skill in manufacturing",
+            "gsCertificated": "GS certification logo or image (relevant for some markets)",
+            "testedQuality": "Image representing tested quality of products, meeting relevant standards like AS/NZS 4380",
+            "globalReachMap": "Map illustrating global reach of Xiangle products"
+        }
+    },
+    "SearchBar": {
+        "placeholder": "What are you looking for?",
+        "searchingStatus": "Searching products...",
+        "noProductsFound": "No products found for \"{searchQuery}\"",
+        "searchResultsTitle": "Search Results ({count})",
+        "clickToViewDetails": "Click to view details",
+        "openMenuAriaLabel": "Open menu"
+    },
+    "ContactSection": {
+        "title": "We Work For You",
+        "description": "We take customer service very seriously and pride ourselves on having the best customer service in the industry. Our team will work tirelessly to ensure you are getting the high-quality products you need, and the exceptional service you deserve. You will always speak with a real, live person and will never have to wait for more than 1 business day to hear back. We've got your back!"
+    },
+    "LogoClouds": {
+        "title": "Our Customers Love Us",
+        "description": "From the very first use, they notice the difference — the reliable quality, thoughtful design, and unwavering service. Every purchase is a vote of confidence, and we're committed to honouring that trust by perfecting every detail. Thank you for being part of our journey. Because of you, we keep getting better."
+    },
+    "BusinessSolutions": {
+        "hero": {
+            "alt": "Business Solutions Banner",
+            "title": "EQUIPMENT YOU NEED. SERVICE YOU DESERVE.",
+            "subtitle": "YOUR PREFERRED VENDOR OF HIGH-QUALITY TRUCKING, RIGGING & LIFTING, AND MOVING EQUIPMENT.",
+            "ctaButton": "PARTNER WITH US"
+        },
+        "section": {
+            "imageAlt": "Our Dedicated Team",
+            "title": "SMALL COMPANY FEEL WITH HIGH-TOUCH SERVICE, BACKED BY A LARGE COMPANY OPERATION.",
+            "description": "Xiangle Ratchet Strap is not your average equipment supplier. We don't just want to work for you, we want to work with you. Our dedicated team of experts is what sets us apart - ensuring you get the high-quality equipment you need and the exceptional service you deserve. With custom product capabilities, fast delivery, and financing available, we look forward to keeping you moving forward.",
+            "linkText": "Meet the Team"
+        }
+    },
+    "StatsSection": {
+        "title": "Reliable Manufacturing, Proven Excellence",
+        "description": "We are committed to providing high-quality products, reliable service, and seamless fulfilment. With years of expertise and a strong global network, we ensure efficiency, precision, and customer satisfaction in every order.",
+        "stats": {
+            "years": "Years in business",
+            "partners": "Business partners",
+            "orders": "Bulk orders fulfilled",
+            "deliveryRate": "On-time delivery rate",
+            "productsAvailable": "Available products"
+        }
+    },
+    "BentoGrids": {
+        "mainTitle": "Tailored Bulk Pricing Solutions",
+        "items": {
+            "manufacturing": {
+                "subtitle": "Manufacturing",
+                "title": "Factory-Direct Production",
+                "imageAlt": "Factory production line for tie-down straps",
+                "description": "As a manufacturer, we oversee the entire production process, ensuring strict quality control and cost efficiency. Our advanced facility in China produces high-quality tie-down straps, cargo nets, and lifting slings tailored to your needs."
+            },
+            "speed": {
+                "subtitle": "Speed",
+                "title": "Fast & Reliable Delivery",
+                "imageAlt": "Fast delivery truck speeding on a highway",
+                "description": "With an optimised production line and a robust logistics network, we ensure quick order fulfilment. Bulk orders are processed efficiently, and we offer flexible shipping solutions to meet global demand."
+            },
+            "customization": {
+                "subtitle": "Customisation",
+                "title": "Tailored to Your Needs",
+                "imageAlt": "Custom branded ratchet strap options",
+                "description": "Every business is unique, and so are its requirements. We offer fully customisable products, including size, material, and branding options, to match your exact specifications."
+            },
+            "expertise": {
+                "subtitle": "Expertise",
+                "title": "Industry-Leading Team",
+                "imageAlt": "Team of experts discussing product design",
+                "description": "Our experienced professionals are dedicated to providing top-notch solutions. From product recommendations to technical support, we ensure you get the best products for your business."
+            },
+            "partnership": {
+                "subtitle": "Partnership",
+                "title": "Long-Term Business Support",
+                "imageAlt": "Large warehouse storage centre indicating partnership support",
+                "description": "We are more than just a supplier—we are your manufacturing partner. With competitive pricing, bulk order flexibility, and expert guidance, we help you scale your business efficiently."
+            }
+        }
+    },
+    "QuoteForm": {
+        "labels": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "email": "Email",
+            "phone": "Phone",
+            "companyName": "Company Name",
+            "position": "Position",
+            "message": "Message",
+            "attachment": "Attachment"
+        },
+        "buttons": {
+            "chooseFile": "Choose File(s)",
+            "submit": "Submit Enquiry",
+            "submitting": "Submitting..."
+        },
+        "fileUpload": {
+            "noFileSelected": "No file(s) selected",
+            "maxFilesError": "You can upload up to {count} files only.",
+            "maxFilesHint": "Max {count} files. Images, PDF, DOC, XLS, TXT allowed."
+        },
+        "notifications": {
+            "submitSuccessFallback": "Your enquiry has been submitted successfully! We will get back to you soon.",
+            "submitErrorFallback": "There was an issue submitting your enquiry. Please try again.",
+            "submitErrorNetwork": "Network error. Please check your connection and try again."
+        }
+    },
+    "TeamSection": {
+        "title": "Meet Our Leadership",
+        "description": "We are a team of experienced professionals, committed to driving excellence in manufacturing and providing top-quality solutions for our business partners.",
+        "peopleImageAlt": "Portrait of {name}",
+        "people": {
+            "steven": {
+                "role": "General Manager",
+                "year": "- Co-founder of Xiangle -",
+                "bio": "Responsible for product development, Steven is a visionary leader and co-founder of Xiangle. Outside of work, he cherishes his role as the father of two daughters and two playful cats."
+            },
+            "sophia": {
+                "role": "Sales Manager",
+                "year": "- Co-founder of Xiangle -",
+                "bio": "As Sales Manager and co-founder of Xiangle, Sophia brings extensive experience in building strong customer relationships and leading the sales team to success. At home, she is the loving mother of two daughters and two adorable cats."
+            },
+            "dustin": {
+                "role": "Sales Manager Assistant",
+                "year": "- 5 years at Xiangle -",
+                "bio": "Leading the foreign trade team, Dustin is also responsible for foreign trade business operations and market development at Xiangle. He has been a valuable member for 5 years, consistently supporting sales initiatives and fostering team collaboration."
+            },
+            "warren": {
+                "role": "Foreign Trade Sales",
+                "year": "- 9 years at Xiangle -",
+                "bio": "With 9 years of dedicated service in foreign trade sales at Xiangle, Warren possesses a deep understanding of international markets and excels at building lasting partnerships. In his free time, he enjoys playing basketball."
+            },
+            "alex": {
+                "role": "Foreign Trade Sales",
+                "year": "- 10 years at Xiangle -",
+                "bio": "Alex has been a key player in foreign trade sales for a decade, leveraging his extensive experience to navigate global markets and achieve remarkable results."
+            },
+            "chloe": {
+                "role": "Foreign Trade Sales",
+                "year": "- 5 years at Xiangle -",
+                "bio": "Chloe brings 5 years of experience in foreign trade sales to the Xiangle team, demonstrating a strong commitment to client satisfaction and driving international business growth."
+            }
+        }
+    },
+    "FaqPage": {
+        "metadata": {
+            "title": "FAQ - Xiangle Ratchet Strap",
+            "description": "Frequently Asked Questions about our products and services. Find answers to common enquiries regarding ratchet straps, tie-downs, and more."
+        },
+        "content": {
+            "mainTitle": "Frequently Asked Questions",
+            "introText": "There's a lot to know about webbing and straps! Here are some of the most common questions:",
+            "notFoundText": "Didn't find the answer you're looking for? We'd be glad to clear things up! Check out our <contactLink>Contact Us Page</contactLink> to send us a message. Thank you!"
+        }
+    },
+    "ProductsPage": {
+        "breadcrumb": {
+            "products": "Products"
+        },
+        "mainTitle": "ALL Categories",
+        "mainSubtitle": "Browse our product categories to find the right professional equipment and solutions for your needs.",
+        "introduction": {
+            "title": "Professional Industrial Equipment and Solutions",
+            "paragraph": "We are dedicated to providing high-quality equipment and solutions for the industrial and transportation industries. Whether you need industrial chains, protective equipment, or industrial belts, we have the right products for you. Our products are carefully selected to ensure performance and quality standards (e.g., AS/NZS 4380 where applicable) are met."
+        }
+    },
+    "ProductInfo": {
+        "itemNumberLabel": "ITEM ",
+        "stockStatus": {
+            "inStock": "In Stock",
+            "madeToOrder": "Made to Order"
+        },
+        "services": {
+            "tailoredPrograms": {
+                "title": "Tailored Business Programmes",
+                "linkText": "Partner with Us"
+            },
+            "questionsCustom": {
+                "title": "Questions? Need it custom?",
+                "linkText": "We can help!"
+            }
+        },
+        "buttons": {
+            "requestQuote": "Request Quote",
+            "customPrinting": "Printing Preview"
+        },
+        "customization": {
+            "customizations": "Customizations",
+            "colorSelection": "Color Section",
+            "customLogo": "Custom Logo",
+            "tailoredPackaging": "Tailored Packaging",
+            "possibilities": "Want to explore more custom possibilities? Click here!"
+        }
+    },
+    "Common": {
+        "relatedBlogs": "Related Blogs",
+        "seeMore": "See More",
+        "seeLess": "See Less",
+        "description": "Description"
+    },
+    "ProductSpecifications": {
+        "Specifications": "Specifications",
+        "assemblyBreakStrength": "Minimum Breaking Strength (MBS)",
+        "workingLoadLimit": "Lashing Capacity (LC)",
+        "webbingBreakStrength": "Webbing Break Strength",
+        "width": "Width",
+        "length": "Length",
+        "endFitting": "End Fitting",
+        "fixedEndLength": "Fixed End Length",
+        "ratchetHandle": "Ratchet Handle",
+        "material": "Material",
+        "finish": "Finish",
+        "grade": "Grade",
+        "compliance": "Compliance",
+        "elongation_at_lc": "Elongation At LC",
+        "productWeight": "Product Weight"
+    },
+    "CategorySidebar": {
+        "categories": "Categories",
+        "refineBy": "Refine By",
+        "selectedFilters": "Selected Filters",
+        "clearAll": "Clear All",
+        "expandCategory": "Expand category",
+        "collapseCategory": "Collapse category"
+    },
+    "ProductGrid": {
+        "loading": "Loading products...",
+        "learnMoreButton": "See Details",
+        "noDescription": "No description available.",
+        "pagination": {
+            "previous": "Previous",
+            "next": "Next"
+        },
+        "noResults": {
+            "title": "No products found",
+            "suggestion": "Please try adjusting the filters or check back later."
+        }
+    },
+    "ViewControls": {
+        "itemsPerPageOption": "{count} items per page"
+    },
+    "ArticlesSection": {
+        "title": "NEWEST <span>BLOGS</span>",
+        "readMoreLink": "Read More",
+        "viewAllButton": "VIEW ALL BLOGS",
+        "noExcerpt": "No excerpt available."
+    },
+    "CapabilitiesSection": {
+        "imageAlt": "Illustration showcasing Xiangle Ratchet Strap's unique capabilities and strengths",
+        "mainTitle": "What Sets Xiangle Ratchet Strap Apart?",
+        "subTitle": "Our Strengths",
+        "items": {
+            "innovation": {
+                "title": "Continuous Innovation",
+                "description": "At Xiangle Ratchet Strap, product innovation never stops. Our dedicated R&D team consistently develops new ratchet strap and tie-down solutions to meet the evolving needs of industries worldwide. From enhanced safety designs to multi-purpose buckle systems, we are always pushing boundaries to deliver better performance, greater versatility, and smarter utility."
+            },
+            "inventorySupply": {
+                "title": "Rapid Factory-Direct Delivery",
+                "description": "Why wait? Our powerful in-house manufacturing means your order moves from the production line to dispatch in record time. By shipping factory-direct to your doorstep through our trusted global logistics partners, we cut out delays and ensure your supply chain stays on schedule."
+            },
+            "moqCustomization": {
+                "title": "Low MOQ & Fully Custom Solutions",
+                "description": "We understand the importance of flexibility. That’s why Xiangle Ratchet Strap offers low minimum order quantities and tailored manufacturing to meet your specific project needs. From custom colours and lengths to private labelling and packaging, we help small businesses and large enterprises alike create exclusive solutions without the high volume barrier."
+            }
+        },
+        "aboutUsButton": "ABOUT US"
+    },
+    "CategoriesSection": {
+        "title": "OUR <span>CATEGORIES</span>",
+        "viewMoreButton": "VIEW MORE",
+        "retractableRatchetStrap": {
+            "title": "Retractable Ratchet Straps",
+            "alt": "High-quality retractable ratchet strap",
+            "link": "categories/retractable-ratchet-strap"
+        },
+        "ratchetStrapsAndTieDowns": {
+            "title": "Ratchet Straps & Tie Downs",
+            "alt": "Various ratchet straps and tie downs",
+            "link": "categories/ratchet-straps-and-tie-downs"
+        },
+        "kayakAndCanoeStrap": {
+            "title": "Kayak & Canoe Straps",
+            "alt": "Durable kayak and canoe tie down strap",
+            "link": "categories/kayak-and-canoe-strap"
+        },
+        "atvAndMotorcycleStrap": {
+            "title": "ATV & Motorcycle Straps",
+            "alt": "Secure ATV and motorcycle transport straps",
+            "link": "categories/atv-and-motorcycle-strap"
+        },
+        "spareTireYStrap": {
+            "title": "Spare Tyre Y-Strap",
+            "alt": "Heavy-duty spare tyre Y-strap",
+            "link": "categories/spare-tire-y-strap"
+        },
+        "webbingAndHardware": {
+            "title": "Webbing & Hardware",
+            "alt": "Industrial webbing and hardware components",
+            "link": "categories/webbing-and-hardware"
+        }
+    },
+    "IndustriesSection": {
+        "title": "TOP <span>INDUSTRIES</span>",
+        "industries": {
+            "oilAndGas": {
+                "title": "Oil & Gas"
+            },
+            "construction": {
+                "title": "CONSTRUCTION"
+            },
+            "transportation": {
+                "title": "TRANSPORTATION"
+            },
+            "agriculture": {
+                "title": "AGRICULTURE"
+            },
+            "marine": {
+                "title": "MARINE"
+            },
+            "outdoor": {
+                "title": "OUTDOOR"
+            },
+            "powersport": {
+                "title": "POWERSPORT"
+            }
+        }
+    },
+    "ProductsSection": {
+        "title": "FEATURED <span>PRODUCTS</span>",
+        "viewAllButton": "View All Products",
+        "learnMoreLink": "See Details",
+        "products": {
+            "retractable1Inch": {
+                "title": "25mm x 3m Retractable Ratchet Strap, S-Hook, Black - 680kg MBS",
+                "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+                "beforeAlt": "Cleanly organised retractable ratchet strap in use",
+                "afterAlt": "Messy, tangled traditional ratchet strap",
+                "slug": "25mm-x-3m-retractable-ratchet-strap-s-hook-black-680kg-mbs"
+            },
+            "stainlessSteel1Inch": {
+                "title": "25mm 316 Grade Stainless Steel Ratchet Strap with Double J Hook",
+                "description": "Designed for marine and heavy-duty outdoor use, this corrosion-resistant tie-down strap offers long-lasting performance in harsh environments. Ideal for boats, trailers, and industrial applications.",
+                "beforeAlt": "Shiny new 316 stainless steel ratchet strap",
+                "afterAlt": "Old rusty non-stainless ratchet buckle",
+                "slug": "25mm-316-stainless-steel-ratchet-strap-double-j-hook-800kg-mbs"
+            }
+        }
+    },
+    "DownloadCatalogPage": {
+        "title": "Download Our Official Tie-Down Strap Catalog",
+        "description": "Access the complete catalog from a leading manufacturer of tie-down solutions. Discover our full range of custom-produced ratchet straps, cam buckle straps, and accessories, engineered for maximum safety and durability.",
+        "features": {
+            "feature1": "Complete specifications for ratchet & cam buckle straps",
+            "feature2": "Information on custom production capabilities",
+            "feature3": "Direct-from-factory models and innovations"
+        },
+        "buttonText": "Download the Complete Catalog",
+        "buttonMeta": "PDF, {size}MB",
+        "imageAlt": "Cover of the official tie-down strap catalog"
+    },
+    "SuccessPage": {
+        "metaTitle": "Success - Xiangle Ratchet Strap",
+        "title": "Thank You For Your Inquiry!",
+        "message": "We have received your request and our team will get back to you within 8 hours.",
+        "cta_return_home": "Return to Homepage"
+    },
+    "CustomPrint": {
+        "header": {
+            "title": "Custom Printing",
+            "description": "As a direct factory and manufacturer, XiangleRatchetStrap specializes in OEM custom webbing printing. We print your company name, logo, or unique design directly onto the straps. This service is ideal for businesses needing private labeling, brand promotion, or fully customized tie-down solutions.",
+            "subDescription": "All printed webbing products are made with <link>Polyester Webbing</link> for the best strength, durability and quality of print."
+        },
+        "common": {
+            "benefits": "Benefits",
+            "limitations": "Limitations"
+        },
+        "textPrinting": {
+            "title": "Screen Printing",
+            "description": "Custom Text Printing is one of XiangleRatchetStrap's most popular OEM customization solutions. This service can be used on almost all products we manufacture. The process is as simple as choosing a background webbing color, a text color, and the text to be printed. We then print your custom text repeating along the entire length of the strap.",
+            "subDescription": "If you are looking for a more customizable solution, we also offer <link>Full Design Service.</link>",
+            "colorOptionsText": "Custom Text Printing offers lots of combinations of background color and text color. We also add new combinations frequently. If you don't see your favorite combination, let us know.",
+            "benefits": {
+                "item1": "Custom Text Printing",
+                "item2": "Many color options to choose from",
+                "item3": "Printed Repeatedly",
+                "item4": "Online Preview Available",
+                "item5": "Quick Production",
+                "item6": "Low MOQ & Cost-Effective"
+            },
+            "limitations": {
+                "item1": "Higher Cost For More Colors",
+                "item2": "Less Suitable for Highly Complex Designs"
+            },
+            "cta": "Cutom Your Brand",
+            "howTo": {
+                "title": "Your Guide to Branded Straps",
+                "description": "Elevate your brand and add a professional touch to your products with our direct-from-factory screen printing service. Custom printing is perfect for adding your company name, website, phone number, or safety warnings directly onto your webbing, straps, and tie-down assemblies.",
+                "steps": {
+                    "step1": {
+                        "title": "Select Your Foundation",
+                        "description": "Begin by navigating to the product you wish to customize. Choose the webbing or strap assembly that meets your technical requirements."
+                    },
+                    "step2": {
+                        "title": "Configure and Begin Customization",
+                        "description": "Once on the product page,  locate and click the “Printing Preview” button to open the branding interface."
+                    },
+                    "step3": {
+                        "title": "Choose Your Webbing Color",
+                        "description": "Select from our extensive palette of standard webbing colors. This will serve as the primary background and canvas for your custom design."
+                    },
+                    "step4": {
+                        "title": "Define Your Print Color",
+                        "description": "Pick a color for your text or logo. For maximum readability and impact, we recommend choosing a color that contrasts strongly with your chosen webbing color (e.g., white text on black webbing)."
+                    },
+                    "step5": {
+                        "title": "Provide Your Text Or Artwork",
+                        "description": "Enter the text exactly as you'd like it to appear. If you require a complex logo or custom graphics, upload your artwork file in the form and submit your inquiry (formats like .AI, .PDF, .SVG are preferred)."
+                    },
+                    "step6": {
+                        "title": "Review & Approve Your Digital Proof",
+                        "description": "This is the most important step. After you submit your design, our team will create a digital proof and send it to you via email. We will never proceed with production until you have reviewed and approved the final design. This ensures you are 100% satisfied with the result."
+                    }
+                }
+            }
+        },
+        "fullDesign": {
+            "title": "Full Design",
+            "description": "As a direct manufacturer, we bring your logos, artwork, or complex designs to life using two professional methods: Heat Transfer for vibrant, photo-quality printing, and Jacquard weaving to integrate the pattern directly into the webbing for a premium, durable finish. This service is the ultimate way to make your uniquely branded products a reality.",
+            "subDescription": "If you don't need full customization, check out our <link>Screen Printing.</link>",
+            "imageDesc": "Full Design Impriting can be printed on one side, both sides, or different artwork on each side of the webbing. Designs are fully flexible.",
+            "benefits": {
+                "item1": "Full Customization Available, Color, Patterns, etc.",
+                "item2": "Precision Custom Printing",
+                "item3": "Pantone Color Matching",
+                "item4": "Single or Double Sided Printing",
+                "item5": "Different Weaves and Substrates Available",
+                "item6": "Continuous Repeating Pattern",
+                "item7": "Specific Length Printing Available",
+                "item8": "Work with our Design Specialist"
+            },
+            "limitations": {
+                "item1": "Higher MOQ",
+                "item2": "Longer Production Time",
+                "item3": "Artwork Setup Process"
+            },
+            "cta": "Set Up Design Process",
+            "howTo": {
+                "title": "From Your Design to Final Product",
+                "description": "Transform our high-performance webbing and straps into a fully branded product for your business. Our factory-direct Full Design customization service is perfect for complex logos, repeating patterns, and specific branding requirements. This collaborative process ensures you get the exact result you need. Here's how it works:",
+                "steps": {
+                    "step1": {
+                        "title": "Select Your Foundation",
+                        "description": "Begin by navigating to the product you wish to customize. Choose the webbing or strap assembly that meets your technical requirements."
+                    },
+                    "step2": {
+                        "title": "Submit Your Design via Inquiry Form",
+                        "description": "On the product page, locate and use the Request a Quote form. Fill in your contact details and quantity, then upload your design file. For the highest quality result, vector files such as .AI, .EPS, .PDF, or .SVG are strongly recommended."
+                    },
+                    "step3": {
+                        "title": "We Create Your Digital Proof & Quote",
+                        "description": "Our design team will review your artwork and requirements. Within 8 hours, we will email you a comprehensive quote and a digital mock-up (proof) that shows exactly how your design will look on the selected product."
+                    },
+                    "step4": {
+                        "title": "Review, Approve, and Order",
+                        "description": "Carefully review the digital proof and quote we send you. If it perfectly matches your vision, simply reply to the email to give your approval. We will then process your custom order and begin production. If any adjustments are needed, we'll work with you until it's exactly right."
+                    }
+                }
+            }
+        }
+    },
+    "OnlineBuilder": {
+        "loading": "Loading Product Details...",
+        "notFound": {
+            "title": "Product Information Not Found",
+            "description": "Please select a product to customize first."
+        },
+        "setup": "Setting up colors...",
+        "header": {
+            "title": "Custom Text Printing",
+            "description": "Create a custom printed strap for your product below. The background and text will be Printed repeatedly."
+        },
+        "productPanel": {
+            "title": "Build From Here",
+            "itemNumberLabel": "Item #",
+            "selectedWebbingLabel": "Selected Webbing"
+        },
+        "mobileSidebar": {
+            "ariaLabel": "Open product details"
+        },
+        "preview": {
+            "title": "Live Print Preview"
+        },
+        "buttons": {
+            "applyAndQuote": "Apply Print & Get Quote",
+            "complexDesign": "I Need Complex Design!"
+        },
+        "details": {
+            "title": "Important Details",
+            "minOrder": "The minimum order amount is $500.",
+            "productionTime": "Custom production time is 10 days.",
+            "previewLimitation": "If you require more detailed art to be printed, please contact customer service.",
+            "customColors": "If the current color combinations do not meet your needs, please contact us."
+        },
+        "examples": {
+            "title": "Custom Designs Examples"
+        },
+        "formMessages": {
+            "simplePrint": {
+                "greeting": "Dear XiangleRatchetStrap Service Team,",
+                "intro": "I would like to inquire about the customized printing service for the following product:",
+                "productName": "• Product Name: {productName}",
+                "productCode": "• Product Code: {productCode}",
+                "webbingColor": "• Webbing Color: {webbingColor}",
+                "textColor": "• Text Color: {textColor}",
+                "printedText": "• Printed Text: \"{printedText}\"",
+                "finishedLength": "• Finished Webbing Length: {finishedLength}{unit}",
+                "printInterval": "• Print Interval: {printInterval}{unit}",
+                "request": "Please let me know the available pricing and estimated production timeline. I look forward to your reply.",
+                "closing": "Best regards"
+            },
+            "complexDesign": {
+                "greeting": "Dear XiangleRatchetStrap Service Team,",
+                "intro": "I would like to inquire about the customized printing service for the following product:",
+                "productName": "• Product Name: {productName}",
+                "productCode": "• Product Code: {productCode}",
+                "body": "We are looking to apply a more complex logo design that includes intricate patterns and potentially multiple colors.",
+                "request": "Please advise on the feasibility, available printing methods, pricing details, and estimated production timeline for such customization.",
+                "closing": "Best regards"
+            }
+        },
+        "customizer": {
+            "title": "Design Options",
+            "webbingColor": {
+                "title": "Webbing Color",
+                "description": "Choose the base color for your webbing"
+            },
+            "textColor": {
+                "title": "Text Color",
+                "description": "Select the color for your printed text"
+            },
+            "printedText": {
+                "title": "Printed Text",
+                "description": "Enter the text to be printed on your webbing",
+                "placeholder": "Enter your custom text here...",
+                "helperText": "This text will appear repeatedly on your webbing"
+            },
+            "dimensions": {
+                "title": "Length & Interval",
+                "description": "Set length and text repetition distance",
+                "finishedLength": "Finished Length",
+                "printInterval": "Print Interval",
+                "helperText": "Recommended interval: 100-200mm for optimal appearance"
+            }
+        }
     }
-  }
 }

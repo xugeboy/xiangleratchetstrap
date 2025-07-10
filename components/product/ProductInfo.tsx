@@ -83,7 +83,7 @@ export default function ProductInfo({ lang, product }: ProductInfoProps) {
             <Link
               href={getCombainedLocalePath(
                 lang,
-                "custom-print/screen-print/online-builder"
+                "custom-print/online-builder"
               )}
               onClick={handleCustomPrintingClick}
               className="inline-flex items-center justify-center px-8 sm:px-4 py-3 text-lg font-medium text-white bg-gradient-to-l from-black  to-amber-700

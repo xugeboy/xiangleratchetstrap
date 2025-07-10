@@ -462,5 +462,194 @@
     "title": "Vielen Dank für Ihre Anfrage!",
     "message": "Wir haben Ihre Anfrage erhalten und unser Team wird sich innerhalb von 8 Stunden bei Ihnen melden.",
     "cta_return_home": "Zurück zur Startseite"
+  },
+  "CustomPrint": {
+    "header": {
+      "title": "Individueller Druck",
+      "description": "Als Direktfabrik und Hersteller ist XiangleRatchetStrap auf den individuellen OEM-Druck von Gurtbändern spezialisiert. Wir drucken Ihren Firmennamen, Ihr Logo oder Ihr einzigartiges Design direkt auf die Gurte. Dieser Service ist ideal für Unternehmen, die Private Labeling, Markenwerbung oder vollständig maßgeschneiderte Zurrlösungen benötigen.",
+      "subDescription": "Alle bedruckten Gurtbandprodukte werden für beste Festigkeit, Haltbarkeit und Druckqualität aus <link>Polyester-Gurtband</link> hergestellt."
+    },
+    "common": {
+      "benefits": "Vorteile",
+      "limitations": "Einschränkungen"
+    },
+    "textPrinting": {
+      "title": "Siebdruck",
+      "description": "Der individuelle Textdruck ist eine der beliebtesten OEM-Anpassungslösungen von XiangleRatchetStrap. Dieser Service kann für fast alle von uns hergestellten Produkte genutzt werden. Der Prozess ist so einfach wie die Auswahl einer Hintergrundfarbe für das Gurtband, einer Textfarbe und des zu druckenden Textes. Wir drucken dann Ihren individuellen Text wiederholt über die gesamte Länge des Gurtes.",
+      "subDescription": "Wenn Sie eine individuellere Lösung suchen, bieten wir auch einen <link>vollständigen Design-Service an.</link>",
+      "colorOptionsText": "Der individuelle Textdruck bietet viele Kombinationen von Hintergrund- und Textfarben. Wir fügen auch häufig neue Kombinationen hinzu. Wenn Sie Ihre Lieblingskombination nicht sehen, lassen Sie es uns wissen.",
+      "benefits": {
+        "item1": "Individueller Textdruck",
+        "item2": "Viele Farboptionen zur Auswahl",
+        "item3": "Wiederholt gedruckt",
+        "item4": "Online-Vorschau verfügbar",
+        "item5": "Schnelle Produktion",
+        "item6": "Niedrige MOQ & kostengünstig"
+      },
+      "limitations": {
+        "item1": "Höhere Kosten für mehr Farben",
+        "item2": "Weniger geeignet für sehr komplexe Designs"
+      },
+      "cta": "Gestalten Sie Ihre Marke",
+      "howTo": {
+        "title": "Ihr Leitfaden für Markengurte",
+        "description": "Stärken Sie Ihre Marke und verleihen Sie Ihren Produkten mit unserem Siebdruckservice direkt ab Werk eine professionelle Note. Der individuelle Druck ist ideal, um Ihren Firmennamen, Ihre Website, Telefonnummer oder Sicherheitshinweise direkt auf Ihre Gurtbänder, Gurte und Zurrgarnituren zu drucken.",
+        "steps": {
+          "step1": {
+            "title": "Wählen Sie Ihre Grundlage",
+            "description": "Beginnen Sie, indem Sie zum Produkt navigieren, das Sie anpassen möchten. Wählen Sie das Gurtband oder die Gurtgarnitur, die Ihren technischen Anforderungen entspricht."
+          },
+          "step2": {
+            "title": "Konfigurieren und Anpassen beginnen",
+            "description": "Klicken Sie auf der Produktseite auf die Schaltfläche „Druckvorschau“, um die Branding-Oberfläche zu öffnen."
+          },
+          "step3": {
+            "title": "Wählen Sie Ihre Gurtbandfarbe",
+            "description": "Wählen Sie aus unserer umfangreichen Palette an Standard-Gurtbandfarben. Dies dient als primärer Hintergrund und Leinwand für Ihr individuelles Design."
+          },
+          "step4": {
+            "title": "Definieren Sie Ihre Druckfarbe",
+            "description": "Wählen Sie eine Farbe für Ihren Text oder Ihr Logo. Für maximale Lesbarkeit und Wirkung empfehlen wir, eine Farbe zu wählen, die stark mit Ihrer gewählten Gurtbandfarbe kontrastiert (z. B. weißer Text auf schwarzem Gurtband)."
+          },
+          "step5": {
+            "title": "Geben Sie Ihren Text oder Ihr Artwork an",
+            "description": "Geben Sie den Text genau so ein, wie er erscheinen soll. Wenn Sie ein komplexes Logo oder benutzerdefinierte Grafiken benötigen, laden Sie Ihre Artwork-Datei im Formular hoch und senden Sie Ihre Anfrage (Formate wie .AI, .PDF, .SVG werden bevorzugt)."
+          },
+          "step6": {
+            "title": "Überprüfen und genehmigen Sie Ihren digitalen Korrekturabzug",
+            "description": "Dies ist der wichtigste Schritt. Nachdem Sie Ihr Design eingereicht haben, erstellt unser Team einen digitalen Korrekturabzug und sendet ihn Ihnen per E-Mail. Wir werden niemals mit der Produktion fortfahren, bis Sie das endgültige Design überprüft und genehmigt haben. Dies stellt sicher, dass Sie mit dem Ergebnis zu 100 % zufrieden sind."
+          }
+        }
+      }
+    },
+    "fullDesign": {
+      "title": "Vollständiges Design",
+      "description": "Als direkter Hersteller erwecken wir Ihre Logos, Artworks oder komplexen Designs mit zwei professionellen Methoden zum Leben: Thermotransfer für lebendigen, fotorealistischen Druck und Jacquard-Weberei, um das Muster direkt in das Gurtband zu integrieren für ein hochwertiges, langlebiges Finish. Dieser Service ist der ultimative Weg, um Ihre einzigartig gebrandeten Produkte Wirklichkeit werden zu lassen.",
+      "subDescription": "Wenn Sie keine vollständige Anpassung benötigen, schauen Sie sich unseren <link>Siebdruck an.</link>",
+      "imageDesc": "Der Druck im vollständigen Design kann auf einer Seite, auf beiden Seiten oder mit unterschiedlichen Artworks auf jeder Seite des Gurtbandes erfolgen. Die Designs sind vollständig flexibel.",
+      "benefits": {
+        "item1": "Vollständige Anpassung verfügbar, Farbe, Muster usw.",
+        "item2": "Präziser individueller Druck",
+        "item3": "Pantone-Farbabstimmung",
+        "item4": "Ein- oder beidseitiger Druck",
+        "item5": "Verschiedene Gewebe und Substrate verfügbar",
+        "item6": "Kontinuierliches Wiederholungsmuster",
+        "item7": "Druck in spezifischer Länge verfügbar",
+        "item8": "Arbeiten Sie mit unserem Design-Spezialisten"
+      },
+      "limitations": {
+        "item1": "Höhere MOQ",
+        "item2": "Längere Produktionszeit",
+        "item3": "Artwork-Einrichtungsprozess"
+      },
+      "cta": "Designprozess einrichten",
+      "howTo": {
+        "title": "Von Ihrem Design zum Endprodukt",
+        "description": "Verwandeln Sie unsere Hochleistungs-Gurtbänder und -Gurte in ein vollständig gebrandetes Produkt für Ihr Unternehmen. Unser werkseigener Anpassungsservice für vollständiges Design ist perfekt für komplexe Logos, sich wiederholende Muster und spezifische Branding-Anforderungen. Dieser kollaborative Prozess stellt sicher, dass Sie genau das Ergebnis erhalten, das Sie benötigen. So funktioniert es:",
+        "steps": {
+          "step1": {
+            "title": "Wählen Sie Ihre Grundlage",
+            "description": "Beginnen Sie, indem Sie zum Produkt navigieren, das Sie anpassen möchten. Wählen Sie das Gurtband oder die Gurtgarnitur, die Ihren technischen Anforderungen entspricht."
+          },
+          "step2": {
+            "title": "Senden Sie Ihr Design über das Anfrageformular",
+            "description": "Suchen und verwenden Sie auf der Produktseite das Formular „Angebot anfordern“. Füllen Sie Ihre Kontaktdaten und die Menge aus und laden Sie dann Ihre Designdatei hoch. Für das beste Ergebnis werden Vektordateien wie .AI, .EPS, .PDF oder .SVG dringend empfohlen."
+          },
+          "step3": {
+            "title": "Wir erstellen Ihren digitalen Korrekturabzug & Ihr Angebot",
+            "description": "Unser Designteam wird Ihr Artwork und Ihre Anforderungen überprüfen. Innerhalb von 8 Stunden senden wir Ihnen eine E-Mail mit einem umfassenden Angebot und einem digitalen Mock-up (Korrekturabzug), das genau zeigt, wie Ihr Design auf dem ausgewählten Produkt aussehen wird."
+          },
+          "step4": {
+            "title": "Überprüfen, genehmigen und bestellen",
+            "description": "Überprüfen Sie den digitalen Korrekturabzug und das Angebot, das wir Ihnen senden, sorgfältig. Wenn es perfekt zu Ihrer Vision passt, antworten Sie einfach auf die E-Mail, um Ihre Genehmigung zu erteilen. Wir werden dann Ihre individuelle Bestellung bearbeiten und mit der Produktion beginnen. Wenn Anpassungen erforderlich sind, arbeiten wir mit Ihnen zusammen, bis es genau richtig ist."
+          }
+        }
+      }
+    }
+  },
+  "OnlineBuilder": {
+    "loading": "Produktdetails werden geladen...",
+    "notFound": {
+      "title": "Produktinformationen nicht gefunden",
+      "description": "Bitte wählen Sie zuerst ein Produkt zum Anpassen aus."
+    },
+    "setup": "Farben werden eingerichtet...",
+    "header": {
+      "title": "Individueller Textdruck",
+      "description": "Erstellen Sie unten einen individuell bedruckten Gurt für Ihr Produkt. Der Hintergrund und der Text werden wiederholt gedruckt."
+    },
+    "productPanel": {
+      "title": "Von hier aus bauen",
+      "itemNumberLabel": "Artikel-Nr.",
+      "selectedWebbingLabel": "Ausgewähltes Gurtband"
+    },
+    "mobileSidebar": {
+      "ariaLabel": "Produktdetails öffnen"
+    },
+    "preview": {
+      "title": "Live-Druckvorschau"
+    },
+    "buttons": {
+      "applyAndQuote": "Druck anwenden & Angebot erhalten",
+      "complexDesign": "Ich benötige ein komplexes Design!"
+    },
+    "details": {
+      "title": "Wichtige Details",
+      "minOrder": "Der Mindestbestellwert beträgt 500 $.",
+      "productionTime": "Die individuelle Produktionszeit beträgt 10 Tage.",
+      "previewLimitation": "Die Online-Vorschau kann nur einfachen Text verarbeiten. Wenn Sie detailliertere Grafiken drucken lassen möchten, wenden Sie sich bitte an den Kundendienst.",
+      "customColors": "Wir können Gurtbandfarben individuell anpassen. Wenn die aktuellen Farbkombinationen Ihren Anforderungen nicht entsprechen, kontaktieren Sie uns bitte."
+    },
+    "examples": {
+      "title": "Beispiele für individuelle Designs"
+    },
+    "formMessages": {
+      "simplePrint": {
+        "greeting": "Sehr geehrtes XiangleRatchetStrap Service-Team,",
+        "intro": "Ich möchte mich nach dem individuellen Druckservice für das folgende Produkt erkundigen:",
+        "productName": "• Produktname: {productName}",
+        "productCode": "• Produktcode: {productCode}",
+        "webbingColor": "• Gurtbandfarbe: {webbingColor}",
+        "textColor": "• Textfarbe: {textColor}",
+        "printedText": "• Gedruckter Text: \"{printedText}\"",
+        "finishedLength": "• Fertige Gurtbandlänge: {finishedLength}{unit}",
+        "printInterval": "• Druckintervall: {printInterval}{unit}",
+        "request": "Bitte teilen Sie mir die verfügbaren Preise und den geschätzten Produktionszeitplan mit. Ich freue mich auf Ihre Antwort.",
+        "closing": "Mit freundlichen Grüßen"
+      },
+      "complexDesign": {
+        "greeting": "Sehr geehrtes XiangleRatchetStrap Service-Team,",
+        "intro": "Ich möchte mich nach dem individuellen Druckservice für das folgende Produkt erkundigen:",
+        "productName": "• Produktname: {productName}",
+        "productCode": "• Produktcode: {productCode}",
+        "body": "Wir möchten ein komplexeres Logodesign anwenden, das komplizierte Muster und möglicherweise mehrere Farben enthält.",
+        "request": "Bitte beraten Sie uns bezüglich der Machbarkeit, der verfügbaren Druckmethoden, der Preisdetails und des geschätzten Produktionszeitplans für eine solche Anpassung.",
+        "closing": "Mit freundlichen Grüßen"
+      }
+    },
+    "customizer": {
+      "title": "Design-Optionen",
+      "webbingColor": {
+        "title": "Gurtbandfarbe",
+        "description": "Wählen Sie die Grundfarbe für Ihr Gurtband"
+      },
+      "textColor": {
+        "title": "Textfarbe",
+        "description": "Wählen Sie die Farbe für Ihren gedruckten Text"
+      },
+      "printedText": {
+        "title": "Gedruckter Text",
+        "description": "Geben Sie den Text ein, der auf Ihr Gurtband gedruckt werden soll",
+        "placeholder": "Geben Sie hier Ihren individuellen Text ein...",
+        "helperText": "Dieser Text wird wiederholt auf Ihrem Gurtband erscheinen"
+      },
+      "dimensions": {
+        "title": "Länge & Intervall",
+        "description": "Legen Sie die Länge und den Wiederholungsabstand des Textes fest",
+        "finishedLength": "Fertige Länge",
+        "printInterval": "Druckintervall",
+        "helperText": "Empfohlenes Intervall: 100-200mm für ein optimales Erscheinungsbild"
+      }
+    }
   }
 }
