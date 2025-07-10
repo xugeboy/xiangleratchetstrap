@@ -156,9 +156,9 @@ export default function OnlineBuilder() {
   };
 
   const ProductInfoPanel = () => (
-    <div className="sticky top-8 w-full">
+    <div className="top-8 w-full">
       <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-        <div className="bg-gradient-to-r from-black  to-amber-700 px-8 py-6">
+        <div className="bg-gradient-to-r from-black  to-amber-700 px-4 py-3">
           <h3 className="text-xl font-semibold text-white flex items-center gap-3">
             <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
               <div className="w-3 h-3 bg-white rounded-full"></div>
@@ -167,7 +167,7 @@ export default function OnlineBuilder() {
           </h3>
         </div>
 
-        <div className="p-6">
+        <div className="px-6 pt-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <h3 className="text-sm font-semibold text-gray-700 mb-2">
@@ -246,8 +246,8 @@ export default function OnlineBuilder() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8 sm:px-6 lg:py-16 lg:px-8">
-        <header className="mb-12 text-center">
+      <div className="container mx-auto px-4 py-8">
+        <header className="mb-4 text-center">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
             {t("header.title")}
           </h1>
@@ -280,9 +280,9 @@ export default function OnlineBuilder() {
           </div>
         </div>
 
-        <div className="mt-16">
+        <div className="mt-4">
           <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
-            <div className="bg-gradient-to-r from-green-600 to-blue-600 px-8 py-6">
+            <div className="bg-gradient-to-r from-green-600 to-blue-600 px-8 py-3">
               <h3 className="text-2xl font-bold text-white text-center flex items-center justify-center gap-3">
                 <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                   <div className="w-4 h-4 bg-white rounded-full"></div>
@@ -317,7 +317,7 @@ export default function OnlineBuilder() {
           </div>
         </div>
 
-        <div className="mt-24">
+        <div className="mt-4">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
             <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">

@@ -41,7 +41,6 @@ export default function Customizer({
   setUnit,
   webbingColorOptions,
 }: CustomizerProps) {
-  // 根据当前织带颜色获取可用的文字颜色选项
   const availableTextColors = getTextColorsForWebbing(webbingColor);
   
   useEffect(() => {
@@ -99,7 +98,7 @@ export default function Customizer({
       {/* 主要定制区域 */}
       <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
         {/* 渐变头部 */}
-        <div className="bg-gradient-to-r to-black  from-amber-700 px-8 py-6">
+        <div className="bg-gradient-to-r to-black  from-amber-700 px-4 py-3">
           <h3 className="text-xl font-semibold text-white flex items-center gap-3">
             <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
               <div className="w-3 h-3 bg-white rounded-full"></div>
@@ -109,11 +108,11 @@ export default function Customizer({
         </div>
 
         {/* 选项区域 */}
-        <div className="p-8 space-y-8">
+        <div className="p-4 space-y-4">
           {/* 织带颜色选择 */}
           <div>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+            <div className="flex items-center gap-4 mb-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                 1
               </div>
               <div>
@@ -125,7 +124,7 @@ export default function Customizer({
                 </p>
               </div>
             </div>
-            <div className="pl-14">
+            <div className="pl-4">
               <ColorSelector
                 label=""
                 colors={webbingColorOptions}
@@ -142,8 +141,8 @@ export default function Customizer({
 
           {/* 文字颜色选择 */}
           <div>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+            <div className="flex items-center gap-4 mb-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                 2
               </div>
               <div>
@@ -155,7 +154,7 @@ export default function Customizer({
                 </p>
               </div>
             </div>
-            <div className="pl-14">
+            <div className="pl-4">
               <ColorSelector
                 label=""
                 colors={availableTextColors}
@@ -169,8 +168,8 @@ export default function Customizer({
 
           {/* 打印文字输入 */}
           <div className="group">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+            <div className="flex items-center gap-4 mb-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                 3
               </div>
               <div>
@@ -182,7 +181,7 @@ export default function Customizer({
                 </p>
               </div>
             </div>
-            <div className="pl-14">
+            <div className="pl-4">
               <div className="relative">
                 <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 font-semibold">
                   Aa
@@ -210,9 +209,9 @@ export default function Customizer({
 
           {/* 4. 长度与间隔设置 */}
           <div className="group">
-            <div className="flex items-center justify-between gap-4 mb-6">
+            <div className="flex items-center justify-between gap-4 mb-2">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                   4
                 </div>
                 <div>
@@ -248,7 +247,7 @@ export default function Customizer({
                 {unit === "mm" ? "inch" : "mm"}
               </button>
             </div>
-            <div className="pl-14 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="pl-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* 成品织带长度 */}
               <div>
                 <label
@@ -295,7 +294,7 @@ export default function Customizer({
                 </div>
               </div>
             </div>
-            <div className="pl-14 mt-3 flex items-center gap-2">
+            <div className="pl-4 mt-3 flex items-center gap-2">
               <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
               <p className="text-sm text-gray-500">
                 Recommended interval: 100-200mm for optimal appearance

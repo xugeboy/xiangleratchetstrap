@@ -1,5 +1,3 @@
-"use client"
-
 interface ImprintPreviewProps {
   webbingColor: string
   textColor: string
@@ -20,7 +18,7 @@ export default function ImprintPreview({ webbingColor, textColor, text, interval
     }
     return "0"
   }
-  const textLength = calculateTextWidth(text || "PREVIEW", "60px Poppins")
+  const textLength = calculateTextWidth(text, "bold 60px Poppins")
 
   const MM_PER_INCH = 25.4;
   const mmToPx = (mm: number) => {
@@ -65,7 +63,7 @@ export default function ImprintPreview({ webbingColor, textColor, text, interval
             >
               {/* 创建足够多的重复文字以确保无缝循环 */}
               {Array.from({ length: 5 }).map((_, i) => (
-                <span key={i} className="text-6xl" style={{ paddingRight: `${mmToPx(interval)}px` }}>
+                <span key={i} className="text-6xl font-bold" style={{ paddingRight: `${mmToPx(interval)}px` }}>
                   {text || "PREVIEW"}
                 </span>
               ))}
