@@ -5,7 +5,7 @@ import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { Metadata, ResolvingMetadata } from "next";
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
 import { embedSchema, generateSchema } from "@/utils/schema";
-import { generateBreadcrumbsFromPath, generateGeneralBreadcrumbs, PathSegment } from "@/utils/breadcrumbs";
+import { generateBreadcrumbsFromPath, PathSegment } from "@/utils/breadcrumbs";
 import Breadcrumb from "@/components/common/Breadcrumb";
 
 export async function generateMetadata(
