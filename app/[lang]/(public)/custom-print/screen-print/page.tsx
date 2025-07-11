@@ -4,6 +4,9 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { Metadata, ResolvingMetadata } from "next";
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
+import { embedSchema, generateSchema } from "@/utils/schema";
+import { generateBreadcrumbsFromPath, generateGeneralBreadcrumbs, PathSegment } from "@/utils/breadcrumbs";
+import Breadcrumb from "@/components/common/Breadcrumb";
 
 export async function generateMetadata(
   parent: ResolvingMetadata
@@ -89,11 +92,42 @@ export default async function ScreenPrint() {
     { hex: "#fde047" },
   ];
 
+  
+  const productPath: PathSegment[] = [
+    { name: "CustomPrint", slug: "custom-print" },
+    { name: "ScreenPrint", slug: "screen-print" }
+  ];
+
+  const breadcrumbItems = generateBreadcrumbsFromPath(
+    productPath,
+    locale
+  );
+  const websiteSchema = generateSchema({
+    type: "WebSite",
+    lang: locale,
+  });
+  const organizationSchema = generateSchema({
+    type: "Organization",
+    lang: locale,
+  });
+  const breadcrumbSchema = generateSchema({
+    type: "BreadcrumbList",
+    breadcrumbItems,
+  });
+  const schemaMetadataJson = embedSchema(
+    [websiteSchema, organizationSchema, breadcrumbSchema].filter(Boolean)
+  );
   return (
-    <div className="px-4">
-      <div className="container mx-auto pt-8">
+    <div className="px-4">      <section>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
+    />
+  </section>
+      <div className="container mx-auto  px-4">
+      <Breadcrumb items={breadcrumbItems.slice(1)} lang={locale} />
         {/* 页面头部 */}
-        <header className="mb-16">
+        <header className="mb-16 pt-8">
           <div className="border-l-4 border-blue-600 pl-6 mb-8">
             <h1 className="text-4xl font-bold mb-4">
               {t("textPrinting.title")}
@@ -122,7 +156,7 @@ export default async function ScreenPrint() {
             {exampleImages.map((src, index) => (
               <div
                 key={index}
-                className="overflow-hidden rounded-2xl shadow-lg"
+                className="overflow-hidden"
               >
                 <Image
                   src={src}

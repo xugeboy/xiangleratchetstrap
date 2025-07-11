@@ -13,7 +13,7 @@ export function ViewControls({
   itemsPerPage,
   setItemsPerPage
 }: ViewControlsProps) {
-  const pageOptions = [9, 12, 15];
+  const pageOptions = [8, 12, 16];
   const t = useTranslations("ViewControls");
   return (
     <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">

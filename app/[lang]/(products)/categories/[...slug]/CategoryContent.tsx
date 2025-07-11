@@ -44,7 +44,7 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
   const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({});
   const [breadcrumbItems, setbreadcrumbItems] = useState<BreadcrumbItem[]>([]);
   const [viewMode, setViewMode] = useState<"grid" | "list" | "compact">("grid");
-  const [itemsPerPage, setItemsPerPage] = useState(9);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
   const [showFilters, setShowFilters] = useState(false);
   const [productFilters, setProductFilters] = useState<ProductFilter[]>([]);
   const [error, setError] = useState<string | null>(null); // Add error state

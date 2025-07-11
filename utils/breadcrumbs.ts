@@ -97,4 +97,31 @@ export function generateGeneralBreadcrumbs(pageName: string, slug: string,lang:s
   })
   
   return items
-} 
+}
+
+export interface PathSegment {
+  name: string;
+  slug: string;
+}
+export function generateBreadcrumbsFromPath(pathSegments: PathSegment[], lang: string): BreadcrumbItem[] {
+  const items: BreadcrumbItem[] = [];
+  const pathPrefix = getBreadcrumbPathPrefix(lang);
+  let currentPath = `${siteUrl}${pathPrefix}`;
+
+  items.push({
+    name: 'Xiangle Ratchet Strap',
+    href: `${currentPath}/`,
+  });
+
+  pathSegments.forEach(segment => {
+    // 累加 URL 路径
+    currentPath += `/${segment.slug}`;
+    
+    items.push({
+      name: segment.name,
+      href: currentPath,
+    });
+  });
+  
+  return items;
+}

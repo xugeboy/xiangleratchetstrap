@@ -3,6 +3,7 @@ import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import ImageComparisonSlider from "../common/ImageComparisonSlider";
 import { useLocale, useTranslations } from "next-intl";
 import { getCombainedLocalePath } from "@/utils/formatUtils";
+import LoopingVideoCard from "../common/LoopingVideoCard";
 
 const productKeysAndImages = [
   {
@@ -14,6 +15,18 @@ const productKeysAndImages = [
     key: "stainlessSteel1Inch",
     beforeImage: "/v1744957763/316ss_ratchet_buckle_yspy0c.jpg", // Swapped
     afterImage: "/v1744957762/rusty_ratchet_buckle_dule2b.jpg",
+  }
+];
+const cloudinaryVideos = [
+  {
+    video: 'https://res.cloudinary.com/duimeqqch/video/upload/v1752204706/retractableratchet_uychtz.mp4',
+    poster: 'https://res.cloudinary.com/duimeqqch/image/upload/f_webp,w_750,q_75/v1749629956/XLZDSS_25101_9_8adfacbcbb.png',
+    alt: '1inch auto retractable ratchet strap',
+  },
+  {
+    video: 'https://res.cloudinary.com/duimeqqch/video/upload/v1752204618/spinfree_fzf13f.mp4',
+    poster: 'https://res.cloudinary.com/duimeqqch/image/upload/f_webp,w_750,q_75/v1752207183/XLRS_020_4_f652d4c1c5.jpg',
+    alt: '1inch Spin Free Ratchet Strap, easy relesae',
   }
 ];
 
@@ -37,6 +50,17 @@ export default function ProductsSection() {
             {t("viewAllButton")}
             <ChevronRightIcon className="ml-1 h-5 w-5" />
           </Link>
+        </div>
+
+        <div className="grid container mx-auto grid-cols-1 gap-6 lg:grid-cols-2 pb-8">
+          {cloudinaryVideos.map((item, index) => (
+            <LoopingVideoCard
+              key={index}
+              videoSrc={item.video}
+              posterSrc={item.poster}
+              alt={item.alt}
+            />
+          ))}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

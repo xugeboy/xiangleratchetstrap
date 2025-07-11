@@ -10,6 +10,9 @@ import {
 } from "react-icons/fa";
 import { Metadata, ResolvingMetadata } from "next";
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
+import { generateGeneralBreadcrumbs } from "@/utils/breadcrumbs";
+import { generateSchema, embedSchema } from "@/utils/schema";
+import Breadcrumb from "@/components/common/Breadcrumb";
 
 export async function generateMetadata(
   parent: ResolvingMetadata
@@ -34,16 +37,15 @@ export async function generateMetadata(
 
   for (const ietfTag in localePrefixMap) {
     const targetUrlPrefix = localePrefixMap[ietfTag];
-      let pathForLang = "";
-      if (targetUrlPrefix === defaultUrlPrefix) {
-        pathForLang = `${siteUrl}/${pageSlug}`;
-      } else {
-        pathForLang = `${siteUrl}/${targetUrlPrefix}/${pageSlug}`;
-      }
-      languagesAlternate[ietfTag] = pathForLang;
+    let pathForLang = "";
+    if (targetUrlPrefix === defaultUrlPrefix) {
+      pathForLang = `${siteUrl}/${pageSlug}`;
+    } else {
+      pathForLang = `${siteUrl}/${targetUrlPrefix}/${pageSlug}`;
+    }
+    languagesAlternate[ietfTag] = pathForLang;
   }
   languagesAlternate["x-default"] = `${siteUrl}/${pageSlug}`;
-
 
   return {
     title: pageTitle,
@@ -68,7 +70,7 @@ export async function generateMetadata(
     },
     twitter: {
       title: pageTitle,
-    }
+    },
   };
 }
 
@@ -85,19 +87,48 @@ export default async function CustomPrintOverviewPage() {
     "/v1751985848/pattern2_q8k4uf.jpg",
     "/v1751985848/pattern1_etapzc.jpg",
   ];
-
+  const breadcrumbItems = generateGeneralBreadcrumbs(
+    "CustomPrint",
+    "custom-print",
+    locale
+  );
+  const websiteSchema = generateSchema({
+    type: "WebSite",
+    lang: locale,
+  });
+  const organizationSchema = generateSchema({
+    type: "Organization",
+    lang: locale,
+  });
+  const breadcrumbSchema = generateSchema({
+    type: "BreadcrumbList",
+    breadcrumbItems,
+  });
+  const schemaMetadataJson = embedSchema(
+    [websiteSchema, organizationSchema, breadcrumbSchema].filter(Boolean)
+  );
   return (
     <div>
-      <div className="container mx-auto pt-8">
+      <section>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
+        />
+      </section>
+      <div className="container mx-auto px-4">
+      <Breadcrumb items={breadcrumbItems.slice(1)} lang={locale} />
         {/* 页面头部 */}
-        <header className="mb-16">
+        <header className="mb-16 pt-8">
           <div className="border-l-4 border-blue-600 pl-6 mb-8">
             <h1 className="text-4xl font-bold mb-4">{t("header.title")}</h1>
             <p className="text-lg leading-relaxed">{t("header.description")}</p>
             <p className="text-base font-medium mt-2">
               {t.rich("header.subDescription", {
                 link: (chunks) => (
-                  <Link href={tw("webbingAndHardware.link")} className="text-blue-600 underline hover:text-blue-800">
+                  <Link
+                    href={tw("webbingAndHardware.link")}
+                    className="text-blue-600 underline hover:text-blue-800"
+                  >
                     {chunks}
                   </Link>
                 ),

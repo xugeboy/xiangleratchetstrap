@@ -11,6 +11,7 @@ import {
   getCloudinaryPublicId,
 } from "@/utils/formatUtils";
 import { useTranslations } from "next-intl";
+import { ResponsivePagination } from "./ResponsivePagination";
 
 interface ProductGridProps {
   selectedFilters: Record<string, string[]>;
@@ -76,7 +77,7 @@ export function ProductGrid({
             className={`
               ${
                 viewMode === "grid"
-                  ? "grid grid-cols-2 lg:grid-cols-3 gap-6"
+                  ? "grid grid-cols-2 lg:grid-cols-4 gap-6"
                   : ""
               }
               ${viewMode === "list" ? "space-y-6" : ""}
@@ -197,37 +198,12 @@ export function ProductGrid({
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex justify-center mt-8">
-              <nav className="flex items-center gap-2">
-                <button
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
-                  className="px-3 py-1 rounded border disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {t("pagination.previous")}
-                </button>
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                  (page) => (
-                    <button
-                      key={page}
-                      onClick={() => handlePageChange(page)}
-                      className={`px-3 py-1 rounded border ${
-                        currentPage === page ? "bg-blue-700 text-white" : ""
-                      }`}
-                    >
-                      {page}
-                    </button>
-                  )
-                )}
-                <button
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                  className="px-3 py-1 rounded border disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {t("pagination.next")}
-                </button>
-              </nav>
-            </div>
+            <ResponsivePagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+            t={t}
+          />
           )}
 
           {/* No Results Message */}
