@@ -48,11 +48,7 @@ export async function generateMetadata(
   const productData = await getProductBySlug(slug, currentLocale);
 
   if (!productData) {
-    return {
-      title: "product not found",
-      description: "Sorry, the product you requested could not be found.",
-      robots: { index: false },
-    };
+    notFound();
   }
 
   const pageTitle = productData.seo_title;

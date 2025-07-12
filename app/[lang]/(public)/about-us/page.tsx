@@ -1,10 +1,9 @@
 import Image from "next/image";
 import LogoClouds from "@/components/common/LogoClouds";
-import { useLocale, useTranslations } from "next-intl";
 import { embedSchema, generateSchema } from "@/utils/schema";
 import { generateGeneralBreadcrumbs } from "@/utils/breadcrumbs";
 import { Metadata, ResolvingMetadata } from "next";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
 
 interface TimelineItem {
@@ -102,9 +101,12 @@ export async function generateMetadata(
   };
 }
 
-export default function AboutUsPage() {
-  const t = useTranslations("AboutUsPage");
-  const lang = useLocale();
+export default async function AboutUsPage() {
+  const lang = await getLocale();
+  const t = await getTranslations({
+    locale:lang,
+    namespace: "AboutUsPage",
+  });
   const breadcrumbItems = generateGeneralBreadcrumbs(
     "AboutUs",
     "about-us",

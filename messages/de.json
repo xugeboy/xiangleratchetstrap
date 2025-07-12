@@ -1,4 +1,13 @@
 {
+  "BlogPage": {
+    "backToBlog": "Zurück zum Blog",
+    "relatedArticles": "WEITERE ARTIKEL, DIE IHNEN GEFALLEN KÖNNTEN",
+    "getInTouch": "NEHMEN SIE KONTAKT MIT IHREM ENGAGIERTEN TEAM AUF",
+    "about": {
+      "title": "ÜBER XIANGLE RATCHET STRAP",
+      "description": "Xiangle Ratchet Strap, gegründet 2006, ist ein spezialisierter Hersteller von Ladungssicherungslösungen, der sich ausschließlich auf Zurrgurte für Transport und Logistik konzentriert. Mit fast zwei Jahrzehnten Branchenerfahrung bieten wir zuverlässige OEM- & ODM-Dienstleistungen, die auf die einzigartigen Anforderungen unserer globalen B2B-Kunden zugeschnitten sind. Gestützt auf gleichbleibende Qualität, schnelle Lieferzeiten und reaktionsschnellen Service ist Xiangle Ihr vertrauenswürdiger Partner für leistungsstarke Ladungssicherungslösungen."
+    }
+  },
   "HeroSection": {
     "slides": [
       {

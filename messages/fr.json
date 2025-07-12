@@ -1,4 +1,13 @@
 {
+  "BlogPage": {
+    "backToBlog": "Retour au blog",
+    "relatedArticles": "PLUS D'ARTICLES QUE VOUS POURRIEZ AIMER",
+    "getInTouch": "PRENEZ CONTACT AVEC VOTRE ÉQUIPE DÉDIÉE",
+    "about": {
+      "title": "À PROPOS DE XIANGLE RATCHET STRAP",
+      "description": "Fondée en 2006, Xiangle Ratchet Strap est un fabricant spécialisé dans les solutions d'arrimage de fret, se concentrant exclusivement sur les produits d'arrimage pour le transport et la logistique. Avec près de deux décennies d'expérience dans l'industrie, nous offrons des services OEM & ODM fiables, adaptés pour répondre aux exigences uniques de nos clients B2B mondiaux. Soutenu par une qualité constante, des délais de livraison rapides et un service réactif, Xiangle est votre partenaire de confiance pour des solutions de sécurisation de fret haute performance."
+    }
+  },
   "HeroSection": {
     "slides": [
       {

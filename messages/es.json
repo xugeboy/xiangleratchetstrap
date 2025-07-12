@@ -1,4 +1,13 @@
 {
+  "BlogPage": {
+    "backToBlog": "Volver al blog",
+    "relatedArticles": "MÁS ARTÍCULOS QUE TE PUEDEN GUSTAR",
+    "getInTouch": "PONTE EN CONTACTO CON TU EQUIPO DEDICADO",
+    "about": {
+      "title": "ACERCA DE XIANGLE RATCHET STRAP",
+      "description": "Fundada en 2006, Xiangle Ratchet Strap es un fabricante especializado en soluciones de sujeción de carga, centrándose exclusivamente en productos de sujeción para el transporte y la logística. Con casi dos décadas de experiencia en la industria, ofrecemos servicios fiables de OEM y ODM, adaptados para satisfacer los requisitos únicos de nuestros clientes B2B globales. Respaldado por una calidad constante, plazos de entrega rápidos y un servicio receptivo, Xiangle es su socio de confianza para soluciones de aseguramiento de carga de alto rendimiento."
+    }
+  },
   "HeroSection": {
     "slides": [
       {

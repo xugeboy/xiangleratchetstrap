@@ -11,21 +11,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import BlocksClient from "@/components/common/BlocksClient";
-import formatDateToLongEnglish, { getCloudinaryPublicId } from "@/utils/formatUtils";
+import formatDateToLongEnglish, {
+  getCloudinaryPublicId,
+} from "@/utils/formatUtils";
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
+import { getLocale, getTranslations } from "next-intl/server";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 interface BlogPageProps {
   params: {
     slug: string;
-    lang: string;
   };
   searchParams?: {
     [key: string]: string | string[] | undefined;
   };
 }
-
 
 export async function generateStaticParams() {
   const allBlogs = await getAllBlogSlug();
@@ -34,31 +35,21 @@ export async function generateStaticParams() {
   }));
 }
 
-// --- 环境变量 ---
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-
-// --- 动态生成 Metadata ---
 export async function generateMetadata(
   { params }: BlogPageProps,
-  parent: ResolvingMetadata // 可以访问父级解析后的元数据
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { slug, lang } = await params;
-  const currentLocale = lang;
-  const blogData = await getBlogMetaDataBySlug(slug,currentLocale);
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const { slug } = await params;
+  const currentLocale = await getLocale();
+  const blogData = await getBlogMetaDataBySlug(slug, currentLocale);
 
-  // --- 处理未找到的情况 ---
   if (!blogData) {
-    // 可以返回一个简单的 404 元数据
-    return {
-      title: "blog not found",
-      description: "Sorry, the blog you requested could not be found.",
-      robots: { index: false },
-    };
+    notFound();
   }
 
-  // --- 准备元数据所需信息 ---
-  const pageTitle = blogData.seo_title; // 优先使用 Strapi 中定义的 SEO 标题
-  const pageDescription = blogData.seo_description; // 优先 SEO 描述，然后是摘要
+  const pageTitle = blogData.seo_title;
+  const pageDescription = blogData.seo_description;
   const coverImage = blogData.cover_image;
   const ogImageUrl = coverImage.url;
   const ogImageAlt = pageTitle;
@@ -71,9 +62,7 @@ export async function generateMetadata(
   }
   const canonicalUrl = `${siteUrl}${canonicalUrlPath}`;
 
-
   const languagesAlternate: Record<string, string> = {};
-
 
   for (const ietfTag in localePrefixMap) {
     const targetUrlPrefix = localePrefixMap[ietfTag];
@@ -90,33 +79,29 @@ export async function generateMetadata(
       languagesAlternate[ietfTag] = pathForLang;
     }
   }
-
-  // 设置 x-default
   const slugForXDefault = blogData.allLanguageSlugs?.[defaultUrlPrefix];
   if (slugForXDefault) {
-    languagesAlternate['x-default'] = `${siteUrl}/blogs/${slugForXDefault}`;
+    languagesAlternate["x-default"] = `${siteUrl}/blogs/${slugForXDefault}`;
   }
 
-  // --- 返回页面特定的 Metadata ---
   return {
-    // **覆盖核心元数据**
-    title: pageTitle, // 会自动应用 layout.tsx 中的 title.template
+    title: pageTitle,
     description: pageDescription,
     alternates: {
-      canonical: canonicalUrl, // 设置当前页面的规范链接
-      languages: Object.keys(languagesAlternate).length > 0 ? languagesAlternate : undefined,
+      canonical: canonicalUrl,
+      languages:
+        Object.keys(languagesAlternate).length > 0
+          ? languagesAlternate
+          : undefined,
     },
 
-    // **覆盖 Open Graph 元数据**
     openGraph: {
-      // 继承 layout 中的 siteName, locale
-      title: pageTitle, // 使用页面标题
-      description: pageDescription, // 使用页面描述
-      url: canonicalUrl, // 使用页面的规范链接
-      publishedTime: blogData.publishedAt, // ISO 8601 格式
-      modifiedTime: blogData.updatedAt, // 更新时间或发布时间
+      title: pageTitle,
+      description: pageDescription,
+      url: canonicalUrl,
+      publishedTime: blogData.publishedAt,
+      modifiedTime: blogData.updatedAt,
       images: [
-        // 提供具体图片
         {
           url: ogImageUrl,
           width: 1200,
@@ -125,31 +110,29 @@ export async function generateMetadata(
         },
       ],
     },
-
-    // **覆盖 Twitter 卡片元数据 (可选, 否则继承 Open Graph)**
     twitter: {
       title: pageTitle,
       description: pageDescription,
     },
-
-    // **覆盖或添加其他元数据**
-    // robots: { index: true, follow: true }, // 通常继承 layout 的设置
     other: {
       ["og:type"]: "blog",
     },
   };
 }
 
-// ✅ SSR Blog Page
 export default async function BlogPage({ params }: BlogPageProps) {
-  const { slug, lang } = await params;
-  const currentLocale = lang;
+  const { slug } = await params;
+  const lang = await getLocale();
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "BlogPage",
+  });
 
-  const blog = await getBlogDetail(slug,currentLocale);
-  const breadcrumbItems = generateBlogBreadcrumbs(blog,currentLocale);
+  const blog = await getBlogDetail(slug, lang);
+  const breadcrumbItems = generateBlogBreadcrumbs(blog, lang);
 
   if (!blog) {
-    notFound()
+    notFound();
   }
 
   // --- 生成 Schema ---
@@ -165,12 +148,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
   return (
     <div className="mx-auto container px-4 sm:px-6 lg:px-8">
       <section>
-        {/* Add JSON-LD to your page */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
         />
-        {/* ... */}
       </section>
       <div className="relative w-full h-[400px] mb-8">
         <div className="absolute inset-0">
@@ -202,7 +183,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         {blog.blogs && blog.blogs.length > 0 && (
           <div className="mb-12">
             <h2 className="text-3xl font-bold uppercase mb-6">
-              MORE ARTICLES YOU MAY LIKE
+              {t("relatedArticles")}
             </h2>
             <ul className="space-y-4">
               {blog.blogs.map((blog, index) => (
@@ -223,7 +204,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         <div className="mb-12 flex flex-col md:flex-row gap-6 items-start">
           <div>
             <h2 className="text-3xl font-bold uppercase mb-4">
-              GET IN TOUCH WITH YOUR DEDICATED TEAM
+              {t("getInTouch")}
             </h2>
             <p className="mb-1">
               <span className="font-medium">Email:</span>{" "}
@@ -240,28 +221,16 @@ export default async function BlogPage({ params }: BlogPageProps) {
         {/* About Section */}
         <div className="mb-12 bg-gray-100 p-6">
           <h2 className="text-2xl font-bold uppercase mb-4 text-black">
-            ABOUT XIANGLE RATCHET STRAP
+            {t("about.title")}
           </h2>
-          <p className="text-black text-sm">
-            Founded in 2006, Xiangle Ratchet Strap is a specialized manufacturer
-            of cargo tie-down solutions, focusing exclusively on tie-down
-            products for transportation and logistics. With nearly two decades
-            of industry experience, we offer reliable OEM & ODM services,
-            tailored to meet the unique requirements of our global B2B clients.
-            Backed by consistent quality, fast lead times, and responsive
-            service, Xiangle is your trusted partner for high-performance cargo
-            securing solutions.
-          </p>
+          <p className="text-black text-sm">{t("about.description")}</p>
         </div>
 
         {/* Back to Blog Link */}
         <div className="flex justify-center mb-8">
-          <Link
-            href="/blogs"
-            className="flex items-center text-black"
-          >
+          <Link href="/blogs" className="flex items-center text-black">
             <ArrowLeftIcon className="h-5 w-5 mr-2" />
-            Back to blog
+            {t("backToBlog")}
           </Link>
         </div>
       </div>

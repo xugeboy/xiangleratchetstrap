@@ -1,4 +1,13 @@
 {
+    "BlogPage": {
+        "backToBlog": "Back to blog",
+        "relatedArticles": "MORE ARTICLES YOU MAY LIKE",
+        "getInTouch": "GET IN TOUCH WITH YOUR DEDICATED TEAM",
+        "about": {
+            "title": "ABOUT XIANGLE RATCHET STRAP",
+            "description": "Founded in 2006, Xiangle Ratchet Strap is a specialized manufacturer of cargo tie-down solutions, focusing exclusively on tie-down products for transportation and logistics. With nearly two decades of industry experience, we offer reliable OEM & ODM services, tailored to meet the unique requirements of our global B2B clients. Backed by consistent quality, fast lead times, and responsive service, Xiangle is your trusted partner for high-performance cargo securing solutions."
+        }
+    },
     "HeroSection": {
         "slides": [
             {
