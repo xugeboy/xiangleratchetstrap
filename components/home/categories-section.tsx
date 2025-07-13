@@ -53,7 +53,7 @@ export default async function CategoriesSection() {
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 text-black">
           {t.rich("title", {
-            span: (chunks) => <span className="text-amber-700">{chunks}</span>,
+            span: (chunks) => <span className="text-red-600">{chunks}</span>,
           })}
         </h2>
 

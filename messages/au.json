@@ -290,7 +290,7 @@
         },
         "buttons": {
             "requestQuote": "Request Quote",
-            "customPrinting": "Printing Preview"
+            "customPrinting": "Online Builder"
         },
         "customization": {
             "customizations": "Customizations",
@@ -510,7 +510,7 @@
                     },
                     "step2": {
                         "title": "Configure and Begin Customization",
-                        "description": "Once on the product page,  locate and click the “Printing Preview” button to open the branding interface."
+                        "description": "Once on the product page,  locate and click the “Online Builder” button to open the branding interface."
                     },
                     "step3": {
                         "title": "Choose Your Webbing Color",

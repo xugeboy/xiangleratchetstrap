@@ -32,7 +32,7 @@ interface DescriptionProps {
           </div>
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="mt-2 text-amber-700 text-sm font-medium flex items-center"
+            className="mt-2 text-red-600 text-sm font-medium flex items-center"
           >
             {isExpanded ? (
               <>

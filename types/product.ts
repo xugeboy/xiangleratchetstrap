@@ -3,7 +3,6 @@ import { ProductCategory } from "./productCategory";
 import { Galleries, Gallery } from "./gallery";
 import { ContentItem } from "@/components/product/AlternatingContent";
 import { BlocksContent } from "@strapi/blocks-react-renderer";
-import { StrapColorOption } from "./strapColorOption";
 import { Customizations } from "./Customizations";
 
 export interface Product {

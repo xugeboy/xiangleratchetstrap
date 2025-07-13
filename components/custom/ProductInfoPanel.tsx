@@ -17,7 +17,7 @@ function ProductInfoPanel() {
   return (
     <div className="top-8 w-full">
       <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-        <div className="bg-gradient-to-r from-black  to-amber-700 px-4 py-3">
+        <div className="bg-gradient-to-r from-black  to-red-600 px-4 py-3">
           <h3 className="text-xl font-semibold text-white flex items-center gap-3">
             <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
               <div className="w-3 h-3 bg-white rounded-full"></div>

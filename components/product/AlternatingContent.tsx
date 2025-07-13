@@ -47,7 +47,7 @@ export default function AlternatingContent({
                   bg-[url('/image/pattern-topography.svg')] bg-cover bg-no-repeat
                   ${isEven ? "md:order-2" : "md:order-1"}`}
             >
-              <h2 className="text-2xl font-bold mb-4 text-center text-amber-700">
+              <h2 className="text-2xl font-bold mb-4 text-center text-red-600">
                 {item.title}
               </h2>
               <p className="text-base text-center text-white">{item.Text}</p>

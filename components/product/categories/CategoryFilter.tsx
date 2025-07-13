@@ -61,7 +61,7 @@ export function CategoryFilter({ filter, selectedValues, onChange }: CategoryFil
                 type="checkbox"
                 checked={selectedValues.includes(option.value)}
                 onChange={() => handleOptionClick(option.value)}
-                className="h-4 w-4 rounded border-gray-300 text-amber-700 focus:ring-blue-500"
+                className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-blue-500"
               />
               <span className="text-black">
                 {option.label} ({option.count})

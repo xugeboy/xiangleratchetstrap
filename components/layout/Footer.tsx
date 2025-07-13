@@ -161,7 +161,7 @@ export default function Footer() {
                 className="h-12 w-auto"
               />
             </Link>
-            <h3 className="text-base font-semibold text-amber-700">
+            <h3 className="text-base font-semibold text-red-600">
               {tF("customMadeStrapsTitle")}
             </h3>
             <span className="text-sm/6 text-white">
@@ -172,7 +172,7 @@ export default function Footer() {
 
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div>
-              <h3 className="text-base font-semibold text-amber-700">
+              <h3 className="text-base font-semibold text-red-600">
                 {tNav("headings.products")}
               </h3>
               <ul role="list" className="mt-6 space-y-4">
@@ -180,7 +180,7 @@ export default function Footer() {
                   <li key={item.nameKey}>
                     <a
                       href={getCombainedLocalePath(locale, tNav(item.href))}
-                      className="text-sm/6 text-white hover:text-amber-700"
+                      className="text-sm/6 text-white hover:text-red-600"
                     >
                       {tNav(item.nameKey)}
                     </a>
@@ -189,7 +189,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="text-base font-semibold text-amber-700">
+              <h3 className="text-base font-semibold text-red-600">
                 {tNav("headings.support")}
               </h3>
               <ul role="list" className="mt-6 space-y-4">
@@ -202,7 +202,7 @@ export default function Footer() {
                     <li key={item.nameKey}>
                       <a
                         href={href}
-                        className="text-sm/6 text-white hover:text-amber-700"
+                        className="text-sm/6 text-white hover:text-red-600"
                       >
                         {tNav(item.nameKey)}
                       </a>
@@ -212,7 +212,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="text-base font-semibold text-amber-700">
+              <h3 className="text-base font-semibold text-red-600">
                 {tNav("headings.company")}
               </h3>
               <ul role="list" className="mt-6 space-y-4">
@@ -220,7 +220,7 @@ export default function Footer() {
                   <li key={item.nameKey}>
                     <a
                       href={getCombainedLocalePath(locale, item.href)}
-                      className="text-sm/6 text-white hover:text-amber-700"
+                      className="text-sm/6 text-white hover:text-red-600"
                     >
                       {tNav(item.nameKey)}
                     </a>
@@ -229,7 +229,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="text-base font-semibold text-amber-700">
+              <h3 className="text-base font-semibold text-red-600">
                 {tNav("headings.contactUs")}
               </h3>
               <div className="mt-6 space-y-4">
@@ -237,7 +237,7 @@ export default function Footer() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="flex items-center gap-4 text-white hover:text-amber-700"
+                    className="flex items-center gap-4 text-white hover:text-red-600"
                   >
                     <item.icon
                       className="h-6 w-6"
@@ -257,9 +257,9 @@ export default function Footer() {
           <div>
             <button
               onClick={() => setIsOpenProducts(!isOpenProducts)}
-              className="flex items-center justify-between w-full p-2 text-white hover:text-amber-700"
+              className="flex items-center justify-between w-full p-2 text-white hover:text-red-600"
             >
-              <h3 className="text-base font-semibold text-amber-700">
+              <h3 className="text-base font-semibold text-red-600">
                 Products
               </h3>
               <svg
@@ -284,7 +284,7 @@ export default function Footer() {
                   <a
                     key={item.nameKey}
                     href={getCombainedLocalePath(locale, tNav(item.href))}
-                    className="block text-sm/6 text-white hover:text-amber-700 px-2"
+                    className="block text-sm/6 text-white hover:text-red-600 px-2"
                   >
                     {tNav(item.nameKey)}
                   </a>
@@ -296,9 +296,9 @@ export default function Footer() {
           <div>
             <button
               onClick={() => setIsOpenSupport(!isOpenSupport)}
-              className="flex items-center justify-between w-full p-2 text-white hover:text-amber-700"
+              className="flex items-center justify-between w-full p-2 text-white hover:text-red-600"
             >
-              <h3 className="text-base font-semibold text-amber-700">
+              <h3 className="text-base font-semibold text-red-600">
                 Support
               </h3>
               <svg
@@ -323,7 +323,7 @@ export default function Footer() {
                   <a
                     key={item.nameKey}
                     href={getCombainedLocalePath(locale, item.href)}
-                    className="block text-sm/6 text-white hover:text-amber-700 px-2"
+                    className="block text-sm/6 text-white hover:text-red-600 px-2"
                   >
                     {tNav(item.nameKey)}
                   </a>
@@ -335,9 +335,9 @@ export default function Footer() {
           <div>
             <button
               onClick={() => setIsOpenCompany(!isOpenCompany)}
-              className="flex items-center justify-between w-full p-2 text-white hover:text-amber-700"
+              className="flex items-center justify-between w-full p-2 text-white hover:text-red-600"
             >
-              <h3 className="text-base font-semibold text-amber-700">
+              <h3 className="text-base font-semibold text-red-600">
                 {tNav("headings.company")}
               </h3>
               <svg
@@ -362,7 +362,7 @@ export default function Footer() {
                   <a
                     key={item.nameKey}
                     href={getCombainedLocalePath(locale, item.href)}
-                    className="block text-sm/6 text-white hover:text-amber-700 px-2"
+                    className="block text-sm/6 text-white hover:text-red-600 px-2"
                   >
                     {tNav(item.nameKey)}
                   </a>
@@ -374,9 +374,9 @@ export default function Footer() {
           <div>
             <button
               onClick={() => setIsOpenContact(!isOpenContact)}
-              className="flex items-center justify-between w-full p-2 text-white hover:text-amber-700"
+              className="flex items-center justify-between w-full p-2 text-white hover:text-red-600"
             >
-              <h3 className="text-base font-semibold text-amber-700">
+              <h3 className="text-base font-semibold text-red-600">
                 {tNav("headings.contactUs")}
               </h3>
               <svg
@@ -401,7 +401,7 @@ export default function Footer() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block text-sm/6 text-white hover:text-amber-700 px-2"
+                    className="block text-sm/6 text-white hover:text-red-600 px-2"
                   >
                     {item.value}
                   </a>

@@ -42,7 +42,7 @@ export default function NewsLetter() {
         message={successMessage}
         trigger={showSuccessNotification}
       />
-      <h3 className="text-base font-semibold text-amber-700">
+      <h3 className="text-base font-semibold text-red-600">
         Stay Updated! 
       </h3>
       <span className="text-sm/6 text-white">
@@ -61,13 +61,13 @@ export default function NewsLetter() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
           autoComplete="email"
-          className="w-full min-w-0 rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-white focus:outline-2 focus:-outline-offset-2 focus:outline-amber-800 sm:w-64 sm:text-sm/6 xl:w-full"
+          className="w-full min-w-0 rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-white focus:outline-2 focus:-outline-offset-2 focus:outline-red-800 sm:w-64 sm:text-sm/6 xl:w-full"
         />
         <div className="mt-4 sm:mt-0 sm:ml-4 sm:shrink-0">
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex w-full items-center justify-center rounded-md bg-amber-700 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-amber-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-800"
+            className="flex w-full items-center justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-800"
           >
             {isSubmitting ? "Subscribing..." : "Subscribe"}
           </button>

@@ -64,9 +64,9 @@ function ImprintPreview({ onApplyImprint, onComplexDesign }: ImprintPreviewProps
         <div className="py-8">
             <div className="flex items-center gap-2 py-8 px-2" style={{ backgroundColor: containerBg }}>
                 <div className="flex flex-col items-center self-stretch h-24">
-                    <div className="h-10 w-px bg-amber-700"></div>
-                    <span className="text-xs text-amber-700 font-bold">{product.width}</span>
-                    <div className="h-10 w-px bg-amber-700"></div>
+                    <div className="h-10 w-px bg-red-600"></div>
+                    <span className="text-xs text-red-600 font-bold">{product.width}</span>
+                    <div className="h-10 w-px bg-red-600"></div>
                 </div>
                 <div className="w-full">
                     <div className="relative h-24 w-full overflow-hidden bg-cover bg-center" style={{ backgroundColor: webbingColor.hexCode }}>
@@ -87,15 +87,15 @@ function ImprintPreview({ onApplyImprint, onComplexDesign }: ImprintPreviewProps
                             </div>
                         </div>
                     </div>
-                    <div className="flex h-10 w-full overflow-hidden border-t border-amber-700">
+                    <div className="flex h-10 w-full overflow-hidden border-t border-red-600">
                         <div className="flex items-center whitespace-nowrap animate-scroll-left" style={{ '--scroll-width': `${unitWidthPx.toFixed(2)}px`, animationDuration: "8s" } as React.CSSProperties}>
                             {Array.from({ length: 10 }).map((_, i) => (
                                 <div key={i} className="flex items-center whitespace-nowrap">
-                                    <div className="flex h-full flex-col items-center justify-between border-r border-amber-700" style={{ width: `${textLengthPx.toFixed(2)}px` }}>
-                                        <span className="text-xs mt-2 text-amber-700 font-bold">{pxToMm(textLengthPx).toFixed(2)}{unit}</span>
+                                    <div className="flex h-full flex-col items-center justify-between border-r border-red-600" style={{ width: `${textLengthPx.toFixed(2)}px` }}>
+                                        <span className="text-xs mt-2 text-red-600 font-bold">{pxToMm(textLengthPx).toFixed(2)}{unit}</span>
                                     </div>
-                                    <div className="flex h-full flex-col items-center justify-between border-r border-amber-700" style={{ width: `${mmToPx(printInterval).toFixed(2)}px` }}>
-                                        <span className="text-xs mt-2 text-amber-700 font-bold">{printInterval.toFixed(2)}{unit}</span>
+                                    <div className="flex h-full flex-col items-center justify-between border-r border-red-600" style={{ width: `${mmToPx(printInterval).toFixed(2)}px` }}>
+                                        <span className="text-xs mt-2 text-red-600 font-bold">{printInterval.toFixed(2)}{unit}</span>
                                     </div>
                                 </div>
                             ))}

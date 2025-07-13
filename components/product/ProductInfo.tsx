@@ -1,12 +1,20 @@
 "use client";
 
-import { Product } from "@/types/product";
-import Link from "next/link";
+import type { Product } from "@/types/product";
 import Specifications from "./Specifications";
 import Description from "./Description";
 import { getCombainedLocalePath } from "@/utils/formatUtils";
 import { useTranslations } from "next-intl";
-import StrapColorOptions from "./StrapColorOptions";
+import StrapColorOptions from "./Customization";
+import { ActionButton } from "../common/ActionButton";
+import { FaTags, FaTools } from "react-icons/fa";
+import { ServiceCard } from "../common/ServiceCard";
+import {
+  HiCheckCircle,
+  HiClock,
+} from "react-icons/hi2";
+import Customizations from "./Customization";
+import Customization from "./Customization";
 
 interface ProductInfoProps {
   product: Product;
@@ -28,7 +36,9 @@ export default function ProductInfo({ lang, product }: ProductInfoProps) {
       linkTextKey: "services.questionsCustom.linkText",
     },
   ];
+
   const t = useTranslations("ProductInfo");
+
   const handleCustomPrintingClick = () => {
     try {
       sessionStorage.setItem("customPrintingProduct", JSON.stringify(product));
@@ -36,70 +46,93 @@ export default function ProductInfo({ lang, product }: ProductInfoProps) {
       console.error("Could not save product to sessionStorage", error);
     }
   };
-  const customizable = product.strap_colors && product.strap_colors.colorSelection;
+
+  const customizable =
+    product.strap_colors && product.strap_colors.colorSelection;
+
   return (
     <div>
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4 font-mono">{product.name}</h1>
-        <div className="space-y-2">
-          <p className="text-black">
-            {t("itemNumberLabel")}#{product.code}
-          </p>
-          <div className="flex items-center space-x-2 text-black">
-            <span>{t("stockStatus.inStock")},</span>
-            <strong className="text-amber-700">
-              {t("stockStatus.madeToOrder")}
-            </strong>
-          </div>
-        </div>
-      </div>
+      <div className="mx-auto">
+        {/* Hero Product Section */}
+        <div className="rounded-2xl shadow-lg mb-8 overflow-hidden">
+          <div className="px-4">
+            <h1 className="text-4xl font-bold text-black mb-4">
+              {product.name}
+            </h1>
 
-      <div className={`grid grid-cols-1 sm:grid-cols-2 ${ customizable ? '2xl:grid-cols-4' : '2xl:grid-cols-3'} gap-2 mb-8`}>
-      {services.map((service) => (
-          <div key={service.id} className="bg-gray-50 p-4 rounded-lg">
-            <h3 className="font-semibold text-black mb-2">
-              {t(service.titleKey)}
-            </h3>
-            <Link
-              href={service.link}
-              className="text-amber-700 hover:text-blue-700"
-            >
-              {t(service.linkTextKey)}
-            </Link>
+            <div className="flex flex-wrap items-center gap-6">
+              <div className="flex items-center gap-3">
+                <span className="uppercase">
+                  {t("itemNumberLabel")}
+                </span>
+                <span>
+                  #{product.code}
+                </span>
+              </div>
+            </div>
           </div>
-        ))}
-        <div className="bg-gray-50 p-3 rounded-lg flex items-center justify-center">
-          <Link
-            href={getCombainedLocalePath(lang, "request-quote")}
-            className="inline-flex items-center justify-center px-8 sm:px-4 py-3 text-lg font-medium text-white bg-gradient-to-l from-black  to-amber-700
-              rounded-full"
-          >
-            {t("buttons.requestQuote")}
-          </Link>
-        </div>
 
-        {customizable && (
-          <div className="bg-gray-50 p-3 rounded-lg flex items-center justify-center">
-            <Link
-              href={getCombainedLocalePath(
-                lang,
-                "custom-print/online-builder"
+          <div className="px-4 py-6">
+            <div className="flex flex-wrap items-center gap-4 mb-6">
+              <div className="flex items-center gap-2 px-4 py-2 bg-green-50 rounded-full">
+                <HiCheckCircle className="text-green-600 w-5 h-5" />
+                <span className="text-green-700 font-semibold text-sm">
+                  {t("stockStatus.inStock")}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2 px-4 py-2 bg-orange-50 rounded-full">
+                <HiClock className="text-red-600 w-5 h-5" />
+                <span className="text-red-600 font-semibold text-sm">
+                  {t("stockStatus.madeToOrder")}
+                </span>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md">
+              <ActionButton
+                href={getCombainedLocalePath(lang, "request-quote")}
+                text={t("buttons.requestQuote")}
+                icon={FaTags}
+                variant="primary"
+              />
+
+              {customizable && (
+                <ActionButton
+                  href={getCombainedLocalePath(
+                    lang,
+                    "custom-print/online-builder"
+                  )}
+                  text={t("buttons.customPrinting")}
+                  icon={FaTools}
+                  onClick={handleCustomPrintingClick}
+                  variant="secondary"
+                />
               )}
-              onClick={handleCustomPrintingClick}
-              className="inline-flex items-center justify-center px-8 sm:px-4 py-3 text-lg font-medium text-white bg-gradient-to-l from-black  to-amber-700
-              rounded-full"
-            >
-              {t("buttons.customPrinting")}
-            </Link>
+            </div>
           </div>
-        )}
+        </div>
+
+        {/* Services Grid */}
+        <div className="mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {services.map((service) => (
+              <ServiceCard
+                key={service.id}
+                title={t(service.titleKey)}
+                linkText={t(service.linkTextKey)}
+                href={service.link}
+              />
+            ))}
+          </div>
+        </div>
+
+        <Customization customizations={product.strap_colors} />
+        <Specifications product={product} />
+
+        <Description description={product.see_more} />
       </div>
-
-      <StrapColorOptions customizations={product.strap_colors} />
-
-      <Specifications product={product} />
-
-      <Description description={product.see_more} />
     </div>
   );
 }

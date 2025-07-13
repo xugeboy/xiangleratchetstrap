@@ -123,13 +123,13 @@ export default function HeroSection() {
             >
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
                 {slide.title} <br />
-                <span className="text-amber-700">{slide.subtitle}</span>
+                <span className="text-red-600">{slide.subtitle}</span>
               </h1>
               <p className="text-xl text-white/90 mb-8">{slide.description}</p>
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/about-us"
-                  className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 font-medium transition-colors"
+                  className="bg-red-600 hover:bg-red-600 text-white px-8 py-3 font-medium transition-colors"
                 >
                   ABOUT US
                 </Link>

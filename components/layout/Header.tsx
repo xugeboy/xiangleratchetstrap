@@ -45,13 +45,13 @@ export default function Header() {
             </Link>
             <Link
               href={getCombainedLocalePath(locale, "business-solutions")}
-              className="text-sm font-medium hover:text-amber-700"
+              className="text-sm font-medium hover:text-red-600"
             >
               {tNav("support.businessSolutions")}
             </Link>
             <Link
               href={getCombainedLocalePath(locale, "contact-us")}
-              className="text-sm font-medium hover:text-amber-700"
+              className="text-sm font-medium hover:text-red-600"
             >
               {tNav("company.contactUs")}
             </Link>

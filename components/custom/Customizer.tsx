@@ -43,7 +43,7 @@ function Customizer() {
   return (
     <div className="w-full mx-auto">
       <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-        <div className="bg-gradient-to-r to-black  from-amber-700 px-4 py-3">
+        <div className="bg-gradient-to-r to-black  from-red-600 px-4 py-3">
           <h3 className="text-xl font-semibold text-white flex items-center gap-3">
             <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
               <div className="w-3 h-3 bg-white rounded-full"></div>
@@ -135,7 +135,7 @@ function Customizer() {
                   <p className="text-sm text-gray-500">{t('dimensions.description')}</p>
                 </div>
               </div>
-              <button onClick={() => dispatch({ type: 'TOGGLE_UNIT' })} className="flex items-center gap-2 px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm font-semibold text-gray-700 transition-colors">
+              <button onClick={() => dispatch({ type: 'SET_UNIT' })} className="flex items-center gap-2 px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm font-semibold text-gray-700 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
                 {unit === "mm" ? "inch" : "mm"}
               </button>

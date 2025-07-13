@@ -63,7 +63,7 @@ export function CategorySidebar({
           <Link prefetch={false}
             href={getCombainedLocalePath(locale,`categories/${category.slug}`)}
             className={`flex-grow text-left text-sm ${
-              isActive ? "font-bold text-amber-700" : "text-black hover:text-amber-700"
+              isActive ? "font-bold text-red-600" : "text-black hover:text-red-600"
             }`}
           >
             {category.name}
@@ -86,7 +86,7 @@ export function CategorySidebar({
               if (!childCategory) {
                 return (
                   <div key={childRef.id} className="py-2 ml-2">
-                    <Link prefetch={false} href={getCombainedLocalePath(locale,`categories/${childRef.slug}`)} className="text-sm text-black hover:text-amber-700">
+                    <Link prefetch={false} href={getCombainedLocalePath(locale,`categories/${childRef.slug}`)} className="text-sm text-black hover:text-red-600">
                       {childRef.name || childRef.slug.replace(/-/g, " ")}
                     </Link>
                   </div>
@@ -122,7 +122,7 @@ export function CategorySidebar({
             <div className="mb-4">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium">{t("selectedFilters")}</span>
-                <button type="button" className="text-sm text-amber-700 hover:underline" onClick={onClearAllFilters}>
+                <button type="button" className="text-sm text-red-600 hover:underline" onClick={onClearAllFilters}>
                 {t("clearAll")}
                 </button>
               </div>

@@ -40,12 +40,12 @@ export default function ProductsSection() {
           <div className="flex-1" />
           <h2 className="text-4xl font-bold text-black text-center flex-1">
           {t.rich("title", {
-              span: (chunks) => <span className="text-amber-700">{chunks}</span>,
+              span: (chunks) => <span className="text-red-600">{chunks}</span>,
             })}
           </h2>
           <Link
             href={getCombainedLocalePath(lang,"products")}
-            className="flex items-center text-amber-700 font-medium hover:text-cyan-700 flex-1 justify-end"
+            className="flex items-center text-red-600 font-medium hover:text-cyan-700 flex-1 justify-end"
           >
             {t("viewAllButton")}
             <ChevronRightIcon className="ml-1 h-5 w-5" />
@@ -93,7 +93,7 @@ export default function ProductsSection() {
                   <div className="mt-auto"> {/* Pushes button to bottom */}
                     <Link
                       href={productLink}
-                      className="inline-flex items-center text-amber-700 font-semibold hover:text-amber-800 transition-colors group" // Adjusted styling
+                      className="inline-flex items-center text-red-600 font-semibold hover:text-red-800 transition-colors group" // Adjusted styling
                     >
                       {t("learnMoreLink")} {/* 7. 翻译链接文本 */}
                       <ChevronRightIcon className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />

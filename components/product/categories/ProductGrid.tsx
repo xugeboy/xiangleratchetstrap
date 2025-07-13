@@ -68,7 +68,7 @@ export function ProductGrid({
     <div className="space-y-6">
       {isLoading ? (
         <div className="text-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-700 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
           <p className="mt-4 text-sm text-black">{t("loading")}</p>
         </div>
       ) : (

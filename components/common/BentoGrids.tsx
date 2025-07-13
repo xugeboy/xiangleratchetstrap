@@ -101,7 +101,7 @@ export default async function BentoGrids() {
             `}
             >
               <div className="p-10 pt-4 flex flex-col h-full">
-                <h3 className="text-sm/4 font-semibold text-amber-700">
+                <h3 className="text-sm/4 font-semibold text-red-600">
                   {t(`items.${cell.key}.subtitle`)}
                 </h3>
                 <p className="mt-2 text-lg font-medium tracking-tight text-black">

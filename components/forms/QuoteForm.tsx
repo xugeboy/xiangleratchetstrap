@@ -248,8 +248,8 @@ export default function QuoteForm({ messageFromCustomizer }: QuoteFormProps) {
           <button
             type="submit"
             // disabled={isLoading} // 禁用按钮当正在加载时
-            className="inline-flex px-6 py-3 text-sm font-medium text-white bg-amber-700 
-              rounded-xl hover:bg-amber-800 transition-colors disabled:opacity-50"
+            className="inline-flex px-6 py-3 text-sm font-medium text-white bg-red-600 
+              rounded-xl hover:bg-red-800 transition-colors disabled:opacity-50"
           >
             {/* {isLoading ? t("buttons.submitting") : t("buttons.submit")} */}
             {t("buttons.submit")}

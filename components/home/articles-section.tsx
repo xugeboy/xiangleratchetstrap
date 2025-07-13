@@ -18,7 +18,7 @@ export default async function ArticlesSection() {
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 text-black">
           {t.rich("title", {
-            span: (chunks) => <span className="text-amber-700">{chunks}</span>,
+            span: (chunks) => <span className="text-red-600">{chunks}</span>,
           })}
         </h2>
 
@@ -43,7 +43,7 @@ export default async function ArticlesSection() {
                 <h3 className="text-xl font-bold mb-2 text-center">
                   <Link
                     href={articleLink}
-                    className="hover:text-amber-700 transition-colors"
+                    className="hover:text-red-600 transition-colors"
                   >
                     {blog.title}
                   </Link>

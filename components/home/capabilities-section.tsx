@@ -37,7 +37,7 @@ export default async function CapabilitiesSection() {
               <h2 className="text-3xl lg:text-4xl font-bold text-black mb-2 leading-tight"> {/* Responsive font size & leading */}
                 {t("mainTitle")} {/* 5. 翻译主标题 */}
               </h2>
-              <h3 className="text-4xl lg:text-5xl font-bold text-amber-700 mb-6 leading-tight"> {/* Responsive font size & leading */}
+              <h3 className="text-4xl lg:text-5xl font-bold text-red-600 mb-6 leading-tight"> {/* Responsive font size & leading */}
                 {t("subTitle")} {/* 6. 翻译副标题 */}
               </h3>
             </div>

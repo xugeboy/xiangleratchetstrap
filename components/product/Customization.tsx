@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import { colorSelection, Customizations, LogoOptions, PackagingOptions } from "@/types/Customizations";
 
 
-export default function StrapColorOptions({
+export default function Customization({
   customizations,
 }: {
   customizations: Customizations;
@@ -173,18 +173,6 @@ export default function StrapColorOptions({
             </tr>
           </tbody>
         </table>
-
-        <div className="px-4 pt-4 pb-4">
-          <button className="w-full bg-gradient-to-r from-black via-amber-700 to-amber-700 text-white font-bold py-4 px-6 rounded-full shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3 group">
-            <div className="flex items-center gap-2">
-              <a href="#quote_form">
-                <span className="text-lg tracking-wide">
-                  🎨 {t("possibilities")}
-                </span>
-              </a>
-            </div>
-          </button>
-        </div>
       </div>
 
       {/* Color hover preview */}
