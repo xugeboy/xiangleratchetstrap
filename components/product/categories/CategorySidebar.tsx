@@ -28,12 +28,10 @@ export function CategorySidebar({
   const [expandedCategories, setExpandedCategories] = useState<Record<number, boolean>>({})
   const { categories, categoryMap, rootCategories } = useCategories()
   const locale = useLocale()
-  // Auto-expand categories based on current selection
   useEffect(() => {
     if (currentCategory) {
       const newExpandedCategories = { ...expandedCategories }
 
-      // Find all parent categories that contain the current category as a child
       categories.forEach((category) => {
         if (category.children?.some((child) => child.id === currentCategory.id)) {
           newExpandedCategories[category.id] = true
@@ -51,7 +49,6 @@ export function CategorySidebar({
     }))
   }
 
-  // Recursive function to render a category and its children
   const renderCategory = (category: ProductCategory, depth = 0) => {
     const isActive = currentCategory?.id === category.id
     const isExpanded = expandedCategories[category.id]

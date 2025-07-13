@@ -60,7 +60,7 @@ function ProductInfoPanel() {
             </div>
           </div>
         </div>
-        <div className="px-4">
+        <div className="px-4 pt-4">
           <Specifications product={product} />
         </div>
       </div>

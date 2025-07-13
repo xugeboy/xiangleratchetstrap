@@ -8,16 +8,11 @@ import OnlineBuilderClient from "./OnlineBuilderClient";
 import { getDefaultTextColorForWebbing } from "@/utils/customizer-utils";
 
 
-/**
- * The shell component acts as the bridge between Server and Client.
- * It loads client-side data (from sessionStorage) and sets up the state provider.
- */
 export default function OnlineBuilderShell() {
   const t = useTranslations("OnlineBuilder");
   const { product, isLoading } = useProductLoader();
   const [state, dispatch] = useReducer(customizerReducer, initialState);
 
-  // Initialize state once the product is loaded
   useEffect(() => {
     if (product?.strap_colors?.colorSelection?.length) {
       const initialWebbingColor = product.strap_colors.colorSelection[0];
@@ -32,7 +27,6 @@ export default function OnlineBuilderShell() {
     }
   }, [product]);
 
-  // Memoize the context value to prevent unnecessary re-renders
   const contextValue = useMemo(() => ({ state, dispatch, product }), [state, dispatch, product]);
 
   if (isLoading) {

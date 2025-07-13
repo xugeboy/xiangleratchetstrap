@@ -40,4 +40,5 @@ export interface Product {
     elongation_at_lc: string;
     compliance: string;
     strap_colors: Customizations;
+    customizable: boolean;
 }

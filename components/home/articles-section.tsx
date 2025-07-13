@@ -51,7 +51,7 @@ export default async function ArticlesSection() {
                 <div className="text-sm text-black text-center mb-2">
                   {formatDateToLongEnglish(blog.createdAt)}
                 </div>
-                <p className="text-black mb-4 flex-grow">{blog.excerpt}</p>
+                <p className="text-black mb-4 flex-grow line-clamp-3">{blog.excerpt}</p>
                 <Link
                   href={articleLink}
                   className="text-[#1a3b5d] font-medium hover:underline self-center"

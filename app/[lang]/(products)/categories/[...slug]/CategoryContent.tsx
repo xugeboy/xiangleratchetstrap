@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState, useMemo } from "react";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 import { useCategories } from "@/contexts/CategoryContext";
 
@@ -20,13 +19,17 @@ import { FilterOption, ProductFilter } from "@/types/productFilter";
 import BlocksClient from "@/components/common/BlocksClient";
 
 import { generateSchema, embedSchema } from "@/utils/schema";
+import {
+  HiOutlineAdjustmentsHorizontal,
+  HiOutlineXMark,
+} from "react-icons/hi2";
 
 interface CategoryContentProps {
   slug: string[];
   lang: string;
 }
 
-export default function CategoryContent({ slug,lang }: CategoryContentProps) {
+export default function CategoryContent({ slug, lang }: CategoryContentProps) {
   const { categories: allCategories } = useCategories();
 
   const targetSlug = useMemo(() => slug[slug.length - 1], [slug]);
@@ -41,7 +44,9 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
     return found as ProductCategory | undefined;
   }, [allCategories, targetSlug]);
 
-  const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({});
+  const [selectedFilters, setSelectedFilters] = useState<
+    Record<string, string[]>
+  >({});
   const [breadcrumbItems, setbreadcrumbItems] = useState<BreadcrumbItem[]>([]);
   const [viewMode, setViewMode] = useState<"grid" | "list" | "compact">("grid");
   const [itemsPerPage, setItemsPerPage] = useState(8);
@@ -63,18 +68,18 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
   useEffect(() => {
     const fetchData = async () => {
       if (!currentCategory) return;
-  
+
       setError(null);
       setbreadcrumbItems([]);
       setProductFilters([]);
-  
+
       try {
         const [filtersData, breadcrumbItems] = await Promise.all([
-          getProductFilters(currentCategory.slug,lang),
-          generateCategoryBreadcrumbs(currentCategory,lang),
+          getProductFilters(currentCategory.slug, lang),
+          generateCategoryBreadcrumbs(currentCategory, lang),
         ]);
         setbreadcrumbItems(breadcrumbItems);
-  
+
         const formattedFilters: ProductFilter[] = [];
         Object.entries(filtersData).forEach(([key, values]) => {
           const options: FilterOption[] = Object.entries(values).map(
@@ -101,7 +106,7 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
         setError("Failed to load products.");
       }
     };
-  
+
     fetchData();
   }, [currentCategory, selectedFilters]); // 依赖 filters
 
@@ -135,16 +140,20 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
     return null;
   }
 
-
-    // --- 生成 Schema ---
-    const articleSchema = generateSchema({ lang: lang,type: "CollectionPage", data: currentCategory, slug: targetSlug });
-    const breadcrumbItemschema = generateSchema({
-      type: "BreadcrumbList",
-      breadcrumbItems,
-    });
-    const schemaMetadataJson = embedSchema(
-      [articleSchema, breadcrumbItemschema].filter(Boolean)
-    );
+  // --- 生成 Schema ---
+  const articleSchema = generateSchema({
+    lang: lang,
+    type: "CollectionPage",
+    data: currentCategory,
+    slug: targetSlug,
+  });
+  const breadcrumbItemschema = generateSchema({
+    type: "BreadcrumbList",
+    breadcrumbItems,
+  });
+  const schemaMetadataJson = embedSchema(
+    [articleSchema, breadcrumbItemschema].filter(Boolean)
+  );
 
   // Main component render when data is ready
   return (
@@ -156,43 +165,76 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
           dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
         />
       </section>
-      <Breadcrumb items={breadcrumbItems} lang={lang}/>
+      <Breadcrumb items={breadcrumbItems} lang={lang} />
 
-      {/* Mobile Filter Toggle */}
-      {isMobile && (
-        <button
-          onClick={() => setShowFilters(!showFilters)}
-          className="w-full flex items-center justify-between bg-gray-100 p-3 rounded-md mb-4 mt-2"
-        >
-          <span className="font-medium">CATEGORIES & FILTERS</span>
-          <ChevronDownIcon
-            className={`h-5 w-5 transition-transform ${
-              showFilters ? "rotate-180" : ""
-            }`}
-          />
-        </button>
-      )}
+      <div className="flex flex-col md:flex-row py-4">
+        {!isMobile ? (
+          <div className="pr-8">
+            <CategorySidebar
+              currentCategory={currentCategory}
+              productFilters={productFilters}
+              selectedFilters={selectedFilters}
+              onFilterChange={handleFilterChange}
+              onClearAllFilters={clearAllFilters}
+            />
+          </div>
+        ) : (
+          // 移动端视图
+          <div>
+            {/* Mobile Filter Toggle */}
+            {isMobile && (
+              <button
+                onClick={() => setShowFilters(!showFilters)}
+                className="flex items-center gap-2 text-gray-600 font-medium hover:text-black transition-colors"
+              >
+                <HiOutlineAdjustmentsHorizontal className="h-5 w-5" />
+                <span className="font-medium">CATEGORIES & FILTERS</span>
+              </button>
+            )}
+            <div
+              className={`fixed inset-0 z-40 transition-all duration-300 ${
+                showFilters ? "visible" : "invisible"
+              }`}
+              aria-hidden={!showFilters}
+            >
+              <div
+                onClick={() => setShowFilters(false)}
+                className={`absolute inset-0 bg-black/50 transition-opacity ${
+                  showFilters ? "opacity-100" : "opacity-0"
+                }`}
+              />
 
-      <div className="flex flex-col md:flex-row gap-8 py-4">
-        {/* Categories Sidebar */}
-        <div
-          className={`${
-            isMobile && !showFilters ? "hidden" : "block"
-          } w-full md:w-64 flex-shrink-0`}
-        >
-          {/* Pass allCategories from context and the derived currentCategory */}
-          <CategorySidebar
-            currentCategory={currentCategory}
-            productFilters={productFilters}
-            selectedFilters={selectedFilters}
-            onFilterChange={handleFilterChange}
-            onClearAllFilters={clearAllFilters}
-          />
-        </div>
+              <div
+                className={`relative h-full w-4/5 max-w-sm bg-white shadow-xl transition-transform duration-300 ${
+                  showFilters ? "translate-x-0" : "-translate-x-full"
+                }`}
+              >
+                <div className="flex justify-between items-center p-4">
+                  <h2 className="text-lg font-semibold text-black">
+                    CATEGORIES & FILTERS
+                  </h2>
+                  <button
+                    onClick={() => setShowFilters(false)}
+                    aria-label="Close Customization Menu"
+                  >
+                    <HiOutlineXMark className="h-6 w-6" />
+                  </button>
+                </div>
+                <div className="px-4 overflow-y-auto h-[calc(100vh-65px)]">
+                  <CategorySidebar
+                    currentCategory={currentCategory}
+                    productFilters={productFilters}
+                    selectedFilters={selectedFilters}
+                    onFilterChange={handleFilterChange}
+                    onClearAllFilters={clearAllFilters}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
-        {/* Products Section */}
         <div className="flex-1">
-          {/* View Controls */}
           <ViewControls
             viewMode={viewMode}
             setViewMode={setViewMode}
@@ -200,7 +242,6 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
             setItemsPerPage={setItemsPerPage}
           />
 
-          {/* Products Grid */}
           <ProductGrid
             selectedFilters={selectedFilters}
             currentCategorySlug={currentCategory.slug}
@@ -209,7 +250,6 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
             lang={lang}
           />
 
-          {/* Product Models Section */}
           {currentCategory && currentCategory.description && (
             <div className="mt-40 bg-white rounded-2xl p-2">
               <BlocksClient content={currentCategory.description} />

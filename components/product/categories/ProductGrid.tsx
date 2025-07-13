@@ -12,6 +12,7 @@ import {
 } from "@/utils/formatUtils";
 import { useTranslations } from "next-intl";
 import { ResponsivePagination } from "./ResponsivePagination";
+import { FaTools } from "react-icons/fa";
 
 interface ProductGridProps {
   selectedFilters: Record<string, string[]>;
@@ -64,6 +65,7 @@ export function ProductGrid({
   };
   const pathPrefix = getBreadcrumbPathPrefix(lang);
   const t = useTranslations("ProductGrid");
+  const tp = useTranslations("ProductInfo.buttons");
   return (
     <div className="space-y-6">
       {isLoading ? (
@@ -77,7 +79,7 @@ export function ProductGrid({
             className={`
               ${
                 viewMode === "grid"
-                  ? "grid grid-cols-2 lg:grid-cols-4 gap-6"
+                  ? "grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
                   : ""
               }
               ${viewMode === "list" ? "space-y-6" : ""}
@@ -93,49 +95,60 @@ export function ProductGrid({
                 `}
               >
                 {viewMode === "grid" && (
-                  <Link
-                    prefetch={false}
-                    href={`${pathPrefix}/products/${product.slug}`}
-                    className="group flex flex-col h-full text-center hover:underline"
-                  >
-                    {/* 图片部分 */}
-                    <div className="relative aspect-square overflow-hidden bg-gray-100 mb-4">
-                      {product.featured_image && (
-                        <Image
-                          src={getCloudinaryPublicId(
-                            product.featured_image.url
-                          )}
-                          alt={product.name}
-                          fill
-                          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                          className="object-scale-down"
-                        />
+                  <div className="group relative flex flex-col h-full">
+                    <Link
+                      prefetch={false}
+                      href={`${pathPrefix}/products/${product.slug}`}
+                      className="block"
+                    >
+                      <div className="relative aspect-square overflow-hidden bg-gray-100 mb-4">
+                        {product.featured_image && (
+                          <Image
+                            src={
+                              getCloudinaryPublicId(
+                                product.featured_image.url
+                              ) || "/placeholder.svg"
+                            }
+                            alt={product.name}
+                            fill
+                            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                            className="object-scale-down transition-transform duration-300 md:group-hover:scale-105"
+                          />
+                        )}
+                      </div>
+                      <h3 className="font-medium line-clamp-2 md:group-hover:text-red-700 transition-colors duration-200 mb-4">
+                        {product.name}
+                      </h3>
+                    </Link>
+                    <div className="flex items-center gap-2">
+                      <Link
+                        href={`${pathPrefix}/products/${product.slug}`}
+                        className="flex-1 rounded-md bg-black px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-gray-800"
+                      >
+                        {t("learnMoreButton")}
+                      </Link>
+                      {product.customizable && (
+                        <Link
+                          href={`${pathPrefix}/custom-print/online-builder?${product.slug}`}
+                          aria-label="Go to Online Builder"
+                          className="flex-shrink-0 rounded-md bg-red-600 p-2.5 text-white shadow-sm hover:bg-red-700"
+                        >
+                          <FaTools className="h-5 w-5" />
+                        </Link>
                       )}
                     </div>
-
-                    {/* 标题部分 */}
-                    <h3 className="text-base font-medium">
-                      {product.name}
-                    </h3>
-
-                    {/* 按钮容器 */}
-                    {/* 2. 使用 mt-auto 将按钮推到底部 */}
-                    <div className="mt-auto pt-4">
-                      <span className="inline-block w-full bg-black text-white px-4 py-3 rounded-md text-md font-bold uppercase">
-                        {t("learnMoreButton")}
-                      </span>
-                    </div>
-                  </Link>
+                  </div>
                 )}
 
                 {viewMode === "list" && (
-                  <div className="flex gap-6">
+                  <div className="flex flex-row gap-4 sm:gap-6">
                     <div className="w-40 h-40 flex-shrink-0 bg-gray-100">
                       {product.featured_image && (
                         <Image
-                          src={getCloudinaryPublicId(
-                            product.featured_image.url
-                          )}
+                          src={
+                            getCloudinaryPublicId(product.featured_image.url) ||
+                            "/placeholder.svg"
+                          }
                           alt={product.name}
                           width={160}
                           height={160}
@@ -143,26 +156,32 @@ export function ProductGrid({
                         />
                       )}
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 flex flex-col">
                       <Link href={`${pathPrefix}/products/${product.slug}`}>
-                        <h3 className="text-lg font-medium">{product.name}</h3>
+                        <h3 className="font-medium hover:text-red-700 transition-colors duration-200">
+                          {product.name}
+                        </h3>
                       </Link>
-                      <p className="mt-2 text-sm text-black line-clamp-3">
+                      <p className="mt-2 text-sm text-black line-clamp-3 flex-1">
                         {product.about}
                       </p>
-                      <div className="mt-4">
+
+                      {/* 优化的按钮布局 - 移动端友好 */}
+                      <div className="mt-4 flex flex-col sm:flex-row gap-3 sm:gap-4">
                         <Link
                           href={`${pathPrefix}/products/${product.slug}`}
-                          className="inline-block  bg-black text-white px-4 py-2 rounded-md text-md font-bold uppercase"
+                          className="flex-1 sm:flex-none inline-block bg-black text-white px-6 py-3 rounded-md text-sm font-bold uppercase text-center hover:bg-gray-800 transition-colors duration-200"
                         >
                           {t("learnMoreButton")}
                         </Link>
-                        <Link
-                          href={`${pathPrefix}/custom-print/online-builder?${product.slug}`}
-                          className="inline-block  bg-black text-white px-4 py-2 rounded-md text-md font-bold uppercase"
-                        >
-                          {t("learnMoreButton")}
-                        </Link>
+                        {product.customizable && (
+                          <Link
+                            href={`${pathPrefix}/custom-print/online-builder?${product.slug}`}
+                            className="flex-1 sm:flex-none inline-block bg-red-700 text-white px-6 py-3 rounded-md text-sm font-bold uppercase text-center hover:bg-red-800 transition-colors duration-200"
+                          >
+                            {tp("customPrinting")}
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -176,9 +195,10 @@ export function ProductGrid({
                     <div className="w-16 h-16 flex-shrink-0 bg-gray-100">
                       {product.featured_image && (
                         <Image
-                          src={getCloudinaryPublicId(
-                            product.featured_image.url
-                          )}
+                          src={
+                            getCloudinaryPublicId(product.featured_image.url) ||
+                            "/placeholder.svg"
+                          }
                           alt={product.name}
                           width={64}
                           height={64}
@@ -199,11 +219,11 @@ export function ProductGrid({
           {/* Pagination */}
           {totalPages > 1 && (
             <ResponsivePagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-            t={t}
-          />
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+              t={t}
+            />
           )}
 
           {/* No Results Message */}

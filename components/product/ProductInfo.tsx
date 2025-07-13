@@ -9,7 +9,12 @@ import Customization from "./Customization";
 import { ActionButton } from "../common/ActionButton";
 import { FaTags, FaTools } from "react-icons/fa";
 import { ServiceCard } from "../common/ServiceCard";
-import { HiCheckCircle, HiClock, HiOutlineCog8Tooth, HiOutlineXMark } from "react-icons/hi2";
+import {
+  HiCheckCircle,
+  HiClock,
+  HiOutlineCog8Tooth,
+  HiOutlineXMark,
+} from "react-icons/hi2";
 import { useIsMobile } from "@/hooks/useMobile";
 import { useState } from "react";
 import CustomizationMobile from "./CustomizationMobile";
@@ -23,8 +28,13 @@ interface ProductInfoProps {
   setPreviewClick?: (data: PreviewData) => void;
 }
 
-export default function ProductInfo({ lang, product, setPreviewHover, setPreviewClick }: ProductInfoProps) {
-      const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+export default function ProductInfo({
+  lang,
+  product,
+  setPreviewHover,
+  setPreviewClick,
+}: ProductInfoProps) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const services = [
     {
       id: "tailoredPrograms",
@@ -51,7 +61,7 @@ export default function ProductInfo({ lang, product, setPreviewHover, setPreview
     }
   };
 
-  const customizable = product.strap_colors && product.strap_colors.colorSelection;
+  const customizable = product.customizable;
 
   return (
     <div>
@@ -59,7 +69,9 @@ export default function ProductInfo({ lang, product, setPreviewHover, setPreview
         {/* Hero Product Section */}
         <div className="rounded-2xl shadow-lg mb-8 overflow-hidden">
           <div className="px-4 pt-4">
-            <h1 className="text-4xl font-bold text-black mb-4">{product.name}</h1>
+            <h1 className="text-4xl font-bold text-black mb-4">
+              {product.name}
+            </h1>
             <div className="flex flex-wrap items-center gap-6">
               <div className="flex items-center gap-3">
                 <span className="uppercase">{t("itemNumberLabel")}</span>
@@ -71,12 +83,18 @@ export default function ProductInfo({ lang, product, setPreviewHover, setPreview
             <div className="flex flex-wrap items-center gap-4 mb-6">
               <div className="flex items-center gap-2 px-4 py-2 bg-green-50 rounded-full">
                 <HiCheckCircle className="text-green-600 w-5 h-5" />
-                <span className="text-green-700 font-semibold text-sm">{t("stockStatus.inStock")}</span>
+                <span className="text-green-700 font-semibold text-sm">
+                  {t("stockStatus.inStock")}
+                </span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-orange-50 rounded-full">
-                <HiClock className="text-red-600 w-5 h-5" />
-                <span className="text-red-600 font-semibold text-sm">{t("stockStatus.madeToOrder")}</span>
-              </div>
+              {customizable && (
+                <div className="flex items-center gap-2 px-4 py-2 bg-orange-50 rounded-full">
+                  <HiClock className="text-red-600 w-5 h-5" />
+                  <span className="text-red-600 font-semibold text-sm">
+                    {t("stockStatus.madeToOrder")}
+                  </span>
+                </div>
+              )}
             </div>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md">
               <ActionButton
@@ -87,7 +105,10 @@ export default function ProductInfo({ lang, product, setPreviewHover, setPreview
               />
               {customizable && (
                 <ActionButton
-                  href={getCombainedLocalePath(lang, "custom-print/online-builder")}
+                  href={getCombainedLocalePath(
+                    lang,
+                    "custom-print/online-builder"
+                  )}
                   text={t("buttons.customPrinting")}
                   icon={FaTools}
                   onClick={handleCustomPrintingClick}
@@ -111,14 +132,15 @@ export default function ProductInfo({ lang, product, setPreviewHover, setPreview
             ))}
           </div>
         </div>
-        
+
         {/* Customization Section */}
         {customizable && (
           <>
             {/* 3. 使用 isMobile 状态进行条件渲染 */}
             {!isMobile ? (
               // 桌面端视图
-              setPreviewHover && setPreviewClick && (
+              setPreviewHover &&
+              setPreviewClick && (
                 <Customization
                   customizations={product.strap_colors}
                   setPreviewHover={setPreviewHover}
@@ -148,20 +170,27 @@ export default function ProductInfo({ lang, product, setPreviewHover, setPreview
                       isSidebarOpen ? "opacity-100" : "opacity-0"
                     }`}
                   />
-                  
+
                   <div
                     className={`relative h-full w-4/5 max-w-sm bg-white shadow-xl transition-transform duration-300 ${
                       isSidebarOpen ? "translate-x-0" : "-translate-x-full"
                     }`}
                   >
                     <div className="flex justify-between items-center p-4 border-b">
-                       <h2 className="text-lg font-semibold text-black">{t("customization.customizations")}</h2>
-                       <button onClick={() => setIsSidebarOpen(false)} aria-label="Close Customization Menu">
-                          <HiOutlineXMark className="h-6 w-6"/>
-                       </button>
+                      <h2 className="text-lg font-semibold text-black">
+                        {t("customization.customizations")}
+                      </h2>
+                      <button
+                        onClick={() => setIsSidebarOpen(false)}
+                        aria-label="Close Customization Menu"
+                      >
+                        <HiOutlineXMark className="h-6 w-6" />
+                      </button>
                     </div>
                     <div className="overflow-y-auto h-[calc(100vh-65px)]">
-                      <CustomizationMobile customizations={product.strap_colors} />
+                      <CustomizationMobile
+                        customizations={product.strap_colors}
+                      />
                     </div>
                   </div>
                 </div>
