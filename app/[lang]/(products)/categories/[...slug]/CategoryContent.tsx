@@ -9,7 +9,7 @@ import { getProductFilters } from "@/services/api/product";
 import { generateCategoryBreadcrumbs } from "@/utils/breadcrumbs";
 
 import Breadcrumb from "@/components/common/Breadcrumb";
-import { useMediaQuery } from "@/hooks/useMobile";
+import { useIsMobile } from "@/hooks/useMobile";
 import { CategorySidebar } from "@/components/product/categories/CategorySidebar";
 import { ViewControls } from "@/components/product/categories/ViewControls";
 import { ProductGrid } from "@/components/product/categories/ProductGrid";
@@ -49,7 +49,7 @@ export default function CategoryContent({ slug,lang }: CategoryContentProps) {
   const [productFilters, setProductFilters] = useState<ProductFilter[]>([]);
   const [error, setError] = useState<string | null>(null); // Add error state
 
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (allCategories.length > 0 && !currentCategory) {

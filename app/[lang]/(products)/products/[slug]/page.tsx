@@ -1,8 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next";
-import {
-  getProductBySlug,
-  getAllProductSlug
-} from "@/services/api/product";
+import { getProductBySlug, getAllProductSlug } from "@/services/api/product";
 import { generateProductBreadcrumbs } from "@/utils/breadcrumbs";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/common/Breadcrumb";
@@ -17,6 +14,7 @@ import { embedSchema } from "@/utils/schema";
 import AlternatingContent from "@/components/product/AlternatingContent";
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
 import VideoPlayer from "@/components/common/VideoPlayer";
+import ProductDetailClient from "@/components/product/ProductDetailClient";
 
 export const dynamic = "force-dynamic";
 
@@ -124,9 +122,7 @@ export async function generateMetadata(
   };
 }
 
-export default async function ProductPage({
-  params
-}: ProductPageProps) {
+export default async function ProductPage({ params }: ProductPageProps) {
   const { slug, lang } = await params;
   const currentLocale = lang;
 
@@ -160,33 +156,15 @@ export default async function ProductPage({
         />
       </section>
       <Breadcrumb items={breadcrumbItems} lang={currentLocale} />
-      <div className="lg:grid lg:grid-cols-[40%_auto] lg:items-start lg:gap-x-8 py-8">
-        <div>
-          <ImageGallery images={product.gallery} alt={product.name} />
-          <RelatedArticles blogs={product.related_blogs} lang={currentLocale} />
-          {product.youtube_url && (
-            <VideoPlayer
-              videoId={product.youtube_url}
-              title={product.youtube_title}
-            />
-          )}
-        </div>
 
-        <ProductInfo product={product} lang={currentLocale} />
-      </div>
-
+      <ProductDetailClient product={product} lang={currentLocale} />
       <div className="mt-10 sm:mt-16 sm:px-0 lg:mt-0">
-        {product.alternating_content.length > 0 && (
-          <AlternatingContent
-            items={product.alternating_content}
-          ></AlternatingContent>
-        )}
-
         <StatsSection />
         <QuoteForm />
         {product.related_products.length > 0 && (
           <Cav products={product.related_products} lang={currentLocale} />
         )}
+        <RelatedArticles blogs={product.related_blogs} lang={lang} />
       </div>
     </div>
   );

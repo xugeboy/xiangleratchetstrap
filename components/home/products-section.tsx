@@ -8,7 +8,7 @@ import LoopingVideoCard from "../common/LoopingVideoCard";
 const productKeysAndImages = [
   {
     key: "retractable1Inch",
-    beforeImage: "/v1744354626/clean_ruzf8i.jpg", // Swapped to match original logic (beforeImage was afterImage)
+    beforeImage: "/v1744354626/clean_ruzf8i.jpg",
     afterImage: "/v1744354646/mess_uonisw.jpg",
   },
   {
