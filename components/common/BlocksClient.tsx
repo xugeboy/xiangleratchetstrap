@@ -5,6 +5,8 @@ import {
   type BlocksContent,
 } from "@strapi/blocks-react-renderer";
 import Link from "next/link";
+import Image from "next/image";
+import { getCloudinaryPublicId } from "@/utils/formatUtils";
 
 export default function BlocksClient({ content }: { content: BlocksContent }) {
   return (
@@ -32,10 +34,24 @@ export default function BlocksClient({ content }: { content: BlocksContent }) {
           return <ul className="list-disc pl-6 my-4">{children}</ul>;
         },
         link: ({ children, url }) => (
-            <Link href={url} className="text-red-600 underline hover:text-blue-800">
-              {children}
-            </Link>
-          ),
+          <Link
+            href={url}
+            className="text-red-600 underline hover:text-blue-800"
+          >
+            {children}
+          </Link>
+        ),
+        image: ({ image }) => {
+          return (
+            <Image
+              src={getCloudinaryPublicId(image.url)}
+              width={600}
+              height={600}
+              alt={image.alternativeText}
+              className="object-cover"
+            />
+          );
+        },
       }}
     />
   );

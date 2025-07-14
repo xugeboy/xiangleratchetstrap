@@ -164,7 +164,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             src={getCloudinaryPublicId(blog.cover_image.url)}
             alt={blog.title}
             fill
-            className="object-scale-down"
+            className="object-cover"
             priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           />
