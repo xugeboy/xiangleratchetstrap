@@ -136,7 +136,12 @@ export default async function BlogPage({ params }: BlogPageProps) {
   }
 
   // --- 生成 Schema ---
-  const articleSchema = generateSchema({ type: "Article", data: blog, slug });
+  const articleSchema = generateSchema({
+    lang: lang,
+    type: "Article",
+    data: blog,
+    slug,
+  });
   const breadcrumbSchema = generateSchema({
     type: "BreadcrumbList",
     breadcrumbItems,

@@ -31,11 +31,14 @@ function getOrganizationSchema(lang: string) {
 /**
  * Generates WebSite Schema
  */
-function getWebSiteSchema(lang: string) {
+function getWebSiteSchema(lang: string,slug?: string) {
   let url = SITE_URL;
-  if (lang !== defaultUrlPrefix && lang !== undefined) {
-    url =  `${SITE_URL}/${lang}`;
-  }
+
+  const langPath = (lang && lang !== defaultUrlPrefix) ? `/${lang}` : '';
+  const slugPath = slug ? `/${slug}` : '';
+  
+  url = `${SITE_URL}${langPath}${slugPath}`;
+  
   return {
     "@type": "WebSite",
     url: url,
@@ -208,7 +211,7 @@ export function generateSchema(props: GenerateSchemaProps): object | null {
         }
         return generateCollectionPageSchema(lang, data as ProductCategory, slug);
       case "WebSite":
-        return getWebSiteSchema(lang);
+        return getWebSiteSchema(lang, slug);
       case "Organization":
         return getOrganizationSchema(lang);
       default:

@@ -135,6 +135,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   // --- 生成 Schema ---
   const articleSchema = generateSchema({
+    lang: lang,
     type: "Product",
     data: product,
     slug,
