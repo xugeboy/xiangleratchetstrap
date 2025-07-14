@@ -451,6 +451,20 @@
         "beforeAlt": "Glänzender neuer Ratschen-Spanngurt aus Edelstahl 316",
         "afterAlt": "Alte rostige Ratschenschnalle aus nicht rostfreiem Stahl",
         "slug": "25mm-edelstahl-spanngurt-316-doppel-j-haken-grau-800kg-mbs"
+      },
+      "retractable2Inch": {
+          "title": "50mm x 3 m selbstaufrollender Spanngurt mit federbelasteten S-Haken",
+          "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+          "beforeAlt": "Cleanly organized retractable ratchet strap in use",
+          "afterAlt": "Messy, tangled traditional ratchet strap",
+          "slug": "50mm-x-3-m-selbstaufrollender-spanngurt-mit-federbelasteten-s-haken-1500-kg-bruchlast"
+      },
+      "spinFree1Inch": {
+          "title": "25mm Spin Free Ratschengurt, mit federbelastetem S-Haken",
+          "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+          "beforeAlt": "Extra Effort to Release the Strap",
+          "afterAlt": "Spin Free. Unstrap Instantly",
+          "slug": "25mm-spin-free-ratschengurt-mit-federbelastetem-s-haken-800-kg-bruchlast"
       }
     }
   },

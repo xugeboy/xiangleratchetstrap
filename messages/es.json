@@ -451,6 +451,20 @@
         "beforeAlt": "Nouvelle sangle à cliquet brillante en acier inoxydable 316",
         "afterAlt": "Vieille boucle de cliquet rouillée non inoxydable",
         "slug": "cinta-de-trinquete-inoxidable-316-25mm-gancho-doble-j-gris-rotura-800kg"
+      },
+      "retractable2Inch": {
+          "title": "Correa de trinquete auto-enrollable 50 mm x 3 m con ganchos S de resorte - 1500 kg de rotura",
+          "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+          "beforeAlt": "Cleanly organized retractable ratchet strap in use",
+          "afterAlt": "Messy, tangled traditional ratchet strap",
+          "slug": "correa-de-trinquete-auto-enrollable-50-mm-x-3-m-con-ganchos-s-de-resorte-1500-kg-de-rotura"
+      },
+      "spinFree1Inch": {
+          "title": "Correa de trinquete Spin Free de 25mm, gancho en S con resorte",
+          "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+          "beforeAlt": "Extra Effort to Release the Strap",
+          "afterAlt": "Spin Free. Unstrap Instantly",
+          "slug": "correa-de-trinquete-spin-free-de-25mm-gancho-en-s-con-resorte-800-kg-resistencia"
       }
     }
   },

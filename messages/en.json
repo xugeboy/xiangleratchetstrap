@@ -451,6 +451,20 @@
                 "beforeAlt": "Shiny new 316 stainless steel ratchet strap",
                 "afterAlt": "Old rusty non-stainless ratchet buckle",
                 "slug": "1-316-stainless-steel-ratchet-strap-double-j-hook-1760-lbs-bs"
+            },
+            "retractable2Inch": {
+                "title": "2\" x 10' Heavy Duty Self-Winding Retractable Ratchet Strap",
+                "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+                "beforeAlt": "Cleanly organized retractable ratchet strap in use",
+                "afterAlt": "Messy, tangled traditional ratchet strap",
+                "slug": "2-x-10-heavy-duty-self-winding-retractable-ratchet-strap-spring-loaded-s-hook-3306-lbs-bs"
+            },
+            "spinFree1Inch": {
+                "title": "1\" Spin Free Ratchet Strap, Spring Loaded S-Hook - 1760 lbs BS",
+                "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+                "beforeAlt": "Extra Effort to Release the Strap",
+                "afterAlt": "Spin Free. Unstrap Instantly",
+                "slug": "1-spin-free-ratchet-strap-spring-loaded-s-hook-1760-lbs-bs"
             }
         }
     },
