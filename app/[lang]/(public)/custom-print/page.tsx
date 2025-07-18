@@ -77,7 +77,6 @@ export async function generateMetadata(
 export default async function CustomPrintOverviewPage() {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "CustomPrint" });
-  const tw = await getTranslations({ locale, namespace: "CategoriesSection" });
 
   const textPrintingImages = [
     "/v1752112807/screen2_l6nock.jpg",
@@ -126,7 +125,7 @@ export default async function CustomPrintOverviewPage() {
               {t.rich("header.subDescription", {
                 link: (chunks) => (
                   <Link
-                    href={tw("webbingAndHardware.link")}
+                    href={t("CustomPrint.PolyesterWebbingLink")}
                     className="text-blue-600 underline hover:text-blue-800"
                   >
                     {chunks}

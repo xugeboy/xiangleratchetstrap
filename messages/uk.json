@@ -492,6 +492,7 @@
             "description": "As a direct factory and manufacturer, XiangleRatchetStrap specializes in OEM custom webbing printing. We print your company name, logo, or unique design directly onto the straps. This service is ideal for businesses needing private labeling, brand promotion, or fully customized tie-down solutions.",
             "subDescription": "All printed webbing products are made with <link>Polyester Webbing</link> for the best strength, durability and quality of print."
         },
+        "polyesterWebbingLink":"webbing",
         "common": {
             "benefits": "Benefits",
             "limitations": "Limitations"
