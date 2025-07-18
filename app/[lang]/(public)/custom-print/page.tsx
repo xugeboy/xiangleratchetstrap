@@ -125,7 +125,7 @@ export default async function CustomPrintOverviewPage() {
               {t.rich("header.subDescription", {
                 link: (chunks) => (
                   <Link
-                    href={t("CustomPrint.polyesterWebbingLink")}
+                    href={t("polyesterWebbingLink")}
                     className="text-blue-600 underline hover:text-blue-800"
                   >
                     {chunks}
