@@ -31,7 +31,7 @@ export default function Footer() {
       { nameKey: "company.blogs", href: "blogs" },
       {
         nameKey: "company.meetTheTeam",
-        href: "business-solutions/#meet-the-team",
+        href: "business-solutions#meet-the-team",
       },
     ],
     support: [
@@ -39,7 +39,7 @@ export default function Footer() {
       { nameKey: "support.downloadCatalog", href: "download-catalog" },
       { nameKey: "support.faq", href: "faq" },
       { nameKey: "support.businessSolutions", href: "business-solutions" },
-      { nameKey: "support.sitemap", href: "sitemap.xml" },
+      { nameKey: "support.sitemap", href: "/sitemap.xml" },
     ],
     products: [
       {

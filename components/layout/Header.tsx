@@ -26,7 +26,7 @@ export default function Header() {
     },
     {
       name: tNav("company.meetTheTeam"),
-      href: getCombainedLocalePath(locale, "business-solutions/#meet-the-team"),
+      href: getCombainedLocalePath(locale, "business-solutions#meet-the-team"),
     },
   ];
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
