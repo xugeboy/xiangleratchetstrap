@@ -14,31 +14,25 @@ interface RelatedProductsProps {
         <div className="mx-auto py-10 sm:py-12">
           <h2 className="text-2xl font-bold tracking-tight text-black">Related Products</h2>
   
-          <div className="mt-8 grid grid-cols-2 gap-y-12 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+          <div className="mt-8 grid grid-cols-1 gap-y-12 sm:gap-x-6">
             {products.map((product) => (
-              <div key={product.id}>
-                <div className="relative">
-                  <div className="relative w-full overflow-hidden rounded-lg">
-                    <Image alt={product.name} 
-                    src={getCloudinaryPublicId(product.featured_image?.url)} 
-                    className="size-full object-fill" 
-                    width={500}
-                    height={500}
-                    />
-                  </div>
-                  <div className="relative mt-4">
-                    <h3 className="text-sm font-medium text-black">{product.name}</h3>
-                  </div>
-                </div>
-                <div className="mt-6">
-                  <Link
-                    href={getCombainedLocalePath(lang, `products/${product.slug}`)}
-                    className="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-black hover:bg-gray-200"
-                  >
-                    View Item<span className="sr-only">, {product.name}</span>
-                  </Link>
-                </div>
+              <Link 
+              key={product.code}
+              href={getCombainedLocalePath(lang, `products/${product.slug}`)}
+              className="flex items-center gap-4 group hover:bg-gray-50 p-2 rounded-lg transition-colors"
+            >
+              <div className="relative w-20 h-20 flex-shrink-0">
+                  <Image
+                    src={getCloudinaryPublicId(product.featured_image.url)}
+                    alt={product.seo_title}
+                    fill
+                    className="object-cover rounded-lg"
+                  />
               </div>
+              <h3 className="text-lg font-medium group-hover:text-green-600 transition-colors">
+                {product.name}
+              </h3>
+            </Link>
             ))}
           </div>
         </div>

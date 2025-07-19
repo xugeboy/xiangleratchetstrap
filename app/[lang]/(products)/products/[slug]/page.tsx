@@ -15,6 +15,7 @@ import AlternatingContent from "@/components/product/AlternatingContent";
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
 import VideoPlayer from "@/components/common/VideoPlayer";
 import ProductDetailClient from "@/components/product/ProductDetailClient";
+import { useIsMobile } from "@/hooks/useMobile";
 
 export const dynamic = "force-dynamic";
 
@@ -159,14 +160,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <Breadcrumb items={breadcrumbItems} lang={currentLocale} />
 
       <ProductDetailClient product={product} lang={currentLocale} />
-      <div className="mt-10 sm:mt-16 sm:px-0 lg:mt-0">
         <StatsSection />
         <QuoteForm />
-        {product.related_products.length > 0 && (
-          <Cav products={product.related_products} lang={currentLocale} />
-        )}
-        <RelatedArticles blogs={product.related_blogs} lang={lang} />
-      </div>
     </div>
   );
 }
