@@ -20,7 +20,6 @@ import { useState } from "react";
 import CustomizationMobile from "./CustomizationMobile";
 import { PreviewData } from "@/types/previewData";
 
-// 1. 修改 Props 接口，将 setPreviewImage 设为可选
 interface ProductInfoProps {
   product: Product;
   lang: string;
@@ -81,12 +80,14 @@ export default function ProductInfo({
           </div>
           <div className="px-4 py-6">
             <div className="flex flex-wrap items-center gap-4 mb-6">
-              <div className="flex items-center gap-2 px-4 py-2 bg-green-50 rounded-full">
-                <HiCheckCircle className="text-green-600 w-5 h-5" />
-                <span className="text-green-700 font-semibold text-sm">
-                  {t("stockStatus.inStock")}
-                </span>
-              </div>
+              {!customizable && (
+                <div className="flex items-center gap-2 px-4 py-2 bg-green-50 rounded-full">
+                  <HiCheckCircle className="text-green-600 w-5 h-5" />
+                  <span className="text-green-700 font-semibold text-sm">
+                    {t("stockStatus.inStock")}
+                  </span>
+                </div>
+              )}
               {customizable && (
                 <div className="flex items-center gap-2 px-4 py-2 bg-orange-50 rounded-full">
                   <HiClock className="text-red-600 w-5 h-5" />
@@ -136,9 +137,7 @@ export default function ProductInfo({
         {/* Customization Section */}
         {customizable && (
           <>
-            {/* 3. 使用 isMobile 状态进行条件渲染 */}
             {!isMobile ? (
-              // 桌面端视图
               setPreviewHover &&
               setPreviewClick && (
                 <Customization
@@ -148,7 +147,6 @@ export default function ProductInfo({
                 />
               )
             ) : (
-              // 移动端视图
               <div>
                 <button
                   onClick={() => setIsSidebarOpen(true)}
