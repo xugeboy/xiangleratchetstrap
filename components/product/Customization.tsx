@@ -62,10 +62,20 @@ export default function Customization({
                     }
                     className="cursor-pointer rounded-md p-0.5"
                   >
-                    <div
-                      className="w-10 h-10 rounded-full border border-gray-300 transition-all duration-200 hover:scale-110"
-                      style={{ backgroundColor: option.hexCode }}
-                    />
+                    {option.name === "25mm Camouflage" ? (
+                      <Image
+                        src="/v1753255769/camo_color_efc4eb.png"
+                        alt={option.name}
+                        width={40}
+                        height={40}
+                        className="w-10 h-10 rounded-full border border-gray-300 transition-all duration-200 hover:scale-110"
+                      />
+                    ) : (
+                      <div
+                        className="w-10 h-10 rounded-full border border-gray-300 transition-all duration-200 hover:scale-110"
+                        style={{ backgroundColor: option.hexCode }}
+                      />
+                    )}
                   </div>
                 ))}
               </div>

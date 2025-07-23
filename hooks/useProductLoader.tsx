@@ -31,6 +31,7 @@ export const useProductLoader = () => {
               fetchedProduct.strap_colors.colorSelection = filteredColorSelection;
             }
             setProduct(fetchedProduct);
+            sessionStorage.setItem("customPrintingProduct", JSON.stringify(fetchedProduct));
           } else {
             console.error(`Product with slug "${slug}" not found via API.`);
             setProduct(undefined);
