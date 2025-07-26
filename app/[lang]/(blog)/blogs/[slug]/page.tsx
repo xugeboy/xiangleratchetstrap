@@ -43,13 +43,6 @@ interface BlogPageProps {
   };
 }
 
-export async function generateStaticParams() {
-  const allBlogs = await getAllBlogSlug();
-  return allBlogs.map((blog) => ({
-    slug: blog.slug,
-  }));
-}
-
 export async function generateMetadata(
   { params }: BlogPageProps,
   parent: ResolvingMetadata
