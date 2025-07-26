@@ -36,6 +36,7 @@ const getPlainTextFromStrapi = (nodes: any[]): string => {
 interface BlogPageProps {
   params: {
     slug: string;
+    lang: string;
   };
   searchParams?: {
     [key: string]: string | string[] | undefined;
@@ -54,8 +55,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  const { slug } = await params;
-  const currentLocale = await getLocale();
+  const { slug, lang } = await params;
+  const currentLocale = lang;
   const blogData = await getBlogMetaDataBySlug(slug, currentLocale);
 
   if (!blogData) {

@@ -5,17 +5,10 @@ import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import StatsSection from "@/components/common/StatsSection";
 import QuoteForm from "@/components/forms/QuoteForm";
-import Cav from "@/components/product/Cav";
-import ImageGallery from "@/components/product/ImageGallery";
-import ProductInfo from "@/components/product/ProductInfo";
-import RelatedArticles from "@/components/product/RelatedArticles";
 import { generateSchema } from "@/utils/schema";
 import { embedSchema } from "@/utils/schema";
-import AlternatingContent from "@/components/product/AlternatingContent";
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
-import VideoPlayer from "@/components/common/VideoPlayer";
 import ProductDetailClient from "@/components/product/ProductDetailClient";
-import { useIsMobile } from "@/hooks/useMobile";
 
 export const dynamic = "force-dynamic";
 
