@@ -150,12 +150,6 @@ export default async function RootLayout({
   return (
     <html lang={locale.locale}>
       <head>
-        <link
-          rel="sitemap"
-          type="application/xml"
-          title="Sitemap"
-          href="/sitemap.xml"
-        />
         {/* Google Tag Manager */}
         <Script id="GoogleTagManager" strategy="afterInteractive">
         {`
