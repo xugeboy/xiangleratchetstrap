@@ -21,10 +21,10 @@ const cloudinaryVideos = [
   {
     key: "retractable2Inch",
     video:
-      "https://res.cloudinary.com/duimeqqch/video/upload/v1752204706/retractableratchet_uychtz.mp4",
+      "https://res.cloudinary.com/duimeqqch/video/upload/v1754447873/2inch_Retractable_Ratchet_Strap_1-1_ntskkm.mp4",
     poster:
-      "https://res.cloudinary.com/duimeqqch/image/upload/f_webp,w_750,q_75/v1749629956/XLZDSS_25101_9_8adfacbcbb.png",
-    alt: "1inch auto retractable ratchet strap",
+      "https://res.cloudinary.com/duimeqqch/image/upload/f_webp,w_750,q_75/v1754443527/XLARS_02_2_82452b5623.jpg",
+    alt: "2inch auto retractable ratchet strap",
   },
   {
     key: "spinFree1Inch",

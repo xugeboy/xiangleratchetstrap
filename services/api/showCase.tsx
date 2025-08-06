@@ -13,7 +13,7 @@ async function getShowCases({
   pageSize?: number;
 }): Promise<ShowCaseApiResponse> {
   try {
-    const response = await postAPI("/getShowCases", {
+    const response = await postAPI("/getShowCase", {
       page,
       pageSize,
     });

@@ -1,10 +1,10 @@
 // app/components/LoadMore.tsx
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { FaSpinner } from 'react-icons/fa';
-import { loadMoreProducts } from '@/app/actions';
+import { loadMoreProducts } from '@/services/api/showCase';
 
 type ProductCardJSX = JSX.Element;
 
