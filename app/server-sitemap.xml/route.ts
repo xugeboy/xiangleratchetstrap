@@ -28,6 +28,11 @@ export async function GET(
     "faq",
     "request-quote",
     "download-catalog",
+    "custom-print",
+    "custom-print/online-builder",
+    "custom-print/screen-print",
+    "custom-print/full-design",
+    "request-quote",
     "blogs",
   ];
 
@@ -49,7 +54,7 @@ export async function GET(
         product.updatedAt || product.publishedAt || currentDate
       ).toISOString(),
       changefreq: "monthly" as const,
-      priority: 0.7,
+      priority: 0.8,
     });
   });
 
@@ -62,7 +67,7 @@ export async function GET(
         category.updatedAt || category.publishedAt || currentDate
       ).toISOString(),
       changefreq: "monthly" as const,
-      priority: 0.7,
+      priority: 0.9,
     });
   });
 
@@ -75,7 +80,7 @@ export async function GET(
         blog.updatedAt || blog.publishedAt || currentDate
       ).toISOString(),
       changefreq: "monthly" as const,
-      priority: 0.6,
+      priority: 0.9,
     });
   });
 
