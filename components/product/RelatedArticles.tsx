@@ -14,7 +14,7 @@ export default function RelatedArticles({ blogs = [], lang }: RelatedArticlesPro
   if (!blogs || blogs.length === 0) return null;
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-6">{t('relatedBlogs')}</h2>
+      <h2 className="text-3xl font-bold mb-6">{t('relatedBlogs')}</h2>
       <div className="space-y-4">
         {blogs.map((blog) => (  
           <Link 
@@ -32,7 +32,7 @@ export default function RelatedArticles({ blogs = [], lang }: RelatedArticlesPro
                 />
               )}
             </div>
-            <h3 className="text-lg font-medium group-hover:text-green-600 transition-colors">
+            <h3 className="text-2xl font-medium group-hover:text-green-600 transition-colors">
               {blog.title}
             </h3>
           </Link>

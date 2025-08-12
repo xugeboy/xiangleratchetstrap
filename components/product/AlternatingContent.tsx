@@ -17,7 +17,7 @@ export default function AlternatingContent({
 }: AlternatingContentProps) {
   return (
     <div className="flex flex-col w-full gap-8 mb-8">
-      <h2 className="text-2xl font-bold tracking-tight text-black">
+      <h2 className="text-3xl font-bold tracking-tight text-black">
         Product details
       </h2>
       {items.map((item, index) => {
@@ -47,9 +47,9 @@ export default function AlternatingContent({
                   bg-[url('/image/pattern-topography.svg')] bg-cover bg-no-repeat
                   ${isEven ? "md:order-2" : "md:order-1"}`}
             >
-              <h2 className="text-2xl font-bold mb-4 text-center text-red-600">
+              <h3 className="text-2xl font-bold mb-4 text-center text-red-600">
                 {item.title}
-              </h2>
+              </h3>
               <p className="text-base text-center text-white">{item.Text}</p>
             </div>
           </div>

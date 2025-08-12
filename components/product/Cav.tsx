@@ -12,7 +12,7 @@ interface RelatedProductsProps {
     return (
       <div className="bg-white">
         <div className="mx-auto py-10 sm:py-12">
-          <h2 className="text-2xl font-bold tracking-tight text-black">Related Products</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-black">Related Products</h2>
   
           <div className="mt-8 grid grid-cols-1 gap-y-12 sm:gap-x-6">
             {products.map((product) => (
@@ -29,7 +29,7 @@ interface RelatedProductsProps {
                     className="object-cover rounded-lg"
                   />
               </div>
-              <h3 className="text-lg font-medium group-hover:text-green-600 transition-colors">
+              <h3 className="text-2xl font-medium group-hover:text-green-600 transition-colors">
                 {product.name}
               </h3>
             </Link>

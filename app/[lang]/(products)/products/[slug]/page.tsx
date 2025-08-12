@@ -1,4 +1,4 @@
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { getProductBySlug, getAllProductSlug } from "@/services/api/product";
 import { generateProductBreadcrumbs } from "@/utils/breadcrumbs";
 import { notFound } from "next/navigation";
@@ -9,6 +9,9 @@ import { generateSchema } from "@/utils/schema";
 import { embedSchema } from "@/utils/schema";
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
 import ProductDetailClient from "@/components/product/ProductDetailClient";
+import Tqc from "@/components/product/Tqc";
+import { getAllProductFaqs } from "@/services/api/faq";
+import FaqList from "@/app/[lang]/(public)/faq/FaqList";
 
 export const dynamic = "force-dynamic";
 
@@ -32,8 +35,7 @@ export async function generateStaticParams() {
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export async function generateMetadata(
-  { params }: ProductPageProps,
-  parent: ResolvingMetadata
+  { params }: ProductPageProps
 ): Promise<Metadata> {
   const { slug, lang } = await params;
   const currentLocale = lang;
@@ -142,6 +144,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
     [articleSchema, breadcrumbSchema].filter(Boolean)
   );
 
+  // Load FAQs (global + product-related)
+  const faqs = await getAllProductFaqs(product.slug, currentLocale);
+
   return (
     <div className="mx-auto container px-4 sm:px-6 lg:px-8">
       <section>
@@ -153,8 +158,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <Breadcrumb items={breadcrumbItems} lang={currentLocale} />
 
       <ProductDetailClient product={product} lang={currentLocale} />
-        <StatsSection />
-        <QuoteForm />
+      <Tqc />
+      <QuoteForm />
+
+      {/* Product FAQs */}
+      {faqs && faqs.length > 0 && (
+        <section className="mt-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">FREQUENTLY ASKED QUESTIONS:</h2>
+          <FaqList faqs={faqs} />
+        </section>
+      )}
+
     </div>
   );
 }

@@ -75,7 +75,7 @@ export default function ProductDetailClient({
   const displayedPreview = hoverPreview || clickedPreview;
   return (
     <div>
-      <div className="md:grid md:grid-cols-[40%_auto] md:items-start md:gap-x-8 py-8">
+      <div className="md:grid md:grid-cols-[40%_auto] md:items-start md:gap-x-12 py-8">
         {/* 左侧栏 */}
         <div>
           <ImageGallery

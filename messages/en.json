@@ -675,5 +675,71 @@
                 "helperText": "Recommended interval: 100-200mm for optimal appearance"
             }
         }
+    },
+    "Tqc": {
+        "tabs": {
+            "manufacturing": "Production Process",
+            "quality": "TQC",
+            "certifications": "Certifications",
+            "tradeTerms": "Trade Terms"
+        },
+        "manufacturing": {
+            "heading": "Manufacturing Process",
+            "description": "Discover our production capabilities and advanced manufacturing processes that ensure consistent quality and reliability in every ratchet strap we produce.",
+            "imageAlt": "Manufacturing process flow",
+            "bullets": {
+                "integratedProduction": "Integrated Production for Superior Quality",
+                "precisionQC": "Precision quality control",
+                "sustainable": "Sustainable manufacturing"
+            }
+        },
+        "quality": {
+            "heading": "Quality Management",
+            "description": "Comprehensive testing protocols ensure our products meet the highest standards for performance and safety in demanding applications.",
+            "labImageAlt": "Testing laboratory",
+            "testing": {
+                "tensile": {
+                    "title": "Tensile Testing",
+                    "description": "Breaking strength testing",
+                    "details": "Our ratchet straps undergo rigorous tensile testing to ensure they meet and exceed industry standards for load capacity and safety."
+                },
+                "durability": {
+                    "title": "Durability Testing",
+                    "description": "Long-term performance evaluation",
+                    "details": "Continuous ratcheting cycles test to simulate years of heavy-duty use in real-world conditions."
+                },
+                "uv": {
+                    "title": "UV Resistance Testing",
+                    "description": "Weather resistance evaluation",
+                    "details": "Webbing material tested for UV degradation to maintain strength under prolonged sun exposure."
+                }
+            }
+        },
+        "certifications": {
+            "heading": "Certifications & Compliance",
+            "description": "Our certifications demonstrate our commitment to safety, innovation, and environmental responsibility in ratchet strap manufacturing.",
+            "bullet1": { "title": "GS Safety Certification", "desc": "GS (Geprüfte Sicherheit) certification ensures our ratchet straps meet German and European safety standards for tested safety and quality assurance." },
+            "bullet2": { "title": "Patent Certificates", "desc": "Our innovative designs and manufacturing processes are protected by multiple patents, demonstrating our commitment to continuous innovation and product development." },
+            "bullet3": { "title": "Environmental Compliance", "desc": "REACH and RoHS certifications ensure our products comply with European regulations for chemical safety and restriction of hazardous substances, protecting both users and the environment." }
+        },
+        "trade": {
+            "heading": "Trade Terms & Delivery Advantages",
+            "description": "Our factory maintains extensive raw material inventory and advanced production capacity, enabling us to offer competitive trade terms and rapid delivery to meet your urgent needs.",
+            "imageAlt": "Multi-stock raw materials in factory",
+            "terms": {
+                "moq": { "title": "MOQ", "value": "100 pcs", "note": "Low minimum order" },
+                "lead": { "title": "Lead Time", "value": "7 days (Custom orders separate)", "note": "Fast delivery" },
+                "payment": { "title": "Payment Terms", "value": "T/T, PayPal, XTransfer, Western Union", "note": "Flexible options" },
+                "sample": { "title": "Sample Policy", "value": "Free sample, freight collect", "note": "Quality assurance" }
+            },
+            "why": {
+                "title": "Why Choose Our Factory?",
+                "items": {
+                    "inventory": { "title": "Extensive Raw Material Inventory", "desc": "Large stock of high-quality materials ensures production continuity" },
+                    "lines": { "title": "Advanced Production Lines", "desc": "Multiple production lines operating simultaneously for faster delivery" },
+                    "qc": { "title": "Quality Control System", "desc": "Rigorous testing ensures consistent quality without delays" }
+                }
+            }
+        }
     }
 }

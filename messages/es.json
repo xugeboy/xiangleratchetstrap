@@ -675,5 +675,71 @@
         "helperText": "Intervalo recomendado: 100-200mm para una apariencia óptima"
       }
     }
-  }
+  },
+  "Tqc": {
+      "tabs": {
+        "manufacturing": "Proceso de Fabricación",
+        "quality": "TQC",
+        "certifications": "Certificaciones",
+        "tradeTerms": "Términos Comerciales"
+      },
+      "manufacturing": {
+        "heading": "Proceso de Fabricación",
+        "description": "Descubra nuestras capacidades de producción y avanzados procesos de fabricación que garantizan una calidad y fiabilidad constantes en cada cincha de amarre que producimos.",
+        "imageAlt": "Flujo del proceso de fabricación",
+        "bullets": {
+          "integratedProduction": "Producción Integrada para una Calidad Superior",
+          "precisionQC": "Control de calidad de precisión",
+          "sustainable": "Fabricación sostenible"
+        }
+      },
+      "quality": {
+        "heading": "Gestión de Calidad",
+        "description": "Nuestros exhaustivos protocolos de prueba aseguran que los productos cumplen con los más altos estándares de rendimiento y seguridad en aplicaciones exigentes.",
+        "labImageAlt": "Laboratorio de pruebas",
+        "testing": {
+          "tensile": {
+            "title": "Prueba de Tracción",
+            "description": "Prueba de resistencia a la rotura",
+            "details": "Nuestras cinchas de amarre se someten a rigurosas pruebas de tracción para garantizar que cumplen y superan los estándares de la industria en capacidad de carga y seguridad."
+          },
+          "durability": {
+            "title": "Prueba de Durabilidad",
+            "description": "Evaluación del rendimiento a largo plazo",
+            "details": "Ciclos continuos de trinquete para simular años de uso intensivo en condiciones reales."
+          },
+          "uv": {
+            "title": "Prueba de Resistencia a los Rayos UV",
+            "description": "Evaluación de la resistencia a la intemperie",
+            "details": "El material de la cinta se somete a pruebas de degradación por UV para mantener la resistencia bajo una exposición solar prolongada."
+          }
+        }
+      },
+      "certifications": {
+        "heading": "Certificaciones y Cumplimiento",
+        "description": "Nuestras certificaciones demuestran nuestro compromiso con la seguridad, la innovación y la responsabilidad medioambiental en la fabricación de cinchas de amarre.",
+        "bullet1": { "title": "Certificación de Seguridad GS", "desc": "La certificación GS (Geprüfte Sicherheit) garantiza que nuestras cinchas de amarre cumplen con las normas de seguridad alemanas y europeas para una seguridad probada y garantía de calidad." },
+        "bullet2": { "title": "Certificados de Patente", "desc": "Nuestros diseños y procesos de fabricación innovadores están protegidos por múltiples patentes, demostrando nuestro compromiso con la innovación continua y el desarrollo de productos." },
+        "bullet3": { "title": "Cumplimiento Medioambiental", "desc": "Las certificaciones REACH y RoHS aseguran que nuestros productos cumplen con las regulaciones europeas sobre seguridad química y restricción de sustancias peligrosas, protegiendo tanto a los usuarios como al medio ambiente." }
+      },
+      "trade": {
+        "heading": "Términos Comerciales y Ventajas de Entrega",
+        "description": "Nuestra fábrica mantiene un amplio inventario de materias primas y una capacidad de producción avanzada, lo que nos permite ofrecer condiciones comerciales competitivas y una entrega rápida para satisfacer sus necesidades urgentes.",
+        "imageAlt": "Amplio stock de materias primas en la fábrica",
+        "terms": {
+          "moq": { "title": "Pedido Mínimo (MOQ)", "value": "100 uds.", "note": "Pedido mínimo bajo" },
+          "lead": { "title": "Plazo de Entrega", "value": "7 días (Pedidos personalizados aparte)", "note": "Entrega rápida" },
+          "payment": { "title": "Condiciones de Pago", "value": "T/T, PayPal, XTransfer, Western Union", "note": "Opciones flexibles" },
+          "sample": { "title": "Política de Muestras", "value": "Muestra gratuita, portes debidos", "note": "Garantía de calidad" }
+        },
+        "why": {
+          "title": "¿Por qué elegir nuestra fábrica?",
+          "items": {
+            "inventory": { "title": "Amplio Inventario de Materias Primas", "desc": "Un gran stock de materiales de alta calidad garantiza la continuidad de la producción." },
+            "lines": { "title": "Líneas de Producción Avanzadas", "desc": "Múltiples líneas de producción operando simultáneamente para una entrega más rápida." },
+            "qc": { "title": "Sistema de Control de Calidad", "desc": "Pruebas rigurosas aseguran una calidad constante sin demoras." }
+          }
+        }
+      }
+    }
 }
