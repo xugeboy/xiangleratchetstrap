@@ -3,7 +3,6 @@ import { getProductBySlug, getAllProductSlug } from "@/services/api/product";
 import { generateProductBreadcrumbs } from "@/utils/breadcrumbs";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/common/Breadcrumb";
-import StatsSection from "@/components/common/StatsSection";
 import QuoteForm from "@/components/forms/QuoteForm";
 import { generateSchema } from "@/utils/schema";
 import { embedSchema } from "@/utils/schema";

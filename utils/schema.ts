@@ -124,7 +124,11 @@ function generateProductSchema(lang: string, product: Product, slug: string) {
       height: 1200,
       caption: product.name,
     },
-    "offers": {
+    brand: {
+      "@type": "Brand",
+      "name": "XiangleRatchetStrap"
+    },
+    offers: {
       "@type": "Offer",
       "priceCurrency": "USD",
       "price": 1,     
