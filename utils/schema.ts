@@ -2,6 +2,7 @@ import { Blog } from "@/types/blog";
 import { Product } from "@/types/product";
 import { ProductCategory } from "@/types/productCategory";
 import { BreadcrumbItem } from "@/types/breadcrumbItem";
+import { Faq } from "@/types/faq";
 import { defaultUrlPrefix } from "@/middleware";
 
 // --- Configuration (Consider moving to environment variables) ---
@@ -113,17 +114,24 @@ function generateProductSchema(lang: string, product: Product, slug: string) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    "@id":`${url}#product`,
     name: product.name,
     description: product.seo_description,
     sku: product.code,
     url: url,
-    image: {
-      "@type": "ImageObject",
-      url: featuredImage.url,
-      width: 1200,
-      height: 1200,
-      caption: product.name,
-    },
+    image: product.gallery?.map(img => img.url) || [featuredImage.url],
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        "name": "Breaking Strength",
+        "value": product.assembly_break_strength
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Width",
+        "value": product.width
+      }
+    ],
     brand: {
       "@type": "Brand",
       "name": "XiangleRatchetStrap"
@@ -133,7 +141,11 @@ function generateProductSchema(lang: string, product: Product, slug: string) {
       "priceCurrency": "USD",
       "price": 1,     
       "availability": "https://schema.org/InStock",
-      "url": url
+      "url": url,
+      "seller": {
+          "@type": "Organization",
+          "name": "XiangleRatchetStrap"
+        }
     }
   };
 
@@ -144,7 +156,7 @@ function generateProductSchema(lang: string, product: Product, slug: string) {
   if (
     schema.image &&
     Object.keys(schema.image).length === 1 &&
-    schema.image["@type"]
+    schema.image[0]["@type"]
   )
     delete schema.image;
   return schema;
@@ -173,6 +185,36 @@ function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
   };
 }
 
+/**
+ * Generates FAQPage Schema from FAQ data
+ */
+function generateFAQSchema(lang: string, faqs: Faq[], slug: string) {
+  if (!faqs || faqs.length === 0) return null;
+
+  let url = `${SITE_URL}/products/${slug}`;
+  if (lang !== defaultUrlPrefix && lang !== undefined) {
+    url =  `${SITE_URL}/${lang}/products/${slug}`;
+  }
+  const mainEntity = faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.Question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.TextAnswer
+    }
+  }));
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "subjectOf": {
+        "@type": "Product",
+        "@id":`${url}#product`,
+      },
+    "mainEntity": mainEntity
+  };
+}
+
 // --- Main Schema Generation Function ---
 
 // Define available schema types
@@ -182,7 +224,8 @@ export type SchemaType =
   | "BreadcrumbList"
   | "CollectionPage" 
   | "WebSite"
-  | "Organization";
+  | "Organization"
+  | "FAQPage";
 
 interface GenerateSchemaProps {
   lang?: string;
@@ -190,13 +233,14 @@ interface GenerateSchemaProps {
   data?: Blog | Product | ProductCategory; // The specific Strapi data (Blog, product.)
   slug?: string; // Needed for constructing URLs for Article/Product
   breadcrumbItems?: BreadcrumbItem[]; // Specific for BreadcrumbList
+  faqs?: Faq[]; // Specific for FAQPage
 }
 
 /**
  * Generates the JSON-LD object for the specified schema type.
  */
 export function generateSchema(props: GenerateSchemaProps): object | null {
-  const { lang, type, data, slug, breadcrumbItems } = props;
+  const { lang, type, data, slug, breadcrumbItems, faqs } = props;
 
   try {
     switch (type) {
@@ -209,6 +253,9 @@ export function generateSchema(props: GenerateSchemaProps): object | null {
       case "BreadcrumbList":
         if (!breadcrumbItems) return null;
         return generateBreadcrumbSchema(breadcrumbItems);
+      case "FAQPage":
+        if (!faqs) return null;
+        return generateFAQSchema(lang,faqs,slug);
       case "CollectionPage":
         if (!data) {
             return null;

@@ -139,12 +139,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
     type: "BreadcrumbList",
     breadcrumbItems,
   });
-  const schemaMetadataJson = embedSchema(
-    [articleSchema, breadcrumbSchema].filter(Boolean)
-  );
-
+  
   // Load FAQs (global + product-related)
   const faqs = await getAllProductFaqs(product.slug, currentLocale);
+  
+  const faqSchema = generateSchema({
+    lang: lang,
+    type: "FAQPage",
+    faqs,
+    slug,
+  });
+  
+  const schemaMetadataJson = embedSchema(
+    [articleSchema, breadcrumbSchema, faqSchema].filter(Boolean)
+  );
+
 
   return (
     <div className="mx-auto container px-4 sm:px-6 lg:px-8">
