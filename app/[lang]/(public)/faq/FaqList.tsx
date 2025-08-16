@@ -16,20 +16,22 @@ export default function FaqList({ faqs }: FaqListProps) {
     <dl className="space-y-4">
       {faqs.map((faq) => (
         <div key={faq.id} className="border-b border-gray-200">
-          <button
-            className="flex w-full items-center justify-between py-6 text-left"
-            onClick={() => setOpenId(openId === faq.id ? null : faq.id)}
-          >
-            <span className="text-base font-semibold leading-7 text-black">
-              {faq.Question}
-            </span>
-            <ChevronDownIcon
-              className={`h-6 w-6 text-black transition-transform duration-200 ${
-                openId === faq.id ? "rotate-180 transform" : ""
-              }`}
-            />
-          </button>
-          <div
+          <dt>
+            <button
+              className="flex w-full items-center justify-between py-6 text-left"
+              onClick={() => setOpenId(openId === faq.id ? null : faq.id)}
+            >
+              <h3 className="text-base font-semibold leading-7 text-black">
+                {faq.Question}
+              </h3>
+              <ChevronDownIcon
+                className={`h-6 w-6 text-black transition-transform duration-200 ${
+                  openId === faq.id ? "rotate-180 transform" : ""
+                }`}
+              />
+            </button>
+          </dt>
+          <dd
             className={`overflow-hidden transition-all duration-200 ease-in-out ${
               openId === faq.id ? "max-h-96" : "max-h-0"
             }`}
@@ -37,7 +39,7 @@ export default function FaqList({ faqs }: FaqListProps) {
             <div className="pb-6 text-base leading-7 text-black">
               <BlocksClient content={faq.BlockAnswer} />
             </div>
-          </div>
+          </dd>
         </div>
       ))}
     </dl>

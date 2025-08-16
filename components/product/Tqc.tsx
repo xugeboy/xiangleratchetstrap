@@ -153,9 +153,9 @@ const Tqc = () => {
                             <test.icon className="w-5 h-5 text-red-600" />
                           </div>
                           <div>
-                            <h3 className="font-semibold text-gray-900">
+                            <h4 className="font-semibold text-gray-900">
                               {test.title}
-                            </h3>
+                            </h4>
                             <p className="text-sm text-gray-600">
                               {test.description}
                             </p>
@@ -221,9 +221,9 @@ const Tqc = () => {
                 <div className="flex items-start space-x-4">
                   <FaShieldAlt className="w-8 h-8 text-red-600 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    <h4 className="text-xl font-semibold text-gray-900 mb-2">
                       {t("certifications.bullet1.title")}
-                    </h3>
+                    </h4>
                     <p className="text-gray-600">
                       {t("certifications.bullet1.desc")}
                     </p>
@@ -233,9 +233,9 @@ const Tqc = () => {
                 <div className="flex items-start space-x-4">
                   <FaLightbulb className="w-8 h-8 text-yellow-600 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    <h4 className="text-xl font-semibold text-gray-900 mb-2">
                       {t("certifications.bullet2.title")}
-                    </h3>
+                    </h4>
                     <p className="text-gray-600">
                       {t("certifications.bullet2.desc")}
                     </p>
@@ -245,9 +245,9 @@ const Tqc = () => {
                 <div className="flex items-start space-x-4">
                   <FaLeaf className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    <h4 className="text-xl font-semibold text-gray-900 mb-2">
                       {t("certifications.bullet3.title")}
-                    </h3>
+                    </h4>
                     <p className="text-gray-600">
                       {t("certifications.bullet3.desc")}
                     </p>
@@ -366,7 +366,7 @@ const Tqc = () => {
             >
               <div className="flex items-center space-x-2">
                 <tab.icon className="w-5 h-5" />
-                <span className="hidden md:inline">{tab.name}</span>
+                <h2 className="hidden md:inline">{tab.name}</h2>
               </div>
             </button>
           ))}
