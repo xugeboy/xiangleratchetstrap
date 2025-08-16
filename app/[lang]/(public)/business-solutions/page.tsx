@@ -41,7 +41,7 @@ export async function generateMetadata(
       }
       languagesAlternate[ietfTag] = pathForLang;
   }
-  languagesAlternate["x-default"] = `${siteUrl}/${pageSlug}`;
+  // languagesAlternate["x-default"] = `${siteUrl}/${pageSlug}`;
 
 
   return {

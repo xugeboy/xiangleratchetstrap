@@ -87,10 +87,10 @@ export async function generateMetadata(
       languagesAlternate[ietfTag] = pathForLang;
     }
   }
-  const slugForXDefault = blogData.allLanguageSlugs?.[defaultUrlPrefix];
-  if (slugForXDefault) {
-    languagesAlternate["x-default"] = `${siteUrl}/blogs/${slugForXDefault}`;
-  }
+  // const slugForXDefault = blogData.allLanguageSlugs?.[defaultUrlPrefix];
+  // if (slugForXDefault) {
+  //   languagesAlternate["x-default"] = `${siteUrl}/blogs/${slugForXDefault}`;
+  // }
 
   return {
     title: pageTitle,

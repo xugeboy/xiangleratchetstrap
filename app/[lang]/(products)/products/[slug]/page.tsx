@@ -77,10 +77,10 @@ export async function generateMetadata(
   }
 
   // 设置 x-default
-  const slugForXDefault = productData.allLanguageSlugs?.[defaultUrlPrefix];
-  if (slugForXDefault) {
-    languagesAlternate["x-default"] = `${siteUrl}/products/${slugForXDefault}`;
-  }
+  // const slugForXDefault = productData.allLanguageSlugs?.[defaultUrlPrefix];
+  // if (slugForXDefault) {
+  //   languagesAlternate["x-default"] = `${siteUrl}/products/${slugForXDefault}`;
+  // }
 
   return {
     title: pageTitle,

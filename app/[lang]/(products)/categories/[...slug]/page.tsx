@@ -67,10 +67,10 @@ export async function generateMetadata(
   }
 
   // 设置 x-default
-  const slugForXDefault = categoryData.allLanguageSlugs?.[defaultUrlPrefix];
-  if (slugForXDefault) {
-    languagesAlternate['x-default'] = `${siteUrl}/categories/${slugForXDefault}`;
-  }
+  // const slugForXDefault = categoryData.allLanguageSlugs?.[defaultUrlPrefix];
+  // if (slugForXDefault) {
+  //   languagesAlternate['x-default'] = `${siteUrl}/categories/${slugForXDefault}`;
+  // }
 
   return {
     title: pageTitle,
