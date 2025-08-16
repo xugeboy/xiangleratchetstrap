@@ -80,7 +80,7 @@ export default function LiteYouTube({ videoId, title }: LiteYouTubeProps) {
 
   return (
     <div className="my-8">
-      <h2 className="text-2xl font-bold py-4">{title}</h2>
+      {title && (<h2 className="text-2xl font-bold py-4">{title}</h2>)}
       <div ref={containerRef}>
         {/* 初始状态可以显示一个加载提示 */}
         <div className="w-full aspect-video bg-gray-200 animate-pulse rounded-lg flex items-center justify-center">
