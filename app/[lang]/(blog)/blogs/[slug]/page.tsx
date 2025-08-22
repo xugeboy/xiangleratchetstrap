@@ -1,8 +1,8 @@
 import { Metadata, ResolvingMetadata } from "next";
+import type { BlocksContent } from "@strapi/blocks-react-renderer";
 import { generateSchema, embedSchema } from "@/utils/schema";
 import {
   getBlogDetail,
-  getAllBlogSlug,
   getBlogMetaDataBySlug,
 } from "@/services/api/blog";
 import { notFound } from "next/navigation";
@@ -17,8 +17,16 @@ import formatDateToLongEnglish, {
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
 import { getLocale, getTranslations } from "next-intl/server";
 import TableOfContents from "@/components/common/TableOfContents";
-// 辅助函数，用于从 Strapi 的块状内容节点中提取纯文本
-const getPlainTextFromStrapi = (nodes: any[]): string => {
+import RelatedContent from "@/components/blog/RelatedContent";
+// 辅助类型与函数，用于从 Strapi 的块状内容节点中提取纯文本
+type StrapiNode = {
+  type?: string;
+  text?: string;
+  children?: StrapiNode[];
+  level?: number;
+};
+
+const getPlainTextFromStrapi = (nodes: StrapiNode[]): string => {
   return nodes
     .map((node) => {
       if (node.type === "text") {
@@ -45,8 +53,9 @@ interface BlogPageProps {
 
 export async function generateMetadata(
   { params }: BlogPageProps,
-  parent: ResolvingMetadata
+  _parent: ResolvingMetadata
 ): Promise<Metadata> {
+  void _parent;
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
   const { slug, lang } = await params;
   const currentLocale = lang;
@@ -149,7 +158,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const headingCounters: { [key: number]: number } = { 2: 0, 3: 0 }; // 分别为 h2, h3 设置计数器
 
   // 遍历内容块，为标题块注入ID，并生成目录所需的数据
-  const contentWithIds = (blog.content as any[]).map((block) => {
+  const contentNodes: StrapiNode[] = (blog.content ?? []) as unknown as StrapiNode[];
+  const contentWithIds = contentNodes.map((block) => {
     if (block.type === "heading" && (block.level === 2 || block.level === 3)) {
       const level = block.level;
       if (level === 2 || level === 3) {
@@ -161,7 +171,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         headings.push({ id, text, level });
 
         // 返回带有新 'id' 属性的块对象
-        return { ...block, id };
+        return { ...block, id } as StrapiNode & { id: string };
       }
     }
     return block;
@@ -223,7 +233,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
         {/* 右侧文章内容 */}
         <main className="lg:col-span-3">
-          <BlocksClient content={contentWithIds} />
+          <BlocksClient content={contentWithIds as unknown as BlocksContent} />
+          <div className="mt-12">
+            <RelatedContent products={blog.products} blogs={blog.blogs} lang={lang} />
+          </div>
         </main>
       </div>
 
