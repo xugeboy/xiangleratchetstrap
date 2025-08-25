@@ -4,7 +4,6 @@ import { SearchBar } from "@/components/layout/header/search-bar";
 import { CategoryNavigation } from "@/components/layout/header/category-navigation";
 import { MobileMenu } from "@/components/layout/header/mobile-menu";
 import Link from "next/link";
-import LocaleSwitcher from "../common/LocaleSwitcher";
 import { useLocale, useTranslations } from "next-intl";
 import { getCombainedLocalePath } from "@/utils/formatUtils";
 
@@ -55,7 +54,7 @@ export default function Header() {
             >
               {tNav("company.contactUs")}
             </Link>
-            <LocaleSwitcher></LocaleSwitcher>
+            {/* <LocaleSwitcher></LocaleSwitcher> */}
           </div>
         </div>
       </div>

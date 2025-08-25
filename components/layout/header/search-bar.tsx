@@ -7,7 +7,6 @@ import { Bars3Icon, PhoneIcon } from "@heroicons/react/24/outline"
 import { Combobox, ComboboxInput, ComboboxOptions, ComboboxOption } from "@headlessui/react"
 import type { Product } from "@/types/product"
 import { searchProducts } from "@/services/api/product"
-import LocaleSwitcher from "@/components/common/LocaleSwitcher"
 import { getCloudinaryPublicId, getCombainedLocalePath } from "@/utils/formatUtils"
 import { useLocale, useTranslations } from "next-intl"
 import { useIsMobile } from '@/hooks/useMobile';
@@ -218,7 +217,7 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
           
           {/* Right */}
           <div className="flex items-center space-x-4">
-          <LocaleSwitcher></LocaleSwitcher>
+          {/* <LocaleSwitcher></LocaleSwitcher> */}
             <Link href="/contact-us" className="text-white">
               <PhoneIcon className="h-6 w-6" />
             </Link>
