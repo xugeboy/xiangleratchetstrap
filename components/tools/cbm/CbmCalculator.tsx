@@ -7,19 +7,19 @@ import { calculateCbmAndPallets } from "@/utils/calculation"
 import type { CalculatorInput, CalculatorOutput } from "@/utils/calculation"
 
 const initialInput: CalculatorInput = {
-  unit: "cm",
-  weightUnit: "kg",
+  unit: "ft",
+  weightUnit: "lbs",
   length: 0,
   width: 0,
   height: 0,
   weightPerCarton: 0,
   quantity: 0,
   calculatePallet: true,
-  palletPresetKey: "standard_120x100",
+  palletPresetKey: "standard_48x40",
   palletLength: undefined,
   palletWidth: undefined,
-  maxPalletHeight: 180,
-  maxPalletWeight: 1000,
+  maxPalletHeight: 72,
+  maxPalletWeight: 2200,
   containerKey: "none",
 }
 

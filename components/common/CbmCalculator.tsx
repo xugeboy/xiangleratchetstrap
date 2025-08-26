@@ -16,7 +16,7 @@ function toMeters(value: number, unit: Unit): number {
 }
 
 export default function CbmCalculator() {
-  const [unit, setUnit] = useState<Unit>("cm")
+  const [unit, setUnit] = useState<Unit>("inch")
   const [dims, setDims] = useState<DimensionState>({ length: "", width: "", height: "" })
   const [quantity, setQuantity] = useState<string>("1")
 

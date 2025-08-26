@@ -39,6 +39,7 @@ export default function Footer() {
       { nameKey: "support.downloadCatalog", href: "download-catalog" },
       { nameKey: "support.faq", href: "faq" },
       { nameKey: "support.businessSolutions", href: "business-solutions" },
+      { nameKey: "support.tools", href: "tools" },
       { nameKey: "support.sitemap", href: "https://xiangleratchetstrap.com/sitemap.xml" },
     ],
     products: [

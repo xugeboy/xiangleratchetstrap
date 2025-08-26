@@ -1,7 +1,7 @@
-export const UnitOptions = ["cm", "mm", "m", "inch", "ft", "yd"] as const
+export const UnitOptions = ["ft", "yd", "inch", "m", "cm", "mm"] as const
 export type LengthUnit = typeof UnitOptions[number]
 
-export const WeightUnits = ["kg", "lb"] as const
+export const WeightUnits = ["lb", "kg"] as const
 export type WeightUnit = typeof WeightUnits[number]
 
 export interface PalletPreset {
@@ -10,13 +10,13 @@ export interface PalletPreset {
   lengthCm: number
   widthCm: number
   heightCm: number
-  maxLoadKg?: number
+  maxLoadLb?: number
 }
 
 export const PALLET_PRESETS: PalletPreset[] = [
-  { key: "standard_120x100", name: "标准托盘 120×100 cm", lengthCm: 120, widthCm: 100, heightCm: 15, maxLoadKg: 1000 },
-  { key: "euro_120x80", name: "欧洲托盘 120×80 cm", lengthCm: 120, widthCm: 80, heightCm: 15, maxLoadKg: 1000 },
-  { key: "us_48x40", name: "美国托盘 48×40 in", lengthCm: 121.92, widthCm: 101.6, heightCm: 15.24, maxLoadKg: 1000 },
+  { key: "standard_48x40", name: "Standard Pallet 48×40 in", lengthCm: 121.92, widthCm: 101.6, heightCm: 15.24, maxLoadLb: 2200 },
+  { key: "euro_120x80", name: "Euro Pallet 120×80 cm", lengthCm: 120, widthCm: 80, heightCm: 15, maxLoadLb: 2200 },
+  { key: "us_48x40", name: "US Pallet 48×40 in", lengthCm: 121.92, widthCm: 101.6, heightCm: 15.24, maxLoadLb: 2200 },
 ]
 
 export interface ContainerPreset {
