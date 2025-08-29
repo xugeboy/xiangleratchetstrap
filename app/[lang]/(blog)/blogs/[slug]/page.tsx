@@ -18,6 +18,8 @@ import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
 import { getLocale, getTranslations } from "next-intl/server";
 import TableOfContents from "@/components/common/TableOfContents";
 import RelatedContent from "@/components/blog/RelatedContent";
+import { getBlogFaqsBySlug } from "@/services/api/faq";
+import FaqList from "@/app/[lang]/(public)/faq/FaqList";
 // 辅助类型与函数，用于从 Strapi 的块状内容节点中提取纯文本
 type StrapiNode = {
   type?: string;
@@ -177,11 +179,19 @@ export default async function BlogPage({ params }: BlogPageProps) {
     return block;
   });
 
-  // --- 生成 Schema (保持不变) ---
+  // 加载 FAQ（全局 + 博客关联）
+  const faqs = await getBlogFaqsBySlug(blog.slug, lang);
+
+  // Publisher info from env (Organization)
+  const publisherName = "Dustin Xu";
+  const publisherLogoUrl = "/v1744176226/dustin_io6avf.png";
+
+  // --- 生成优化的 Schema 结构 ---
   const articleSchema = generateSchema({
     lang: lang,
     type: "Article",
     data: blog,
+    faqs,
     slug,
   });
   const breadcrumbSchema = generateSchema({
@@ -221,6 +231,19 @@ export default async function BlogPage({ params }: BlogPageProps) {
           <div className="bg-yellow-400 text-black font-medium py-2 px-4 inline-block text-sm">
             {formatDateToLongEnglish(blog.createdAt)}
           </div>
+          {(publisherName && publisherLogoUrl) && (
+            <div className="mt-3 flex items-center gap-3">
+              <Image
+                src={publisherLogoUrl}
+                alt={publisherName}
+                width={40}
+                height={40}
+                className="rounded-full bg-white p-1 object-contain"
+                sizes="40px"
+              />
+              <span className="text-sm font-medium">{publisherName}</span>
+            </div>
+          )}
         </div>
       </div>
 
@@ -237,6 +260,12 @@ export default async function BlogPage({ params }: BlogPageProps) {
           <div className="mt-12">
             <RelatedContent products={blog.products} blogs={blog.blogs} lang={lang} />
           </div>
+          {faqs && faqs.length > 0 && (
+            <section className="mt-16">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">FREQUENTLY ASKED QUESTIONS:</h2>
+              <FaqList faqs={faqs} />
+            </section>
+          )}
         </main>
       </div>
 

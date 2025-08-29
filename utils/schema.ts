@@ -13,20 +13,30 @@ const ORGANIZATION_LOGO_URL = process.env.NEXT_PUBLIC_LOGO_URL;
 
 // --- Helper Functions ---
 
+// Removed fallback article section inference; use Strapi-provided articleSection only
+
+// Removed hardcoded FAQ generation for articles. FAQs now come from Strapi associations.
+
 /**
  * Base function to generate common Organization Schema
  */
-function getOrganizationSchema(lang: string) {
+function getOrganizationSchema(lang: string, type?:string ,name?: string) {
   let url = SITE_URL;
   if (lang !== defaultUrlPrefix && lang !== undefined) {
     url =  `${SITE_URL}/${lang}`;
   }
-  return {
-    "@type": "Organization",
-    name: ORGANIZATION_NAME,
-    url: url,
-    logo: ORGANIZATION_LOGO_URL,
+  const schema: Record<string, unknown> = {
+    "@type": type ? type : "Organization",
+    name: name ? name : ORGANIZATION_NAME,
   };
+  if (type !== 'Person') {
+    schema.url = url;
+    schema.logo = {
+      "@type": "ImageObject",
+      "url": ORGANIZATION_LOGO_URL
+    };
+  }
+  return schema;
 }
 
 /**
@@ -51,7 +61,7 @@ function getWebSiteSchema(lang: string,slug?: string) {
 /**
  * Generates Article Schema from Strapi Blog Data
  */
-function generateArticleSchema(lang: string, article: Blog, slug: string) {
+function generateArticleSchema(lang: string, article: Blog, slug: string, faqsForArticle?: Faq[]) {
   let url = `${SITE_URL}/blogs/${slug}`;
 
   if (lang !== defaultUrlPrefix && lang !== undefined) {
@@ -59,15 +69,29 @@ function generateArticleSchema(lang: string, article: Blog, slug: string) {
   }
   const coverImage = article.cover_image;
 
-  const schema = {
+  // Use provided keywords or extract from SEO description/title
+  const keywords = article.keywords;
+
+  // Use provided word count or estimate from content
+  const wordCount = article.wordCount || 
+    (article.content ? 
+      JSON.stringify(article.content).split(/\s+/).length : 2500);
+
+  // Use provided reading time or estimate (average 200 words per minute)
+  const timeRequired = article.readingTime || `PT${Math.ceil(wordCount / 200)}M`;
+
+  // Use article section from Strapi
+  const articleSection = article.articleSection;
+
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": "Article", // or BlogPosting
+    "@type": "Article",
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": url,
     },
     headline: article.seo_title,
-    description: article.seo_description, // Use excerpt if available
+    description: article.seo_description,
     image: {
       "@type": "ImageObject",
       url: coverImage.url,
@@ -75,11 +99,29 @@ function generateArticleSchema(lang: string, article: Blog, slug: string) {
       height: 1200,
       caption: article.seo_title,
     },
-    author: getOrganizationSchema(lang),
+    author: getOrganizationSchema(lang,"Person","Dustin Xu"),
     publisher: getOrganizationSchema(lang),
-    datePublished: article.publishedAt, // Should be ISO 8601 format
-    dateModified: article.updatedAt || article.publishedAt, // Use updatedAt if available
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt || article.publishedAt,
+    keywords: keywords,
+    articleSection: articleSection,
+    inLanguage: lang === defaultUrlPrefix ? "en" : lang,
+    isAccessibleForFree: true,
+    wordCount: wordCount,
+    timeRequired: timeRequired
   };
+
+  // If FAQs are provided, embed them into Article as mainEntity (list of Questions)
+  if (faqsForArticle && faqsForArticle.length > 0) {
+    schema.mainEntity = faqsForArticle.map(faq => ({
+      "@type": "Question",
+      name: faq.Question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.TextAnswer
+      }
+    }));
+  }
 
   // Remove undefined properties
   Object.keys(schema).forEach(
@@ -188,12 +230,13 @@ function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
 /**
  * Generates FAQPage Schema from FAQ data
  */
-function generateFAQSchema(lang: string, faqs: Faq[], slug: string) {
+function generateFAQSchema(lang: string, faqs: Faq[], slug: string, entityType: 'product' | 'blog' = 'product') {
   if (!faqs || faqs.length === 0) return null;
 
-  let url = `${SITE_URL}/products/${slug}`;
+  const basePath = entityType === 'product' ? 'products' : 'blogs';
+  let url = `${SITE_URL}/${basePath}/${slug}`;
   if (lang !== defaultUrlPrefix && lang !== undefined) {
-    url =  `${SITE_URL}/${lang}/products/${slug}`;
+    url =  `${SITE_URL}/${lang}/${basePath}/${slug}`;
   }
   const mainEntity = faqs.map(faq => ({
     "@type": "Question",
@@ -207,10 +250,17 @@ function generateFAQSchema(lang: string, faqs: Faq[], slug: string) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "subjectOf": {
+    ...(entityType === 'product' ? {
+      "subjectOf": {
         "@type": "Product",
         "@id":`${url}#product`,
-      },
+      }
+    } : {
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": url
+      }
+    }),
     "mainEntity": mainEntity
   };
 }
@@ -234,19 +284,20 @@ interface GenerateSchemaProps {
   slug?: string; // Needed for constructing URLs for Article/Product
   breadcrumbItems?: BreadcrumbItem[]; // Specific for BreadcrumbList
   faqs?: Faq[]; // Specific for FAQPage
+  entityType?: 'product' | 'blog'; // For FAQPage URL/subject
 }
 
 /**
  * Generates the JSON-LD object for the specified schema type.
  */
 export function generateSchema(props: GenerateSchemaProps): object | null {
-  const { lang, type, data, slug, breadcrumbItems, faqs } = props;
+  const { lang, type, data, slug, breadcrumbItems, faqs, entityType } = props;
 
   try {
     switch (type) {
       case "Article":
         if (!slug || !data) return null;
-        return generateArticleSchema(lang, data as Blog, slug);
+        return generateArticleSchema(lang, data as Blog, slug, faqs);
       case "Product":
         if (!slug || !data) return null;
         return generateProductSchema(lang, data as Product, slug);
@@ -255,7 +306,7 @@ export function generateSchema(props: GenerateSchemaProps): object | null {
         return generateBreadcrumbSchema(breadcrumbItems);
       case "FAQPage":
         if (!faqs) return null;
-        return generateFAQSchema(lang,faqs,slug);
+        return generateFAQSchema(lang, faqs, slug, entityType);
       case "CollectionPage":
         if (!data) {
             return null;
@@ -354,7 +405,8 @@ export function embedSchema(
     // If multiple schemas, wrap them in a @graph array
     // Ensure each item in the graph does *not* have its own @context
     const graphItems = schemas.map(s => {
-        const { ['@context']: _, ...rest } = s; // Remove @context from individual items
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { ['@context']: context, ...rest } = s; // Remove @context from individual items
         return rest;
     });
     ldJson = {

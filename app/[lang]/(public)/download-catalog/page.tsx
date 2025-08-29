@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const PDF_FILE = "/asset/xiangle_catalogue.pdf";
 const PDF_NAME = "xiangle_catalogue.pdf";
-const PDF_SIZE_MB = "3.4";
+const PDF_SIZE_MB = "13";
 
 export async function generateMetadata(
   parent: ResolvingMetadata

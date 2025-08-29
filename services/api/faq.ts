@@ -57,3 +57,17 @@ export async function getAllProductFaqs(productSlug: string, locale: string): Pr
     return []
   }
 } 
+
+// 获取特定博客(通过slug)的FAQ（通过自定义路由）
+export async function getBlogFaqsBySlug(blogSlug: string, locale: string): Promise<Faq[]> {
+  try {
+    const params = {
+      ...getFullLocale(locale)
+    }
+    const data = await fetchAPI(`/getFaqsByBlogSlug/${encodeURIComponent(blogSlug)}`, params)
+    return (data?.data ?? data ?? []) as Faq[]
+  } catch (error) {
+    console.error('Error fetching blog FAQs by slug:', error)
+    return []
+  }
+}
