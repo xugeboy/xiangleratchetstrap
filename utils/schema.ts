@@ -101,7 +101,7 @@ function generateArticleSchema(lang: string, article: Blog, slug: string, faqsFo
     },
     author: getOrganizationSchema(lang,"Person","Dustin Xu"),
     publisher: getOrganizationSchema(lang),
-    datePublished: article.publishedAt,
+    datePublished: article.createdAt,
     dateModified: article.updatedAt || article.publishedAt,
     keywords: keywords,
     articleSection: articleSection,
