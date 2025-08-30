@@ -27,37 +27,53 @@ export default async function ArticlesSection() {
             const articleLink = getCombainedLocalePath(lang,`blogs/${blog.slug}`);
 
             return (
-              <div key={blog.id} className="flex flex-col">
-                <Link
-                  href={articleLink}
-                  className="aspect-[4/3] relative mb-4 block hover:opacity-90 transition-opacity"
-                >
-                  <Image
-                    src={getCloudinaryPublicId(blog.cover_image.url)}
-                    alt={blog.title}
-                    fill
-                    className="object-scale-down"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                  />
-                </Link>
-                <h3 className="text-xl font-bold mb-2 text-center">
+              <div key={blog.id} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                {/* 图片区域 */}
+                <div className="relative">
                   <Link
                     href={articleLink}
-                    className="hover:text-red-600 transition-colors"
+                    className="block h-[155px] relative"
                   >
-                    {blog.title}
+                    <Image
+                      src={getCloudinaryPublicId(blog.cover_image.url)}
+                      alt={blog.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    />
                   </Link>
-                </h3>
-                <div className="text-sm text-black text-center mb-2">
-                  {formatDateToLongEnglish(blog.createdAt)}
                 </div>
-                <p className="text-black mb-4 flex-grow line-clamp-3">{blog.excerpt}</p>
-                <Link
-                  href={articleLink}
-                  className="text-[#1a3b5d] font-medium hover:underline self-center"
-                >
-                  {t("readMoreLink")} 
-                </Link>
+
+                {/* 内容区域 */}
+                <div className="p-6">
+                  {/* 标题 */}
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 leading-tight">
+                    <Link
+                      href={articleLink}
+                      className="hover:text-red-600 transition-colors"
+                    >
+                      {blog.title}
+                    </Link>
+                  </h3>
+
+                  {/* 描述 */}
+                  <p className="text-gray-700 mb-4 text-sm leading-relaxed line-clamp-3">
+                    {blog.excerpt}
+                  </p>
+
+                  {/* 日期 */}
+                  <div className="text-gray-500 text-sm mb-2">
+                    {formatDateToLongEnglish(blog.createdAt)}
+                  </div>
+
+                  {/* Read More 按钮 */}
+                  <Link
+                    href={articleLink}
+                    className="inline-flex items-center bg-black text-white px-4 py-2 rounded text-sm font-medium hover:bg-gray-800 transition-colors"
+                  >
+                    {t("readMoreLink")} →
+                  </Link>
+                </div>
               </div>
             );
           })}

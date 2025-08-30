@@ -211,41 +211,46 @@ export default async function BlogPage({ params }: BlogPageProps) {
         />
       </section>
 
-      {/* 头部区域 */}
-      <div className="relative w-full h-[300px] md:h-[400px] mb-8 rounded-lg overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src={getCloudinaryPublicId(blog.cover_image.url)}
-            alt={blog.title}
-            fill
-            className="object-cover"
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-          <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-wide mb-2">
-            {blog.title}
-          </h1>
-          <div className="bg-yellow-400 text-black font-medium py-2 px-4 inline-block text-sm">
-            {formatDateToLongEnglish(blog.createdAt)}
-          </div>
-          {(publisherName && publisherLogoUrl) && (
-            <div className="mt-3 flex items-center gap-3">
-              <Image
-                src={publisherLogoUrl}
-                alt={publisherName}
-                width={40}
-                height={40}
-                className="rounded-full bg-white p-1 object-contain"
-                sizes="40px"
-              />
-              <span className="text-sm font-medium">{publisherName}</span>
-            </div>
-          )}
-        </div>
-      </div>
+             {/* 头部区域 */}
+       <div className="relative w-full h-[300px] md:h-[400px] mb-8 rounded-lg overflow-hidden">
+         <div className="absolute inset-0">
+           <Image
+             src={getCloudinaryPublicId(blog.cover_image.url)}
+             alt={blog.title}
+             fill
+             className="object-cover"
+             priority
+             sizes="(max-width: 768px) 100vw, 50vw"
+           />
+         </div>
+       </div>
+
+       {/* 标题和元信息区域 */}
+       <div className="mb-8">
+         <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-wide text-gray-900 mb-4">
+           {blog.title}
+         </h1>
+         
+         {/* 日期和作者信息 */}
+         <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-start">
+           <div className="bg-yellow-400 text-black font-medium py-2 px-4 inline-block text-sm">
+             {formatDateToLongEnglish(blog.createdAt)}
+           </div>
+           {(publisherName && publisherLogoUrl) && (
+             <div className="flex items-center gap-3">
+               <Image
+                 src={publisherLogoUrl}
+                 alt={publisherName}
+                 width={40}
+                 height={40}
+                 className="rounded-full bg-white p-1 object-contain"
+                 sizes="40px"
+               />
+               <span className="text-sm font-medium text-gray-900">{publisherName}</span>
+             </div>
+           )}
+         </div>
+       </div>
 
       {/* 修改: 主体内容改为网格布局 */}
       <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-12">
