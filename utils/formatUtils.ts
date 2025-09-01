@@ -61,3 +61,25 @@ export function getCloudinaryPublicId(fullUrl: string): string {
   // 如果URL格式不符，返回原始URL以防万一
   return fullUrl;
 };
+
+// Format weight with single unit display
+export function formatWeight(weight: number, unit: string): string {
+  if (unit === "kg") {
+    return `${weight.toLocaleString()} kg`
+  } else if (unit === "lbs") {
+    // For lbs, round up to the nearest whole number
+    const roundedWeight = Math.ceil(weight)
+    return `${roundedWeight.toLocaleString()} lbs`
+  }
+  return `${weight.toLocaleString()} ${unit}`
+}
+
+// Format dimensions with single unit display
+export function formatDimension(value: number, unit: string): string {
+  if (unit === "m") {
+    return `${value.toFixed(2)} m`
+  } else if (unit === "ft") {
+    return `${value.toFixed(2)} ft`
+  }
+  return `${value.toFixed(2)} ${unit}`
+}

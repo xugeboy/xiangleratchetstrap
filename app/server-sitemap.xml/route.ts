@@ -34,6 +34,11 @@ export async function GET(
     "custom-print/full-design",
     "request-quote",
     "blogs",
+    "tools",
+    "tools/cbm-calculator",
+    "tools/angle-efficiency-calculator",
+    "tools/cargo-securing-calculator",
+    "tools/cargo-specific-recommender",
   ];
 
   staticRoutes.forEach((route) => {
@@ -53,7 +58,7 @@ export async function GET(
       lastmod: new Date(
         product.updatedAt || product.publishedAt || currentDate
       ).toISOString(),
-      changefreq: "monthly" as const,
+      changefreq: "weekly" as const,
       priority: 0.8,
     });
   });

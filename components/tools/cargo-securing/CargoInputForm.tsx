@@ -61,7 +61,7 @@ export function CargoInputForm({ value, onChange, onSubmit }: CargoInputFormProp
             <div className="flex">
               <input
                 type="number"
-                step="0.01"
+                step="1"
                 min="0"
                 value={value.weight || ""}
                 onChange={(e) => updateValue("weight", parseFloat(e.target.value) || 0)}
@@ -95,7 +95,7 @@ export function CargoInputForm({ value, onChange, onSubmit }: CargoInputFormProp
               <label className="block text-xs text-gray-500 mb-1">Length</label>
               <input
                 type="number"
-                step="0.01"
+                step="1"
                 min="0"
                 value={value.length || ""}
                 onChange={(e) => updateValue("length", parseFloat(e.target.value) || 0)}
@@ -112,7 +112,7 @@ export function CargoInputForm({ value, onChange, onSubmit }: CargoInputFormProp
               <label className="block text-xs text-gray-500 mb-1">Width</label>
               <input
                 type="number"
-                step="0.01"
+                step="1"
                 min="0"
                 value={value.width || ""}
                 onChange={(e) => updateValue("width", parseFloat(e.target.value) || 0)}
@@ -129,7 +129,7 @@ export function CargoInputForm({ value, onChange, onSubmit }: CargoInputFormProp
               <label className="block text-xs text-gray-500 mb-1">Height</label>
               <input
                 type="number"
-                step="0.01"
+                step="1"
                 min="0"
                 value={value.height || ""}
                 onChange={(e) => updateValue("height", parseFloat(e.target.value) || 0)}

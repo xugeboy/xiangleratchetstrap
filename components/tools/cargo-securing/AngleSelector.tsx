@@ -1,89 +1,96 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 interface AngleSelectorProps {
-  value: number
-  onChange: (value: number) => void
-  onSubmit: () => void
-  onBack: () => void
+  value: number;
+  onChange: (value: number) => void;
+  onSubmit: () => void;
+  onBack: () => void;
 }
 
 const angleOptions = [
-  { value: 90, label: "90°", description: "Vertical (100% efficiency)", efficiency: 1.0 },
-  { value: 60, label: "60°", description: "Steep angle (86% efficiency)", efficiency: 0.86 },
-  { value: 45, label: "45°", description: "Medium angle (70% efficiency)", efficiency: 0.70 },
-  { value: 30, label: "30°", description: "Shallow angle (50% efficiency)", efficiency: 0.50 },
-]
+  {
+    value: 90,
+    label: "90°",
+    description: "Vertical (100% efficiency)",
+    efficiency: 1.0,
+  },
+  {
+    value: 60,
+    label: "60°",
+    description: "Steep angle (87% efficiency)",
+    efficiency: 0.87,
+  },
+  {
+    value: 45,
+    label: "45°",
+    description: "Medium angle (71% efficiency)",
+    efficiency: 0.71,
+  },
+  {
+    value: 30,
+    label: "30°",
+    description: "Shallow angle (50% efficiency)",
+    efficiency: 0.5,
+  },
+];
 
-export function AngleSelector({ value, onChange, onSubmit, onBack }: AngleSelectorProps) {
-  const [customAngle, setCustomAngle] = useState<number>(value)
-  const [isCustom, setIsCustom] = useState<boolean>(!angleOptions.some(opt => opt.value === value))
+export function AngleSelector({
+  value,
+  onChange,
+  onSubmit,
+  onBack,
+}: AngleSelectorProps) {
+  const [customAngle, setCustomAngle] = useState<number>(value);
+  const [isCustom, setIsCustom] = useState<boolean>(
+    !angleOptions.some((opt) => opt.value === value)
+  );
 
   useEffect(() => {
     if (!isCustom) {
-      onChange(value)
+      onChange(value);
     }
-  }, [value, isCustom, onChange])
+  }, [value, isCustom, onChange]);
 
   const handleCustomAngleChange = (newAngle: number) => {
-    setCustomAngle(newAngle)
-    onChange(newAngle)
-  }
+    setCustomAngle(newAngle);
+    onChange(newAngle);
+  };
 
   const getEfficiencyForAngle = (angle: number) => {
-    if (angle >= 90) return 1.0
-    if (angle >= 60) return 0.86
-    if (angle >= 45) return 0.70
-    if (angle >= 30) return 0.50
-    return 0.30 // For very shallow angles
-  }
+    // Convert to radians and calculate sine of the angle
+    const angleRad = (angle * Math.PI) / 180;
+    const efficiency = Math.sin(angleRad);
+    return Math.max(efficiency, 0.1); // Minimum 10% efficiency
+  };
 
-  const currentEfficiency = getEfficiencyForAngle(value)
+  const currentEfficiency = getEfficiencyForAngle(value);
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="container mx-auto">
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Step 3: Tie-Down Angle</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          Step 3: Tie-Down Angle
+        </h2>
         <p className="text-gray-600">
-          Select the angle at which your tie-down straps will be applied. 
+          Select the angle at which your tie-down straps will be applied.
           Smaller angles significantly reduce the effective securing force.
         </p>
       </div>
 
-      {/* Visual Angle Representation */}
-      <div className="bg-gray-50 rounded-lg p-6 mb-8">
-        <div className="text-center mb-4">
-          <h3 className="text-lg font-semibold text-gray-900">Current Angle: {value}°</h3>
-          <p className="text-sm text-gray-600">
-            Efficiency: {(currentEfficiency * 100).toFixed(0)}%
-          </p>
-        </div>
-        
-        {/* Simple ASCII Art for Angle Visualization */}
-        <div className="flex justify-center items-center h-32 mb-4">
-          <div className="relative">
-            <div className="w-32 h-1 bg-gray-300"></div>
-            <div 
-              className="absolute top-0 left-0 w-32 h-1 bg-blue-500 origin-left"
-              style={{ 
-                transform: `rotate(${value - 90}deg)`,
-                transformOrigin: 'left center'
-              }}
-            ></div>
-            <div className="absolute -top-2 -left-2 w-4 h-4 bg-blue-500 rounded-full"></div>
-            <div className="absolute -top-2 -right-2 w-4 h-4 bg-gray-300 rounded-full"></div>
-          </div>
-        </div>
-        
-        <div className="text-center text-sm text-gray-600">
-          <p>Vehicle surface ← → Cargo surface</p>
-          <p>Blue line shows tie-down angle</p>
-        </div>
+      {/* Current Angle Display */}
+      <div className="text-center mb-6">
+        <h3 className="text-lg font-semibold text-gray-900">
+          Current Angle: {value}°
+        </h3>
+        <p className="text-sm text-gray-600">
+          Efficiency: {(currentEfficiency * 100).toFixed(1)}%
+        </p>
       </div>
 
-      {/* Preset Angle Options */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      {/* Preset Angle Options with Visualizations */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {angleOptions.map((option) => (
           <div
             key={option.value}
@@ -93,13 +100,39 @@ export function AngleSelector({ value, onChange, onSubmit, onBack }: AngleSelect
                 : "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
             }`}
             onClick={() => {
-              setIsCustom(false)
-              onChange(option.value)
+              setIsCustom(false);
+              onChange(option.value);
             }}
           >
             <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900 mb-1">{option.label}</div>
-              <div className="text-sm text-gray-600 mb-2">{option.description}</div>
+              <div className="text-2xl font-bold text-gray-900 mb-2">
+                {option.label}
+              </div>
+              
+              {/* Angle Visualization */}
+              <div className="flex justify-center mb-3">
+                <div className="relative">
+                  {/* Horizontal base line */}
+                  <div className="w-16 h-0.5 bg-gray-300"></div>
+                  
+                  {/* Tie-down strap line */}
+                  <div
+                    className="absolute top-0 left-0 w-16 h-0.5 bg-blue-500 origin-left"
+                    style={{
+                      transform: `rotate(${-option.value}deg)`,
+                      transformOrigin: "left center",
+                    }}
+                  ></div>
+                  
+                  {/* Connection points */}
+                  <div className="absolute -top-1 -left-1 w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <div className="absolute -top-1 -right-1 w-2 h-2 bg-gray-300 rounded-full"></div>
+                </div>
+              </div>
+              
+              <div className="text-sm text-gray-600 mb-2">
+                {option.description}
+              </div>
               <div className="text-lg font-semibold text-blue-600">
                 {(option.efficiency * 100).toFixed(0)}% efficiency
               </div>
@@ -122,7 +155,7 @@ export function AngleSelector({ value, onChange, onSubmit, onBack }: AngleSelect
             <span className="ml-2 text-sm text-gray-700">Use custom angle</span>
           </label>
         </div>
-        
+
         {isCustom && (
           <div className="space-y-4">
             <div>
@@ -135,7 +168,9 @@ export function AngleSelector({ value, onChange, onSubmit, onBack }: AngleSelect
                 max="90"
                 step="1"
                 value={customAngle}
-                onChange={(e) => handleCustomAngleChange(parseInt(e.target.value))}
+                onChange={(e) =>
+                  handleCustomAngleChange(parseInt(e.target.value))
+                }
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
               />
               <div className="flex justify-between text-xs text-gray-500 mt-1">
@@ -147,9 +182,11 @@ export function AngleSelector({ value, onChange, onSubmit, onBack }: AngleSelect
                 <span>90°</span>
               </div>
             </div>
-            
+
             <div className="text-center p-3 bg-blue-50 rounded-lg">
-              <div className="text-sm text-gray-600">Custom angle efficiency:</div>
+              <div className="text-sm text-gray-600">
+                Custom angle efficiency:
+              </div>
               <div className="text-xl font-bold text-blue-600">
                 {(getEfficiencyForAngle(customAngle) * 100).toFixed(0)}%
               </div>
@@ -160,14 +197,18 @@ export function AngleSelector({ value, onChange, onSubmit, onBack }: AngleSelect
 
       {/* Angle Efficiency Chart */}
       <div className="bg-gray-50 rounded-lg p-6 mb-8">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Angle Efficiency Chart</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+          Angle Efficiency Chart
+        </h3>
         <div className="space-y-3">
           {[90, 75, 60, 45, 30, 15].map((angle) => {
-            const efficiency = getEfficiencyForAngle(angle)
-            const isCurrent = value === angle
+            const efficiency = getEfficiencyForAngle(angle);
+            const isCurrent = value === angle;
             return (
               <div key={angle} className="flex items-center">
-                <div className="w-16 text-sm font-medium text-gray-700">{angle}°</div>
+                <div className="w-16 text-sm font-medium text-gray-700">
+                  {angle}°
+                </div>
                 <div className="flex-1 mx-4">
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div
@@ -178,13 +219,15 @@ export function AngleSelector({ value, onChange, onSubmit, onBack }: AngleSelect
                     ></div>
                   </div>
                 </div>
-                <div className={`w-16 text-sm font-medium ${
-                  isCurrent ? "text-blue-600" : "text-gray-600"
-                }`}>
-                  {(efficiency * 100).toFixed(0)}%
+                <div
+                  className={`w-16 text-sm font-medium ${
+                    isCurrent ? "text-blue-600" : "text-gray-600"
+                  }`}
+                >
+                  {(efficiency * 100).toFixed(1)}%
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
@@ -210,16 +253,27 @@ export function AngleSelector({ value, onChange, onSubmit, onBack }: AngleSelect
         <div className="mt-8 p-4 bg-red-50 rounded-lg border border-red-200">
           <div className="flex">
             <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+              <svg
+                className="h-5 w-5 text-red-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                  clipRule="evenodd"
+                />
               </svg>
             </div>
             <div className="ml-3">
-              <h3 className="text-sm font-medium text-red-800">Warning: Shallow Angle</h3>
+              <h3 className="text-sm font-medium text-red-800">
+                Warning: Shallow Angle
+              </h3>
               <div className="mt-2 text-sm text-red-700">
                 <p>
-                  Angles below 45° significantly reduce tie-down efficiency and may not provide 
-                  adequate securing force. Consider repositioning your tie-downs for better safety.
+                  Angles below 45° significantly reduce tie-down efficiency and
+                  may not provide adequate securing force. Consider
+                  repositioning your tie-downs for better safety.
                 </p>
               </div>
             </div>
@@ -227,5 +281,5 @@ export function AngleSelector({ value, onChange, onSubmit, onBack }: AngleSelect
         </div>
       )}
     </div>
-  )
+  );
 }

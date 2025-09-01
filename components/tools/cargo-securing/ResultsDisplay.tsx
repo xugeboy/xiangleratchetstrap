@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import type { CargoInput, SecuringMethod, CalculationResult } from "@/utils/cargoSecuringCalculation"
+import { formatWeight, formatDimension } from "@/utils/formatUtils"
 
 interface ResultsDisplayProps {
   results: CalculationResult
@@ -22,8 +23,8 @@ export function ResultsDisplay({
 }: ResultsDisplayProps) {
   const [showDisclaimer, setShowDisclaimer] = useState(false)
 
-  const formatWeight = (weight: number, unit: string) => {
-    return `${weight.toLocaleString()} ${unit}`
+  const formatWeightLocal = (weight: number, unit: string) => {
+    return formatWeight(weight, unit)
   }
 
   const getSecuringMethodText = () => {
@@ -40,7 +41,7 @@ export function ResultsDisplay({
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="container mx-auto">
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Step 4: Calculation Results</h2>
         <p className="text-gray-600">
@@ -52,7 +53,7 @@ export function ResultsDisplay({
       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6 mb-8">
         <div className="text-center">
           <div className="text-4xl font-bold text-blue-600 mb-2">
-            {formatWeight(results.totalRequiredWLL, cargoInput.weightUnit)}
+            {formatWeightLocal(results.totalRequiredWLL, cargoInput.weightUnit)}
           </div>
           <div className="text-lg text-blue-800">Total Required WLL</div>
           <div className="text-sm text-blue-600 mt-1">
@@ -69,13 +70,13 @@ export function ResultsDisplay({
           <div className="space-y-3">
             <div className="flex justify-between">
               <span className="text-gray-600">Cargo Weight:</span>
-              <span className="font-medium">{formatWeight(cargoInput.weight, cargoInput.weightUnit)}</span>
+              <span className="font-medium">{formatWeightLocal(cargoInput.weight, cargoInput.weightUnit)}</span>
             </div>
             {cargoInput.length > 0 && (
               <div className="flex justify-between">
                 <span className="text-gray-600">Dimensions:</span>
                 <span className="font-medium">
-                  {cargoInput.length} × {cargoInput.width} × {cargoInput.height} {cargoInput.dimensionUnit}
+                  {formatDimension(cargoInput.length, cargoInput.dimensionUnit)} × {formatDimension(cargoInput.width, cargoInput.dimensionUnit)} × {formatDimension(cargoInput.height, cargoInput.dimensionUnit)}
                 </span>
               </div>
             )}
@@ -99,7 +100,7 @@ export function ResultsDisplay({
             <div className="flex justify-between">
               <span className="text-gray-600">Base WLL:</span>
               <span className="font-medium">
-                {formatWeight(results.baseRequiredWLL, cargoInput.weightUnit)}
+                {formatWeightLocal(results.baseRequiredWLL, cargoInput.weightUnit)}
               </span>
             </div>
             {securingMethod === "indirect" && (
@@ -117,7 +118,7 @@ export function ResultsDisplay({
             <div className="flex justify-between">
               <span className="text-gray-600">Final WLL:</span>
               <span className="font-medium text-blue-600">
-                {formatWeight(results.totalRequiredWLL, cargoInput.weightUnit)}
+                {formatWeightLocal(results.totalRequiredWLL, cargoInput.weightUnit)}
               </span>
             </div>
           </div>
@@ -138,10 +139,10 @@ export function ResultsDisplay({
                   Option {index + 1}
                 </div>
                 <div className="text-lg text-gray-900 mb-2">
-                  {rec.strapCount} × {formatWeight(rec.strapWLL, cargoInput.weightUnit)} straps
+                  {rec.strapCount} × {formatWeightLocal(rec.strapWLL, cargoInput.weightUnit)} straps
                 </div>
                 <div className="text-sm text-gray-600">
-                  Total capacity: {formatWeight(rec.totalCapacity, cargoInput.weightUnit)}
+                  Total capacity: {formatWeightLocal(rec.totalCapacity, cargoInput.weightUnit)}
                 </div>
                 <div className="text-xs text-green-600 mt-1">
                   {rec.safetyMargin > 0 ? `+${rec.safetyMargin.toFixed(1)}% safety margin` : 'Exact match'}
@@ -165,8 +166,8 @@ export function ResultsDisplay({
           <div className="flex items-start">
             <span className="font-medium mr-2">•</span>
             <span>
-              <strong>DOT Compliance:</strong> Cargo over 10 feet (3.05m) requires at least 2 tie-downs, 
-              over 20 feet (6.1m) requires at least 3 tie-downs
+              <strong>DOT Compliance:</strong> Cargo over {cargoInput.dimensionUnit === 'ft' ? '10 feet' : '3.05 meters'} requires at least 2 tie-downs, 
+              over {cargoInput.dimensionUnit === 'ft' ? '20 feet' : '6.1 meters'} requires at least 3 tie-downs
             </span>
           </div>
           <div className="flex items-start">
