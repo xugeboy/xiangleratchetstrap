@@ -64,14 +64,14 @@ export function getCloudinaryPublicId(fullUrl: string): string {
 
 // Format weight with single unit display
 export function formatWeight(weight: number, unit: string): string {
+  // For all units, round to the nearest whole number
+  const roundedWeight = Math.round(weight)
   if (unit === "kg") {
-    return `${weight.toLocaleString()} kg`
+    return `${roundedWeight.toLocaleString()} kg`
   } else if (unit === "lbs") {
-    // For lbs, round up to the nearest whole number
-    const roundedWeight = Math.ceil(weight)
     return `${roundedWeight.toLocaleString()} lbs`
   }
-  return `${weight.toLocaleString()} ${unit}`
+  return `${roundedWeight.toLocaleString()} ${unit}`
 }
 
 // Format dimensions with single unit display

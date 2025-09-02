@@ -104,8 +104,8 @@ export function AngleSelector({
               onChange(option.value);
             }}
           >
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900 mb-2">
+            <div className="text-left">
+              <div className="text-2xl font-bold text-gray-900 mb-6">
                 {option.label}
               </div>
               
@@ -224,7 +224,7 @@ export function AngleSelector({
                     isCurrent ? "text-blue-600" : "text-gray-600"
                   }`}
                 >
-                  {(efficiency * 100).toFixed(1)}%
+                  {(efficiency * 100).toFixed(0)}%
                 </div>
               </div>
             );

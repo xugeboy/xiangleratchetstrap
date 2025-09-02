@@ -8,6 +8,7 @@ import { ResultsDisplay } from "./ResultsDisplay"
 import { SecuringMethodForm } from "./SecuringMethodForm"
 
 const initialCargoInput: CargoInput = {
+  region: "north_america",
   weight: 0,
   weightUnit: "lbs",
   length: 0,
@@ -30,6 +31,12 @@ export default function CargoSecuringCalculator() {
   }
 
   const handleMethodSubmit = () => {
+    // For North America, skip angle selection (DOT aggregate rule)
+    if (cargoInput.region === "north_america") {
+      calculateResults()
+      return
+    }
+
     if (securingMethod === "indirect") {
       setCurrentStep(3)
     } else {
@@ -115,7 +122,7 @@ export default function CargoSecuringCalculator() {
           />
         )}
 
-        {currentStep === 3 && (
+        {currentStep === 3 && cargoInput.region !== "north_america" && (
           <AngleSelector
             value={angle}
             onChange={setAngle}

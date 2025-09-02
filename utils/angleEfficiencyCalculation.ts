@@ -1,12 +1,15 @@
+export type WeightUnit = "kg" | "lbs"
+export type Region = "north_america" | "australia" | "europe"
+
 /**
  * Calculate the effective Working Load Limit based on tie-down angle
  * @param nominalWLL - The nominal WLL printed on the strap
- * @param angle - The tie-down angle in degrees (0-90)
+ * @param angle - The tie-down angle in degrees (15-90)
  * @returns The effective WLL at the given angle
  */
 export function calculateEffectiveWLL(nominalWLL: number, angle: number): number {
   if (nominalWLL <= 0) return 0
-  if (angle < 0 || angle > 90) return 0
+  if (angle < 15 || angle > 90) return 0
   
   // Convert angle to radians and calculate sine
   const angleInRadians = (angle * Math.PI) / 180
@@ -17,11 +20,11 @@ export function calculateEffectiveWLL(nominalWLL: number, angle: number): number
 
 /**
  * Calculate the percentage of capacity lost due to angle
- * @param angle - The tie-down angle in degrees (0-90)
+ * @param angle - The tie-down angle in degrees (15-90)
  * @returns The percentage of capacity lost (0-100)
  */
 export function calculateLossPercentage(angle: number): number {
-  if (angle < 0 || angle > 90) return 100
+  if (angle < 15 || angle > 90) return 100
   
   // Convert angle to radians and calculate sine
   const angleInRadians = (angle * Math.PI) / 180
@@ -32,11 +35,11 @@ export function calculateLossPercentage(angle: number): number {
 
 /**
  * Get the efficiency factor for a given angle
- * @param angle - The tie-down angle in degrees (0-90)
+ * @param angle - The tie-down angle in degrees (15-90)
  * @returns The efficiency factor (0-1)
  */
 export function getEfficiencyFactor(angle: number): number {
-  if (angle < 0 || angle > 90) return 0
+  if (angle < 15 || angle > 90) return 0
   
   const angleInRadians = (angle * Math.PI) / 180
   return Math.sin(angleInRadians)
@@ -44,7 +47,7 @@ export function getEfficiencyFactor(angle: number): number {
 
 /**
  * Get a human-readable description of the angle efficiency
- * @param angle - The tie-down angle in degrees (0-90)
+ * @param angle - The tie-down angle in degrees (15-90)
  * @returns A description of the efficiency level
  */
 export function getEfficiencyDescription(angle: number): string {
@@ -54,12 +57,12 @@ export function getEfficiencyDescription(angle: number): string {
   if (angle >= 45) return "Moderate - Reduced efficiency"
   if (angle >= 30) return "Poor - Significant efficiency loss"
   if (angle >= 15) return "Very Poor - Major efficiency loss"
-  return "Dangerous - Minimal efficiency"
+  return "Dangerous - Below minimum angle"
 }
 
 /**
  * Get safety recommendations based on angle
- * @param angle - The tie-down angle in degrees (0-90)
+ * @param angle - The tie-down angle in degrees (15-90)
  * @returns Safety recommendations
  */
 export function getSafetyRecommendations(angle: number): string[] {
@@ -86,11 +89,11 @@ export function getSafetyRecommendations(angle: number): string[] {
 /**
  * Calculate the required WLL increase to compensate for angle loss
  * @param requiredWLL - The WLL needed for the cargo
- * @param angle - The tie-down angle in degrees (0-90)
+ * @param angle - The tie-down angle in degrees (15-90)
  * @returns The WLL rating needed to compensate for angle loss
  */
 export function calculateRequiredWLLCompensation(requiredWLL: number, angle: number): number {
-  if (requiredWLL <= 0 || angle <= 0 || angle > 90) return 0
+  if (requiredWLL <= 0 || angle < 15 || angle > 90) return 0
   
   const efficiencyFactor = getEfficiencyFactor(angle)
   if (efficiencyFactor === 0) return Infinity
@@ -112,4 +115,44 @@ export function getCommonAngleExamples() {
     { angle: 15, efficiency: 25.9, description: "Very Poor - Quarter efficiency" },
     { angle: 0, efficiency: 0.0, description: "Horizontal - No efficiency" }
   ]
+}
+
+// Get weight unit for region
+export function getWeightUnitForRegion(region: Region): WeightUnit {
+  switch (region) {
+    case "north_america":
+      return "lbs"
+    case "australia":
+    case "europe":
+      return "kg"
+    default:
+      return "kg"
+  }
+}
+
+// Get region name for display
+export function getRegionDisplayName(region: Region): string {
+  switch (region) {
+    case "north_america":
+      return "North America (DOT)"
+    case "australia":
+      return "Australia (AS/NZS 4380)"
+    case "europe":
+      return "Europe (EN12195-2)"
+    default:
+      return "Unknown"
+  }
+}
+
+// Get load capacity term for region
+export function getLoadCapacityTerm(region: Region): string {
+  switch (region) {
+    case "north_america":
+      return "WLL"
+    case "australia":
+    case "europe":
+      return "LC"
+    default:
+      return "WLL"
+  }
 }

@@ -1,7 +1,8 @@
 "use client"
 
-import { useState } from "react"
-import type { CargoInput } from "@/utils/cargoSecuringCalculation"
+import { useState, useEffect } from "react"
+import type { CargoInput, Region } from "@/utils/cargoSecuringCalculation"
+import { getWeightUnitForRegion, getDimensionUnitForRegion, getRegionDisplayName } from "@/utils/cargoSecuringCalculation"
 
 interface CargoInputFormProps {
   value: CargoInput
@@ -11,6 +12,20 @@ interface CargoInputFormProps {
 
 export function CargoInputForm({ value, onChange, onSubmit }: CargoInputFormProps) {
   const [errors, setErrors] = useState<Partial<CargoInput>>({})
+
+  // Update units when region changes
+  useEffect(() => {
+    const newWeightUnit = getWeightUnitForRegion(value.region)
+    const newDimensionUnit = getDimensionUnitForRegion(value.region)
+    
+    if (newWeightUnit !== value.weightUnit || newDimensionUnit !== value.dimensionUnit) {
+      onChange({
+        ...value,
+        weightUnit: newWeightUnit,
+        dimensionUnit: newDimensionUnit
+      })
+    }
+  }, [value.region, value.weightUnit, value.dimensionUnit, onChange, value])
 
   const validateForm = () => {
     const newErrors: Partial<CargoInput> = {}
@@ -52,8 +67,26 @@ export function CargoInputForm({ value, onChange, onSubmit }: CargoInputFormProp
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Weight Input */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Region, Weight, Length in one row */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Region & Standards *
+            </label>
+            <select
+              value={value.region}
+              onChange={(e) => updateValue("region", e.target.value)}
+              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            >
+              <option value="north_america">North America (DOT Standards)</option>
+              <option value="australia">Australia (AS/NZS 4380 Standards)</option>
+              <option value="europe">Europe (EN12195-2 Standards)</option>
+            </select>
+            <p className="mt-1 text-xs text-gray-500">
+              Units will be automatically set based on your region: {value.region === "north_america" ? "lbs/ft" : "kg/m"}
+            </p>
+          </div>
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Cargo Weight *
@@ -70,89 +103,38 @@ export function CargoInputForm({ value, onChange, onSubmit }: CargoInputFormProp
                 } focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
                 placeholder="Enter weight"
               />
-              <select
-                value={value.weightUnit}
-                onChange={(e) => updateValue("weightUnit", e.target.value)}
-                className="rounded-r-md border-l-0 border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-              >
-                <option value="lbs">lbs</option>
-                <option value="kg">kg</option>
-              </select>
+              <div className="rounded-r-md border-l-0 border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-600 flex items-center">
+                {value.weightUnit}
+              </div>
             </div>
             {errors.weight && (
               <p className="mt-1 text-sm text-red-600">{errors.weight}</p>
             )}
           </div>
-        </div>
 
-        {/* Dimensions Input */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Cargo Dimensions (Optional)
-          </label>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div>
-              <label className="block text-xs text-gray-500 mb-1">Length</label>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Cargo Length (for minimum tie-down count)
+            </label>
+            <div className="flex">
               <input
                 type="number"
-                step="1"
+                step="0.01"
                 min="0"
                 value={value.length || ""}
                 onChange={(e) => updateValue("length", parseFloat(e.target.value) || 0)}
-                className={`w-full rounded-md border px-3 py-2 text-sm ${
+                className={`flex-1 rounded-l-md border px-3 py-2 text-sm ${
                   errors.length ? "border-red-500" : "border-gray-300"
                 } focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
                 placeholder="0.00"
               />
-              {errors.length && (
-                <p className="mt-1 text-xs text-red-600">{errors.length}</p>
-              )}
+              <div className="rounded-r-md border-l-0 border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-600 flex items-center">
+                {value.dimensionUnit}
+              </div>
             </div>
-            <div>
-              <label className="block text-xs text-gray-500 mb-1">Width</label>
-              <input
-                type="number"
-                step="1"
-                min="0"
-                value={value.width || ""}
-                onChange={(e) => updateValue("width", parseFloat(e.target.value) || 0)}
-                className={`w-full rounded-md border px-3 py-2 text-sm ${
-                  errors.width ? "border-red-500" : "border-gray-300"
-                } focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
-                placeholder="0.00"
-              />
-              {errors.width && (
-                <p className="mt-1 text-xs text-red-600">{errors.width}</p>
-              )}
-            </div>
-            <div>
-              <label className="block text-xs text-gray-500 mb-1">Height</label>
-              <input
-                type="number"
-                step="1"
-                min="0"
-                value={value.height || ""}
-                onChange={(e) => updateValue("height", parseFloat(e.target.value) || 0)}
-                className={`w-full rounded-md border px-3 py-2 text-sm ${
-                  errors.height ? "border-red-500" : "border-gray-300"
-                } focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
-                placeholder="0.00"
-              />
-              {errors.height && (
-                <p className="mt-1 text-xs text-red-600">{errors.height}</p>
-              )}
-            </div>
-            <div>
-              <label className="block text-xs text-gray-500 mb-1">Unit</label>
-              <select
-                value={value.dimensionUnit}
-                onChange={(e) => updateValue("dimensionUnit", e.target.value)}
-                className="w-full rounded-md border border-gray-300 bg-gray-50 px-3 py-1"
-              >
-                <option value="ft">ft</option>
-                <option value="m">m</option>
-              </select>
-            </div>
+            <p className="mt-2 text-xs text-gray-500">
+              North America (DOT): 2 tie-downs for first 10 ft, then +1 per 10 ft (or fraction). AU/EU: ≥3.0m → ≥2; ≥6.0m → ≥3; beyond 6.0m +1 per 3.0m.
+            </p>
           </div>
         </div>
 
@@ -176,12 +158,12 @@ export function CargoInputForm({ value, onChange, onSubmit }: CargoInputFormProp
             </svg>
           </div>
           <div className="ml-3">
-            <h3 className="text-sm font-medium text-blue-800">Why dimensions matter?</h3>
+            <h3 className="text-sm font-medium text-blue-800">Regional Standards Applied</h3>
             <div className="mt-2 text-sm text-blue-700">
               <p>
-                Cargo dimensions help determine the optimal number of tie-downs needed. 
-                Longer cargo typically requires more tie-downs to ensure proper distribution 
-                of securing forces and compliance with transportation regulations.
+                Calculations will be based on {getRegionDisplayName(value.region)} standards. 
+                Different regions have varying requirements for safety margins, 
+                indirect tie-down factors, and minimum tie-down counts.
               </p>
             </div>
           </div>

@@ -11,7 +11,7 @@ import { getLocale } from 'next-intl/server'
 export async function generateMetadata(): Promise<Metadata> {
   const currentLocale = await getLocale();
 
-  const pageTitle = "Global Cargo Securement Calculator | International Tie-Down Standards Tool";
+  const pageTitle = "Regional Cargo Securement Calculator | DOT, AS/NZS 4380, EN12195-2 Standards Tool";
   const pageSlug = "tools/cargo-securing-calculator";
   const ogImageUrl = process.env.NEXT_PUBLIC_LOGO_URL;
   const ogImageAlt = pageTitle;
@@ -47,10 +47,10 @@ export async function generateMetadata(): Promise<Metadata> {
           ? languagesAlternate
           : undefined,
     },
-    description: "输入货物信息，立即计算所需捆绑带数量与AWLL值，支持美国DOT、澳洲AS/NS 4380、欧洲EN12195-2等国际标准。",
+    description: "选择地区标准，自动设置单位，计算所需捆绑带数量与WLL/LC值。支持北美DOT、澳洲AS/NZS 4380、欧洲EN12195-2标准，自动应用相应计算系数。",
     openGraph: {
       title: pageTitle,
-      description: "输入货物信息，立即计算所需捆绑带数量与AWLL值，支持美国DOT、澳洲AS/NS 4380、欧洲EN12195-2等国际标准。",
+      description: "选择地区标准，自动设置单位，计算所需捆绑带数量与WLL/LC值。支持北美DOT、澳洲AS/NZS 4380、欧洲EN12195-2标准，自动应用相应计算系数。",
       url: canonicalUrl,
       images: [
         {
@@ -63,7 +63,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       title: pageTitle,
-      description: "输入货物信息，立即计算所需捆绑带数量与AWLL值，支持美国DOT、澳洲AS/NS 4380、欧洲EN12195-2等国际标准。",
+      description: "选择地区标准，自动设置单位，计算所需捆绑带数量与WLL/LC值。支持北美DOT、澳洲AS/NZS 4380、欧洲EN12195-2标准，自动应用相应计算系数。",
     },
   };
 }
@@ -96,8 +96,8 @@ export default async function Page() {
   const webApplicationSchema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Global Cargo Securement Calculator",
-    "description": "Professional international tie-down standards tool supporting DOT (US), AS/NS 4380 (Australia), EN12195-2 (Europe) and more",
+    "name": "Regional Cargo Securement Calculator",
+    "description": "Professional regional tie-down standards tool with automatic unit selection supporting DOT (US), AS/NZS 4380 (Australia), EN12195-2 (Europe) standards. Displays WLL for North America and LC for Australia/Europe.",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web Browser",
     "url": process.env.NEXT_PUBLIC_SITE_URL + "/tools/cargo-securing-calculator",
@@ -118,15 +118,15 @@ export default async function Page() {
         "name": "How many tie down straps do I need for 20 feet cargo?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "According to DOT regulations, cargo over 20 feet (6.1 meters) requires at least 3 tie-downs. Our calculator determines the exact number based on your specific cargo weight and dimensions."
+          "text": "Requirements vary by region: DOT (US) requires 3+ tie-downs for cargo over 20 feet (6.1m), AS/NZS 4380 (Australia) requires 3+ for cargo over 6.0m, and EN12195-2 (Europe) requires 3+ for cargo over 6.0m. Our calculator automatically applies the correct standard."
         }
       },
       {
         "@type": "Question",
-        "name": "What is AWLL in cargo securement?",
+        "name": "What is WLL/LC in cargo securement?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "AWLL (Aggregate Working Load Limit) is the total working load limit of all tie-downs used to secure cargo. It must be at least 50% of the cargo weight for indirect tie-downs and 100% for direct tie-downs."
+          "text": "WLL (Working Load Limit) in North America or LC (Load Capacity) in Australia/Europe is the total working load limit of all tie-downs used to secure cargo. Requirements vary by region: DOT requires 50% for indirect tie-downs, AS/NZS 4380 requires 60%, and EN12195-2 requires 50%. Direct tie-downs require 100% across all standards."
         }
       },
       {
@@ -142,7 +142,15 @@ export default async function Page() {
         "name": "How do I calculate tie down requirements?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Use our calculator by entering cargo weight, dimensions, securing method (direct/indirect), and tie-down angle. The tool automatically calculates required AWLL and recommends appropriate tie-down configurations."
+          "text": "Use our calculator by selecting your region, entering cargo weight, dimensions, securing method (direct/indirect), and tie-down angle. The tool automatically sets units and applies region-specific standards to calculate required WLL/LC and recommend appropriate tie-down configurations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does region selection affect calculations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Region selection automatically sets units (lbs/ft for North America, kg/m for Australia/Europe) and applies correct calculation standards. DOT uses 50% indirect factor and 20% safety margin, AS/NZS 4380 uses 60% indirect factor and 25% safety margin, while EN12195-2 uses 50% indirect factor and 30% safety margin."
         }
       }
     ]
@@ -164,10 +172,10 @@ export default async function Page() {
         <Breadcrumb items={breadcrumbItems.slice(1)} lang={lang} />
         <div className="mx-auto text-center">
           <h1 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">
-            Global Cargo Securement Calculator
+            Regional Cargo Securement Calculator
           </h1>
           <p className="mt-3 text-lg text-black/70">
-            Professional international tie-down standards tool supporting DOT (US), AS/NS 4380 (Australia), EN12195-2 (Europe) and more. Calculate required AWLL and tie-down strap capacity based on cargo weight, securing method, and angle.
+            Select your region for automatic unit selection and calculation standards. Supports DOT (US), AS/NZS 4380 (Australia), EN12195-2 (Europe) with region-specific factors and safety margins. Displays WLL for North America and LC for Australia/Europe.
           </p>
         </div>
         <div className="mt-8">
