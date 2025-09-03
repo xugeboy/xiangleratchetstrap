@@ -12,7 +12,7 @@ import { getLocale } from 'next-intl/server'
 export async function generateMetadata(): Promise<Metadata> {
   const currentLocale = await getLocale();
 
-  const pageTitle = "Regional Angle Efficiency Calculator | WLL/LC Calculator Tool";
+  const pageTitle = "European Angle Efficiency Calculator | EN 12195-1 Standard";
   const pageSlug = "tools/angle-efficiency-calculator";
   const ogImageUrl = process.env.NEXT_PUBLIC_LOGO_URL;
   const ogImageAlt = pageTitle;
@@ -48,10 +48,10 @@ export async function generateMetadata(): Promise<Metadata> {
           ? languagesAlternate
           : undefined,
     },
-    description: "Select regional standards, auto-set units, calculate angle impact on WLL/LC. Supports DOT (US), AS/NZS 4380 (Australia), EN12195-2 (Europe) standards with physics-based angle efficiency calculations.",
+    description: "European angle efficiency calculator for cargo securing. Supports EN 12195-1 (Europe) with indirect and direct lashing mode calculations.",
     openGraph: {
       title: pageTitle,
-      description: "Select regional standards, auto-set units, calculate angle impact on WLL/LC. Supports DOT (US), AS/NZS 4380 (Australia), EN12195-2 (Europe) standards with physics-based angle efficiency calculations.",
+      description: "European angle efficiency calculator for cargo securing. Supports EN 12195-1 (Europe) with indirect and direct lashing mode calculations.",
       url: canonicalUrl,
       images: [
         {
@@ -64,7 +64,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       title: pageTitle,
-      description: "Select regional standards, auto-set units, calculate angle impact on WLL/LC. Supports DOT (US), AS/NZS 4380 (Australia), EN12195-2 (Europe) standards with physics-based angle efficiency calculations.",
+      description: "European angle efficiency calculator for cargo securing. Supports EN 12195-1 (Europe) with indirect and direct lashing mode calculations.",
     },
   };
 }
@@ -73,7 +73,7 @@ export default async function Page() {
   const lang = await getLocale()
   const productPath: PathSegment[] = [
     { name: "Tools", slug: "tools" },
-    { name: "Angle Efficiency Calculator", slug: "angle-efficiency-calculator" }
+    { name: "European Angle Efficiency Calculator", slug: "angle-efficiency-calculator" }
   ];
 
   const breadcrumbItems = generateBreadcrumbsFromPath(
@@ -96,8 +96,8 @@ export default async function Page() {
   // WebApplication Schema
   const webApplicationSchema = {
     "@type": "WebApplication",
-    "name": "Regional Angle Efficiency Calculator",
-    "description": "Professional angle efficiency calculator with automatic unit selection supporting DOT (US), AS/NZS 4380 (Australia), EN12195-2 (Europe) standards. Displays WLL for North America and LC for Australia/Europe.",
+    "name": "European Angle Efficiency Calculator",
+    "description": "Professional angle efficiency calculator for European (EN 12195-1) cargo securing standard. Supports indirect and direct lashing modes with real-time geometric efficiency calculations.",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web Browser",
     "url": process.env.NEXT_PUBLIC_SITE_URL + "/tools/angle-efficiency-calculator",
@@ -114,42 +114,42 @@ export default async function Page() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How does tie-down angle affect strap efficiency?",
+        "name": "What is the difference between indirect and direct lashing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tie-down angle significantly affects strap efficiency through the sine function. At 90° (vertical), you get 100% efficiency. At 30°, you only get 50% efficiency. The efficiency follows the formula: Efficiency = sin(angle) × 100%. Our calculator shows the exact efficiency for any angle."
+          "text": "Indirect lashing (friction lashing) uses sin(α) calculation and relies on friction between cargo and vehicle surface. Direct lashing uses cos(α) × cos(β) calculation and directly restrains cargo movement. The choice depends on your cargo securing method and EN 12195-1 requirements."
         }
       },
       {
         "@type": "Question",
-        "name": "What is WLL/LC in tie-down straps?",
+        "name": "How do I calculate geometric efficiency for indirect lashing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "WLL (Working Load Limit) in North America or LC (Load Capacity) in Australia/Europe is the maximum safe working load that a strap can handle. This rating is printed on the strap and represents the load capacity under ideal conditions (90° angle). At other angles, the effective capacity is reduced."
+          "text": "For indirect lashing, geometric efficiency = sin(α) × 100%, where α is the vertical angle. At 90° (vertical), you get 100% efficiency. At 45°, you get 70.7% efficiency. At 30°, you get 50% efficiency. Our calculator shows real-time efficiency as you adjust the angle."
         }
       },
       {
         "@type": "Question",
-        "name": "How do I calculate the required strap capacity for a specific angle?",
+        "name": "How do I calculate geometric efficiency for direct lashing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Use our calculator by selecting your region, entering the nominal WLL/LC of your strap, and adjusting the angle. The tool automatically calculates the effective capacity and shows the percentage loss. For example, if you need 2000 lbs capacity at 30°, you'll need straps rated for at least 4000 lbs nominal capacity."
+          "text": "For direct lashing, geometric efficiency = cos(α) × cos(β) × 100%, where α is the vertical angle and β is the horizontal angle. Both angles must be optimized for maximum efficiency. Perfect alignment (0° both angles) gives 100% efficiency."
         }
       },
       {
         "@type": "Question",
-        "name": "What angle should I avoid for tie-downs?",
+        "name": "What efficiency levels are considered good for cargo securing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Avoid angles below 30° as they provide less than 50% efficiency. Angles below 15° are particularly dangerous, providing less than 26% efficiency. For optimal safety and efficiency, aim for angles of 60° or greater, which provide 86% or better efficiency."
+          "text": "High efficiency (>85%) is excellent for optimal force transfer. Medium efficiency (50-85%) is acceptable but consider optimization. Low efficiency (<50%) requires stronger straps or angle adjustment. Our calculator provides specific recommendations based on your efficiency level."
         }
       },
       {
         "@type": "Question",
-        "name": "How does the region selection affect the calculator?",
+        "name": "How do EN 12195-1 and AS/NZS 4380 standards affect angle calculations?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The region selection automatically sets the appropriate units (lbs for North America, kg for Australia/Europe) and displays the correct terminology (WLL for North America, LC for Australia/Europe). The angle efficiency calculations remain the same across all regions as they follow universal physics principles."
+          "text": "Both European (EN 12195-1) and Australian (AS/NZS 4380) standards use the same geometric efficiency principles. The physics of angle efficiency is universal - only the terminology and units differ. Our calculator applies the correct trigonometric formulas for both standards."
         }
       }
     ]
@@ -171,10 +171,11 @@ export default async function Page() {
         <Breadcrumb items={breadcrumbItems.slice(1)} lang={lang} />
         <div className="mx-auto container text-center">
           <h1 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">
-            Regional Angle Efficiency Calculator
+            European Angle Efficiency Calculator
           </h1>
           <p className="mt-3 text-lg text-black/70">
-            Select your region for automatic unit selection and calculation standards. Supports DOT (US), AS/NZS 4380 (Australia), EN12195-2 (Europe) with universal physics principles. Displays WLL for North America and LC for Australia/Europe.
+            Professional angle efficiency calculator for European (EN 12195-1) cargo securing standard. 
+            Choose between indirect lashing (friction) and direct lashing modes with real-time geometric efficiency calculations.
           </p>
         </div>
         <div className="mt-8">

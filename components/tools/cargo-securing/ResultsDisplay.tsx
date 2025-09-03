@@ -1,292 +1,209 @@
 "use client";
 
-import { useState } from "react";
-import type {
-  CargoInput,
-  SecuringMethod,
-  CalculationResult,
-} from "@/utils/cargoSecuringCalculation";
-import { formatWeight, formatDimension } from "@/utils/formatUtils";
-import {
-  getRegionDisplayName,
-  getRegionFactors,
-  getLoadCapacityTerm,
-} from "@/utils/cargoSecuringCalculation";
+import type { LashingMethod } from "@/hooks/useEN12195Calculation";
+import type { CalculationResult } from "@/hooks/useEN12195Calculation";
 
 interface ResultsDisplayProps {
-  results: CalculationResult;
-  cargoInput: CargoInput;
-  securingMethod: SecuringMethod;
-  angle: number;
-  onReset: () => void;
-  onRecalculate: () => void;
+  result: CalculationResult | null;
+  isLoading: boolean;
+  lashingMethod: LashingMethod;
 }
 
-export function ResultsDisplay({
-  results,
-  cargoInput,
-  securingMethod,
-  angle,
-  onReset,
-  onRecalculate,
-}: ResultsDisplayProps) {
-  const [showDisclaimer, setShowDisclaimer] = useState(false);
+export function ResultsDisplay({ result, isLoading, lashingMethod }: ResultsDisplayProps) {
+  if (isLoading) {
+    return (
+      <div className="bg-white border border-gray-200 rounded-lg p-8">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Calculating...</p>
+        </div>
+      </div>
+    );
+  }
 
-  const formatWeightLocal = (weight: number, unit: string) => {
-    return formatWeight(weight, unit);
+  if (!result) {
+    return (
+      <div className="bg-gray-50 border border-gray-200 rounded-lg p-8">
+        <div className="text-center">
+          <div className="text-gray-400 mb-4">
+            <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 className="text-lg font-medium text-gray-900 mb-2">Ready to Calculate</h3>
+          <p className="text-gray-600">
+            Please fill in all required fields above to see the calculation results.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  const formatValue = (value: number, decimals: number = 2) => {
+    return typeof value === 'number' ? value.toFixed(decimals) : value;
   };
 
-  const getSecuringMethodText = () => {
-    if (securingMethod === "direct") return "Direct Tie-Down";
-    // Hide angle mention for North America
-    return cargoInput.region === "north_america"
-      ? "Indirect Tie-Down"
-      : `Indirect Tie-Down (${angle}° angle)`;
+  const getEfficiencyWarning = () => {
+    if (lashingMethod === 'indirect' && result.values['sin(α)'] < 0.1) {
+      return {
+        type: 'warning',
+        message: 'Low angle efficiency detected. Consider using a steeper angle for better securing.'
+      };
+    }
+    if (lashingMethod === 'direct' && (result.values['cos(α)'] < 0.1 || result.values['cos(β)'] < 0.1)) {
+      return {
+        type: 'warning',
+        message: 'Low angle efficiency detected. Consider adjusting angles for better securing.'
+      };
+    }
+    return null;
   };
 
-  const getEfficiencyText = () => {
-    if (securingMethod === "direct") return "100%";
-    // Do not show angle efficiency for North America
-    if (cargoInput.region === "north_america") return "";
-    const efficiency = results.angleEfficiencyFactor * 100;
-    return `${efficiency.toFixed(0)}%`;
-  };
+  const efficiencyWarning = getEfficiencyWarning();
 
   return (
-    <div className="container mx-auto">
-      <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
-          Step 4: Calculation Results
-        </h2>
-        <p className="text-gray-600">
-          Your cargo securing requirements have been calculated based on{" "}
-          {getRegionDisplayName(cargoInput.region)} standards
-        </p>
-      </div>
-
-      {/* Summary Card */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6 mb-6">
+    <div className="space-y-6">
+      {/* Main Result */}
+      <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-8">
         <div className="text-center">
-          <div className="text-4xl font-bold text-blue-600 mb-2">
-            {formatWeightLocal(results.totalRequiredWLL, cargoInput.weightUnit)}
+          <div className="text-5xl font-bold text-green-600 mb-4">
+            {result.numberOfStraps}
           </div>
-          <div className="text-lg text-blue-800">
-            Total Required {getLoadCapacityTerm(cargoInput.region)}
+          <div className="text-xl text-green-800 mb-2">
+            Lashing Straps Required
           </div>
-          <div className="text-sm text-blue-600 mt-1">
-            {getSecuringMethodText()}
-            {getEfficiencyText() && ` • ${getEfficiencyText()}`}
+          <div className="text-sm text-green-600">
+            {result.calculationMethod}
           </div>
+          {result.isMinimumApplied && (
+            <div className="mt-2 text-sm text-amber-600">
+              ⚠️ Minimum of 2 straps applied as per EN 12195-1 standard
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Regional rule explanation */}
-      <div className="bg-white border border-gray-200 rounded-lg p-4 mb-8">
-        {cargoInput.region === "north_america" ? (
-          <div className="text-sm text-gray-700">
-            <div className="font-semibold mb-1">DOT essentials</div>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Aggregate WLL ≥ 50% of cargo weight (plus regional safety margin)</li>
-              <li>Direct tie-down contributes 50% of its WLL; indirect (across vehicle) contributes 100%</li>
-              <li>Minimum tie-downs: 2 for first 10 ft, then +1 per additional 10 ft (or fraction)</li>
-            </ul>
-            <div className="mt-2 text-xs text-gray-600">Example: 22 ft cargo → 2 + ceil((22 − 10) / 10) = 4 tie-downs</div>
-          </div>
-        ) : (
-          <div className="text-sm text-gray-700">
-            <div className="font-semibold mb-1">AS/NZS 4380 / EN12195-2 essentials</div>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Method × Angle efficiency model (e.g., indirect 0.8 AU / 0.7 EU; 60° ≈ 0.87)</li>
-              <li>Minimum tie-downs: ≥3.0 m → ≥2; ≥6.0 m → ≥3; beyond 6.0 m +1 per 3.0 m (or fraction)</li>
-            </ul>
-            <div className="mt-2 text-xs text-gray-600">Example: 9.2 m cargo → 3 + ceil((9.2 − 6.0)/3.0) = 4 tie-downs</div>
-          </div>
-        )}
-      </div>
-
-      {/* Detailed Results */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        {/* Input Summary */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Input Summary
-          </h3>
-          <div className="space-y-3">
-            <div className="flex justify-between">
-              <span className="text-gray-600">Cargo Weight:</span>
-              <span className="font-medium">
-                {formatWeightLocal(cargoInput.weight, cargoInput.weightUnit)}
-              </span>
+      {/* Error Display */}
+      {result.error && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+              </svg>
             </div>
-            {cargoInput.length > 0 && (
-              <div className="flex justify-between">
-                <span className="text-gray-600">Length:</span>
-                <span className="font-medium">
-                  {formatDimension(cargoInput.length, cargoInput.dimensionUnit)}
-                </span>
+            <div className="ml-3">
+              <h3 className="text-sm font-medium text-red-800">Calculation Warning</h3>
+              <div className="mt-1 text-sm text-red-700">
+                <p>{result.error}</p>
               </div>
-            )}
-            <div className="flex justify-between">
-              <span className="text-gray-600">Securing Method:</span>
-              <span className="font-medium capitalize">{securingMethod}</span>
             </div>
-            {securingMethod === "indirect" && cargoInput.region !== "north_america" && (
-              <div className="flex justify-between">
-                <span className="text-gray-600">Tie-Down Angle:</span>
-                <span className="font-medium">{angle}°</span>
+          </div>
+        </div>
+      )}
+
+      {/* Efficiency Warning */}
+      {efficiencyWarning && (
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div className="ml-3">
+              <h3 className="text-sm font-medium text-yellow-800">Efficiency Warning</h3>
+              <div className="mt-1 text-sm text-yellow-700">
+                <p>{efficiencyWarning.message}</p>
               </div>
-            )}
+            </div>
           </div>
         </div>
+      )}
 
-        {/* Calculation Details */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Calculation Details
+      {/* Tipping Check Results */}
+      {result.requiresTippingCheck && result.tippingResult && (
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+          <h3 className="text-lg font-semibold text-blue-900 mb-4">
+            Tipping Check Results
           </h3>
-          <div className="space-y-3">
-            <div className="flex justify-between">
-              <span className="text-gray-600">
-                Base {getLoadCapacityTerm(cargoInput.region)}:
-              </span>
-              <span className="font-medium">
-                {formatWeightLocal(
-                  results.baseRequiredWLL,
-                  cargoInput.weightUnit
-                )}
-              </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <div className="text-2xl font-bold text-blue-600 mb-2">
+                {result.tippingResult}
+              </div>
+              <div className="text-sm text-blue-800">
+                Straps required for tipping prevention
+              </div>
             </div>
-            {securingMethod === "indirect" && (
-              <>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Method Factor:</span>
-                  <span className="font-medium">
-                    ×{" "}
-                    {(() => {
-                      const factors = getRegionFactors(cargoInput.region);
-                      return `${(factors.indirectFactor * 100).toFixed(0)}%`;
-                    })()}
-                  </span>
-                </div>
-                {cargoInput.region !== "north_america" && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Angle Factor:</span>
-                    <span className="font-medium">
-                      {`× ${(results.angleEfficiencyFactor * 100).toFixed(0)}%`}
-                    </span>
-                  </div>
-                )}
-              </>
-            )}
-            <div className="flex justify-between">
-              <span className="text-gray-600">
-                Final {getLoadCapacityTerm(cargoInput.region)}:
-              </span>
-              <span className="font-medium text-blue-600">
-                {formatWeightLocal(
-                  results.totalRequiredWLL,
-                  cargoInput.weightUnit
-                )}
-              </span>
+            <div className="text-sm text-blue-700">
+              <p><strong>Safety Factor:</strong> {result.safetyFactor?.toFixed(2)}</p>
+              <p><strong>Formula:</strong> {result.tippingFormula}</p>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
-      {/* XiangleTools Recommendations */}
-      <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
-        <h3 className="text-lg font-semibold text-green-900 mb-4 text-center">
-          🎯 XiangleTools Recommended Solutions - {getRegionDisplayName(cargoInput.region)} Standards
+      {/* Calculation Details */}
+      <div className="bg-white border border-gray-200 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+          Calculation Details
         </h3>
-        <p className="text-center text-sm text-green-700 mb-4">
-          Based on {getLoadCapacityTerm(cargoInput.region)} standards: {
-            cargoInput.region === "north_america" 
-              ? "WLL ratings in lbs (166, 256, 367, 400, 585, 1100, 1467, 2200, 3333, 5400)"
-              : "LC ratings in kg (125, 175, 250, 275, 400, 750, 1000, 1500, 2500, 5000)"
-          }
-        </p>
+        
+        <div className="mb-4">
+          <h4 className="text-sm font-medium text-gray-700 mb-2">Formula Used:</h4>
+          <code className="block bg-gray-100 p-3 rounded text-sm font-mono">
+            {result.formula}
+          </code>
+        </div>
 
-        {results.recommendations.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {results.recommendations.map((rec, index) => (
-              <div
-                key={index}
-                className={`bg-white rounded-lg p-4 border transition-all ${
-                  rec.isExactMatch
-                    ? "border-yellow-400 bg-yellow-50"
-                    : rec.isRecommended
-                    ? "border-green-400 bg-green-50"
-                    : "border-green-300"
-                }`}
-              >
-                <div className="text-center">
-                  <div
-                    className={`text-2xl font-bold mb-2 ${
-                      rec.isExactMatch ? "text-yellow-700" : "text-green-600"
-                    }`}
-                  >
-                    Option {index + 1}
-                    {rec.isRecommended && !rec.isExactMatch && (
-                      <span className="text-sm text-green-600 ml-2">
-                        (recommend)
-                      </span>
-                    )}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <h4 className="text-sm font-medium text-gray-700 mb-3">Input Values:</h4>
+            <div className="space-y-2">
+              {Object.entries(result.values)
+                .filter(([key]) => !key.includes('_') && !key.includes('error_code'))
+                .map(([key, value]) => (
+                  <div key={key} className="flex justify-between text-sm">
+                    <span className="text-gray-600">{key}:</span>
+                    <span className="font-medium">{formatValue(value as number)}</span>
                   </div>
-                  <div className="text-lg text-gray-900 mb-2">
-                    {rec.strapCount} ×{" "}
-                    {formatWeightLocal(rec.strapWLL, rec.strapUnit)}{" "}
-                    {getLoadCapacityTerm(cargoInput.region)} straps
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    Total capacity:{" "}
-                    {formatWeightLocal(rec.totalCapacity, rec.strapUnit)}
-                  </div>
-                  <div
-                    className={`text-xs mt-1 ${
-                      rec.isExactMatch ? "text-yellow-700" : "text-green-600"
-                    }`}
-                  >
-                    {rec.safetyMargin > 0
-                      ? `+${rec.safetyMargin.toFixed(1)}% safety margin`
-                      : "Exact match"}
-                  </div>
-                  {rec.recommendationReason && (
-                    <div className="text-xs text-gray-600 mt-2 italic">
-                      {rec.recommendationReason}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
+                ))}
+            </div>
           </div>
-        ) : (
-          <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-6 text-center">
-            <div className="text-yellow-800">
-              <div className="text-lg font-semibold mb-2">
-                ⚠️ No Safe Configurations Found
-              </div>
-              <div className="text-sm">
-                The calculated required {getLoadCapacityTerm(cargoInput.region)} of{" "}
-                <strong>{formatWeightLocal(results.totalRequiredWLL, cargoInput.weightUnit)}</strong>{" "}
-                cannot be safely achieved with standard {getLoadCapacityTerm(cargoInput.region)} values 
-                while meeting {getRegionDisplayName(cargoInput.region)} minimum safety requirements.
-              </div>
-              <div className="text-sm mt-2">
-                <strong>Recommendations:</strong>
-                <ul className="mt-1 space-y-1">
-                  <li>• Use higher capacity straps than standard values</li>
-                  <li>• Increase the number of tie-down straps</li>
-                  <li>• Consider custom or specialized securing solutions</li>
-                  <li>• Consult with cargo securing professionals</li>
-                </ul>
+          
+          <div>
+            <h4 className="text-sm font-medium text-gray-700 mb-3">Calculation Steps:</h4>
+            <div className="space-y-2 text-sm">
+              {result.values.numerator && (
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Numerator:</span>
+                  <span className="font-medium">{formatValue(result.values.numerator)}</span>
+                </div>
+              )}
+              {result.values.denominator && (
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Denominator:</span>
+                  <span className="font-medium">{formatValue(result.values.denominator)}</span>
+                </div>
+              )}
+              {result.values.raw_result && (
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Raw Result:</span>
+                  <span className="font-medium">{formatValue(result.values.raw_result)}</span>
+                </div>
+              )}
+              <div className="flex justify-between border-t pt-2">
+                <span className="text-gray-600">Final Result:</span>
+                <span className="font-bold text-green-600">{result.numberOfStraps} straps</span>
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
 
       {/* Safety Guidelines */}
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
+      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
         <h3 className="text-lg font-semibold text-yellow-900 mb-4">
           ⚠️ Safety Guidelines
         </h3>
@@ -294,99 +211,64 @@ export function ResultsDisplay({
           <div className="flex items-start">
             <span className="font-medium mr-2">•</span>
             <span>
-              <strong>
-                {getRegionDisplayName(cargoInput.region)} Compliance:
-              </strong>{" "}
-              Cargo over{" "}
-              {cargoInput.dimensionUnit === "ft" ? "10 feet" : "3.0 meters"}{" "}
-              requires at least 2 tie-downs, over{" "}
-              {cargoInput.dimensionUnit === "ft" ? "20 feet" : "6.0 meters"}{" "}
-              requires at least 3 tie-downs
+              <strong>Minimum Requirements:</strong> Always use at least 2 lashing straps as per EN 12195-1 standard
             </span>
           </div>
           <div className="flex items-start">
             <span className="font-medium mr-2">•</span>
             <span>
-              <strong>Weight Distribution:</strong> Ensure tie-downs are evenly
-              distributed along the cargo length
+              <strong>Angle Efficiency:</strong> Steeper angles provide better securing efficiency
             </span>
           </div>
           <div className="flex items-start">
             <span className="font-medium mr-2">•</span>
             <span>
-              <strong>Industry Safety Standards:</strong>{" "}
-              {(() => {
-                const factors = getRegionFactors(cargoInput.region);
-                return `At least ${
-                  factors.safetyMargin
-                }% extra capacity required by ${getRegionDisplayName(
-                  cargoInput.region
-                )} standards for braking impact and road vibration. 
-                 High-value/high-center-of-gravity cargo should have 30-50% extra margin. 
-                 Some major clients require 50% margin (1.5× cargo weight).`;
-              })()}
+              <strong>Pre-trip Inspection:</strong> Check all straps for wear, damage, and proper tension
             </span>
           </div>
           <div className="flex items-start">
             <span className="font-medium mr-2">•</span>
             <span>
-              <strong>Pre-Trip Inspection:</strong> Check all tie-downs for
-              wear, damage, and proper tension before departure
-            </span>
-          </div>
-          <div className="flex items-start">
-            <span className="font-medium mr-2">•</span>
-            <span>
-              <strong>Regular Checks:</strong> Inspect tie-downs during long
-              trips and adjust tension as needed
+              <strong>Professional Verification:</strong> Always verify calculations with qualified personnel
             </span>
           </div>
         </div>
       </div>
 
-      {/* Action Buttons */}
-      <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-        <button
-          onClick={onRecalculate}
-          className="px-8 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-        >
-          Calculate New Cargo
-        </button>
-        <button
-          onClick={onReset}
-          className="px-8 py-3 border border-gray-300 text-gray-700 rounded-md font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
-        >
-          Start Over
-        </button>
-      </div>
-
-      {/* Disclaimer */}
-      <div className="text-center">
-        <button
-          onClick={() => setShowDisclaimer(!showDisclaimer)}
-          className="text-sm text-gray-500 hover:text-gray-700 underline"
-        >
-          {showDisclaimer ? "Hide" : "Show"} Legal Disclaimer
-        </button>
-
-        {showDisclaimer && (
-          <div className="mt-4 p-4 bg-gray-50 rounded-lg text-xs text-gray-600">
-            <p className="mb-2">
-              <strong>Disclaimer:</strong> This calculator provides estimates
-              based on standard industry practices and DOT regulations. Actual
-              requirements may vary based on specific cargo characteristics,
-              transportation conditions, and local regulations. Always consult
-              with qualified professionals and ensure compliance with applicable
-              laws and regulations.
-            </p>
-            <p>
-              XiangleTools is not responsible for any damages or losses
-              resulting from the use of this calculator. Users are responsible
-              for verifying calculations and ensuring proper cargo securing
-              practices.
-            </p>
-          </div>
-        )}
+      {/* Method-specific Information */}
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-blue-900 mb-4">
+          {lashingMethod === 'indirect' ? 'Indirect Lashing Information' : 'Direct Lashing Information'}
+        </h3>
+        <div className="text-sm text-blue-800 space-y-2">
+          {lashingMethod === 'indirect' ? (
+            <>
+              <p>
+                <strong>Indirect Lashing:</strong> Uses friction between cargo and vehicle bed to prevent sliding. 
+                The STF (Standard Tension Force) and vertical angle determine the securing effectiveness.
+              </p>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>Friction coefficient affects the required number of straps</li>
+                <li>Vertical angle efficiency: steeper angles provide better securing</li>
+                <li>Unstable cargo may require additional straps for tipping prevention</li>
+                <li>Suitable for most cargo types without dedicated attachment points</li>
+              </ul>
+            </>
+          ) : (
+            <>
+              <p>
+                <strong>Direct Lashing:</strong> Direct connection between cargo attachment points and vehicle. 
+                Uses LC (Lashing Capacity) rating and considers both vertical and horizontal angles.
+              </p>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>LC rating determines the maximum load capacity per strap</li>
+                <li>Both vertical and horizontal angles affect securing efficiency</li>
+                <li>Provides maximum securing efficiency when properly applied</li>
+                <li>Requires cargo with suitable attachment points</li>
+              </ul>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

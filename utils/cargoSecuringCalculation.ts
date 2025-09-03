@@ -1,7 +1,7 @@
 export type WeightUnit = "kg" | "lbs";
 export type DimensionUnit = "m" | "ft";
 export type SecuringMethod = "indirect" | "direct";
-export type Region = "north_america" | "australia" | "europe";
+export type Region = "north_america" | "europe_australia";
 
 export interface CargoInput {
   region: Region;
@@ -87,10 +87,8 @@ export function getIndirectTieDownFactor(region: Region): number {
   switch (region) {
     case "north_america":
       return 0.5; // DOT: aggregate WLL ≥ 50% of load weight
-    case "australia":
-      return 0.8; // AS/NZS 4380 standard
-    case "europe":
-      return 0.7; // EN12195-2 standard
+    case "europe_australia":
+      return 0.8; // EN12195-1 / AS/NZS 4380 standard
     default:
       return 0.7;
   }
@@ -151,10 +149,8 @@ export function generateRecommendations(
   for (let count = minCount; count <= minCount + 6; count++) {
     const requiredWLLPerStrap = adjustedRequiredWLL / count;
     
-    // Practical rule: each strap WLL should be ≥ 1/3 of total requirement
-    // This ensures safety even with imperfect angles
-    const minWLLPerStrap = adjustedRequiredWLL / 3;
-    const actualRequiredWLLPerStrap = Math.max(requiredWLLPerStrap, minWLLPerStrap);
+    // Use the calculated required WLL per strap without artificial minimum
+    const actualRequiredWLLPerStrap = requiredWLLPerStrap;
 
     // Find ALL standard WLL/LC values that meet or exceed the requirement
     const suitableWLLs = standardValues.filter(
@@ -260,10 +256,13 @@ export function calculateRequiredWLL(
     angleEfficiency = 1.0; // No angle reduction under DOT aggregate rule
     effectiveLoadFactor = 1.0; // not used in NA branch below
 
-    // Required aggregate sum of strap WLLs (with safety margin)
-    const requiredAggregate = requiredActualLoadCapacity * 0.5;
+    // DOT rule: Aggregate WLL of all tiedowns ≥ 50% of cargo weight
+    // Then apply safety margin to the final result
+    const requiredAggregate = weightInKg * 0.5; // 50% of cargo weight
     // Convert to an equivalent total required WLL before distributing to straps
     const totalRequiredWLL_na = requiredAggregate / contributionFactor;
+    // Apply safety margin to the final result
+    const totalRequiredWLL_withSafety = totalRequiredWLL_na * (1 + factors.safetyMargin / 100);
 
     // Determine min tie-down count per NA length rules
     const minTieDownCount = getMinimumTieDownCount(
@@ -274,7 +273,7 @@ export function calculateRequiredWLL(
 
     // Generate recommendations in user-preferred unit
     const userUnit = cargoInput.weightUnit;
-    const totalRequiredInUser = convertWeight(totalRequiredWLL_na, "kg", userUnit);
+    const totalRequiredInUser = convertWeight(totalRequiredWLL_withSafety, "kg", userUnit);
     const recommendations = generateRecommendations(
       totalRequiredInUser,
       userUnit,
@@ -284,8 +283,8 @@ export function calculateRequiredWLL(
 
     // Prepare return payload for NA early exit
     return {
-      baseRequiredWLL: convertWeight(requiredActualLoadCapacity, "kg", userUnit),
-      totalRequiredWLL: Math.round(totalRequiredInUser),
+      baseRequiredWLL: convertWeight(totalRequiredWLL_na, "kg", userUnit), // Base without safety margin
+      totalRequiredWLL: Math.round(totalRequiredInUser), // With safety margin
       methodFactor: methodFactor,
       angleEfficiencyFactor: angleEfficiency,
       recommendations: recommendations,
@@ -400,8 +399,7 @@ export function getWeightUnitForRegion(region: Region): WeightUnit {
   switch (region) {
     case "north_america":
       return "lbs";
-    case "australia":
-    case "europe":
+    case "europe_australia":
       return "kg";
     default:
       return "kg";
@@ -413,8 +411,7 @@ export function getDimensionUnitForRegion(region: Region): DimensionUnit {
   switch (region) {
     case "north_america":
       return "ft";
-    case "australia":
-    case "europe":
+    case "europe_australia":
       return "m";
     default:
       return "m";
@@ -433,19 +430,10 @@ export function getRegionFactors(region: Region) {
           long: 6.1, // 20 feet
         },
       };
-    case "australia":
+    case "europe_australia":
       return {
-        safetyMargin: 25, // AS/NZS 4380 requires 25% minimum
-        indirectFactor: 0.8, // AS/NZS 4380 standard
-        minTieDownLengths: {
-          short: 3.0, // 3 meters
-          long: 6.0, // 6 meters
-        },
-      };
-    case "europe":
-      return {
-        safetyMargin: 30, // EN12195-2 requires 30% minimum
-        indirectFactor: 0.7, // EN12195-2 standard
+        safetyMargin: 30, // EN12195-1 / AS/NZS 4380 requires 30% minimum
+        indirectFactor: 0.8, // EN12195-1 / AS/NZS 4380 standard
         minTieDownLengths: {
           short: 3.0, // 3 meters
           long: 6.0, // 6 meters
@@ -468,10 +456,8 @@ export function getRegionDisplayName(region: Region): string {
   switch (region) {
     case "north_america":
       return "North America (DOT)";
-    case "australia":
-      return "Australia (AS/NZS 4380)";
-    case "europe":
-      return "Europe (EN12195-2)";
+    case "europe_australia":
+      return "Europe & Australia (EN 12195-1 / AS/NZS 4380)";
     default:
       return "Unknown";
   }
@@ -482,8 +468,7 @@ export function getLoadCapacityTerm(region: Region): string {
   switch (region) {
     case "north_america":
       return "WLL";
-    case "australia":
-    case "europe":
+    case "europe_australia":
       return "LC";
     default:
       return "WLL";

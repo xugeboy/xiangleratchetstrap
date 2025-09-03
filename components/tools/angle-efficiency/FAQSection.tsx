@@ -9,44 +9,44 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "What is the recommended tie-down angle range?",
-    answer: "The recommended tie-down angle range is 30°–60° in accordance with EN 12195-1. This range provides the optimal balance between downward pressure (friction) and horizontal restraining force. Angles below 30° provide insufficient friction, while angles above 60° lack adequate horizontal restraining force."
+    question: "What is the difference between indirect and direct lashing?",
+    answer: "Indirect lashing (friction lashing) uses sin(α) calculation and relies on friction between cargo and vehicle surface. Direct lashing uses cos(α) × cos(β) calculation and directly restrains cargo movement. The choice depends on your cargo securing method and EN 12195-1 requirements."
   },
   {
-    question: "Why is 30°–60° the optimal angle range?",
-    answer: "In the 30°–60° range, straps provide both sufficient downward pressure for friction and effective horizontal force to prevent cargo movement. Below 30°, straps mainly 'pull' rather than 'press down', causing insufficient friction. Above 60°, straps mainly 'press down' but can't effectively prevent sliding."
+    question: "How do I calculate geometric efficiency for indirect lashing?",
+    answer: "For indirect lashing, geometric efficiency = sin(α) × 100%, where α is the vertical angle. At 90° (vertical), you get 100% efficiency. At 45°, you get 70.7% efficiency. At 30°, you get 50% efficiency. Our calculator shows real-time efficiency as you adjust the angle."
   },
   {
-    question: "How do I calculate effective strap capacity at any angle?",
-    answer: "Multiply the strap's nominal WLL/LC by the sine of the angle. For example: 2000 lbs strap at 45° = 2000 × sin(45°) = 2000 × 0.707 = 1414 lbs effective capacity. Our calculator handles this automatically for any angle between 15° and 90°."
+    question: "How do I calculate geometric efficiency for direct lashing?",
+    answer: "For direct lashing, geometric efficiency = cos(α) × cos(β) × 100%, where α is the vertical angle and β is the horizontal angle. Both angles must be optimized for maximum efficiency. Perfect alignment (0° both angles) gives 100% efficiency."
   },
   {
-    question: "What's the difference between nominal and effective WLL/LC?",
-    answer: "Nominal WLL/LC is the rating printed on the strap (measured at 90° angle). Effective WLL/LC is the actual restraining capacity at your specific tie-down angle. The effective capacity is always equal to or less than the nominal capacity, depending on the angle."
+    question: "What efficiency levels are considered good for cargo securing?",
+    answer: "High efficiency (>85%) is excellent for optimal force transfer. Medium efficiency (50-85%) is acceptable but consider optimization. Low efficiency (<50%) requires stronger straps or angle adjustment. Our calculator provides specific recommendations based on your efficiency level."
   },
   {
-    question: "How do I measure tie-down angles accurately?",
-    answer: "Use a digital angle finder, smartphone app, or protractor to measure the angle between the strap and the horizontal surface. Measure from where the strap leaves the cargo to where it connects to the vehicle. For best accuracy, measure multiple points along the strap length."
+    question: "How do EN 12195-1 and AS/NZS 4380 standards affect angle calculations?",
+    answer: "Both European (EN 12195-1) and Australian (AS/NZS 4380) standards use the same geometric efficiency principles. The physics of angle efficiency is universal - only the terminology and units differ. Our calculator applies the correct trigonometric formulas for both standards."
   },
   {
-    question: "What are the practical angle recommendations for different cargo heights?",
-    answer: "For low cargo, position tie-down points slightly lower (closer to floor) to maintain around 45°. For high cargo, you can raise tie-down points slightly, but avoid exceeding 60°. The goal is to stay within the 30°–60° optimal range for maximum effectiveness."
+    question: "What are the practical angle recommendations for different lashing methods?",
+    answer: "For indirect lashing, aim for steeper angles (60°-90°) to maximize sin(α) efficiency. For direct lashing, keep both vertical and horizontal angles as small as possible (0°-30°) to maximize cos(α) × cos(β) efficiency. Our calculator provides specific recommendations for each method."
   },
   {
     question: "Can I use trigonometry to calculate angle efficiency?",
-    answer: "Yes! The efficiency calculation is based on trigonometry. The vertical component of force = Total Force × sin(angle). This is why 30° gives 50% efficiency (sin 30° = 0.5) and 60° gives 86.6% efficiency (sin 60° = 0.866)."
+    answer: "Yes! The efficiency calculation is based on trigonometry. For indirect lashing: Efficiency = sin(α) × 100%. For direct lashing: Efficiency = cos(α) × cos(β) × 100%. This is why angle selection is critical for cargo securing compliance."
   },
   {
-    question: "How does the region selection affect angle calculations?",
-    answer: "The physics of angle efficiency is universal across all regions. However, different regions use different terminology (WLL vs LC) and units (lbs vs kg). Our calculator automatically adjusts the display while keeping the same sine-based calculations."
+    question: "How do I measure lashing angles accurately?",
+    answer: "Use a digital angle finder, smartphone app, or protractor to measure the angle between the strap and the reference surface. For indirect lashing, measure the vertical angle α. For direct lashing, measure both vertical angle α and horizontal angle β. Measure multiple points along the strap for accuracy."
   },
   {
-    question: "Are there industry standards for minimum tie-down angles?",
-    answer: "EN 12195-1 recommends tie-down angles of 30°–60°. DOT regulations require adequate restraining force, which typically means angles above 30°. Our calculator uses a minimum of 15° for practical applications, but angles below 30° require careful consideration and additional safety measures."
+    question: "Are there industry standards for minimum lashing angles?",
+    answer: "EN 12195-1 and AS/NZS 4380 standards require adequate geometric efficiency for cargo securing compliance. While there are no specific minimum angles, low efficiency (<50%) typically requires stronger straps or angle adjustment. Our calculator helps ensure compliance with these standards."
   },
   {
-    question: "How do I optimize my tie-down setup for better angles?",
-    answer: "Position tie-down points higher on your cargo or lower on your vehicle to create steeper angles. Use longer straps when possible to achieve better angles. Consider using multiple shorter straps instead of fewer long straps if it improves the angles. Aim for the 30°–60° optimal range."
+    question: "How do I optimize my lashing setup for better efficiency?",
+    answer: "For indirect lashing, position lashing points to achieve steeper angles (60°-90°). For direct lashing, minimize both vertical and horizontal angles (0°-30°). Use longer straps when possible to achieve better angles. Our calculator provides specific optimization recommendations based on your current setup."
   }
 ]
 
@@ -71,7 +71,7 @@ export function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-gray-600">
-            Common questions about tie-down angle efficiency, trigonometry calculations, and strap capacity optimization
+            Common questions about European and Australian angle efficiency standards, indirect vs direct lashing, and geometric efficiency optimization
           </p>
         </div>
 
@@ -119,13 +119,13 @@ export function FAQSection() {
               Need More Help?
             </h3>
             <p className="text-blue-700 mb-4">
-              Our angle efficiency calculator uses trigonometry to help you understand how tie-down angles affect strap performance. 
-              For complex cargo securement requirements, consult with qualified professionals.
+              Our European and Australian angle efficiency calculator uses trigonometry to help you understand how lashing angles affect strap performance. 
+              For complex cargo securing requirements, consult with qualified professionals familiar with EN 12195-1 and AS/NZS 4380 standards.
             </p>
             <div className="text-sm text-blue-600">
-              <p>• Measure angles with precision tools</p>
-              <p>• Understand the sine function relationship</p>
-              <p>• Optimize angles for maximum efficiency</p>
+              <p>• Choose the correct lashing mode (indirect vs direct)</p>
+              <p>• Understand the trigonometric function relationships</p>
+              <p>• Optimize angles for maximum geometric efficiency</p>
             </div>
           </div>
         </div>

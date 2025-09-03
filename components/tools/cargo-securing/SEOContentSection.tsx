@@ -1,258 +1,350 @@
 "use client";
 
+import { useRegion } from "@/contexts/RegionContext";
+
 export function SEOContentSection() {
+  const { selectedRegion } = useRegion();
+
   return (
-    <div className="bg-white py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="prose prose-lg max-w-none">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Global Cargo Securement Calculator for International Standards
-            Compliance
+    <section className="py-16 bg-gray-50">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            {selectedRegion === 'north_america' 
+              ? 'Mastering North American Cargo Securement: A Guide to FMCSA & NSC Rules'
+              : 'The Engineer\'s Approach: Load Restraint with EN 12195-1 Standard'
+            }
           </h2>
-
-          <p className="text-gray-700 mb-6">
-            Our <strong>cargo securement calculator</strong> is the ultimate
-            tool for determining
-            <strong> tie down strap</strong> requirements and ensuring full
-            compliance with
-            <strong> international tie down standards</strong>. Whether
-            you&apos;re transporting heavy machinery, construction materials, or
-            general cargo, this <strong>WLL/LC calculator</strong> provides
-            precise calculations based on current{" "}
-            <strong>global cargo securement regulations</strong>.
+          <p className="text-lg text-gray-600 max-w-4xl mx-auto">
+            {selectedRegion === 'north_america'
+              ? 'Navigating the complexities of cargo securement regulations in North America can be challenging. Governed by the Federal Motor Carrier Safety Administration (FMCSA) in the United States and Canada&apos;s National Safety Code (NSC) Standard 10, these rules are built on a foundation of performance standards designed to withstand real-world forces.'
+              : 'Unlike North America&apos;s prescriptive rules, the European cargo securement standard, EN 12195-1, is a comprehensive, physics-based system. It treats cargo securement as an engineering calculation, requiring a deeper understanding of the forces at play to create a securement plan that is both safe and efficient.'
+            }
           </p>
+        </div>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            How Many Tie Down Straps Do I Need?
-          </h3>
+        {selectedRegion === 'north_america' ? (
+          <NorthAmericaContent />
+        ) : (
+          <EuropeContent />
+        )}
+      </div>
+    </section>
+  );
+}
 
+function NorthAmericaContent() {
+  return (
+    <div className="space-y-12">
+      {/* Core Principles */}
+      <div className="bg-white rounded-lg shadow-sm p-8 border border-gray-200">
+        <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+          Core Principles of North American Cargo Securement
+        </h3>
+        <div className="prose prose-lg max-w-none">
           <p className="text-gray-700 mb-6">
-            The number of <strong>tie down straps</strong> required depends on
-            your cargo weight, dimensions, securing method, and regional
-            standards. Our calculator automatically determines the optimal
-            configuration based on your selected region:
+            The core principle of the North American system is that your cargo securement must be strong enough to resist <strong>0.8g of forward force</strong> (hard braking), <strong>0.5g of rearward force</strong> (acceleration), and <strong>0.5g of sideways force</strong> (turning). To simplify these physics, the regulations provide two parallel, mandatory pillars for compliance:
           </p>
-
-          <ul className="list-disc pl-6 mb-6 text-gray-700">
-            <li>
-              <strong>North America (DOT):</strong> 10+ feet requires 2+ straps,
-              20+ feet requires 3+ straps
-            </li>
-            <li>
-              <strong>Australia (AS/NZS 4380):</strong> 3+ meters requires 2+
-              straps, 6+ meters requires 3+ straps
-            </li>
-            <li>
-              <strong>Europe (EN12195-2):</strong> 3+ meters requires 2+ straps,
-              6+ meters requires 3+ straps
-            </li>
-            <li>
-              <strong>Heavy cargo:</strong> Additional straps based on weight
-              requirements and regional standards
-            </li>
-          </ul>
-
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            Understanding WLL/LC
-          </h3>
-
-          <p className="text-gray-700 mb-6">
-            The <strong>WLL/LC calculator</strong> determines the total working
-            load limit needed for your cargo securement system. This critical
-            calculation ensures your
-            <strong> tie down straps</strong> can handle the forces exerted
-            during transportation:
-          </p>
-
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-            <h4 className="font-semibold text-blue-900 mb-2">
-              Regional WLL/LC Requirements:
-            </h4>
-            <ul className="text-blue-800 space-y-1">
-              <li>
-                • <strong>Direct tie-downs:</strong> 100% of cargo weight (all
-                regions)
-              </li>
-              <li>
-                • <strong>Indirect tie-downs:</strong> 50% (DOT/EN12195-2) or
-                60% (AS/NZS 4380) of cargo weight
-              </li>
-              <li>
-                • <strong>Safety margin:</strong> 20% (DOT), 25% (AS/NZS 4380),
-                or 30% (EN12195-2) minimum
-              </li>
-            </ul>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <h4 className="text-xl font-semibold text-blue-900 mb-3">
+                Pillar 1: Aggregate Working Load Limit (AWLL)
+              </h4>
+              <p className="text-blue-800">
+                The total strength of your securement system must be at least <strong>50% of your cargo&apos;s total weight</strong>.
+              </p>
+            </div>
+            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+              <h4 className="text-xl font-semibold text-green-900 mb-3">
+                Pillar 2: Minimum Number of Tie-Downs
+              </h4>
+              <p className="text-green-800">
+                You must use a minimum number of straps based on the cargo&apos;s length and positioning.
+              </p>
+            </div>
           </div>
+        </div>
+      </div>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            Minimum Tie-Down Count Rules (By Region)
-          </h3>
-
-          <div className="bg-white border border-gray-200 rounded-lg p-6 mb-6 text-gray-800">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-2">North America (DOT)</h4>
-                <ul className="list-disc pl-6 text-sm space-y-1">
-                  <li>Aggregate WLL ≥ 50% of cargo weight; direct contributes 50%, indirect (across vehicle) contributes 100%</li>
-                  <li>Minimum tie-downs: 2 for first 10 ft, then +1 per additional 10 ft (or fraction)</li>
-                </ul>
-                <div className="text-xs text-gray-600 mt-2">Example: 22 ft cargo → 2 + ceil((22 − 10)/10) = 4 tie-downs</div>
-              </div>
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-2">Australia / Europe</h4>
-                <ul className="list-disc pl-6 text-sm space-y-1">
-                  <li>Method × Angle efficiency model (e.g., AU 0.8, EU 0.7; 60° ≈ 0.87)</li>
-                  <li>Minimum tie-downs: ≥3.0 m → ≥2; ≥6.0 m → ≥3; beyond 6.0 m +1 per 3.0 m (or fraction)</li>
-                </ul>
-                <div className="text-xs text-gray-600 mt-2">Example: 9.2 m cargo → 3 + ceil((9.2 − 6.0)/3.0) = 4 tie-downs</div>
+      {/* Pillar 1: AWLL */}
+      <div className="bg-white rounded-lg shadow-sm p-8 border border-gray-200">
+        <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+          Pillar 1: Calculating Your Aggregate Working Load Limit (AWLL)
+        </h3>
+        <div className="prose prose-lg max-w-none">
+          <p className="text-gray-700 mb-6">
+            The fundamental rule is that the total strength of your securement system (the AWLL) must be at least <strong>50% of your cargo&apos;s total weight</strong>. However, calculating the AWLL isn&apos;t as simple as adding up the Working Load Limits (WLL) of your straps. The contribution of each tie-down depends on how it&apos;s used:
+          </p>
+          
+          <div className="space-y-6">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <h4 className="text-lg font-semibold text-blue-900 mb-3">
+                Direct Tie-Downs
+              </h4>
+              <p className="text-blue-800 mb-3">
+                Each strap attached directly from the vehicle to the cargo contributes <strong>100% of its WLL</strong> to the AWLL. This method is common for heavy machinery with dedicated attachment points.
+              </p>
+              <div className="bg-blue-100 rounded-lg p-4">
+                <p className="text-blue-900 font-medium">
+                  Formula: Direct Tie-Down Contribution = 50% × WLL
+                </p>
               </div>
             </div>
-          </div>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            Regional Standards and Automatic Unit Selection
-          </h3>
-
-          <p className="text-gray-700 mb-6">
-            Our <strong>cargo securement calculator</strong> automatically
-            adapts to your selected region, applying the correct units and
-            calculation standards. North America uses lbs/ft with DOT standards,
-            while Australia and Europe use kg/m with their respective standards.
-            The tool automatically sets the appropriate indirect tie-down
-            factors and safety margins for each region.
-          </p>
-
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            International Cargo Securement Standards Compliance
-          </h3>
-
-          <p className="text-gray-700 mb-6">
-            Our <strong>cargo securement calculator</strong> ensures compliance
-            with major international standards and regulations. The tool
-            considers:
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h4 className="font-semibold text-blue-900 mb-2">
-                🇺🇸 DOT (United States)
+            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+              <h4 className="text-lg font-semibold text-green-900 mb-3">
+                Indirect Tie-Downs (Cross-Vehicle)
               </h4>
-              <p className="text-blue-800 text-sm mb-2">
-                Federal Motor Carrier Safety Administration regulations for
-                cargo securement
+              <p className="text-green-800 mb-3">
+                Straps that go over or around the cargo and anchor to opposite sides of the vehicle contribute <strong>100% of their WLL</strong>. This is the most common method for palletized goods or lumber.
               </p>
-              <a
-                href="https://www.fmcsa.dot.gov/regulations/cargo-securement/cargo-securement-rules"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 text-xs hover:underline"
-              >
-                Learn More →
-              </a>
+              <div className="bg-green-100 rounded-lg p-4">
+                <p className="text-green-900 font-medium">
+                  Formula: Cross-Vehicle Contribution = 100% × WLL
+                </p>
+              </div>
             </div>
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <h4 className="font-semibold text-green-900 mb-2">
-                🇦🇺 AS/NS 4380 (Australia)
+
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
+              <h4 className="text-lg font-semibold text-amber-900 mb-3">
+                Indirect Tie-Downs (Same Side)
               </h4>
-              <p className="text-green-800 text-sm mb-2">
-                Australian/New Zealand standard for load restraint assemblies
+              <p className="text-amber-800 mb-3">
+                If a strap goes around the cargo but anchors back to the same side of the vehicle, it only contributes <strong>50% of its WLL</strong>. This is a critical and often overlooked detail that can lead to non-compliance.
               </p>
-              <a
-                href="https://www.ntc.gov.au/sites/default/files/assets/files/NTC%20Load%20Restraint%20Guide%202018%20%28updated%20design%202024%29.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-green-600 text-xs hover:underline"
-              >
-                Learn More →
-              </a>
-            </div>
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-              <h4 className="font-semibold text-purple-900 mb-2">
-                🇪🇺 EN12195-2 (Europe)
-              </h4>
-              <p className="text-purple-800 text-sm mb-2">
-                European standard for lashing and securing of cargo on road
-                vehicles
-              </p>
-              <a
-                href="https://www.en-standard.eu/bs-en-12195-2-2001-load-restraint-assemblies-on-road-vehicles-safety-web-lashing-made-from-man-made-fibres/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-purple-600 text-xs hover:underline"
-              >
-                Learn More →
-              </a>
+              <div className="bg-amber-100 rounded-lg p-4">
+                <p className="text-amber-900 font-medium">
+                  Formula: Same-Side Contribution = 50% × WLL
+                </p>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
 
-          <ul className="list-disc pl-6 mb-6 text-gray-700">
-            <li>Minimum tie-down requirements based on cargo length</li>
-            <li>Proper AWLL calculations for different securing methods</li>
-            <li>Angle efficiency factors for indirect tie-downs</li>
-            <li>Safety margins for unexpected conditions</li>
-            <li>Industry best practices for cargo securement</li>
-            <li>Cross-border compliance considerations</li>
-          </ul>
-
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            Advanced Tie Down Strap Calculator Features
-          </h3>
-
+      {/* Pillar 2: Minimum Tie-Down Count */}
+      <div className="bg-white rounded-lg shadow-sm p-8 border border-gray-200">
+        <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+          Pillar 2: Meeting the Minimum Tie-Down Count
+        </h3>
+        <div className="prose prose-lg max-w-none">
           <p className="text-gray-700 mb-6">
-            This comprehensive <strong>tie down strap calculator</strong>{" "}
-            provides:
+            Independently of the AWLL strength calculation, you must also use a minimum number of straps based on the cargo&apos;s length and how it&apos;s positioned. For cargo not blocked by a headboard or bulkhead:
           </p>
-
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h4 className="font-semibold text-gray-900 mb-2">
-                Precise Calculations
-              </h4>
-              <p className="text-gray-700 text-sm">
-                Accurate AWLL and tie-down requirements based on your specific
-                cargo parameters
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-blue-900 mb-2">1</div>
+              <h4 className="font-semibold text-blue-900 mb-2">Tie-Down</h4>
+              <p className="text-sm text-blue-800">
+                For articles ≤ 5 feet in length and ≤ 1,100 lbs.
               </p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h4 className="font-semibold text-gray-900 mb-2">
-                DOT Compliance
-              </h4>
-              <p className="text-gray-700 text-sm">
-                Automatic compliance checking with current DOT and FMCSA
-                regulations
+            
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-green-900 mb-2">2</div>
+              <h4 className="font-semibold text-green-900 mb-2">Tie-Downs</h4>
+              <p className="text-sm text-green-800">
+                For articles ≤ 5 feet but over 1,100 lbs, or for any article between 5 and 10 feet long, regardless of weight.
               </p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h4 className="font-semibold text-gray-900 mb-2">
-                Safety Recommendations
-              </h4>
-              <p className="text-gray-700 text-sm">
-                Professional recommendations with appropriate safety margins
+            
+            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-purple-900 mb-2">3+</div>
+              <h4 className="font-semibold text-purple-900 mb-2">Tie-Downs</h4>
+              <p className="text-sm text-purple-800">
+                For articles longer than 10 feet, you need 2 tie-downs for the first 10 feet, plus one additional tie-down for every 10 feet (or portion thereof) after that.
               </p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h4 className="font-semibold text-gray-900 mb-2">
-                Multiple Methods
-              </h4>
-              <p className="text-gray-700 text-sm">
-                Support for both direct and indirect tie-down securing methods
+            
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-amber-900 mb-2">⚠️</div>
+              <h4 className="font-semibold text-amber-900 mb-2">Critical</h4>
+              <p className="text-sm text-amber-800">
+                Don&apos;t guess on safety. These dual requirements make manual calculation complex and prone to error.
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-            <h4 className="font-semibold text-yellow-900 mb-2">
-              Important Safety Note
+function EuropeContent() {
+  return (
+    <div className="space-y-12">
+      {/* Key Principles */}
+      <div className="bg-white rounded-lg shadow-sm p-8 border border-gray-200">
+        <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+          Key Principles of EN 12195-1
+        </h3>
+        <div className="prose prose-lg max-w-none">
+          <p className="text-gray-700 mb-6">
+            The standard is built to counteract the same forces as the North American rules—<strong>0.8g forward</strong>, <strong>0.5g rearward</strong>, and <strong>0.5g sideways</strong>—but it does so through detailed formulas that account for the real-world variables of each unique load.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <h4 className="text-lg font-semibold text-blue-900 mb-3">
+                Friction is a Calculated Force
+              </h4>
+              <p className="text-blue-800 text-sm">
+                EN 12195-1 formally includes the coefficient of friction (µ) in its calculations. The friction between your cargo and the vehicle deck is a measurable force that helps secure the load.
+              </p>
+            </div>
+            
+            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+              <h4 className="text-lg font-semibold text-green-900 mb-3">
+                STF vs. LC: A Critical Distinction
+              </h4>
+              <p className="text-green-800 text-sm">
+                European standards make a crucial distinction between STF (Standard Tension Force) and LC (Lashing Capacity) values on a lashing&apos;s label.
+              </p>
+            </div>
+            
+            <div className="bg-purple-50 border border-purple-200 rounded-lg p-6">
+              <h4 className="text-lg font-semibold text-purple-900 mb-3">
+                Angles Matter Mathematically
+              </h4>
+              <p className="text-purple-800 text-sm">
+                The angle of your lashing straps is not just a best practice—it&apos;s a critical variable in the formula that affects efficiency.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* STF vs LC */}
+      <div className="bg-white rounded-lg shadow-sm p-8 border border-gray-200">
+        <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+          STF vs. LC: Understanding the Critical Distinction
+        </h3>
+        <div className="prose prose-lg max-w-none">
+          <p className="text-gray-700 mb-6">
+            European standards make a crucial distinction between two values on a lashing&apos;s label, which are used for different methods. Using the wrong value in your calculation is a common and dangerous mistake.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <h4 className="text-xl font-semibold text-blue-900 mb-4">
+                STF (Standard Tension Force)
+              </h4>
+              <div className="space-y-3">
+                <p className="text-blue-800">
+                  This is the <strong>residual tension</strong>, or &ldquo;pre-tension,&rdquo; applied by a tensioning device like a ratchet.
+                </p>
+                <p className="text-blue-800">
+                  It is the <strong>single most important value</strong> for indirect (top-over) lashing, as this tension creates the pressure that generates friction.
+                </p>
+                <div className="bg-blue-100 rounded-lg p-4">
+                  <p className="text-blue-900 font-medium">
+                    Used for: Indirect lashing calculations
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+              <h4 className="text-xl font-semibold text-green-900 mb-4">
+                LC (Lashing Capacity)
+              </h4>
+              <div className="space-y-3">
+                <p className="text-green-800">
+                  This is the <strong>maximum force</strong> a strap can handle in a straight pull.
+                </p>
+                <p className="text-green-800">
+                  It is the <strong>key value</strong> used for direct lashing, where the strap directly opposes the cargo&apos;s movement.
+                </p>
+                <div className="bg-green-100 rounded-lg p-4">
+                  <p className="text-green-900 font-medium">
+                    Used for: Direct lashing calculations
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Friction and Anti-slip */}
+      <div className="bg-white rounded-lg shadow-sm p-8 border border-gray-200">
+        <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+          Friction: A Measurable Force in Your Calculations
+        </h3>
+        <div className="prose prose-lg max-w-none">
+          <p className="text-gray-700 mb-6">
+            A major difference is that EN 12195-1 formally includes the coefficient of friction (µ) in its calculations. The friction between your cargo and the vehicle deck is a measurable force that helps secure the load.
+          </p>
+          
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-6 mb-6">
+            <h4 className="text-lg font-semibold text-green-900 mb-3">
+              💡 Pro Tip: Anti-Slip Materials
             </h4>
-            <p className="text-yellow-800 text-sm">
-              While our <strong>cargo securement calculator</strong> provides
-              accurate calculations based on{" "}
-              <strong>international tie down standards</strong>, always consult
-              with qualified professionals for specific cargo types and
-              transportation conditions. Different regions may have specific
-              requirements, and regular inspection and maintenance of tie-down
-              equipment is essential for safe transportation.
+            <p className="text-green-800">
+              Using high-friction materials like <strong>anti-slip mats</strong> can dramatically reduce the number of lashings needed, an effect you can quantify with our calculator.
             </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+              <h5 className="font-semibold text-gray-900 mb-2">Common Friction Coefficients:</h5>
+              <ul className="text-sm text-gray-700 space-y-1">
+                <li>• Wood on Wood: 0.4-0.6</li>
+                <li>• Steel on Steel: 0.1-0.2</li>
+                <li>• Rubber on Steel: 0.6-0.8</li>
+                <li>• Anti-slip mat: 0.8-1.0</li>
+              </ul>
+            </div>
+            
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+              <h5 className="font-semibold text-gray-900 mb-2">Impact on Calculations:</h5>
+              <ul className="text-sm text-gray-700 space-y-1">
+                <li>• Higher friction = Fewer straps needed</li>
+                <li>• Lower friction = More straps required</li>
+                <li>• Wet conditions reduce friction</li>
+                <li>• Surface condition matters</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Angles */}
+      <div className="bg-white rounded-lg shadow-sm p-8 border border-gray-200">
+        <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+          Angles Matter Mathematically
+        </h3>
+        <div className="prose prose-lg max-w-none">
+          <p className="text-gray-700 mb-6">
+            The angle of your lashing straps (α for vertical, β for horizontal) is not just a best practice—it&apos;s a critical variable in the formula. A poor angle can render a strong lashing almost useless, and the EN 12195-1 calculation will reflect this loss of efficiency precisely.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-green-900 mb-2">90°</div>
+              <h4 className="font-semibold text-green-900 mb-2">Optimal</h4>
+              <p className="text-sm text-green-800">
+                Maximum efficiency, 100% of strap capacity
+              </p>
+            </div>
+            
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-yellow-900 mb-2">60°</div>
+              <h4 className="font-semibold text-yellow-900 mb-2">Good</h4>
+              <p className="text-sm text-yellow-800">
+                ~87% efficiency, acceptable for most loads
+              </p>
+            </div>
+            
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-red-900 mb-2">30°</div>
+              <h4 className="font-semibold text-red-900 mb-2">Poor</h4>
+              <p className="text-sm text-red-800">
+                ~50% efficiency, may require additional straps
+              </p>
+            </div>
           </div>
         </div>
       </div>

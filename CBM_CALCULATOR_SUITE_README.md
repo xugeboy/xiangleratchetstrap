@@ -1,177 +1,292 @@
-# CBM Calculator Suite
+# Cargo Securing Calculator Suite
 
-基于 [CBM Calculator](https://www.cbmcalculator.com/index) 网站功能，我们实现了一个完整的 CBM 计算器套件，包含 6 个专业计算器工具。
+A comprehensive web application for calculating cargo securing requirements based on European standard EN 12195-1. This suite includes multiple calculation tools for safe road transport.
 
-## 🚀 功能特性
+## 🚛 Cargo Securing Calculator (EN 12195-1)
 
-### 1. **CBM Calculator** - 单产品尺寸计算器
-- 计算单个产品的立方体积
-- 支持多种单位（毫米、厘米、米、英寸、英尺）
-- 重量和体积计算
-- 集装箱适配分析
-- 托盘堆叠优化
+### Overview
+The Cargo Securing Calculator implements the European standard EN 12195-1 for calculating the required number of lashing straps for safe road transport. It supports both indirect (frictional) and direct lashing methods with real-time calculations and comprehensive validation.
 
-### 2. **Volumetric Weight Calculator** - 体积重量计算器
-- 计算包裹的体积重量
-- 海运费和空运费计算
-- 实际重量与体积重量比较
-- 运费成本优化
-- 支持厘米和英寸单位
+### Key Features
 
-### 3. **Cubic Meter Calculator** - 多产品立方米计算器
-- 同时处理多个产品
-- 批量体积计算
-- 总集装箱体积分析
-- 高效的货物规划
-- 支持多种单位转换
+#### 1. **Lashing Method Selection**
+- **Indirect Lashing (Top-Over)**: Uses friction between cargo and vehicle bed
+- **Direct Lashing**: Direct connection between cargo attachment points and vehicle
 
-### 4. **Cubic Feet Calculator** - 多产品立方英尺计算器
-- 以立方英尺计算体积
-- 多产品支持
-- 英制单位计算
-- 符合美国运输标准
-- 适合美国国内运输
+#### 2. **Dynamic Input Forms**
+- **Common Fields**: Cargo weight, force direction, friction coefficient
+- **Method-Specific Fields**: STF/LC values, vertical/horizontal angles
+- **Advanced Options**: Unstable cargo detection with tipping calculations
 
-### 5. **Single Shipping Container** - 单集装箱装载计算器
-- 支持 20ft、40ft 和 40ft HC 集装箱
-- 占用重量和体积百分比分析
-- 产品堆叠优化
-- 集装箱利用率分析
-- 装载建议和警告
+#### 3. **Real-time Calculations**
+- Instant results as users input values
+- Comprehensive calculation breakdown
+- Safety factor considerations for unstable cargo
 
-### 6. **Multiple Shipping Container** - 多集装箱装载计算器
-- 混合货物优化
-- 最佳集装箱选择
-- 成本效益分析
-- 高级装载规划
-- 集装箱推荐排名
+#### 4. **Enhanced Validation**
+- Input range validation with helpful error messages
+- Real-time validation feedback
+- Safety warnings for extreme values
 
-## 🛠️ 技术实现
+### Calculation Methods
 
-### 组件结构
+#### Indirect Lashing Formula
 ```
-components/tools/cbm/
-├── CbmCalculator.tsx              # 主 CBM 计算器
-├── VolumetricWeightCalculator.tsx # 体积重量计算器
-├── MultipleProductsCbmCalculator.tsx # 多产品计算器
-├── CubicFeetCalculator.tsx        # 立方英尺计算器
-├── SingleContainerCalculator.tsx   # 单集装箱计算器
-├── MultipleContainerCalculator.tsx # 多集装箱计算器
-├── InputForm.tsx                  # 输入表单组件
-├── ResultsDisplay.tsx             # 结果显示组件
-└── PalletVisualizer.tsx          # 托盘可视化组件
+n = ((c_x,y - μ) × m × g) / (2 × μ × STF × sin(α))
 ```
 
-### 主要特性
-- **响应式设计**: 支持桌面和移动设备
-- **TypeScript**: 完整的类型安全
-- **Tailwind CSS**: 现代化的 UI 设计
-- **状态管理**: React hooks 状态管理
-- **单位转换**: 自动单位转换和计算
-- **实时计算**: 即时结果更新
+**Where:**
+- `n` = Number of straps required
+- `c_x,y` = Force direction coefficient (0.8g for braking, 0.5g for turning)
+- `μ` = Friction coefficient between cargo and vehicle bed
+- `m` = Cargo mass (kg)
+- `g` = Gravitational acceleration (9.81 m/s²)
+- `STF` = Standard Tension Force (daN, converted to N)
+- `α` = Vertical angle (degrees, converted to radians)
 
-## 📱 用户界面
+#### Direct Lashing Formula
+```
+n = (c_x,y × (m × g / 10)) / (LC × cos(α) × cos(β))
+```
 
-### 导航网格
-- 6 个计算器的可视化导航卡片
-- 每个卡片包含功能描述和特性列表
-- 点击卡片可平滑滚动到对应计算器
+**Where:**
+- `LC` = Lashing Capacity (daN)
+- `α` = Vertical angle (degrees)
+- `β` = Horizontal angle (degrees)
 
-### 计算器界面
-- 清晰的输入表单
-- 实时验证和错误提示
-- 美观的结果显示
-- 响应式布局设计
+#### Tipping Calculation
+For unstable cargo (height > width), the calculator applies a safety factor:
+- **Safety Factor**: `1 + (height/width - 1.5) × 0.3`
+- **Final Result**: Maximum of sliding vs. tipping calculations
 
-## 🔧 使用方法
+### Input Parameters
 
-### 1. 访问计算器
-导航到 `/tools/cbm-calculator` 页面
+#### Common Parameters
+- **Cargo Weight (m)**: Total cargo mass in kilograms
+- **Force Direction (c_x,y)**:
+  - Forward (Braking): 0.8g
+  - Sideways/Rearward (Turning/Acceleration): 0.5g
+- **Friction Coefficient (μ)**:
+  - Wood on Wood (Dry): 0.45
+  - Metal on Wood (Dry): 0.30
+  - Concrete on Wood (Dry): 0.55
+  - Anti-Slip Mats: 0.60
+  - Custom: User-defined value
 
-### 2. 选择计算器
-从导航网格中选择需要的计算器类型
+#### Indirect Lashing Parameters
+- **STF (Standard Tension Force)**: Force applied when tensioning strap (daN)
+- **Vertical Angle (α)**: Angle between strap and horizontal plane (0-90°)
+- **Unstable Cargo Check**: For cargo with height > width
+- **Cargo Dimensions**: Height and width for tipping calculations
 
-### 3. 输入数据
-根据提示输入产品尺寸、重量等信息
+#### Direct Lashing Parameters
+- **LC (Lashing Capacity)**: Maximum allowed force for strap (daN)
+- **Vertical Angle (α)**: Angle between strap and horizontal plane (0-90°)
+- **Horizontal Angle (β)**: Angle between strap and vehicle axis (0-90°)
 
-### 4. 查看结果
-系统会实时计算并显示结果
+### Safety Features
 
-### 5. 优化建议
-根据计算结果获得装载和运输建议
+#### Minimum Requirements
+- **Always 2 straps minimum** regardless of calculation result
+- **Angle validation**: Warning for angles below 15° (reduced effectiveness)
+- **Value range validation**: Warnings for unusually high/low values
 
-## 📊 计算标准
+#### Tipping Protection
+- **Automatic detection** of unstable cargo configurations
+- **Enhanced safety factors** for high center of gravity cargo
+- **Comprehensive calculations** considering both sliding and tipping
 
-### 体积重量公式
-- **标准**: (长 × 宽 × 高) ÷ 5000 (厘米)
-- **海运费**: (长 × 宽 × 高) ÷ 1000 (厘米)
-- **空运费**: (长 × 宽 × 高) ÷ 6000 (厘米)
+### Technical Implementation
 
-### 集装箱规格
-- **20ft 标准**: 589 × 230 × 230 cm, 最大重量 28,200 kg
-- **40ft 标准**: 1200 × 230 × 230 cm, 最大重量 28,200 kg
-- **40ft 高柜**: 1200 × 230 × 260 cm, 最大重量 28,200 kg
+#### Architecture
+- **Frontend**: Next.js 15 with TypeScript
+- **State Management**: React Hooks (useState, useMemo)
+- **Validation**: Comprehensive input validation with real-time feedback
+- **Styling**: Tailwind CSS with responsive design
 
-### 单位转换
-- 1 英寸 = 2.54 厘米
-- 1 英尺 = 30.48 厘米
-- 1 米 = 100 厘米
-- 1 磅 = 0.4536 千克
+#### Components
+1. **`LashingCalculator.tsx`**: Main calculator component
+2. **`MethodSelector.tsx`**: Lashing method selection interface
+3. **`InputForm.tsx`**: Dynamic input forms with validation
+4. **`ResultsDisplay.tsx`**: Results display with calculation breakdown
+5. **`useEN12195Calculation.ts`**: Calculation logic hook
 
-## 🎯 适用场景
+#### Key Hooks
+- **`useEN12195Calculation`**: Main calculation logic
+- **`useMemo`**: Optimized calculations with dependency tracking
+- **`useState`**: Form state management
 
-### 物流公司
-- 集装箱装载优化
-- 运输成本计算
-- 货物体积分析
+### Usage Examples
 
-### 进出口贸易
-- 国际运输规划
-- 集装箱选择
-- 运费估算
+#### Example 1: Standard Cargo (Indirect Lashing)
+- **Cargo Weight**: 1000 kg
+- **Force Direction**: Forward (0.8g)
+- **Friction**: Wood on Wood (μ = 0.45)
+- **STF**: 500 daN
+- **Vertical Angle**: 90°
+- **Result**: 2 straps (minimum applied)
 
-### 仓储管理
-- 空间利用率分析
-- 货物堆叠规划
-- 库存优化
+#### Example 2: Unstable Cargo (Indirect Lashing)
+- **Cargo Weight**: 2000 kg
+- **Force Direction**: Sideways (0.5g)
+- **Friction**: Anti-Slip Mats (μ = 0.60)
+- **STF**: 800 daN
+- **Vertical Angle**: 75°
+- **Height**: 3.0 m, Width: 1.5 m
+- **Result**: 3 straps (tipping calculation applied)
 
-### 制造业
-- 产品包装设计
-- 运输成本控制
-- 供应链优化
+#### Example 3: Direct Lashing
+- **Cargo Weight**: 1500 kg
+- **Force Direction**: Forward (0.8g)
+- **LC**: 1000 daN
+- **Vertical Angle**: 90°
+- **Horizontal Angle**: 90°
+- **Result**: 2 straps (minimum applied)
 
-## 🔮 未来扩展
+### Safety Guidelines
 
-### 计划功能
-- 3D 集装箱装载可视化
-- 高级算法优化
-- 历史数据保存
-- 批量导入导出
-- 多语言支持
+#### EN 12195-1 Compliance
+- Follows European standard for cargo securing
+- Implements minimum safety requirements
+- Considers both sliding and tipping scenarios
 
-### 集成可能
-- ERP 系统集成
-- API 接口提供
-- 移动应用开发
-- 云端数据同步
+#### Professional Recommendations
+- **Always verify calculations** with qualified personnel
+- **Inspect securing arrangements** before transport
+- **Regular maintenance** of lashing equipment
+- **Local regulations** may have additional requirements
 
-## 📝 更新日志
+#### Warning Signs
+- **Very low angles** (< 15°) reduce effectiveness
+- **High center of gravity** requires additional precautions
+- **Extreme values** should be verified for accuracy
 
-### v1.0.0 (当前版本)
-- ✅ 6 个核心计算器实现
-- ✅ 响应式用户界面
-- ✅ 完整的单位转换
-- ✅ 集装箱规格数据库
-- ✅ 实时计算和验证
+### Future Enhancements
 
-## 🤝 贡献指南
+#### Planned Features
+- **3D visualization** of lashing arrangements
+- **Multiple cargo types** support
+- **Advanced tipping calculations** with full EN 12195-1 formulas
+- **Export functionality** for reports and documentation
+- **Mobile app** version for field use
 
-欢迎提交 Issue 和 Pull Request 来改进这个计算器套件。
-
-## 📄 许可证
-
-本项目遵循 MIT 许可证。
+#### Technical Improvements
+- **Performance optimization** for complex calculations
+- **Offline support** with service workers
+- **Multi-language support** for international users
+- **Accessibility improvements** for better usability
 
 ---
 
-**注意**: 本计算器套件仅用于体积计算，不保证运输公司的实际装载结果。请根据实际情况调整参数。
+## 🧮 CBM Calculator
+
+### Overview
+The CBM (Cubic Meter) Calculator helps determine cargo volume and loading efficiency for transport planning.
+
+### Features
+- Volume calculations for various cargo shapes
+- Loading efficiency optimization
+- Multiple unit conversions
+- Export functionality
+
+---
+
+## 📐 Angle Efficiency Calculator
+
+### Overview
+Specialized calculator for determining optimal angles in cargo securing applications.
+
+### Features
+- Angle optimization for maximum efficiency
+- Force vector analysis
+- Safety factor calculations
+
+---
+
+## 🔗 Cargo Securing Tools
+
+### Overview
+Comprehensive suite of tools for cargo securing calculations and planning.
+
+### Features
+- Multiple calculation methods
+- Safety factor considerations
+- Professional-grade accuracy
+- User-friendly interface
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn package manager
+
+### Installation
+```bash
+git clone [repository-url]
+cd xiangleratchetstrap
+npm install
+npm run dev
+```
+
+### Building for Production
+```bash
+npm run build
+npm start
+```
+
+---
+
+## 📚 Documentation
+
+### API Reference
+- **Calculation Hooks**: `useEN12195Calculation`, `useCalculation`
+- **Type Definitions**: `EN12195Inputs`, `CalculationResult`
+- **Utility Functions**: `getFrictionCoefficient`, `degreesToRadians`
+
+### Component API
+- **Props**: All components use TypeScript interfaces
+- **State Management**: React hooks with proper typing
+- **Event Handling**: Consistent callback patterns
+
+---
+
+## 🤝 Contributing
+
+### Development Guidelines
+- Follow TypeScript best practices
+- Use functional components with hooks
+- Implement comprehensive validation
+- Maintain responsive design principles
+
+### Testing
+- Unit tests for calculation logic
+- Integration tests for component interactions
+- Accessibility testing for usability
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+## 🆘 Support
+
+### Issues and Questions
+- Create GitHub issues for bugs or feature requests
+- Check existing documentation and FAQs
+- Contact the development team for technical support
+
+### Professional Use
+For professional cargo securing applications, always:
+- Verify calculations with qualified engineers
+- Follow local regulations and standards
+- Conduct proper safety inspections
+- Maintain equipment according to manufacturer guidelines
+
+---
+
+*This calculator suite is designed to assist with cargo securing planning but should not replace professional engineering judgment or regulatory compliance requirements.*

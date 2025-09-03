@@ -1,113 +1,98 @@
-export type WeightUnit = "kg" | "lbs"
-export type Region = "north_america" | "australia" | "europe"
+export type LashingMode = "indirect" | "direct"
 
 /**
- * Calculate the effective Working Load Limit based on tie-down angle
- * @param nominalWLL - The nominal WLL printed on the strap
- * @param angle - The tie-down angle in degrees (15-90)
- * @returns The effective WLL at the given angle
+ * Calculate geometric efficiency for indirect lashing (friction lashing)
+ * Uses sin(α) calculation according to EN 12195-1
+ * @param verticalAngle - The vertical angle α in degrees (0-90)
+ * @returns The efficiency percentage (0-100)
  */
-export function calculateEffectiveWLL(nominalWLL: number, angle: number): number {
-  if (nominalWLL <= 0) return 0
-  if (angle < 15 || angle > 90) return 0
+export function calculateIndirectEfficiency(verticalAngle: number): number {
+  if (verticalAngle < 0 || verticalAngle > 90) return 0
   
-  // Convert angle to radians and calculate sine
-  const angleInRadians = (angle * Math.PI) / 180
+  const angleInRadians = (verticalAngle * Math.PI) / 180
   const sineValue = Math.sin(angleInRadians)
   
-  return nominalWLL * sineValue
+  return sineValue * 100
 }
 
 /**
- * Calculate the percentage of capacity lost due to angle
- * @param angle - The tie-down angle in degrees (15-90)
- * @returns The percentage of capacity lost (0-100)
+ * Calculate geometric efficiency for direct lashing
+ * Uses cos(α) × cos(β) calculation according to EN 12195-1
+ * @param verticalAngle - The vertical angle α in degrees (0-90)
+ * @param horizontalAngle - The horizontal angle β in degrees (0-90)
+ * @returns The efficiency percentage (0-100)
  */
-export function calculateLossPercentage(angle: number): number {
-  if (angle < 15 || angle > 90) return 100
+export function calculateDirectEfficiency(verticalAngle: number, horizontalAngle: number): number {
+  if (verticalAngle < 0 || verticalAngle > 90) return 0
+  if (horizontalAngle < 0 || horizontalAngle > 90) return 0
   
-  // Convert angle to radians and calculate sine
-  const angleInRadians = (angle * Math.PI) / 180
-  const sineValue = Math.sin(angleInRadians)
+  const verticalRadians = (verticalAngle * Math.PI) / 180
+  const horizontalRadians = (horizontalAngle * Math.PI) / 180
   
-  return (1 - sineValue) * 100
+  const cosVertical = Math.cos(verticalRadians)
+  const cosHorizontal = Math.cos(horizontalRadians)
+  
+  return cosVertical * cosHorizontal * 100
 }
 
 /**
- * Get the efficiency factor for a given angle
- * @param angle - The tie-down angle in degrees (15-90)
- * @returns The efficiency factor (0-1)
- */
-export function getEfficiencyFactor(angle: number): number {
-  if (angle < 15 || angle > 90) return 0
-  
-  const angleInRadians = (angle * Math.PI) / 180
-  return Math.sin(angleInRadians)
-}
-
-/**
- * Get a human-readable description of the angle efficiency
- * @param angle - The tie-down angle in degrees (15-90)
+ * Get efficiency interpretation based on percentage
+ * @param efficiency - The efficiency percentage (0-100)
  * @returns A description of the efficiency level
  */
-export function getEfficiencyDescription(angle: number): string {
-  if (angle >= 85) return "Excellent - Maximum efficiency"
-  if (angle >= 70) return "Very Good - High efficiency"
-  if (angle >= 60) return "Good - Acceptable efficiency"
-  if (angle >= 45) return "Moderate - Reduced efficiency"
-  if (angle >= 30) return "Poor - Significant efficiency loss"
-  if (angle >= 15) return "Very Poor - Major efficiency loss"
-  return "Dangerous - Below minimum angle"
+export function getEfficiencyInterpretation(efficiency: number): string {
+  if (efficiency >= 85) return "High Efficiency"
+  if (efficiency >= 50) return "Medium Efficiency"
+  return "Low Efficiency"
 }
 
 /**
- * Get safety recommendations based on angle
- * @param angle - The tie-down angle in degrees (15-90)
- * @returns Safety recommendations
+ * Get optimization recommendations based on mode and angles
+ * @param mode - The lashing mode (indirect or direct)
+ * @param verticalAngle - The vertical angle α in degrees
+ * @param horizontalAngle - The horizontal angle β in degrees (for direct mode)
+ * @param efficiency - The calculated efficiency percentage
+ * @returns Array of optimization recommendations
  */
-export function getSafetyRecommendations(angle: number): string[] {
+export function getOptimizationRecommendations(
+  mode: LashingMode,
+  verticalAngle: number,
+  horizontalAngle: number,
+  efficiency: number
+): string[] {
   const recommendations: string[] = []
   
-  if (angle < 30) {
-    recommendations.push("Consider repositioning your tie-downs for a steeper angle")
-    recommendations.push("Use additional tie-downs to compensate for efficiency loss")
-    recommendations.push("Verify that your cargo is still properly secured")
-  } else if (angle < 45) {
-    recommendations.push("Monitor tie-down tension during transport")
-    recommendations.push("Consider using straps with higher WLL ratings")
-  } else if (angle < 60) {
-    recommendations.push("Ensure tie-downs are properly tensioned")
-    recommendations.push("Regular inspection recommended during long trips")
+  if (efficiency < 50) {
+    if (mode === "indirect") {
+      recommendations.push("For indirect lashing, try increasing angle α to 75° or above")
+      recommendations.push("Consider repositioning lashing points to achieve steeper angles")
+    } else {
+      recommendations.push("For direct lashing, try reducing angle β to improve efficiency")
+      recommendations.push("Consider optimizing both vertical and horizontal angles simultaneously")
+    }
+    recommendations.push("This angle setup requires significantly stronger or more lashing straps for compliance")
+  } else if (efficiency < 85) {
+    if (mode === "indirect") {
+      recommendations.push("For indirect lashing, consider increasing angle α for better efficiency")
+    } else {
+      recommendations.push("For direct lashing, fine-tune both angles for optimal performance")
+    }
+    recommendations.push("Monitor lashing tension and consider additional straps if needed")
   } else {
-    recommendations.push("Excellent angle - maintain current setup")
-    recommendations.push("Regular maintenance of straps recommended")
+    recommendations.push("Excellent angle configuration - maintain current setup")
+    recommendations.push("Regular inspection and maintenance of lashing equipment recommended")
   }
   
   return recommendations
 }
 
 /**
- * Calculate the required WLL increase to compensate for angle loss
- * @param requiredWLL - The WLL needed for the cargo
- * @param angle - The tie-down angle in degrees (15-90)
- * @returns The WLL rating needed to compensate for angle loss
- */
-export function calculateRequiredWLLCompensation(requiredWLL: number, angle: number): number {
-  if (requiredWLL <= 0 || angle < 15 || angle > 90) return 0
-  
-  const efficiencyFactor = getEfficiencyFactor(angle)
-  if (efficiencyFactor === 0) return Infinity
-  
-  return requiredWLL / efficiencyFactor
-}
-
-/**
- * Get common angle examples with their efficiency values
+ * Get common angle examples with their efficiency values for indirect lashing
  * @returns Array of angle examples with efficiency data
  */
-export function getCommonAngleExamples() {
+export function getIndirectLashingExamples() {
   return [
-    { angle: 90, efficiency: 100, description: "Vertical - Maximum efficiency" },
+    { angle: 90, efficiency: 100.0, description: "Vertical - Maximum efficiency" },
     { angle: 75, efficiency: 96.6, description: "Steep - Excellent efficiency" },
     { angle: 60, efficiency: 86.6, description: "Good - High efficiency" },
     { angle: 45, efficiency: 70.7, description: "Moderate - Reduced efficiency" },
@@ -117,42 +102,18 @@ export function getCommonAngleExamples() {
   ]
 }
 
-// Get weight unit for region
-export function getWeightUnitForRegion(region: Region): WeightUnit {
-  switch (region) {
-    case "north_america":
-      return "lbs"
-    case "australia":
-    case "europe":
-      return "kg"
-    default:
-      return "kg"
-  }
-}
-
-// Get region name for display
-export function getRegionDisplayName(region: Region): string {
-  switch (region) {
-    case "north_america":
-      return "North America (DOT)"
-    case "australia":
-      return "Australia (AS/NZS 4380)"
-    case "europe":
-      return "Europe (EN12195-2)"
-    default:
-      return "Unknown"
-  }
-}
-
-// Get load capacity term for region
-export function getLoadCapacityTerm(region: Region): string {
-  switch (region) {
-    case "north_america":
-      return "WLL"
-    case "australia":
-    case "europe":
-      return "LC"
-    default:
-      return "WLL"
-  }
+/**
+ * Get common angle examples with their efficiency values for direct lashing
+ * @returns Array of angle examples with efficiency data
+ */
+export function getDirectLashingExamples() {
+  return [
+    { verticalAngle: 0, horizontalAngle: 0, efficiency: 100.0, description: "Perfect alignment - Maximum efficiency" },
+    { verticalAngle: 15, horizontalAngle: 15, efficiency: 93.3, description: "Excellent - Very high efficiency" },
+    { verticalAngle: 30, horizontalAngle: 30, efficiency: 75.0, description: "Good - High efficiency" },
+    { verticalAngle: 45, horizontalAngle: 45, efficiency: 50.0, description: "Moderate - Reduced efficiency" },
+    { verticalAngle: 60, horizontalAngle: 60, efficiency: 25.0, description: "Poor - Low efficiency" },
+    { verticalAngle: 75, horizontalAngle: 75, efficiency: 6.7, description: "Very Poor - Very low efficiency" },
+    { verticalAngle: 90, horizontalAngle: 90, efficiency: 0.0, description: "Perpendicular - No efficiency" }
+  ]
 }

@@ -1,7 +1,8 @@
 import Breadcrumb from '@/components/common/Breadcrumb'
-import CargoSecuringCalculator from '@/components/tools/cargo-securing/CargoSecuringCalculator'
+import { UnifiedCargoCalculator } from '@/components/tools/cargo-securing/UnifiedCargoCalculator'
 import { FAQSection } from '@/components/tools/cargo-securing/FAQSection'
 import { SEOContentSection } from '@/components/tools/cargo-securing/SEOContentSection'
+import { RegionProvider } from '@/contexts/RegionContext'
 import { defaultUrlPrefix, localePrefixMap } from '@/middleware';
 import { generateBreadcrumbsFromPath, PathSegment } from '@/utils/breadcrumbs';
 import { generateSchema, embedSchema } from '@/utils/schema';
@@ -11,7 +12,7 @@ import { getLocale } from 'next-intl/server'
 export async function generateMetadata(): Promise<Metadata> {
   const currentLocale = await getLocale();
 
-  const pageTitle = "Regional Cargo Securement Calculator | DOT, AS/NZS 4380, EN12195-2 Standards Tool";
+  const pageTitle = "Global Cargo Securing Calculator | DOT, EN 12195-1 Standards Tool";
   const pageSlug = "tools/cargo-securing-calculator";
   const ogImageUrl = process.env.NEXT_PUBLIC_LOGO_URL;
   const ogImageAlt = pageTitle;
@@ -47,10 +48,10 @@ export async function generateMetadata(): Promise<Metadata> {
           ? languagesAlternate
           : undefined,
     },
-    description: "选择地区标准，自动设置单位，计算所需捆绑带数量与WLL/LC值。支持北美DOT、澳洲AS/NZS 4380、欧洲EN12195-2标准，自动应用相应计算系数。",
+    description: "Global cargo securing calculator supporting North America (DOT) and Europe/Australia (EN 12195-1/AS/NZS 4380) standards. Choose your region for automatic unit selection and calculation standards.",
     openGraph: {
       title: pageTitle,
-      description: "选择地区标准，自动设置单位，计算所需捆绑带数量与WLL/LC值。支持北美DOT、澳洲AS/NZS 4380、欧洲EN12195-2标准，自动应用相应计算系数。",
+      description: "Global cargo securing calculator supporting North America (DOT) and Europe/Australia (EN 12195-1/AS/NZS 4380) standards. Choose your region for automatic unit selection and calculation standards.",
       url: canonicalUrl,
       images: [
         {
@@ -63,7 +64,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       title: pageTitle,
-      description: "选择地区标准，自动设置单位，计算所需捆绑带数量与WLL/LC值。支持北美DOT、澳洲AS/NZS 4380、欧洲EN12195-2标准，自动应用相应计算系数。",
+      description: "Global cargo securing calculator supporting North America (DOT) and Europe/Australia (EN 12195-1/AS/NZS 4380) standards. Choose your region for automatic unit selection and calculation standards.",
     },
   };
 }
@@ -72,7 +73,7 @@ export default async function Page() {
   const lang = await getLocale()
   const productPath: PathSegment[] = [
     { name: "Tools", slug: "tools" },
-    { name: "Cargo Securing Calculator", slug: "cargo-securing-calculator" }
+    { name: "Global Cargo Securing Calculator", slug: "cargo-securing-calculator" }
   ];
 
   const breadcrumbItems = generateBreadcrumbsFromPath(
@@ -96,8 +97,8 @@ export default async function Page() {
   const webApplicationSchema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Regional Cargo Securement Calculator",
-    "description": "Professional regional tie-down standards tool with automatic unit selection supporting DOT (US), AS/NZS 4380 (Australia), EN12195-2 (Europe) standards. Displays WLL for North America and LC for Australia/Europe.",
+    "name": "Global Cargo Securing Calculator",
+    "description": "Global cargo securing calculator supporting North America (DOT) and Europe/Australia (EN 12195-1/AS/NZS 4380) standards. Choose your region for automatic unit selection and calculation standards.",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web Browser",
     "url": process.env.NEXT_PUBLIC_SITE_URL + "/tools/cargo-securing-calculator",
@@ -115,42 +116,42 @@ export default async function Page() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How many tie down straps do I need for 20 feet cargo?",
+        "name": "What are the differences between DOT and EN 12195-1/AS/NZS 4380 standards?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Requirements vary by region: DOT (US) requires 3+ tie-downs for cargo over 20 feet (6.1m), AS/NZS 4380 (Australia) requires 3+ for cargo over 6.0m, and EN12195-2 (Europe) requires 3+ for cargo over 6.0m. Our calculator automatically applies the correct standard."
+          "text": "DOT standards (North America) use imperial units (lbs, ft) and WLL-based calculations, while EN 12195-1 (Europe) and AS/NZS 4380 (Australia) use metric units (kg, m) and STF/LC-based calculations. Each standard has different requirements and calculation methods."
         }
       },
       {
         "@type": "Question",
-        "name": "What is WLL/LC in cargo securement?",
+        "name": "Which calculator should I use for my region?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "WLL (Working Load Limit) in North America or LC (Load Capacity) in Australia/Europe is the total working load limit of all tie-downs used to secure cargo. Requirements vary by region: DOT requires 50% for indirect tie-downs, AS/NZS 4380 requires 60%, and EN12195-2 requires 50%. Direct tie-downs require 100% across all standards."
+          "text": "Use the North America calculator for US and Canada (DOT standards), and the Europe & Australia calculator for EU countries (EN 12195-1 standard) and Australia (AS/NZS 4380 standard). The page automatically shows the appropriate calculator based on your selection."
         }
       },
       {
         "@type": "Question",
-        "name": "What are international cargo securement standards?",
+        "name": "What is the difference between STF and LC in lashing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "International cargo securement standards include: DOT (US), AS/NS 4380 (Australia), EN12195-2 (Europe), and others. Each standard has specific requirements for minimum tie-downs, AWLL calculations, and safety factors. Our calculator provides guidance based on these international standards."
+          "text": "STF (Standard Tension Force) is used in indirect lashing and represents the force applied when tensioning the strap. LC (Lashing Capacity) is used in direct lashing and represents the maximum allowed force for the strap. They are different values found on different parts of the strap label."
         }
       },
       {
         "@type": "Question",
-        "name": "How do I calculate tie down requirements?",
+        "name": "How many lashing straps are required minimum?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Use our calculator by selecting your region, entering cargo weight, dimensions, securing method (direct/indirect), and tie-down angle. The tool automatically sets units and applies region-specific standards to calculate required WLL/LC and recommend appropriate tie-down configurations."
+          "text": "According to EN 12195-1, a minimum of 2 lashing straps is always required regardless of calculation results. DOT standards also require minimum tie-downs based on cargo length. This ensures redundancy and safety in cargo securing arrangements."
         }
       },
       {
         "@type": "Question",
-        "name": "How does region selection affect calculations?",
+        "name": "What units are used in each region?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Region selection automatically sets units (lbs/ft for North America, kg/m for Australia/Europe) and applies correct calculation standards. DOT uses 50% indirect factor and 20% safety margin, AS/NZS 4380 uses 60% indirect factor and 25% safety margin, while EN12195-2 uses 50% indirect factor and 30% safety margin."
+          "text": "North America uses imperial units: weight in pounds (lbs), dimensions in feet (ft). Europe and Australia use metric units: weight in kilograms (kg), dimensions in meters (m). The calculator automatically applies the correct units for your selected region."
         }
       }
     ]
@@ -161,33 +162,36 @@ export default async function Page() {
   );
 
   return (
-    <div>
-      <section>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
-        />
-      </section>
-      <div className="mx-auto container px-4 py-8 sm:px-6 lg:px-8">
-        <Breadcrumb items={breadcrumbItems.slice(1)} lang={lang} />
-        <div className="mx-auto text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">
-            Regional Cargo Securement Calculator
-          </h1>
-          <p className="mt-3 text-lg text-black/70">
-            Select your region for automatic unit selection and calculation standards. Supports DOT (US), AS/NZS 4380 (Australia), EN12195-2 (Europe) with region-specific factors and safety margins. Displays WLL for North America and LC for Australia/Europe.
-          </p>
+    <RegionProvider>
+      <div>
+        <section>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
+          />
+        </section>
+        <div className="mx-auto container px-4 py-8 sm:px-6 lg:px-8">
+          <Breadcrumb items={breadcrumbItems.slice(1)} lang={lang} />
+          <div className="mx-auto text-center">
+            <h1 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">
+              Global Cargo Securing Calculator
+            </h1>
+            <p className="mt-3 text-lg text-black/70">
+              Professional cargo securing calculator supporting North America (DOT) and Europe/Australia (EN 12195-1/AS/NZS 4380) standards. 
+              Choose your region for automatic unit selection and calculation standards.
+            </p>
+          </div>
+          <div className="mt-8">
+            <UnifiedCargoCalculator />
+          </div>
         </div>
-        <div className="mt-8">
-          <CargoSecuringCalculator />
-        </div>
+        
+        {/* SEO Content Section */}
+        <SEOContentSection />
+        
+        {/* FAQ Section */}
+        <FAQSection />
       </div>
-      
-      {/* SEO Content Section */}
-      <SEOContentSection />
-      
-      {/* FAQ Section */}
-      <FAQSection />
-    </div>
+    </RegionProvider>
   )
 }
