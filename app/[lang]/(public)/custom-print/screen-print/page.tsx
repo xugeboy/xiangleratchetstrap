@@ -77,8 +77,16 @@ export default async function ScreenPrint() {
   });
 
   const exampleImages = [
-    "/v1752112807/screen2_l6nock.jpg",
-    "/v1752112807/screen1_whcirx.jpg",
+    "/v1757404318/CustomPrinting_9_whgcjg.jpg",
+    "/v1757404318/CustomPrinting_7_n9ce0m.jpg",
+    "/v1757404318/CustomPrinting_11_py3dlh.jpg",
+    "/v1757404317/CustomPrinting_5_g5bfkh.jpg",
+    "/v1757404317/CustomPrinting_3_m5gzau.jpg",
+    "/v1757404317/CustomPrinting_2_wrlwni.jpg",
+    "/v1757404317/CustomPrinting_4_m6dv9z.jpg",
+    "/v1757404318/CustomPrinting_8_jekl0z.jpg",
+    "/v1757404318/CustomPrinting_6_lir97x.jpg",
+    "/v1757404318/CustomPrinting_10_e9njky.jpg",
   ];
 
   const colorOptions = [

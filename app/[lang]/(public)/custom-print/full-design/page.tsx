@@ -76,7 +76,10 @@ export default async function FullDesign() {
   const t = await getTranslations({ locale, namespace: "CustomPrint" });
 
   const exampleImages = [
-    "/v1751985848/pattern2_q8k4uf.jpg", "/v1751985848/pattern1_etapzc.jpg"
+    "/v1757405027/pattern1_etapzc_c_crop_w_1000_h_120_uzbogf.jpg",
+    "/v1757405028/pattern2_q8k4uf_c_crop_w_1000_h_120_ff4mfm.jpg",
+    "/v1757404317/CustomPrinting_1_khgqtp.jpg",
+    "/v1757404317/CustomPrinting_12_yab19e.jpg",
   ];
 
   const productPath: PathSegment[] = [

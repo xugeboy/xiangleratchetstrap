@@ -79,12 +79,16 @@ export default async function CustomPrintOverviewPage() {
   const t = await getTranslations({ locale, namespace: "CustomPrint" });
 
   const textPrintingImages = [
-    "/v1752112807/screen2_l6nock.jpg",
-    "/v1752112807/screen1_whcirx.jpg",
+    "/v1757404317/CustomPrinting_4_m6dv9z.jpg",
+    "/v1757404318/CustomPrinting_8_jekl0z.jpg",
+    "/v1757404318/CustomPrinting_6_lir97x.jpg",
+    "/v1757404318/CustomPrinting_10_e9njky.jpg",
   ];
   const fullDesignImages = [
-    "/v1751985848/pattern2_q8k4uf.jpg",
-    "/v1751985848/pattern1_etapzc.jpg",
+    "/v1757405027/pattern1_etapzc_c_crop_w_1000_h_120_uzbogf.jpg",
+    "/v1757405028/pattern2_q8k4uf_c_crop_w_1000_h_120_ff4mfm.jpg",
+    "/v1757404317/CustomPrinting_1_khgqtp.jpg",
+    "/v1757404317/CustomPrinting_12_yab19e.jpg",
   ];
   const breadcrumbItems = generateGeneralBreadcrumbs(
     "CustomPrint",
@@ -150,13 +154,13 @@ export default async function CustomPrintOverviewPage() {
             <div className="p-6">
               <div className="grid grid-cols-1 gap-4 mb-8">
                 {textPrintingImages.map((src, index) => (
-                  <div key={index} className="border border-gray-200">
+                  <div key={index}>
                     <Image
                       src={src || "/placeholder.svg"}
                       alt={`${t("textPrinting.title")} Example ${index + 1}`}
-                      width={800}
-                      height={200}
-                      className="w-full h-40 object-cover"
+                      width={1000}
+                      height={120}
+                      className="w-full object-cover"
                     />
                   </div>
                 ))}
@@ -223,13 +227,13 @@ export default async function CustomPrintOverviewPage() {
             <div className="p-6">
               <div className="grid grid-cols-1 gap-4 mb-8">
                 {fullDesignImages.map((src, index) => (
-                  <div key={index} className="border border-gray-200">
+                  <div key={index}>
                     <Image
                       src={src || "/placeholder.svg"}
                       alt={`${t("fullDesign.title")} Example ${index + 1}`}
-                      width={800}
-                      height={200}
-                      className="w-full h-40 object-cover"
+                      width={1000}
+                      height={120}
+                      className="w-full object-cover"
                     />
                   </div>
                 ))}
