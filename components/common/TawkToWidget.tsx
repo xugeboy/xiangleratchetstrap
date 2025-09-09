@@ -9,7 +9,7 @@ const TawkToWidget = () => {
     <Script
       id="tawk-to-loader"
       type="text/plain" // 关键：默认不执行，交由CMP控制
-      data-usercentrics="tawk.to" // 关键：向Usercentrics注册。确保ID匹配！
+      data-cookieyes="functional"
       strategy="lazyOnload" // 使用低优先级加载
     >
       {`
