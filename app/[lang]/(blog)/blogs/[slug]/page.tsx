@@ -1,10 +1,7 @@
 import { Metadata, ResolvingMetadata } from "next";
 import type { BlocksContent } from "@strapi/blocks-react-renderer";
 import { generateSchema, embedSchema } from "@/utils/schema";
-import {
-  getBlogDetail,
-  getBlogMetaDataBySlug,
-} from "@/services/api/blog";
+import { getBlogDetail, getBlogMetaDataBySlug } from "@/services/api/blog";
 import { notFound } from "next/navigation";
 import { generateBlogBreadcrumbs } from "@/utils/breadcrumbs";
 import Image from "next/image";
@@ -17,6 +14,7 @@ import formatDateToLongEnglish, {
 import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
 import { getLocale, getTranslations } from "next-intl/server";
 import TableOfContents from "@/components/common/TableOfContents";
+import BlogQuickInquiryForm from "@/components/forms/BlogQuickInquiryForm";
 import RelatedContent from "@/components/blog/RelatedContent";
 import { getBlogFaqsBySlug } from "@/services/api/faq";
 import FaqList from "@/app/[lang]/(public)/faq/FaqList";
@@ -160,7 +158,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const headingCounters: { [key: number]: number } = { 2: 0, 3: 0 }; // 分别为 h2, h3 设置计数器
 
   // 遍历内容块，为标题块注入ID，并生成目录所需的数据
-  const contentNodes: StrapiNode[] = (blog.content ?? []) as unknown as StrapiNode[];
+  const contentNodes: StrapiNode[] = (blog.content ??
+    []) as unknown as StrapiNode[];
   const contentWithIds = contentNodes.map((block) => {
     if (block.type === "heading" && (block.level === 2 || block.level === 3)) {
       const level = block.level;
@@ -211,63 +210,74 @@ export default async function BlogPage({ params }: BlogPageProps) {
         />
       </section>
 
-             {/* 头部区域 */}
-       <div className="relative w-full h-[300px] md:h-[400px] mb-8 rounded-lg overflow-hidden">
-         <div className="absolute inset-0">
-           <Image
-             src={getCloudinaryPublicId(blog.cover_image.url)}
-             alt={blog.title}
-             fill
-             className="object-cover"
-             priority
-             sizes="(max-width: 768px) 100vw, 50vw"
-           />
-         </div>
-       </div>
+      {/* 头部区域 */}
+      <div className="relative w-full h-[300px] md:h-[400px] mb-8 rounded-lg overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src={getCloudinaryPublicId(blog.cover_image.url)}
+            alt={blog.title}
+            fill
+            className="object-cover"
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
+      </div>
 
-       {/* 标题和元信息区域 */}
-       <div className="mb-8">
-         <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-wide text-gray-900 mb-4">
-           {blog.title}
-         </h1>
-         
-         {/* 日期和作者信息 */}
-         <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-start">
-           <div className="bg-yellow-400 text-black font-medium py-2 px-4 inline-block text-sm">
-             {formatDateToLongEnglish(blog.createdAt)}
-           </div>
-           {(publisherName && publisherLogoUrl) && (
-             <div className="flex items-center gap-3">
-               <Image
-                 src={publisherLogoUrl}
-                 alt={publisherName}
-                 width={40}
-                 height={40}
-                 className="rounded-full bg-white p-1 object-contain"
-                 sizes="40px"
-               />
-               <span className="text-sm font-medium text-gray-900">{publisherName}</span>
-             </div>
-           )}
-         </div>
-       </div>
+      {/* 标题和元信息区域 */}
+      <div className="mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-wide text-gray-900 mb-4">
+          {blog.title}
+        </h1>
+
+        {/* 日期和作者信息 */}
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-start">
+          <div className="bg-yellow-400 text-black font-medium py-2 px-4 inline-block text-sm">
+            {formatDateToLongEnglish(blog.createdAt)}
+          </div>
+          {publisherName && publisherLogoUrl && (
+            <div className="flex items-center gap-3">
+              <Image
+                src={publisherLogoUrl}
+                alt={publisherName}
+                width={40}
+                height={40}
+                className="rounded-full bg-white p-1 object-contain"
+                sizes="40px"
+              />
+              <span className="text-sm font-medium text-gray-900">
+                {publisherName}
+              </span>
+            </div>
+          )}
+        </div>
+      </div>
 
       {/* 修改: 主体内容改为网格布局 */}
       <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-12">
-        {/* 左侧目录: 在 lg 及以上屏幕显示 */}
+        {/* 左侧：使用一个粘性容器包裹两个独立组件，避免相互重叠 */}
         <aside className="hidden lg:block lg:col-span-1">
-          <TableOfContents headings={headings} />
+          <div className="sticky top-24 space-y-6 max-h-[calc(100vh-6rem)] overflow-y-auto pr-1">
+            <TableOfContents headings={headings} />
+            <BlogQuickInquiryForm />
+          </div>
         </aside>
 
         {/* 右侧文章内容 */}
         <main className="lg:col-span-3">
           <BlocksClient content={contentWithIds as unknown as BlocksContent} />
           <div className="mt-12">
-            <RelatedContent products={blog.products} blogs={blog.blogs} lang={lang} />
+            <RelatedContent
+              products={blog.products}
+              blogs={blog.blogs}
+              lang={lang}
+            />
           </div>
           {faqs && faqs.length > 0 && (
             <section className="mt-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">FREQUENTLY ASKED QUESTIONS:</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+                FREQUENTLY ASKED QUESTIONS:
+              </h2>
               <FaqList faqs={faqs} />
             </section>
           )}

@@ -742,5 +742,18 @@
                 }
             }
         }
+    },
+    "BlogQuickInquiry": {
+        "title": "Quick Inquiry",
+        "labels": {
+            "firstName": "Name",
+            "email": "Email",
+            "message": "Message"
+        },
+        "buttons": {
+            "submit": "Submit",
+            "submitting": "Submitting..."
+        },
+        "success": "Thanks! We will get back to you soon."
     }
 }

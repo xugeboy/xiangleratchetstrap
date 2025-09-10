@@ -743,4 +743,18 @@
         }
       }
     }
+  },
+  "BlogQuickInquiry": {
+    "title": "Consulta Rápida",
+    "labels": {
+      "firstName": "Nombre",
+      "email": "Correo electrónico",
+      "message": "Mensaje"
+    },
+    "buttons": {
+      "submit": "Enviar",
+      "submitting": "Enviando..."
+    },
+    "success": "¡Gracias! Nos pondremos en contacto pronto."
+  }
 }

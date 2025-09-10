@@ -743,4 +743,18 @@
         }
       }
     }
+  },
+  "BlogQuickInquiry": {
+    "title": "Demande rapide",
+    "labels": {
+      "firstName": "Prénom",
+      "email": "E-mail",
+      "message": "Message"
+    },
+    "buttons": {
+      "submit": "Envoyer",
+      "submitting": "Envoi en cours..."
+    },
+    "success": "Merci ! Nous vous recontacterons bientôt."
+  }
 }

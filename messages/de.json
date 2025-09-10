@@ -743,4 +743,18 @@
         }
       }
     }
+  },
+  "BlogQuickInquiry": {
+    "title": "Schnellanfrage",
+    "labels": {
+      "firstName": "Vorname",
+      "email": "E-Mail",
+      "message": "Nachricht"
+    },
+    "buttons": {
+      "submit": "Absenden",
+      "submitting": "Wird gesendet..."
+    },
+    "success": "Danke! Wir melden uns in Kürze."
+  }
 }

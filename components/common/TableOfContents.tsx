@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 
 // 定义标题的数据结构
 interface Heading {
@@ -11,6 +11,7 @@ interface Heading {
 
 interface TableOfContentsProps {
   headings: Heading[];
+  children?: ReactNode;
 }
 
 /**
@@ -19,7 +20,7 @@ interface TableOfContentsProps {
  * - 粘性定位，随页面滚动
  * - 使用 IntersectionObserver 自动高亮当前章节
  */
-export default function TableOfContents({ headings }: TableOfContentsProps) {
+export default function TableOfContents({ headings, children }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState("");
   const observer = useRef<IntersectionObserver | null>(null);
 
@@ -58,7 +59,7 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
   }
 
   return (
-    <nav className="sticky top-24 p-4 bg-gray-50 rounded-lg max-h-[calc(100vh-6rem)] overflow-y-auto">
+    <nav className="p-4 bg-gray-50 rounded-lg">
       <ul>
         {headings.map((heading) => (
           <li
@@ -84,6 +85,7 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
           </li>
         ))}
       </ul>
+      {children ? <div className="mt-4">{children}</div> : null}
     </nav>
   );
 }
