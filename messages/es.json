@@ -189,24 +189,16 @@
   },
   "QuoteForm": {
     "labels": {
-      "firstName": "Nombre",
-      "lastName": "Apellido",
+      "name": "Nombre",
       "email": "Correo electrónico",
       "phone": "Teléfono",
       "companyName": "Nombre de la empresa",
       "position": "Cargo",
-      "message": "Mensaje",
-      "attachment": "Adjunto"
+      "message": "Mensaje"
     },
     "buttons": {
-      "chooseFile": "Elegir archivo(s)",
       "submit": "Enviar consulta",
       "submitting": "Enviando..."
-    },
-    "fileUpload": {
-      "noFileSelected": "Ningún archivo seleccionado",
-      "maxFilesError": "Solo puede cargar hasta {count} archivos.",
-      "maxFilesHint": "Máx. {count} archivos. Se permiten imágenes, PDF, DOC, XLS, TXT."
     },
     "notifications": {
       "submitSuccessFallback": "¡Su consulta ha sido enviada con éxito! Nos pondremos en contacto con usted pronto.",

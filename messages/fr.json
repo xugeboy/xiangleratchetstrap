@@ -189,24 +189,16 @@
   },
   "QuoteForm": {
     "labels": {
-      "firstName": "Prénom",
-      "lastName": "Nom",
+      "name": "Nom",
       "email": "E-mail",
       "phone": "Téléphone",
       "companyName": "Nom de l'entreprise",
       "position": "Poste",
-      "message": "Message",
-      "attachment": "Pièce jointe"
+      "message": "Message"
     },
     "buttons": {
-      "chooseFile": "Choisir un(des) fichier(s)",
       "submit": "Soumettre la demande",
       "submitting": "Soumission en cours..."
-    },
-    "fileUpload": {
-      "noFileSelected": "Aucun fichier sélectionné",
-      "maxFilesError": "Vous ne pouvez télécharger que {count} fichiers au maximum.",
-      "maxFilesHint": "Max {count} fichiers. Images, PDF, DOC, XLS, TXT autorisés."
     },
     "notifications": {
       "submitSuccessFallback": "Votre demande a été soumise avec succès ! Nous vous répondrons bientôt.",

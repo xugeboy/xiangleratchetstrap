@@ -14,15 +14,14 @@ export default function QuoteForm({ messageFromCustomizer }: QuoteFormProps) {
   const router = useRouter();
   const t = useTranslations("QuoteForm");
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
     phone: "",
     companyName: "",
     position: "",
     message: "",
-    attachment: [] as File[],
   });
+  const [submitting, setSubmitting] = useState(false);
     // 2. 添加 useEffect 钩子来监听 messageFromCustomizer 的变化
     useEffect(() => {
       // 当从定制页面传来消息时，更新表单的 message 状态
@@ -32,33 +31,30 @@ export default function QuoteForm({ messageFromCustomizer }: QuoteFormProps) {
     }, [messageFromCustomizer]); // 依赖数组中包含该 prop
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
 
-    const data = new FormData();
-    data.append("name", formData.firstName + " " + formData.lastName);
-    data.append("email", formData.email);
-    data.append("phone", formData.phone);
-    data.append("company", formData.companyName);
-    data.append("position", formData.position);
-    data.append("message", formData.message);
+    try {
+      const data = new FormData();
+      data.append("name", formData.name);
+      data.append("email", formData.email);
+      data.append("phone", formData.phone);
+      data.append("company", formData.companyName);
+      data.append("position", formData.position);
+      data.append("message", formData.message);
 
-    formData.attachment.forEach((file) => {
-      data.append("files.attachment", file);
-    });
-
-    const resData = await formAPI("/submitInquiry", data);
-    if(resData){
-      router.push("/request-quote/success");
+      const resData = await formAPI("/submitInquiry", data);
+      if (resData) {
+        router.push("/request-quote/success");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("There was an error submitting your inquiry. Please try again.");
+    } finally {
+      setSubmitting(false);
     }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
-    if (files.length > 3) {
-      alert("You can upload up to 3 files only.");
-      return;
-    }
-    setFormData((prev) => ({ ...prev, attachment: files }));
-  };
 
   return (
     <div className="mb-10" id="quote_form">
@@ -67,42 +63,61 @@ export default function QuoteForm({ messageFromCustomizer }: QuoteFormProps) {
         className="mx-auto bg-white px-6 py-12 rounded-[30px] shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
       >
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
-          {/* First Name */}
+          {/* Name */}
           <div>
             <label
-              htmlFor="firstName"
+              htmlFor="name"
               className="block text-sm mb-1 text-black"
             >
-              {t("labels.firstName")} <span className="text-red-400">*</span>
+              {t("labels.name")} <span className="text-red-400">*</span>
             </label>
             <input
               type="text"
-              id="firstName"
-              name="firstName"
+              id="name"
+              name="name"
               required
               className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
                 focus:bg-white focus:border-blue-500 focus:outline-none"
-              value={formData.firstName}
+              value={formData.name}
               onChange={(e) =>
-                setFormData((prev) => ({ ...prev, firstName: e.target.value }))
+                setFormData((prev) => ({ ...prev, name: e.target.value }))
               }
             />
           </div>
 
-          {/* Last Name */}
+          {/* Email */}
           <div>
-            <label htmlFor="lastName" className="block text-sm mb-1 text-black">
-              {t("labels.lastName")}
+            <label htmlFor="email" className="block text-sm mb-1 text-black">
+              {t("labels.email")} <span className="text-red-400">*</span>
             </label>
             <input
-              type="text"
-              id="lastName"
-              name="lastName"
+              type="email"
+              id="email"
+              name="email"
+              required
               className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
                 focus:bg-white focus:border-blue-500 focus:outline-none"
-              value={formData.lastName}
+              value={formData.email}
               onChange={(e) =>
-                setFormData((prev) => ({ ...prev, lastName: e.target.value }))
+                setFormData((prev) => ({ ...prev, email: e.target.value }))
+              }
+            />
+          </div>
+
+          {/* Phone */}
+          <div>
+            <label htmlFor="phone" className="block text-sm mb-1 text-black">
+              {t("labels.phone")}
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
+                focus:bg-white focus:border-blue-500 focus:outline-none"
+              value={formData.phone}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, phone: e.target.value }))
               }
             />
           </div>
@@ -125,45 +140,8 @@ export default function QuoteForm({ messageFromCustomizer }: QuoteFormProps) {
             />
           </div>
 
-          {/* Phone */}
-          <div>
-            <label htmlFor="phone" className="block text-sm mb-1 text-black">
-              {t("labels.phone")}
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-                focus:bg-white focus:border-blue-500 focus:outline-none"
-              value={formData.phone}
-              onChange={(e) =>
-                setFormData((prev) => ({ ...prev, phone: e.target.value }))
-              }
-            />
-          </div>
-          
-          {/* Email */}
-          <div className="col-span-2 md:col-span-1">
-            <label htmlFor="email" className="block text-sm mb-1 text-black">
-              {t("labels.email")} <span className="text-red-400">*</span>
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              className="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50/50
-                focus:bg-white focus:border-blue-500 focus:outline-none"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData((prev) => ({ ...prev, email: e.target.value }))
-              }
-            />
-          </div>
-
           {/* Company Name */}
-          <div className="col-span-2 md:col-span-1">
+          <div className="col-span-2">
             <label
               htmlFor="companyName"
               className="block text-sm mb-1 text-black"
@@ -185,6 +163,7 @@ export default function QuoteForm({ messageFromCustomizer }: QuoteFormProps) {
               }
             />
           </div>
+
         </div>
 
         {/* Message */}
@@ -206,53 +185,16 @@ export default function QuoteForm({ messageFromCustomizer }: QuoteFormProps) {
           />
         </div>
 
-        {/* Attachment */}
-        <div className="mt-6">
-          <label htmlFor="attachment" className="block text-sm mb-1 text-black">
-            {t("labels.attachment")}
-          </label>
-          <div className="mt-1 bg-gray-50/50 rounded-xl border border-gray-100 p-4">
-            <input
-              type="file"
-              id="attachment"
-              name="attachment_files" // 确保 name 属性对 FormData 有意义
-              className="hidden"
-              multiple
-              onChange={handleFileChange}
-              accept="image/*,application/pdf,.doc,.docx,.xls,.xlsx,.txt" // 示例：限制文件类型
-            />
-            <div className="flex items-center justify-between">
-              <label
-                htmlFor="attachment"
-                className="cursor-pointer inline-flex items-center px-4 py-2 rounded-lg bg-white border border-gray-100 
-                  text-sm text-black hover:border-blue-500 hover:text-blue-500
-                  transition-colors"
-              >
-                {t("buttons.chooseFile")}
-              </label>
-              <p className="text-sm text-black">
-                {formData.attachment.length > 0
-                  ? formData.attachment.map((f) => f.name).join(", ")
-                  : t("fileUpload.noFileSelected")}
-              </p>
-            </div>
-            <p className="text-xs text-black mt-1">
-              {t("fileUpload.maxFilesHint", { count: 3 })}
-            </p>{" "}
-            {/* 添加提示 */}
-          </div>
-        </div>
 
         {/* Submit Button */}
         <div className="mt-8">
           <button
             type="submit"
-            // disabled={isLoading} // 禁用按钮当正在加载时
+            disabled={submitting}
             className="inline-flex px-6 py-3 text-sm font-medium text-white bg-red-600 
               rounded-xl hover:bg-red-800 transition-colors disabled:opacity-50"
           >
-            {/* {isLoading ? t("buttons.submitting") : t("buttons.submit")} */}
-            {t("buttons.submit")}
+            {submitting ? t("buttons.submitting") : t("buttons.submit")}
           </button>
         </div>
       </form>

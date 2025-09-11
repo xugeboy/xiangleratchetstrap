@@ -189,24 +189,16 @@
     },
     "QuoteForm": {
         "labels": {
-            "firstName": "First Name",
-            "lastName": "Last Name",
+            "name": "Name",
             "email": "Email",
             "phone": "Phone",
             "companyName": "Company Name",
             "position": "Position",
-            "message": "Message",
-            "attachment": "Attachment"
+            "message": "Message"
         },
         "buttons": {
-            "chooseFile": "Choose File(s)",
             "submit": "Submit Enquiry",
             "submitting": "Submitting..."
-        },
-        "fileUpload": {
-            "noFileSelected": "No file(s) selected",
-            "maxFilesError": "You can upload up to {count} files only.",
-            "maxFilesHint": "Max {count} files. Images, PDF, DOC, XLS, TXT allowed."
         },
         "notifications": {
             "submitSuccessFallback": "Your enquiry has been submitted successfully! We will get back to you soon.",
