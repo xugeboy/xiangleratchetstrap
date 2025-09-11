@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { formAPI } from "@/utils/fetch-api";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 export default function BlogQuickInquiryForm() {
+  const router = useRouter();
   const t = useTranslations("BlogQuickInquiry");
   const [formData, setFormData] = useState({
     firstName: "",
@@ -12,7 +14,6 @@ export default function BlogQuickInquiryForm() {
     message: "",
   });
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,21 +25,14 @@ export default function BlogQuickInquiryForm() {
       data.append("email", formData.email);
       data.append("message", formData.message);
 
-      await formAPI("/submitInquiry", data);
-      setSubmitted(true);
-      setFormData({ firstName: "", email: "", message: "" });
+      const resData = await formAPI("/submitInquiry", data);
+      if (resData) {
+        router.push("/request-quote/success");
+      }
     } finally {
       setSubmitting(false);
     }
   };
-
-  if (submitted) {
-    return (
-      <div className="rounded-xl bg-white p-4 shadow text-sm text-black">
-        <p>{t("success")}</p>
-      </div>
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit} className=" bg-white p-4 text-black">

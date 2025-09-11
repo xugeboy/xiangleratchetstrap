@@ -76,7 +76,7 @@ export default function TableOfContents({ headings, children }: TableOfContentsP
               }}
               className={`transition-colors duration-200 text-sm ${
                 activeId === heading.id
-                  ? "text-red-600 font-bold"
+                  ? "text-red-600"
                   : "text-blue-600"
               }`}
             >
