@@ -446,18 +446,18 @@
         "slug": "sangle-a-cliquet-inox-316-25mm-crochet-double-j-grise-mbs-800kg"
       },
       "retractable2Inch": {
-          "title": "Sangle à cliquet auto-enroulante 50 mm x 3 m, crochets S à ressort - Résistance 1500 kg",
-          "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
-          "beforeAlt": "Cleanly organized retractable ratchet strap in use",
-          "afterAlt": "Messy, tangled traditional ratchet strap",
-          "slug": "sangle-a-cliquet-auto-enroulante-50-mm-x-3-m-crochets-s-a-ressort-resistance-1500-kg"
+        "title": "Sangle à cliquet auto-enroulante 50 mm x 3 m, crochets S à ressort - Résistance 1500 kg",
+        "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+        "beforeAlt": "Cleanly organized retractable ratchet strap in use",
+        "afterAlt": "Messy, tangled traditional ratchet strap",
+        "slug": "sangle-a-cliquet-auto-enroulante-50-mm-x-3-m-crochets-s-a-ressort-resistance-1500-kg"
       },
       "spinFree1Inch": {
-          "title": "Sangle à cliquet Spin Free 25mm, crochet en S à ressort",
-          "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
-          "beforeAlt": "Extra Effort to Release the Strap",
-          "afterAlt": "Spin Free. Unstrap Instantly",
-          "slug": "sangle-a-cliquet-spin-free-25mm-crochet-en-s-a-ressort-resistance-800-kg"
+        "title": "Sangle à cliquet Spin Free 25mm, crochet en S à ressort",
+        "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+        "beforeAlt": "Extra Effort to Release the Strap",
+        "afterAlt": "Spin Free. Unstrap Instantly",
+        "slug": "sangle-a-cliquet-spin-free-25mm-crochet-en-s-a-ressort-resistance-800-kg"
       }
     }
   },
@@ -485,7 +485,7 @@
       "description": "En tant qu'usine et fabricant direct, XiangleRatchetStrap est spécialisé dans l'impression OEM personnalisée de sangles. Nous imprimons le nom de votre entreprise, votre logo ou votre design unique directement sur les sangles. Ce service est idéal pour les entreprises nécessitant un étiquetage privé, la promotion de la marque ou des solutions d'arrimage entièrement personnalisées.",
       "subDescription": "Tous les produits de sangle imprimée sont fabriqués avec une <link>Sangle en Polyester</link> pour la meilleure résistance, durabilité et qualité d'impression."
     },
-    "polyesterWebbingLink":"categories/sangle",
+    "polyesterWebbingLink": "categories/sangle",
     "common": {
       "benefits": "Avantages",
       "limitations": "Limitations"
@@ -670,67 +670,100 @@
     }
   },
   "Tqc": {
-      "tabs": {
-        "manufacturing": "Processus de Fabrication",
-        "quality": "TQC",
-        "certifications": "Certifications",
-        "tradeTerms": "Conditions Commerciales"
-      },
-      "manufacturing": {
-        "heading": "Processus de Fabrication",
-        "description": "Découvrez nos capacités de production et nos processus de fabrication avancés qui assurent une qualité et une fiabilité constantes pour chaque sangle d'arrimage que nous produisons.",
-        "imageAlt": "Flux du processus de fabrication",
-        "bullets": {
-          "integratedProduction": "Production intégrée pour une qualité supérieure",
-          "precisionQC": "Contrôle qualité de précision",
-          "sustainable": "Fabrication durable"
-        }
-      },
-      "quality": {
-        "heading": "Gestion de la Qualité",
-        "description": "Des protocoles de test complets garantissent que nos produits répondent aux normes les plus élevées de performance et de sécurité pour les applications exigeantes.",
-        "labImageAlt": "Laboratoire d'essais",
-        "testing": {
-          "tensile": {
-            "title": "Essai de Traction",
-            "description": "Test de résistance à la rupture",
-            "details": "Nos sangles d'arrimage subissent des essais de traction rigoureux pour garantir qu'elles respectent et dépassent les normes de l'industrie en matière de capacité de charge et de sécurité."
-          },
-          "durability": {
-            "title": "Test de Durabilité",
-            "description": "Évaluation des performances à long terme",
-            "details": "Des cycles de cliquetis continus simulent des années d'utilisation intensive dans des conditions réelles."
-          },
-          "uv": {
-            "title": "Test de Résistance aux UV",
-            "description": "Évaluation de la résistance aux intempéries",
-            "details": "Le matériau de la sangle est testé pour la dégradation due aux UV afin de maintenir sa résistance lors d'une exposition prolongée au soleil."
-          }
-        }
-      },
-      "certifications": {
-        "heading": "Certifications et Conformité",
-        "description": "Nos certifications témoignent de notre engagement envers la sécurité, l'innovation et la responsabilité environnementale dans la fabrication de sangles d'arrimage.",
-        "bullet1": { "title": "Certification de Sécurité GS", "desc": "La certification GS (Geprüfte Sicherheit) garantit que nos sangles d'arrimage sont conformes aux normes de sécurité allemandes et européennes pour une sécurité testée et une assurance qualité." },
-        "bullet2": { "title": "Brevets d'Invention", "desc": "Nos conceptions et processus de fabrication innovants sont protégés par plusieurs brevets, démontrant notre engagement envers l'innovation continue et le développement de produits." },
-        "bullet3": { "title": "Conformité Environnementale", "desc": "Les certifications REACH et RoHS assurent que nos produits sont conformes aux réglementations européennes sur la sécurité chimique et la restriction des substances dangereuses, protégeant ainsi les utilisateurs et l'environnement." }
-      },
-      "trade": {
-        "heading": "Conditions Commerciales et Avantages de Livraison",
-        "description": "Notre usine dispose d'un vaste stock de matières premières et d'une capacité de production avancée, ce qui nous permet d'offrir des conditions commerciales compétitives et une livraison rapide pour répondre à vos besoins urgents.",
-        "imageAlt": "Stock important de matières premières dans l'usine",
-        "terms": {
-          "moq": { "title": "QMC (MOQ)", "value": "100 pièces", "note": "Faible quantité minimale de commande" },
-          "lead": { "title": "Délai de Livraison", "value": "7 jours (Commandes personnalisées sur devis)", "note": "Livraison rapide" },
-          "payment": { "title": "Conditions de Paiement", "value": "T/T, PayPal, XTransfer, Western Union", "note": "Options flexibles" },
-          "sample": { "title": "Politique d'Échantillons", "value": "Échantillon gratuit, port dû", "note": "Assurance qualité" }
+    "tabs": {
+      "manufacturing": "Processus de Fabrication",
+      "quality": "TQC",
+      "certifications": "Certifications",
+      "tradeTerms": "Conditions Commerciales"
+    },
+    "manufacturing": {
+      "heading": "Processus de Fabrication",
+      "description": "Découvrez nos capacités de production et nos processus de fabrication avancés qui assurent une qualité et une fiabilité constantes pour chaque sangle d'arrimage que nous produisons.",
+      "imageAlt": "Flux du processus de fabrication",
+      "bullets": {
+        "integratedProduction": "Production intégrée pour une qualité supérieure",
+        "precisionQC": "Contrôle qualité de précision",
+        "sustainable": "Fabrication durable"
+      }
+    },
+    "quality": {
+      "heading": "Gestion de la Qualité",
+      "description": "Des protocoles de test complets garantissent que nos produits répondent aux normes les plus élevées de performance et de sécurité pour les applications exigeantes.",
+      "labImageAlt": "Laboratoire d'essais",
+      "testing": {
+        "tensile": {
+          "title": "Essai de Traction",
+          "description": "Test de résistance à la rupture",
+          "details": "Nos sangles d'arrimage subissent des essais de traction rigoureux pour garantir qu'elles respectent et dépassent les normes de l'industrie en matière de capacité de charge et de sécurité."
         },
-        "why": {
-          "title": "Pourquoi choisir notre usine ?",
-          "items": {
-            "inventory": { "title": "Vaste Stock de Matières Premières", "desc": "Un stock important de matériaux de haute qualité assure la continuité de la production." },
-            "lines": { "title": "Lignes de Production Modernes", "desc": "Plusieurs lignes de production fonctionnant simultanément pour une livraison plus rapide." },
-            "qc": { "title": "Système de Contrôle Qualité", "desc": "Des tests rigoureux garantissent une qualité constante sans retards." }
+        "durability": {
+          "title": "Test de Durabilité",
+          "description": "Évaluation des performances à long terme",
+          "details": "Des cycles de cliquetis continus simulent des années d'utilisation intensive dans des conditions réelles."
+        },
+        "uv": {
+          "title": "Test de Résistance aux UV",
+          "description": "Évaluation de la résistance aux intempéries",
+          "details": "Le matériau de la sangle est testé pour la dégradation due aux UV afin de maintenir sa résistance lors d'une exposition prolongée au soleil."
+        }
+      }
+    },
+    "certifications": {
+      "heading": "Certifications et Conformité",
+      "description": "Nos certifications témoignent de notre engagement envers la sécurité, l'innovation et la responsabilité environnementale dans la fabrication de sangles d'arrimage.",
+      "bullet1": {
+        "title": "Certification de Sécurité GS",
+        "desc": "La certification GS (Geprüfte Sicherheit) garantit que nos sangles d'arrimage sont conformes aux normes de sécurité allemandes et européennes pour une sécurité testée et une assurance qualité."
+      },
+      "bullet2": {
+        "title": "Brevets d'Invention",
+        "desc": "Nos conceptions et processus de fabrication innovants sont protégés par plusieurs brevets, démontrant notre engagement envers l'innovation continue et le développement de produits."
+      },
+      "bullet3": {
+        "title": "Conformité Environnementale",
+        "desc": "Les certifications REACH et RoHS assurent que nos produits sont conformes aux réglementations européennes sur la sécurité chimique et la restriction des substances dangereuses, protégeant ainsi les utilisateurs et l'environnement."
+      }
+    },
+    "trade": {
+      "heading": "Conditions Commerciales et Avantages de Livraison",
+      "description": "Notre usine dispose d'un vaste stock de matières premières et d'une capacité de production avancée, ce qui nous permet d'offrir des conditions commerciales compétitives et une livraison rapide pour répondre à vos besoins urgents.",
+      "imageAlt": "Stock important de matières premières dans l'usine",
+      "terms": {
+        "moq": {
+          "title": "QMC (MOQ)",
+          "value": "100 pièces",
+          "note": "Faible quantité minimale de commande"
+        },
+        "lead": {
+          "title": "Délai de Livraison",
+          "value": "7 jours (Commandes personnalisées sur devis)",
+          "note": "Livraison rapide"
+        },
+        "payment": {
+          "title": "Conditions de Paiement",
+          "value": "T/T, PayPal, XTransfer, Western Union",
+          "note": "Options flexibles"
+        },
+        "sample": {
+          "title": "Politique d'Échantillons",
+          "value": "Échantillon gratuit, port dû",
+          "note": "Assurance qualité"
+        }
+      },
+      "why": {
+        "title": "Pourquoi choisir notre usine ?",
+        "items": {
+          "inventory": {
+            "title": "Vaste Stock de Matières Premières",
+            "desc": "Un stock important de matériaux de haute qualité assure la continuité de la production."
+          },
+          "lines": {
+            "title": "Lignes de Production Modernes",
+            "desc": "Plusieurs lignes de production fonctionnant simultanément pour une livraison plus rapide."
+          },
+          "qc": {
+            "title": "Système de Contrôle Qualité",
+            "desc": "Des tests rigoureux garantissent une qualité constante sans retards."
           }
         }
       }
