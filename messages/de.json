@@ -446,18 +446,18 @@
         "slug": "25mm-edelstahl-spanngurt-316-doppel-j-haken-grau-800kg-mbs"
       },
       "retractable2Inch": {
-          "title": "50mm x 3 m selbstaufrollender Spanngurt mit federbelasteten S-Haken",
-          "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
-          "beforeAlt": "Cleanly organized retractable ratchet strap in use",
-          "afterAlt": "Messy, tangled traditional ratchet strap",
-          "slug": "50mm-x-3-m-selbstaufrollender-spanngurt-mit-federbelasteten-s-haken-1500-kg-bruchlast"
+        "title": "50mm x 3 m selbstaufrollender Spanngurt mit federbelasteten S-Haken",
+        "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+        "beforeAlt": "Cleanly organized retractable ratchet strap in use",
+        "afterAlt": "Messy, tangled traditional ratchet strap",
+        "slug": "50mm-x-3-m-selbstaufrollender-spanngurt-mit-federbelasteten-s-haken-1500-kg-bruchlast"
       },
       "spinFree1Inch": {
-          "title": "25mm Spin Free Ratschengurt, mit federbelastetem S-Haken",
-          "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
-          "beforeAlt": "Extra Effort to Release the Strap",
-          "afterAlt": "Spin Free. Unstrap Instantly",
-          "slug": "25mm-spin-free-ratschengurt-mit-federbelastetem-s-haken-800-kg-bruchlast"
+        "title": "25mm Spin Free Ratschengurt, mit federbelastetem S-Haken",
+        "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+        "beforeAlt": "Extra Effort to Release the Strap",
+        "afterAlt": "Spin Free. Unstrap Instantly",
+        "slug": "25mm-spin-free-ratschengurt-mit-federbelastetem-s-haken-800-kg-bruchlast"
       }
     }
   },
@@ -485,7 +485,7 @@
       "description": "Als Direktfabrik und Hersteller ist XiangleRatchetStrap auf den individuellen OEM-Druck von Gurtbändern spezialisiert. Wir drucken Ihren Firmennamen, Ihr Logo oder Ihr einzigartiges Design direkt auf die Gurte. Dieser Service ist ideal für Unternehmen, die Private Labeling, Markenwerbung oder vollständig maßgeschneiderte Zurrlösungen benötigen.",
       "subDescription": "Alle bedruckten Gurtbandprodukte werden für beste Festigkeit, Haltbarkeit und Druckqualität aus <link>Polyester-Gurtband</link> hergestellt."
     },
-    "polyesterWebbingLink":"categories/gurtband",
+    "polyesterWebbingLink": "categories/gurtband",
     "common": {
       "benefits": "Vorteile",
       "limitations": "Einschränkungen"
@@ -670,67 +670,100 @@
     }
   },
   "Tqc": {
-      "tabs": {
-        "manufacturing": "Herstellungsprozess",
-        "quality": "TQC",
-        "certifications": "Zertifizierungen",
-        "tradeTerms": "Handelsbedingungen"
-      },
-      "manufacturing": {
-        "heading": "Herstellungsprozess",
-        "description": "Entdecken Sie unsere Produktionskapazitäten und fortschrittlichen Fertigungsverfahren, die eine gleichbleibende Qualität und Zuverlässigkeit bei jedem von uns hergestellten Zurrgurt gewährleisten.",
-        "imageAlt": "Ablauf des Herstellungsprozesses",
-        "bullets": {
-          "integratedProduction": "Integrierte Produktion für höchste Qualität",
-          "precisionQC": "Präzise Qualitätskontrolle",
-          "sustainable": "Nachhaltige Herstellung"
-        }
-      },
-      "quality": {
-        "heading": "Qualitätsmanagement",
-        "description": "Umfassende Testprotokolle stellen sicher, dass unsere Produkte die höchsten Standards für Leistung und Sicherheit in anspruchsvollen Anwendungen erfüllen.",
-        "labImageAlt": "Prüflabor",
-        "testing": {
-          "tensile": {
-            "title": "Zugfestigkeitsprüfung",
-            "description": "Prüfung der Bruchlast",
-            "details": "Unsere Zurrgurte werden strengen Zugfestigkeitsprüfungen unterzogen, um sicherzustellen, dass sie die Industriestandards für Tragfähigkeit und Sicherheit erfüllen und übertreffen."
-          },
-          "durability": {
-            "title": "Dauerhaltbarkeitsprüfung",
-            "description": "Langzeit-Leistungsbewertung",
-            "details": "Kontinuierliche Ratschenzyklen simulieren jahrelangen harten Einsatz unter realen Bedingungen."
-          },
-          "uv": {
-            "title": "UV-Beständigkeitsprüfung",
-            "description": "Bewertung der Witterungsbeständigkeit",
-            "details": "Das Gurtbandmaterial wird auf UV-bedingten Abbau getestet, um die Festigkeit bei längerer Sonneneinstrahlung zu erhalten."
-          }
-        }
-      },
-      "certifications": {
-        "heading": "Zertifizierungen & Konformität",
-        "description": "Unsere Zertifizierungen belegen unser Engagement für Sicherheit, Innovation und Umweltverantwortung bei der Herstellung von Zurrgurten.",
-        "bullet1": { "title": "GS-Sicherheitszertifizierung", "desc": "Die GS-Zertifizierung (Geprüfte Sicherheit) gewährleistet, dass unsere Zurrgurte die deutschen und europäischen Sicherheitsstandards für geprüfte Sicherheit und Qualitätssicherung erfüllen." },
-        "bullet2": { "title": "Patent-Zertifikate", "desc": "Unsere innovativen Designs und Herstellungsprozesse sind durch mehrere Patente geschützt, was unser Engagement für kontinuierliche Innovation und Produktentwicklung unterstreicht." },
-        "bullet3": { "title": "Umweltkonformität", "desc": "REACH- und RoHS-Zertifizierungen stellen sicher, dass unsere Produkte den europäischen Vorschriften zur Chemikaliensicherheit und zur Beschränkung gefährlicher Stoffe entsprechen und so Anwender und Umwelt schützen." }
-      },
-      "trade": {
-        "heading": "Handelsbedingungen & Liefervorteile",
-        "description": "Unser Werk verfügt über einen umfangreichen Lagerbestand an Rohstoffen und eine hohe Produktionskapazität, was es uns ermöglicht, wettbewerbsfähige Handelsbedingungen und schnelle Lieferungen für Ihre dringenden Bedürfnisse anzubieten.",
-        "imageAlt": "Umfangreicher Lagerbestand an Rohstoffen im Werk",
-        "terms": {
-          "moq": { "title": "Mindestbestellmenge", "value": "100 Stück", "note": "Niedrige Mindestbestellmenge" },
-          "lead": { "title": "Lieferzeit", "value": "7 Tage (Sonderanfertigungen separat)", "note": "Schnelle Lieferung" },
-          "payment": { "title": "Zahlungsbedingungen", "value": "T/T, PayPal, XTransfer, Western Union", "note": "Flexible Optionen" },
-          "sample": { "title": "Muster-Richtlinie", "value": "Kostenloses Muster, Fracht unfrei", "note": "Qualitätssicherung" }
+    "tabs": {
+      "manufacturing": "Herstellungsprozess",
+      "quality": "TQC",
+      "certifications": "Zertifizierungen",
+      "tradeTerms": "Handelsbedingungen"
+    },
+    "manufacturing": {
+      "heading": "Herstellungsprozess",
+      "description": "Entdecken Sie unsere Produktionskapazitäten und fortschrittlichen Fertigungsverfahren, die eine gleichbleibende Qualität und Zuverlässigkeit bei jedem von uns hergestellten Zurrgurt gewährleisten.",
+      "imageAlt": "Ablauf des Herstellungsprozesses",
+      "bullets": {
+        "integratedProduction": "Integrierte Produktion für höchste Qualität",
+        "precisionQC": "Präzise Qualitätskontrolle",
+        "sustainable": "Nachhaltige Herstellung"
+      }
+    },
+    "quality": {
+      "heading": "Qualitätsmanagement",
+      "description": "Umfassende Testprotokolle stellen sicher, dass unsere Produkte die höchsten Standards für Leistung und Sicherheit in anspruchsvollen Anwendungen erfüllen.",
+      "labImageAlt": "Prüflabor",
+      "testing": {
+        "tensile": {
+          "title": "Zugfestigkeitsprüfung",
+          "description": "Prüfung der Bruchlast",
+          "details": "Unsere Zurrgurte werden strengen Zugfestigkeitsprüfungen unterzogen, um sicherzustellen, dass sie die Industriestandards für Tragfähigkeit und Sicherheit erfüllen und übertreffen."
         },
-        "why": {
-          "title": "Warum unser Werk wählen?",
-          "items": {
-            "inventory": { "title": "Umfangreicher Rohmaterialbestand", "desc": "Großer Lagerbestand an hochwertigen Materialien sichert die Produktionskontinuität." },
-            "lines": { "title": "Moderne Produktionslinien", "desc": "Mehrere gleichzeitig laufende Produktionslinien für eine schnellere Lieferung." },
-            "qc": { "title": "Qualitätskontrollsystem", "desc": "Strenge Prüfungen gewährleisten gleichbleibende Qualität ohne Verzögerungen." }
+        "durability": {
+          "title": "Dauerhaltbarkeitsprüfung",
+          "description": "Langzeit-Leistungsbewertung",
+          "details": "Kontinuierliche Ratschenzyklen simulieren jahrelangen harten Einsatz unter realen Bedingungen."
+        },
+        "uv": {
+          "title": "UV-Beständigkeitsprüfung",
+          "description": "Bewertung der Witterungsbeständigkeit",
+          "details": "Das Gurtbandmaterial wird auf UV-bedingten Abbau getestet, um die Festigkeit bei längerer Sonneneinstrahlung zu erhalten."
+        }
+      }
+    },
+    "certifications": {
+      "heading": "Zertifizierungen & Konformität",
+      "description": "Unsere Zertifizierungen belegen unser Engagement für Sicherheit, Innovation und Umweltverantwortung bei der Herstellung von Zurrgurten.",
+      "bullet1": {
+        "title": "GS-Sicherheitszertifizierung",
+        "desc": "Die GS-Zertifizierung (Geprüfte Sicherheit) gewährleistet, dass unsere Zurrgurte die deutschen und europäischen Sicherheitsstandards für geprüfte Sicherheit und Qualitätssicherung erfüllen."
+      },
+      "bullet2": {
+        "title": "Patent-Zertifikate",
+        "desc": "Unsere innovativen Designs und Herstellungsprozesse sind durch mehrere Patente geschützt, was unser Engagement für kontinuierliche Innovation und Produktentwicklung unterstreicht."
+      },
+      "bullet3": {
+        "title": "Umweltkonformität",
+        "desc": "REACH- und RoHS-Zertifizierungen stellen sicher, dass unsere Produkte den europäischen Vorschriften zur Chemikaliensicherheit und zur Beschränkung gefährlicher Stoffe entsprechen und so Anwender und Umwelt schützen."
+      }
+    },
+    "trade": {
+      "heading": "Handelsbedingungen & Liefervorteile",
+      "description": "Unser Werk verfügt über einen umfangreichen Lagerbestand an Rohstoffen und eine hohe Produktionskapazität, was es uns ermöglicht, wettbewerbsfähige Handelsbedingungen und schnelle Lieferungen für Ihre dringenden Bedürfnisse anzubieten.",
+      "imageAlt": "Umfangreicher Lagerbestand an Rohstoffen im Werk",
+      "terms": {
+        "moq": {
+          "title": "Mindestbestellmenge",
+          "value": "100 Stück",
+          "note": "Niedrige Mindestbestellmenge"
+        },
+        "lead": {
+          "title": "Lieferzeit",
+          "value": "7 Tage (Sonderanfertigungen separat)",
+          "note": "Schnelle Lieferung"
+        },
+        "payment": {
+          "title": "Zahlungsbedingungen",
+          "value": "T/T, PayPal, XTransfer, Western Union",
+          "note": "Flexible Optionen"
+        },
+        "sample": {
+          "title": "Muster-Richtlinie",
+          "value": "Kostenloses Muster, Fracht unfrei",
+          "note": "Qualitätssicherung"
+        }
+      },
+      "why": {
+        "title": "Warum unser Werk wählen?",
+        "items": {
+          "inventory": {
+            "title": "Umfangreicher Rohmaterialbestand",
+            "desc": "Großer Lagerbestand an hochwertigen Materialien sichert die Produktionskontinuität."
+          },
+          "lines": {
+            "title": "Moderne Produktionslinien",
+            "desc": "Mehrere gleichzeitig laufende Produktionslinien für eine schnellere Lieferung."
+          },
+          "qc": {
+            "title": "Qualitätskontrollsystem",
+            "desc": "Strenge Prüfungen gewährleisten gleichbleibende Qualität ohne Verzögerungen."
           }
         }
       }

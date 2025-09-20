@@ -286,11 +286,11 @@
       "customPrinting": "Impresión previa"
     },
     "customization": {
-    "customizations": "Personalización",
-    "colorSelection": "Selección de color",
-    "customLogo": "Logotipo personalizado",
-    "tailoredPackaging": "Embalaje a medida",
-    "possibilities": "¿Quiere explorar más posibilidades de personalización? ¡Haga clic aquí!"
+      "customizations": "Personalización",
+      "colorSelection": "Selección de color",
+      "customLogo": "Logotipo personalizado",
+      "tailoredPackaging": "Embalaje a medida",
+      "possibilities": "¿Quiere explorar más posibilidades de personalización? ¡Haga clic aquí!"
     }
   },
   "Common": {
@@ -446,18 +446,18 @@
         "slug": "cinta-de-trinquete-inoxidable-316-25mm-gancho-doble-j-gris-rotura-800kg"
       },
       "retractable2Inch": {
-          "title": "Correa de trinquete auto-enrollable 50 mm x 3 m con ganchos S de resorte - 1500 kg de rotura",
-          "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
-          "beforeAlt": "Cleanly organized retractable ratchet strap in use",
-          "afterAlt": "Messy, tangled traditional ratchet strap",
-          "slug": "correa-de-trinquete-auto-enrollable-50-mm-x-3-m-con-ganchos-s-de-resorte-1500-kg-de-rotura"
+        "title": "Correa de trinquete auto-enrollable 50 mm x 3 m con ganchos S de resorte - 1500 kg de rotura",
+        "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+        "beforeAlt": "Cleanly organized retractable ratchet strap in use",
+        "afterAlt": "Messy, tangled traditional ratchet strap",
+        "slug": "correa-de-trinquete-auto-enrollable-50-mm-x-3-m-con-ganchos-s-de-resorte-1500-kg-de-rotura"
       },
       "spinFree1Inch": {
-          "title": "Correa de trinquete Spin Free de 25mm, gancho en S con resorte",
-          "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
-          "beforeAlt": "Extra Effort to Release the Strap",
-          "afterAlt": "Spin Free. Unstrap Instantly",
-          "slug": "correa-de-trinquete-spin-free-de-25mm-gancho-en-s-con-resorte-800-kg-resistencia"
+        "title": "Correa de trinquete Spin Free de 25mm, gancho en S con resorte",
+        "description": "Effortless retraction and secure hold—engineered for fast, tangle-free cargo control in industrial settings.",
+        "beforeAlt": "Extra Effort to Release the Strap",
+        "afterAlt": "Spin Free. Unstrap Instantly",
+        "slug": "correa-de-trinquete-spin-free-de-25mm-gancho-en-s-con-resorte-800-kg-resistencia"
       }
     }
   },
@@ -485,7 +485,7 @@
       "description": "Como fábrica y fabricante directo, XiangleRatchetStrap se especializa en la impresión OEM personalizada de cinchas. Imprimimos el nombre de su empresa, logotipo o diseño único directamente en las correas. Este servicio es ideal para empresas que necesitan etiquetado privado, promoción de marca o soluciones de amarre totalmente personalizadas.",
       "subDescription": "Todos los productos de cincha impresa se fabrican con <link>Cincha de Poliéster</link> para obtener la mejor resistencia, durabilidad y calidad de impresión."
     },
-    "polyesterWebbingLink":"categories/cinta",
+    "polyesterWebbingLink": "categories/cinta",
     "common": {
       "benefits": "Beneficios",
       "limitations": "Limitaciones"
@@ -670,67 +670,100 @@
     }
   },
   "Tqc": {
-      "tabs": {
-        "manufacturing": "Proceso de Fabricación",
-        "quality": "TQC",
-        "certifications": "Certificaciones",
-        "tradeTerms": "Términos Comerciales"
-      },
-      "manufacturing": {
-        "heading": "Proceso de Fabricación",
-        "description": "Descubra nuestras capacidades de producción y avanzados procesos de fabricación que garantizan una calidad y fiabilidad constantes en cada cincha de amarre que producimos.",
-        "imageAlt": "Flujo del proceso de fabricación",
-        "bullets": {
-          "integratedProduction": "Producción Integrada para una Calidad Superior",
-          "precisionQC": "Control de calidad de precisión",
-          "sustainable": "Fabricación sostenible"
-        }
-      },
-      "quality": {
-        "heading": "Gestión de Calidad",
-        "description": "Nuestros exhaustivos protocolos de prueba aseguran que los productos cumplen con los más altos estándares de rendimiento y seguridad en aplicaciones exigentes.",
-        "labImageAlt": "Laboratorio de pruebas",
-        "testing": {
-          "tensile": {
-            "title": "Prueba de Tracción",
-            "description": "Prueba de resistencia a la rotura",
-            "details": "Nuestras cinchas de amarre se someten a rigurosas pruebas de tracción para garantizar que cumplen y superan los estándares de la industria en capacidad de carga y seguridad."
-          },
-          "durability": {
-            "title": "Prueba de Durabilidad",
-            "description": "Evaluación del rendimiento a largo plazo",
-            "details": "Ciclos continuos de trinquete para simular años de uso intensivo en condiciones reales."
-          },
-          "uv": {
-            "title": "Prueba de Resistencia a los Rayos UV",
-            "description": "Evaluación de la resistencia a la intemperie",
-            "details": "El material de la cinta se somete a pruebas de degradación por UV para mantener la resistencia bajo una exposición solar prolongada."
-          }
-        }
-      },
-      "certifications": {
-        "heading": "Certificaciones y Cumplimiento",
-        "description": "Nuestras certificaciones demuestran nuestro compromiso con la seguridad, la innovación y la responsabilidad medioambiental en la fabricación de cinchas de amarre.",
-        "bullet1": { "title": "Certificación de Seguridad GS", "desc": "La certificación GS (Geprüfte Sicherheit) garantiza que nuestras cinchas de amarre cumplen con las normas de seguridad alemanas y europeas para una seguridad probada y garantía de calidad." },
-        "bullet2": { "title": "Certificados de Patente", "desc": "Nuestros diseños y procesos de fabricación innovadores están protegidos por múltiples patentes, demostrando nuestro compromiso con la innovación continua y el desarrollo de productos." },
-        "bullet3": { "title": "Cumplimiento Medioambiental", "desc": "Las certificaciones REACH y RoHS aseguran que nuestros productos cumplen con las regulaciones europeas sobre seguridad química y restricción de sustancias peligrosas, protegiendo tanto a los usuarios como al medio ambiente." }
-      },
-      "trade": {
-        "heading": "Términos Comerciales y Ventajas de Entrega",
-        "description": "Nuestra fábrica mantiene un amplio inventario de materias primas y una capacidad de producción avanzada, lo que nos permite ofrecer condiciones comerciales competitivas y una entrega rápida para satisfacer sus necesidades urgentes.",
-        "imageAlt": "Amplio stock de materias primas en la fábrica",
-        "terms": {
-          "moq": { "title": "Pedido Mínimo (MOQ)", "value": "100 uds.", "note": "Pedido mínimo bajo" },
-          "lead": { "title": "Plazo de Entrega", "value": "7 días (Pedidos personalizados aparte)", "note": "Entrega rápida" },
-          "payment": { "title": "Condiciones de Pago", "value": "T/T, PayPal, XTransfer, Western Union", "note": "Opciones flexibles" },
-          "sample": { "title": "Política de Muestras", "value": "Muestra gratuita, portes debidos", "note": "Garantía de calidad" }
+    "tabs": {
+      "manufacturing": "Proceso de Fabricación",
+      "quality": "TQC",
+      "certifications": "Certificaciones",
+      "tradeTerms": "Términos Comerciales"
+    },
+    "manufacturing": {
+      "heading": "Proceso de Fabricación",
+      "description": "Descubra nuestras capacidades de producción y avanzados procesos de fabricación que garantizan una calidad y fiabilidad constantes en cada cincha de amarre que producimos.",
+      "imageAlt": "Flujo del proceso de fabricación",
+      "bullets": {
+        "integratedProduction": "Producción Integrada para una Calidad Superior",
+        "precisionQC": "Control de calidad de precisión",
+        "sustainable": "Fabricación sostenible"
+      }
+    },
+    "quality": {
+      "heading": "Gestión de Calidad",
+      "description": "Nuestros exhaustivos protocolos de prueba aseguran que los productos cumplen con los más altos estándares de rendimiento y seguridad en aplicaciones exigentes.",
+      "labImageAlt": "Laboratorio de pruebas",
+      "testing": {
+        "tensile": {
+          "title": "Prueba de Tracción",
+          "description": "Prueba de resistencia a la rotura",
+          "details": "Nuestras cinchas de amarre se someten a rigurosas pruebas de tracción para garantizar que cumplen y superan los estándares de la industria en capacidad de carga y seguridad."
         },
-        "why": {
-          "title": "¿Por qué elegir nuestra fábrica?",
-          "items": {
-            "inventory": { "title": "Amplio Inventario de Materias Primas", "desc": "Un gran stock de materiales de alta calidad garantiza la continuidad de la producción." },
-            "lines": { "title": "Líneas de Producción Avanzadas", "desc": "Múltiples líneas de producción operando simultáneamente para una entrega más rápida." },
-            "qc": { "title": "Sistema de Control de Calidad", "desc": "Pruebas rigurosas aseguran una calidad constante sin demoras." }
+        "durability": {
+          "title": "Prueba de Durabilidad",
+          "description": "Evaluación del rendimiento a largo plazo",
+          "details": "Ciclos continuos de trinquete para simular años de uso intensivo en condiciones reales."
+        },
+        "uv": {
+          "title": "Prueba de Resistencia a los Rayos UV",
+          "description": "Evaluación de la resistencia a la intemperie",
+          "details": "El material de la cinta se somete a pruebas de degradación por UV para mantener la resistencia bajo una exposición solar prolongada."
+        }
+      }
+    },
+    "certifications": {
+      "heading": "Certificaciones y Cumplimiento",
+      "description": "Nuestras certificaciones demuestran nuestro compromiso con la seguridad, la innovación y la responsabilidad medioambiental en la fabricación de cinchas de amarre.",
+      "bullet1": {
+        "title": "Certificación de Seguridad GS",
+        "desc": "La certificación GS (Geprüfte Sicherheit) garantiza que nuestras cinchas de amarre cumplen con las normas de seguridad alemanas y europeas para una seguridad probada y garantía de calidad."
+      },
+      "bullet2": {
+        "title": "Certificados de Patente",
+        "desc": "Nuestros diseños y procesos de fabricación innovadores están protegidos por múltiples patentes, demostrando nuestro compromiso con la innovación continua y el desarrollo de productos."
+      },
+      "bullet3": {
+        "title": "Cumplimiento Medioambiental",
+        "desc": "Las certificaciones REACH y RoHS aseguran que nuestros productos cumplen con las regulaciones europeas sobre seguridad química y restricción de sustancias peligrosas, protegiendo tanto a los usuarios como al medio ambiente."
+      }
+    },
+    "trade": {
+      "heading": "Términos Comerciales y Ventajas de Entrega",
+      "description": "Nuestra fábrica mantiene un amplio inventario de materias primas y una capacidad de producción avanzada, lo que nos permite ofrecer condiciones comerciales competitivas y una entrega rápida para satisfacer sus necesidades urgentes.",
+      "imageAlt": "Amplio stock de materias primas en la fábrica",
+      "terms": {
+        "moq": {
+          "title": "Pedido Mínimo (MOQ)",
+          "value": "100 uds.",
+          "note": "Pedido mínimo bajo"
+        },
+        "lead": {
+          "title": "Plazo de Entrega",
+          "value": "7 días (Pedidos personalizados aparte)",
+          "note": "Entrega rápida"
+        },
+        "payment": {
+          "title": "Condiciones de Pago",
+          "value": "T/T, PayPal, XTransfer, Western Union",
+          "note": "Opciones flexibles"
+        },
+        "sample": {
+          "title": "Política de Muestras",
+          "value": "Muestra gratuita, portes debidos",
+          "note": "Garantía de calidad"
+        }
+      },
+      "why": {
+        "title": "¿Por qué elegir nuestra fábrica?",
+        "items": {
+          "inventory": {
+            "title": "Amplio Inventario de Materias Primas",
+            "desc": "Un gran stock de materiales de alta calidad garantiza la continuidad de la producción."
+          },
+          "lines": {
+            "title": "Líneas de Producción Avanzadas",
+            "desc": "Múltiples líneas de producción operando simultáneamente para una entrega más rápida."
+          },
+          "qc": {
+            "title": "Sistema de Control de Calidad",
+            "desc": "Pruebas rigurosas aseguran una calidad constante sin demoras."
           }
         }
       }
