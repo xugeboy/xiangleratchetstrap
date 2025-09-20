@@ -6,8 +6,27 @@ import { getLocale, getTranslations } from 'next-intl/server';
 export default async function ContactSection() {
   const locale = await getLocale();
   const t = await getTranslations({locale, namespace: "ContactSection"})
+  
+  // 根据 locale 设置地图语言
+  const getMapLanguage = (locale: string) => {
+    switch (locale) {
+      case 'de':
+        return 'de';
+      case 'fr':
+        return 'fr';
+      case 'es':
+        return 'es';
+      default:
+        return 'en';
+    }
+  };
+  
+  const mapLanguage = getMapLanguage(locale);
+
   return (
-      <div className="mx-auto grid container gap-12 grid-cols-1 lg:grid-cols-2">
+    <div className="mx-auto container">
+      {/* 联系信息和询盘表单 */}
+      <div className="grid gap-12 grid-cols-1 lg:grid-cols-2 mb-16">
         <div className="relative px-6">
           <div className="mx-auto lg:mx-0">
             <h2 className="text-4xl font-semibold tracking-tight text-pretty text-black sm:text-5xl">
@@ -81,5 +100,22 @@ export default async function ContactSection() {
           <QuoteForm></QuoteForm>
         </div>
       </div>
+
+      {/* 地图部分 */}
+      <div className="px-6">
+        <div className="w-full rounded-lg overflow-hidden shadow-lg border border-gray-200">
+          <iframe 
+            src={`https://www.google.com/maps/d/embed?mid=18V23pac2gbS4mXWYCi7ibWx_fsEq5g0&ehbc=2E312F&hl=${mapLanguage}`}
+            width="100%" 
+            height="500"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Xiangle Ratchet Strap Location"
+          />
+        </div>
+      </div>
+    </div>
   )
 }

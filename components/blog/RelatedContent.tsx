@@ -63,15 +63,30 @@ export default function RelatedContent({
 
       {blogs && blogs.length > 0 && (
         <div>
-          <h2 className="text-2xl font-bold mb-4">{t("relatedBlogs")}</h2>
+          <h2 className="text-2xl font-bold mb-6 text-black">{t("relatedBlogs")}</h2>
           <div className="space-y-3">
             {blogs.map((blog) => (
               <Link
                 key={blog.id}
                 href={getCombainedLocalePath(lang, `blogs/${blog.slug}`)}
-                className="flex items-center gap-3 group hover:bg-gray-50 p-2 rounded-lg transition-colors"
+                className="flex items-start gap-3 group hover:bg-gray-50 p-2 rounded-lg transition-colors"
               >
-                <h3 className="text-lg font-medium leading-snug group-hover:text-green-600 transition-colors">
+                <div className="flex-shrink-0 mt-1">
+                  <svg 
+                    className="w-4 h-4 text-gray-400 group-hover:text-red-500 transition-colors" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-base font-medium leading-relaxed text-gray-800 group-hover:text-red-600 transition-colors">
                   {blog.title}
                 </h3>
               </Link>
