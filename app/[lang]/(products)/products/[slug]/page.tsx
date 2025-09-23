@@ -12,7 +12,7 @@ import Tqc from "@/components/product/Tqc";
 import { getAllProductFaqs } from "@/services/api/faq";
 import FaqList from "@/app/[lang]/(public)/faq/FaqList";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 interface ProductPageProps {
   params: {

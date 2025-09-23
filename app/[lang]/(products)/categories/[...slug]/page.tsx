@@ -6,7 +6,7 @@ import { defaultUrlPrefix, localePrefixMap } from '@/middleware'
 import { getCategoryMetaDataBySlug } from '@/services/api/productCategory'
 import { notFound } from 'next/navigation'
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 interface CategoryPageProps {
   params: {
