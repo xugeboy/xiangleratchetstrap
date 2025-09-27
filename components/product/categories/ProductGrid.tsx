@@ -116,6 +116,11 @@ export function ProductGrid({
                           />
                         )}
                       </div>
+                      {product.code && (
+                        <div className="text-xs text-gray-500 mb-2 font-mono">
+                          {product.code}
+                        </div>
+                      )}
                       <h3 className="font-medium line-clamp-2 md:group-hover:text-red-700 transition-colors duration-200 mb-4">
                         {product.name}
                       </h3>
@@ -157,6 +162,11 @@ export function ProductGrid({
                       )}
                     </div>
                     <div className="flex-1 flex flex-col">
+                      {product.code && (
+                        <div className="text-xs text-gray-500 mb-1 font-mono">
+                          {product.code}
+                        </div>
+                      )}
                       <Link href={`${pathPrefix}/products/${product.slug}`}>
                         <h3 className="font-medium hover:text-red-700 transition-colors duration-200">
                           {product.name}
@@ -206,9 +216,16 @@ export function ProductGrid({
                         />
                       )}
                     </div>
-                    <h3 className="text-sm font-medium flex-1">
-                      {product.name}
-                    </h3>
+                    <div className="flex-1">
+                      {product.code && (
+                        <div className="text-xs text-gray-500 mb-1 font-mono">
+                          {product.code}
+                        </div>
+                      )}
+                      <h3 className="text-sm font-medium">
+                        {product.name}
+                      </h3>
+                    </div>
                     <ChevronRightIcon className="h-5 w-5 text-black" />
                   </Link>
                 )}
