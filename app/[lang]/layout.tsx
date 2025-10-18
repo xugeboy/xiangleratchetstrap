@@ -7,6 +7,7 @@ import BackToTop from "@/components/common/BackToTop";
 import { fetchAPI } from "@/utils/fetch-api";
 import { CategoryProvider } from "@/contexts/CategoryContext";
 import TawkToWidget from "@/components/common/TawkToWidget";
+import FloatingContact from "@/components/common/FloatingContact";
 import { Viewport } from "next";
 import { localePrefixMap, defaultLocaleKey } from "@/middleware";
 import { routing } from "@/i18n/routing";
@@ -201,8 +202,9 @@ export default async function RootLayout({
                 <TawkToWidget />
               </main>
               <Footer />
+              <BackToTop />
+              <FloatingContact />
             </NextIntlClientProvider>
-            <BackToTop />
           </div>
         </CategoryProvider>
 
