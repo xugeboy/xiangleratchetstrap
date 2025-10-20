@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import { ChevronRightIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
 import type { Product } from "@/types/product";
 import { filterProducts } from "@/services/api/product";
 import {
@@ -117,9 +117,19 @@ export function ProductGrid({
                         )}
                       </div>
                       {product.code && (
-                        <div className="text-xs text-gray-500 mb-2 font-mono">
-                          {product.code}
-                        </div>
+                        <>
+                          <div className="text-xs text-gray-500 mb-2 font-mono">
+                            {product.code}
+                          </div>
+                          {product.customizable && (
+                            <div className="mb-2 flex flex-wrap gap-2">
+                              <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 text-xs font-semibold">
+                                Fast customization
+                                <InformationCircleIcon className="h-3.5 w-3.5 text-indigo-600" />
+                              </span>
+                            </div>
+                          )}
+                        </>
                       )}
                       <h3 className="font-medium line-clamp-2 md:group-hover:text-red-700 transition-colors duration-200 mb-4">
                         {product.name}
@@ -163,9 +173,19 @@ export function ProductGrid({
                     </div>
                     <div className="flex-1 flex flex-col">
                       {product.code && (
-                        <div className="text-xs text-gray-500 mb-1 font-mono">
-                          {product.code}
-                        </div>
+                        <>
+                          <div className="text-xs text-gray-500 mb-1 font-mono">
+                            {product.code}
+                          </div>
+                          {product.customizable && (
+                            <div className="mb-1 flex flex-wrap gap-2">
+                              <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 text-xs font-semibold">
+                                Fast customization
+                                <InformationCircleIcon className="h-3.5 w-3.5 text-indigo-600" />
+                              </span>
+                            </div>
+                          )}
+                        </>
                       )}
                       <Link href={`${pathPrefix}/products/${product.slug}`}>
                         <h3 className="font-medium hover:text-red-700 transition-colors duration-200">
@@ -218,9 +238,19 @@ export function ProductGrid({
                     </div>
                     <div className="flex-1">
                       {product.code && (
-                        <div className="text-xs text-gray-500 mb-1 font-mono">
-                          {product.code}
-                        </div>
+                        <>
+                          <div className="text-xs text-gray-500 mb-1 font-mono">
+                            {product.code}
+                          </div>
+                          {product.customizable && (
+                            <div className="mb-1 flex flex-wrap gap-2">
+                              <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 text-xs font-semibold">
+                                Fast customization
+                                <InformationCircleIcon className="h-3.5 w-3.5 text-indigo-600" />
+                              </span>
+                            </div>
+                          )}
+                        </>
                       )}
                       <h3 className="text-sm font-medium">
                         {product.name}
