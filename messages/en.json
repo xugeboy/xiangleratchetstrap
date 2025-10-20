@@ -327,6 +327,7 @@
     "ProductGrid": {
         "loading": "Loading products...",
         "learnMoreButton": "See Details",
+        "fastCustomization": "Fast customization",
         "noDescription": "No description available.",
         "pagination": {
             "previous": "Previous",

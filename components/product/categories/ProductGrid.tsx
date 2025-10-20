@@ -62,10 +62,12 @@ export function ProductGrid({
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
   const pathPrefix = getBreadcrumbPathPrefix(lang);
   const t = useTranslations("ProductGrid");
-  const tp = useTranslations("ProductInfo.buttons");
   return (
     <div className="space-y-6">
       {isLoading ? (
@@ -122,36 +124,27 @@ export function ProductGrid({
                             {product.code}
                           </div>
                           {product.customizable && (
-                            <div className="mb-2 flex flex-wrap gap-2">
+                            <div className="mb-2 flex flex-wrap items-center gap-2">
                               <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 text-xs font-semibold">
-                                Fast customization
+                                {t("fastCustomization")}
                                 <InformationCircleIcon className="h-3.5 w-3.5 text-indigo-600" />
                               </span>
+                              <Link
+                                href={`${pathPrefix}/custom-print/online-builder?${product.slug}`}
+                                aria-label="Go to Online Builder"
+                                className="inline-flex items-center rounded-full border border-red-200 text-red-600 px-2 py-1 text-xs hover:bg-red-50"
+                              >
+                                <FaPalette className="h-4 w-4" />
+                              </Link>
                             </div>
                           )}
                         </>
                       )}
-                      <h3 className="font-medium line-clamp-2 md:group-hover:text-red-700 transition-colors duration-200 mb-4">
+                      <h3 className="font-medium line-clamp-3 md:group-hover:text-red-700 transition-colors duration-200 mb-4">
                         {product.name}
                       </h3>
                     </Link>
-                    <div className="flex items-center gap-2">
-                      <Link
-                        href={`${pathPrefix}/products/${product.slug}`}
-                        className="flex-1 rounded-md bg-black px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-gray-800"
-                      >
-                        {t("learnMoreButton")}
-                      </Link>
-                      {product.customizable && (
-                        <Link
-                          href={`${pathPrefix}/custom-print/online-builder?${product.slug}`}
-                          aria-label="Go to Online Builder"
-                          className="flex-shrink-0 rounded-md p-2.5 text-black hover:bg-gray-100"
-                        >
-                          <FaPalette className="h-5 w-5 text-red-600" />
-                        </Link>
-                      )}
-                    </div>
+                    {/* grid视图下已移至标签行右侧，不再重复显示调色盘按钮 */}
                   </div>
                 )}
 
@@ -178,17 +171,24 @@ export function ProductGrid({
                             {product.code}
                           </div>
                           {product.customizable && (
-                            <div className="mb-1 flex flex-wrap gap-2">
+                            <div className="mb-1 flex flex-wrap items-center gap-2">
                               <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 text-xs font-semibold">
-                                Fast customization
+                                {t("fastCustomization")}
                                 <InformationCircleIcon className="h-3.5 w-3.5 text-indigo-600" />
                               </span>
+                              <Link
+                                href={`${pathPrefix}/custom-print/online-builder?${product.slug}`}
+                                aria-label="Go to Online Builder"
+                                className="inline-flex items-center rounded-full border border-red-200 text-red-600 px-2 py-1 text-xs hover:bg-red-50"
+                              >
+                                <FaPalette className="h-4 w-4" />
+                              </Link>
                             </div>
                           )}
                         </>
                       )}
                       <Link href={`${pathPrefix}/products/${product.slug}`}>
-                        <h3 className="font-medium hover:text-red-700 transition-colors duration-200">
+                        <h3 className="font-medium hover:text-red-700 transition-colors duration-200 line-clamp-3">
                           {product.name}
                         </h3>
                       </Link>
@@ -197,22 +197,7 @@ export function ProductGrid({
                       </p>
 
                       {/* 优化的按钮布局 - 移动端友好 */}
-                      <div className="mt-4 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                        <Link
-                          href={`${pathPrefix}/products/${product.slug}`}
-                          className="flex-1 sm:flex-none inline-block bg-black text-white px-6 py-3 rounded-md text-sm font-bold uppercase text-center hover:bg-gray-800 transition-colors duration-200"
-                        >
-                          {t("learnMoreButton")}
-                        </Link>
-                        {product.customizable && (
-                          <Link
-                            href={`${pathPrefix}/custom-print/online-builder?${product.slug}`}
-                            className="flex-1 sm:flex-none inline-block bg-red-700 text-white px-6 py-3 rounded-md text-sm font-bold uppercase text-center hover:bg-red-800 transition-colors duration-200"
-                          >
-                            {tp("customPrinting")}
-                          </Link>
-                        )}
-                      </div>
+                      <div className="mt-4" />
                     </div>
                   </div>
                 )}
@@ -243,11 +228,18 @@ export function ProductGrid({
                             {product.code}
                           </div>
                           {product.customizable && (
-                            <div className="mb-1 flex flex-wrap gap-2">
+                            <div className="mb-1 flex flex-wrap items-center gap-2">
                               <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 text-xs font-semibold">
-                                Fast customization
+                                {t("fastCustomization")}
                                 <InformationCircleIcon className="h-3.5 w-3.5 text-indigo-600" />
                               </span>
+                              <Link
+                                href={`${pathPrefix}/custom-print/online-builder?${product.slug}`}
+                                aria-label="Go to Online Builder"
+                                className="inline-flex items-center rounded-full border border-red-200 text-red-600 px-2 py-1 text-xs hover:bg-red-50"
+                              >
+                                <FaPalette className="h-4 w-4" />
+                              </Link>
                             </div>
                           )}
                         </>

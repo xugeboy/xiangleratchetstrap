@@ -30,13 +30,22 @@ export function CategorySidebar({
   const locale = useLocale()
   useEffect(() => {
     if (currentCategory) {
-      const newExpandedCategories = { ...expandedCategories }
+      // 计算从当前分类向上的所有父级，确保路径全部展开
+      const newExpandedCategories: Record<number, boolean> = {}
 
-      categories.forEach((category) => {
-        if (category.children?.some((child) => child.id === currentCategory.id)) {
-          newExpandedCategories[category.id] = true
-        }
-      })
+      const findParentId = (childId: number): number | undefined => {
+        const parent = categories.find((cat) => cat.children?.some((child) => child.id === childId))
+        return parent?.id
+      }
+
+      let currentId: number | undefined = currentCategory.id
+      // 向上遍历直至根
+      while (true) {
+        const parentId = currentId !== undefined ? findParentId(currentId) : undefined
+        if (parentId === undefined) break
+        newExpandedCategories[parentId] = true
+        currentId = parentId
+      }
 
       setExpandedCategories(newExpandedCategories)
     }

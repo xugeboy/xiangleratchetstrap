@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 /**
  * 生成要在分页中显示的页码和省略号的辅助函数
@@ -92,7 +93,8 @@ export const ResponsivePagination = ({
           disabled={currentPage === 1}
           className="px-3 py-1.5 text-sm font-medium rounded-md border bg-white text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {t("pagination.previous")}
+          <ChevronLeftIcon className="h-4 w-4" aria-hidden="true" />
+          <span className="sr-only">{t("pagination.previous")}</span>
         </button>
 
         {/* 页码和省略号 */}
@@ -131,7 +133,8 @@ export const ResponsivePagination = ({
           disabled={currentPage === totalPages}
           className="px-3 py-1.5 text-sm font-medium rounded-md border bg-white text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {t("pagination.next")}
+          <ChevronRightIcon className="h-4 w-4" aria-hidden="true" />
+          <span className="sr-only">{t("pagination.next")}</span>
         </button>
       </nav>
     </div>
