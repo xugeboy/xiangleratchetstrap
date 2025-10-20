@@ -102,7 +102,9 @@ export default function HeroSection() {
               alt={slide.title}
               fill
               className="object-cover"
-              priority={index === 0}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 2000px"
+              priority
+              fetchPriority="high"
             />
           </div>
         ))}

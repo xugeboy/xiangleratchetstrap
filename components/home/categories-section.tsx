@@ -1,5 +1,4 @@
 import {
-  getCloudinaryPublicId,
   getCombainedLocalePath,
 } from "@/utils/formatUtils";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -73,7 +72,9 @@ export default async function CategoriesSection() {
                     src={category.image}
                     alt={category.alt}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 100vw,
+                    (max-width: 1024px) 50vw,
+                    33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     priority={index < 3}
                   />
