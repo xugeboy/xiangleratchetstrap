@@ -12,7 +12,7 @@ import {
 } from "@/utils/formatUtils";
 import { useTranslations } from "next-intl";
 import { ResponsivePagination } from "./ResponsivePagination";
-import { FaTools } from "react-icons/fa";
+import { FaPalette } from "react-icons/fa";
 
 interface ProductGridProps {
   selectedFilters: Record<string, string[]>;
@@ -58,7 +58,7 @@ export function ProductGrid({
     };
 
     fetchProducts();
-  }, [currentCategorySlug, selectedFilters, currentPage, itemsPerPage]);
+  }, [currentCategorySlug, selectedFilters, currentPage, itemsPerPage, lang]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -107,7 +107,7 @@ export function ProductGrid({
                             src={
                               getCloudinaryPublicId(
                                 product.featured_image.url
-                              ) || "/placeholder.svg"
+                              )
                             }
                             alt={product.name}
                             fill
@@ -136,9 +136,9 @@ export function ProductGrid({
                         <Link
                           href={`${pathPrefix}/custom-print/online-builder?${product.slug}`}
                           aria-label="Go to Online Builder"
-                          className="flex-shrink-0 rounded-md bg-red-600 p-2.5 text-white shadow-sm hover:bg-red-700"
+                          className="flex-shrink-0 rounded-md p-2.5 text-black hover:bg-gray-100"
                         >
-                          <FaTools className="h-5 w-5" />
+                          <FaPalette className="h-5 w-5 text-red-600" />
                         </Link>
                       )}
                     </div>
