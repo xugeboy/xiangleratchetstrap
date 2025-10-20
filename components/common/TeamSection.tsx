@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server"; // 1. 导入
-import { getCloudinaryPublicId } from "@/utils/formatUtils";
 
 
 
