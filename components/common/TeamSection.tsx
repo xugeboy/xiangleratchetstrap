@@ -46,14 +46,6 @@ const peopleData = [
     roleKey: 'people.alex.role',
     yearKey: 'people.alex.year',
     bioKey: 'people.alex.bio',
-  },
-  {
-    id: 'chloe_he',
-    name: 'Chloe He',
-    imageUrl: '/v1744176355/chloe_tv3t9c.png',
-    roleKey: 'people.chloe.role',
-    yearKey: 'people.chloe.year',
-    bioKey: 'people.chloe.bio',
   }
 ];
 
