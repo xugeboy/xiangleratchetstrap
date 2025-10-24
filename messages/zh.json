@@ -1,6 +1,148 @@
 {
   "ProductGrid": {
     "fastCustomization": "快速定制"
+  },
+  "CustomRatchetStraps": {
+    "meta": {
+      "title": "定制棘轮绑带 - 按您的精确规格制造 | 祥乐工具",
+      "description": "我们根据您的要求设计和制造OEM棘轮绑带、系带和货物固定系统——包括标志印刷、颜色、长度、强度、硬件和包装。"
+    },
+    "banner": {
+      "title": "中国定制棘轮绑带制造商",
+      "sellingPoints": {
+        "oem": "OEM/ODM解决方案",
+        "brand": "您的品牌和规格",
+        "sample": "免费样品"
+      },
+      "features": {
+        "factory": "工厂直销",
+        "moq": "低起订量",
+        "reply": "8小时内回复"
+      },
+      "cta": {
+        "sample": "申请免费样品",
+        "quote": "获取定制报价"
+      }
+    },
+    "hero": {
+      "title": "按您的精确规格制造绑带",
+      "description": "我们根据您的要求设计和制造OEM棘轮绑带、系带和货物固定系统——包括标志印刷、颜色、长度、强度、硬件和包装。",
+      "features": {
+        "privateLabel": {
+          "title": "自有品牌支持",
+          "description": "您的品牌，您的设计"
+        },
+        "hardware": {
+          "title": "各种挂钩和硬件",
+          "description": "完全定制"
+        },
+        "sampleDelivery": {
+          "title": "快速样品交付",
+          "description": "3-5天周转"
+        },
+        "qualitySupply": {
+          "title": "稳定的质量和供应",
+          "description": "持续生产"
+        }
+      },
+      "cta": "开始您的定制项目"
+    },
+    "companyOverview": {
+      "established": "成立于2014年",
+      "title": "自2014年以来的棘轮绑带工厂",
+      "description": "祥乐工具集织带编织、硬件冲压、涂层和组装于一体。我们为美国、欧盟和澳大利亚的全球分销商和品牌提供产品。",
+      "features": {
+        "integrated": "完全集成的生产设施",
+        "certified": "ISO9001认证的质量管理",
+        "global": "为全球市场提供可靠的供应链服务",
+        "experience": "拥有10年以上经验的专家团队"
+      }
+    },
+    "customization": {
+      "title": "您可以定制的内容",
+      "description": "您的棘轮绑带的每个方面都可以根据您的品牌和要求进行定制。",
+      "options": {
+        "width": {
+          "title": "宽度",
+          "description": "1英寸 / 1.5英寸 / 2英寸 / 3英寸"
+        },
+        "strength": {
+          "title": "断裂强度",
+          "description": "高达10,000磅"
+        },
+        "color": {
+          "title": "织带颜色",
+          "description": "任何潘通色"
+        },
+        "logo": {
+          "title": "标志印刷",
+          "description": "织带和硬件"
+        },
+        "hardware": {
+          "title": "硬件",
+          "description": "S型钩、J型钩、D型环、扣件"
+        },
+        "packaging": {
+          "title": "包装",
+          "description": "散装 / 零售盒 / 泡罩"
+        }
+      }
+    },
+    "certifications": {
+      "title": "认证和资源",
+      "description": "您可以信赖的质量，由国际标准支持"
+    },
+    "orderOptions": {
+      "title": "灵活的订单选项",
+      "description": "无论您需要样品还是批量订单，我们都提供透明的定价和快速周转",
+      "samples": {
+        "title": "样品",
+        "description": "在批量订单前测试我们的质量",
+        "timeframe": "3-5天"
+      },
+      "bulk": {
+        "title": "批量订单",
+        "description": "大批量生产，具有竞争力的价格",
+        "timeframe": "2-3周"
+      },
+      "pricing": {
+        "title": "透明定价",
+        "description": "无隐藏成本，清晰的报价流程",
+        "timeframe": "8小时"
+      }
+    },
+    "trustedPartners": {
+      "title": "受全球合作伙伴信赖",
+      "description": "分销商和进口商网络"
+    },
+    "quoteForm": {
+      "title": "8小时内获得报价",
+      "description": "保证快速响应 • 多种联系方式可选",
+      "form": {
+        "name": "姓名",
+        "namePlaceholder": "您的姓名",
+        "email": "邮箱",
+        "emailPlaceholder": "your@email.com",
+        "company": "公司 / 国家",
+        "companyPlaceholder": "公司名称和国家",
+        "strapType": "绑带类型",
+        "strapTypePlaceholder": "例如：2英寸棘轮绑带",
+        "quantity": "订单数量",
+        "quantityPlaceholder": "例如：500套",
+        "requirements": "要求",
+        "requirementsPlaceholder": "告诉我们您的定制需求...",
+        "submit": "发送询盘"
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "description": "即时与我们聊天，快速解答问题",
+        "button": "WhatsApp聊天"
+      },
+      "wechat": {
+        "title": "微信",
+        "description": "扫描添加我们的微信"
+      }
+    }
   }
 }
 
