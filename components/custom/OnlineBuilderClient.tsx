@@ -19,6 +19,7 @@ export default function OnlineBuilderClient() {
   const { product, state } = useCustomizer();
   const { webbingColor, textColor, printedText, printInterval, finishedLength, unit } = state;
 
+
   const [generatedMessage, setGeneratedMessage] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -56,8 +57,20 @@ export default function OnlineBuilderClient() {
     document.getElementById("quote_form")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [product, t]);
 
-  if (!product || !webbingColor || !textColor) {
+  if (!product) {
     return <div>{t("setup")}</div>;
+  }
+
+  // 如果有产品但没有颜色数据（初始化阶段），显示加载或等待状态
+  if (!webbingColor || !textColor) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">{t("loading.productColors")}</p>
+        </div>
+      </div>
+    );
   }
 
 return (
@@ -99,15 +112,6 @@ return (
       </div>
 
       <div className="container mx-auto px-4 py-8">
-        <header className="mb-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            {t("header.title")}
-          </h1>
-          <p className="mt-4 mx-auto text-xl text-gray-600">
-            {t("header.description")}
-          </p>
-        </header>
-
         <div className="grid grid-cols-1 gap-x-8 gap-y-16 xl:grid-cols-2">
           <div className="hidden xl:flex flex-col items-center">
             <ProductInfoPanel />

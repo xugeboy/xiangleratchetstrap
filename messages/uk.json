@@ -586,12 +586,33 @@
         }
     },
     "OnlineBuilder": {
-        "loading": "Loading Product Details...",
         "notFound": {
             "title": "Product Information Not Found",
             "description": "Please select a product to customize first."
         },
         "setup": "Setting up colors...",
+        "steps": {
+            "step1": "选择产品",
+            "step2": "设计印字",
+            "selectProduct": {
+                "title": "选择您的产品",
+                "description": "请选择您想要自定义的拉紧器产品"
+            },
+            "designProduct": {
+                "title": "Custom Text Printing",
+                "description": "Create a custom printed strap for your product below. The background and text will be Printed repeatedly.",
+                "backToSelection": "← 重新选择产品"
+            },
+            "noProductSelected": {
+                "title": "请先选择产品",
+                "button": "选择产品"
+            },
+            "productSetupError": {
+                "title": "产品设置错误",
+                "description": "此产品没有颜色自定义选项",
+                "button": "选择其他产品"
+            }
+        },
         "header": {
             "title": "Custom Text Printing",
             "description": "Create a custom printed strap for your product below. The background and text will be Printed repeatedly."
@@ -609,7 +630,27 @@
         },
         "buttons": {
             "applyAndQuote": "Apply Print & Get Quote",
-            "complexDesign": "I Need Complex Design!"
+            "complexDesign": "I Need Complex Design!",
+            "reselectProduct": "Reselect Customizable Product"
+        },
+        "pagination": {
+            "previous": "previous",
+            "next": "next"
+        },
+        "productSelector": {
+            "sku": "SKU",
+            "notAvailable": "N/A",
+            "wll": "LC",
+            "bs": "BS",
+            "noProducts": "No products found matching your criteria."
+        },
+        "loading": {
+            "productData": "Loading product data...",
+            "productColors": "Loading product color data..."
+        },
+        "defaults": {
+            "customText": "Custom Text",
+            "preview": "PREVIEW"
         },
         "details": {
             "title": "Important Details",

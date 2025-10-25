@@ -1,59 +1,86 @@
 "use client";
 
-import { useReducer, useMemo, useEffect } from "react";
-import { useTranslations } from "next-intl";
-import { useProductLoader } from "@/hooks/useProductLoader";
-import { CustomizerProvider, customizerReducer, initialState } from "@/contexts/CustomizerContext";
-import OnlineBuilderClient from "./OnlineBuilderClient";
-import { getDefaultTextColorForWebbing } from "@/utils/customizer-utils";
-
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
+import StepDrivenBuilder from "./StepDrivenBuilder";
+import { Product } from "@/types/product";
+import { getProductBySlug } from "@/services/api/product";
 
 export default function OnlineBuilderShell() {
+  const [loadedProduct, setLoadedProduct] = useState<Product | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const searchParams = useSearchParams();
+  const locale = useLocale();
   const t = useTranslations("OnlineBuilder");
-  const { product, isLoading } = useProductLoader();
-  const [state, dispatch] = useReducer(customizerReducer, initialState);
 
   useEffect(() => {
-    if (product?.strap_colors?.colorSelection?.length) {
-      const initialWebbingColor = product.strap_colors.colorSelection[0];
-      dispatch({
-        type: 'INITIALIZE_STATE',
-        payload: {
-          webbingColor: initialWebbingColor,
-          textColor: getDefaultTextColorForWebbing(initialWebbingColor),
-          printedText: "Custom Text"
+    const loadProduct = async () => {
+      setIsLoading(true);
+      
+      try {
+        // 检查 URL slug 参数
+        const slug = searchParams.get('slug');
+
+        if (slug) {
+          const fetchedProduct = await getProductBySlug(slug, locale);
+          
+          if (fetchedProduct) {
+            setLoadedProduct(fetchedProduct);
+            sessionStorage.setItem("customPrintingProduct", JSON.stringify(fetchedProduct));
+            setIsLoading(false);
+            return;
+          } else {
+          }
         }
-      });
-    }
-  }, [product]);
 
-  const contextValue = useMemo(() => ({ state, dispatch, product }), [state, dispatch, product]);
+        // 如果没有 URL slug，检查 sessionStorage
+        const productJson = sessionStorage.getItem("customPrintingProduct");
+        
+        if (productJson) {
+          try {
+            const parsedProduct = JSON.parse(productJson) as Product;
+            setLoadedProduct(parsedProduct);
+            setIsLoading(false);
+            return;
+          } catch (parseError) {
+            console.error("Failed to parse product from sessionStorage:", parseError);
+            sessionStorage.removeItem("customPrintingProduct");
+          }
+        }
+        setLoadedProduct(null);
+      } catch (error) {
+        console.error("OnlineBuilderShell: Failed to load product", error);
+        setLoadedProduct(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
+    loadProduct();
+  }, [searchParams, locale]);
+
+  // 如果有加载的产品，直接进入第二步（设计印字）
+  // 否则进入第一步（选择产品）
+  const initialStep = loadedProduct ? 'customization' : 'product-selection';
+  
+  
+  // 显示加载状态
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">{t("loading")}</p>
+          <p className="text-gray-600">{t("loading.productData")}</p>
         </div>
       </div>
     );
   }
-
-  if (!product) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">{t("notFound.title")}</h1>
-          <p className="text-gray-600">{t("notFound.description")}</p>
-        </div>
-      </div>
-    );
-  }
-
+  
   return (
-    <CustomizerProvider value={contextValue}>
-      <OnlineBuilderClient />
-    </CustomizerProvider>
+    <StepDrivenBuilder 
+      initialStep={initialStep}
+      initialProduct={loadedProduct}
+    />
   );
 }

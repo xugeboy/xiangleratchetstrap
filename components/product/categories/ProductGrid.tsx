@@ -130,7 +130,7 @@ export function ProductGrid({
                                 <InformationCircleIcon className="h-3.5 w-3.5 text-indigo-600" />
                               </span>
                               <Link
-                                href={`${pathPrefix}/custom-print/online-builder?${product.slug}`}
+                                href={`${pathPrefix}/custom-print/online-builder?slug=${product.slug}`}
                                 aria-label="Go to Online Builder"
                                 className="inline-flex items-center rounded-full border border-red-200 text-red-600 px-2 py-1 text-xs hover:bg-red-50"
                               >
@@ -177,7 +177,7 @@ export function ProductGrid({
                                 <InformationCircleIcon className="h-3.5 w-3.5 text-indigo-600" />
                               </span>
                               <Link
-                                href={`${pathPrefix}/custom-print/online-builder?${product.slug}`}
+                                href={`${pathPrefix}/custom-print/online-builder?slug=${product.slug}`}
                                 aria-label="Go to Online Builder"
                                 className="inline-flex items-center rounded-full border border-red-200 text-red-600 px-2 py-1 text-xs hover:bg-red-50"
                               >
@@ -234,7 +234,7 @@ export function ProductGrid({
                                 <InformationCircleIcon className="h-3.5 w-3.5 text-indigo-600" />
                               </span>
                               <Link
-                                href={`${pathPrefix}/custom-print/online-builder?${product.slug}`}
+                                href={`${pathPrefix}/custom-print/online-builder?slug=${product.slug}`}
                                 aria-label="Go to Online Builder"
                                 className="inline-flex items-center rounded-full border border-red-200 text-red-600 px-2 py-1 text-xs hover:bg-red-50"
                               >

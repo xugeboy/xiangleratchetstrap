@@ -586,12 +586,33 @@
     }
   },
   "OnlineBuilder": {
-    "loading": "Cargando Detalles del Producto...",
     "notFound": {
       "title": "Información del Producto no Encontrada",
       "description": "Por favor, seleccione primero un producto para personalizar."
     },
     "setup": "Configurando colores...",
+    "steps": {
+      "step1": "Seleccionar Producto",
+      "step2": "Diseñar Impresión",
+      "selectProduct": {
+        "title": "Seleccione Su Producto",
+        "description": "Por favor, seleccione el producto de correa de trinquete que desea personalizar"
+      },
+      "designProduct": {
+        "title": "Custom Text Printing",
+        "description": "Create a custom printed strap for your product below. The background and text will be Printed repeatedly.",
+        "backToSelection": "← Volver a la Selección de Producto"
+      },
+      "noProductSelected": {
+        "title": "Por favor, seleccione primero un producto",
+        "button": "Seleccionar Producto"
+      },
+      "productSetupError": {
+        "title": "Error de Configuración del Producto",
+        "description": "Este producto no tiene opciones de personalización de color disponibles",
+        "button": "Seleccionar Otro Producto"
+      }
+    },
     "header": {
       "title": "Impresión de Texto Personalizado",
       "description": "Cree una correa impresa personalizada para su producto a continuación. El fondo y el texto se imprimirán repetidamente."
@@ -607,10 +628,30 @@
     "preview": {
       "title": "Vista Previa de Impresión en Vivo"
     },
-    "buttons": {
-      "applyAndQuote": "Aplicar Impresión y Obtener Cotización",
-      "complexDesign": "¡Necesito un Diseño Complejo!"
-    },
+      "buttons": {
+        "applyAndQuote": "Aplicar Impresión y Obtener Cotización",
+        "complexDesign": "¡Necesito un Diseño Complejo!",
+        "reselectProduct": "Reseleccionar Producto Personalizable"
+      },
+      "pagination": {
+        "previous": "Anterior",
+        "next": "Siguiente"
+      },
+      "productSelector": {
+        "sku": "SKU",
+        "notAvailable": "N/A",
+        "wll": "WLL",
+        "bs": "BS",
+        "noProducts": "No se encontraron productos que coincidan con sus criterios."
+      },
+      "loading": {
+        "productData": "Cargando datos del producto...",
+        "productColors": "Cargando datos de colores del producto..."
+      },
+      "defaults": {
+        "customText": "Texto Personalizado",
+        "preview": "VISTA PREVIA"
+      },
     "details": {
       "title": "Detalles Importantes",
       "minOrder": "El monto mínimo del pedido es de $500.",

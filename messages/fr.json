@@ -586,12 +586,33 @@
     }
   },
   "OnlineBuilder": {
-    "loading": "Chargement des Détails du Produit...",
     "notFound": {
       "title": "Informations sur le Produit non Trouvées",
       "description": "Veuillez d'abord sélectionner un produit à personnaliser."
     },
     "setup": "Configuration des couleurs...",
+    "steps": {
+      "step1": "Sélectionner le Produit",
+      "step2": "Concevoir l'Impression",
+      "selectProduct": {
+        "title": "Sélectionnez Votre Produit",
+        "description": "Veuillez sélectionner le produit de sangle de serrage que vous souhaitez personnaliser"
+      },
+      "designProduct": {
+        "title": "Custom Text Printing",
+        "description": "Create a custom printed strap for your product below. The background and text will be Printed repeatedly.",
+        "backToSelection": "← Retour à la Sélection de Produit"
+      },
+      "noProductSelected": {
+        "title": "Veuillez d'abord sélectionner un produit",
+        "button": "Sélectionner un Produit"
+      },
+      "productSetupError": {
+        "title": "Erreur de Configuration du Produit",
+        "description": "Ce produit n'a pas d'options de personnalisation de couleur disponibles",
+        "button": "Sélectionner un Autre Produit"
+      }
+    },
     "header": {
       "title": "Impression de Texte Personnalisé",
       "description": "Créez une sangle imprimée personnalisée pour votre produit ci-dessous. Le fond et le texte seront imprimés de manière répétée."
@@ -607,10 +628,30 @@
     "preview": {
       "title": "Aperçu de l'Impression en Direct"
     },
-    "buttons": {
-      "applyAndQuote": "Appliquer l'Impression et Obtenir un Devis",
-      "complexDesign": "J'ai Besoin d'un Design Complexe !"
-    },
+      "buttons": {
+        "applyAndQuote": "Appliquer l'Impression et Obtenir un Devis",
+        "complexDesign": "J'ai Besoin d'un Design Complexe !",
+        "reselectProduct": "Resélectionner le Produit Personnalisable"
+      },
+      "pagination": {
+        "previous": "Précédent",
+        "next": "Suivant"
+      },
+      "productSelector": {
+        "sku": "SKU",
+        "notAvailable": "N/A",
+        "wll": "WLL",
+        "bs": "BS",
+        "noProducts": "Aucun produit trouvé correspondant à vos critères."
+      },
+      "loading": {
+        "productData": "Chargement des données du produit...",
+        "productColors": "Chargement des données de couleurs du produit..."
+      },
+      "defaults": {
+        "customText": "Texte Personnalisé",
+        "preview": "APERÇU"
+      },
     "details": {
       "title": "Détails Importants",
       "minOrder": "Le montant minimum de la commande est de 500 $.",

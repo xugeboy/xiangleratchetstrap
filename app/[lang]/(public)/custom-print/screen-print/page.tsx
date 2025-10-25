@@ -248,6 +248,19 @@ export default async function ScreenPrint() {
                 <p className="text-base font-normal max-w-7xl">
                   {t(`textPrinting.howTo.steps.step${i + 1}.description`)}
                 </p>
+                {i === 0 && (
+                  <div className="mt-4">
+                    <Link
+                      href="/custom-print/online-builder"
+                      className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                    >
+                      OnlineBuilder
+                      <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </Link>
+                  </div>
+                )}
               </li>
             ))}
           </ol>

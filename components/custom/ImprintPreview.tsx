@@ -26,7 +26,7 @@ function ImprintPreview({ onApplyImprint, onComplexDesign }: ImprintPreviewProps
   const { product, state } = useCustomizer();
   const { webbingColor, textColor, printedText, printInterval, unit } = state;
 
-  const textToRender = printedText || "PREVIEW";
+  const textToRender = printedText || t("defaults.preview");
   const textLengthPx = useMemo(() => calculateTextWidth(textToRender, "bold 60px Poppins"), [textToRender]);
 
   const { mmToPx, pxToMm, unitWidthPx } = useMemo(() => {

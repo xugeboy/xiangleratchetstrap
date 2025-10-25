@@ -586,12 +586,33 @@
         }
     },
     "OnlineBuilder": {
-        "loading": "Loading Product Details...",
         "notFound": {
             "title": "Product Information Not Found",
             "description": "Please select a product to customize first."
         },
         "setup": "Setting up colors...",
+        "steps": {
+            "step1": "Select Product",
+            "step2": "Design Print",
+            "selectProduct": {
+                "title": "Select Your Product",
+                "description": "Please select the ratchet strap product you want to customize"
+            },
+            "designProduct": {
+                "title": "Custom Text Printing",
+                "description": "Create a custom printed strap for your product below. The background and text will be Printed repeatedly.",
+                "backToSelection": "← Back to Product Selection"
+            },
+            "noProductSelected": {
+                "title": "Please Select a Product First",
+                "button": "Select Product"
+            },
+            "productSetupError": {
+                "title": "Product Setup Error",
+                "description": "This product does not have colour customisation options available",
+                "button": "Select Another Product"
+            }
+        },
         "header": {
             "title": "Custom Text Printing",
             "description": "Create a custom printed strap for your product below. The background and text will be Printed repeatedly."
@@ -609,7 +630,27 @@
         },
         "buttons": {
             "applyAndQuote": "Apply Print & Get Quote",
-            "complexDesign": "I Need Complex Design!"
+            "complexDesign": "I Need Complex Design!",
+            "reselectProduct": "Reselect Customizable Product"
+        },
+        "pagination": {
+            "previous": "Previous",
+            "next": "Next"
+        },
+        "productSelector": {
+            "sku": "SKU",
+            "notAvailable": "N/A",
+            "wll": "LC",
+            "bs": "BS",
+            "noProducts": "No products found matching your criteria."
+        },
+        "loading": {
+            "productData": "Loading product data...",
+            "productColors": "Loading product color data..."
+        },
+        "defaults": {
+            "customText": "Custom Text",
+            "preview": "PREVIEW"
         },
         "details": {
             "title": "Important Details",

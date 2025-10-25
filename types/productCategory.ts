@@ -2,6 +2,7 @@ import { Product } from "./product";
 import { Gallery } from "./gallery";
 
 export interface ProductCategory {
+    documentId: string;
     id: number;
     name: string;
     description: [];

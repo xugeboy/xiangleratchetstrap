@@ -586,12 +586,33 @@
         }
     },
     "OnlineBuilder": {
-        "loading": "Loading Product Details...",
         "notFound": {
             "title": "Product Information Not Found",
             "description": "Please select a product to customize first."
         },
         "setup": "Setting up colors...",
+        "steps": {
+            "step1": "Select Product",
+            "step2": "Design Print",
+            "selectProduct": {
+                "title": "Select Your Product",
+                "description": "Please select the ratchet strap product you want to customize"
+            },
+            "designProduct": {
+                "title": "Custom Text Printing",
+                "description": "Create a custom printed strap for your product below. The background and text will be Printed repeatedly.",
+                "backToSelection": "← Back to Product Selection"
+            },
+            "noProductSelected": {
+                "title": "Please Select a Product First",
+                "button": "Select Product"
+            },
+            "productSetupError": {
+                "title": "Product Setup Error",
+                "description": "This product does not have color customization options available",
+                "button": "Select Another Product"
+            }
+        },
         "header": {
             "title": "Custom Text Printing",
             "description": "Create a custom printed strap for your product below. The background and text will be Printed repeatedly."
@@ -609,7 +630,33 @@
         },
         "buttons": {
             "applyAndQuote": "Apply Print & Get Quote",
-            "complexDesign": "I Need Complex Design!"
+            "complexDesign": "I Need Complex Design!",
+            "reselectProduct": "Reselect Customizable Product"
+        },
+        "pagination": {
+            "previous": "Previous",
+            "next": "Next"
+        },
+        "productSelector": {
+            "title": "Choose Your Product",
+            "description": "Select a customizable product to start designing your custom printed strap.",
+            "filters": "Filters",
+            "selectedFilters": "Selected Filters",
+            "clearAll": "Clear All",
+            "customizable": "Customizable",
+            "sku": "SKU",
+            "notAvailable": "N/A",
+            "wll": "WLL",
+            "bs": "BS",
+            "noProducts": "No products found matching your criteria."
+        },
+        "loading": {
+            "productData": "Loading product data...",
+            "productColors": "Loading product color data..."
+        },
+        "defaults": {
+            "customText": "Custom Text",
+            "preview": "PREVIEW"
         },
         "details": {
             "title": "Important Details",
@@ -748,147 +795,5 @@
             "submitting": "Submitting..."
         },
         "success": "Thanks! We will get back to you soon."
-    },
-    "CustomRatchetStraps": {
-        "meta": {
-            "title": "Custom Ratchet Straps - Build Straps to Your Exact Specifications | Xiangle Tools",
-            "description": "We design and manufacture OEM ratchet straps, tie downs, and cargo securing systems based on your requirements — logo printing, colors, length, strength, hardware and packaging."
-        },
-        "banner": {
-            "title": "Custom Ratchet Straps Manufacturer in China",
-            "sellingPoints": {
-                "oem": "OEM/ODM Solutions",
-                "brand": "Your Brand & Specifications",
-                "sample": "Free Sample"
-            },
-            "features": {
-                "factory": "Factory Direct",
-                "moq": "Low MOQ",
-                "reply": "Reply Within 8 Hours"
-            },
-            "cta": {
-                "sample": "Request Free Sample",
-                "quote": "Get Custom Quote"
-            }
-        },
-        "hero": {
-            "title": "Build Straps to Your Exact Specifications",
-            "description": "We design and manufacture OEM ratchet straps, tie downs, and cargo securing systems based on your requirements — logo printing, colors, length, strength, hardware and packaging.",
-            "features": {
-                "privateLabel": {
-                    "title": "Private Label Support",
-                    "description": "Your brand, your design"
-                },
-                "hardware": {
-                    "title": "Various Hooks & Hardware",
-                    "description": "Complete customization"
-                },
-                "sampleDelivery": {
-                    "title": "Fast Sample Delivery",
-                    "description": "3-5 days turnaround"
-                },
-                "qualitySupply": {
-                    "title": "Stable Quality & Supply",
-                    "description": "Consistent production"
-                }
-            },
-            "cta": "Start Your Custom Project"
-        },
-        "companyOverview": {
-            "established": "Established 2014",
-            "title": "Ratchet Strap Factory Since 2014",
-            "description": "Xiangle Tools integrates webbing weaving, hardware stamping, coating and assembly under one roof. We supply global distributors and brands across the US, EU and Australia.",
-            "features": {
-                "integrated": "Fully integrated production facility",
-                "certified": "ISO9001 certified quality management",
-                "global": "Serving global markets with reliable supply chain",
-                "experience": "Expert team with 10+ years experience"
-            }
-        },
-        "customization": {
-            "title": "What You Can Customize",
-            "description": "Every aspect of your ratchet straps can be tailored to match your brand and requirements.",
-            "options": {
-                "width": {
-                    "title": "Width",
-                    "description": "1\" / 1.5\" / 2\" / 3\""
-                },
-                "strength": {
-                    "title": "Break Strength",
-                    "description": "Up to 10,000 lbs"
-                },
-                "color": {
-                    "title": "Webbing Color",
-                    "description": "Any Pantone"
-                },
-                "logo": {
-                    "title": "Logo Printing",
-                    "description": "Webbing & Hardware"
-                },
-                "hardware": {
-                    "title": "Hardware",
-                    "description": "S-hooks, J-hooks, D-rings, Buckles"
-                },
-                "packaging": {
-                    "title": "Packaging",
-                    "description": "Bulk / Retail Box / Blister"
-                }
-            }
-        },
-        "certifications": {
-            "title": "Certifications & Resources",
-            "description": "Quality you can trust, backed by international standards"
-        },
-        "orderOptions": {
-            "title": "Flexible Order Options",
-            "description": "Whether you need samples or bulk orders, we offer transparent pricing and fast turnaround",
-            "samples": {
-                "title": "Samples",
-                "description": "Test our quality before bulk orders",
-                "timeframe": "3-5 Days"
-            },
-            "bulk": {
-                "title": "Bulk Orders",
-                "description": "Large quantity production with competitive pricing",
-                "timeframe": "2-3 Weeks"
-            },
-            "pricing": {
-                "title": "Transparent Pricing",
-                "description": "No hidden costs, clear quotation process",
-                "timeframe": "8 Hours"
-            }
-        },
-        "trustedPartners": {
-            "title": "Trusted by Global Partners",
-            "description": "Distributor & Importer Network"
-        },
-        "quoteForm": {
-            "title": "Get a Quote Within 8 Hours",
-            "description": "Fast response guaranteed • Multiple contact options available",
-            "form": {
-                "name": "Name",
-                "namePlaceholder": "Your name",
-                "email": "Email",
-                "emailPlaceholder": "your@email.com",
-                "company": "Company / Country",
-                "companyPlaceholder": "Company name & country",
-                "strapType": "Strap Type",
-                "strapTypePlaceholder": "e.g., 2 Inch ratchet strap",
-                "quantity": "Order Quantity",
-                "quantityPlaceholder": "e.g., 500 sets",
-                "requirements": "Requirements",
-                "requirementsPlaceholder": "Tell us about your customization needs...",
-                "submit": "Send Inquiry"
-            },
-            "whatsapp": {
-                "title": "WhatsApp",
-                "description": "Chat with us instantly for quick questions",
-                "button": "Chat on WhatsApp"
-            },
-            "wechat": {
-                "title": "WeChat",
-                "description": "Scan to add us on WeChat"
-            }
-        }
     }
 }

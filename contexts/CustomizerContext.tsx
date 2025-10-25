@@ -73,6 +73,7 @@ interface CustomizerContextType {
   state: CustomizerState;
   dispatch: Dispatch<CustomizerAction>;
   product?: Product;
+  onReselectProduct?: () => void;
 }
 
 const CustomizerContext = createContext<CustomizerContextType | null>(null);

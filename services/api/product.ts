@@ -200,3 +200,57 @@ export async function filterProducts(
     };
   }
 }
+
+/**
+ * 根据筛选条件获取产品列表
+ * @param categorySlug 类别slug
+ * @param page 页码，默认为1
+ * @param pageSize 每页数量，默认为12
+ * @param attributeFilters 属性筛选条件
+ * @returns 包含产品列表和分页信息的对象
+ */
+export async function filterCustomizableProducts(
+  categorySlug: string,
+  page: number = 1,
+  pageSize: number = 12,
+  attributeFilters: Record<string, string[]> = {},
+  locale: string
+): Promise<{
+  data: Product[];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}> {
+  try {
+    const urlParamsObject = getFullLocale(locale);
+    const response = await postAPI("/filterProducts", {
+      categorySlug,
+      page,
+      pageSize,
+      attributeFilters,
+      ...urlParamsObject,
+    });
+    return {
+      data: response.data,
+      meta: response.meta,
+    };
+  } catch (error) {
+    console.error("Error filtering products:", error);
+    return {
+      data: [],
+      meta: {
+        pagination: {
+          page,
+          pageSize,
+          pageCount: 0,
+          total: 0,
+        },
+      },
+    };
+  }
+}

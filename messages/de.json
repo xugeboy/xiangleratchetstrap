@@ -586,12 +586,33 @@
     }
   },
   "OnlineBuilder": {
-    "loading": "Produktdetails werden geladen...",
     "notFound": {
       "title": "Produktinformationen nicht gefunden",
       "description": "Bitte wählen Sie zuerst ein Produkt zum Anpassen aus."
     },
     "setup": "Farben werden eingerichtet...",
+    "steps": {
+      "step1": "Produkt Auswählen",
+      "step2": "Druck Gestalten",
+      "selectProduct": {
+        "title": "Wählen Sie Ihr Produkt",
+        "description": "Bitte wählen Sie das Ratschenband-Produkt aus, das Sie anpassen möchten"
+      },
+      "designProduct": {
+        "title": "Custom Text Printing",
+        "description": "Create a custom printed strap for your product below. The background and text will be Printed repeatedly.",
+        "backToSelection": "← Zurück zur Produktauswahl"
+      },
+      "noProductSelected": {
+        "title": "Bitte wählen Sie zuerst ein Produkt aus",
+        "button": "Produkt Auswählen"
+      },
+      "productSetupError": {
+        "title": "Produkt-Setup-Fehler",
+        "description": "Dieses Produkt hat keine verfügbaren Farbanpassungsoptionen",
+        "button": "Anderes Produkt Auswählen"
+      }
+    },
     "header": {
       "title": "Individueller Textdruck",
       "description": "Erstellen Sie unten einen individuell bedruckten Gurt für Ihr Produkt. Der Hintergrund und der Text werden wiederholt gedruckt."
@@ -609,7 +630,27 @@
     },
     "buttons": {
       "applyAndQuote": "Druck anwenden & Angebot erhalten",
-      "complexDesign": "Ich benötige ein komplexes Design!"
+      "complexDesign": "Ich benötige ein komplexes Design!",
+      "reselectProduct": "Anpassbares Produkt erneut auswählen"
+    },
+    "pagination": {
+      "previous": "Vorherige",
+      "next": "Nächste"
+    },
+    "productSelector": {
+      "sku": "SKU",
+      "notAvailable": "N/A",
+      "wll": "WLL",
+      "bs": "BS",
+      "noProducts": "Keine Produkte gefunden, die Ihren Kriterien entsprechen."
+    },
+    "loading": {
+      "productData": "Produktdaten werden geladen...",
+      "productColors": "Produktfarbdaten werden geladen..."
+    },
+    "defaults": {
+      "customText": "Benutzerdefinierter Text",
+      "preview": "VORSCHAU"
     },
     "details": {
       "title": "Wichtige Details",
