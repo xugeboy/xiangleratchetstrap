@@ -69,11 +69,11 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
   },
   icons: {
-    icon: "https://res.cloudinary.com/duimeqqch/image/upload/v1749543828/favicon_kdh2ff.ico",
+    icon: "https://xiangleratchetstrap.com/cdn/files/v1749543828/favicon_kdh2ff.ico",
     shortcut:
-      "https://res.cloudinary.com/duimeqqch/image/upload/v1749543828/favicon_kdh2ff.ico",
+      "https://xiangleratchetstrap.com/cdn/files/v1749543828/favicon_kdh2ff.ico",
     apple:
-      "https://res.cloudinary.com/duimeqqch/image/upload/v1749543828/favicon_kdh2ff.ico",
+      "https://xiangleratchetstrap.com/cdn/files/v1749543828/favicon_kdh2ff.ico",
   },
 
   openGraph: {

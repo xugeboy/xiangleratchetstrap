@@ -26,11 +26,14 @@ type StrapiNode = {
   level?: number;
 };
 
-const getPlainTextFromStrapi = (nodes: StrapiNode[]): string => {
+const getPlainTextFromStrapi = (nodes: StrapiNode[] | null | undefined): string => {
+  if (!nodes || !Array.isArray(nodes)) {
+    return "";
+  }
   return nodes
     .map((node) => {
       if (node.type === "text") {
-        return node.text;
+        return node.text || "";
       }
       if (node.children) {
         return getPlainTextFromStrapi(node.children);

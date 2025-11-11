@@ -9,7 +9,7 @@ interface ImageLoaderProps {
   
   const cloudinaryLoader: Loader = ({ src, width, quality }) => {
     const q = quality ?? 75;
-    return `https://res.cloudinary.com/duimeqqch/image/upload/f_webp,w_${width},q_${q}${src}`;
+    return `https://xiangleratchetstrap.com/cdn/files/f_webp,w_${width},q_${q}${src}`;
   };
   
   export default cloudinaryLoader;
