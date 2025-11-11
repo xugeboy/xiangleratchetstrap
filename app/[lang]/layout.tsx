@@ -69,11 +69,11 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
   },
   icons: {
-    icon: "https://xiangleratchetstrap.com/cdn/files/v1749543828/favicon_kdh2ff.ico",
+    icon: "https://xiangleratchetstrap.com/cdn/imgs/v1749543828/favicon_kdh2ff.ico",
     shortcut:
-      "https://xiangleratchetstrap.com/cdn/files/v1749543828/favicon_kdh2ff.ico",
+      "https://xiangleratchetstrap.com/cdn/imgs/v1749543828/favicon_kdh2ff.ico",
     apple:
-      "https://xiangleratchetstrap.com/cdn/files/v1749543828/favicon_kdh2ff.ico",
+      "https://xiangleratchetstrap.com/cdn/imgs/v1749543828/favicon_kdh2ff.ico",
   },
 
   openGraph: {
