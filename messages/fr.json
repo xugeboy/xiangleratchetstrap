@@ -708,6 +708,15 @@
         "finishedLength": "Longueur Finie",
         "printInterval": "Intervalle d'Impression",
         "helperText": "Intervalle recommandé : 100-200mm pour un aspect optimal"
+      },
+      "orderDetails": {
+        "title": "Order Details",
+        "description": "Provide the order quantity and destination address",
+        "orderQuantity": "Order Quantity",
+        "orderQuantityPlaceholder": "Enter units (e.g., 100)",
+        "shippingAddress": "Shipping Address",
+        "shippingAddressPlaceholder": "Street, city, state, ZIP / Postal Code, country",
+        "helperText": "Please include ZIP / postal code for accurate freight and documentation."
       }
     }
   },

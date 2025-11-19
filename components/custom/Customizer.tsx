@@ -11,18 +11,20 @@ import { TextColor } from "./constants";
 function Customizer() {
   const t = useTranslations("OnlineBuilder.customizer"); // 初始化翻译钩子
   const { state, dispatch, product } = useCustomizer();
-  const { webbingColor, textColor, printedText, printInterval, finishedLength, unit } = state;
+  const { webbingColor, textColor, printedText, printInterval, finishedLength, unit, orderQuantity, shippingAddress } = state;
 
   const webbingColorOptions = product?.strap_colors.colorSelection || [];
   const availableTextColors = useMemo(() => getTextColorsForWebbing(webbingColor), [webbingColor]);
 
   const [finishedLengthInput, setFinishedLengthInput] = useState(finishedLength.toFixed(2));
   const [printIntervalInput, setPrintIntervalInput] = useState(printInterval.toFixed(2));
+  const [orderQuantityInput, setOrderQuantityInput] = useState(orderQuantity.toString());
 
   useEffect(() => {
     setFinishedLengthInput(finishedLength.toFixed(2));
     setPrintIntervalInput(printInterval.toFixed(2));
-  }, [finishedLength, printInterval]);
+    setOrderQuantityInput(orderQuantity.toString());
+  }, [finishedLength, printInterval, orderQuantity]);
 
   const handleFinishedLengthBlur = useCallback(() => {
     const value = parseFloat(finishedLengthInput);
@@ -37,6 +39,15 @@ function Customizer() {
         dispatch({ type: 'SET_PRINT_INTERVAL', payload: value });
     }
   }, [dispatch, printIntervalInput]);
+
+  const handleOrderQuantityBlur = useCallback(() => {
+    const value = parseInt(orderQuantityInput, 10);
+    if (!isNaN(value)) {
+      const normalized = Math.max(100, value);
+      setOrderQuantityInput(normalized.toString());
+      dispatch({ type: 'SET_ORDER_QUANTITY', payload: normalized });
+    }
+  }, [dispatch, orderQuantityInput]);
 
   if (!webbingColor || !textColor) return null;
 
@@ -160,6 +171,52 @@ function Customizer() {
             <div className="pl-4 mt-3 flex items-center gap-2">
               <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
               <p className="text-sm text-gray-500">{t('dimensions.helperText')}</p>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-100"></div>
+
+          {/* Section 5: Order Info */}
+          <div className="group">
+            <div className="flex items-center gap-4 mb-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">5</div>
+              <div>
+                <h4 className="text-lg font-semibold text-gray-800">{t('orderDetails.title')}</h4>
+                <p className="text-sm text-gray-500">{t('orderDetails.description')}</p>
+              </div>
+            </div>
+            <div className="pl-4 grid grid-cols-1 md:grid-cols-[1fr,2fr] gap-6">
+              <div className="flex flex-col">
+                <label htmlFor="orderQuantity" className="block text-sm font-medium text-gray-600 mb-2">{t('orderDetails.orderQuantity')}</label>
+                <div className="relative">
+                  <input
+                    type="number"
+                    min={100}
+                    id="orderQuantity"
+                    value={orderQuantityInput}
+                    onChange={(e) => setOrderQuantityInput(e.target.value)}
+                    onBlur={handleOrderQuantityBlur}
+                    className="w-full pl-4 pr-16 py-4 border border-gray-200 rounded-xl shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-gray-900 placeholder-gray-400 text-lg"
+                    placeholder={t('orderDetails.orderQuantityPlaceholder')}
+                  />
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 font-semibold text-sm">pc</div>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <label htmlFor="shippingAddress" className="block text-sm font-medium text-gray-600 mb-2">{t('orderDetails.shippingAddress')}</label>
+                <input
+                  type="text"
+                  id="shippingAddress"
+                  value={shippingAddress}
+                  onChange={(e) => dispatch({ type: 'SET_SHIPPING_ADDRESS', payload: e.target.value })}
+                  className="w-full pl-4 pr-4 py-4 border border-gray-200 rounded-xl shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-gray-900 placeholder-gray-400 text-lg"
+                  placeholder={t('orderDetails.shippingAddressPlaceholder')}
+                />
+              </div>
+            </div>
+            <div className="pl-4 mt-3 flex items-center gap-2">
+              <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+              <p className="text-sm text-gray-500">{t('orderDetails.helperText')}</p>
             </div>
           </div>
         </div>

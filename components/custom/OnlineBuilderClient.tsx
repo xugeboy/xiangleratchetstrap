@@ -17,7 +17,7 @@ import ProductInfoPanel from "./ProductInfoPanel";
 export default function OnlineBuilderClient() {
   const t = useTranslations("OnlineBuilder");
   const { product, state } = useCustomizer();
-  const { webbingColor, textColor, printedText, printInterval, finishedLength, unit } = state;
+  const { webbingColor, textColor, printedText, printInterval, finishedLength, unit, orderQuantity, shippingAddress } = state;
 
 
   const [generatedMessage, setGeneratedMessage] = useState<string | null>(null);
@@ -35,12 +35,14 @@ export default function OnlineBuilderClient() {
       t("formMessages.simplePrint.printedText", { printedText }),
       t("formMessages.simplePrint.finishedLength", { finishedLength: finishedLength.toFixed(2), unit }),
       t("formMessages.simplePrint.printInterval", { printInterval: printInterval.toFixed(2), unit }),
+      t("formMessages.simplePrint.orderQuantity", { orderQuantity }),
+      t("formMessages.simplePrint.shippingAddress", { shippingAddress }),
       t("formMessages.simplePrint.request"),
       t("formMessages.simplePrint.closing"),
     ].join("\n");
     setGeneratedMessage(message);
     document.getElementById("quote_form")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [product, webbingColor, textColor, printedText, finishedLength, printInterval, unit, t]);
+  }, [product, webbingColor, textColor, printedText, finishedLength, printInterval, unit, orderQuantity, shippingAddress, t]);
 
   const handleComplexDesign = useCallback(() => {
     if (!product) return;

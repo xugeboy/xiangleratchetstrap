@@ -14,6 +14,8 @@ export interface CustomizerState {
   printInterval: number;
   finishedLength: number;
   unit: "mm" | "inch";
+  orderQuantity: number;
+  shippingAddress: string;
 }
 
 export type CustomizerAction =
@@ -23,6 +25,8 @@ export type CustomizerAction =
   | { type: "SET_PRINT_INTERVAL"; payload: number }
   | { type: "SET_FINISHED_LENGTH"; payload: number }
   | { type: "SET_UNIT" }
+  | { type: "SET_ORDER_QUANTITY"; payload: number }
+  | { type: "SET_SHIPPING_ADDRESS"; payload: string }
   | { type: "INITIALIZE_STATE"; payload: Partial<CustomizerState> };
 
 // 2. INITIAL STATE
@@ -31,6 +35,8 @@ export const initialState: CustomizerState = {
   printInterval: 6,
   finishedLength: 40,
   unit: "inch",
+  orderQuantity: 100,
+  shippingAddress: "",
 };
 
 // 3. REDUCER FUNCTION
@@ -63,6 +69,10 @@ export const customizerReducer = (state: CustomizerState, action: CustomizerActi
         printInterval: convert(state.printInterval) 
       };
     }
+    case "SET_ORDER_QUANTITY":
+      return { ...state, orderQuantity: action.payload };
+    case "SET_SHIPPING_ADDRESS":
+      return { ...state, shippingAddress: action.payload };
     default:
       return state;
   }

@@ -679,6 +679,8 @@
                 "printedText": "• Printed Text: \"{printedText}\"",
                 "finishedLength": "• Finished Webbing Length: {finishedLength}{unit}",
                 "printInterval": "• Print Interval: {printInterval}{unit}",
+                "orderQuantity": "• Order Quantity: {orderQuantity}",
+                "shippingAddress": "• Shipping Address: {shippingAddress}",
                 "request": "Please let me know the available pricing and estimated production timeline. I look forward to your reply.",
                 "closing": "Best regards"
             },
@@ -714,6 +716,15 @@
                 "finishedLength": "Finished Length",
                 "printInterval": "Print Interval",
                 "helperText": "Recommended interval: 100-200mm for optimal appearance"
+            },
+            "orderDetails": {
+                "title": "Order Details",
+                "description": "Provide the order quantity and destination address",
+                "orderQuantity": "Order Quantity",
+                "orderQuantityPlaceholder": "Enter units (e.g., 100)",
+                "shippingAddress": "Shipping Address",
+                "shippingAddressPlaceholder": "Street, city, state, ZIP / Postal Code, country",
+                "helperText": "Please include ZIP / postal code for accurate freight and documentation."
             }
         }
     },

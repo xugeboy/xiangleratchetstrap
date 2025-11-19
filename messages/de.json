@@ -673,6 +673,8 @@
         "printedText": "• Gedruckter Text: \"{printedText}\"",
         "finishedLength": "• Fertige Gurtbandlänge: {finishedLength}{unit}",
         "printInterval": "• Druckintervall: {printInterval}{unit}",
+        "orderQuantity": "• Bestellmenge: {orderQuantity}",
+        "shippingAddress": "• Lieferadresse: {shippingAddress}",
         "request": "Bitte teilen Sie mir die verfügbaren Preise und den geschätzten Produktionszeitplan mit. Ich freue mich auf Ihre Antwort.",
         "closing": "Mit freundlichen Grüßen"
       },
@@ -708,6 +710,15 @@
         "finishedLength": "Fertige Länge",
         "printInterval": "Druckintervall",
         "helperText": "Empfohlenes Intervall: 100-200mm für ein optimales Erscheinungsbild"
+      },
+      "orderDetails": {
+        "title": "Order Details",
+        "description": "Provide the order quantity and destination address",
+        "orderQuantity": "Order Quantity",
+        "orderQuantityPlaceholder": "Enter units (e.g., 100)",
+        "shippingAddress": "Shipping Address",
+        "shippingAddressPlaceholder": "Street, city, state, ZIP / Postal Code, country",
+        "helperText": "Please include ZIP / postal code for accurate freight and documentation."
       }
     }
   },
