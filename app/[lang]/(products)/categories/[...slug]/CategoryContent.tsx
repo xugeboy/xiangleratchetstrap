@@ -49,7 +49,7 @@ export default function CategoryContent({ slug, lang }: CategoryContentProps) {
   >({});
   const [breadcrumbItems, setbreadcrumbItems] = useState<BreadcrumbItem[]>([]);
   const [viewMode, setViewMode] = useState<"grid" | "list" | "compact">("grid");
-  const [itemsPerPage, setItemsPerPage] = useState(16);
+  const ITEMS_PER_PAGE = 16;
   const [showFilters, setShowFilters] = useState(false);
   const [productFilters, setProductFilters] = useState<ProductFilter[]>([]);
   const [error, setError] = useState<string | null>(null); // Add error state
@@ -235,18 +235,13 @@ export default function CategoryContent({ slug, lang }: CategoryContentProps) {
         )}
 
         <div className="flex-1">
-          <ViewControls
-            viewMode={viewMode}
-            setViewMode={setViewMode}
-            itemsPerPage={itemsPerPage}
-            setItemsPerPage={setItemsPerPage}
-          />
+          <ViewControls viewMode={viewMode} setViewMode={setViewMode} />
 
           <ProductGrid
             selectedFilters={selectedFilters}
             currentCategorySlug={currentCategory.slug}
             viewMode={viewMode}
-            itemsPerPage={itemsPerPage}
+            itemsPerPage={ITEMS_PER_PAGE}
             lang={lang}
           />
 

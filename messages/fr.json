@@ -336,10 +336,9 @@
     "noResults": {
       "title": "Aucun produit trouvé",
       "suggestion": "Veuillez essayer d'ajuster les filtres ou revenez plus tard."
-    }
-  },
-  "ViewControls": {
-    "itemsPerPageOption": "{count} articles par page"
+    },
+    "loadMore": "Voir plus",
+    "loadingMore": "Chargement..."
   },
   "ArticlesSection": {
     "title": "NOS PLUS RÉCENTS <span>BLOGUES</span>",
@@ -642,7 +641,9 @@
         "notAvailable": "N/A",
         "wll": "WLL",
         "bs": "BS",
-        "noProducts": "Aucun produit trouvé correspondant à vos critères."
+        "noProducts": "Aucun produit trouvé correspondant à vos critères.",
+        "loadMore": "Voir plus",
+        "loadingMore": "Chargement..."
       },
       "loading": {
         "productData": "Chargement des données du produit...",

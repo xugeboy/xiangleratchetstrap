@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRightIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
@@ -11,7 +11,6 @@ import {
   getCloudinaryPublicId,
 } from "@/utils/formatUtils";
 import { useTranslations } from "next-intl";
-import { ResponsivePagination } from "./ResponsivePagination";
 import { FaPalette } from "react-icons/fa";
 
 interface ProductGridProps {
@@ -33,38 +32,51 @@ export function ProductGrid({
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
+  const loadProducts = useCallback(
+    async (page: number, append = false) => {
       if (!currentCategorySlug) return;
-      setIsLoading(true);
-      setProducts([]);
+
+      const setLoadingState = append ? setIsLoadingMore : setIsLoading;
+      setLoadingState(true);
+      if (!append) {
+        setProducts([]);
+        setTotalPages(1);
+      }
 
       try {
         const response = await filterProducts(
           currentCategorySlug,
-          currentPage,
+          page,
           itemsPerPage,
           selectedFilters,
           lang
         );
-        setProducts(response.data);
+        setProducts((prev) =>
+          append ? [...prev, ...response.data] : response.data
+        );
         setTotalPages(response.meta.pagination.pageCount);
+        setCurrentPage(page);
       } catch (err) {
         console.error("Failed to fetch products:", err);
+        if (!append) {
+          setProducts([]);
+        }
       } finally {
-        setIsLoading(false);
+        setLoadingState(false);
       }
-    };
+    },
+    [currentCategorySlug, itemsPerPage, lang, selectedFilters]
+  );
 
-    fetchProducts();
-  }, [currentCategorySlug, selectedFilters, currentPage, itemsPerPage, lang]);
+  useEffect(() => {
+    loadProducts(1, false);
+  }, [loadProducts]);
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+  const handleLoadMore = () => {
+    if (isLoadingMore || currentPage >= totalPages) return;
+    loadProducts(currentPage + 1, true);
   };
   const pathPrefix = getBreadcrumbPathPrefix(lang);
   const t = useTranslations("ProductGrid");
@@ -255,14 +267,18 @@ export function ProductGrid({
             ))}
           </div>
 
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <ResponsivePagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-              t={t}
-            />
+          {/* Show More Button */}
+          {products.length > 0 && currentPage < totalPages && (
+            <div className="text-center mt-8">
+              <button
+                type="button"
+                onClick={handleLoadMore}
+                disabled={isLoadingMore}
+                className="px-6 py-3 rounded-full bg-black text-white text-sm font-semibold hover:bg-gray-800 transition disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {isLoadingMore ? t("loadingMore") : t("loadMore")}
+              </button>
+            </div>
           )}
 
           {/* No Results Message */}

@@ -10,7 +10,6 @@ import { getCloudinaryPublicId } from "@/utils/formatUtils";
 import { useLocale } from "next-intl";
 import { useCategories } from "@/contexts/CategoryContext";
 import { ProductFilter } from "@/types/productFilter";
-import { ResponsivePagination } from "@/components/product/categories/ResponsivePagination";
 
 interface ProductSelectorProps {
   onProductSelect: (product: Product) => Promise<void>;
@@ -31,6 +30,8 @@ export default function ProductSelector({
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const ITEMS_PER_PAGE = 16;
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
 
   // 过滤掉 webbing & hardware 分类
@@ -47,21 +48,35 @@ export default function ProductSelector({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filteredCategories]);
 
+  const buildFinalFilters = () => {
+    const finalFilters: Record<string, string[]> = {};
+    Object.entries(selectedFilters).forEach(([key, value]) => {
+      if (key !== "customizable") {
+        finalFilters[key] = value;
+      }
+    });
+    finalFilters.customizable = ["true"];
+    return finalFilters;
+  };
+
   useEffect(() => {
     const fetchProducts = async () => {
       if (!selectedCategory) return;
 
       setIsLoading(true);
       try {
-        // 获取筛选条件并初始化
-        const [filtersData] = await Promise.all([
+        const [filtersData, response] = await Promise.all([
           getProductFilters(selectedCategory, locale),
+          filterProducts(
+            selectedCategory,
+            1,
+            ITEMS_PER_PAGE,
+            buildFinalFilters(),
+            locale
+          ),
         ]);
 
-        // 只保留size相关的筛选条件
         const formattedFilters: ProductFilter[] = [];
-        const defaultSizeFilter: Record<string, string[]> = {};
-
         Object.entries(filtersData).forEach(([key, values]) => {
           if (
             key.toLowerCase().includes("size") ||
@@ -84,53 +99,24 @@ export default function ProductSelector({
                   .join(" "),
                 options,
               });
-
-              // 设置默认的第一个宽度筛选
-              if (
-                key.toLowerCase().includes("width") &&
-                options.length > 0 &&
-                !selectedFilters[key]
-              ) {
-                const firstWidth = options[0];
-                defaultSizeFilter[key] = [firstWidth.value];
-              }
             }
           }
         });
 
         setProductFilters(formattedFilters);
-
-        // 合并筛选条件：如果有默认筛选，且selectedFilters中没有对应key，则使用默认筛选
-        const finalFilters: Record<string, string[]> = {};
-
-        // 首先应用selectedFilters中已有的筛选
-        Object.entries(selectedFilters).forEach(([key, value]) => {
-          if (key !== "customizable") {
-            finalFilters[key] = value;
-          }
-        });
-
-        // 确保始终包含customizable=true的筛选条件
-        finalFilters.customizable = ["true"];
-
-        const response = await filterProducts(
-          selectedCategory,
-          currentPage,
-          20,
-          finalFilters,
-          locale
-        );
         setProducts(response.data);
         setTotalPages(response.meta.pagination.pageCount);
+        setCurrentPage(1);
       } catch (err) {
         console.error("Failed to fetch products:", err);
+        setProducts([]);
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchProducts();
-  }, [selectedFilters, selectedCategory, currentPage, locale]);
+  }, [selectedFilters, selectedCategory, locale]);
 
   const handleFilterChange = (filterId: string, value: string) => {
     setSelectedFilters((prev) => {
@@ -152,10 +138,30 @@ export default function ProductSelector({
     setCurrentPage(1); // 重置到第一页
   };
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+  const handleLoadMore = async () => {
+    if (
+      !selectedCategory ||
+      isLoadingMore ||
+      currentPage >= totalPages
+    ) {
+      return;
+    }
+    setIsLoadingMore(true);
+    try {
+      const response = await filterProducts(
+        selectedCategory,
+        currentPage + 1,
+        ITEMS_PER_PAGE,
+        buildFinalFilters(),
+        locale
+      );
+      setProducts((prev) => [...prev, ...response.data]);
+      setCurrentPage((prev) => prev + 1);
+      setTotalPages(response.meta.pagination.pageCount);
+    } catch (err) {
+      console.error("Failed to load more products:", err);
+    } finally {
+      setIsLoadingMore(false);
     }
   };
 
@@ -328,14 +334,19 @@ export default function ProductSelector({
                   </div>
                 )}
 
-                {/* 分页组件 */}
-                {totalPages > 1 && (
-                  <ResponsivePagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={handlePageChange}
-                    t={t}
-                  />
+                {products.length > 0 && currentPage < totalPages && (
+                  <div className="text-center mt-8">
+                    <button
+                      type="button"
+                      onClick={handleLoadMore}
+                      disabled={isLoadingMore}
+                      className="px-6 py-3 rounded-full bg-black text-white text-sm font-semibold hover:bg-gray-800 transition disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {isLoadingMore
+                        ? t("productSelector.loadingMore")
+                        : t("productSelector.loadMore")}
+                    </button>
+                  </div>
                 )}
               </>
             )}

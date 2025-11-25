@@ -336,10 +336,9 @@
     "noResults": {
       "title": "Keine Produkte gefunden",
       "suggestion": "Bitte versuchen Sie, die Filter anzupassen oder schauen Sie später wieder vorbei."
-    }
-  },
-  "ViewControls": {
-    "itemsPerPageOption": "{count} Artikel pro Seite"
+    },
+    "loadMore": "Mehr anzeigen",
+    "loadingMore": "Weitere Produkte werden geladen..."
   },
   "ArticlesSection": {
     "title": "NEUESTE <span>BLOGS</span>",
@@ -642,7 +641,9 @@
       "notAvailable": "N/A",
       "wll": "WLL",
       "bs": "BS",
-      "noProducts": "Keine Produkte gefunden, die Ihren Kriterien entsprechen."
+      "noProducts": "Keine Produkte gefunden, die Ihren Kriterien entsprechen.",
+      "loadMore": "Mehr anzeigen",
+      "loadingMore": "Wird geladen..."
     },
     "loading": {
       "productData": "Produktdaten werden geladen...",

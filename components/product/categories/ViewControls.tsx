@@ -1,20 +1,13 @@
 "use client"
-import { useTranslations } from "next-intl";
 interface ViewControlsProps {
   viewMode: "grid" | "list" | "compact"
   setViewMode: (mode: "grid" | "list" | "compact") => void
-  itemsPerPage: number
-  setItemsPerPage: (count: number) => void
 }
 
 export function ViewControls({
   viewMode,
-  setViewMode,
-  itemsPerPage,
-  setItemsPerPage
+  setViewMode
 }: ViewControlsProps) {
-  const pageOptions = [8, 12, 16];
-  const t = useTranslations("ViewControls");
   return (
     <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
       <div className="flex items-center space-x-2 self-end sm:self-auto">
@@ -53,20 +46,6 @@ export function ViewControls({
             <line x1="1" y1="14" x2="15" y2="14" stroke="currentColor" strokeWidth="1.5" />
           </svg>
         </button>
-      </div>
-
-      <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-        <select
-          value={itemsPerPage}
-          onChange={(e) => setItemsPerPage(Number(e.target.value))}
-          className="border rounded p-2 text-sm w-full sm:w-auto"
-        >
-          {pageOptions.map((count) => (
-        <option key={count} value={count}>
-          {t("itemsPerPageOption", { count: count })}
-        </option>
-      ))}
-        </select>
       </div>
     </div>
   )

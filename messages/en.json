@@ -336,10 +336,9 @@
         "noResults": {
             "title": "No products found",
             "suggestion": "Please try adjusting the filters or check back later."
-        }
-    },
-    "ViewControls": {
-        "itemsPerPageOption": "{count} items per page"
+        },
+        "loadMore": "Show more",
+        "loadingMore": "Loading..."
     },
     "ArticlesSection": {
         "title": "NEWEST <span>BLOGS</span>",
@@ -648,7 +647,9 @@
             "notAvailable": "N/A",
             "wll": "WLL",
             "bs": "BS",
-            "noProducts": "No products found matching your criteria."
+            "noProducts": "No products found matching your criteria.",
+            "loadMore": "Show more",
+            "loadingMore": "Loading..."
         },
         "loading": {
             "productData": "Loading product data...",
