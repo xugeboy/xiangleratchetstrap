@@ -71,7 +71,10 @@ export async function generateMetadata(
   const pageTitle = blogData.seo_title;
   const pageDescription = blogData.seo_description;
   const coverImage = blogData.cover_image;
-  const ogImageUrl = coverImage.url;
+  const ogImageUrl = coverImage.url.replace(
+    'https://res.cloudinary.com/duimeqqch/image/upload',
+    'https://xiangleratchetstrap.com/cdn/imgs'
+  );
   const ogImageAlt = pageTitle;
 
   let canonicalUrlPath;

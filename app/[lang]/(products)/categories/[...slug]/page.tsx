@@ -35,7 +35,10 @@ export async function generateMetadata(
   const pageTitle = categoryData.seo_title;
   const pageDescription = categoryData.seo_description;
   const featured_image = categoryData.featured_image;
-  const ogImageUrl = featured_image?featured_image.url:undefined;
+  const ogImageUrl = featured_image?featured_image.url.replace(
+    'https://res.cloudinary.com/duimeqqch/image/upload',
+    'https://xiangleratchetstrap.com/cdn/imgs'
+  ):undefined;
   const ogImageAlt = pageTitle;
 
   let canonicalUrlPath;
