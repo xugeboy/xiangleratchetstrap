@@ -40,7 +40,7 @@ export default function ProductsSection() {
   const lang = useLocale();
   const t = useTranslations("ProductsSection");
   return (
-    <section className="py-16 bg-gray-100">
+    <section className="py-16">
       <div className="container mx-auto px-4">
         <div className="flex items-center flex-col md:flex-row justify-between mb-12 relative">
           <div className="flex-1" />
