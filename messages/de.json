@@ -301,10 +301,10 @@
   },
   "ProductSpecifications": {
     "Specifications": "Spezifikationen",
-    "assemblyBreakStrength": "Bruchlast des Systems (BS)",
+    "assemblyBreakStrength": "Bruchkraft (BS)",
     "workingLoadLimit": "Zulässige Zugkraft (LC)",
     "webbingBreakStrength": "Bruchlast des Gurtbandes",
-    "width": "Breite",
+    "width": "Gurtbreite",
     "length": "Länge",
     "endFitting": "Endbeschlag",
     "fixedEndLength": "Länge des Festendes",
@@ -313,7 +313,7 @@
     "finish": "Oberflächenbehandlung",
     "grade": "Materialgüte",
     "compliance": "Compliance",
-    "elongation_at_lc": "Elongation At LC",
+    "elongation_at_lc": "Dehnung",
     "productWeight": "Produktgewicht"
   },
   "CategorySidebar": {

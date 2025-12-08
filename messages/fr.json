@@ -301,9 +301,9 @@
   },
   "ProductSpecifications": {
     "Specifications": "Spécifications",
-    "assemblyBreakStrength": "Résistance à la rupture de l'ensemble",
-    "workingLoadLimit": "Charge Maximale d'Utilisation (CMU)",
-    "webbingBreakStrength": "Résistance à la rupture de la sangle",
+    "assemblyBreakStrength": "CMU",
+    "workingLoadLimit": "LC",
+    "webbingBreakStrength": "Force de rupture sangle",
     "width": "Largeur",
     "length": "Longueur",
     "endFitting": "Accessoire d'extrémité",

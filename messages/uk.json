@@ -301,8 +301,8 @@
     },
     "ProductSpecifications": {
         "Specifications": "Specifications",
-        "assemblyBreakStrength": "Minimum Breaking Strength (MBS)",
-        "workingLoadLimit": "Lashing Capacity (LC)",
+        "assemblyBreakStrength": "Minimum Breaking Strength",
+        "workingLoadLimit": "Lashing Capacity",
         "webbingBreakStrength": "Webbing Break Strength",
         "width": "Width",
         "length": "Length",
