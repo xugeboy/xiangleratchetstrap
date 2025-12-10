@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import withBundleAnalyzer from "@next/bundle-analyzer";
+import { productRedirects } from "@/redirects/productRedirects";
 
 const nextConfig: NextConfig = {
   // productionBrowserSourceMaps: true,
@@ -19,6 +20,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
   typescript: {
     ignoreBuildErrors: true,
+  },
+  async redirects() {
+    return [...productRedirects];
   },
 };
 
