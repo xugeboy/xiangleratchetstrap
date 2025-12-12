@@ -18,6 +18,7 @@ import BlogQuickInquiryForm from "@/components/forms/BlogQuickInquiryForm";
 import RelatedContent from "@/components/blog/RelatedContent";
 import { getBlogFaqsBySlug } from "@/services/api/faq";
 import FaqList from "@/app/[lang]/(public)/faq/FaqList";
+import Breadcrumb from "@/components/common/Breadcrumb";
 // 辅助类型与函数，用于从 Strapi 的块状内容节点中提取纯文本
 type StrapiNode = {
   type?: string;
@@ -208,16 +209,17 @@ export default async function BlogPage({ params }: BlogPageProps) {
   );
 
   return (
-    <div className="mx-auto container px-4 sm:px-6 lg:px-8 py-8">
+    <div className="mx-auto container px-4 sm:px-6 lg:px-8 ">
       <section>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
         />
       </section>
+      <Breadcrumb items={breadcrumbItems} lang={lang} />
 
       {/* 头部区域 */}
-      <div className="relative w-full h-[300px] md:h-[400px] mb-8 rounded-lg overflow-hidden">
+      <div className="relative w-full h-[300px] md:h-[400px] mt-8 mb-8 rounded-lg overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src={getCloudinaryPublicId(blog.cover_image.url)}

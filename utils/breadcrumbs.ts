@@ -68,7 +68,7 @@ export function generateBlogBreadcrumbs(blog: Blog | null,lang:string): Breadcru
   const items: BreadcrumbItem[] = []
   const pathPrefix = getBreadcrumbPathPrefix(lang);
   items.push({
-    name: 'blog',
+    name: 'blogs',
     href: `${siteUrl}${pathPrefix}/blogs`
   })
   if (!blog) {
