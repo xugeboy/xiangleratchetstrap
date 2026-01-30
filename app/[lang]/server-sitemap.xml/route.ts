@@ -33,6 +33,7 @@ export async function GET(
     "/request-quote",
     "/download-catalog",
     "/blogs",
+    "/fly-fish-retractable-ratchet-strap",
   ];
 
   staticRoutes.forEach((route) => {
