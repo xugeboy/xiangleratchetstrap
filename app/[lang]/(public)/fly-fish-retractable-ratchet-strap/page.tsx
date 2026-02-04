@@ -1,174 +1,154 @@
-import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
-import { generateGeneralBreadcrumbs } from "@/utils/breadcrumbs";
-import { embedSchema, generateSchema } from "@/utils/schema";
-import { getLocale } from "next-intl/server";
-import { Metadata } from "next";
-import SmoothScroll from "@/components/gsap/SmoothScroll";
-import SplitCardScroll, { type CardContent } from "@/components/gsap/SplitCardScroll";
-import RevealText from "@/components/gsap/RevealText";
-import MagneticButton from "@/components/gsap/MagneticButton";
-import HeroSection from "@/components/gsap/HeroSection";
-import TextHighlight from "@/components/gsap/TextHighlight";
+"use client";
 
-export async function generateMetadata(
-): Promise<Metadata> {
-  const currentLocale = await getLocale();
+import { useRef, useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+import gsap from 'gsap';
 
-  const pageTitle =
-    "Fly Fish Retractable Ratchet Strap | Patent Pending | China Direct Manufacturer";
-  const pageSlug = "fly-fish-retractable-ratchet-strap";
-  const ogImageUrl = process.env.NEXT_PUBLIC_LOGO_URL;
-  const ogImageAlt = pageTitle;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+// Dynamic import for 3D hero component
+const Phase1WholeProduct = dynamic(
+  () => import('@/components/product/Phase1WholeProduct'),
+  { ssr: false }
+);
 
-  let canonicalUrlPath;
-  if (currentLocale === defaultUrlPrefix || currentLocale === undefined) {
-    canonicalUrlPath = `/${pageSlug}`;
-  } else {
-    canonicalUrlPath = `/${currentLocale}/${pageSlug}`;
-  }
-  const canonicalUrl = `${siteUrl}${canonicalUrlPath}`;
+// Marketing sections (no 3D) - only load after model is ready
+const ProductFeatures = dynamic(
+  () => import('@/components/product/ProductFeatures'),
+  { ssr: false }
+);
 
-  const languagesAlternate: Record<string, string> = {};
+const TechnicalSpecs = dynamic(
+  () => import('@/components/product/TechnicalSpecs'),
+  { ssr: false }
+);
 
-  for (const ietfTag in localePrefixMap) {
-    const targetUrlPrefix = localePrefixMap[ietfTag];
-    let pathForLang = "";
-    if (targetUrlPrefix === defaultUrlPrefix) {
-      pathForLang = `${siteUrl}/${pageSlug}`;
-    } else {
-      pathForLang = `${siteUrl}/${targetUrlPrefix}/${pageSlug}`;
-    }
-    languagesAlternate[ietfTag] = pathForLang;
-  }
+const ApplicationScenarios = dynamic(
+  () => import('@/components/product/ApplicationScenarios'),
+  { ssr: false }
+);
 
-  return {
-    title: pageTitle,
-    alternates: {
-      canonical: canonicalUrl,
-      languages:
-        Object.keys(languagesAlternate).length > 0
-          ? languagesAlternate
-          : undefined,
-    },
-    openGraph: {
-      title: pageTitle,
-      url: canonicalUrl,
-      images: [
-        {
-          url: ogImageUrl,
-          width: 1200,
-          height: 630,
-          alt: ogImageAlt,
-        },
-      ],
-    },
-    twitter: {
-      title: pageTitle,
-    },
+const FactoryCapabilities = dynamic(
+  () => import('@/components/product/FactoryCapabilities'),
+  { ssr: false }
+);
+
+const TestResults = dynamic(
+  () => import('@/components/product/TestResults'),
+  { ssr: false }
+);
+
+const FAQSection = dynamic(
+  () => import('@/components/product/FAQSection'),
+  { ssr: false }
+);
+
+const CTASection = dynamic(
+  () => import('@/components/product/CTASection'),
+  { ssr: false }
+);
+
+const ScrollProgress = dynamic(
+  () => import('@/components/product/shared/ScrollProgress'),
+  { ssr: false }
+);
+
+/**
+ * Product Landing Page
+ * 3D Hero + Marketing Content
+ */
+
+export default function ProductExperiencePage() {
+  const phase1Ref = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [isModelLoaded, setIsModelLoaded] = useState(false);
+  const [showContent, setShowContent] = useState(false);
+
+  useEffect(() => {
+    // Performance detection - components handle their own fallbacks
+    const checkPerformance = () => {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      
+      if (!gl) {
+        // WebGL not available - components will show fallback images
+        return;
+      }
+    };
+
+    checkPerformance();
+  }, []);
+
+  const handleModelLoadComplete = () => {
+    setIsModelLoaded(true);
+    
+    // Wait a bit for model to fully render, then show content
+    setTimeout(() => {
+      setShowContent(true);
+      
+      // Fade in content sections
+      requestAnimationFrame(() => {
+        if (contentRef.current) {
+          gsap.to(contentRef.current, {
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+          });
+        }
+      });
+    }, 300);
   };
-}
-
-export default async function FlyFishRetractableRatchetStrap() {
-  const locale = await getLocale();
-  const breadcrumbItems = generateGeneralBreadcrumbs(
-    "FlyFishRetractableRatchetStrap",
-    "fly-fish-retractable-ratchet-strap",
-    locale
-  );
-  const websiteSchema = generateSchema({
-    type: "WebSite",
-    lang: locale,
-  });
-  const organizationSchema = generateSchema({
-    type: "Organization",
-    lang: locale,
-  });
-  const breadcrumbSchema = generateSchema({
-    type: "BreadcrumbList",
-    breadcrumbItems,
-  });
-  const schemaMetadataJson = embedSchema(
-    [websiteSchema, organizationSchema, breadcrumbSchema].filter(Boolean)
-  );
-
-// 示例数据
-const CARDS_DATA: [CardContent, CardContent, CardContent] = [
-    {
-      id: "1",
-      backText: "Interactive Web Experiences",
-      backNumber: "( 01 )",
-      color: "#b2b2b2",
-      textColor: "text-black",
-    },
-    {
-      id: "2",
-      backText: "Thoughtful Design Language",
-      backNumber: "( 02 )",
-      color: "#ce2017",
-      textColor: "text-white",
-    },
-    {
-      id: "3",
-      backText: "Visual Design Systems",
-      backNumber: "( 03 )",
-      color: "#2f2f2f",
-      textColor: "text-white",
-    },
-  ] as const;
-  
-const MASTER_IMG = "https://framerusercontent.com/images/Wne6ywIpp0BwY8GoBBoZlZEoC9g.png";
 
   return (
-    <div>
-      <section>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: schemaMetadataJson }}
-        />
-      </section>
-
-      <SmoothScroll>
-      <main className="min-h-screen text-white font-serif">
-        
-        {/* 1. 开场动画与首屏 */}
-        <HeroSection />
-
-        <div className="relative z-10 bg-[#0f0f0f]">
-        {/* 2. 公司介绍 (使用 RevealText) */}
-        <section className="min-h-[80vh] flex items-center justify-center px-6 md:px-20 py-32 bg-[#0f0f0f]">
-          <div className="max-w-5xl mx-auto text-center">
-            {/* 使用 TextHighlight 组件，大字号 */}
-            <TextHighlight 
-              text="We craft durable cargo control solutions that keep up with your logistics ambition. So you can focus on transporting what matters, while we ensure it arrives safely."
-              className="text-4xl md:text-6xl lg:text-7xl font-medium text-gray-500 justify-center"
-            />
+    <div className="bg-[#050505] text-[#F8FAFC] font-sans overflow-x-hidden">
+      {/* Full-screen Loading Animation - shown until model loads */}
+      {!isModelLoaded && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#050505]">
+          <div className="text-center">
+            {/* Spinner */}
+            <div className="relative w-16 h-16 mx-auto mb-8">
+              <div className="absolute inset-0 border-4 border-rose-600/20 rounded-full" />
+              <div className="absolute inset-0 border-4 border-transparent border-t-rose-600 rounded-full animate-spin" />
+            </div>
+            {/* Loading Text */}
+            <p className="text-sm font-mono text-white/60 uppercase tracking-widest">
+              Loading Model...
+            </p>
           </div>
-        </section>
-        
-        {/* 3. 核心产品展示 (Split Card 动效) */}
-        <SplitCardScroll
-          headerText="Our Core Product Lines"
-          masterImageSrc= {MASTER_IMG}
-          // @ts-ignore
-          cards={CARDS_DATA}
-        />
-
-        {/* 4. 页脚 CTA */}
-        <section className="h-[50vh] flex flex-col items-center justify-center text-center bg-[#ce2017] text-white">
-           <RevealText 
-              tag="h2" 
-              text="Ready to Secure Your Cargo?" 
-              className="text-4xl md:text-6xl font-medium mb-8"
-           />
-           <MagneticButton className="bg-white text-[#ce2017] border-transparent hover:bg-black hover:text-white">
-              Get a Quote
-           </MagneticButton>
-        </section>
         </div>
+      )}
 
-      </main>
-    </SmoothScroll>
+      {/* Scroll Progress Indicator - only show after model loads */}
+      {showContent && <ScrollProgress />}
+
+      {/* Hero Section with 3D Model - always render but hidden until loaded */}
+      <div style={{ visibility: isModelLoaded ? 'visible' : 'hidden' }}>
+        <Phase1WholeProduct 
+          sectionRef={phase1Ref} 
+          onModelLoadComplete={handleModelLoadComplete}
+        />
+      </div>
+
+      {/* Marketing Sections - only render after model loads and content is ready to show */}
+      {showContent && (
+        <div 
+          ref={contentRef}
+          className="opacity-0"
+        >
+          <ProductFeatures />
+          <TechnicalSpecs />
+          <ApplicationScenarios />
+          <FactoryCapabilities />
+          <TestResults />
+          <FAQSection />
+          <CTASection />
+
+          {/* Footer */}
+          <footer className="py-16 border-t border-white/5 px-6 lg:px-24 text-center bg-[#050505] relative z-10">
+            <p className="font-mono text-[10px] tracking-[0.5em] text-slate-600 uppercase">
+              &copy; {new Date().getFullYear()} XiangleTools Ltd. Manufacturing Excellence Since 2008.
+            </p>
+          </footer>
+        </div>
+      )}
     </div>
   );
 }
