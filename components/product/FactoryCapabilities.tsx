@@ -33,23 +33,26 @@ export default function FactoryCapabilities() {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Animate numbers
+      // Animate numbers - trigger on enter, not scrub
       if (statsRef.current) {
         const numbers = statsRef.current.querySelectorAll('.stat-num');
         numbers.forEach((num) => {
           const target = parseInt(num.getAttribute('data-target') || '0');
-          gsap.to(num, {
-            innerText: target,
-            duration: 2,
-            snap: { innerText: 1 },
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top 80%',
-              end: 'bottom 20%',
-              scrub: 1,
-            },
-          });
+          gsap.fromTo(
+            num,
+            { innerText: 0 },
+            {
+              innerText: target,
+              duration: 2,
+              snap: { innerText: 1 },
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top 80%',
+                once: true,
+              },
+            }
+          );
         });
       }
 

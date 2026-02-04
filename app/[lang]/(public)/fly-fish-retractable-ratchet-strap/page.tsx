@@ -140,13 +140,6 @@ export default function ProductExperiencePage() {
           <TestResults />
           <FAQSection />
           <CTASection />
-
-          {/* Footer */}
-          <footer className="py-16 border-t border-white/5 px-6 lg:px-24 text-center bg-[#050505] relative z-10">
-            <p className="font-mono text-[10px] tracking-[0.5em] text-slate-600 uppercase">
-              &copy; {new Date().getFullYear()} XiangleTools Ltd. Manufacturing Excellence Since 2008.
-            </p>
-          </footer>
         </div>
       )}
     </div>

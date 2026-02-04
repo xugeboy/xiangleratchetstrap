@@ -1,10 +1,9 @@
 "use client";
 
 import { Canvas } from '@react-three/fiber';
-import { Environment, PerspectiveCamera } from '@react-three/drei';
+import { Environment } from '@react-three/drei';
 import { Suspense, useState, useEffect } from 'react';
 import React from 'react';
-import * as THREE from 'three';
 
 interface ModelViewerProps {
   children: React.ReactNode;
@@ -20,7 +19,7 @@ export default function ModelViewer({
   children,
   cameraPosition = [0, 0, 5],
   cameraFov = 50,
-  background = '#050505',
+  background = '#000000',
   fallbackImage,
   className = '',
   onLoadComplete,
@@ -70,30 +69,37 @@ export default function ModelViewer({
   return (
     <div className={`w-full h-full ${className}`}>
       <Canvas
-        camera={{
-          position: cameraPosition,
-          fov: cameraFov,
-        }}
-        gl={{ antialias: true, alpha: false }}
-      >
-        <color attach="background" args={[background]} />
-        
-        {/* Lighting setup for metal materials */}
-        <Environment preset="warehouse" />
-        <directionalLight position={[4, 6, 3]} intensity={1.2} />
-        <directionalLight position={[-3, -4, -2]} intensity={0.6} />
-        <ambientLight intensity={0.35} />
-        
-        {/* Point light for subtle highlights */}
-        <pointLight position={[0, 3, 0]} intensity={0.5} />
-        
-        <Suspense fallback={null}>
-          {React.isValidElement(children) 
-            ? React.cloneElement(children as React.ReactElement, { onLoadComplete })
-            : children
-          }
-        </Suspense>
-      </Canvas>
+  camera={{ position: cameraPosition, fov: cameraFov }}
+  gl={{ antialias: true, alpha: false }}
+>
+  {/* Pure white background */}
+  <color attach="background" args={['#ffffff']} />
+
+  {/* HDR only for reflections */}
+  <Environment preset="studio" background={false} />
+
+  {/* Key light */}
+  <directionalLight position={[5, 6, 4]} intensity={1.8} />
+
+  {/* Fill light */}
+  <directionalLight position={[-4, 2, 3]} intensity={0.6} />
+
+  {/* Top soft light */}
+  <directionalLight position={[0, 6, 0]} intensity={0.4} />
+
+  {/* Rim / edge light */}
+  <pointLight position={[-6, 0, -6]} intensity={0.9} />
+
+  {/* Minimal ambient */}
+  <ambientLight intensity={0.25} />
+
+  <Suspense fallback={null}>
+    {React.isValidElement(children)
+      ? React.cloneElement(children as React.ReactElement, { onLoadComplete })
+      : children}
+  </Suspense>
+</Canvas>
+
     </div>
   );
 }

@@ -19,28 +19,31 @@ export default function TestResults() {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Animate counter from 0 to 1760
+      // Animate counter from 0 to 1760 - trigger on enter, not scrub
       if (counterRef.current) {
-        gsap.to(counterRef.current, {
-          innerText: 1760,
-          duration: 2,
-          snap: { innerText: 1 },
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            scrub: 1,
-          },
-        });
+        gsap.fromTo(
+          counterRef.current,
+          { innerText: 0 },
+          {
+            innerText: 1760,
+            duration: 2,
+            snap: { innerText: 1 },
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 80%',
+              once: true,
+            },
+          }
+        );
       }
 
       // Play video on scroll (if available)
       if (videoRef.current) {
         ScrollTrigger.create({
           trigger: sectionRef.current,
-          start: 'top 80%',
-          end: 'bottom 20%',
+          start: 'top 50%',
+          end: 'top 60%',
           onEnter: () => {
             videoRef.current?.play().catch(() => {
               // Autoplay blocked, that's okay

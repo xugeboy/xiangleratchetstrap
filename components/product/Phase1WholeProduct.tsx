@@ -4,7 +4,6 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import dynamic from 'next/dynamic';
 import ModelViewer from './shared/ModelViewer';
 import RatchetStrapModel from './shared/RatchetStrapModel';
 
@@ -20,7 +19,6 @@ interface Phase1WholeProductProps {
 export default function Phase1WholeProduct({ sectionRef, onModelLoadComplete }: Phase1WholeProductProps) {
   const modelContainerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-  const loaderRef = useRef<HTMLDivElement>(null);
   const [rotationY, setRotationY] = React.useState(0);
   const [scale, setScale] = React.useState(1);
   const [isModelLoaded, setIsModelLoaded] = React.useState(false);
@@ -133,14 +131,14 @@ export default function Phase1WholeProduct({ sectionRef, onModelLoadComplete }: 
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen w-full bg-[#050505] overflow-hidden"
+      className="relative h-screen w-full bg-[#ffffff] overflow-hidden"
     >
 
       {/* 3D Model Container */}
       <div ref={modelContainerRef} className="absolute inset-0" style={{ opacity: 0 }}>
         <ModelViewer
-          cameraPosition={[0, 0, 5]}
-          cameraFov={50}
+          cameraPosition={[0, 1, 6]}
+          cameraFov={45}
           background="#050505"
           className="w-full h-full"
           onLoadComplete={handleModelLoad}
