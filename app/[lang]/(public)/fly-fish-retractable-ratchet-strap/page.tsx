@@ -1,147 +1,123 @@
 "use client";
 
-import { useRef, useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-import gsap from 'gsap';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import { ReactLenis } from "lenis/react";
+import Image from 'next/image';
+import BlackSection from "./blackSection";
+import RedSection from "./redSection";
+import PinkSection from "./pinkSection";
+import BlueSection from "./blueSection";
+import OrangeSection from "./orangeSection";
+import GreySection from "./greySection";
+import GreenSection from "./greenSection";
 
-// Dynamic import for 3D hero component
-const Phase1WholeProduct = dynamic(
-  () => import('@/components/product/Phase1WholeProduct'),
-  { ssr: false }
-);
+gsap.registerPlugin(ScrollTrigger);
 
-// Marketing sections (no 3D) - only load after model is ready
-const ProductFeatures = dynamic(
-  () => import('@/components/product/ProductFeatures'),
-  { ssr: false }
-);
+export default function Home() {
+    const lenisRef = useRef(null);
+    const containerRef = useRef(null);
 
-const TechnicalSpecs = dynamic(
-  () => import('@/components/product/TechnicalSpecs'),
-  { ssr: false }
-);
-
-const ApplicationScenarios = dynamic(
-  () => import('@/components/product/ApplicationScenarios'),
-  { ssr: false }
-);
-
-const FactoryCapabilities = dynamic(
-  () => import('@/components/product/FactoryCapabilities'),
-  { ssr: false }
-);
-
-const TestResults = dynamic(
-  () => import('@/components/product/TestResults'),
-  { ssr: false }
-);
-
-const FAQSection = dynamic(
-  () => import('@/components/product/FAQSection'),
-  { ssr: false }
-);
-
-const CTASection = dynamic(
-  () => import('@/components/product/CTASection'),
-  { ssr: false }
-);
-
-const ScrollProgress = dynamic(
-  () => import('@/components/product/shared/ScrollProgress'),
-  { ssr: false }
-);
-
-/**
- * Product Landing Page
- * 3D Hero + Marketing Content
- */
-
-export default function ProductExperiencePage() {
-  const phase1Ref = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [isModelLoaded, setIsModelLoaded] = useState(false);
-  const [showContent, setShowContent] = useState(false);
-
-  useEffect(() => {
-    // Performance detection - components handle their own fallbacks
-    const checkPerformance = () => {
-      const canvas = document.createElement('canvas');
-      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-      
-      if (!gl) {
-        // WebGL not available - components will show fallback images
-        return;
-      }
-    };
-
-    checkPerformance();
-  }, []);
-
-  const handleModelLoadComplete = () => {
-    setIsModelLoaded(true);
-    
-    // Wait a bit for model to fully render, then show content
-    setTimeout(() => {
-      setShowContent(true);
-      
-      // Fade in content sections
-      requestAnimationFrame(() => {
-        if (contentRef.current) {
-          gsap.to(contentRef.current, {
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power2.out',
-          });
+    useEffect(() => {
+        function update(time) {
+            lenisRef.current?.lenis?.raf(time * 1000);
         }
-      });
-    }, 300);
-  };
 
-  return (
-    <div className="bg-[#050505] text-[#F8FAFC] font-sans overflow-x-hidden">
-      {/* Full-screen Loading Animation - shown until model loads */}
-      {!isModelLoaded && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#050505]">
-          <div className="text-center">
-            {/* Spinner */}
-            <div className="relative w-16 h-16 mx-auto mb-8">
-              <div className="absolute inset-0 border-4 border-rose-600/20 rounded-full" />
-              <div className="absolute inset-0 border-4 border-transparent border-t-rose-600 rounded-full animate-spin" />
-            </div>
-            {/* Loading Text */}
-            <p className="text-sm font-mono text-white/60 uppercase tracking-widest">
-              Loading Model...
-            </p>
-          </div>
-        </div>
-      )}
+        lenisRef.current?.lenis?.on("scroll", ScrollTrigger.update);
+        gsap.ticker.add(update);
+        gsap.ticker.lagSmoothing(0);
 
-      {/* Scroll Progress Indicator - only show after model loads */}
-      {showContent && <ScrollProgress />}
+        return () => gsap.ticker.remove(update);
+    }, []);
 
-      {/* Hero Section with 3D Model - always render but hidden until loaded */}
-      <div style={{ visibility: isModelLoaded ? 'visible' : 'hidden' }}>
-        <Phase1WholeProduct 
-          sectionRef={phase1Ref} 
-          onModelLoadComplete={handleModelLoadComplete}
-        />
-      </div>
+    useGSAP(
+        () => {
+            const sections = document.querySelectorAll("section");
 
-      {/* Marketing Sections - only render after model loads and content is ready to show */}
-      {showContent && (
-        <div 
-          ref={contentRef}
-          className="opacity-0"
-        >
-          <ProductFeatures />
-          <TechnicalSpecs />
-          <ApplicationScenarios />
-          <FactoryCapabilities />
-          <TestResults />
-          <FAQSection />
-          <CTASection />
-        </div>
-      )}
-    </div>
-  );
+            sections.forEach((section, index) => {
+                const container = section.querySelector(".containerx");
+
+                gsap.to(container, {
+                    rotation: 0,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top bottom",
+                        end: "top 20%",
+                        scrub: true,
+                    },
+                });
+
+                if (index === sections.length - 2) return;
+
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: "bottom bottom",
+                    end: "bottom top",
+                    pin: true,
+                    pinSpacing: false,
+                });
+            });
+        },
+        { scope: containerRef },
+    );
+
+
+    return (
+        <>
+            <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
+            <main ref={containerRef} className="w-full">
+                {/* Section 1: Black */}
+                <section className="relative w-full h-[100svh] min-h-[100svh] overflow-hidden z-10 two">
+                    <div className="containerx relative w-full h-full p-8 flex flex-col lg:flex-row rotate-[30deg] origin-bottom-left will-change-transform bg-[#000000]">
+                        <BlackSection/>
+                    </div>
+                </section>
+
+                {/* Section 2: Red */}
+                <section className="relative w-full h-[100svh] min-h-[100svh] overflow-hidden z-10 two">
+                    <div className="containerx relative w-full h-full p-8 flex flex-col lg:flex-row rotate-[30deg] origin-bottom-left will-change-transform bg-[#ff0004]">
+                        <RedSection/>
+                    </div>
+                </section>
+
+                {/* Section 3: PINK */}
+                <section className="relative w-full h-[100svh] min-h-[100svh] overflow-hidden z-10 three">
+                    <div className="containerx relative w-full h-full p-8 flex flex-col lg:flex-row rotate-[30deg] origin-bottom-left will-change-transform bg-[#ff8bdc]">
+                        <PinkSection/>
+                    </div>
+                </section>
+
+                {/* Section 4: BLUE */}
+                <section className="relative w-full h-[125svh] lg:h-[150svh] min-h-[100svh] overflow-hidden z-10 four">
+                    <div className="containerx relative w-full h-full p-8 flex flex-col justify-center items-center text-center gap-4 rotate-[30deg] origin-bottom-left will-change-transform bg-[#009dff]">
+                        <BlueSection></BlueSection>
+                    </div>
+                </section>
+
+                {/* Section 5: GREEN */}
+                <section className="relative w-full h-[100svh] min-h-[100svh] overflow-hidden z-10 five">
+                    <div className="containerx relative w-full h-full p-8 flex flex-col lg:flex-row rotate-[30deg] origin-bottom-left will-change-transform bg-[#3a5a40]">
+                        <GreenSection></GreenSection>
+                    </div>
+                </section>
+
+                {/* Section 6: ORANGE */}
+                <section className="relative w-full h-[100svh] min-h-[100svh] overflow-hidden z-10 six">
+                    <div className="containerx relative w-full h-full p-8 flex flex-col lg:flex-row rotate-[30deg] origin-bottom-left will-change-transform bg-[#ffbf00]">
+                        <OrangeSection></OrangeSection>
+                    </div>
+                </section>
+
+                {/* Section 7: GREY */}
+                <section className="relative w-full h-[100svh] min-h-[100svh] overflow-hidden z-10 one">
+                    <div className="containerx relative w-full h-full p-8 flex flex-col lg:flex-row rotate-[30deg] origin-bottom-left will-change-transform bg-[#c2c1c2] ">
+                        <GreySection></GreySection>
+                    </div>
+                </section>
+            </main>
+        </>
+    );
 }
