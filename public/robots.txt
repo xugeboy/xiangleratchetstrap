@@ -1,7 +1,6 @@
 # *
 User-agent: *
 Allow: /
-Disallow: */custom-print/online-builder?
 
 # Host
 Host: https://xiangleratchetstrap.com
