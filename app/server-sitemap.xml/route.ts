@@ -39,6 +39,7 @@ export async function GET(
     "tools/angle-efficiency-calculator",
     "tools/cargo-securing-calculator",
     "tools/cargo-specific-recommender",
+    "fly-fish-retractable-ratchet-strap",
   ];
 
   staticRoutes.forEach((route) => {
