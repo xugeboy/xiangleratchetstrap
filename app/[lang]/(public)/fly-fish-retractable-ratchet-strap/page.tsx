@@ -14,7 +14,7 @@ export async function generateMetadata(
     const pageTitle = "Next-gen Automatic Retractable Ratchet Strap - Heavy Duty 1760 lbs. BS";
     const description = "Next-gen automatic retractable ratchet strap with heavy-duty construction, 1760 lbs break strength, smooth operation, and fast retraction for cargo securing, transport, and industrial use.";
     const pageSlug = "fly-fish-retractable-ratchet-strap";
-    const ogImageUrl = process.env.NEXT_PUBLIC_LOGO_URL;
+    const ogImageUrl = "https://xiangleratchetstrap.com/cdn/imgs/f_webp,w_1200,q_75/v1770431290/7-colors_x0q5dv.png";
     const ogImageAlt = pageTitle;
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
