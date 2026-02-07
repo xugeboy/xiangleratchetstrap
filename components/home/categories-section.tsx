@@ -9,7 +9,7 @@ const categories = [
   {
     title: "retractableRatchetStrap.title",
     alt: "retractableRatchetStrap.alt",
-    image: "/v1745311043/retractable_ratchet_strap_9147cf873f.jpg",
+    image: "/v1770431290/7-colors_x0q5dv.png",
     link: "retractableRatchetStrap.link",
   },
   {
