@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import QuoteForm from '@/components/forms/QuoteForm';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const GreySection = () => {
     return (
@@ -61,7 +62,7 @@ const GreySection = () => {
                                     </div>
                                 </div>
                             </div>
-                            
+
                             {/* 1:1 全颜色图片展示区域 */}
                             <motion.div
                                 initial={{ scale: 0.95, opacity: 0 }}
@@ -69,9 +70,13 @@ const GreySection = () => {
                                 transition={{ delay: 0.3 }}
                                 className="relative mb-12 max-w-xl"
                             >
-                                <div className="aspect-square w-full relative group">
-                                    <Image src="/v1770431290/7-colors_x0q5dv.png" alt="7-colors available" fill />   
-                                </div>
+                                <Link
+                                    href="/en/products/1-x-10ft-automatic-retractable-ratchet-strap-full-bend-s-hooks-1760-lbs-bs"
+                                    className="block group relative"
+                                >
+                                    <div className="aspect-square w-full relative group">
+                                        <Image src="/v1770431290/7-colors_x0q5dv.png" alt="7-colors available" fill />
+                                    </div></Link>
                             </motion.div>
                         </motion.div>
                     </div>

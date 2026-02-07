@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { ReactLenis } from "lenis/react";
+import { ReactLenis, useLenis } from "lenis/react";
 import BlackSection from "./blackSection";
 import RedSection from "./redSection";
 import PinkSection from "./pinkSection";
@@ -15,27 +15,34 @@ import GreenSection from "./greenSection";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function InnerPage() {
-    const lenisRef = useRef(null);
-    const containerRef = useRef(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const lenis = useLenis();
+    const lenisRef = useRef<any>(null);
 
     useEffect(() => {
-        function update(time) {
-            lenisRef.current?.lenis?.raf(time * 1000);
-        }
+        if (!lenis) return;
 
-        lenisRef.current?.lenis?.on("scroll", ScrollTrigger.update);
+        const update = (time: number) => {
+            lenis.raf(time * 1000);
+        };
+
+        lenis.on("scroll", ScrollTrigger.update);
         gsap.ticker.add(update);
         gsap.ticker.lagSmoothing(0);
 
-        return () => gsap.ticker.remove(update);
-    }, []);
+        return () => {
+            lenis.off("scroll", ScrollTrigger.update);
+            gsap.ticker.remove(update);
+        };
+    }, [lenis]);
 
     useGSAP(
         () => {
-            const sections = document.querySelectorAll("section");
+            const sections = gsap.utils.toArray<HTMLElement>("section");
 
             sections.forEach((section, index) => {
                 const container = section.querySelector(".containerx");
+                if (!container) return;
 
                 gsap.to(container, {
                     rotation: 0,
@@ -58,8 +65,13 @@ export default function InnerPage() {
                     pinSpacing: false,
                 });
             });
+
+            return () => {
+                ScrollTrigger.getAll().forEach((t) => t.kill());
+                gsap.killTweensOf("*");
+            };
         },
-        { scope: containerRef },
+        { scope: containerRef }
     );
 
     return (
