@@ -114,7 +114,7 @@ export function ProductGrid({
               ${viewMode === "compact" ? "space-y-4" : ""}
             `}
           >
-            {products.map((product) => (
+            {products.map((product, index) => (
               <div
                 key={product.id}
                 className={`
@@ -139,7 +139,9 @@ export function ProductGrid({
                             }
                             alt={product.name}
                             fill
-                            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                            sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                            quality={70}
+                            priority={index === 0 && currentPage === 1}
                             className="object-scale-down transition-transform duration-300 md:group-hover:scale-105"
                           />
                         )}
@@ -191,6 +193,8 @@ export function ProductGrid({
                           alt={product.name}
                           width={160}
                           height={160}
+                          sizes="160px"
+                          quality={70}
                           className="object-contain w-full h-full"
                         />
                       )}
@@ -249,6 +253,8 @@ export function ProductGrid({
                             alt={product.name}
                             width={64}
                             height={64}
+                            sizes="64px"
+                            quality={70}
                             className="object-contain w-full h-full"
                           />
                         )}
