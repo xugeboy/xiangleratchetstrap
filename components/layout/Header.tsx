@@ -1,11 +1,19 @@
 "use client";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { SearchBar } from "@/components/layout/header/search-bar";
 import { CategoryNavigation } from "@/components/layout/header/category-navigation";
-import { MobileMenu } from "@/components/layout/header/mobile-menu";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { getCombainedLocalePath } from "@/utils/formatUtils";
+
+const MobileMenu = dynamic(
+  () =>
+    import("@/components/layout/header/mobile-menu").then(
+      (module) => module.MobileMenu
+    ),
+  { ssr: false }
+);
 
 export default function Header() {
   const locale = useLocale();

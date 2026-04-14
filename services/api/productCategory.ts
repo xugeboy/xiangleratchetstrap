@@ -1,6 +1,8 @@
 import { fetchAPI } from "@/utils/fetch-api";
+import { CategoryNavigationItem } from "@/types/categoryNavigation";
 import { ProductCategory } from "@/types/productCategory";
 import { getFullLocale, getPreviousFullLocale } from "@/utils/formatUtils";
+import { toNavigationCategories } from "@/utils/categoryNavigation";
 
 /**
  * 获取所有产品分类的slug
@@ -19,7 +21,13 @@ export async function getAllCategorySlug(): Promise<ProductCategory[] | null> {
 export async function getCategoryMetaDataBySlug(slug: string,locale:string): Promise<ProductCategory | null> {
   try {
     const path = `/getCategoryMetaDataBySlug/${slug}`;
-    const response = await fetchAPI(path,getFullLocale(locale));
+    const localeParams = getFullLocale(locale);
+    const response = await fetchAPI(path, localeParams, {
+      next: {
+        revalidate: 3600,
+        tags: ["categories", `category:${localeParams.locale}:${slug}`],
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching Category:", error);
@@ -46,6 +54,24 @@ export async function getAllCategorySlugByLocale(locale:string): Promise<Product
   } catch (error) {
     console.error("Error fetching Category:", error);
     return null;
+  }
+}
+
+export async function getNavigationCategories(
+  locale: string
+): Promise<CategoryNavigationItem[]> {
+  try {
+    const localeParams = getFullLocale(locale);
+    const response = await fetchAPI("/getAllCategories", localeParams, {
+      next: {
+        revalidate: 3600,
+        tags: ["categories:navigation", `categories:navigation:${localeParams.locale}`],
+      },
+    });
+    return toNavigationCategories(response.data || []);
+  } catch (error) {
+    console.error("Error fetching navigation categories:", error);
+    return [];
   }
 }
 

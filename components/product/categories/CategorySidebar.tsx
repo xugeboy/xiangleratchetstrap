@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ChevronDownIcon } from "@heroicons/react/24/outline"
 import { CategoryFilter } from "./CategoryFilter"
+import type { CategoryNavigationItem } from "@/types/categoryNavigation"
 import type { ProductCategory } from "@/types/productCategory"
 import { ProductFilter } from "@/types/productFilter"
 import { useCategories } from "@/contexts/CategoryContext"
@@ -58,7 +59,7 @@ export function CategorySidebar({
     }))
   }
 
-  const renderCategory = (category: ProductCategory, depth = 0) => {
+  const renderCategory = (category: CategoryNavigationItem, depth = 0) => {
     const isActive = currentCategory?.id === category.id
     const isExpanded = expandedCategories[category.id]
     const hasChildren = category.children && category.children.length > 0

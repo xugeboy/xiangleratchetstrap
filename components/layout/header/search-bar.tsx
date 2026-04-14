@@ -9,7 +9,6 @@ import type { Product } from "@/types/product"
 import { searchProducts } from "@/services/api/product"
 import { getCloudinaryPublicId, getCombainedLocalePath } from "@/utils/formatUtils"
 import { useLocale, useTranslations } from "next-intl"
-import { useIsMobile } from '@/hooks/useMobile';
 
 
 // 定义搜索结果项的类型
@@ -25,7 +24,6 @@ interface SearchBarProps {
 }
 
 export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
-  const isMobile = useIsMobile();
   const [searchQuery, setSearchQuery] = useState("")
   const [isSearching, setIsSearching] = useState(false)
   const [searchResults, setSearchResults] = useState<SearchResultItem[]>([])
@@ -192,17 +190,16 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
       {/* Desktop layout */}
       <div className="md:py-4 md:block hidden">
         <div className="mx-auto container px-6 flex justify-between items-center">
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="flex h-12 w-[200px] flex-shrink-0 items-center">
             <Image src="/xiangle_ratchet_strap_mxts89.png" 
-            alt="xiangle ratchet strap" width={200} height={60} className="h-12 w-auto" />
+            alt="xiangle ratchet strap" width={200} height={60} className="h-12 w-[200px] object-contain" />
           </Link>
           <div className="w-full max-w-md ml-auto">{renderSearchCombobox()}</div>
         </div>
       </div>
 
       {/* Mobile layout (below 768px) */}
-      {isMobile !== undefined && isMobile && (
-        <div className="bg-black text-white">
+      <div className="bg-black text-white md:hidden">
         <div className="flex items-center justify-between px-4 py-2">
           {/* Hamburger menu */}
           <button onClick={onMobileMenuOpen} className="text-white p-2" aria-label="Open menu">
@@ -210,8 +207,8 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
           </button>
 
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <Image src="/v1750054336/xiangle_ratchet_strap_mxts89_%E6%8B%B7%E8%B4%9D_woihtv.png" alt="xiangle ratchet strap" width={120} height={40} className="h-8 w-auto" />
+          <Link href="/" className="flex h-8 w-[120px] flex-shrink-0 items-center justify-center">
+            <Image src="/v1750054336/xiangle_ratchet_strap_mxts89_%E6%8B%B7%E8%B4%9D_woihtv.png" alt="xiangle ratchet strap" width={120} height={40} className="h-8 w-[120px] object-contain" />
           </Link>
 
           
@@ -229,7 +226,6 @@ export function SearchBar({ onMobileMenuOpen }: SearchBarProps) {
           <div className="flex-1">{renderSearchCombobox()}</div>
         </div>
       </div>
-      )}
       
     </div>
   )

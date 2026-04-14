@@ -2,23 +2,24 @@
 
 import { useEffect, useRef } from "react";
 
+const GTM_ID = "GTM-K925B3FL";
+
 declare global {
   interface Window {
-    Tawk_API?: Record<string, unknown>;
-    Tawk_LoadStart?: Date;
+    dataLayer?: Record<string, unknown>[];
   }
 }
 
 function runWhenIdle(callback: () => void) {
   if ("requestIdleCallback" in window) {
-    window.requestIdleCallback(callback, { timeout: 3000 });
+    window.requestIdleCallback(callback, { timeout: 2000 });
     return;
   }
 
   window.setTimeout(callback, 0);
 }
 
-const TawkToWidget = () => {
+export default function GoogleTagManagerLoader() {
   const hasLoadedRef = useRef(false);
 
   useEffect(() => {
@@ -26,29 +27,31 @@ const TawkToWidget = () => {
       return;
     }
 
-    const loadTawk = () => {
+    const loadGtm = () => {
       if (hasLoadedRef.current) {
         return;
       }
 
       hasLoadedRef.current = true;
-      window.Tawk_API = window.Tawk_API || {};
-      window.Tawk_LoadStart = new Date();
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        "gtm.start": new Date().getTime(),
+        event: "gtm.js",
+      });
 
       const script = document.createElement("script");
       script.async = true;
-      script.src = "https://embed.tawk.to/67fc80e0e6ecad190d7cb46b/1iop5ern2";
-      script.charset = "UTF-8";
-      script.setAttribute("crossorigin", "*");
+      script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
       script.setAttribute("data-cfasync", "false");
-      document.body.appendChild(script);
+      document.head.appendChild(script);
     };
 
-    const scheduleLoad = () => runWhenIdle(loadTawk);
+    const scheduleLoad = () => runWhenIdle(loadGtm);
     const interactionEvents: Array<keyof WindowEventMap> = [
       "pointerdown",
       "keydown",
       "touchstart",
+      "scroll",
     ];
 
     interactionEvents.forEach((eventName) => {
@@ -58,7 +61,7 @@ const TawkToWidget = () => {
       });
     });
 
-    const fallbackTimer = window.setTimeout(scheduleLoad, 12000);
+    const fallbackTimer = window.setTimeout(scheduleLoad, 8000);
 
     return () => {
       interactionEvents.forEach((eventName) => {
@@ -69,6 +72,4 @@ const TawkToWidget = () => {
   }, []);
 
   return null;
-};
-
-export default TawkToWidget;
+}

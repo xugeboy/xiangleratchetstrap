@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRightIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
@@ -19,6 +19,8 @@ interface ProductGridProps {
   viewMode: "grid" | "list" | "compact";
   itemsPerPage: number;
   lang: string;
+  initialProducts: Product[];
+  initialTotalPages: number;
 }
 
 export function ProductGrid({
@@ -27,12 +29,15 @@ export function ProductGrid({
   viewMode,
   itemsPerPage,
   lang,
+  initialProducts,
+  initialTotalPages,
 }: ProductGridProps) {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>(initialProducts);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState(initialTotalPages);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const didSkipInitialFetchRef = useRef(false);
 
   const loadProducts = useCallback(
     async (page: number, append = false) => {
@@ -71,8 +76,17 @@ export function ProductGrid({
   );
 
   useEffect(() => {
+    if (
+      !didSkipInitialFetchRef.current &&
+      Object.keys(selectedFilters).length === 0 &&
+      initialProducts.length > 0
+    ) {
+      didSkipInitialFetchRef.current = true;
+      return;
+    }
+
     loadProducts(1, false);
-  }, [loadProducts]);
+  }, [initialProducts.length, loadProducts, selectedFilters]);
 
   const handleLoadMore = () => {
     if (isLoadingMore || currentPage >= totalPages) return;

@@ -1,12 +1,18 @@
-import { Metadata, ResolvingMetadata } from 'next'
-import { fetchAPI } from '@/utils/fetch-api'
-import CategoryContent from './CategoryContent'
-import { ProductCategory } from '@/types/productCategory'
-import { defaultUrlPrefix, localePrefixMap } from '@/middleware'
-import { getCategoryMetaDataBySlug } from '@/services/api/productCategory'
-import { notFound } from 'next/navigation'
+import { cache } from "react";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+import CategoryContent from "./CategoryContent";
+
+import { ProductCategory } from "@/types/productCategory";
+import { filterProducts, getProductFilters } from "@/services/api/product";
+import { getCategoryMetaDataBySlug } from "@/services/api/productCategory";
+import { defaultUrlPrefix, localePrefixMap } from "@/middleware";
+import { fetchAPI } from "@/utils/fetch-api";
+import { formatProductFilters } from "@/utils/productFilters";
 
 export const revalidate = 3600;
+const ITEMS_PER_PAGE = 16;
 
 interface CategoryPageProps {
   params: {
@@ -19,18 +25,33 @@ interface CategoryPageProps {
 }
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-export async function generateMetadata(
-  { params }: CategoryPageProps,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const { slug, lang } = await params;
-  const lastSlug =slug[slug.length - 1];
-  const currentLocale = lang;
-  const categoryData = await getCategoryMetaDataBySlug(lastSlug,currentLocale);
+
+const getCategoryPageData = cache(async (slug: string, lang: string) => {
+  const [categoryData, rawFilters, initialProductsResponse] = await Promise.all([
+    getCategoryMetaDataBySlug(slug, lang),
+    getProductFilters(slug, lang),
+    filterProducts(slug, 1, ITEMS_PER_PAGE, {}, lang),
+  ]);
 
   if (!categoryData) {
     notFound();
   }
+
+  return {
+    categoryData,
+    initialProducts: initialProductsResponse.data,
+    initialTotalPages: initialProductsResponse.meta.pagination.pageCount,
+    productFilters: formatProductFilters(rawFilters),
+  };
+});
+
+export async function generateMetadata(
+  { params }: CategoryPageProps
+): Promise<Metadata> {
+  const { slug, lang } = await params;
+  const lastSlug =slug[slug.length - 1];
+  const currentLocale = lang;
+  const { categoryData } = await getCategoryPageData(lastSlug, currentLocale);
 
   const pageTitle = categoryData.seo_title;
   const pageDescription = categoryData.seo_description;
@@ -134,10 +155,21 @@ function getAllSlugPaths(categories: ProductCategory[], parentSlugs: string[] = 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug, lang } = await params;
   const lastSlug = slug[slug.length - 1];
-  const categoryData = await getCategoryMetaDataBySlug(lastSlug,lang);
+  const {
+    categoryData,
+    initialProducts,
+    initialTotalPages,
+    productFilters,
+  } = await getCategoryPageData(lastSlug, lang);
 
-  if (!categoryData) {
-    notFound()
-  }
-  return <CategoryContent slug={slug} lang={lang}/>
+  return (
+    <CategoryContent
+      currentCategory={categoryData}
+      initialProducts={initialProducts}
+      initialTotalPages={initialTotalPages}
+      itemsPerPage={ITEMS_PER_PAGE}
+      lang={lang}
+      productFilters={productFilters}
+    />
+  );
 }

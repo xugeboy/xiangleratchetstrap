@@ -2,6 +2,17 @@ import { fetchAPI, postAPI } from "@/utils/fetch-api";
 import { Product } from "@/types/product";
 import { getFullLocale, getPreviousFullLocale } from "@/utils/formatUtils";
 
+function createPaginationMeta(page: number, pageSize: number) {
+  return {
+    pagination: {
+      page,
+      pageSize,
+      pageCount: 0,
+      total: 0,
+    },
+  };
+}
+
 /**
  * 获取所有产品的slug
  */
@@ -83,15 +94,32 @@ export async function getProductsByCategorySlug(
 }> {
   try {
     const path = `/products/${categorySlug}`;
+    const localeParams = getFullLocale(locale);
     const urlParamsObject = {
       filters: filters,
       pagination: {
         page,
         pageSize,
       },
-      locale: locale,
+      locale: localeParams.locale,
     };
-    const response = await fetchAPI(path, urlParamsObject);
+    const response = await fetchAPI(path, urlParamsObject, {
+      next: {
+        revalidate: 3600,
+        tags: [
+          `category-products:${localeParams.locale}:${categorySlug}`,
+          `category-products:${localeParams.locale}:${categorySlug}:page:${page}`,
+        ],
+      },
+    });
+
+    if (!response?.meta?.pagination) {
+      return {
+        data: response?.data || [],
+        meta: createPaginationMeta(page, pageSize),
+      };
+    }
+
     return {
       data: response.data,
       meta: response.meta,
@@ -100,14 +128,7 @@ export async function getProductsByCategorySlug(
     console.error("Error fetching products by category:", error);
     return {
       data: [],
-      meta: {
-        pagination: {
-          page,
-          pageSize,
-          pageCount: 0,
-          total: 0,
-        },
-      },
+      meta: createPaginationMeta(page, pageSize),
     };
   }
 }
@@ -139,7 +160,13 @@ export async function getProductFilters(
 ): Promise<Record<string, Record<string, number>>> {
   try {
     const path = `/getAttributeFiltersByCategorySlug/${slug}`;
-    const response = await fetchAPI(path, getFullLocale(locale));
+    const localeParams = getFullLocale(locale);
+    const response = await fetchAPI(path, localeParams, {
+      next: {
+        revalidate: 3600,
+        tags: [`category-filters:${localeParams.locale}:${slug}`],
+      },
+    });
     return response || {};
   } catch (error) {
     console.error("Error fetching product filters:", error);
@@ -183,20 +210,13 @@ export async function filterProducts(
     });
     return {
       data: response.data,
-      meta: response.meta,
+      meta: response.meta || createPaginationMeta(page, pageSize),
     };
   } catch (error) {
     console.error("Error filtering products:", error);
     return {
       data: [],
-      meta: {
-        pagination: {
-          page,
-          pageSize,
-          pageCount: 0,
-          total: 0,
-        },
-      },
+      meta: createPaginationMeta(page, pageSize),
     };
   }
 }
@@ -237,20 +257,13 @@ export async function filterCustomizableProducts(
     });
     return {
       data: response.data,
-      meta: response.meta,
+      meta: response.meta || createPaginationMeta(page, pageSize),
     };
   } catch (error) {
     console.error("Error filtering products:", error);
     return {
       data: [],
-      meta: {
-        pagination: {
-          page,
-          pageSize,
-          pageCount: 0,
-          total: 0,
-        },
-      },
+      meta: createPaginationMeta(page, pageSize),
     };
   }
 }

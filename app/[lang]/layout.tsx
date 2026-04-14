@@ -4,10 +4,10 @@ import "@/app/[lang]/globals.css";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import BackToTop from "@/components/common/BackToTop";
-import { fetchAPI } from "@/utils/fetch-api";
 import { CategoryProvider } from "@/contexts/CategoryContext";
-import TawkToWidget from "@/components/common/TawkToWidget";
 import FloatingContact from "@/components/common/FloatingContact";
+import GoogleTagManagerLoader from "@/components/common/GoogleTagManagerLoader";
+import TawkToWidget from "@/components/common/TawkToWidget";
 import { Viewport } from "next";
 import { localePrefixMap, defaultLocaleKey } from "@/middleware";
 import { routing } from "@/i18n/routing";
@@ -15,7 +15,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getFullLocale } from "@/utils/formatUtils";
 import { setRequestLocale } from "next-intl/server";
-import Script from "next/script";
+import { getNavigationCategories } from "@/services/api/productCategory";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -134,12 +134,13 @@ export default async function RootLayout({
 }: LocaleLayoutProps) {
   const { lang } = await params;
   const locale = getFullLocale(lang);
-  const res = await fetchAPI("/getAllCategories", locale);
-  const categories = res.data;
 
   if (!hasLocale(routing.locales, lang)) {
     notFound();
   }
+
+  const categories = await getNavigationCategories(lang);
+
   let messages;
   try {
     messages = (await import(`../../messages/${lang}.json`)).default;
@@ -150,19 +151,6 @@ export default async function RootLayout({
   setRequestLocale(lang);
   return (
     <html lang={locale.locale}>
-      <head>
-        {/* Google Tag Manager */}
-        <Script id="GoogleTagManager" strategy="afterInteractive">
-        {`
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-K925B3FL');
-        `}
-        </Script>
-        {/* End Google Tag Manager */}
-      </head>
       <body className={`${poppins.className} antialiased`}>
         <noscript>
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K925B3FL"
@@ -173,6 +161,7 @@ export default async function RootLayout({
         <CategoryProvider categories={categories}>
           <div className="flex min-h-screen flex-col">
             <NextIntlClientProvider locale={lang} messages={messages}>
+              <GoogleTagManagerLoader />
               <Header />
               <main className="flex-grow">
                 {children}

@@ -1,12 +1,12 @@
 'use client'
 
 import { createContext, useContext, ReactNode, useMemo } from 'react'
-import type { ProductCategory } from '@/types/productCategory'
+import type { CategoryNavigationItem } from '@/types/categoryNavigation'
 
 interface CategoryContextType {
-  categories: ProductCategory[]
-  categoryMap: Map<number, ProductCategory>
-  rootCategories: ProductCategory[]
+  categories: CategoryNavigationItem[]
+  categoryMap: Map<number, CategoryNavigationItem>
+  rootCategories: CategoryNavigationItem[]
 }
 
 const CategoryContext = createContext<CategoryContextType | undefined>(undefined)
@@ -16,11 +16,11 @@ export function CategoryProvider({
   categories,
 }: {
   children: ReactNode
-  categories: ProductCategory[]
+  categories: CategoryNavigationItem[]
 }) {
   // 建立 categoryMap
   const categoryMap = useMemo(() => {
-    const map = new Map<number, ProductCategory>()
+    const map = new Map<number, CategoryNavigationItem>()
     categories.forEach((category) => {
       map.set(category.id, category)
     })
