@@ -1,5 +1,5 @@
 import Breadcrumb from "@/components/common/Breadcrumb";
-import BlocksClient from "@/components/common/BlocksClient";
+import BlocksServer from "@/components/common/BlocksServer";
 import { generateCategoryBreadcrumbs } from "@/utils/breadcrumbs";
 import { embedSchema, generateSchema } from "@/utils/schema";
 import { Product } from "@/types/product";
@@ -62,7 +62,7 @@ export default function CategoryContent({
 
       {currentCategory.description && (
         <section className="mt-24 md:mt-40 bg-white rounded-2xl p-2">
-          <BlocksClient content={currentCategory.description} />
+          <BlocksServer content={currentCategory.description} />
         </section>
       )}
     </div>

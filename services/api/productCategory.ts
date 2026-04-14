@@ -24,7 +24,7 @@ export async function getCategoryMetaDataBySlug(slug: string,locale:string): Pro
     const localeParams = getFullLocale(locale);
     const response = await fetchAPI(path, localeParams, {
       next: {
-        revalidate: 3600,
+        revalidate: 1,
         tags: ["categories", `category:${localeParams.locale}:${slug}`],
       },
     });

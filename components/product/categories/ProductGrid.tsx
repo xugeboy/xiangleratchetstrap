@@ -149,28 +149,33 @@ export function ProductGrid({
                           <div className="text-xs text-gray-500 mb-2 font-mono">
                             {product.code}
                           </div>
-                          {product.customizable && (
-                            <div className="mb-2 flex flex-wrap items-center gap-2">
-                              <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 text-xs font-semibold">
-                                {t("fastCustomization")}
-                                <InformationCircleIcon className="h-3.5 w-3.5 text-indigo-600" />
-                              </span>
-                              <Link
-                                href={`${pathPrefix}/custom-print/online-builder?slug=${product.slug}`}
-                                aria-label="Go to Online Builder"
-                                className="inline-flex items-center rounded-full border border-red-200 text-red-600 px-2 py-1 text-xs hover:bg-red-50"
-                              >
-                                <FaPalette className="h-4 w-4" />
-                              </Link>
-                            </div>
-                          )}
                         </>
                       )}
+                    </Link>
+                    {product.customizable && (
+                      <div className="mb-2 flex flex-wrap items-center gap-2">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 text-xs font-semibold">
+                          {t("fastCustomization")}
+                          <InformationCircleIcon className="h-3.5 w-3.5 text-indigo-600" />
+                        </span>
+                        <Link
+                          href={`${pathPrefix}/custom-print/online-builder?slug=${product.slug}`}
+                          aria-label="Go to Online Builder"
+                          className="inline-flex items-center rounded-full border border-red-200 text-red-600 px-2 py-1 text-xs hover:bg-red-50"
+                        >
+                          <FaPalette className="h-4 w-4" />
+                        </Link>
+                      </div>
+                    )}
+                    <Link
+                      prefetch={false}
+                      href={`${pathPrefix}/products/${product.slug}`}
+                      className="block"
+                    >
                       <h3 className="font-medium line-clamp-3 md:group-hover:text-red-700 transition-colors duration-200 mb-4">
                         {product.name}
                       </h3>
                     </Link>
-                    {/* grid视图下已移至标签行右侧，不再重复显示调色盘按钮 */}
                   </div>
                 )}
 
@@ -229,53 +234,57 @@ export function ProductGrid({
                 )}
 
                 {viewMode === "compact" && (
-                  <Link
-                    href={`${pathPrefix}/products/${product.slug}`}
-                    className="flex items-center gap-4"
-                  >
-                    <div className="w-16 h-16 flex-shrink-0 bg-gray-100">
-                      {product.featured_image && (
-                        <Image
-                          src={
-                            getCloudinaryPublicId(product.featured_image.url) ||
-                            "/placeholder.svg"
-                          }
-                          alt={product.name}
-                          width={64}
-                          height={64}
-                          className="object-contain w-full h-full"
-                        />
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      {product.code && (
-                        <>
-                          <div className="text-xs text-gray-500 mb-1 font-mono">
-                            {product.code}
-                          </div>
-                          {product.customizable && (
-                            <div className="mb-1 flex flex-wrap items-center gap-2">
-                              <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 text-xs font-semibold">
-                                {t("fastCustomization")}
-                                <InformationCircleIcon className="h-3.5 w-3.5 text-indigo-600" />
-                              </span>
-                              <Link
-                                href={`${pathPrefix}/custom-print/online-builder?slug=${product.slug}`}
-                                aria-label="Go to Online Builder"
-                                className="inline-flex items-center rounded-full border border-red-200 text-red-600 px-2 py-1 text-xs hover:bg-red-50"
-                              >
-                                <FaPalette className="h-4 w-4" />
-                              </Link>
+                  <div className="flex items-center gap-3">
+                    <Link
+                      href={`${pathPrefix}/products/${product.slug}`}
+                      className="flex items-center gap-4 flex-1 min-w-0"
+                    >
+                      <div className="w-16 h-16 flex-shrink-0 bg-gray-100">
+                        {product.featured_image && (
+                          <Image
+                            src={
+                              getCloudinaryPublicId(product.featured_image.url) ||
+                              "/placeholder.svg"
+                            }
+                            alt={product.name}
+                            width={64}
+                            height={64}
+                            className="object-contain w-full h-full"
+                          />
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        {product.code && (
+                          <>
+                            <div className="text-xs text-gray-500 mb-1 font-mono">
+                              {product.code}
                             </div>
-                          )}
-                        </>
-                      )}
-                      <h3 className="text-sm font-medium">
-                        {product.name}
-                      </h3>
-                    </div>
-                    <ChevronRightIcon className="h-5 w-5 text-black" />
-                  </Link>
+                            {product.customizable && (
+                              <div className="mb-1 flex flex-wrap items-center gap-2">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 text-xs font-semibold">
+                                  {t("fastCustomization")}
+                                  <InformationCircleIcon className="h-3.5 w-3.5 text-indigo-600" />
+                                </span>
+                              </div>
+                            )}
+                          </>
+                        )}
+                        <h3 className="text-sm font-medium">
+                          {product.name}
+                        </h3>
+                      </div>
+                      <ChevronRightIcon className="h-5 w-5 text-black flex-shrink-0" />
+                    </Link>
+                    {product.customizable && (
+                      <Link
+                        href={`${pathPrefix}/custom-print/online-builder?slug=${product.slug}`}
+                        aria-label="Go to Online Builder"
+                        className="inline-flex items-center rounded-full border border-red-200 text-red-600 px-2 py-1 text-xs hover:bg-red-50"
+                      >
+                        <FaPalette className="h-4 w-4" />
+                      </Link>
+                    )}
+                  </div>
                 )}
               </div>
             ))}

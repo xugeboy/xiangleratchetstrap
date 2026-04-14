@@ -1,3 +1,4 @@
+import type { BlocksContent } from "@strapi/blocks-react-renderer";
 import { Product } from "./product";
 import { Gallery } from "./gallery";
 
@@ -5,7 +6,7 @@ export interface ProductCategory {
     documentId: string;
     id: number;
     name: string;
-    description: [];
+    description: BlocksContent;
     slug: string;
     sort: number;
     featured_image?: Gallery;

@@ -44,9 +44,9 @@ export default function ImageGallery({
                 <Image
                   alt={alt ?? ""}
                   src={getCloudinaryPublicId(image.url)}
+                  fill
                   className="size-full object-scale-down"
-                  width={image.width}
-                  height={image.height}
+                  sizes="(max-width: 640px) 22vw, 96px"
                 />
               </span>
               <span
@@ -61,15 +61,16 @@ export default function ImageGallery({
       {/* 主图显示区域 */}
       <div className="relative w-full aspect-square">
         <TabPanels>
-          {images?.map((image) => (
+          {images?.map((image, index) => (
             <TabPanel key={image.id}>
               <Image
                 alt={alt ?? ""}
                 src={getCloudinaryPublicId(image.url)}
-                priority={true}
+                priority={index === 0}
                 className="h-full w-full object-cover object-center rounded-lg"
                 width={image.width}
                 height={image.height}
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 45vw, 560px"
               />
             </TabPanel>
           ))}
